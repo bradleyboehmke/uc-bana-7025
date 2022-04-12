@@ -34,4 +34,26 @@ TBD
 
 ## Schedule
 
-TBD
+| Module        | Description  |
+|:-------------:|--------------|
+| **1**         | **Introduction**  |
+|               | Intro to data wrangling, R, and this course  |
+|               | Base R & the Rstudio IDE |
+| **2**         | **Reproducible Documents and Importing Data**  |
+|               | Managing your workflow and reproducibility  |
+|               | Importing data and understanding the basics of it |
+| **3**         | **Tidy Data and Data Manipulation**  |
+|               | Tidying & preparing data for analysis |
+|               | Data manipulation |
+| **4**         | **Relational Data and More Tidyverse Packages**  |
+|               | Relational data |
+|               | Leveraging the Tidyverse to simplify data wrangling |
+| **5**         | **Data Visualizations**  |
+|               | Data visualization  |
+|               | Visualization exploratory data analysis |
+| **6**         | **Creating Efficient Code in R**  |
+|               | Control statements & iteration  |
+|               | Writing functions |
+| **7**         | **Introduction to Applied Modeling**  |
+|               | Correlation & pattern discovery  |
+|               | Introduction to machine learning |
