@@ -48,9 +48,9 @@ TBD
 | **4**         | **Relational Data and More Tidyverse Packages**     |
 |               | Relational data                                     |
 |               | Leveraging the Tidyverse to simplify data wrangling |
-| **5**         | **Data Visualizations**                             |
+| **5**         | **Data Visualization & Exploration**                |
 |               | Data visualization                                  |
-|               | Visualization exploratory data analysis             |
+|               | Exploratory data analysis                           |
 | **6**         | **Creating Efficient Code in R**                    |
 |               | Control statements & iteration                      |
 |               | Writing functions                                   |
