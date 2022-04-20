@@ -1,0 +1,129 @@
+--- 
+title: "Data Wrangling with R"
+author: "Bradley Boehmke"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: references.bib
+biblio-style: apalike
+link-citations: yes
+github-repo: bradleyboehmke/uc-bana-7025
+twitter-handle: bradleyboehmke
+description: "Master the art of data wrangling with the R programming language."
+---
+
+`r if (knitr::is_latex_output()) '<!--'` 
+
+# Syllabus {-}
+
+```{block, type = "note"}
+TBD
+```
+
+Welcome to _Data Wrangling with R_! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
+
+Data wrangling, which is also commonly referred to as data munging, transformation, manipulation, janitor work, etc. can be a painstakingly laborious process. In fact, it has been stated that up to 80% of data analysis is spent on the process of cleaning and preparing data [@tidy-data; @dasu2003exploratory]. However, being a prerequisite to the rest of the data analysis workflow (visualization, modeling, reporting), it's essential that you become fluent *and* efficient in data wrangling techniques.
+
+## Learning Objectives {-}
+
+This course will guide you through the data wrangling process along with give you a solid foundation of the basics of working with data in R. My goal is to teach you how to easily wrangle your data so you can spend more time focused on understanding the content of your data via visualization, modeling, and reporting your results. Upon successfully completing this course, you will be able to:
+
+* Perform your data analysis in a literate programming environment
+* Manage different types of data
+* Manage different data structures
+* Import and export data
+* Index, subset, reshape and transform your data
+* Compute descriptive statistics
+* Visualize data
+* Make your code efficient by using control statements & iteration
+* Write your own functions
+
+...all with R!
+
+## Is This Course for Me? {-}
+
+This book is meant to establish the baseline R vocabulary and knowledge for the primary data wrangling processes.  This captures a wide range of programming activities which covers the full spectrum from understanding basic data objects in R to writing your own functions, applying loops, and webscraping.  As a result, this book can be beneficial to all levels of R programmers.  Beginner R programmers will gain a basic understanding of the functionality of R along with learning how to work with data using R.  Intermediate and/or advanced R programmers will likely find the early chapters reiterating established knowledge; however, these programmers will benefit from the mid and later chapters by learning newer and/or more efficient data wrangling techniques.  
+
+
+## Prework {-}
+
+Obviously to gain and retain knowledge from this book it is highly recommended that you follow along and practice the code examples yourself.  Furthermore, this book assumes that you will actually be performing data wrangling in R; therefore, it is assumed that you have or plan to have R installed on your computer. You will find the latest version of R for Linux, Mac OS, and Windows at [cran.r-project.org/](https://cran.r-project.org/).  It is also recommended that you use an integrated development environment (IDE) as it will simplify and organize your coding environment greatly.  There are several to choose from; however, I highly recommend [RStudio](https://www.rstudio.com/).
+
+## Schedule {-}
+
+| Module        | Description                                         |
+|:-------------:|:----------------------------------------------------|
+| **1**         | **Introduction**                                    |
+|               | Intro to data wrangling, R, and this course         |
+|               | Base R & the Rstudio IDE                            |
+| **2**         | **Reproducible Documents and Importing Data**       |
+|               | Managing your workflow and reproducibility          |
+|               | Importing data and understanding the basics of it   |
+| **3**         | **Tidy Data and Data Manipulation**                 |
+|               | Tidying & preparing data for analysis               |
+|               | Data manipulation                                   |
+| **4**         | **Relational Data and More Tidyverse Packages**     |
+|               | Relational data                                     |
+|               | Leveraging the Tidyverse to simplify data wrangling |
+| **5**         | **Data Visualization & Exploration**                |
+|               | Data visualization                                  |
+|               | Exploratory data analysis                           |
+| **6**         | **Creating Efficient Code in R**                    |
+|               | Control statements & iteration                      |
+|               | Writing functions                                   |
+| **7**         | **Introduction to Applied Modeling**                |
+|               | Correlation & pattern discovery                     |
+|               | Introduction to machine learning                    |
+
+## Conventions used in this book {-}
+
+The following typographical conventions are used in this book:
+
+* ___strong italic___: indicates new terms,
+* __bold__: indicates package & file names,
+* `inline code`: monospaced highlighted text indicates functions or other commands that could be typed literally by the user,
+* code chunk: indicates commands or other text that could be typed literally by the user
+
+```{r, first-code-chunk, collapse=TRUE}
+1 + 2
+```
+
+In addition to the general text used throughout, you will notice the following code chunks with images:
+
+```{block, type = "tip"}
+Signifies a tip or suggestion
+```
+
+```{block, type = "note"}
+Signifies a general note
+```
+
+```{block, type = "warning"}
+Signifies a warning or caution
+```
+
+## Feedback {-}
+
+Reader comments are greatly appreciated. To report errors or bugs please post an issue at https://github.com/bradleyboehmke/dw-r/issues.
+
+## Acknowledgments {-} 
+
+I'd like to thank everyone who contributed feedback, typo corrections, and discussions while the book was being written. TBD.
+
+## Software information {-} 
+
+This book was built with the following packages and R version.  All code was executed on 2017 MacBook Pro with a 2.9 GHz Intel Core i7 processor, 16 GB of memory, 2133 MHz speed, and double data rate synchronous dynamic random access memory (DDR3). 
+
+```{r, collapse=TRUE, comment = "#>"}
+# packages used
+pkgs <- c(
+  "completejourney",
+  "tidyverse"
+)
+
+# package & session info
+sessioninfo::session_info(pkgs)
+```
+
+
+`r if (knitr::is_latex_output()) '-->'`
