@@ -84,7 +84,7 @@ div.base::before,
 
 .note {
   display: block;
-  border: 1px solid red;
+  border: 1px solid silver;
   border-left-width: 5px;
   border-radius: 5px;
   padding: 0.5em 1em;
@@ -94,12 +94,12 @@ div.base::before,
 .note::before {
   content: "Note: ";
   font-weight: bold;
-  color: black;
+  color: gray;
 }
 
 .tip {
   display: block;
-  border: 1px solid red;
+  border: 1px solid dodgerblue;
   border-left-width: 5px;
   border-radius: 5px;
   padding: 0.5em 1em;
@@ -109,7 +109,7 @@ div.base::before,
 .tip::before {
   content: "Pro Tip: ";
   font-weight: bold;
-  color: black;
+  color: blue;
 }
 
 /* Other gitbook tweaks -------------------------------------------------- */

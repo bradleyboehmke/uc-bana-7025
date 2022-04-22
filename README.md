@@ -1,10 +1,7 @@
 UC BANA 7025 Data Wrangling
 ================
 
-This repository contains additional resources for the UC BANA 7025 Data Wrangling course. The following is a truncated syllabus; for the full syllabus along with complete course content please visit the online course content in [Canvas](https://uc.instructure.com/). 
-
-
-## Course Description
+**By [Brad Boehmke](https://github.com/bradleyboehmke) 🚀**
 
 Welcome to Data Wrangling with R! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
 
@@ -24,15 +21,7 @@ Upon successfully completing this course, you will be able to:
 
 ...all with R!
 
-## Is this course for me?
-
-TBD
-
-## Prework
-
-TBD
-
-## Schedule
+## Content Covered
 
 | Module        | Description                                         |
 |:-------------:|:----------------------------------------------------|
@@ -57,3 +46,7 @@ TBD
 | **7**         | **Introduction to Applied Modeling**                |
 |               | Correlation & pattern discovery                     |
 |               | Introduction to machine learning                    |
+
+## Getting Started
+
+The primary course material is provided via this Bookdown resource [:closed_book:](https://bradleyboehmke.github.io/uc-bana-7025/).

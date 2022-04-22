@@ -17,10 +17,10 @@ description: "Master the art of data wrangling with the R programming language."
 # Syllabus {-}
 
 ```{block, type = "note"}
-TBD
+This repository contains additional resources for the UC BANA 7025 Data Wrangling course. The following is a truncated syllabus; for the full syllabus along with complete course content please visit the online course content in [Canvas](https://uc.instructure.com/). 
 ```
 
-Welcome to _Data Wrangling with R_! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
+Welcome to ___Data Wrangling with R___! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
 
 Data wrangling, which is also commonly referred to as data munging, transformation, manipulation, janitor work, etc. can be a painstakingly laborious process. In fact, it has been stated that up to 80% of data analysis is spent on the process of cleaning and preparing data [@tidy-data; @dasu2003exploratory]. However, being a prerequisite to the rest of the data analysis workflow (visualization, modeling, reporting), it's essential that you become fluent *and* efficient in data wrangling techniques.
 
@@ -40,16 +40,32 @@ This course will guide you through the data wrangling process along with give yo
 
 ...all with R!
 
-## Is This Course for Me? {-}
+```{block, type = "note"}
+This course assumes no prior knowledge of R. Experience with programming concepts or another programming language will help, but is not required to understand the material. 
+```
 
-This book is meant to establish the baseline R vocabulary and knowledge for the primary data wrangling processes.  This captures a wide range of programming activities which covers the full spectrum from understanding basic data objects in R to writing your own functions, applying loops, and webscraping.  As a result, this book can be beneficial to all levels of R programmers.  Beginner R programmers will gain a basic understanding of the functionality of R along with learning how to work with data using R.  Intermediate and/or advanced R programmers will likely find the early chapters reiterating established knowledge; however, these programmers will benefit from the mid and later chapters by learning newer and/or more efficient data wrangling techniques.  
+## Material {-}
 
+The bulk of the classroom material will be provided via this book, the recorded lectures, and class notes. In some cases there are additional recommended readings, all of which are readily available online.
 
-## Prework {-}
+## Class Structure {-}
 
-Obviously to gain and retain knowledge from this book it is highly recommended that you follow along and practice the code examples yourself.  Furthermore, this book assumes that you will actually be performing data wrangling in R; therefore, it is assumed that you have or plan to have R installed on your computer. You will find the latest version of R for Linux, Mac OS, and Windows at [cran.r-project.org/](https://cran.r-project.org/).  It is also recommended that you use an integrated development environment (IDE) as it will simplify and organize your coding environment greatly.  There are several to choose from; however, I highly recommend [RStudio](https://www.rstudio.com/).
+__Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two primary lessons and associated quizzes along with a lab.
+
+__Lessons__: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various "Your Turn" exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.
+
+__Quizzes__: There will be a short quiz associated with _each lesson_. These quizzes will be hosted in the course website on Canvas. Please check Canvas for due dates for these quizzes.
+
+__Labs__: There will be a lab associated with _each module_. For these labs students will be guided through a case study step-by-step. The aim is to provide a detailed view on how to manage a variety of complex real-world data; how to convert real problems into data wrangling and analysis problems; and to apply R to address these problems and extract insights from the data. Submission of these labs will be done through the course website on Canvas. Please check Canvas for due dates for these labs.
+
+__Project__: TBD
+
 
 ## Schedule {-}
+
+```{block, type = "note"}
+See the [Canvas](https://uc.instructure.com/) course webpage for a detailed schedule with due dates for quizzes, labs, etc.
+```
 
 | Module        | Description                                         |
 |:-------------:|:----------------------------------------------------|
@@ -104,26 +120,8 @@ Signifies a warning or caution
 
 ## Feedback {-}
 
-Reader comments are greatly appreciated. To report errors or bugs please post an issue at https://github.com/bradleyboehmke/dw-r/issues.
+To report errors or bugs that you find in this course material please post an issue at https://github.com/bradleyboehmke/uc-bana-7025/issues. For all other communication be sure to use Canvas or the university email. 
 
-## Acknowledgments {-} 
-
-I'd like to thank everyone who contributed feedback, typo corrections, and discussions while the book was being written. TBD.
-
-## Software information {-} 
-
-This book was built with the following packages and R version.  All code was executed on 2017 MacBook Pro with a 2.9 GHz Intel Core i7 processor, 16 GB of memory, 2133 MHz speed, and double data rate synchronous dynamic random access memory (DDR3). 
-
-```{r, collapse=TRUE, comment = "#>"}
-# packages used
-pkgs <- c(
-  "completejourney",
-  "tidyverse"
-)
-
-# package & session info
-sessioninfo::session_info(pkgs)
+```{block, type = "tip"}
+When communicating with me via email, please always include **BANA7025** in the subject line.
 ```
-
-
-`r if (knitr::is_latex_output()) '-->'`
