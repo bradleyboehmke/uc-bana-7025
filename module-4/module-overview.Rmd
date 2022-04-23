@@ -2,10 +2,18 @@
 
 # Overview
 
-TBD
+It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called *relational* data because it is the relations, not just the individual datasets, that are important.
+
+Moreover, as data scientists work across multiple datasets they often find themselves working with different data types (i.e. numeric, categorical, date-times) and this can present many challenges.
+
+In this module we'll explore how to use different join operations when working with relational data along with introduce additional Tidyverse packages that will simplify working with different data types.
 
 ## Learning objectives
 
+By the end of this module you should be able to:
+
+- Describe and apply the different join operations.
+- Identify and manipulate a variety of different data types.
 
 ## Tasks
 

@@ -27,7 +27,7 @@ Upon successfully completing this course, you will be able to:
 |:-------------:|:----------------------------------------------------|
 | **1**         | **Introduction**                                    |
 |               | Intro to data wrangling, R, and this course         |
-|               | Base R & the Rstudio IDE                            |
+|               | R fundamentals & the Rstudio IDE                    |
 | **2**         | **Reproducible Documents and Importing Data**       |
 |               | Managing your workflow and reproducibility          |
 |               | Importing data and understanding the basics of it   |

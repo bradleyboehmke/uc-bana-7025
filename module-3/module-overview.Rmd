@@ -2,10 +2,16 @@
 
 # Overview
 
-TBD
+In the last module we discussed general guidelines for first interacting with a new data set. In module 3 we want to build on those activities by learning how to clean and tidy our data, and then beginning our journey to creating insights with data through data manipulation.
 
 ## Learning objectives
 
+By the end of this module you should be able to:
+
+- Explain the basic concepts of "tidy" data.
+- Perform data tidying tasks with R such as reshaping, splitting, and combining data along with handling missing values.
+- Manipulate your data by applying filters, selecting and renaming columns, creating new variables, and more.
+- Compute descriptive statistics across all observations and within different grouped levels of observations.
 
 ## Tasks
 

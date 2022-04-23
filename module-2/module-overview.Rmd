@@ -2,12 +2,21 @@
 
 # Overview
 
-TBD
+Welcome to module 2! This module will focus on ...
 
 ## Learning objectives
 
+By the end of this module you should be able to:
+
+- Use RStudio Projects to organize a data wrangling project.
+- Understand how to use R scripts, R Markdown, and R Notebook documents to make your data wrangling projects and outputs reproducible.
+- Import data from a variety of sources and perform basic tasks to understand simple attributes about your imported dataset.
+- Describe key differences between different data structures.
 
 ## Tasks
 
+TBD
 
 ## Course readings
+
+TBD
