@@ -50,7 +50,7 @@ The bulk of the classroom material will be provided via this book, the recorded 
 
 ## Class Structure {-}
 
-__Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two primary lessons and associated quizzes along with a lab.
+__Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two or more primary lessons and associated quizzes along with a lab.
 
 __Lessons__: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various "Your Turn" exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.
 
