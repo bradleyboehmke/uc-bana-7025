@@ -54,17 +54,17 @@ div.base::before,
 
 .todo {
   display: block;
-  border: 1px solid red;
-  border-left-width: 5px;
+  border: 2px solid MediumSeaGreen;
+  border-left-width: 7px;
   border-radius: 5px;
   padding: 0.5em 1em;
   margin: 1em 0;
 }
 
 .todo::before {
-  content: "TO DO: ";
+  content: "Questions: ";
   font-weight: bold;
-  color: red;
+  color: SeaGreen;
 }
 
 .warning {

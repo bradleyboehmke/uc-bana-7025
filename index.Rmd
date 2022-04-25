@@ -125,3 +125,12 @@ To report errors or bugs that you find in this course material please post an is
 ```{block, type = "tip"}
 When communicating with me via email, please always include **BANA7025** in the subject line.
 ```
+
+## Acknowledgements {-}
+
+This course and its materials have been influenced by the following resources:
+
+- Jenny Bryan, [STAT 545: Data wrangling, exploration, and analysis with R](http://stat545.com/)
+- Garrett Grolemund & Hadley Wickham, [R for Data Science](http://r4ds.had.co.nz/index.html)
+- Stephanie Hicks, [Statistical Computing](https://www.stephaniehicks.com/jhustatcomputing2021/)
+- Chester Ismay & Albert Kim, [ModernDive](https://moderndive.netlify.app/index.html)

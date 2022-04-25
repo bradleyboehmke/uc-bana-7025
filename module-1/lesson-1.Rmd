@@ -1,15 +1,37 @@
-# Lesson 1
+# Lesson 1a
 
-TBD
-
+TBD -- complete this lesson towards the end of course dev
 
 ## Learning objectives
 
+By the end of this lesson you will:
 
-## Content A
+- Be able to explain the purpose and objectives of this course.
+- Understand the assumptions and prerequisites that are expected for this course.
+- Understand how this course flows and how to complete the required tasks (i.e. quizzes, labs).
+- Know the grading philosophy and relative weights across the various tasks.
+- Know how, when, and where to get help for course specific concerns.
 
 
-## Content B
+## Purpose of this course
+
+
+## Assumptions & Pre-requisites
+
+
+## Course Staff
+
+
+## Course Logistics
+
+
+## Grading
+
+
+## Getting Help
+
+
+## Fine Print
 
 
 ## Exercises
