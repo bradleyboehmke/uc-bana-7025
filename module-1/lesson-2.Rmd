@@ -274,9 +274,11 @@ y <- 1:3
 x + y
    ```
 * __Messages__: When the text doesn’t start with either “Error” or “Warning”, it’s just a friendly message. You’ll often see these messages when you load R packages or make certain function calls. Think of messages as a green traffic light: everything is working fine and keep on going!
-   ```{r, message=TRUE}
+   ```{r, eval=FALSE}
 # Example of a message
 library(completejourney)
+## Welcome to the completejourney package! Learn more about these data
+## sets at http://bit.ly/completejourney.
    ```
 
 ## Exercises
