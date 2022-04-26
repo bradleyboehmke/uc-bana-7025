@@ -104,18 +104,22 @@ The following typographical conventions are used in this book:
 1 + 2
 ```
 
-In addition to the general text used throughout, you will notice the following code chunks with images:
+In addition to the general text used throughout, you will notice the following cells that provide additional context for improved learning:
 
 ```{block, type = "tip"}
-Signifies a tip or suggestion
+A tip or suggestion that will likely produce better results.
 ```
 
 ```{block, type = "note"}
-Signifies a general note
+A general note that could improve your understanding but is not required for the course requirements.
 ```
 
 ```{block, type = "warning"}
-Signifies a warning or caution
+Warning or caution to look out for.
+```
+
+```{block, type = "todo"}
+Knowledge check exercises to gauge your learning progress.
 ```
 
 ## Feedback {-}
