@@ -59,7 +59,7 @@ Installing R and RStudio should be fairly straightforward. However, a great set 
 
 After you install R and RStudio on your computer, you’ll have two new programs (also called applications) you can open. The R application icon looks like the left image below while the RStudio icon looks like the right image. We’ll always work in RStudio and not in the R application so be sure to select the correct icon.
 
-```{r r-vs-rstudio-icons, echo=FALSE, fig.cap='Use the RStudio icon (right) and not the R icon (left) to launch your R project.', fig.align='center'}
+```{r r-vs-rstudio-icons, echo=FALSE, fig.cap='Use the RStudio icon (right) and not the R icon (left) to launch your R project. [@ismay2019statistical]', fig.align='center'}
 knitr::include_graphics("images/R_vs_RStudio_icons.png")
 ```
 
