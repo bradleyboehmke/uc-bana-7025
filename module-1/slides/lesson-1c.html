@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lesson 1c</title>
+    <meta charset="utf-8" />
+    <script src="lesson-1c_files/header-attrs/header-attrs.js"></script>
+    <link href="lesson-1c_files/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="lesson-1c_files/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="../../css/slides_scrollable.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/slides_mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/slides_fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: clear, middle
+
+
+background-image: url(../../images/title-slide-lesson-1c.png)
+background-position: center
+background-size: cover
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.pull-left-wide[
+.font300.white[Lesson 1c] &lt;br&gt;
+.font200.white[R Fundamentals]
+]
+
+---
+
+# Learning objectives
+
+&lt;br&gt;
+
+.font120[
+- Assign values to variables and evaluate them.
+
+- Perform basic mathematical operations.
+
+- Understand the idea of vectorization.
+
+- Explain what packages and be able to install and load them.
+
+- Understand and apply basic styling guidelines to your code.
+]
+
+---
+
+# Assignment &amp; Evaluation &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+.pull-left[
+
+### Assignment
+
+
+```r
+# idiomatic assignment
+x &lt;- 3
+```
+
+]
+
+--
+
+.pull-right[
+
+### Evaluation
+
+
+```r
+x
+## [1] 3
+```
+
+]
+
+---
+
+# Assignment &amp; Evaluation &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+.pull-left[
+
+### Assignment
+
+
+```r
+# idiomatic assignment
+x &lt;- 3
+
+# non-idiomatic but works
+y = 4
+```
+
+]
+
+.pull-right[
+
+### Evaluation
+
+
+```r
+x
+## [1] 3
+
+y
+## [1] 4
+```
+
+]
+
+---
+
+# Assignment &amp; Evaluation &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+.pull-left[
+
+### Assignment
+
+
+```r
+# idiomatic assignment
+x &lt;- 3
+
+# non-idiomatic but works
+y = 4
+
+# keep case-sensitivity in mind
+Z &lt;- 5
+```
+
+]
+
+.pull-right[
+
+### Evaluation
+
+
+```r
+x
+## [1] 3
+
+y
+## [1] 4
+
+z
+## [1] 2 5 8
+```
+
+]
+
+---
+
+# Assignment &amp; Evaluation &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+.pull-left[
+
+
+```r
+# original value
+x &lt;- 3
+x
+## [1] 3
+
+# we can always overwrite values
+x &lt;- 6
+x
+## [1] 6
+```
+
+]
+
+.pull-right[
+
+
+```r
+# or even do multiple assignment at once
+x &lt;- y &lt;- z &lt;- 18
+
+x
+## [1] 18
+y
+## [1] 18
+z
+## [1] 18
+```
+
+]
+
+---
+class: yourturn
+
+# Exercises
+
+1. Assign the value 5 to variable `x` (note how this shows up in your Global Environment).
+
+2. Assign the character "abc" to variable `y`.
+
+3. Evaluate the value of `x` and `y` at in the console.
+
+4. Now use the `rm()` function to remove these objects from you working environment.
+
+---
+
+# R as a calculator <span>&lt;i class="fas  fa-calculator faa-pulse animated-hover faa-slow " style=" color:red;"&gt;&lt;/i&gt;</span> &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+.pull-left[
+
+1. **P**arentheses
+
+2. **E**xponentiation
+
+3. **M**ultiplication and **D**ivision
+
+4. **A**ddition and **S**ubtraction
+
+]
+
+.pull-right[
+
+```r
+# uses PEMBDAS convention for order of operations
+4 + 3 / 10 ^ 2
+## [1] 4.03
+
+(4 + 3) / 10 ^ 2
+## [1] 0.07
+
+(4 + 3 / 10) ^ 2
+## [1] 18.49
+```
+]
+
+---
+
+# R as a calculator <span>&lt;i class="fas  fa-calculator faa-pulse animated-hover faa-slow " style=" color:red;"&gt;&lt;/i&gt;</span> &lt;div style="float: right;"&gt;<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:right;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg>&lt;/div&gt;
+
+.pull-left[
+
+1. **P**arentheses
+
+2. **E**xponentiation
+
+3. **M**ultiplication and **D**ivision
+
+4. **A**ddition and **S**ubtraction
+
+We can even due integer &amp; modulo division. See all the arithmetic operators with `?Arithmetic`.
+
+]
+
+.pull-right[
+
+```r
+# uses PEMBDAS convention for order of operations
+4 + 3 / 10 ^ 2
+## [1] 4.03
+
+(4 + 3) / 10 ^ 2
+## [1] 0.07
+
+(4 + 3 / 10) ^ 2
+## [1] 18.49
+
+*# integer division
+*42 %/% 4
+## [1] 10
+
+*# modulo (remainder)
+*42 %% 4
+## [1] 2
+```
+]
+
+---
+
+# Number lengths
+
+.pull-left[
+
+Sometimes we'll get large numbers expressed in scientific notation
+
+If this bothers you, you can always adjust the digit length
+
+]
+
+.pull-right[
+
+
+```r
+888888 * 888888
+## [1] 7.9012e+11
+
+options(digits = 10)
+888888 * 888888
+## [1] 790121876544
+```
+
+]
+
+---
+
+# Number lengths
+
+.pull-left[
+
+Sometimes we'll get large numbers expressed in scientific notation
+
+If this bothers you, you can always adjust the digit length
+
+But there is a limit
+
+]
+
+.pull-right[
+
+
+```r
+pi
+## [1] 3.141592654
+
+options(digits = 22)
+pi
+## [1] 3.141592653589793115998
+
+options(digits = 23)
+## Error in options(digits = 23): invalid 'digits' parameter, allowed 0...22
+```
+
+]
+
+--
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.center[
+.content-box-red-dark[.bold.white[We'll see that in regular data analysis, some of the R data structures takes care of this for us.]]
+]
+
+
+
+---
+
+# Miscellaneous mathematical functions
+
+.pull-left[
+
+There are many built-in functions to be aware of. These include but are not limited to the following.
+
+You can see all the various math operators with `?methods::Math`
+]
+
+.pull-right[
+
+
+```r
+x &lt;- 10
+
+# absolute value
+abs(x)
+## [1] 10
+
+# square root
+sqrt(x) 
+## [1] 3.162278
+
+# exponential transformation
+exp(x)
+## [1] 22026.47
+
+# logarithmic transformation
+log(x)      
+## [1] 2.302585
+
+# cosine and other trigonometric functions
+cos(x)
+## [1] -0.8390715
+```
+
+]
+
+---
+
+# `NA`, `Inf`, and `NaN` numbers
+
+.pull-left[
+
+R uses a few different objects to indicate:
+
+- Missing values with `NA`
+
+- Infinity with `Inf`
+
+- Not a Number with `NaN`
+
+]
+
+.pull-right[
+
+
+```r
+# calculations with NA produces NA
+4 + 3 / 10 ^ NA
+## [1] NA
+
+# infinity
+1 / 0
+## [1] Inf
+
+# not a number
+0 / 0
+## [1] NaN
+
+# square root of -9
+sqrt(-9)
+## Warning in sqrt(-9): NaNs produced
+## [1] NaN
+```
+
+]
+
+&lt;br&gt;
+
+--
+.center.content-box[These can easily pop up in regular data wrangling tasks and later modules will discuss how to work with these types of outputs along with missing values.]
+
+---
+class: yourturn
+
+# Exercises
+
+&lt;br&gt;&lt;br&gt;
+
+1. Assign the values 1000, 5, and 0.05 to variables `D`, `K`, and `h` respectively.
+
+2. Compute `\(2 \times D \times K\)`.
+
+3. Compute `\(\frac{2 \times D \times K}{h}\)`.
+
+4. Now put this together to compute the Economic Order Quantity, which is `\(\sqrt{\frac{2 \times D \times K}{h}}\)`. Save the output as `Q`.
+
+---
+
+# R has built-in vectorization
+
+.pull-left[
+
+Say you have the following two vectors and we want to add them element-wise:
+
+
+```r
+x &lt;- c(1, 3, 4)
+y &lt;- c(1, 2, 4)
+
+x
+## [1] 1 3 4
+
+y
+## [1] 1 2 4
+```
+
+]
+
+--
+
+.pull-right[
+
+In many languages you would need to apply a `for` loop mechanism to do so:
+
+
+```r
+z &lt;- as.vector(NULL)
+
+# `for` loop to add corresponding elements in each vector
+for (i in seq_along(x)) {
+        z[i] &lt;- x[i] + y[i]
+}
+
+z
+## [1] 2 5 8
+```
+
+]
+
+---
+
+# R has built-in vectorization
+
+.pull-left[
+
+Say you have the following two vectors and we want to add them element-wise:
+
+
+```r
+x &lt;- c(1, 3, 4)
+y &lt;- c(1, 2, 4)
+
+x
+## [1] 1 3 4
+
+y
+## [1] 1 2 4
+```
+
+]
+
+.pull-right[
+
+But in R, many functions are already ___vectorized___, which mean they can operate on entire vectors at once.
+
+
+```r
+# add each element in x and y
+x + y
+## [1] 2 5 8
+
+# multiply each element in x and y
+x * y
+## [1]  1  6 16
+
+# compare each element in x to y
+x &gt; y
+## [1] FALSE  TRUE FALSE
+```
+
+
+]
+
+---
+# Recycling
+
+.pull-left[
+Moreover, the flexibility of vectorized functions allow us to easily perform tasks like this where we iterate over each element of `x` and add `y`
+
+
+```r
+x &lt;- c(1, 2, 3, 4)
+y &lt;- 1
+
+x + 1
+## [1] 2 3 4 5
+```
+
+.center.content-box[This is called ___recycling___]
+
+]
+
+--
+
+.pull-right[
+
+We can use different length vectors...
+
+
+```r
+long &lt;- 1:10
+short &lt;- 1:5
+
+long + short
+##  [1]  2  4  6  8 10  7  9 11 13 15
+```
+
+But we should be careful when performing recycling!
+
+
+```r
+even_length &lt;- 1:10
+odd_length &lt;- 1:3
+
+even_length + odd_length
+## Warning in even_length + odd_length: longer object length is not a multiple
+## of shorter object length
+##  [1]  2  4  6  5  7  9  8 10 12 11
+```
+
+
+]
+
+---
+class: yourturn
+
+# Exercises
+
+1. Create this vector `my_vec &lt;- 1:10`.
+
+2. Add 1 to every element in `my_vec`.
+
+3. Divide every element in `my_vec` by 2.
+
+4. Create a second vector `my_vec2 &lt;- 10:18` and add `my_vec` to `my_vec2`.
+
+---
+
+# Working with packages 📦
+
+The fundamental unit of shareable code is the .bold[package].
+
+* CRAN: ~19,000+
+* Bioconductor: ~2,00
+* GitHub: Many more plus beta versions for updated packages not yet published
+
+&lt;img src="../../images/base-r-pkgs.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Working with packages 📦
+
+The fundamental unit of shareable code is the .bold[package].
+
+* CRAN: ~19,000+
+* Bioconductor: ~2,00
+* GitHub: Many more plus beta versions for updated packages not yet published
+
+.blue[So how do we install these packages?]
+
+
+```r
+# install packages from CRAN
+*install.packages("packagename")
+
+# install packages from GitHub
+install.packages("devtools")                     # only required the first time
+devtools::install_github("username/packagename")
+```
+
+---
+
+# Packages 📦
+
+
+.pull-left[
+
+### Downloads files to computer
+
+
+```r
+install.packages("packagename")
+```
+
+.center[.content-box-gray[.bold[1x per computer]]]
+
+]
+
+.pull-right[
+
+### Loads package to use
+
+
+```r
+library(packagename)
+```
+
+.center[.content-box-gray[.bold[1x per R session]]]
+
+]
+
+---
+# Getting Help on Packages
+
+For more direct help on packages that are installed on your computer you can use the `help` and `vignette` functions. 
+
+Here we can get help on the __ggplot2__ package with the following:
+
+
+```r
+help(package = "ggplot2")      # provides details regarding contents of a package
+vignette(package = "ggplot2")  # list vignettes available for a specific package
+vignette("ggplot2-specs")      # view specific vignette
+vignette()                     # view all vignettes on your computer
+```
+
+&lt;br&gt;&lt;br&gt;
+.center[.content-box-red-dark[.bold.white[This won't work yet since you don't have this package installed on your computer!]]]
+
+---
+class: yourturn
+
+# Exercises
+
+1.  Install the __completejourney__ package.
+
+2. Load the __completejourney__ package.
+
+3. Access the help documentation for the __completejourney__ package.
+
+4. Check out the vignette(s) for __completejourney__.
+
+5. Call the `get_transactions()` function provided by __completejourney__ and save the output to a `transactions` variable (note that this takes a little time as you are trying to download 1.5 million transactions!).
+
+---
+# What is tidyverse?
+
+.pull-left[
+
+.bold[A collection of packages...]
+
+&lt;img src="../../images/tidyverse.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+.bold[designed to simplify data analysis]
+
+&lt;br&gt;
+
+&lt;img src="../../images/tidyverse-process.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# What is tidyverse?
+
+.scrollable90[
+.pull-left[
+
+
+```r
+install.packages("tidyverse")
+```
+
+
+.bold[does the equivalent of...]
+
+
+```r
+install.packages("ggplot2")
+install.packages("tibble")
+install.packages("tidyr")
+install.packages("readr")
+install.packages("purrr")
+install.packages("dplyr")
+install.packages("stringr")
+install.packages("forcats")
+install.packages("cli")
+install.packages("crayon")
+install.packages("dbplyr")
+install.packages("dtplyr")
+install.packages("googledrive")
+install.packages("googlesheets4")
+install.packages("haven")
+install.packages("hms")
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("lubridate")
+install.packages("magrittr")
+install.packages("modelr")
+install.packages("pillar")
+install.packages("readxl")
+install.packages("reprex")
+install.packages("rlang")
+install.packages("rstudioapi")
+install.packages("rvest")
+install.packages("xml2")
+```
+
+]
+]
+
+---
+
+# What is tidyverse?
+
+.scrollable90[
+.pull-left[
+
+
+```r
+install.packages("tidyverse")
+```
+
+
+.bold[does the equivalent of...]
+
+
+```r
+*install.packages("ggplot2")
+*install.packages("tibble")
+*install.packages("tidyr")
+*install.packages("readr")
+*install.packages("purrr")
+*install.packages("dplyr")
+*install.packages("stringr")
+*install.packages("forcats")
+install.packages("cli")
+install.packages("crayon")
+install.packages("dbplyr")
+install.packages("dtplyr")
+install.packages("googledrive")
+install.packages("googlesheets4")
+install.packages("haven")
+install.packages("hms")
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("lubridate")
+install.packages("magrittr")
+install.packages("modelr")
+install.packages("pillar")
+install.packages("readxl")
+install.packages("reprex")
+install.packages("rlang")
+install.packages("rstudioapi")
+install.packages("rvest")
+install.packages("xml2")
+```
+
+]
+
+.pull-right[
+
+
+```r
+library(tidyverse)
+```
+
+.bold[does the equivalent of...]
+
+
+
+```r
+library(ggplot2) 
+library(tibble) 
+library(tidyr) 
+library(readr) 
+library(purrr) 
+library(dplyr) 
+library(stringr) 
+library(forcats)
+```
+
+]
+
+]
+
+---
+
+# Style guide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&gt; _"Good coding style is like using correct punctuation. You can manage without it, but it sure makes things easier to read."_ - Hadley Wickham
+
+.center[https://style.tidyverse.org/]
+
+---
+
+# Notation and naming
+
+.pull-left[
+
+### File names
+
+
+```r
+# Good
+weather-analysis.R
+emerson-text-analysis.R
+lesson-1b-homework.R
+
+# Bad
+basic-stuff.r
+detail.r
+```
+
+If files need to be run in sequence, prefix them with numbers:
+
+
+```r
+0-download.R
+1-preprocessing.R
+2-explore.R
+3-fit-model.R
+```
+
+]
+
+--
+
+.pull-right[
+
+### Variables &amp; functions
+
+
+```r
+namingconvention        # all lower case; no separator
+naming.convention       # period separator
+*naming_convention       # underscore separator (aka snake case)
+namingConvention        # lower camel case
+NamingConvention        # upper camel case
+```
+
+.center.content-box[Vast majority of the R community uses `snake_case`.]
+
+]
+
+---
+# Code organization
+
+Break up large sections within your script
+
+
+```r
+# Download Data -------------------------------------------------------------------
+lines of code here
+
+# Preprocess Data -----------------------------------------------------------------
+lines of code here
+
+# Exploratory Analysis ------------------------------------------------------------
+lines of code here
+```
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.center.content-box[You can easily add these section breaks within RStudio wth Cmd+Shift+R.]
+
+---
+# Add comments
+
+Providing code comments can help others understand your intent.
+
+But don't use comments to re-state the obvious; use comments to explain ___why___ you are doing something.
+
+
+```r
+code_1  # short comments can be placed to the right of code 
+code_2  # blah
+code_3  # blah
+
+# or comments can be placed above a line of code
+code_4
+
+# Or extremely long lines of commentary that go beyond the suggested 80 
+# characters per line can be broken up into multiple lines. Just don't forget
+# to use the hash on each.
+code_5
+```
+&lt;br&gt;
+.center.content-box[You can easily comment or uncomment lines by highlighting the line and then pressing Cmd+Shift+C.]
+
+---
+# Syntax - line breaks
+
+* The maximum number of characters on a single line of code should be 80 or less. If you are using RStudio you can have a margin displayed so you know when you need to break to a new line: __Tools » Global Options » Code » Display__. 
+
+* Use smart and consistent indenting
+
+
+
+```r
+# bad
+dont_do_this &lt;- seq(ymd_hm("2015-1-1 0:00"), 
+  ymd_hm("2015-1-1 12:00"), by = "hour")
+
+# good: option 1
+do_this &lt;- seq(ymd_hm("2015-1-1 0:00"),
+               ymd_hm("2015-1-1 12:00"),
+               by = "hour")
+
+# good: option 2
+or_this &lt;- seq(
+  ymd_hm("2015-1-1 0:00"),
+  ymd_hm("2015-1-1 12:00"),
+  by = "hour"
+)
+```
+
+---
+# Syntax - spacing
+
+* Place spaces around all infix operators (`=`, `+`, `-`, `&lt;-`, etc.). The same rule applies when using `=` in function calls. 
+
+* Always put a space after a comma, and never before.
+
+
+```r
+# Good
+average &lt;- mean(feet / 12 + inches, na.rm = TRUE)
+
+# Bad
+average&lt;-mean(feet/12+inches,na.rm=TRUE)
+```
+
+--
+
+A few exceptions exist...
+
+
+```r
+# Good
+x &lt;- 1:10
+base::get
+
+# Bad
+x &lt;- 1 : 10
+base :: get
+```
+
+---
+class: yourturn
+
+# Exercises
+
+1. Say you have a 12" pizza. Compute the area of the pizza and assign that value to the variable `area`. Now say the `cost` of the pizza was $8. Compute the cost per square inch and assign that value to a variable `ppsi`.
+
+2. Based on the style guide section rename the `ppsi` variable in question 1 to be more meaningful.
+
+3. If you did not already do so, install the __tidyverse__ package. 
+
+4. How many vignettes does the __dplyr__ package have?
+
+5. Where can you go to learn more about the __tidyverse__ packages? 
+
+6. When you load the __tidyverse__ packages what other packages is it automatically 
+loading for you?
+
+7. Using the resource in #5, explain at a high-level what the packages in #6 do. 
+
+---
+
+# Questions before moving on?
+
+&lt;br&gt;
+
+&lt;img src="../../images/questions.png" width="450" height="450" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
