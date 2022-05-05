@@ -1,4 +1,4 @@
-# Lesson 1a
+# Lesson 1a: Course overview
 
 TBD -- complete this lesson towards the end of course dev
 

@@ -1,4 +1,4 @@
-# Lesson 1c
+# Lesson 1c: R fundamentals
 
 ```{r setup-1c, include=FALSE}
 knitr::opts_chunk$set(

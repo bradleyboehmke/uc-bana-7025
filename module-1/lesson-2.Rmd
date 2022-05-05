@@ -1,4 +1,4 @@
-# Lesson 1b
+# Lesson 1b: R & RStudio
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
