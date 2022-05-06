@@ -1,16 +1,470 @@
-# Lesson 2b
+# Lesson 2b: Data types & structures
 
-TBD
+```{r setup-2b, include=FALSE}
+chunk <- "```"
+inline <- function(x = "") paste0("`` `r ", x, "` ``")
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE
+)
+```
 
+Until now, you’ve created fairly simple data in R and stored it as a vector! However, when wrangling data we often come across a variety of **data types** and require different **data structures** to manage them. This lesson serves to introduce you to the basic data types and structures in R that you'll most commonly use.
 
 ## Learning objectives
 
+Upon completing this module you will be able to:
 
-## Content A
+- Explain the benefits of an R project and new ones.
+- Explain the similarities and differences between R Markdown files and R Notebooks.
+- Create both R Markdown and R Notebook deliverables.
 
 
-## Content B
+## Data types
 
+R has six basic types of data: _numeric_, _integer_, _logical_, _character_, _complex_ and _raw_. However, it is very unlikely that in your time as a data analyst/scientist you'll need to work with complex and raw data types so we'll focus on the first four.
+
+  - **Numeric** data are numbers that contain a decimal. Actually they can also be whole numbers but we'll gloss over that.
+
+  - **Integers** are whole numbers (those numbers without a decimal point).
+
+  - **Logical** data take on the value of either `TRUE` or `FALSE`. There's also another special type of logical called `NA` to represent missing values.
+
+  - **Character** data are used to represent string values. You can think of character strings as something like a word (or multiple words). A special type of character string is a *factor*, which is a string but with additional attributes (like levels or an order). We'll cover factors later. 
+
+### Determining the type
+
+R is (usually) able to automatically distinguish between different classes of data by their nature and the context in which they’re used although you should bear in mind that R can’t actually read your mind and you may have to explicitly tell R how you want to treat a data type. You can find out the type (or class) of any object using the `class()` function.
+
+```{r}
+num <- 2.2
+class(num)
+
+char <- "hello world"
+class(char)
+
+logi <- TRUE
+class(logi)
+```
+
+Alternatively, you can ask if an object _is_ a specific class using a logical test. The `is.xxxx()` family of functions will return either a `TRUE` or a `FALSE`.
+
+```{r}
+is.numeric(num)
+
+is.character(num)
+
+is.character(char)
+
+is.logical(logi)
+```
+
+
+### Type conversion
+
+It can sometimes be useful to be able to change the class of a variable using the `as.xxxx()` family of coercion functions, although you need to be careful when doing this as you might receive some unexpected results (see what happens below when we try to convert a character string to a numeric).
+
+```{r}
+# coerce numeric to character
+class(num)
+
+num_char <-  as.character(num)
+num_char
+
+class(num_char)
+
+# coerce character to numeric!
+class(char)
+
+char_num <- as.numeric(char)
+```
+
+|     Type       |    Logical test       |     Coercing       |
+|:-------------- |:--------------------- |:-----------------  |
+|  Character     |   `is.character`      |   `as.character`   |
+|  Numeric       |   `is.numeric`        |   `as.numeric`     |
+|  Logical       | `is.logical`          | `as.logical`       |
+|  Factor        |   `is.factor`         |   `as.factor`      |
+|  Complex       |   `is.complex`        |   `as.complex`     |
+
+```{block, type = 'note'}
+In later modules we will learn how to wrangle these different data types plus other special data types that are built on top of these classes (i.e. date-time stamps, missing values). For now, I just want you to understand the foundational data types built into R.
+```
+
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Check out the built-in object `pi`. What class is this object?
+2. What happens when you coerce this object to a character?
+3. What happens when you coerce it to a logical?
+4. Is there a coercion function that could convert this to an integer? What happens when you do this?
+```
+
+
+## Data structures
+
+Now that you've been introduced to some of the most important classes of data in R, let’s have a look at some of main **structures** that we have for storing these data. 
+
+### Scalars and vectors
+
+Perhaps the simplest type of data structure is the vector. You've already been introduced to vectors in module 1. Vectors that have a single value (length 1) are often referred to as scalars. Vectors can contain numbers, characters, factors or logicals, but the key thing to remember is that all the elements inside a vector must be of the same class. In other words, vectors can contain either numbers, characters or logicals but not mixtures of these types of data. There is one important exception to this, you can include `NA` (this is special type of logical) to denote missing data in vectors with other data types. 
+
+```{block, type='note'}
+All the elements inside a vector must be of the same class
+```
+
+
+```{r data_struc, echo=FALSE, out.width="40%", fig.align="center"}
+knitr::include_graphics(path = "images/scal_vec.png")
+```
+
+### Matrices and arrays 
+
+Another useful data structure used in many disciplines such as population ecology, theoretical and applied statistics is the matrix. A **matrix** is simply a vector that has additional attributes called dimensions. **Arrays** are just multidimensional matrices. Again, matrices and arrays must contain elements all of the same data class.
+
+```{r data_struc2, echo=FALSE, out.width="50%", fig.align="center"}
+knitr::include_graphics(path = "images/mat_array.png")
+```
+
+#### Creating
+
+A convenient way to create a matrix or an array is to use the `matrix()` and `array()` functions respectively. Below, we will create a matrix from a sequence 1 to 16 in four rows (`nrow = 4`) and fill the matrix row-wise (`byrow = TRUE`) rather than the default column-wise. When using the `array()` function we define the dimensions using the `dim =` argument, in our case 2 rows, 4 columns in 2 different matrices.   
+
+```{r}
+my_mat <- matrix(1:16, nrow = 4, byrow = TRUE)
+my_mat
+my_array <- array(1:16, dim = c(2, 4, 2))
+my_array
+```
+
+Sometimes it's also useful to define row and column names for your matrix but this is not a requirement. To do this use the `rownames()` and `colnames()` functions.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+rownames(my_mat) <- c("A", "B", "C", "D")
+colnames(my_mat) <- c("a", "b", "c", "d")
+my_mat
+```
+
+#### Indexing
+
+Similar to vectors, we can extract elements from our matrix using `[]` notation. The main difference is we now have to specify two dimensions in our indexing `matrix[row, col]`:
+
+```{r}
+# element located at the intersection of the 
+# third row and second column
+my_mat[3, 2]
+```
+
+We can also leave one dimension empty if we want to retrieve all elements for that particular dimension.
+
+```{r}
+# all elements in the second row
+my_mat[2, ]
+
+# all elements in the third column
+my_mat[, 3]
+```
+
+And when rows and columns are named we can also index based on those names:
+
+```{r}
+# Element located in row 'A' and column 'b'
+my_mat['A', 'b']
+```
+
+
+#### Operators
+
+Once you've created your matrices you can do useful stuff with them and as you'd expect. Many of the functions we used in the vector lesson can be applied across an entire matrix:
+
+```{r}
+# mean of all elements
+mean(my_mat)
+```
+
+However, there are also unique functions that work on matrices but not vectors. For example, we can compute the mean of each column in a matrix:
+
+```{r}
+colMeans(my_mat)
+```
+
+R has numerous built in functions to perform matrix operations. Some of the most common are given below. For example, to transpose a matrix we use the transposition function `t()`:
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+my_mat_t <- t(my_mat)
+my_mat_t
+```
+
+To extract the diagonal elements of a matrix and store them as a vector we can use the `diag()` function:
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+my_mat_diag <- diag(my_mat)
+my_mat_diag
+```
+
+The usual matrix addition, multiplication etc can be performed. Note the use of the `%*%` operator to perform matrix multiplication.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+mat.1 <- matrix(c(2, 0, 1, 1), nrow = 2)	
+mat.1
+
+mat.2 <- matrix(c(1, 1, 0, 2), nrow = 2)
+mat.2
+
+mat.1 + mat.2			# matrix addition
+mat.1 * mat.2			# element by element products
+mat.1 %*% mat.2		# matrix multiplication
+```
+
+#### Knowledge check
+
+```{block, type='todo'}
+1. Check out the built-in `VADeaths` data matrix?
+2. Subset this matrix for only male death rates.
+3. Subset for males death rates over the age of 60.
+4. Calculate averages for each column and row.
+```
+
+### Lists 
+
+The next data structure we will quickly take a look at is a **list**. Whilst vectors and matrices are constrained to contain data of the same type, lists are able to store mixtures of data types. In fact we can even store other data structures such as vectors and arrays within a list or even have a list of a list. 
+
+```{block, type='note'}
+Lists a very flexible data structures which is ideal for storing irregular or non-rectangular data. Many statistical outputs are provided as a list as well; therefore, its critical to understand how to work with lists. 
+```
+
+#### Creating
+
+To create a list we can use the `list()` function. Note how each of the three list elements are of different classes (character, logical, and numeric) and are of different lengths.
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+list_1 <- list(c("black", "yellow", "orange"),
+               c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE),
+               matrix(1:6, nrow = 3))
+list_1
+```
+
+Elements of the list can be named during the construction of the list 
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+list_2 <- list(colours = c("black", "yellow", "orange"), 
+               evaluation = c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE), 
+               time = matrix(1:6, nrow = 3))
+list_2
+```
+
+or after the list has been created using the `names()` function
+
+```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
+names(list_1) <- c("colors", "evaluation", "time")
+list_1
+```
+
+We can always get a quick glimpse of the **str**ucture of a list using `str()`:
+
+```{r}
+str(list_1)
+```
+
+#### Indexing
+
+To subset lists we can utilize the single bracket `[ ]`, double brackets `[[ ]]`, and dollar sign `$` operators. Each approach provides a specific purpose and can be combined in different ways to achieve the following subsetting objectives:
+
+- Subset list and preserve output as a list
+- Subset list and simplify output
+- Subset list to get elements out of a list
+
+To extract one or more list items while ***preserving*** the output in list format use the `[ ]` operator.
+
+```{block, type='tip'}
+Its important to understand the difference between simplifying and preserving subsetting. Simplifying subsets returns the simplest possible data structure that can represent the output. Preserving subsets keeps the structure of the output the same as the input. See Hadley Wickham’s section on [Simplifying vs. Preserving Subsetting](http://adv-r.had.co.nz/Subsetting.html#subsetting-operators) to learn more.
+```
+
+```{r}
+# extract first list item
+list_1[1]
+
+# same as above but using the item's name
+list_1['colors']
+
+# extract multiple list items
+list_1[c('colors', 'time')]
+```
+
+To extract one or more list items while ***simplifying*** the output use the `[[ ]]` or `$` operator:
+
+```{r}
+# extract first list item
+list_1[[1]]
+
+# same as above but using the item's name
+list_1[['colors']]
+
+# same as above but using $
+list_1$colors
+```
+
+```{block, type='tip'}
+One thing that differentiates the `[[` operator from the `$` is that the `[[` operator can be used with computed indices. The `$` operator can only be used with literal names.
+```
+
+To extract individual elements out of a specific list item combine the `[[` (or `$`) operator with the `[` operator:
+
+```{r}
+# extract the third element of the first list item
+list_1[['colors']][3]
+```
+
+#### Operators
+
+There are less operators that you typically use directly on a list. Most of the time you are trying to extract items out of a list. However, a few useful functions that are applied to a list include:
+
+```{r}
+# how many items are in a list
+length(list_1)
+
+# the name of the list items
+names(list_1)
+
+# the overall structure of a list
+str(list_1)
+```
+
+#### Knowledge check
+
+Install and load the **nycflights13** package:
+
+```{r, eval=FALSE}
+install.packages('nycflights13')
+```
+
+Using the flights data provided by this package create the following regression model:
+
+```{block, type='note'}
+This line of code is performing a linear regression model and saving the results in a list called `flight_lm`. We'll discuss linear regression and modeling in later modules.
+```
+
+```{r, eval=FALSE}
+flight_lm <- lm(arr_delay ~ dep_delay + month + carrier, data = flights)
+```
+
+
+```{block, type='todo'}
+1. How many items are in this list?
+2. What are the names of these list items?
+3. Extract the coefficients of this model.
+4. Extract the departure delay (`dep_delay`) coefficient.
+```
+
+
+### Data frames
+
+By far the most commonly used data structure to store data is the **data frame**. A data frame is a powerful two-dimensional object made up of rows and columns which looks superficially very similar to a matrix. However, whilst matrices are restricted to containing data all of the same type, data frames can contain a mixture of different types of data. Typically, in a data frame each row corresponds to an individual observation and each column corresponds to a different measured or recorded variable. This setup may be familiar to those of you who use Microsoft Excel to manage and store your data. Perhaps a useful way to think about data frames is that they are essentially made up of a bunch of vectors (columns) with each vector containing its own data type but the data type can be different between vectors. 
+
+As an example, the data frame below contains total quantity and sales for a grocery product category (i.e. potatoes, popcorn, frozen pizza) for each household. The data frame has four variables (columns) and each row represents an individual household. The variables `household_id`, `total_quantity`, and `total_sales` are numeric, `product_category` is a character, and `multiple_items` is a Boolean representing if the household bought more than one item. 
+
+```{r import-data-html, eval=knitr::is_html_output(), echo=FALSE, collapse=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+transactions <- completejourney::transactions_sample
+products <- completejourney::products
+
+transactions %>%
+   left_join(products) %>%
+   group_by(household_id, product_category) %>%
+   summarize(total_quantity = sum(quantity, na.rm = FALSE),
+             total_sales    = sum(sales_value, na.rm = FALSE)) %>%
+   ungroup() %>%
+   sample_n(20) %>%
+   arrange(household_id, product_category) %>% 
+   mutate(multiple_items = total_quantity > 1) %>%
+   knitr::kable(row.names = FALSE)
+```
+
+
+There are a couple of important things to bear in mind about data frames. These types of objects are known as rectangular data as each column must have the same number of observations. Also, any missing data should be recorded as an `NA` just as we did with our vectors. 
+
+#### Creating
+
+Data frames are usually created by reading in a data set, which we'll cover in a later lesson. However, data frames can also be created explicitly with the `data.frame()` function or they can be coerced from other types of objects like lists. In this case I’ll create a simple data frame `df` and assess its basic structure:
+
+```{r}
+df <- data.frame(col1 = 1:3, 
+                 col2 = c("this", "is", "text"), 
+                 col3 = c(TRUE, FALSE, TRUE), 
+                 col4 = c(2.5, 4.2, pi))
+
+# assess the structure of a data frame
+str(df)
+
+# number of rows
+nrow(df)
+
+# number of columns
+ncol(df)
+```
+
+Note how `col2` in `df` was converted to a column of factors. This is because there is a default setting in `data.frame()` that converts character columns to factors. We can turn this off by setting the `stringsAsFactors = FALSE` argument:
+
+```{r}
+df <- data.frame(col1 = 1:3, 
+                 col2 = c("this", "is", "text"), 
+                 col3 = c(TRUE, FALSE, TRUE), 
+                 col4 = c(2.5, 4.2, pi), 
+                 stringsAsFactors = FALSE)
+
+# note how col2 now is of a character class
+str(df)
+```
+
+We can also convert pre-existing structures to a data frame. The following illustrates how we can turn multiple vectors into a data frame:
+
+```{r}
+v1 <- 1:3
+v2 <-c("this", "is", "text")
+v3 <- c(TRUE, FALSE, TRUE)
+
+# convert same length vectors to a data frame using data.frame()
+data.frame(col1 = v1, col2 = v2, col3 = v3)
+```
+
+#### Indexing
+
+Data frames possess the characteristics of both lists and matrices: if you index with a single vector, they behave like lists and will return the selected columns with all rows; if you subset with two vectors, they behave like matrices and can be subset by row and column:
+
+```{r}
+df
+
+# subsetting by row numbers
+df[2:3, ]
+
+# subsetting by row names
+df[c("row2", "row3"), ]
+
+# subset for both rows and columns
+df[1:2, c(1, 3)]
+```
+
+You can also subset data frames based on conditional statements. To illustrate we’ll use the built-in `mtcars` data frame:
+
+```{r}
+head(mtcars)
+
+# all rows where mpg is greater than 20
+mtcars[mtcars$mpg > 20, ]
+```
+
+```{block, type='note'}
+Its good to know that we can index and filter data frames in this fashion but later lessons will demonstrate an alternative, and more common approach to wrangle data frames. In fact, most of the lessons that follow are all focused on working with data frames!
+```
 
 ## Exercises
+
+```{block, type='todo'}
+1. Check out the built-in `mtcars` data set.  What type of object is this?
+2. Apply the `head()` and `summary()` functions to `mtcars`, what do these functions return?
+3. Index for just the 'mpg' column in `mtcars` using three different approaches: single brackets (`[`), double brackets `[[`, and dollar sign `$`. How do the results differ?
+4. Use one of the methods in #3 to save the 'mpg' column as a vector. Now compute the mean of this vector.
+```
 

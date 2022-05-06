@@ -138,3 +138,4 @@ This course and its materials have been influenced by the following resources:
 - Garrett Grolemund & Hadley Wickham, [R for Data Science](http://r4ds.had.co.nz/index.html)
 - Stephanie Hicks, [Statistical Computing](https://www.stephaniehicks.com/jhustatcomputing2021/)
 - Chester Ismay & Albert Kim, [ModernDive](https://moderndive.netlify.app/index.html)
+- Alex Douglas et al., [An Introduction to R](https://intro2r.com/)

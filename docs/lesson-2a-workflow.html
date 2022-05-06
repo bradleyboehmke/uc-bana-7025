@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Lesson 2a: Workflow | Data Wrangling with R</title>
+  <title>8 Lesson 2a: Workflow | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Lesson 2a: Workflow | Data Wrangling with R" />
+  <meta property="og:title" content="8 Lesson 2a: Workflow | Data Wrangling with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
   <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Lesson 2a: Workflow | Data Wrangling with R" />
+  <meta name="twitter:title" content="8 Lesson 2a: Workflow | Data Wrangling with R" />
   <meta name="twitter:site" content="@bradleyboehmke" />
   <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
   
@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="overview-1.html"/>
-<link rel="next" href="lesson-2b.html"/>
+<link rel="next" href="lesson-2b-data-types-structures.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -226,183 +226,222 @@ div.csl-indent {
 <li class="chapter" data-level="4.3.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>4.3.3</b> Infinite, and NaN Numbers</a></li>
 <li class="chapter" data-level="4.3.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>4.3.4</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#vectorization"><i class="fa fa-check"></i><b>4.4</b> Vectorization</a>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>4.4</b> Working with packages</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>4.4.1</b> Looping versus Vectorization</a></li>
-<li class="chapter" data-level="4.4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#recycling"><i class="fa fa-check"></i><b>4.4.2</b> Recycling</a></li>
-<li class="chapter" data-level="4.4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>4.4.3</b> Knowledge check</a></li>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>4.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="4.4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>4.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="4.4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>4.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="4.4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>4.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="4.4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>4.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="4.4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>4.4.6</b> Tidyverse</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>4.5</b> Working with packages</a>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>4.5</b> Style guide</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>4.5.1</b> Installing Packages</a></li>
-<li class="chapter" data-level="4.5.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>4.5.2</b> Loading Packages</a></li>
-<li class="chapter" data-level="4.5.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>4.5.3</b> Getting Help on Packages</a></li>
-<li class="chapter" data-level="4.5.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>4.5.4</b> Useful Packages</a></li>
-<li class="chapter" data-level="4.5.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>4.5.5</b> Knowledge check</a></li>
-<li class="chapter" data-level="4.5.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>4.5.6</b> Tidyverse</a></li>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>4.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>4.5.2</b> Organization</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>4.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>4.5.4</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>4.6</b> Style guide</a>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#exercises-2"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html"><i class="fa fa-check"></i><b>5</b> Lesson 1d: Vectors</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>4.6.1</b> Notation and Naming</a></li>
-<li class="chapter" data-level="4.6.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>4.6.2</b> Organization</a></li>
-<li class="chapter" data-level="4.6.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>4.6.3</b> Syntax</a></li>
-<li class="chapter" data-level="4.6.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-6"><i class="fa fa-check"></i><b>4.6.4</b> Knowledge check</a></li>
+<li class="chapter" data-level="5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>5.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>5.2.2</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#exercises-2"><i class="fa fa-check"></i><b>4.7</b> Exercises</a></li>
+<li class="chapter" data-level="5.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>5.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>5.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>5.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>5.3.3</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="lab.html"><a href="lab.html"><i class="fa fa-check"></i><b>5</b> Lab</a></li>
+<li class="chapter" data-level="5.4" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>5.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>5.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#operations"><i class="fa fa-check"></i><b>5.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>5.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#missing-data"><i class="fa fa-check"></i><b>5.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>5.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#vectorization"><i class="fa fa-check"></i><b>5.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>5.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#recycling"><i class="fa fa-check"></i><b>5.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>5.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#exercises-3"><i class="fa fa-check"></i><b>5.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lab.html"><a href="lab.html"><i class="fa fa-check"></i><b>6</b> Lab</a></li>
 <li class="part"><span><b>II Module 2</b></span></li>
-<li class="chapter" data-level="6" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>6</b> Overview</a>
+<li class="chapter" data-level="7" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>7</b> Overview</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-5"><i class="fa fa-check"></i><b>6.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="6.2" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>6.2</b> Tasks</a></li>
-<li class="chapter" data-level="6.3" data-path="overview-1.html"><a href="overview-1.html#course-readings-1"><i class="fa fa-check"></i><b>6.3</b> Course readings</a></li>
+<li class="chapter" data-level="7.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-6"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>7.2</b> Tasks</a></li>
+<li class="chapter" data-level="7.3" data-path="overview-1.html"><a href="overview-1.html#course-readings-1"><i class="fa fa-check"></i><b>7.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>7</b> Lesson 2a: Workflow</a>
+<li class="chapter" data-level="8" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>8</b> Lesson 2a: Workflow</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-6"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="7.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>7.2</b> R Projects</a>
+<li class="chapter" data-level="8.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-7"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>8.2</b> R Projects</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>7.2.1</b> Creating Projects</a></li>
-<li class="chapter" data-level="7.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>7.2.2</b> So What’s Different?</a></li>
-<li class="chapter" data-level="7.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-7"><i class="fa fa-check"></i><b>7.2.3</b> Knowledge check</a></li>
+<li class="chapter" data-level="8.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>8.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="8.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>8.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>8.2.3</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>7.3</b> R Markdown</a>
+<li class="chapter" data-level="8.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>8.3</b> R Markdown</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>7.3.1</b> Creating an R Markdown File</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>7.3.2</b> Components of an R Markdown File</a></li>
-<li class="chapter" data-level="7.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>7.3.3</b> Knitting the R Markdown File</a></li>
-<li class="chapter" data-level="7.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>7.3.4</b> Additional Resources</a></li>
-<li class="chapter" data-level="7.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-8"><i class="fa fa-check"></i><b>7.3.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>8.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>8.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>8.3.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>7.4</b> R Notebooks</a>
+<li class="chapter" data-level="8.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>8.4</b> R Notebooks</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>7.4.1</b> Creating an R Notebook</a></li>
-<li class="chapter" data-level="7.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>7.4.2</b> Interactiveness of an R Notebook</a></li>
-<li class="chapter" data-level="7.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>7.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
-<li class="chapter" data-level="7.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>7.4.4</b> Additional Resources</a></li>
-<li class="chapter" data-level="7.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-9"><i class="fa fa-check"></i><b>7.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="8.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>8.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>8.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>8.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>8.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>8.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>7.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-4"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="lesson-2b.html"><a href="lesson-2b.html"><i class="fa fa-check"></i><b>8</b> Lesson 2b</a>
+<li class="chapter" data-level="9" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>9</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="lesson-2b.html"><a href="lesson-2b.html#learning-objectives-7"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="8.2" data-path="lesson-2b.html"><a href="lesson-2b.html#content-a"><i class="fa fa-check"></i><b>8.2</b> Content A</a></li>
-<li class="chapter" data-level="8.3" data-path="lesson-2b.html"><a href="lesson-2b.html#content-b"><i class="fa fa-check"></i><b>8.3</b> Content B</a></li>
-<li class="chapter" data-level="8.4" data-path="lesson-2b.html"><a href="lesson-2b.html#exercises-4"><i class="fa fa-check"></i><b>8.4</b> Exercises</a></li>
+<li class="chapter" data-level="9.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>9.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>9.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>9.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>9.2.3</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>9</b> Lab</a></li>
+<li class="chapter" data-level="9.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>9.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>9.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="9.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>9.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="9.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>9.3.3</b> Lists</a></li>
+<li class="chapter" data-level="9.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>9.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-5"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>10</b> Lab</a></li>
 <li class="part"><span><b>III Module 3</b></span></li>
-<li class="chapter" data-level="10" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>10</b> Overview</a>
+<li class="chapter" data-level="11" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>11</b> Overview</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-8"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="10.2" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>10.2</b> Tasks</a></li>
-<li class="chapter" data-level="10.3" data-path="overview-2.html"><a href="overview-2.html#course-readings-2"><i class="fa fa-check"></i><b>10.3</b> Course readings</a></li>
+<li class="chapter" data-level="11.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-9"><i class="fa fa-check"></i><b>11.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="11.2" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>11.2</b> Tasks</a></li>
+<li class="chapter" data-level="11.3" data-path="overview-2.html"><a href="overview-2.html#course-readings-2"><i class="fa fa-check"></i><b>11.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>11</b> Lesson 1</a>
+<li class="chapter" data-level="12" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>12</b> Lesson 1</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lesson-1.html"><a href="lesson-1.html#learning-objectives-9"><i class="fa fa-check"></i><b>11.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="11.2" data-path="lesson-1.html"><a href="lesson-1.html#content-a-1"><i class="fa fa-check"></i><b>11.2</b> Content A</a></li>
-<li class="chapter" data-level="11.3" data-path="lesson-1.html"><a href="lesson-1.html#content-b-1"><i class="fa fa-check"></i><b>11.3</b> Content B</a></li>
-<li class="chapter" data-level="11.4" data-path="lesson-1.html"><a href="lesson-1.html#exercises-5"><i class="fa fa-check"></i><b>11.4</b> Exercises</a></li>
+<li class="chapter" data-level="12.1" data-path="lesson-1.html"><a href="lesson-1.html#learning-objectives-10"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="lesson-1.html"><a href="lesson-1.html#content-a"><i class="fa fa-check"></i><b>12.2</b> Content A</a></li>
+<li class="chapter" data-level="12.3" data-path="lesson-1.html"><a href="lesson-1.html#content-b"><i class="fa fa-check"></i><b>12.3</b> Content B</a></li>
+<li class="chapter" data-level="12.4" data-path="lesson-1.html"><a href="lesson-1.html#exercises-6"><i class="fa fa-check"></i><b>12.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>12</b> Lesson 2</a>
+<li class="chapter" data-level="13" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>13</b> Lesson 2</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="lesson-2.html"><a href="lesson-2.html#learning-objectives-10"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="12.2" data-path="lesson-2.html"><a href="lesson-2.html#content-a-2"><i class="fa fa-check"></i><b>12.2</b> Content A</a></li>
-<li class="chapter" data-level="12.3" data-path="lesson-2.html"><a href="lesson-2.html#content-b-2"><i class="fa fa-check"></i><b>12.3</b> Content B</a></li>
-<li class="chapter" data-level="12.4" data-path="lesson-2.html"><a href="lesson-2.html#exercises-6"><i class="fa fa-check"></i><b>12.4</b> Exercises</a></li>
+<li class="chapter" data-level="13.1" data-path="lesson-2.html"><a href="lesson-2.html#learning-objectives-11"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="lesson-2.html"><a href="lesson-2.html#content-a-1"><i class="fa fa-check"></i><b>13.2</b> Content A</a></li>
+<li class="chapter" data-level="13.3" data-path="lesson-2.html"><a href="lesson-2.html#content-b-1"><i class="fa fa-check"></i><b>13.3</b> Content B</a></li>
+<li class="chapter" data-level="13.4" data-path="lesson-2.html"><a href="lesson-2.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>13</b> Lab</a></li>
+<li class="chapter" data-level="14" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>14</b> Lab</a></li>
 <li class="part"><span><b>IV Module 4</b></span></li>
-<li class="chapter" data-level="14" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>14</b> Overview</a>
+<li class="chapter" data-level="15" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>15</b> Overview</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-11"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="14.2" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>14.2</b> Tasks</a></li>
-<li class="chapter" data-level="14.3" data-path="overview-3.html"><a href="overview-3.html#course-readings-3"><i class="fa fa-check"></i><b>14.3</b> Course readings</a></li>
+<li class="chapter" data-level="15.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-12"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="15.2" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>15.2</b> Tasks</a></li>
+<li class="chapter" data-level="15.3" data-path="overview-3.html"><a href="overview-3.html#course-readings-3"><i class="fa fa-check"></i><b>15.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lesson-1-1.html"><a href="lesson-1-1.html"><i class="fa fa-check"></i><b>15</b> Lesson 1</a>
+<li class="chapter" data-level="16" data-path="lesson-1-1.html"><a href="lesson-1-1.html"><i class="fa fa-check"></i><b>16</b> Lesson 1</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="lesson-1-1.html"><a href="lesson-1-1.html#learning-objectives-12"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="15.2" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-a-3"><i class="fa fa-check"></i><b>15.2</b> Content A</a></li>
-<li class="chapter" data-level="15.3" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-b-3"><i class="fa fa-check"></i><b>15.3</b> Content B</a></li>
-<li class="chapter" data-level="15.4" data-path="lesson-1-1.html"><a href="lesson-1-1.html#exercises-7"><i class="fa fa-check"></i><b>15.4</b> Exercises</a></li>
+<li class="chapter" data-level="16.1" data-path="lesson-1-1.html"><a href="lesson-1-1.html#learning-objectives-13"><i class="fa fa-check"></i><b>16.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="16.2" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-a-2"><i class="fa fa-check"></i><b>16.2</b> Content A</a></li>
+<li class="chapter" data-level="16.3" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-b-2"><i class="fa fa-check"></i><b>16.3</b> Content B</a></li>
+<li class="chapter" data-level="16.4" data-path="lesson-1-1.html"><a href="lesson-1-1.html#exercises-8"><i class="fa fa-check"></i><b>16.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="lesson-2-1.html"><a href="lesson-2-1.html"><i class="fa fa-check"></i><b>16</b> Lesson 2</a>
+<li class="chapter" data-level="17" data-path="lesson-2-1.html"><a href="lesson-2-1.html"><i class="fa fa-check"></i><b>17</b> Lesson 2</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="lesson-2-1.html"><a href="lesson-2-1.html#learning-objectives-13"><i class="fa fa-check"></i><b>16.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="16.2" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-a-4"><i class="fa fa-check"></i><b>16.2</b> Content A</a></li>
-<li class="chapter" data-level="16.3" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-b-4"><i class="fa fa-check"></i><b>16.3</b> Content B</a></li>
-<li class="chapter" data-level="16.4" data-path="lesson-2-1.html"><a href="lesson-2-1.html#exercises-8"><i class="fa fa-check"></i><b>16.4</b> Exercises</a></li>
+<li class="chapter" data-level="17.1" data-path="lesson-2-1.html"><a href="lesson-2-1.html#learning-objectives-14"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-a-3"><i class="fa fa-check"></i><b>17.2</b> Content A</a></li>
+<li class="chapter" data-level="17.3" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-b-3"><i class="fa fa-check"></i><b>17.3</b> Content B</a></li>
+<li class="chapter" data-level="17.4" data-path="lesson-2-1.html"><a href="lesson-2-1.html#exercises-9"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>17</b> Lab</a></li>
+<li class="chapter" data-level="18" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>18</b> Lab</a></li>
 <li class="part"><span><b>V Module 5</b></span></li>
-<li class="chapter" data-level="18" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>18</b> Overview</a>
+<li class="chapter" data-level="19" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>19</b> Overview</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-14"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="18.2" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>18.2</b> Tasks</a></li>
-<li class="chapter" data-level="18.3" data-path="overview-4.html"><a href="overview-4.html#course-readings-4"><i class="fa fa-check"></i><b>18.3</b> Course readings</a></li>
+<li class="chapter" data-level="19.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-15"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="19.2" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>19.2</b> Tasks</a></li>
+<li class="chapter" data-level="19.3" data-path="overview-4.html"><a href="overview-4.html#course-readings-4"><i class="fa fa-check"></i><b>19.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="lesson-1-2.html"><a href="lesson-1-2.html"><i class="fa fa-check"></i><b>19</b> Lesson 1</a>
+<li class="chapter" data-level="20" data-path="lesson-1-2.html"><a href="lesson-1-2.html"><i class="fa fa-check"></i><b>20</b> Lesson 1</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="lesson-1-2.html"><a href="lesson-1-2.html#learning-objectives-15"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="19.2" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-a-5"><i class="fa fa-check"></i><b>19.2</b> Content A</a></li>
-<li class="chapter" data-level="19.3" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-b-5"><i class="fa fa-check"></i><b>19.3</b> Content B</a></li>
-<li class="chapter" data-level="19.4" data-path="lesson-1-2.html"><a href="lesson-1-2.html#exercises-9"><i class="fa fa-check"></i><b>19.4</b> Exercises</a></li>
+<li class="chapter" data-level="20.1" data-path="lesson-1-2.html"><a href="lesson-1-2.html#learning-objectives-16"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="20.2" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-a-4"><i class="fa fa-check"></i><b>20.2</b> Content A</a></li>
+<li class="chapter" data-level="20.3" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-b-4"><i class="fa fa-check"></i><b>20.3</b> Content B</a></li>
+<li class="chapter" data-level="20.4" data-path="lesson-1-2.html"><a href="lesson-1-2.html#exercises-10"><i class="fa fa-check"></i><b>20.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="lesson-2-2.html"><a href="lesson-2-2.html"><i class="fa fa-check"></i><b>20</b> Lesson 2</a>
+<li class="chapter" data-level="21" data-path="lesson-2-2.html"><a href="lesson-2-2.html"><i class="fa fa-check"></i><b>21</b> Lesson 2</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="lesson-2-2.html"><a href="lesson-2-2.html#learning-objectives-16"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="20.2" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-a-6"><i class="fa fa-check"></i><b>20.2</b> Content A</a></li>
-<li class="chapter" data-level="20.3" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-b-6"><i class="fa fa-check"></i><b>20.3</b> Content B</a></li>
-<li class="chapter" data-level="20.4" data-path="lesson-2-2.html"><a href="lesson-2-2.html#exercises-10"><i class="fa fa-check"></i><b>20.4</b> Exercises</a></li>
+<li class="chapter" data-level="21.1" data-path="lesson-2-2.html"><a href="lesson-2-2.html#learning-objectives-17"><i class="fa fa-check"></i><b>21.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-a-5"><i class="fa fa-check"></i><b>21.2</b> Content A</a></li>
+<li class="chapter" data-level="21.3" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-b-5"><i class="fa fa-check"></i><b>21.3</b> Content B</a></li>
+<li class="chapter" data-level="21.4" data-path="lesson-2-2.html"><a href="lesson-2-2.html#exercises-11"><i class="fa fa-check"></i><b>21.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="lab-4.html"><a href="lab-4.html"><i class="fa fa-check"></i><b>21</b> Lab</a></li>
+<li class="chapter" data-level="22" data-path="lab-4.html"><a href="lab-4.html"><i class="fa fa-check"></i><b>22</b> Lab</a></li>
 <li class="part"><span><b>VI Module 6</b></span></li>
-<li class="chapter" data-level="22" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>22</b> Overview</a>
+<li class="chapter" data-level="23" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>23</b> Overview</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-17"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="22.2" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>22.2</b> Tasks</a></li>
-<li class="chapter" data-level="22.3" data-path="overview-5.html"><a href="overview-5.html#course-readings-5"><i class="fa fa-check"></i><b>22.3</b> Course readings</a></li>
+<li class="chapter" data-level="23.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-18"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="23.2" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>23.2</b> Tasks</a></li>
+<li class="chapter" data-level="23.3" data-path="overview-5.html"><a href="overview-5.html#course-readings-5"><i class="fa fa-check"></i><b>23.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="lesson-1-3.html"><a href="lesson-1-3.html"><i class="fa fa-check"></i><b>23</b> Lesson 1</a>
+<li class="chapter" data-level="24" data-path="lesson-1-3.html"><a href="lesson-1-3.html"><i class="fa fa-check"></i><b>24</b> Lesson 1</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="lesson-1-3.html"><a href="lesson-1-3.html#learning-objectives-18"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="23.2" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-a-7"><i class="fa fa-check"></i><b>23.2</b> Content A</a></li>
-<li class="chapter" data-level="23.3" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-b-7"><i class="fa fa-check"></i><b>23.3</b> Content B</a></li>
-<li class="chapter" data-level="23.4" data-path="lesson-1-3.html"><a href="lesson-1-3.html#exercises-11"><i class="fa fa-check"></i><b>23.4</b> Exercises</a></li>
+<li class="chapter" data-level="24.1" data-path="lesson-1-3.html"><a href="lesson-1-3.html#learning-objectives-19"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-a-6"><i class="fa fa-check"></i><b>24.2</b> Content A</a></li>
+<li class="chapter" data-level="24.3" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-b-6"><i class="fa fa-check"></i><b>24.3</b> Content B</a></li>
+<li class="chapter" data-level="24.4" data-path="lesson-1-3.html"><a href="lesson-1-3.html#exercises-12"><i class="fa fa-check"></i><b>24.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="lesson-2-3.html"><a href="lesson-2-3.html"><i class="fa fa-check"></i><b>24</b> Lesson 2</a>
+<li class="chapter" data-level="25" data-path="lesson-2-3.html"><a href="lesson-2-3.html"><i class="fa fa-check"></i><b>25</b> Lesson 2</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="lesson-2-3.html"><a href="lesson-2-3.html#learning-objectives-19"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="24.2" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-a-8"><i class="fa fa-check"></i><b>24.2</b> Content A</a></li>
-<li class="chapter" data-level="24.3" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-b-8"><i class="fa fa-check"></i><b>24.3</b> Content B</a></li>
-<li class="chapter" data-level="24.4" data-path="lesson-2-3.html"><a href="lesson-2-3.html#exercises-12"><i class="fa fa-check"></i><b>24.4</b> Exercises</a></li>
+<li class="chapter" data-level="25.1" data-path="lesson-2-3.html"><a href="lesson-2-3.html#learning-objectives-20"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-a-7"><i class="fa fa-check"></i><b>25.2</b> Content A</a></li>
+<li class="chapter" data-level="25.3" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-b-7"><i class="fa fa-check"></i><b>25.3</b> Content B</a></li>
+<li class="chapter" data-level="25.4" data-path="lesson-2-3.html"><a href="lesson-2-3.html#exercises-13"><i class="fa fa-check"></i><b>25.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="lab-5.html"><a href="lab-5.html"><i class="fa fa-check"></i><b>25</b> Lab</a></li>
+<li class="chapter" data-level="26" data-path="lab-5.html"><a href="lab-5.html"><i class="fa fa-check"></i><b>26</b> Lab</a></li>
 <li class="part"><span><b>VII Module 7</b></span></li>
-<li class="chapter" data-level="26" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>26</b> Overview</a>
+<li class="chapter" data-level="27" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>27</b> Overview</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-20"><i class="fa fa-check"></i><b>26.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="26.2" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>26.2</b> Tasks</a></li>
-<li class="chapter" data-level="26.3" data-path="overview-6.html"><a href="overview-6.html#course-readings-6"><i class="fa fa-check"></i><b>26.3</b> Course readings</a></li>
+<li class="chapter" data-level="27.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-21"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="27.2" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>27.2</b> Tasks</a></li>
+<li class="chapter" data-level="27.3" data-path="overview-6.html"><a href="overview-6.html#course-readings-6"><i class="fa fa-check"></i><b>27.3</b> Course readings</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="lesson-1-4.html"><a href="lesson-1-4.html"><i class="fa fa-check"></i><b>27</b> Lesson 1</a>
+<li class="chapter" data-level="28" data-path="lesson-1-4.html"><a href="lesson-1-4.html"><i class="fa fa-check"></i><b>28</b> Lesson 1</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="lesson-1-4.html"><a href="lesson-1-4.html#learning-objectives-21"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="27.2" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-a-9"><i class="fa fa-check"></i><b>27.2</b> Content A</a></li>
-<li class="chapter" data-level="27.3" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-b-9"><i class="fa fa-check"></i><b>27.3</b> Content B</a></li>
-<li class="chapter" data-level="27.4" data-path="lesson-1-4.html"><a href="lesson-1-4.html#exercises-13"><i class="fa fa-check"></i><b>27.4</b> Exercises</a></li>
+<li class="chapter" data-level="28.1" data-path="lesson-1-4.html"><a href="lesson-1-4.html#learning-objectives-22"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="28.2" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-a-8"><i class="fa fa-check"></i><b>28.2</b> Content A</a></li>
+<li class="chapter" data-level="28.3" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-b-8"><i class="fa fa-check"></i><b>28.3</b> Content B</a></li>
+<li class="chapter" data-level="28.4" data-path="lesson-1-4.html"><a href="lesson-1-4.html#exercises-14"><i class="fa fa-check"></i><b>28.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="lesson-2-4.html"><a href="lesson-2-4.html"><i class="fa fa-check"></i><b>28</b> Lesson 2</a>
+<li class="chapter" data-level="29" data-path="lesson-2-4.html"><a href="lesson-2-4.html"><i class="fa fa-check"></i><b>29</b> Lesson 2</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="lesson-2-4.html"><a href="lesson-2-4.html#learning-objectives-22"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="28.2" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-a-10"><i class="fa fa-check"></i><b>28.2</b> Content A</a></li>
-<li class="chapter" data-level="28.3" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-b-10"><i class="fa fa-check"></i><b>28.3</b> Content B</a></li>
-<li class="chapter" data-level="28.4" data-path="lesson-2-4.html"><a href="lesson-2-4.html#exercises-14"><i class="fa fa-check"></i><b>28.4</b> Exercises</a></li>
+<li class="chapter" data-level="29.1" data-path="lesson-2-4.html"><a href="lesson-2-4.html#learning-objectives-23"><i class="fa fa-check"></i><b>29.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="29.2" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-a-9"><i class="fa fa-check"></i><b>29.2</b> Content A</a></li>
+<li class="chapter" data-level="29.3" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-b-9"><i class="fa fa-check"></i><b>29.3</b> Content B</a></li>
+<li class="chapter" data-level="29.4" data-path="lesson-2-4.html"><a href="lesson-2-4.html#exercises-15"><i class="fa fa-check"></i><b>29.4</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>29</b> Lab</a></li>
+<li class="chapter" data-level="30" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>30</b> Lab</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
@@ -424,11 +463,11 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-2a-workflow" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> Lesson 2a: Workflow<a href="lesson-2a-workflow.html#lesson-2a-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lesson-2a-workflow" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Lesson 2a: Workflow<a href="lesson-2a-workflow.html#lesson-2a-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This lesson serves to introduce you to workflow options that will serve to organize your projects and make them reproducible. You’ll learn how to have a <em>project-oriented</em> environment along with how to create R Markdown and Notebook scripts for efficient and reproducible deliverables.</p>
-<div id="learning-objectives-6" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Learning objectives<a href="lesson-2a-workflow.html#learning-objectives-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="learning-objectives-7" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Learning objectives<a href="lesson-2a-workflow.html#learning-objectives-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Upon completing this module you will be able to:</p>
 <ul>
 <li>Explain the benefits of an R project and new ones.</li>
@@ -436,14 +475,14 @@ div.csl-indent {
 <li>Create both R Markdown and R Notebook deliverables.</li>
 </ul>
 </div>
-<div id="r-projects" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> R Projects<a href="lesson-2a-workflow.html#r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-projects" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> R Projects<a href="lesson-2a-workflow.html#r-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <blockquote>
 <p><em>“Organization is what you do before you do something, so that when you do it, it is not all mixed up.”</em> - A.A. Milne</p>
 </blockquote>
 <p>If you are not careful your data analyses can become an explosion of data files, R scripts, ggplot graphs, and final reports. Each project evolves and mutates in its own way and keeping all the files associated with a project organized together is a wise practice. In fact, it is such a wise practice that RStudio has built-in support to manage your projects. This built-in capability is called…wait for it…<em>RStudio projects</em>. RStudio projects make it straightforward to divide your work into multiple contexts, each with their own working directory, workspace, history, and source documents.</p>
-<div id="creating-projects" class="section level3 hasAnchor" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Creating Projects<a href="lesson-2a-workflow.html#creating-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="creating-projects" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Creating Projects<a href="lesson-2a-workflow.html#creating-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudio projects are associated with R working directories. You can create an RStudio project:</p>
 <ul>
 <li>In a new directory</li>
@@ -453,8 +492,8 @@ div.csl-indent {
 <p>by selecting <strong>File</strong> » <strong>New Project</strong> and then completing the following set-up tasks:</p>
 <p><img src="images/new_project.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="so-whats-different" class="section level3 hasAnchor" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> So What’s Different?<a href="lesson-2a-workflow.html#so-whats-different" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="so-whats-different" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> So What’s Different?<a href="lesson-2a-workflow.html#so-whats-different" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When a new project is created RStudio:</p>
 <ol style="list-style-type: decimal">
 <li>Creates a project file (with an .Rproj extension) within the project directory. This file contains various project options (discussed below) and can also be used as a shortcut for opening the project directly from the filesystem.</li>
@@ -479,8 +518,8 @@ div.csl-indent {
 <p>There are additional project options you can choose from to customize the project at <strong>Tools</strong> » <strong>Project Options</strong>. These project options are overrides for existing global options. To inherit the default global behavior for a project you can specify (Default) as the option value.</p>
 <p><img src="images/project_options.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="knowledge-check-7" class="section level3 hasAnchor" number="7.2.3">
-<h3><span class="header-section-number">7.2.3</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knowledge-check-12" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
@@ -510,8 +549,8 @@ diagnostics” is checked.
 </div>
 </div>
 </div>
-<div id="r-markdown" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> R Markdown<a href="lesson-2a-workflow.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-markdown" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> R Markdown<a href="lesson-2a-workflow.html#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>R Markdown</strong> provides an easy way to produce a rich, fully-documented reproducible analysis. It allows the user to share a single file that contains all of the prose, code, and metadata needed to reproduce the analysis from beginning to end. R Markdown allows for “chunks” of R code to be included along with Markdown text to produce a nicely formatted HTML, PDF, or Word file without having to know any HTML or LaTeX code or have to fuss with difficult formatting issues. One R Markdown file can generate a variety of different formats and all of this is done in a single text file with a few bits of formatting.</p>
 <p><img src="images/rmarkdown-image1.png" width="70%" height="70%" style="display: block; margin: auto;" /></p>
 <p>So how does it work? Creating documents with R Markdown starts with an .Rmd file that contains a combination of text and R code chunks. The .Rmd file is fed to <code>knitr</code>, which executes all of the R code chunks and creates a new markdown (.md) document with the output. Pandoc then processes the .md file to create a finished report in the form of a web page, PDF, Word document, slide show, etc.</p>
@@ -525,17 +564,17 @@ your report.
 </p>
 </div>
 <p><img src="images/RMarkdownFlow2.png" style="display: block; margin: auto;" /></p>
-<div id="creating-an-r-markdown-file" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Creating an R Markdown File<a href="lesson-2a-workflow.html#creating-an-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="creating-an-r-markdown-file" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Creating an R Markdown File<a href="lesson-2a-workflow.html#creating-an-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To create an R Markdown file you can select <strong>File</strong> » <strong>New File</strong> » <strong>R Markdown</strong> or you can select the shortcut for creating a new document in the top left-hand corner of the RStudio window. You will be given an option to create an HTML, PDF, or Word document; however, R Markdown let’s you change seamlessly between these options after you’ve created your document so I tend to just select the default HTML option.</p>
 <p><img src="images/rmarkdown_create.gif" style="display: block; margin: auto;" /></p>
 <p>There are additional options such as creating Presentations (HTML or PDF), Shiny documents, or other template documents but for now we will focus on the initial HTML, PDF, or Word document options.</p>
 </div>
-<div id="components-of-an-r-markdown-file" class="section level3 hasAnchor" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> Components of an R Markdown File<a href="lesson-2a-workflow.html#components-of-an-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="components-of-an-r-markdown-file" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> Components of an R Markdown File<a href="lesson-2a-workflow.html#components-of-an-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are three general components of an R Markdown file that you will eventually become accustomed to. This includes the YAML, the general markdown (or text) component, and code chunks.</p>
-<div id="yaml-header" class="section level4 hasAnchor" number="7.3.2.1">
-<h4><span class="header-section-number">7.3.2.1</span> YAML Header<a href="lesson-2a-workflow.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="yaml-header" class="section level4 hasAnchor" number="8.3.2.1">
+<h4><span class="header-section-number">8.3.2.1</span> YAML Header<a href="lesson-2a-workflow.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The first few lines you see in the R Markdown report are known as the <a href="http://www.yaml.org">YAML</a>.</p>
 <pre><code>---
 title: &quot;R Markdown Demo&quot;
@@ -555,14 +594,14 @@ output: html_document
 <pre><code>---
 title: &quot;R Markdown Demo&quot;
 author: &quot;[Brad Boehmke](http://bradleyboehmke.github.io)&quot;
-date: &quot;2022-05-05&quot;
+date: &quot;2022-05-06&quot;
 output: html_document
 ---</code></pre>
 <p>By default, your report will not include a table of contents (TOC). However, you can easily generate one by including the <code>toc: true</code> argument. There are several TOC options such as the level of headers to include in the TOC, whether to have a fixed or floating TOC, to have a collapsable TOC, etc. You can find many of the TOC options <a href="http://rmarkdown.rstudio.com/html_document_format.html#table_of_contents">here</a>.</p>
 <pre><code>---
 title: &quot;R Markdown Demo&quot;
 author: &quot;[Brad Boehmke](http://bradleyboehmke.github.io)&quot;
-date: &quot;2022-05-05&quot;
+date: &quot;2022-05-06&quot;
 output: 
   html_document:
     toc: true
@@ -572,7 +611,7 @@ output:
 <pre><code>---
 title: &quot;R Markdown Demo&quot;
 author: &quot;[Brad Boehmke](http://bradleyboehmke.github.io)&quot;
-date: &quot;2022-05-05&quot;
+date: &quot;2022-05-06&quot;
 output: 
   html_document:
     keep_md: true
@@ -597,14 +636,14 @@ href="http://rmarkdown.rstudio.com/word_document_format.html">http://rmarkdown.r
 </ul>
 </div>
 </div>
-<div id="text-formatting" class="section level4 hasAnchor" number="7.3.2.2">
-<h4><span class="header-section-number">7.3.2.2</span> Text Formatting<a href="lesson-2a-workflow.html#text-formatting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="text-formatting" class="section level4 hasAnchor" number="8.3.2.2">
+<h4><span class="header-section-number">8.3.2.2</span> Text Formatting<a href="lesson-2a-workflow.html#text-formatting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The beauty of R Markdown is the ability to easily combine prose (text) and code. For the text component, much of your writing is similar to when you type a Word document; however, to perform many of the basic text formatting you use basic markdown code such as:</p>
 <p><img src="images/markdown_text.png" width="85%" height="85%" style="display: block; margin: auto;" /></p>
 <p>There are many additional formatting options which can be viewed <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">here</a> and <a href="http://daringfireball.net/projects/markdown/basics">here</a>; however, this should get you well on your way.</p>
 </div>
-<div id="code-chunks" class="section level4 hasAnchor" number="7.3.2.3">
-<h4><span class="header-section-number">7.3.2.3</span> Code Chunks<a href="lesson-2a-workflow.html#code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="code-chunks" class="section level4 hasAnchor" number="8.3.2.3">
+<h4><span class="header-section-number">8.3.2.3</span> Code Chunks<a href="lesson-2a-workflow.html#code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>R code chunks can be used as a means to render R output into documents or to simply display code for illustration. Code chunks start with the following line: <code><code>{r chunk_name}&lt;/code&gt; and end with &lt;code&gt;</code></code>. You can quickly insert chunks into your R Markdown file with the keyboard shortcut <strong>Cmd + Option + I</strong> (Windows <strong>Ctrl + Alt + I</strong>).</p>
 <p>Here is a simple R code chunk that will result in both the code and it’s output being included:</p>
 <pre><code>```{r}
@@ -657,14 +696,14 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
 ```</code></pre>
 <p><img src="images/code_chunk_examples.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="inline-code-chunks" class="section level4 hasAnchor" number="7.3.2.4">
-<h4><span class="header-section-number">7.3.2.4</span> Inline code chunks<a href="lesson-2a-workflow.html#inline-code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="inline-code-chunks" class="section level4 hasAnchor" number="8.3.2.4">
+<h4><span class="header-section-number">8.3.2.4</span> Inline code chunks<a href="lesson-2a-workflow.html#inline-code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A key motivation for reproducible research is to link any results reported directly to the data and functions used to create them. Consequently, you should never manual insert numbers such as “The average miles per gallon is 20.1.” Rather, code results can be inserted directly into the text of a .Rmd file by enclosing the code with <code>`r `</code> such as: “The average miles per gallon is <code>`r mean(mtcars$mpg)`</code>.”</p>
 <p>Now if the underlying data changes you do not need to remember all the inline values you manually entered. You may not like the fact that the output is reporting all the decimals. You could include the <code>round</code> function in the inline code: <code>`r round(mean(mtcars$mpg), 1)`</code>.</p>
 <p><img src="images/inline_code_chunks.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="dealing-with-tables" class="section level4 hasAnchor" number="7.3.2.5">
-<h4><span class="header-section-number">7.3.2.5</span> Dealing with Tables<a href="lesson-2a-workflow.html#dealing-with-tables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="dealing-with-tables" class="section level4 hasAnchor" number="8.3.2.5">
+<h4><span class="header-section-number">8.3.2.5</span> Dealing with Tables<a href="lesson-2a-workflow.html#dealing-with-tables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>By default, the table outputs produced in R Markdown will look like the output you would see in your console. However, if you prefer that data be displayed with additional formatting you can use the <code>knitr::kable()</code> function. For example:</p>
 <pre><code>```{r, results=&#39;asis&#39;}
 knitr::kable(iris)
@@ -709,8 +748,8 @@ href="http://rapporter.github.io/pander/"><code>pander</code></a>
 </div>
 </div>
 </div>
-<div id="knitting-the-r-markdown-file" class="section level3 hasAnchor" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> Knitting the R Markdown File<a href="lesson-2a-workflow.html#knitting-the-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knitting-the-r-markdown-file" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Knitting the R Markdown File<a href="lesson-2a-workflow.html#knitting-the-r-markdown-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When you are all done writing your .Rmd document you have two options to render the output. The first is to call the following function in your console: <code>render("document_name.Rmd", output_format = "html_document")</code>. Alternatively you can click the drop down arrow next to the <code>knit</code> button on the RStudio toolbar, select the document format (HTML, PDF, Word) and your report will be developed.</p>
 <p><img src="images/rmarkdown_generate.gif" style="display: block; margin: auto;" /></p>
 <p>The following output formats are available to use with R Markdown.</p>
@@ -742,8 +781,8 @@ href="http://rapporter.github.io/pander/"><code>pander</code></a>
 <li><a href="https://bookdown.org/">bookdown</a> - Write HTML, PDF, ePub, and Kindle books with R Markdown</li>
 </ul>
 </div>
-<div id="additional-resources" class="section level3 hasAnchor" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> Additional Resources<a href="lesson-2a-workflow.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="additional-resources" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> Additional Resources<a href="lesson-2a-workflow.html#additional-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R Markdown is an incredible tool for reproducible research and there are a lot of resources available. Here are just a few of the available resources to learn more about R Markdown.</p>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/">Rstudio tutorials</a></li>
@@ -756,8 +795,8 @@ href="http://rapporter.github.io/pander/"><code>pander</code></a>
 <p>Also, you can find the R Markdown cheatsheet within the RStudio console at Help menu » Cheatsheets.</p>
 <p><img src="images/rmarkdown_cheatsheet.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="knowledge-check-8" class="section level3 hasAnchor" number="7.3.5">
-<h3><span class="header-section-number">7.3.5</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knowledge-check-13" class="section level3 hasAnchor" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
@@ -796,13 +835,13 @@ Add a block quote.
 </div>
 </div>
 </div>
-<div id="r-notebooks" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> R Notebooks<a href="lesson-2a-workflow.html#r-notebooks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-notebooks" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> R Notebooks<a href="lesson-2a-workflow.html#r-notebooks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An <strong>R Notebook</strong> is an R Markdown document that allows for independent and interactive execution of the code chunks. This allows you to visually assess the output as you develop your R Markdown document without having to <code>knit</code> the entire document to see the output.</p>
 <p><img src="images/rnotebook_demo.gif" style="display: block; margin: auto;" /></p>
 <p>R Notebooks can be thought of as a unique execution mode for R Markdown documents as any R Markdown document can be used as a notebook, and all R Notebooks can be rendered to other R Markdown document types. The interactive capabilities of the notebook mode makes it extremely useful for writing R Markdown documents and iterating on code.</p>
-<div id="creating-an-r-notebook" class="section level3 hasAnchor" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> Creating an R Notebook<a href="lesson-2a-workflow.html#creating-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="creating-an-r-notebook" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Creating an R Notebook<a href="lesson-2a-workflow.html#creating-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Creating an R Notebook is similar to creating an R Markdown document - you’ll notice a new option for creating an R Notebook. When you create a new R Notebook the primary differece you will notice at first is the YAML which will look like:</p>
 <pre><code>---
 title: &quot;R Notebook&quot;
@@ -812,8 +851,8 @@ output: html_notebook
 <p>The default notebook mode allows inline output on all R Markdown documents. If you prefer to use the traditional console method of interaction, you can disable notebook mode by clicking the gear in the editor toolbar and choosing Chunk Output in Console. You can also toggle between previewing the document in the Viewer Pane versus in a Window.</p>
 <p><img src="images/notebook_options.png" style="display: block; margin: auto;" /></p>
 </div>
-<div id="interactiveness-of-an-r-notebook" class="section level3 hasAnchor" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> Interactiveness of an R Notebook<a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interactiveness-of-an-r-notebook" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Interactiveness of an R Notebook<a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Writing an R Notebook document is no different than writing an R Markdown document. The text and code chunk syntax does not differ from what you learned in the previous section of this lesson. The primary difference is in the interactiveness of an R Notebook. Primarily that when executing chunks in an R Markdown document, all the code is sent to the console at once, but in an R Notebook, only one line at a time is sent. This allows execution to stop if a line raises an error.</p>
 <p>There are couple options for executing code chunks. You can execute code chunks individually by:</p>
 <ol style="list-style-type: decimal">
@@ -829,20 +868,20 @@ output: html_notebook
 <p>When a code chunk is waiting to be executed, you’ll notice a progress meter that appears to the left of the code chunk plus there will be a status in the editor’s status bar indicating the number of chunks remaining to be executed. You can click on this meter at any time to jump to the currently executing chunk.</p>
 <p><img src="images/rnotebook_code_execution.gif" style="display: block; margin: auto;" /></p>
 </div>
-<div id="saving-sharing-previewing-knitting-an-r-notebook" class="section level3 hasAnchor" number="7.4.3">
-<h3><span class="header-section-number">7.4.3</span> Saving, Sharing, Previewing &amp; Knitting an R Notebook<a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="saving-sharing-previewing-knitting-an-r-notebook" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> Saving, Sharing, Previewing &amp; Knitting an R Notebook<a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When a notebook .Rmd is saved, an .nb.html file is created alongside it. This file is a self-contained HTML file which contains all current code chunks (collapsable/expandable) and their respective outputs. You can view this .nb.html file directly in any browser along with sharing it with others who can also view it in any browser.</p>
 <p>Ordinary R Markdown documents are “knit”, but notebooks are “previewed”. So by default, when you select the preview option in the editor toolbar your document will be previewed in the Viewer Pane. You can preview your document in a window by selecting the desired option in the gear in the editor toolbar.</p>
 <p><img src="images/rnotebook_preview.gif" style="display: block; margin: auto;" /></p>
 <p>When you are ready to publish the document, you can share the .nb.html directly, or render it to a publication format by knitting the document to the desired format.</p>
 <p><img src="images/rnotebook_knit.gif" style="display: block; margin: auto;" /></p>
 </div>
-<div id="additional-resources-1" class="section level3 hasAnchor" number="7.4.4">
-<h3><span class="header-section-number">7.4.4</span> Additional Resources<a href="lesson-2a-workflow.html#additional-resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="additional-resources-1" class="section level3 hasAnchor" number="8.4.4">
+<h3><span class="header-section-number">8.4.4</span> Additional Resources<a href="lesson-2a-workflow.html#additional-resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Learn more about R Notebook at RStudio’s <a href="http://rmarkdown.rstudio.com/r_notebooks.html">tutorial page</a>.</p>
 </div>
-<div id="knowledge-check-9" class="section level3 hasAnchor" number="7.4.5">
-<h3><span class="header-section-number">7.4.5</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knowledge-check-14" class="section level3 hasAnchor" number="8.4.5">
+<h3><span class="header-section-number">8.4.5</span> Knowledge check<a href="lesson-2a-workflow.html#knowledge-check-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
@@ -866,8 +905,8 @@ the other?
 </div>
 </div>
 </div>
-<div id="exercises-3" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Exercises<a href="lesson-2a-workflow.html#exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-4" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Exercises<a href="lesson-2a-workflow.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
@@ -916,7 +955,7 @@ necessary.
         </div>
       </div>
 <a href="overview-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lesson-2b.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lesson-2b-data-types-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
