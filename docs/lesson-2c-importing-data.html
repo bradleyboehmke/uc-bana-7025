@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Lesson 2c: Importing data | Data Wrangling with R</title>
+  <meta name="description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Lesson 2c: Importing data | Data Wrangling with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Lesson 2c: Importing data | Data Wrangling with R" />
+  <meta name="twitter:site" content="@bradleyboehmke" />
+  <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
+  
+
+<meta name="author" content="Bradley Boehmke" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-2b-data-types-structures.html"/>
+<link rel="next" href="lab-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UC BANA 7025: Data Wrangling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i>Material</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions-used-in-this-book"><i class="fa fa-check"></i>Conventions used in this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Module 1</b></span></li>
+<li class="chapter" data-level="1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview.html"><a href="overview.html#learning-objectives-1"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="overview.html"><a href="overview.html#tasks"><i class="fa fa-check"></i><b>1.2</b> Tasks</a></li>
+<li class="chapter" data-level="1.3" data-path="overview.html"><a href="overview.html#course-readings"><i class="fa fa-check"></i><b>1.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html"><i class="fa fa-check"></i><b>2</b> Lesson 1a: Course overview</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#learning-objectives-2"><i class="fa fa-check"></i><b>2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#purpose-of-this-course"><i class="fa fa-check"></i><b>2.2</b> Purpose of this course</a></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#assumptions-pre-requisites"><i class="fa fa-check"></i><b>2.3</b> Assumptions &amp; Pre-requisites</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-staff"><i class="fa fa-check"></i><b>2.4</b> Course Staff</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-logistics"><i class="fa fa-check"></i><b>2.5</b> Course Logistics</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#grading"><i class="fa fa-check"></i><b>2.6</b> Grading</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#getting-help"><i class="fa fa-check"></i><b>2.7</b> Getting Help</a></li>
+<li class="chapter" data-level="2.8" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#fine-print"><i class="fa fa-check"></i><b>2.8</b> Fine Print</a></li>
+<li class="chapter" data-level="2.9" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#exercises"><i class="fa fa-check"></i><b>2.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html"><i class="fa fa-check"></i><b>3</b> Lesson 1b: R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#learning-objectives-3"><i class="fa fa-check"></i><b>3.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#r-vs.-rstudio"><i class="fa fa-check"></i><b>3.2</b> R vs. RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>3.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="3.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#understanding-the-rstudio-ide"><i class="fa fa-check"></i><b>3.4</b> Understanding the RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#script-editor"><i class="fa fa-check"></i><b>3.4.1</b> Script Editor</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-environment"><i class="fa fa-check"></i><b>3.4.2</b> Workspace Environment</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#console"><i class="fa fa-check"></i><b>3.4.3</b> Console</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#misc.-displays"><i class="fa fa-check"></i><b>3.4.4</b> Misc. Displays</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-options-shortcuts"><i class="fa fa-check"></i><b>3.4.5</b> Workspace Options &amp; Shortcuts</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check"><i class="fa fa-check"></i><b>3.4.6</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-1"><i class="fa fa-check"></i><b>3.5</b> Getting help</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#general-help"><i class="fa fa-check"></i><b>3.5.1</b> General Help</a></li>
+<li class="chapter" data-level="3.5.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-from-the-web"><i class="fa fa-check"></i><b>3.5.2</b> Getting Help From the Web</a></li>
+<li class="chapter" data-level="3.5.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check-1"><i class="fa fa-check"></i><b>3.5.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>3.6</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="3.7" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html"><i class="fa fa-check"></i><b>4</b> Lesson 1c: R fundamentals</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#learning-objectives-4"><i class="fa fa-check"></i><b>4.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment-evaluation"><i class="fa fa-check"></i><b>4.2</b> Assignment &amp; evaluation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment"><i class="fa fa-check"></i><b>4.2.1</b> Assignment</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#evaluation"><i class="fa fa-check"></i><b>4.2.2</b> Evaluation</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#case-sensitivity"><i class="fa fa-check"></i><b>4.2.3</b> Case Sensitivity</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-2"><i class="fa fa-check"></i><b>4.2.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#r-as-a-calculator"><i class="fa fa-check"></i><b>4.3</b> R as a calculator</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#basic-arithmetic"><i class="fa fa-check"></i><b>4.3.1</b> Basic Arithmetic</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#miscellaneous-mathematical-functions"><i class="fa fa-check"></i><b>4.3.2</b> Miscellaneous Mathematical Functions</a></li>
+<li class="chapter" data-level="4.3.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>4.3.3</b> Infinite, and NaN Numbers</a></li>
+<li class="chapter" data-level="4.3.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>4.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>4.4</b> Working with packages</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>4.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="4.4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>4.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="4.4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>4.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="4.4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>4.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="4.4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>4.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="4.4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>4.4.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>4.5</b> Style guide</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>4.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>4.5.2</b> Organization</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>4.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>4.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#exercises-2"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html"><i class="fa fa-check"></i><b>5</b> Lesson 1d: Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>5.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>5.2.2</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>5.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>5.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>5.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>5.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>5.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>5.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#operations"><i class="fa fa-check"></i><b>5.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>5.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#missing-data"><i class="fa fa-check"></i><b>5.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>5.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#vectorization"><i class="fa fa-check"></i><b>5.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>5.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#recycling"><i class="fa fa-check"></i><b>5.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>5.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#exercises-3"><i class="fa fa-check"></i><b>5.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lab.html"><a href="lab.html"><i class="fa fa-check"></i><b>6</b> Lab</a></li>
+<li class="part"><span><b>II Module 2</b></span></li>
+<li class="chapter" data-level="7" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>7</b> Overview</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-6"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>7.2</b> Tasks</a></li>
+<li class="chapter" data-level="7.3" data-path="overview-1.html"><a href="overview-1.html#course-readings-1"><i class="fa fa-check"></i><b>7.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>8</b> Lesson 2a: Workflow</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-7"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>8.2</b> R Projects</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>8.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="8.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>8.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>8.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>8.3</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>8.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>8.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>8.3.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>8.4</b> R Notebooks</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>8.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>8.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>8.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>8.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>8.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-4"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>8.6</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>9</b> Lesson 2b: Data types &amp; structures</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>9.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>9.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>9.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>9.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>9.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>9.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="9.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>9.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="9.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>9.3.3</b> Lists</a></li>
+<li class="chapter" data-level="9.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>9.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-5"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+<li class="chapter" data-level="9.5" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#computing-environment-1"><i class="fa fa-check"></i><b>9.5</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html"><i class="fa fa-check"></i><b>10</b> Lesson 2c: Importing data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#learning-objectives-9"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#data-memory"><i class="fa fa-check"></i><b>10.2</b> Data &amp; memory</a></li>
+<li class="chapter" data-level="10.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#delimited-files"><i class="fa fa-check"></i><b>10.3</b> Delimited files</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#tibbles"><i class="fa fa-check"></i><b>10.3.1</b> Tibbles</a></li>
+<li class="chapter" data-level="10.3.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#file-paths"><i class="fa fa-check"></i><b>10.3.2</b> File paths</a></li>
+<li class="chapter" data-level="10.3.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#metadata"><i class="fa fa-check"></i><b>10.3.3</b> Metadata</a></li>
+<li class="chapter" data-level="10.3.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#knowledge-check-18"><i class="fa fa-check"></i><b>10.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#excel-files"><i class="fa fa-check"></i><b>10.4</b> Excel files</a></li>
+<li class="chapter" data-level="10.5" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#sql-databases"><i class="fa fa-check"></i><b>10.5</b> SQL databases</a></li>
+<li class="chapter" data-level="10.6" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#many-other-file-types"><i class="fa fa-check"></i><b>10.6</b> Many other file types</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#json-files"><i class="fa fa-check"></i><b>10.6.1</b> JSON files</a></li>
+<li class="chapter" data-level="10.6.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#r-object-files"><i class="fa fa-check"></i><b>10.6.2</b> R object files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#exercises-6"><i class="fa fa-check"></i><b>10.7</b> Exercises</a></li>
+<li class="chapter" data-level="10.8" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#computing-environment-2"><i class="fa fa-check"></i><b>10.8</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>11</b> Lab</a></li>
+<li class="part"><span><b>III Module 3</b></span></li>
+<li class="chapter" data-level="12" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>12</b> Overview</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-10"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>12.2</b> Tasks</a></li>
+<li class="chapter" data-level="12.3" data-path="overview-2.html"><a href="overview-2.html#course-readings-2"><i class="fa fa-check"></i><b>12.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>13</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="lesson-1.html"><a href="lesson-1.html#learning-objectives-11"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="lesson-1.html"><a href="lesson-1.html#content-a"><i class="fa fa-check"></i><b>13.2</b> Content A</a></li>
+<li class="chapter" data-level="13.3" data-path="lesson-1.html"><a href="lesson-1.html#content-b"><i class="fa fa-check"></i><b>13.3</b> Content B</a></li>
+<li class="chapter" data-level="13.4" data-path="lesson-1.html"><a href="lesson-1.html#exercises-7"><i class="fa fa-check"></i><b>13.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>14</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-2.html"><a href="lesson-2.html#learning-objectives-12"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-2.html"><a href="lesson-2.html#content-a-1"><i class="fa fa-check"></i><b>14.2</b> Content A</a></li>
+<li class="chapter" data-level="14.3" data-path="lesson-2.html"><a href="lesson-2.html#content-b-1"><i class="fa fa-check"></i><b>14.3</b> Content B</a></li>
+<li class="chapter" data-level="14.4" data-path="lesson-2.html"><a href="lesson-2.html#exercises-8"><i class="fa fa-check"></i><b>14.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>15</b> Lab</a></li>
+<li class="part"><span><b>IV Module 4</b></span></li>
+<li class="chapter" data-level="16" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>16</b> Overview</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-13"><i class="fa fa-check"></i><b>16.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="16.2" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>16.2</b> Tasks</a></li>
+<li class="chapter" data-level="16.3" data-path="overview-3.html"><a href="overview-3.html#course-readings-3"><i class="fa fa-check"></i><b>16.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="lesson-1-1.html"><a href="lesson-1-1.html"><i class="fa fa-check"></i><b>17</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="lesson-1-1.html"><a href="lesson-1-1.html#learning-objectives-14"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-a-2"><i class="fa fa-check"></i><b>17.2</b> Content A</a></li>
+<li class="chapter" data-level="17.3" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-b-2"><i class="fa fa-check"></i><b>17.3</b> Content B</a></li>
+<li class="chapter" data-level="17.4" data-path="lesson-1-1.html"><a href="lesson-1-1.html#exercises-9"><i class="fa fa-check"></i><b>17.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="lesson-2-1.html"><a href="lesson-2-1.html"><i class="fa fa-check"></i><b>18</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="lesson-2-1.html"><a href="lesson-2-1.html#learning-objectives-15"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="18.2" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-a-3"><i class="fa fa-check"></i><b>18.2</b> Content A</a></li>
+<li class="chapter" data-level="18.3" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-b-3"><i class="fa fa-check"></i><b>18.3</b> Content B</a></li>
+<li class="chapter" data-level="18.4" data-path="lesson-2-1.html"><a href="lesson-2-1.html#exercises-10"><i class="fa fa-check"></i><b>18.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>19</b> Lab</a></li>
+<li class="part"><span><b>V Module 5</b></span></li>
+<li class="chapter" data-level="20" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>20</b> Overview</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-16"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="20.2" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>20.2</b> Tasks</a></li>
+<li class="chapter" data-level="20.3" data-path="overview-4.html"><a href="overview-4.html#course-readings-4"><i class="fa fa-check"></i><b>20.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="lesson-1-2.html"><a href="lesson-1-2.html"><i class="fa fa-check"></i><b>21</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="lesson-1-2.html"><a href="lesson-1-2.html#learning-objectives-17"><i class="fa fa-check"></i><b>21.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-a-4"><i class="fa fa-check"></i><b>21.2</b> Content A</a></li>
+<li class="chapter" data-level="21.3" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-b-4"><i class="fa fa-check"></i><b>21.3</b> Content B</a></li>
+<li class="chapter" data-level="21.4" data-path="lesson-1-2.html"><a href="lesson-1-2.html#exercises-11"><i class="fa fa-check"></i><b>21.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="lesson-2-2.html"><a href="lesson-2-2.html"><i class="fa fa-check"></i><b>22</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="lesson-2-2.html"><a href="lesson-2-2.html#learning-objectives-18"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="22.2" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-a-5"><i class="fa fa-check"></i><b>22.2</b> Content A</a></li>
+<li class="chapter" data-level="22.3" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-b-5"><i class="fa fa-check"></i><b>22.3</b> Content B</a></li>
+<li class="chapter" data-level="22.4" data-path="lesson-2-2.html"><a href="lesson-2-2.html#exercises-12"><i class="fa fa-check"></i><b>22.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="lab-4.html"><a href="lab-4.html"><i class="fa fa-check"></i><b>23</b> Lab</a></li>
+<li class="part"><span><b>VI Module 6</b></span></li>
+<li class="chapter" data-level="24" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>24</b> Overview</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-19"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>24.2</b> Tasks</a></li>
+<li class="chapter" data-level="24.3" data-path="overview-5.html"><a href="overview-5.html#course-readings-5"><i class="fa fa-check"></i><b>24.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="lesson-1-3.html"><a href="lesson-1-3.html"><i class="fa fa-check"></i><b>25</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="lesson-1-3.html"><a href="lesson-1-3.html#learning-objectives-20"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-a-6"><i class="fa fa-check"></i><b>25.2</b> Content A</a></li>
+<li class="chapter" data-level="25.3" data-path="lesson-1-3.html"><a href="lesson-1-3.html#content-b-6"><i class="fa fa-check"></i><b>25.3</b> Content B</a></li>
+<li class="chapter" data-level="25.4" data-path="lesson-1-3.html"><a href="lesson-1-3.html#exercises-13"><i class="fa fa-check"></i><b>25.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="lesson-2-3.html"><a href="lesson-2-3.html"><i class="fa fa-check"></i><b>26</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="lesson-2-3.html"><a href="lesson-2-3.html#learning-objectives-21"><i class="fa fa-check"></i><b>26.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="26.2" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-a-7"><i class="fa fa-check"></i><b>26.2</b> Content A</a></li>
+<li class="chapter" data-level="26.3" data-path="lesson-2-3.html"><a href="lesson-2-3.html#content-b-7"><i class="fa fa-check"></i><b>26.3</b> Content B</a></li>
+<li class="chapter" data-level="26.4" data-path="lesson-2-3.html"><a href="lesson-2-3.html#exercises-14"><i class="fa fa-check"></i><b>26.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="lab-5.html"><a href="lab-5.html"><i class="fa fa-check"></i><b>27</b> Lab</a></li>
+<li class="part"><span><b>VII Module 7</b></span></li>
+<li class="chapter" data-level="28" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>28</b> Overview</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-22"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="28.2" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>28.2</b> Tasks</a></li>
+<li class="chapter" data-level="28.3" data-path="overview-6.html"><a href="overview-6.html#course-readings-6"><i class="fa fa-check"></i><b>28.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="lesson-1-4.html"><a href="lesson-1-4.html"><i class="fa fa-check"></i><b>29</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="lesson-1-4.html"><a href="lesson-1-4.html#learning-objectives-23"><i class="fa fa-check"></i><b>29.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="29.2" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-a-8"><i class="fa fa-check"></i><b>29.2</b> Content A</a></li>
+<li class="chapter" data-level="29.3" data-path="lesson-1-4.html"><a href="lesson-1-4.html#content-b-8"><i class="fa fa-check"></i><b>29.3</b> Content B</a></li>
+<li class="chapter" data-level="29.4" data-path="lesson-1-4.html"><a href="lesson-1-4.html#exercises-15"><i class="fa fa-check"></i><b>29.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="lesson-2-4.html"><a href="lesson-2-4.html"><i class="fa fa-check"></i><b>30</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="lesson-2-4.html"><a href="lesson-2-4.html#learning-objectives-24"><i class="fa fa-check"></i><b>30.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="30.2" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-a-9"><i class="fa fa-check"></i><b>30.2</b> Content A</a></li>
+<li class="chapter" data-level="30.3" data-path="lesson-2-4.html"><a href="lesson-2-4.html#content-b-9"><i class="fa fa-check"></i><b>30.3</b> Content B</a></li>
+<li class="chapter" data-level="30.4" data-path="lesson-2-4.html"><a href="lesson-2-4.html#exercises-16"><i class="fa fa-check"></i><b>30.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>31</b> Lab</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-2c-importing-data" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Lesson 2c: Importing data<a href="lesson-2c-importing-data.html#lesson-2c-importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The first step to any data analysis process is to get the data. Data can come from many sources but two of the most common include delimited and Excel files. This section covers how to import data from these common files; plus we cover other important topics such as understanding file paths, connecting to SQL databases, and to load data from saved R object files.</p>
+<div id="learning-objectives-9" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Learning objectives<a href="lesson-2c-importing-data.html#learning-objectives-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Upon completing this module you will be able to:</p>
+<ol style="list-style-type: decimal">
+<li>Describe how imported data affects computer memory.</li>
+<li>Import tabular data with R.</li>
+<li>Assess some basic attributes of your imported data.</li>
+<li>Import alternative data files such as SQL tables and Rdata files.</li>
+</ol>
+</div>
+<div id="data-memory" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Data &amp; memory<a href="lesson-2c-importing-data.html#data-memory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R stores its data in memory - this makes it relatively quickly accessible but can cause size limitations in certain fields. In this class we will mainly work with small to moderate data sets, which means we should not run into any space limitations.</p>
+<div class="note">
+<p>
+R does provide tooling that allows you to work with big data via
+distributed data (i.e. <a
+href="https://spark.rstudio.com/">sparklyr</a>) and relational
+databrases (i.e. SQL).
+</p>
+</div>
+<p>R memory is session-specific, so quitting R (i.e. shutting down RStudio) removes the data from memory. A general way to conceptualize data import into and use within R:</p>
+<ol style="list-style-type: decimal">
+<li>Data sits in on the computer/server - this is frequently called “disk”</li>
+<li>R code can be used to copy a data file from disk to the R session’s memory</li>
+<li>R data then sits within R’s memory ready to be used by other R code</li>
+</ol>
+<p>Here is a visualization of this process:</p>
+<p><img src="images/import-framework.png" style="display: block; margin: auto;" /></p>
+</div>
+<div id="delimited-files" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Delimited files<a href="lesson-2c-importing-data.html#delimited-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Text files are a popular way to hold and exchange tabular data as almost any data application supports exporting data to the CSV (or other text file) format. Text file formats use delimiters to separate the different elements in a line, and each line of data is in its own line in the text file. Therefore, importing different kinds of text files can follow a fairly consistent process once you’ve identified the delimiter.</p>
+<p>There are three main groups of functions that we can use to read in text files:</p>
+<ul>
+<li>Base R functions</li>
+<li>*readr** package functions</li>
+<li>*vroom** package functions</li>
+</ul>
+<p>Here, we’ll focus on the middle one.</p>
+<div class="note">
+<p>
+All three functions will import a tabular delimited file (.csv, .tsv,
+.txt, etc.) and convert it to a data frame in R, but each has subtle
+differences. You can read why we favor <strong>readr</strong> and
+<strong>vroom</strong> over the base R importing functions
+(i.e. <code>read.csv()</code>) <a
+href="https://r4ds.had.co.nz/data-import.html#compared-to-base-r">here</a>.
+</p>
+<p>
+We will not cover the <strong>vroom</strong> package but it is good
+to know about as it can be extremely fast for very large data sets. Read
+more about <strong>vroom</strong> <a
+href="https://www.tidyverse.org/blog/2019/05/vroom-1-0-0/">here</a>.
+</p>
+</div>
+<p>The following will import a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010 (<a href="http://jse.amstat.org/v19n3/decock.pdf">source</a>).</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="lesson-2c-importing-data.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb119-2"><a href="lesson-2c-importing-data.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="lesson-2c-importing-data.html#cb119-3" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;data/ames_raw.csv&#39;</span>)</span>
+<span id="cb119-4"><a href="lesson-2c-importing-data.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
+<span id="cb119-5"><a href="lesson-2c-importing-data.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb119-6"><a href="lesson-2c-importing-data.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb119-7"><a href="lesson-2c-importing-data.html#cb119-7" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, Land Contour, Uti...</span></span>
+<span id="cb119-8"><a href="lesson-2c-importing-data.html#cb119-8" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond, Year Built, Y...</span></span>
+<span id="cb119-9"><a href="lesson-2c-importing-data.html#cb119-9" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb119-10"><a href="lesson-2c-importing-data.html#cb119-10" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb119-11"><a href="lesson-2c-importing-data.html#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+<p>We can look at it in our notebook or console and we see that it is displayed in a well-organized, concise manner. More on this in a second.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="lesson-2c-importing-data.html#cb120-1" aria-hidden="true" tabindex="-1"></a>ames</span>
+<span id="cb120-2"><a href="lesson-2c-importing-data.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,930 × 82</span></span>
+<span id="cb120-3"><a href="lesson-2c-importing-data.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    Order PID        `MS SubClass` `MS Zoning` `Lot Frontage` `Lot Area` Street Alley</span></span>
+<span id="cb120-4"><a href="lesson-2c-importing-data.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span id="cb120-5"><a href="lesson-2c-importing-data.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     1 0526301100 020           RL                     141      31770 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-6"><a href="lesson-2c-importing-data.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     2 0526350040 020           RH                      80      11622 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-7"><a href="lesson-2c-importing-data.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     3 0526351010 020           RL                      81      14267 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-8"><a href="lesson-2c-importing-data.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4     4 0526353030 020           RL                      93      11160 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-9"><a href="lesson-2c-importing-data.html#cb120-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5     5 0527105010 060           RL                      74      13830 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-10"><a href="lesson-2c-importing-data.html#cb120-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6     6 0527105030 060           RL                      78       9978 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-11"><a href="lesson-2c-importing-data.html#cb120-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7     7 0527127150 120           RL                      41       4920 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-12"><a href="lesson-2c-importing-data.html#cb120-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8     8 0527145080 120           RL                      43       5005 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-13"><a href="lesson-2c-importing-data.html#cb120-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9     9 0527146030 120           RL                      39       5389 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-14"><a href="lesson-2c-importing-data.html#cb120-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    10 0527162130 060           RL                      60       7500 Pave   &lt;NA&gt; </span></span>
+<span id="cb120-15"><a href="lesson-2c-importing-data.html#cb120-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,920 more rows, and 74 more variables: `Lot Shape` &lt;chr&gt;,</span></span>
+<span id="cb120-16"><a href="lesson-2c-importing-data.html#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;, Utilities &lt;chr&gt;, `Lot Config` &lt;chr&gt;, `Land Slope` &lt;chr&gt;,</span></span>
+<span id="cb120-17"><a href="lesson-2c-importing-data.html#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   Neighborhood &lt;chr&gt;, `Condition 1` &lt;chr&gt;, `Condition 2` &lt;chr&gt;, `Bldg Type` &lt;chr&gt;,</span></span>
+<span id="cb120-18"><a href="lesson-2c-importing-data.html#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `House Style` &lt;chr&gt;, `Overall Qual` &lt;dbl&gt;, `Overall Cond` &lt;dbl&gt;,</span></span>
+<span id="cb120-19"><a href="lesson-2c-importing-data.html#cb120-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Year Built` &lt;dbl&gt;, `Year Remod/Add` &lt;dbl&gt;, `Roof Style` &lt;chr&gt;,</span></span>
+<span id="cb120-20"><a href="lesson-2c-importing-data.html#cb120-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Roof Matl` &lt;chr&gt;, `Exterior 1st` &lt;chr&gt;, `Exterior 2nd` &lt;chr&gt;,</span></span>
+<span id="cb120-21"><a href="lesson-2c-importing-data.html#cb120-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Mas Vnr Type` &lt;chr&gt;, `Mas Vnr Area` &lt;dbl&gt;, `Exter Qual` &lt;chr&gt;, …</span></span></code></pre></div>
+<p>If we check the class of our object we do see that it is a <strong>data.frame</strong>; however, we also see some additional information. That’s because this is a special kind of data frame known as a <strong>tibble</strong>.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="lesson-2c-importing-data.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ames)</span>
+<span id="cb121-2"><a href="lesson-2c-importing-data.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot;</span></span></code></pre></div>
+<div id="tibbles" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Tibbles<a href="lesson-2c-importing-data.html#tibbles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Tibbles</strong> <em>are</em> data frames, but they tweak some older behaviors of data frames to make life a little easier. There are two main differences in the usage of a tibble vs. a classic data frame: printing and subsetting.</p>
+<p>Tibbles have a refined print method that shows only the first 10 rows, and all the columns that fit on your screen. This makes it much easier to work with large data. We can see this difference with the following:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="lesson-2c-importing-data.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># printed output of a tibble</span></span>
+<span id="cb122-2"><a href="lesson-2c-importing-data.html#cb122-2" aria-hidden="true" tabindex="-1"></a>ames</span>
+<span id="cb122-3"><a href="lesson-2c-importing-data.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,930 × 82</span></span>
+<span id="cb122-4"><a href="lesson-2c-importing-data.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    Order PID        `MS SubClass` `MS Zoning` `Lot Frontage` `Lot Area` Street Alley</span></span>
+<span id="cb122-5"><a href="lesson-2c-importing-data.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span id="cb122-6"><a href="lesson-2c-importing-data.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     1 0526301100 020           RL                     141      31770 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-7"><a href="lesson-2c-importing-data.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2     2 0526350040 020           RH                      80      11622 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-8"><a href="lesson-2c-importing-data.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3     3 0526351010 020           RL                      81      14267 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-9"><a href="lesson-2c-importing-data.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4     4 0526353030 020           RL                      93      11160 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-10"><a href="lesson-2c-importing-data.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5     5 0527105010 060           RL                      74      13830 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-11"><a href="lesson-2c-importing-data.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6     6 0527105030 060           RL                      78       9978 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-12"><a href="lesson-2c-importing-data.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7     7 0527127150 120           RL                      41       4920 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-13"><a href="lesson-2c-importing-data.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8     8 0527145080 120           RL                      43       5005 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-14"><a href="lesson-2c-importing-data.html#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9     9 0527146030 120           RL                      39       5389 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-15"><a href="lesson-2c-importing-data.html#cb122-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    10 0527162130 060           RL                      60       7500 Pave   &lt;NA&gt; </span></span>
+<span id="cb122-16"><a href="lesson-2c-importing-data.html#cb122-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,920 more rows, and 74 more variables: `Lot Shape` &lt;chr&gt;,</span></span>
+<span id="cb122-17"><a href="lesson-2c-importing-data.html#cb122-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;, Utilities &lt;chr&gt;, `Lot Config` &lt;chr&gt;, `Land Slope` &lt;chr&gt;,</span></span>
+<span id="cb122-18"><a href="lesson-2c-importing-data.html#cb122-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   Neighborhood &lt;chr&gt;, `Condition 1` &lt;chr&gt;, `Condition 2` &lt;chr&gt;, `Bldg Type` &lt;chr&gt;,</span></span>
+<span id="cb122-19"><a href="lesson-2c-importing-data.html#cb122-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `House Style` &lt;chr&gt;, `Overall Qual` &lt;dbl&gt;, `Overall Cond` &lt;dbl&gt;,</span></span>
+<span id="cb122-20"><a href="lesson-2c-importing-data.html#cb122-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Year Built` &lt;dbl&gt;, `Year Remod/Add` &lt;dbl&gt;, `Roof Style` &lt;chr&gt;,</span></span>
+<span id="cb122-21"><a href="lesson-2c-importing-data.html#cb122-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Roof Matl` &lt;chr&gt;, `Exterior 1st` &lt;chr&gt;, `Exterior 2nd` &lt;chr&gt;,</span></span>
+<span id="cb122-22"><a href="lesson-2c-importing-data.html#cb122-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   `Mas Vnr Type` &lt;chr&gt;, `Mas Vnr Area` &lt;dbl&gt;, `Exter Qual` &lt;chr&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-2c-importing-data.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># printed output of a regular data frame</span></span>
+<span id="cb123-2"><a href="lesson-2c-importing-data.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(ames)</span>
+<span id="cb123-3"><a href="lesson-2c-importing-data.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    Order        PID MS SubClass MS Zoning Lot Frontage Lot Area Street Alley</span></span>
+<span id="cb123-4"><a href="lesson-2c-importing-data.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      1 0526301100         020        RL          141    31770   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-5"><a href="lesson-2c-importing-data.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      2 0526350040         020        RH           80    11622   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-6"><a href="lesson-2c-importing-data.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      3 0526351010         020        RL           81    14267   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-7"><a href="lesson-2c-importing-data.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      4 0526353030         020        RL           93    11160   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-8"><a href="lesson-2c-importing-data.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      5 0527105010         060        RL           74    13830   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-9"><a href="lesson-2c-importing-data.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      6 0527105030         060        RL           78     9978   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-10"><a href="lesson-2c-importing-data.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 7      7 0527127150         120        RL           41     4920   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-11"><a href="lesson-2c-importing-data.html#cb123-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 8      8 0527145080         120        RL           43     5005   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-12"><a href="lesson-2c-importing-data.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 9      9 0527146030         120        RL           39     5389   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-13"><a href="lesson-2c-importing-data.html#cb123-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    10 0527162130         060        RL           60     7500   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-14"><a href="lesson-2c-importing-data.html#cb123-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 11    11 0527163010         060        RL           75    10000   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-15"><a href="lesson-2c-importing-data.html#cb123-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 12    12 0527165230         020        RL           NA     7980   Pave  &lt;NA&gt;</span></span>
+<span id="cb123-16"><a href="lesson-2c-importing-data.html#cb123-16" aria-hidden="true" tabindex="-1"></a><span class="do">##    Lot Shape Land Contour Utilities Lot Config Land Slope Neighborhood Condition 1</span></span>
+<span id="cb123-17"><a href="lesson-2c-importing-data.html#cb123-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 1        IR1          Lvl    AllPub     Corner        Gtl        NAmes        Norm</span></span>
+<span id="cb123-18"><a href="lesson-2c-importing-data.html#cb123-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 2        Reg          Lvl    AllPub     Inside        Gtl        NAmes       Feedr</span></span>
+<span id="cb123-19"><a href="lesson-2c-importing-data.html#cb123-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 3        IR1          Lvl    AllPub     Corner        Gtl        NAmes        Norm</span></span>
+<span id="cb123-20"><a href="lesson-2c-importing-data.html#cb123-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 4        Reg          Lvl    AllPub     Corner        Gtl        NAmes        Norm</span></span>
+<span id="cb123-21"><a href="lesson-2c-importing-data.html#cb123-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 5        IR1          Lvl    AllPub     Inside        Gtl      Gilbert        Norm</span></span>
+<span id="cb123-22"><a href="lesson-2c-importing-data.html#cb123-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 6        IR1          Lvl    AllPub     Inside        Gtl      Gilbert        Norm</span></span>
+<span id="cb123-23"><a href="lesson-2c-importing-data.html#cb123-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 7        Reg          Lvl    AllPub     Inside        Gtl      StoneBr        Norm</span></span>
+<span id="cb123-24"><a href="lesson-2c-importing-data.html#cb123-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 8        IR1          HLS    AllPub     Inside        Gtl      StoneBr        Norm</span></span>
+<span id="cb123-25"><a href="lesson-2c-importing-data.html#cb123-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 9        IR1          Lvl    AllPub     Inside        Gtl      StoneBr        Norm</span></span>
+<span id="cb123-26"><a href="lesson-2c-importing-data.html#cb123-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 10       Reg          Lvl    AllPub     Inside        Gtl      Gilbert        Norm</span></span>
+<span id="cb123-27"><a href="lesson-2c-importing-data.html#cb123-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 11       IR1          Lvl    AllPub     Corner        Gtl      Gilbert        Norm</span></span>
+<span id="cb123-28"><a href="lesson-2c-importing-data.html#cb123-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 12       IR1          Lvl    AllPub     Inside        Gtl      Gilbert        Norm</span></span>
+<span id="cb123-29"><a href="lesson-2c-importing-data.html#cb123-29" aria-hidden="true" tabindex="-1"></a><span class="do">##    Condition 2 Bldg Type House Style Overall Qual Overall Cond Year Built</span></span>
+<span id="cb123-30"><a href="lesson-2c-importing-data.html#cb123-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 1         Norm      1Fam      1Story            6            5       1960</span></span>
+<span id="cb123-31"><a href="lesson-2c-importing-data.html#cb123-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 2         Norm      1Fam      1Story            5            6       1961</span></span>
+<span id="cb123-32"><a href="lesson-2c-importing-data.html#cb123-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 3         Norm      1Fam      1Story            6            6       1958</span></span>
+<span id="cb123-33"><a href="lesson-2c-importing-data.html#cb123-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 4         Norm      1Fam      1Story            7            5       1968</span></span>
+<span id="cb123-34"><a href="lesson-2c-importing-data.html#cb123-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 5         Norm      1Fam      2Story            5            5       1997</span></span>
+<span id="cb123-35"><a href="lesson-2c-importing-data.html#cb123-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 6         Norm      1Fam      2Story            6            6       1998</span></span>
+<span id="cb123-36"><a href="lesson-2c-importing-data.html#cb123-36" aria-hidden="true" tabindex="-1"></a><span class="do">## 7         Norm    TwnhsE      1Story            8            5       2001</span></span>
+<span id="cb123-37"><a href="lesson-2c-importing-data.html#cb123-37" aria-hidden="true" tabindex="-1"></a><span class="do">## 8         Norm    TwnhsE      1Story            8            5       1992</span></span>
+<span id="cb123-38"><a href="lesson-2c-importing-data.html#cb123-38" aria-hidden="true" tabindex="-1"></a><span class="do">## 9         Norm    TwnhsE      1Story            8            5       1995</span></span>
+<span id="cb123-39"><a href="lesson-2c-importing-data.html#cb123-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 10        Norm      1Fam      2Story            7            5       1999</span></span>
+<span id="cb123-40"><a href="lesson-2c-importing-data.html#cb123-40" aria-hidden="true" tabindex="-1"></a><span class="do">## 11        Norm      1Fam      2Story            6            5       1993</span></span>
+<span id="cb123-41"><a href="lesson-2c-importing-data.html#cb123-41" aria-hidden="true" tabindex="-1"></a><span class="do">## 12        Norm      1Fam      1Story            6            7       1992</span></span>
+<span id="cb123-42"><a href="lesson-2c-importing-data.html#cb123-42" aria-hidden="true" tabindex="-1"></a><span class="do">##    Year Remod/Add Roof Style Roof Matl Exterior 1st Exterior 2nd Mas Vnr Type</span></span>
+<span id="cb123-43"><a href="lesson-2c-importing-data.html#cb123-43" aria-hidden="true" tabindex="-1"></a><span class="do">## 1            1960        Hip   CompShg      BrkFace      Plywood        Stone</span></span>
+<span id="cb123-44"><a href="lesson-2c-importing-data.html#cb123-44" aria-hidden="true" tabindex="-1"></a><span class="do">## 2            1961      Gable   CompShg      VinylSd      VinylSd         None</span></span>
+<span id="cb123-45"><a href="lesson-2c-importing-data.html#cb123-45" aria-hidden="true" tabindex="-1"></a><span class="do">## 3            1958        Hip   CompShg      Wd Sdng      Wd Sdng      BrkFace</span></span>
+<span id="cb123-46"><a href="lesson-2c-importing-data.html#cb123-46" aria-hidden="true" tabindex="-1"></a><span class="do">## 4            1968        Hip   CompShg      BrkFace      BrkFace         None</span></span>
+<span id="cb123-47"><a href="lesson-2c-importing-data.html#cb123-47" aria-hidden="true" tabindex="-1"></a><span class="do">## 5            1998      Gable   CompShg      VinylSd      VinylSd         None</span></span>
+<span id="cb123-48"><a href="lesson-2c-importing-data.html#cb123-48" aria-hidden="true" tabindex="-1"></a><span class="do">## 6            1998      Gable   CompShg      VinylSd      VinylSd      BrkFace</span></span>
+<span id="cb123-49"><a href="lesson-2c-importing-data.html#cb123-49" aria-hidden="true" tabindex="-1"></a><span class="do">## 7            2001      Gable   CompShg      CemntBd      CmentBd         None</span></span>
+<span id="cb123-50"><a href="lesson-2c-importing-data.html#cb123-50" aria-hidden="true" tabindex="-1"></a><span class="do">## 8            1992      Gable   CompShg      HdBoard      HdBoard         None</span></span>
+<span id="cb123-51"><a href="lesson-2c-importing-data.html#cb123-51" aria-hidden="true" tabindex="-1"></a><span class="do">## 9            1996      Gable   CompShg      CemntBd      CmentBd         None</span></span>
+<span id="cb123-52"><a href="lesson-2c-importing-data.html#cb123-52" aria-hidden="true" tabindex="-1"></a><span class="do">## 10           1999      Gable   CompShg      VinylSd      VinylSd         None</span></span>
+<span id="cb123-53"><a href="lesson-2c-importing-data.html#cb123-53" aria-hidden="true" tabindex="-1"></a><span class="do">## 11           1994      Gable   CompShg      HdBoard      HdBoard         None</span></span>
+<span id="cb123-54"><a href="lesson-2c-importing-data.html#cb123-54" aria-hidden="true" tabindex="-1"></a><span class="do">## 12           2007      Gable   CompShg      HdBoard      HdBoard         None</span></span>
+<span id="cb123-55"><a href="lesson-2c-importing-data.html#cb123-55" aria-hidden="true" tabindex="-1"></a><span class="do">##    Mas Vnr Area Exter Qual Exter Cond Foundation Bsmt Qual Bsmt Cond Bsmt Exposure</span></span>
+<span id="cb123-56"><a href="lesson-2c-importing-data.html#cb123-56" aria-hidden="true" tabindex="-1"></a><span class="do">## 1           112         TA         TA     CBlock        TA        Gd            Gd</span></span>
+<span id="cb123-57"><a href="lesson-2c-importing-data.html#cb123-57" aria-hidden="true" tabindex="-1"></a><span class="do">## 2             0         TA         TA     CBlock        TA        TA            No</span></span>
+<span id="cb123-58"><a href="lesson-2c-importing-data.html#cb123-58" aria-hidden="true" tabindex="-1"></a><span class="do">## 3           108         TA         TA     CBlock        TA        TA            No</span></span>
+<span id="cb123-59"><a href="lesson-2c-importing-data.html#cb123-59" aria-hidden="true" tabindex="-1"></a><span class="do">## 4             0         Gd         TA     CBlock        TA        TA            No</span></span>
+<span id="cb123-60"><a href="lesson-2c-importing-data.html#cb123-60" aria-hidden="true" tabindex="-1"></a><span class="do">## 5             0         TA         TA      PConc        Gd        TA            No</span></span>
+<span id="cb123-61"><a href="lesson-2c-importing-data.html#cb123-61" aria-hidden="true" tabindex="-1"></a><span class="do">## 6            20         TA         TA      PConc        TA        TA            No</span></span>
+<span id="cb123-62"><a href="lesson-2c-importing-data.html#cb123-62" aria-hidden="true" tabindex="-1"></a><span class="do">## 7             0         Gd         TA      PConc        Gd        TA            Mn</span></span>
+<span id="cb123-63"><a href="lesson-2c-importing-data.html#cb123-63" aria-hidden="true" tabindex="-1"></a><span class="do">## 8             0         Gd         TA      PConc        Gd        TA            No</span></span>
+<span id="cb123-64"><a href="lesson-2c-importing-data.html#cb123-64" aria-hidden="true" tabindex="-1"></a><span class="do">## 9             0         Gd         TA      PConc        Gd        TA            No</span></span>
+<span id="cb123-65"><a href="lesson-2c-importing-data.html#cb123-65" aria-hidden="true" tabindex="-1"></a><span class="do">## 10            0         TA         TA      PConc        TA        TA            No</span></span>
+<span id="cb123-66"><a href="lesson-2c-importing-data.html#cb123-66" aria-hidden="true" tabindex="-1"></a><span class="do">## 11            0         TA         TA      PConc        Gd        TA            No</span></span>
+<span id="cb123-67"><a href="lesson-2c-importing-data.html#cb123-67" aria-hidden="true" tabindex="-1"></a><span class="do">## 12            0         TA         Gd      PConc        Gd        TA            No</span></span>
+<span id="cb123-68"><a href="lesson-2c-importing-data.html#cb123-68" aria-hidden="true" tabindex="-1"></a><span class="do">##    BsmtFin Type 1 BsmtFin SF 1 BsmtFin Type 2 BsmtFin SF 2 Bsmt Unf SF Total Bsmt SF</span></span>
+<span id="cb123-69"><a href="lesson-2c-importing-data.html#cb123-69" aria-hidden="true" tabindex="-1"></a><span class="do">## 1             BLQ          639            Unf            0         441          1080</span></span>
+<span id="cb123-70"><a href="lesson-2c-importing-data.html#cb123-70" aria-hidden="true" tabindex="-1"></a><span class="do">## 2             Rec          468            LwQ          144         270           882</span></span>
+<span id="cb123-71"><a href="lesson-2c-importing-data.html#cb123-71" aria-hidden="true" tabindex="-1"></a><span class="do">## 3             ALQ          923            Unf            0         406          1329</span></span>
+<span id="cb123-72"><a href="lesson-2c-importing-data.html#cb123-72" aria-hidden="true" tabindex="-1"></a><span class="do">## 4             ALQ         1065            Unf            0        1045          2110</span></span>
+<span id="cb123-73"><a href="lesson-2c-importing-data.html#cb123-73" aria-hidden="true" tabindex="-1"></a><span class="do">## 5             GLQ          791            Unf            0         137           928</span></span>
+<span id="cb123-74"><a href="lesson-2c-importing-data.html#cb123-74" aria-hidden="true" tabindex="-1"></a><span class="do">## 6             GLQ          602            Unf            0         324           926</span></span>
+<span id="cb123-75"><a href="lesson-2c-importing-data.html#cb123-75" aria-hidden="true" tabindex="-1"></a><span class="do">## 7             GLQ          616            Unf            0         722          1338</span></span>
+<span id="cb123-76"><a href="lesson-2c-importing-data.html#cb123-76" aria-hidden="true" tabindex="-1"></a><span class="do">## 8             ALQ          263            Unf            0        1017          1280</span></span>
+<span id="cb123-77"><a href="lesson-2c-importing-data.html#cb123-77" aria-hidden="true" tabindex="-1"></a><span class="do">## 9             GLQ         1180            Unf            0         415          1595</span></span>
+<span id="cb123-78"><a href="lesson-2c-importing-data.html#cb123-78" aria-hidden="true" tabindex="-1"></a><span class="do">## 10            Unf            0            Unf            0         994           994</span></span>
+<span id="cb123-79"><a href="lesson-2c-importing-data.html#cb123-79" aria-hidden="true" tabindex="-1"></a><span class="do">## 11            Unf            0            Unf            0         763           763</span></span>
+<span id="cb123-80"><a href="lesson-2c-importing-data.html#cb123-80" aria-hidden="true" tabindex="-1"></a><span class="do">## 12            ALQ          935            Unf            0         233          1168</span></span>
+<span id="cb123-81"><a href="lesson-2c-importing-data.html#cb123-81" aria-hidden="true" tabindex="-1"></a><span class="do">##    Heating Heating QC Central Air Electrical 1st Flr SF 2nd Flr SF Low Qual Fin SF</span></span>
+<span id="cb123-82"><a href="lesson-2c-importing-data.html#cb123-82" aria-hidden="true" tabindex="-1"></a><span class="do">## 1     GasA         Fa           Y      SBrkr       1656          0               0</span></span>
+<span id="cb123-83"><a href="lesson-2c-importing-data.html#cb123-83" aria-hidden="true" tabindex="-1"></a><span class="do">## 2     GasA         TA           Y      SBrkr        896          0               0</span></span>
+<span id="cb123-84"><a href="lesson-2c-importing-data.html#cb123-84" aria-hidden="true" tabindex="-1"></a><span class="do">## 3     GasA         TA           Y      SBrkr       1329          0               0</span></span>
+<span id="cb123-85"><a href="lesson-2c-importing-data.html#cb123-85" aria-hidden="true" tabindex="-1"></a><span class="do">## 4     GasA         Ex           Y      SBrkr       2110          0               0</span></span>
+<span id="cb123-86"><a href="lesson-2c-importing-data.html#cb123-86" aria-hidden="true" tabindex="-1"></a><span class="do">## 5     GasA         Gd           Y      SBrkr        928        701               0</span></span>
+<span id="cb123-87"><a href="lesson-2c-importing-data.html#cb123-87" aria-hidden="true" tabindex="-1"></a><span class="do">## 6     GasA         Ex           Y      SBrkr        926        678               0</span></span>
+<span id="cb123-88"><a href="lesson-2c-importing-data.html#cb123-88" aria-hidden="true" tabindex="-1"></a><span class="do">## 7     GasA         Ex           Y      SBrkr       1338          0               0</span></span>
+<span id="cb123-89"><a href="lesson-2c-importing-data.html#cb123-89" aria-hidden="true" tabindex="-1"></a><span class="do">## 8     GasA         Ex           Y      SBrkr       1280          0               0</span></span>
+<span id="cb123-90"><a href="lesson-2c-importing-data.html#cb123-90" aria-hidden="true" tabindex="-1"></a><span class="do">## 9     GasA         Ex           Y      SBrkr       1616          0               0</span></span>
+<span id="cb123-91"><a href="lesson-2c-importing-data.html#cb123-91" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    GasA         Gd           Y      SBrkr       1028        776               0</span></span>
+<span id="cb123-92"><a href="lesson-2c-importing-data.html#cb123-92" aria-hidden="true" tabindex="-1"></a><span class="do">## 11    GasA         Gd           Y      SBrkr        763        892               0</span></span>
+<span id="cb123-93"><a href="lesson-2c-importing-data.html#cb123-93" aria-hidden="true" tabindex="-1"></a><span class="do">## 12    GasA         Ex           Y      SBrkr       1187          0               0</span></span>
+<span id="cb123-94"><a href="lesson-2c-importing-data.html#cb123-94" aria-hidden="true" tabindex="-1"></a><span class="do">##    Gr Liv Area Bsmt Full Bath Bsmt Half Bath Full Bath Half Bath Bedroom AbvGr</span></span>
+<span id="cb123-95"><a href="lesson-2c-importing-data.html#cb123-95" aria-hidden="true" tabindex="-1"></a><span class="do">## 1         1656              1              0         1         0             3</span></span>
+<span id="cb123-96"><a href="lesson-2c-importing-data.html#cb123-96" aria-hidden="true" tabindex="-1"></a><span class="do">## 2          896              0              0         1         0             2</span></span>
+<span id="cb123-97"><a href="lesson-2c-importing-data.html#cb123-97" aria-hidden="true" tabindex="-1"></a><span class="do">## 3         1329              0              0         1         1             3</span></span>
+<span id="cb123-98"><a href="lesson-2c-importing-data.html#cb123-98" aria-hidden="true" tabindex="-1"></a><span class="do">## 4         2110              1              0         2         1             3</span></span>
+<span id="cb123-99"><a href="lesson-2c-importing-data.html#cb123-99" aria-hidden="true" tabindex="-1"></a><span class="do">## 5         1629              0              0         2         1             3</span></span>
+<span id="cb123-100"><a href="lesson-2c-importing-data.html#cb123-100" aria-hidden="true" tabindex="-1"></a><span class="do">## 6         1604              0              0         2         1             3</span></span>
+<span id="cb123-101"><a href="lesson-2c-importing-data.html#cb123-101" aria-hidden="true" tabindex="-1"></a><span class="do">## 7         1338              1              0         2         0             2</span></span>
+<span id="cb123-102"><a href="lesson-2c-importing-data.html#cb123-102" aria-hidden="true" tabindex="-1"></a><span class="do">## 8         1280              0              0         2         0             2</span></span>
+<span id="cb123-103"><a href="lesson-2c-importing-data.html#cb123-103" aria-hidden="true" tabindex="-1"></a><span class="do">## 9         1616              1              0         2         0             2</span></span>
+<span id="cb123-104"><a href="lesson-2c-importing-data.html#cb123-104" aria-hidden="true" tabindex="-1"></a><span class="do">## 10        1804              0              0         2         1             3</span></span>
+<span id="cb123-105"><a href="lesson-2c-importing-data.html#cb123-105" aria-hidden="true" tabindex="-1"></a><span class="do">## 11        1655              0              0         2         1             3</span></span>
+<span id="cb123-106"><a href="lesson-2c-importing-data.html#cb123-106" aria-hidden="true" tabindex="-1"></a><span class="do">## 12        1187              1              0         2         0             3</span></span>
+<span id="cb123-107"><a href="lesson-2c-importing-data.html#cb123-107" aria-hidden="true" tabindex="-1"></a><span class="do">##    Kitchen AbvGr Kitchen Qual TotRms AbvGrd Functional Fireplaces Fireplace Qu</span></span>
+<span id="cb123-108"><a href="lesson-2c-importing-data.html#cb123-108" aria-hidden="true" tabindex="-1"></a><span class="do">## 1              1           TA             7        Typ          2           Gd</span></span>
+<span id="cb123-109"><a href="lesson-2c-importing-data.html#cb123-109" aria-hidden="true" tabindex="-1"></a><span class="do">## 2              1           TA             5        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb123-110"><a href="lesson-2c-importing-data.html#cb123-110" aria-hidden="true" tabindex="-1"></a><span class="do">## 3              1           Gd             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb123-111"><a href="lesson-2c-importing-data.html#cb123-111" aria-hidden="true" tabindex="-1"></a><span class="do">## 4              1           Ex             8        Typ          2           TA</span></span>
+<span id="cb123-112"><a href="lesson-2c-importing-data.html#cb123-112" aria-hidden="true" tabindex="-1"></a><span class="do">## 5              1           TA             6        Typ          1           TA</span></span>
+<span id="cb123-113"><a href="lesson-2c-importing-data.html#cb123-113" aria-hidden="true" tabindex="-1"></a><span class="do">## 6              1           Gd             7        Typ          1           Gd</span></span>
+<span id="cb123-114"><a href="lesson-2c-importing-data.html#cb123-114" aria-hidden="true" tabindex="-1"></a><span class="do">## 7              1           Gd             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb123-115"><a href="lesson-2c-importing-data.html#cb123-115" aria-hidden="true" tabindex="-1"></a><span class="do">## 8              1           Gd             5        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb123-116"><a href="lesson-2c-importing-data.html#cb123-116" aria-hidden="true" tabindex="-1"></a><span class="do">## 9              1           Gd             5        Typ          1           TA</span></span>
+<span id="cb123-117"><a href="lesson-2c-importing-data.html#cb123-117" aria-hidden="true" tabindex="-1"></a><span class="do">## 10             1           Gd             7        Typ          1           TA</span></span>
+<span id="cb123-118"><a href="lesson-2c-importing-data.html#cb123-118" aria-hidden="true" tabindex="-1"></a><span class="do">## 11             1           TA             7        Typ          1           TA</span></span>
+<span id="cb123-119"><a href="lesson-2c-importing-data.html#cb123-119" aria-hidden="true" tabindex="-1"></a><span class="do">## 12             1           TA             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb123-120"><a href="lesson-2c-importing-data.html#cb123-120" aria-hidden="true" tabindex="-1"></a><span class="do">##    Garage Type Garage Yr Blt Garage Finish Garage Cars Garage Area Garage Qual</span></span>
+<span id="cb123-121"><a href="lesson-2c-importing-data.html#cb123-121" aria-hidden="true" tabindex="-1"></a><span class="do">## 1       Attchd          1960           Fin           2         528          TA</span></span>
+<span id="cb123-122"><a href="lesson-2c-importing-data.html#cb123-122" aria-hidden="true" tabindex="-1"></a><span class="do">## 2       Attchd          1961           Unf           1         730          TA</span></span>
+<span id="cb123-123"><a href="lesson-2c-importing-data.html#cb123-123" aria-hidden="true" tabindex="-1"></a><span class="do">## 3       Attchd          1958           Unf           1         312          TA</span></span>
+<span id="cb123-124"><a href="lesson-2c-importing-data.html#cb123-124" aria-hidden="true" tabindex="-1"></a><span class="do">## 4       Attchd          1968           Fin           2         522          TA</span></span>
+<span id="cb123-125"><a href="lesson-2c-importing-data.html#cb123-125" aria-hidden="true" tabindex="-1"></a><span class="do">## 5       Attchd          1997           Fin           2         482          TA</span></span>
+<span id="cb123-126"><a href="lesson-2c-importing-data.html#cb123-126" aria-hidden="true" tabindex="-1"></a><span class="do">## 6       Attchd          1998           Fin           2         470          TA</span></span>
+<span id="cb123-127"><a href="lesson-2c-importing-data.html#cb123-127" aria-hidden="true" tabindex="-1"></a><span class="do">## 7       Attchd          2001           Fin           2         582          TA</span></span>
+<span id="cb123-128"><a href="lesson-2c-importing-data.html#cb123-128" aria-hidden="true" tabindex="-1"></a><span class="do">## 8       Attchd          1992           RFn           2         506          TA</span></span>
+<span id="cb123-129"><a href="lesson-2c-importing-data.html#cb123-129" aria-hidden="true" tabindex="-1"></a><span class="do">## 9       Attchd          1995           RFn           2         608          TA</span></span>
+<span id="cb123-130"><a href="lesson-2c-importing-data.html#cb123-130" aria-hidden="true" tabindex="-1"></a><span class="do">## 10      Attchd          1999           Fin           2         442          TA</span></span>
+<span id="cb123-131"><a href="lesson-2c-importing-data.html#cb123-131" aria-hidden="true" tabindex="-1"></a><span class="do">## 11      Attchd          1993           Fin           2         440          TA</span></span>
+<span id="cb123-132"><a href="lesson-2c-importing-data.html#cb123-132" aria-hidden="true" tabindex="-1"></a><span class="do">## 12      Attchd          1992           Fin           2         420          TA</span></span>
+<span id="cb123-133"><a href="lesson-2c-importing-data.html#cb123-133" aria-hidden="true" tabindex="-1"></a><span class="do">##    Garage Cond Paved Drive Wood Deck SF Open Porch SF Enclosed Porch 3Ssn Porch</span></span>
+<span id="cb123-134"><a href="lesson-2c-importing-data.html#cb123-134" aria-hidden="true" tabindex="-1"></a><span class="do">## 1           TA           P          210            62              0          0</span></span>
+<span id="cb123-135"><a href="lesson-2c-importing-data.html#cb123-135" aria-hidden="true" tabindex="-1"></a><span class="do">## 2           TA           Y          140             0              0          0</span></span>
+<span id="cb123-136"><a href="lesson-2c-importing-data.html#cb123-136" aria-hidden="true" tabindex="-1"></a><span class="do">## 3           TA           Y          393            36              0          0</span></span>
+<span id="cb123-137"><a href="lesson-2c-importing-data.html#cb123-137" aria-hidden="true" tabindex="-1"></a><span class="do">## 4           TA           Y            0             0              0          0</span></span>
+<span id="cb123-138"><a href="lesson-2c-importing-data.html#cb123-138" aria-hidden="true" tabindex="-1"></a><span class="do">## 5           TA           Y          212            34              0          0</span></span>
+<span id="cb123-139"><a href="lesson-2c-importing-data.html#cb123-139" aria-hidden="true" tabindex="-1"></a><span class="do">## 6           TA           Y          360            36              0          0</span></span>
+<span id="cb123-140"><a href="lesson-2c-importing-data.html#cb123-140" aria-hidden="true" tabindex="-1"></a><span class="do">## 7           TA           Y            0             0            170          0</span></span>
+<span id="cb123-141"><a href="lesson-2c-importing-data.html#cb123-141" aria-hidden="true" tabindex="-1"></a><span class="do">## 8           TA           Y            0            82              0          0</span></span>
+<span id="cb123-142"><a href="lesson-2c-importing-data.html#cb123-142" aria-hidden="true" tabindex="-1"></a><span class="do">## 9           TA           Y          237           152              0          0</span></span>
+<span id="cb123-143"><a href="lesson-2c-importing-data.html#cb123-143" aria-hidden="true" tabindex="-1"></a><span class="do">## 10          TA           Y          140            60              0          0</span></span>
+<span id="cb123-144"><a href="lesson-2c-importing-data.html#cb123-144" aria-hidden="true" tabindex="-1"></a><span class="do">## 11          TA           Y          157            84              0          0</span></span>
+<span id="cb123-145"><a href="lesson-2c-importing-data.html#cb123-145" aria-hidden="true" tabindex="-1"></a><span class="do">## 12          TA           Y          483            21              0          0</span></span>
+<span id="cb123-146"><a href="lesson-2c-importing-data.html#cb123-146" aria-hidden="true" tabindex="-1"></a><span class="do">##    Screen Porch Pool Area Pool QC Fence Misc Feature Misc Val Mo Sold Yr Sold</span></span>
+<span id="cb123-147"><a href="lesson-2c-importing-data.html#cb123-147" aria-hidden="true" tabindex="-1"></a><span class="do">## 1             0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       5    2010</span></span>
+<span id="cb123-148"><a href="lesson-2c-importing-data.html#cb123-148" aria-hidden="true" tabindex="-1"></a><span class="do">## 2           120         0    &lt;NA&gt; MnPrv         &lt;NA&gt;        0       6    2010</span></span>
+<span id="cb123-149"><a href="lesson-2c-importing-data.html#cb123-149" aria-hidden="true" tabindex="-1"></a><span class="do">## 3             0         0    &lt;NA&gt;  &lt;NA&gt;         Gar2    12500       6    2010</span></span>
+<span id="cb123-150"><a href="lesson-2c-importing-data.html#cb123-150" aria-hidden="true" tabindex="-1"></a><span class="do">## 4             0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       4    2010</span></span>
+<span id="cb123-151"><a href="lesson-2c-importing-data.html#cb123-151" aria-hidden="true" tabindex="-1"></a><span class="do">## 5             0         0    &lt;NA&gt; MnPrv         &lt;NA&gt;        0       3    2010</span></span>
+<span id="cb123-152"><a href="lesson-2c-importing-data.html#cb123-152" aria-hidden="true" tabindex="-1"></a><span class="do">## 6             0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       6    2010</span></span>
+<span id="cb123-153"><a href="lesson-2c-importing-data.html#cb123-153" aria-hidden="true" tabindex="-1"></a><span class="do">## 7             0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       4    2010</span></span>
+<span id="cb123-154"><a href="lesson-2c-importing-data.html#cb123-154" aria-hidden="true" tabindex="-1"></a><span class="do">## 8           144         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       1    2010</span></span>
+<span id="cb123-155"><a href="lesson-2c-importing-data.html#cb123-155" aria-hidden="true" tabindex="-1"></a><span class="do">## 9             0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       3    2010</span></span>
+<span id="cb123-156"><a href="lesson-2c-importing-data.html#cb123-156" aria-hidden="true" tabindex="-1"></a><span class="do">## 10            0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       6    2010</span></span>
+<span id="cb123-157"><a href="lesson-2c-importing-data.html#cb123-157" aria-hidden="true" tabindex="-1"></a><span class="do">## 11            0         0    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0       4    2010</span></span>
+<span id="cb123-158"><a href="lesson-2c-importing-data.html#cb123-158" aria-hidden="true" tabindex="-1"></a><span class="do">## 12            0         0    &lt;NA&gt; GdPrv         Shed      500       3    2010</span></span>
+<span id="cb123-159"><a href="lesson-2c-importing-data.html#cb123-159" aria-hidden="true" tabindex="-1"></a><span class="do">##    Sale Type Sale Condition SalePrice</span></span>
+<span id="cb123-160"><a href="lesson-2c-importing-data.html#cb123-160" aria-hidden="true" tabindex="-1"></a><span class="do">## 1         WD         Normal    215000</span></span>
+<span id="cb123-161"><a href="lesson-2c-importing-data.html#cb123-161" aria-hidden="true" tabindex="-1"></a><span class="do">## 2         WD         Normal    105000</span></span>
+<span id="cb123-162"><a href="lesson-2c-importing-data.html#cb123-162" aria-hidden="true" tabindex="-1"></a><span class="do">## 3         WD         Normal    172000</span></span>
+<span id="cb123-163"><a href="lesson-2c-importing-data.html#cb123-163" aria-hidden="true" tabindex="-1"></a><span class="do">## 4         WD         Normal    244000</span></span>
+<span id="cb123-164"><a href="lesson-2c-importing-data.html#cb123-164" aria-hidden="true" tabindex="-1"></a><span class="do">## 5         WD         Normal    189900</span></span>
+<span id="cb123-165"><a href="lesson-2c-importing-data.html#cb123-165" aria-hidden="true" tabindex="-1"></a><span class="do">## 6         WD         Normal    195500</span></span>
+<span id="cb123-166"><a href="lesson-2c-importing-data.html#cb123-166" aria-hidden="true" tabindex="-1"></a><span class="do">## 7         WD         Normal    213500</span></span>
+<span id="cb123-167"><a href="lesson-2c-importing-data.html#cb123-167" aria-hidden="true" tabindex="-1"></a><span class="do">## 8         WD         Normal    191500</span></span>
+<span id="cb123-168"><a href="lesson-2c-importing-data.html#cb123-168" aria-hidden="true" tabindex="-1"></a><span class="do">## 9         WD         Normal    236500</span></span>
+<span id="cb123-169"><a href="lesson-2c-importing-data.html#cb123-169" aria-hidden="true" tabindex="-1"></a><span class="do">## 10        WD         Normal    189000</span></span>
+<span id="cb123-170"><a href="lesson-2c-importing-data.html#cb123-170" aria-hidden="true" tabindex="-1"></a><span class="do">## 11        WD         Normal    175900</span></span>
+<span id="cb123-171"><a href="lesson-2c-importing-data.html#cb123-171" aria-hidden="true" tabindex="-1"></a><span class="do">## 12        WD         Normal    185000</span></span>
+<span id="cb123-172"><a href="lesson-2c-importing-data.html#cb123-172" aria-hidden="true" tabindex="-1"></a><span class="do">##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 2918 rows ]</span></span></code></pre></div>
+<p>The differences in the subsetting are not important at this time but the main takeaway is that tibbles are more strict and will behave more consistently then data frames for certain subsetting tasks.</p>
+<div class="tip">
+<p>
+Read more about tibbles <a
+href="https://r4ds.had.co.nz/tibbles.html#tibbles">here</a>.
+</p>
+</div>
+</div>
+<div id="file-paths" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> File paths<a href="lesson-2c-importing-data.html#file-paths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a good time to have a discussion on file paths. It’s important to understand where files exist on your computer and how to reference those paths. There are two main approaches:</p>
+<ul>
+<li>Absolute paths</li>
+<li>Relative paths</li>
+</ul>
+<p>An <strong>absolute path</strong> always contains the root elements and the complete list of directories to locate the specific file or folder. For the ames_raw.csv file, the absolute path on my computer is:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lesson-2c-importing-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb124-2"><a href="lesson-2c-importing-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="do">## here() starts at /Users/b294776/Desktop/Workspace/Training/UC/uc-bana-7025</span></span>
+<span id="cb124-3"><a href="lesson-2c-importing-data.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="lesson-2c-importing-data.html#cb124-4" aria-hidden="true" tabindex="-1"></a>absolute_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&#39;data/ames_raw.csv&#39;</span>)</span>
+<span id="cb124-5"><a href="lesson-2c-importing-data.html#cb124-5" aria-hidden="true" tabindex="-1"></a>absolute_path</span>
+<span id="cb124-6"><a href="lesson-2c-importing-data.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-7025/data/ames_raw.csv&quot;</span></span></code></pre></div>
+<p>I can always use the absolute path in <code>read_csv()</code>:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="lesson-2c-importing-data.html#cb125-1" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(absolute_path)</span>
+<span id="cb125-2"><a href="lesson-2c-importing-data.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
+<span id="cb125-3"><a href="lesson-2c-importing-data.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb125-4"><a href="lesson-2c-importing-data.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb125-5"><a href="lesson-2c-importing-data.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, Land Contour, Uti...</span></span>
+<span id="cb125-6"><a href="lesson-2c-importing-data.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond, Year Built, Y...</span></span>
+<span id="cb125-7"><a href="lesson-2c-importing-data.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb125-8"><a href="lesson-2c-importing-data.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb125-9"><a href="lesson-2c-importing-data.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+<p>In contrast, a relative path is a path built starting from the current location. For example, say that I am operating in a directory called “Project A”. If I’m working in “my_notebook.Rmd” and I have a “my_data.csv” file in that same directory:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb126-1"><a href="lesson-2c-importing-data.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># illustration of the directory layout</span></span>
+<span id="cb126-2"><a href="lesson-2c-importing-data.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Project</span> A</span>
+<span id="cb126-3"><a href="lesson-2c-importing-data.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> my_notebook.Rmd</span>
+<span id="cb126-4"><a href="lesson-2c-importing-data.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> my_data.csv</span></code></pre></div>
+<p>Then I can use this relative path to import this file: <code>read_csv('my_data.csv')</code>. This just means to look for the ‘my_data.csv’ file relative to the current directory that I am in.</p>
+<p>Often, people store data in a “data” directory. If this directory is a subdirectory within my Project A directory:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb127-1"><a href="lesson-2c-importing-data.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># illustration of the directory layout</span></span>
+<span id="cb127-2"><a href="lesson-2c-importing-data.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Project</span> A</span>
+<span id="cb127-3"><a href="lesson-2c-importing-data.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> my_notebook.Rmd</span>
+<span id="cb127-4"><a href="lesson-2c-importing-data.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> data</span>
+<span id="cb127-5"><a href="lesson-2c-importing-data.html#cb127-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> my_data.csv</span></code></pre></div>
+<p>Then I can use this relative path to import this file: <code>read_csv('data/my_data.csv')</code>. This just means to look for the ‘data’ subdirectory relative to the current directory that I am in and then look for the ‘my_data.csv’ file.</p>
+<p>Sometimes, the data directory may not be in the current directory. Sometimes a project directory will look like the following where there is a subdirectory containing multiple notebooks and then another subdirectory containing data assets. If you are working in “notebook1.Rmd” within the notebooks subdirectory, you will need to tell R to go up one directory relative to the notebook you are working in to the main Project A directory and then go down into the data directory.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb128-1"><a href="lesson-2c-importing-data.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># illustration of the directory layout</span></span>
+<span id="cb128-2"><a href="lesson-2c-importing-data.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Project</span> A</span>
+<span id="cb128-3"><a href="lesson-2c-importing-data.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> notebooks</span>
+<span id="cb128-4"><a href="lesson-2c-importing-data.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── notebook1.Rmd</span>
+<span id="cb128-5"><a href="lesson-2c-importing-data.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── notebook2.Rmd</span>
+<span id="cb128-6"><a href="lesson-2c-importing-data.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── notebook3.Rmd</span>
+<span id="cb128-7"><a href="lesson-2c-importing-data.html#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> data</span>
+<span id="cb128-8"><a href="lesson-2c-importing-data.html#cb128-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> my_data.csv</span></code></pre></div>
+<p>I can do this by using dot-notation in my relative path specification - here I use ‘..’ to imply “go up one directory relative to my current location”: <code>read_csv('../data/my_data.csv')</code>.</p>
+<p>Note that the path specified in pd.read_csv() does not need to be a local path. For example, the ames_raw.csv data is located online at <a href="https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv" class="uri">https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv</a>. We can use <code>read_csv()</code> to import directly from this location:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lesson-2c-importing-data.html#cb129-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&#39;https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv&#39;</span></span>
+<span id="cb129-2"><a href="lesson-2c-importing-data.html#cb129-2" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb129-3"><a href="lesson-2c-importing-data.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
+<span id="cb129-4"><a href="lesson-2c-importing-data.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ──────────────────────────────────────────────────────────────</span></span>
+<span id="cb129-5"><a href="lesson-2c-importing-data.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb129-6"><a href="lesson-2c-importing-data.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, Land Contour, Uti...</span></span>
+<span id="cb129-7"><a href="lesson-2c-importing-data.html#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond, Year Built, Y...</span></span>
+<span id="cb129-8"><a href="lesson-2c-importing-data.html#cb129-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb129-9"><a href="lesson-2c-importing-data.html#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb129-10"><a href="lesson-2c-importing-data.html#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+</div>
+<div id="metadata" class="section level3 hasAnchor" number="10.3.3">
+<h3><span class="header-section-number">10.3.3</span> Metadata<a href="lesson-2c-importing-data.html#metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once we’ve imported the data we can get some descriptive metadata about our data frame. For example, we can get the dimensions of our data frame. Here, we see that we have 2,930 rows and 82 columns.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="lesson-2c-importing-data.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ames)</span>
+<span id="cb130-2"><a href="lesson-2c-importing-data.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2930   82</span></span></code></pre></div>
+<p>We can also see all the names of our columns:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="lesson-2c-importing-data.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ames)</span>
+<span id="cb131-2"><a href="lesson-2c-importing-data.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Order&quot;           &quot;PID&quot;             &quot;MS SubClass&quot;     &quot;MS Zoning&quot;      </span></span>
+<span id="cb131-3"><a href="lesson-2c-importing-data.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;Lot Frontage&quot;    &quot;Lot Area&quot;        &quot;Street&quot;          &quot;Alley&quot;          </span></span>
+<span id="cb131-4"><a href="lesson-2c-importing-data.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;Lot Shape&quot;       &quot;Land Contour&quot;    &quot;Utilities&quot;       &quot;Lot Config&quot;     </span></span>
+<span id="cb131-5"><a href="lesson-2c-importing-data.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;Land Slope&quot;      &quot;Neighborhood&quot;    &quot;Condition 1&quot;     &quot;Condition 2&quot;    </span></span>
+<span id="cb131-6"><a href="lesson-2c-importing-data.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] &quot;Bldg Type&quot;       &quot;House Style&quot;     &quot;Overall Qual&quot;    &quot;Overall Cond&quot;   </span></span>
+<span id="cb131-7"><a href="lesson-2c-importing-data.html#cb131-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] &quot;Year Built&quot;      &quot;Year Remod/Add&quot;  &quot;Roof Style&quot;      &quot;Roof Matl&quot;      </span></span>
+<span id="cb131-8"><a href="lesson-2c-importing-data.html#cb131-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] &quot;Exterior 1st&quot;    &quot;Exterior 2nd&quot;    &quot;Mas Vnr Type&quot;    &quot;Mas Vnr Area&quot;   </span></span>
+<span id="cb131-9"><a href="lesson-2c-importing-data.html#cb131-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] &quot;Exter Qual&quot;      &quot;Exter Cond&quot;      &quot;Foundation&quot;      &quot;Bsmt Qual&quot;      </span></span>
+<span id="cb131-10"><a href="lesson-2c-importing-data.html#cb131-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] &quot;Bsmt Cond&quot;       &quot;Bsmt Exposure&quot;   &quot;BsmtFin Type 1&quot;  &quot;BsmtFin SF 1&quot;   </span></span>
+<span id="cb131-11"><a href="lesson-2c-importing-data.html#cb131-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [37] &quot;BsmtFin Type 2&quot;  &quot;BsmtFin SF 2&quot;    &quot;Bsmt Unf SF&quot;     &quot;Total Bsmt SF&quot;  </span></span>
+<span id="cb131-12"><a href="lesson-2c-importing-data.html#cb131-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [41] &quot;Heating&quot;         &quot;Heating QC&quot;      &quot;Central Air&quot;     &quot;Electrical&quot;     </span></span>
+<span id="cb131-13"><a href="lesson-2c-importing-data.html#cb131-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [45] &quot;1st Flr SF&quot;      &quot;2nd Flr SF&quot;      &quot;Low Qual Fin SF&quot; &quot;Gr Liv Area&quot;    </span></span>
+<span id="cb131-14"><a href="lesson-2c-importing-data.html#cb131-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [49] &quot;Bsmt Full Bath&quot;  &quot;Bsmt Half Bath&quot;  &quot;Full Bath&quot;       &quot;Half Bath&quot;      </span></span>
+<span id="cb131-15"><a href="lesson-2c-importing-data.html#cb131-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [53] &quot;Bedroom AbvGr&quot;   &quot;Kitchen AbvGr&quot;   &quot;Kitchen Qual&quot;    &quot;TotRms AbvGrd&quot;  </span></span>
+<span id="cb131-16"><a href="lesson-2c-importing-data.html#cb131-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [57] &quot;Functional&quot;      &quot;Fireplaces&quot;      &quot;Fireplace Qu&quot;    &quot;Garage Type&quot;    </span></span>
+<span id="cb131-17"><a href="lesson-2c-importing-data.html#cb131-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [61] &quot;Garage Yr Blt&quot;   &quot;Garage Finish&quot;   &quot;Garage Cars&quot;     &quot;Garage Area&quot;    </span></span>
+<span id="cb131-18"><a href="lesson-2c-importing-data.html#cb131-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [65] &quot;Garage Qual&quot;     &quot;Garage Cond&quot;     &quot;Paved Drive&quot;     &quot;Wood Deck SF&quot;   </span></span>
+<span id="cb131-19"><a href="lesson-2c-importing-data.html#cb131-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [69] &quot;Open Porch SF&quot;   &quot;Enclosed Porch&quot;  &quot;3Ssn Porch&quot;      &quot;Screen Porch&quot;   </span></span>
+<span id="cb131-20"><a href="lesson-2c-importing-data.html#cb131-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [73] &quot;Pool Area&quot;       &quot;Pool QC&quot;         &quot;Fence&quot;           &quot;Misc Feature&quot;   </span></span>
+<span id="cb131-21"><a href="lesson-2c-importing-data.html#cb131-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [77] &quot;Misc Val&quot;        &quot;Mo Sold&quot;         &quot;Yr Sold&quot;         &quot;Sale Type&quot;      </span></span>
+<span id="cb131-22"><a href="lesson-2c-importing-data.html#cb131-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [81] &quot;Sale Condition&quot;  &quot;SalePrice&quot;</span></span></code></pre></div>
+<p>You may have also noticed the message each time we read in the data set that identified the delimiter and it also showed the following, which states that when we read in the data, 45 variables were read in as character strings and 37 were read in as double floating points.</p>
+<pre><code>chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, Land Contour, Utilities,...
+dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond, Year Built, Year Rem...</code></pre>
+<p>There was also a message that stated <em>“use <code>spec()</code> to retrieve the full column specification for this data.”</em> When we do so we see that it lists all the columns and the data type that were read in as.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="lesson-2c-importing-data.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span>(ames)</span>
+<span id="cb133-2"><a href="lesson-2c-importing-data.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="do">## cols(</span></span>
+<span id="cb133-3"><a href="lesson-2c-importing-data.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Order = col_double(),</span></span>
+<span id="cb133-4"><a href="lesson-2c-importing-data.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   PID = col_character(),</span></span>
+<span id="cb133-5"><a href="lesson-2c-importing-data.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   `MS SubClass` = col_character(),</span></span>
+<span id="cb133-6"><a href="lesson-2c-importing-data.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   `MS Zoning` = col_character(),</span></span>
+<span id="cb133-7"><a href="lesson-2c-importing-data.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Lot Frontage` = col_double(),</span></span>
+<span id="cb133-8"><a href="lesson-2c-importing-data.html#cb133-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Lot Area` = col_double(),</span></span>
+<span id="cb133-9"><a href="lesson-2c-importing-data.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   Street = col_character(),</span></span>
+<span id="cb133-10"><a href="lesson-2c-importing-data.html#cb133-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   Alley = col_character(),</span></span>
+<span id="cb133-11"><a href="lesson-2c-importing-data.html#cb133-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Lot Shape` = col_character(),</span></span>
+<span id="cb133-12"><a href="lesson-2c-importing-data.html#cb133-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Land Contour` = col_character(),</span></span>
+<span id="cb133-13"><a href="lesson-2c-importing-data.html#cb133-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   Utilities = col_character(),</span></span>
+<span id="cb133-14"><a href="lesson-2c-importing-data.html#cb133-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Lot Config` = col_character(),</span></span>
+<span id="cb133-15"><a href="lesson-2c-importing-data.html#cb133-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Land Slope` = col_character(),</span></span>
+<span id="cb133-16"><a href="lesson-2c-importing-data.html#cb133-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   Neighborhood = col_character(),</span></span>
+<span id="cb133-17"><a href="lesson-2c-importing-data.html#cb133-17" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Condition 1` = col_character(),</span></span>
+<span id="cb133-18"><a href="lesson-2c-importing-data.html#cb133-18" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Condition 2` = col_character(),</span></span>
+<span id="cb133-19"><a href="lesson-2c-importing-data.html#cb133-19" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bldg Type` = col_character(),</span></span>
+<span id="cb133-20"><a href="lesson-2c-importing-data.html#cb133-20" aria-hidden="true" tabindex="-1"></a><span class="do">##   `House Style` = col_character(),</span></span>
+<span id="cb133-21"><a href="lesson-2c-importing-data.html#cb133-21" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Overall Qual` = col_double(),</span></span>
+<span id="cb133-22"><a href="lesson-2c-importing-data.html#cb133-22" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Overall Cond` = col_double(),</span></span>
+<span id="cb133-23"><a href="lesson-2c-importing-data.html#cb133-23" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Year Built` = col_double(),</span></span>
+<span id="cb133-24"><a href="lesson-2c-importing-data.html#cb133-24" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Year Remod/Add` = col_double(),</span></span>
+<span id="cb133-25"><a href="lesson-2c-importing-data.html#cb133-25" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Roof Style` = col_character(),</span></span>
+<span id="cb133-26"><a href="lesson-2c-importing-data.html#cb133-26" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Roof Matl` = col_character(),</span></span>
+<span id="cb133-27"><a href="lesson-2c-importing-data.html#cb133-27" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Exterior 1st` = col_character(),</span></span>
+<span id="cb133-28"><a href="lesson-2c-importing-data.html#cb133-28" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Exterior 2nd` = col_character(),</span></span>
+<span id="cb133-29"><a href="lesson-2c-importing-data.html#cb133-29" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Mas Vnr Type` = col_character(),</span></span>
+<span id="cb133-30"><a href="lesson-2c-importing-data.html#cb133-30" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Mas Vnr Area` = col_double(),</span></span>
+<span id="cb133-31"><a href="lesson-2c-importing-data.html#cb133-31" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Exter Qual` = col_character(),</span></span>
+<span id="cb133-32"><a href="lesson-2c-importing-data.html#cb133-32" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Exter Cond` = col_character(),</span></span>
+<span id="cb133-33"><a href="lesson-2c-importing-data.html#cb133-33" aria-hidden="true" tabindex="-1"></a><span class="do">##   Foundation = col_character(),</span></span>
+<span id="cb133-34"><a href="lesson-2c-importing-data.html#cb133-34" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Qual` = col_character(),</span></span>
+<span id="cb133-35"><a href="lesson-2c-importing-data.html#cb133-35" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Cond` = col_character(),</span></span>
+<span id="cb133-36"><a href="lesson-2c-importing-data.html#cb133-36" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Exposure` = col_character(),</span></span>
+<span id="cb133-37"><a href="lesson-2c-importing-data.html#cb133-37" aria-hidden="true" tabindex="-1"></a><span class="do">##   `BsmtFin Type 1` = col_character(),</span></span>
+<span id="cb133-38"><a href="lesson-2c-importing-data.html#cb133-38" aria-hidden="true" tabindex="-1"></a><span class="do">##   `BsmtFin SF 1` = col_double(),</span></span>
+<span id="cb133-39"><a href="lesson-2c-importing-data.html#cb133-39" aria-hidden="true" tabindex="-1"></a><span class="do">##   `BsmtFin Type 2` = col_character(),</span></span>
+<span id="cb133-40"><a href="lesson-2c-importing-data.html#cb133-40" aria-hidden="true" tabindex="-1"></a><span class="do">##   `BsmtFin SF 2` = col_double(),</span></span>
+<span id="cb133-41"><a href="lesson-2c-importing-data.html#cb133-41" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Unf SF` = col_double(),</span></span>
+<span id="cb133-42"><a href="lesson-2c-importing-data.html#cb133-42" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Total Bsmt SF` = col_double(),</span></span>
+<span id="cb133-43"><a href="lesson-2c-importing-data.html#cb133-43" aria-hidden="true" tabindex="-1"></a><span class="do">##   Heating = col_character(),</span></span>
+<span id="cb133-44"><a href="lesson-2c-importing-data.html#cb133-44" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Heating QC` = col_character(),</span></span>
+<span id="cb133-45"><a href="lesson-2c-importing-data.html#cb133-45" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Central Air` = col_character(),</span></span>
+<span id="cb133-46"><a href="lesson-2c-importing-data.html#cb133-46" aria-hidden="true" tabindex="-1"></a><span class="do">##   Electrical = col_character(),</span></span>
+<span id="cb133-47"><a href="lesson-2c-importing-data.html#cb133-47" aria-hidden="true" tabindex="-1"></a><span class="do">##   `1st Flr SF` = col_double(),</span></span>
+<span id="cb133-48"><a href="lesson-2c-importing-data.html#cb133-48" aria-hidden="true" tabindex="-1"></a><span class="do">##   `2nd Flr SF` = col_double(),</span></span>
+<span id="cb133-49"><a href="lesson-2c-importing-data.html#cb133-49" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Low Qual Fin SF` = col_double(),</span></span>
+<span id="cb133-50"><a href="lesson-2c-importing-data.html#cb133-50" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Gr Liv Area` = col_double(),</span></span>
+<span id="cb133-51"><a href="lesson-2c-importing-data.html#cb133-51" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Full Bath` = col_double(),</span></span>
+<span id="cb133-52"><a href="lesson-2c-importing-data.html#cb133-52" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bsmt Half Bath` = col_double(),</span></span>
+<span id="cb133-53"><a href="lesson-2c-importing-data.html#cb133-53" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Full Bath` = col_double(),</span></span>
+<span id="cb133-54"><a href="lesson-2c-importing-data.html#cb133-54" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Half Bath` = col_double(),</span></span>
+<span id="cb133-55"><a href="lesson-2c-importing-data.html#cb133-55" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Bedroom AbvGr` = col_double(),</span></span>
+<span id="cb133-56"><a href="lesson-2c-importing-data.html#cb133-56" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Kitchen AbvGr` = col_double(),</span></span>
+<span id="cb133-57"><a href="lesson-2c-importing-data.html#cb133-57" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Kitchen Qual` = col_character(),</span></span>
+<span id="cb133-58"><a href="lesson-2c-importing-data.html#cb133-58" aria-hidden="true" tabindex="-1"></a><span class="do">##   `TotRms AbvGrd` = col_double(),</span></span>
+<span id="cb133-59"><a href="lesson-2c-importing-data.html#cb133-59" aria-hidden="true" tabindex="-1"></a><span class="do">##   Functional = col_character(),</span></span>
+<span id="cb133-60"><a href="lesson-2c-importing-data.html#cb133-60" aria-hidden="true" tabindex="-1"></a><span class="do">##   Fireplaces = col_double(),</span></span>
+<span id="cb133-61"><a href="lesson-2c-importing-data.html#cb133-61" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Fireplace Qu` = col_character(),</span></span>
+<span id="cb133-62"><a href="lesson-2c-importing-data.html#cb133-62" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Type` = col_character(),</span></span>
+<span id="cb133-63"><a href="lesson-2c-importing-data.html#cb133-63" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Yr Blt` = col_double(),</span></span>
+<span id="cb133-64"><a href="lesson-2c-importing-data.html#cb133-64" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Finish` = col_character(),</span></span>
+<span id="cb133-65"><a href="lesson-2c-importing-data.html#cb133-65" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Cars` = col_double(),</span></span>
+<span id="cb133-66"><a href="lesson-2c-importing-data.html#cb133-66" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Area` = col_double(),</span></span>
+<span id="cb133-67"><a href="lesson-2c-importing-data.html#cb133-67" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Qual` = col_character(),</span></span>
+<span id="cb133-68"><a href="lesson-2c-importing-data.html#cb133-68" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Garage Cond` = col_character(),</span></span>
+<span id="cb133-69"><a href="lesson-2c-importing-data.html#cb133-69" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Paved Drive` = col_character(),</span></span>
+<span id="cb133-70"><a href="lesson-2c-importing-data.html#cb133-70" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Wood Deck SF` = col_double(),</span></span>
+<span id="cb133-71"><a href="lesson-2c-importing-data.html#cb133-71" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Open Porch SF` = col_double(),</span></span>
+<span id="cb133-72"><a href="lesson-2c-importing-data.html#cb133-72" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Enclosed Porch` = col_double(),</span></span>
+<span id="cb133-73"><a href="lesson-2c-importing-data.html#cb133-73" aria-hidden="true" tabindex="-1"></a><span class="do">##   `3Ssn Porch` = col_double(),</span></span>
+<span id="cb133-74"><a href="lesson-2c-importing-data.html#cb133-74" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Screen Porch` = col_double(),</span></span>
+<span id="cb133-75"><a href="lesson-2c-importing-data.html#cb133-75" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Pool Area` = col_double(),</span></span>
+<span id="cb133-76"><a href="lesson-2c-importing-data.html#cb133-76" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Pool QC` = col_character(),</span></span>
+<span id="cb133-77"><a href="lesson-2c-importing-data.html#cb133-77" aria-hidden="true" tabindex="-1"></a><span class="do">##   Fence = col_character(),</span></span>
+<span id="cb133-78"><a href="lesson-2c-importing-data.html#cb133-78" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Misc Feature` = col_character(),</span></span>
+<span id="cb133-79"><a href="lesson-2c-importing-data.html#cb133-79" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Misc Val` = col_double(),</span></span>
+<span id="cb133-80"><a href="lesson-2c-importing-data.html#cb133-80" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Mo Sold` = col_double(),</span></span>
+<span id="cb133-81"><a href="lesson-2c-importing-data.html#cb133-81" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Yr Sold` = col_double(),</span></span>
+<span id="cb133-82"><a href="lesson-2c-importing-data.html#cb133-82" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Sale Type` = col_character(),</span></span>
+<span id="cb133-83"><a href="lesson-2c-importing-data.html#cb133-83" aria-hidden="true" tabindex="-1"></a><span class="do">##   `Sale Condition` = col_character(),</span></span>
+<span id="cb133-84"><a href="lesson-2c-importing-data.html#cb133-84" aria-hidden="true" tabindex="-1"></a><span class="do">##   SalePrice = col_double()</span></span>
+<span id="cb133-85"><a href="lesson-2c-importing-data.html#cb133-85" aria-hidden="true" tabindex="-1"></a><span class="do">## )</span></span></code></pre></div>
+<p>Lastly, its always good to understand if, and how many, missing values are in the data set we can do this easily by running the following, which shows 13,997 elements are missing. That’s a lot!</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lesson-2c-importing-data.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(ames))</span>
+<span id="cb134-2"><a href="lesson-2c-importing-data.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 13997</span></span></code></pre></div>
+<p>We can even apply some operators and indexing procedures we learned in previous lessons to quickly view all columns with missing values and get a total sum of the missing values within those columns.</p>
+<div class="note">
+<p>
+In future modules we’ll learn different ways we can handle these
+missing values.
+</p>
+</div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lesson-2c-importing-data.html#cb135-1" aria-hidden="true" tabindex="-1"></a>missing_values <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">is.na</span>(ames))</span>
+<span id="cb135-2"><a href="lesson-2c-importing-data.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(missing_values[missing_values <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb135-3"><a href="lesson-2c-importing-data.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="do">##        Pool QC   Misc Feature          Alley          Fence   Fireplace Qu </span></span>
+<span id="cb135-4"><a href="lesson-2c-importing-data.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="do">##           2917           2824           2732           2358           1422 </span></span>
+<span id="cb135-5"><a href="lesson-2c-importing-data.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   Lot Frontage  Garage Yr Blt  Garage Finish    Garage Qual    Garage Cond </span></span>
+<span id="cb135-6"><a href="lesson-2c-importing-data.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="do">##            490            159            159            159            159 </span></span>
+<span id="cb135-7"><a href="lesson-2c-importing-data.html#cb135-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    Garage Type  Bsmt Exposure BsmtFin Type 2      Bsmt Qual      Bsmt Cond </span></span>
+<span id="cb135-8"><a href="lesson-2c-importing-data.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="do">##            157             83             81             80             80 </span></span>
+<span id="cb135-9"><a href="lesson-2c-importing-data.html#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="do">## BsmtFin Type 1   Mas Vnr Type   Mas Vnr Area Bsmt Full Bath Bsmt Half Bath </span></span>
+<span id="cb135-10"><a href="lesson-2c-importing-data.html#cb135-10" aria-hidden="true" tabindex="-1"></a><span class="do">##             80             23             23              2              2 </span></span>
+<span id="cb135-11"><a href="lesson-2c-importing-data.html#cb135-11" aria-hidden="true" tabindex="-1"></a><span class="do">##   BsmtFin SF 1   BsmtFin SF 2    Bsmt Unf SF  Total Bsmt SF     Electrical </span></span>
+<span id="cb135-12"><a href="lesson-2c-importing-data.html#cb135-12" aria-hidden="true" tabindex="-1"></a><span class="do">##              1              1              1              1              1 </span></span>
+<span id="cb135-13"><a href="lesson-2c-importing-data.html#cb135-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    Garage Cars    Garage Area </span></span>
+<span id="cb135-14"><a href="lesson-2c-importing-data.html#cb135-14" aria-hidden="true" tabindex="-1"></a><span class="do">##              1              1</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-18" class="section level3 hasAnchor" number="10.3.4">
+<h3><span class="header-section-number">10.3.4</span> Knowledge check<a href="lesson-2c-importing-data.html#knowledge-check-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Check out the help documentation for <code>read_csv()</code> by
+executing <code>?read_csv</code>. What parameter in
+<code>read_csv()</code> allows us to specify values that represent
+missing values?
+</li>
+<li>
+Read in this <a
+href="https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/energy_consumption.csv">energy_consumption.csv</a>
+file.
+</li>
+<li>
+What are the dimensions of this data? What data type is each
+column?
+</li>
+<li>
+Apply <code>dplyr::glimpse(ames)</code>. What information does this
+provide?
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="excel-files" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Excel files<a href="lesson-2c-importing-data.html#excel-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>With Excel still being the spreadsheet software of choice its important to be able to efficiently import and export data from these files. Often, many users will simply resort to exporting the Excel file as a CSV file and then import into R using <code>readxl::read_excel</code>; however, this is far from efficient. This section will teach you how to eliminate the CSV step and to import data directly from Excel using the <strong>readxl</strong> package.</p>
+<p>To illustrate, we’ll import so mock grocery store products data located in a products.xlsx file.</p>
+<p>To read in Excel data you will use the <code>excel_sheets()</code> functions. This allows you to read the names of the different worksheets in the Excel workbook and identify the specific worksheet of interest and then specify that in read_excel.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="lesson-2c-importing-data.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb136-2"><a href="lesson-2c-importing-data.html#cb136-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="lesson-2c-importing-data.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&#39;data/products.xlsx&#39;</span>)</span>
+<span id="cb136-4"><a href="lesson-2c-importing-data.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;metadata&quot;      &quot;products data&quot; &quot;grocery list&quot;</span></span></code></pre></div>
+<div class="warning">
+<p>
+If you don’t explicitly specify a sheet then the first worksheet will
+be imported.
+</p>
+</div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="lesson-2c-importing-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/products.xlsx&#39;</span>, <span class="at">sheet =</span> <span class="st">&#39;products data&#39;</span>)</span>
+<span id="cb137-2"><a href="lesson-2c-importing-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a>products</span>
+<span id="cb137-3"><a href="lesson-2c-importing-data.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 151,141 × 5</span></span>
+<span id="cb137-4"><a href="lesson-2c-importing-data.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_num department commodity brand_ty x5   </span></span>
+<span id="cb137-5"><a href="lesson-2c-importing-data.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="do">##          &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;</span></span>
+<span id="cb137-6"><a href="lesson-2c-importing-data.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1       92993 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-7"><a href="lesson-2c-importing-data.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2       93924 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-8"><a href="lesson-2c-importing-data.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3       94272 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-9"><a href="lesson-2c-importing-data.html#cb137-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4       94299 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-10"><a href="lesson-2c-importing-data.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5       94594 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-11"><a href="lesson-2c-importing-data.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6       94606 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-12"><a href="lesson-2c-importing-data.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7       94613 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-13"><a href="lesson-2c-importing-data.html#cb137-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8       95625 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-14"><a href="lesson-2c-importing-data.html#cb137-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9       96152 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-15"><a href="lesson-2c-importing-data.html#cb137-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10       96153 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb137-16"><a href="lesson-2c-importing-data.html#cb137-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 151,131 more rows</span></span></code></pre></div>
+</div>
+<div id="sql-databases" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> SQL databases<a href="lesson-2c-importing-data.html#sql-databases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Many organizations continue to use relational databases along with SQL to interact with these data assets.</p>
+<div class="note">
+<p>
+If you are unfamiliar with relational databases and SQL then <a
+href="https://datacarpentry.org/sql-ecology-lesson/00-sql-introduction/index.html">this
+is a quick read</a> that explains the benefits of these tools.
+</p>
+</div>
+<p>R can connect to almost any existing database type. Most common database types have R packages that allow you to connect to them (e.g., RSQLite, RMySQL, etc). Furthermore, the <a href="https://dbi.r-dbi.org/">DBI</a> and <a href="https://dbplyr.tidyverse.org/">dbplyr</a> packages support connecting to the widely-used open source databases <a href="https://sqlite.org/">sqlite</a>, <a href="https://www.mysql.com/">mysql</a> and <a href="https://www.postgresql.org/">postgresql</a>, as well as Google’s <a href="https://cloud.google.com/bigquery/">bigquery</a>, and it can also be extended to other database types .</p>
+<div class="tip">
+<p>
+RStudio has created a <a href="http://db.rstudio.com/">website</a>
+that provides documentation and best practices to work on database
+interfaces.
+</p>
+</div>
+<p>In this example I will illustrate connecting to a local sqlite database. First, let’s load the libraries we’ll need:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="lesson-2c-importing-data.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb138-2"><a href="lesson-2c-importing-data.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb138-3"><a href="lesson-2c-importing-data.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: &#39;dbplyr&#39;</span></span>
+<span id="cb138-4"><a href="lesson-2c-importing-data.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="do">## The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb138-5"><a href="lesson-2c-importing-data.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb138-6"><a href="lesson-2c-importing-data.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     ident, sql</span></span>
+<span id="cb138-7"><a href="lesson-2c-importing-data.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb138-8"><a href="lesson-2c-importing-data.html#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div>
+<p>The following illustrates with the example <a href="https://www.sqlitetutorial.net/sqlite-sample-database/">Chinook Database</a>, which I’ve downloaded to my data directory.</p>
+<div class="note">
+<p>
+The following uses 2 functions that talk to the SQLite database.
+<code>dbconnect()</code> comes from the <strong>DBI</strong> package and
+is not something that you’ll use directly as a user. It simply allows R
+to send commands to databases irrespective of the database management
+system used. The <code>SQLite()</code> function from the
+<strong>RSQLite</strong> package allows R to interface with SQLite
+databases.
+</p>
+</div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="lesson-2c-importing-data.html#cb139-1" aria-hidden="true" tabindex="-1"></a>chinook <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">&quot;data/chinook.db&quot;</span>)</span></code></pre></div>
+<p>This command does not load the data into the R session (as the <code>read_csv()</code> function did). Instead, it merely instructs R to connect to the SQLite database contained in the chinook.db file. Using a similar approach, you could connect to many other database management systems that are supported by R including MySQL, PostgreSQL, BigQuery, etc.</p>
+<p>Let’s take a closer look at the chinook database we just connected to:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="lesson-2c-importing-data.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">src_dbi</span>(chinook)</span>
+<span id="cb140-2"><a href="lesson-2c-importing-data.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="do">## src:  sqlite 3.38.5 [/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-7025/data/chinook.db]</span></span>
+<span id="cb140-3"><a href="lesson-2c-importing-data.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="do">## tbls: albums, artists, customers, employees, genres, invoice_items, invoices,</span></span>
+<span id="cb140-4"><a href="lesson-2c-importing-data.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   media_types, playlist_track, playlists, sqlite_sequence, sqlite_stat1, tracks</span></span></code></pre></div>
+<p>Just like a spreadsheet with multiple worksheets, a SQLite database can contain multiple tables. In this case there are several tables listed in the tbls row in the output above:</p>
+<ul>
+<li>albums</li>
+<li>artists</li>
+<li>customers</li>
+<li>etc.</li>
+</ul>
+<p>Once you’ve made the connection, you can use <code>tbl()</code> to read in the “tracks” table directly as a data frame.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="lesson-2c-importing-data.html#cb141-1" aria-hidden="true" tabindex="-1"></a>tracks <span class="ot">&lt;-</span> <span class="fu">tbl</span>(chinook, <span class="st">&#39;tracks&#39;</span>)</span></code></pre></div>
+<p>If you are familiar with SQL then you can even pass a SQL query directly in the <code>tbl()</code> call using <strong>dbplyr</strong>’s <code>sql()</code>. For example, the following SQL query:</p>
+<ol style="list-style-type: decimal">
+<li>SELECTS the name, composer, and milliseconds columns,</li>
+<li>FROM the tracks table,</li>
+<li>WHERE observations in the milliseconds column are greater than 200,000 and WHERE observations in the composer column are not missing (NULL)</li>
+</ol>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="lesson-2c-importing-data.html#cb142-1" aria-hidden="true" tabindex="-1"></a>sql_query <span class="ot">&lt;-</span> <span class="st">&quot;SELECT name, composer, milliseconds FROM tracks WHERE milliseconds &gt; 200000 and composer is not null&quot;</span></span>
+<span id="cb142-2"><a href="lesson-2c-importing-data.html#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="lesson-2c-importing-data.html#cb142-3" aria-hidden="true" tabindex="-1"></a>long_tracks <span class="ot">&lt;-</span> <span class="fu">tbl</span>(chinook, <span class="fu">sql</span>(sql_query))</span>
+<span id="cb142-4"><a href="lesson-2c-importing-data.html#cb142-4" aria-hidden="true" tabindex="-1"></a>long_tracks</span>
+<span id="cb142-5"><a href="lesson-2c-importing-data.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # Source:   SQL [?? x 3]</span></span>
+<span id="cb142-6"><a href="lesson-2c-importing-data.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Database: sqlite 3.38.5</span></span>
+<span id="cb142-7"><a href="lesson-2c-importing-data.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="do">## #   [/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-7025/data/chinook.db]</span></span>
+<span id="cb142-8"><a href="lesson-2c-importing-data.html#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    name                                    composer                       milliseconds</span></span>
+<span id="cb142-9"><a href="lesson-2c-importing-data.html#cb142-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                                   &lt;chr&gt;                                 &lt;int&gt;</span></span>
+<span id="cb142-10"><a href="lesson-2c-importing-data.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 For Those About To Rock (We Salute You) Angus Young, Malcolm Young, B…       343719</span></span>
+<span id="cb142-11"><a href="lesson-2c-importing-data.html#cb142-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Fast As a Shark                         F. Baltes, S. Kaufman, U. Dir…       230619</span></span>
+<span id="cb142-12"><a href="lesson-2c-importing-data.html#cb142-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Restless and Wild                       F. Baltes, R.A. Smith-Diesel,…       252051</span></span>
+<span id="cb142-13"><a href="lesson-2c-importing-data.html#cb142-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Princess of the Dawn                    Deaffy &amp; R.A. Smith-Diesel           375418</span></span>
+<span id="cb142-14"><a href="lesson-2c-importing-data.html#cb142-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Put The Finger On You                   Angus Young, Malcolm Young, B…       205662</span></span>
+<span id="cb142-15"><a href="lesson-2c-importing-data.html#cb142-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Let&#39;s Get It Up                         Angus Young, Malcolm Young, B…       233926</span></span>
+<span id="cb142-16"><a href="lesson-2c-importing-data.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Inject The Venom                        Angus Young, Malcolm Young, B…       210834</span></span>
+<span id="cb142-17"><a href="lesson-2c-importing-data.html#cb142-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Snowballed                              Angus Young, Malcolm Young, B…       203102</span></span>
+<span id="cb142-18"><a href="lesson-2c-importing-data.html#cb142-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Evil Walks                              Angus Young, Malcolm Young, B…       263497</span></span>
+<span id="cb142-19"><a href="lesson-2c-importing-data.html#cb142-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Breaking The Rules                      Angus Young, Malcolm Young, B…       263288</span></span>
+<span id="cb142-20"><a href="lesson-2c-importing-data.html#cb142-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with more rows</span></span></code></pre></div>
+</div>
+<div id="many-other-file-types" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Many other file types<a href="lesson-2c-importing-data.html#many-other-file-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are many other file types that you may encounter in your career. Most of which we can import into R one way or another. For example the <a href="https://haven.tidyverse.org/"><strong>haven</strong></a> package reads SPSS, Stata, and SAS files, <a href="https://cran.r-project.org/web/packages/xml2/index.html"><strong>xml2</strong></a> allows you to read in XML, and <a href="https://rvest.tidyverse.org/"><strong>rvest</strong></a> helps to scrape data from HTML web pages.</p>
+<p>Two non-tabular file types you may experience in practice are JSON files and R object files.</p>
+<div id="json-files" class="section level3 hasAnchor" number="10.6.1">
+<h3><span class="header-section-number">10.6.1</span> JSON files<a href="lesson-2c-importing-data.html#json-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://en.wikipedia.org/wiki/JSON">JSON files</a> are non-tabular data files that are popular in data engineering due to their space efficiency and flexibility. Here is an example JSON file:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb143-1"><a href="lesson-2c-importing-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb143-2"><a href="lesson-2c-importing-data.html#cb143-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;planeId&quot;</span><span class="fu">:</span> <span class="st">&quot;1xc2345g&quot;</span><span class="fu">,</span></span>
+<span id="cb143-3"><a href="lesson-2c-importing-data.html#cb143-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;manufacturerDetails&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb143-4"><a href="lesson-2c-importing-data.html#cb143-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;manufacturer&quot;</span><span class="fu">:</span> <span class="st">&quot;Airbus&quot;</span><span class="fu">,</span></span>
+<span id="cb143-5"><a href="lesson-2c-importing-data.html#cb143-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;A330&quot;</span><span class="fu">,</span></span>
+<span id="cb143-6"><a href="lesson-2c-importing-data.html#cb143-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;year&quot;</span><span class="fu">:</span> <span class="dv">1999</span></span>
+<span id="cb143-7"><a href="lesson-2c-importing-data.html#cb143-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb143-8"><a href="lesson-2c-importing-data.html#cb143-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;airlineDetails&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb143-9"><a href="lesson-2c-importing-data.html#cb143-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;currentAirline&quot;</span><span class="fu">:</span> <span class="st">&quot;Southwest&quot;</span><span class="fu">,</span></span>
+<span id="cb143-10"><a href="lesson-2c-importing-data.html#cb143-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;previousAirlines&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb143-11"><a href="lesson-2c-importing-data.html#cb143-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;1st&quot;</span><span class="fu">:</span> <span class="st">&quot;Delta&quot;</span></span>
+<span id="cb143-12"><a href="lesson-2c-importing-data.html#cb143-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">},</span></span>
+<span id="cb143-13"><a href="lesson-2c-importing-data.html#cb143-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;lastPurchased&quot;</span><span class="fu">:</span> <span class="dv">2013</span></span>
+<span id="cb143-14"><a href="lesson-2c-importing-data.html#cb143-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb143-15"><a href="lesson-2c-importing-data.html#cb143-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;numberOfFlights&quot;</span><span class="fu">:</span> <span class="dv">4654</span></span>
+<span id="cb143-16"><a href="lesson-2c-importing-data.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>JSON Files can be imported using the <a href="https://github.com/jeroen/jsonlite">jsonlite</a> library.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="lesson-2c-importing-data.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb144-2"><a href="lesson-2c-importing-data.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb144-3"><a href="lesson-2c-importing-data.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: &#39;jsonlite&#39;</span></span>
+<span id="cb144-4"><a href="lesson-2c-importing-data.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="do">## The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb144-5"><a href="lesson-2c-importing-data.html#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb144-6"><a href="lesson-2c-importing-data.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     flatten</span></span>
+<span id="cb144-7"><a href="lesson-2c-importing-data.html#cb144-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-8"><a href="lesson-2c-importing-data.html#cb144-8" aria-hidden="true" tabindex="-1"></a>imported_json <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&#39;data/json_example.json&#39;</span>)</span></code></pre></div>
+<p>Since JSON files can have multiple dimensions, jsonlite will import JSON files as a list since that is the most flexible data structure in R.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-2c-importing-data.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(imported_json)</span>
+<span id="cb145-2"><a href="lesson-2c-importing-data.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;list&quot;</span></span></code></pre></div>
+<p>And we can view the data:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lesson-2c-importing-data.html#cb146-1" aria-hidden="true" tabindex="-1"></a>imported_json</span>
+<span id="cb146-2"><a href="lesson-2c-importing-data.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="do">## $planeId</span></span>
+<span id="cb146-3"><a href="lesson-2c-importing-data.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;1xc2345g&quot;</span></span>
+<span id="cb146-4"><a href="lesson-2c-importing-data.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-5"><a href="lesson-2c-importing-data.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="do">## $manufacturerDetails</span></span>
+<span id="cb146-6"><a href="lesson-2c-importing-data.html#cb146-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $manufacturerDetails$manufacturer</span></span>
+<span id="cb146-7"><a href="lesson-2c-importing-data.html#cb146-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Airbus&quot;</span></span>
+<span id="cb146-8"><a href="lesson-2c-importing-data.html#cb146-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-9"><a href="lesson-2c-importing-data.html#cb146-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $manufacturerDetails$model</span></span>
+<span id="cb146-10"><a href="lesson-2c-importing-data.html#cb146-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;A330&quot;</span></span>
+<span id="cb146-11"><a href="lesson-2c-importing-data.html#cb146-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-12"><a href="lesson-2c-importing-data.html#cb146-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $manufacturerDetails$year</span></span>
+<span id="cb146-13"><a href="lesson-2c-importing-data.html#cb146-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1999</span></span>
+<span id="cb146-14"><a href="lesson-2c-importing-data.html#cb146-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-15"><a href="lesson-2c-importing-data.html#cb146-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-16"><a href="lesson-2c-importing-data.html#cb146-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $airlineDetails</span></span>
+<span id="cb146-17"><a href="lesson-2c-importing-data.html#cb146-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $airlineDetails$currentAirline</span></span>
+<span id="cb146-18"><a href="lesson-2c-importing-data.html#cb146-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Southwest&quot;</span></span>
+<span id="cb146-19"><a href="lesson-2c-importing-data.html#cb146-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-20"><a href="lesson-2c-importing-data.html#cb146-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $airlineDetails$previousAirlines</span></span>
+<span id="cb146-21"><a href="lesson-2c-importing-data.html#cb146-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $airlineDetails$previousAirlines$`1st`</span></span>
+<span id="cb146-22"><a href="lesson-2c-importing-data.html#cb146-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Delta&quot;</span></span>
+<span id="cb146-23"><a href="lesson-2c-importing-data.html#cb146-23" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-24"><a href="lesson-2c-importing-data.html#cb146-24" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-25"><a href="lesson-2c-importing-data.html#cb146-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $airlineDetails$lastPurchased</span></span>
+<span id="cb146-26"><a href="lesson-2c-importing-data.html#cb146-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2013</span></span>
+<span id="cb146-27"><a href="lesson-2c-importing-data.html#cb146-27" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-28"><a href="lesson-2c-importing-data.html#cb146-28" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb146-29"><a href="lesson-2c-importing-data.html#cb146-29" aria-hidden="true" tabindex="-1"></a><span class="do">## $numberOfFlights</span></span>
+<span id="cb146-30"><a href="lesson-2c-importing-data.html#cb146-30" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4654</span></span></code></pre></div>
+</div>
+<div id="r-object-files" class="section level3 hasAnchor" number="10.6.2">
+<h3><span class="header-section-number">10.6.2</span> R object files<a href="lesson-2c-importing-data.html#r-object-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes you may need to save data or other R objects outside of your workspace. You may want to share R data/objects with co-workers, transfer between projects or computers, or simply archive them. There are three primary ways that people tend to save R data/objects: as .RData, .rda, or as .rds files.</p>
+<div class="note">
+<p>
+You can read about the differences of these R objects <a
+href="http://uc-r.github.io/exporting#export_r_objects">here</a>.
+</p>
+</div>
+<p>If you have an .RData or .rda file you need to load you can do so with the following. You will not seen any output in your console or script because this simply loads the data objects within <code>xy.RData</code> into your global environment.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-2c-importing-data.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;data/xy.RData&#39;</span>)</span></code></pre></div>
+<p>For .rds files you can use <strong>readr</strong>’s <code>read_rds()</code> function:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lesson-2c-importing-data.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_rds</span>(<span class="st">&#39;data/x.rds&#39;</span>)</span>
+<span id="cb148-2"><a href="lesson-2c-importing-data.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.758310 0.999693 0.314913 0.978646 0.168522 0.597689 0.209016 0.848492 0.073632</span></span>
+<span id="cb148-3"><a href="lesson-2c-importing-data.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] 0.106206 0.116106 0.696880 0.725726 0.011556 0.052708 0.472079 0.072446 0.786448</span></span>
+<span id="cb148-4"><a href="lesson-2c-importing-data.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [19] 0.924837 0.228298</span></span></code></pre></div>
+</div>
+</div>
+<div id="exercises-6" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Exercises<a href="lesson-2c-importing-data.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+R stores its data in _______ .
+</li>
+<li>
+What happens to R’s data when the R or RStudio session is
+terminated?
+</li>
+<li>
+Load the hearts.csv data file into R using the readr library.
+</li>
+<li>
+What are the dimensions of this data? What data types are the
+variables in this data set?
+</li>
+<li>
+Use the <code>head()</code> and <code>tail()</code> functions to
+assess the first and last 15 rows of this data set.
+</li>
+<li>
+Now import the hearts_data_dictionary.csv file, which provides some
+information on each variable. Do the data types of the hearts.csv
+variables align with the description of each variable?
+</li>
+</ol>
+</div>
+</div>
+<div id="computing-environment-2" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Computing environment<a href="lesson-2c-importing-data.html#computing-environment-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>## ─ Session info ─────────────────────────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.1.3 (2022-03-10)
+##  os       macOS Monterey 12.2.1
+##  system   x86_64, darwin17.0
+##  ui       RStudio
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       America/New_York
+##  date     2022-05-10
+##  rstudio  2022.02.1+461 Prairie Trillium (desktop)
+##  pandoc   2.17.1.1 @ /Users/b294776/Desktop/RStudio.app/Contents/MacOS/quarto/bin/ (via rmarkdown)
+## 
+## ─ Packages ─────────────────────────────────────────────────────────────────────────
+##  package   * version date (UTC) lib source
+##  dbplyr    * 2.1.1   2021-04-06 [1] CRAN (R 4.1.0)
+##  dplyr     * 1.0.8   2022-02-08 [1] CRAN (R 4.1.2)
+##  forcats   * 0.5.1   2021-01-27 [1] CRAN (R 4.1.0)
+##  ggplot2   * 3.3.5   2021-06-25 [1] CRAN (R 4.1.0)
+##  here      * 1.0.1   2020-12-13 [1] CRAN (R 4.1.0)
+##  jsonlite  * 1.8.0   2022-02-22 [1] CRAN (R 4.1.2)
+##  purrr     * 0.3.4   2020-04-17 [1] CRAN (R 4.1.0)
+##  readr     * 2.1.2   2022-01-30 [1] CRAN (R 4.1.2)
+##  readxl    * 1.4.0   2022-03-28 [1] CRAN (R 4.1.2)
+##  RSQLite   * 2.2.14  2022-05-07 [1] CRAN (R 4.1.2)
+##  stringr   * 1.4.0   2019-02-10 [1] CRAN (R 4.1.0)
+##  tibble    * 3.1.6   2021-11-07 [1] CRAN (R 4.1.0)
+##  tidyr     * 1.2.0   2022-02-01 [1] CRAN (R 4.1.2)
+##  tidyverse * 1.3.1   2021-04-15 [1] CRAN (R 4.1.0)
+## 
+##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
+## 
+## ────────────────────────────────────────────────────────────────────────────────────</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-2b-data-types-structures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-2/lesson-3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

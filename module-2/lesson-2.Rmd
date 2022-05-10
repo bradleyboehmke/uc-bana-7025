@@ -468,3 +468,8 @@ Its good to know that we can index and filter data frames in this fashion but la
 4. Use one of the methods in #3 to save the 'mpg' column as a vector. Now compute the mean of this vector.
 ```
 
+## Computing environment
+
+```{r, echo=FALSE}
+sessioninfo::session_info(pkgs = 'attached')
+```

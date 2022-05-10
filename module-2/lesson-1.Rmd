@@ -497,3 +497,11 @@ Learn more about R Notebook at RStudio's [tutorial page](http://rmarkdown.rstudi
 3. Create a new R Markdown document and include code and text from some of the activities we covered in lesson 3 of module 1. Now knit this document using each of the three built-in formats: HTML, PDF and Word. How does the output differ? You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary.
 ```
 
+## Computing environment
+
+At the end of every lesson, and indeed at the end (or beginning) of any notebook you make, we should include information about the computing environment including the version numbers of all packages we use. We can do that with the following. `sessioninfo()` will provide information on the operating system, version of R along with any specified packages. Here, we specify `pkgs = 'attached'` which means it will only list those packages that have been attached to the R search path with `library(pkg_name)`.
+
+```{r sessioninfo1}
+sessioninfo::session_info(pkgs = 'attached')
+```
+
