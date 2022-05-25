@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Lesson 1b: R &amp; RStudio | Data Wrangling with R</title>
+  <title>13 Lesson 3a: Pipe operator | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Lesson 1b: R &amp; RStudio | Data Wrangling with R" />
+  <meta property="og:title" content="13 Lesson 3a: Pipe operator | Data Wrangling with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
   <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Lesson 1b: R &amp; RStudio | Data Wrangling with R" />
+  <meta name="twitter:title" content="13 Lesson 3a: Pipe operator | Data Wrangling with R" />
   <meta name="twitter:site" content="@bradleyboehmke" />
   <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lesson-1a-course-overview.html"/>
-<link rel="next" href="lesson-1c-r-fundamentals.html"/>
+<link rel="prev" href="overview-2.html"/>
+<link rel="next" href="lesson-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -487,355 +487,265 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-1b-r-rstudio" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Lesson 1b: R &amp; RStudio<a href="lesson-1b-r-rstudio.html#lesson-1b-r-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This lesson is designed to help you get up and running with R and RStudio. It will also provide you with some tips for getting help as you start writing R code and differentiating errors, warnings, and messages (because we <em>will</em> experience these daily!).</p>
-<div id="learning-objectives-3" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Learning objectives<a href="lesson-1b-r-rstudio.html#learning-objectives-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Upon completing this module you will:</p>
-<ul>
-<li>Understand the difference between R and RStudio.</li>
-<li>Have R and RStudio installed on your computer.</li>
-<li>Be able to navigate the RStudio IDE.</li>
-<li>Know how to get help as you first start learning R.</li>
-<li>Differentiate errors, warnings, and messages.</li>
-<li>Know what additional resources are available to go deeper.</li>
-</ul>
-</div>
-<div id="r-vs.-rstudio" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> R vs. RStudio<a href="lesson-1b-r-rstudio.html#r-vs.-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When students first learn about <a href="https://cran.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a>, they are often confused on how the two differentiate. R is a programming language that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. An analogy used by <span class="citation">Ismay and Kim (<a href="#ref-ismay2019statistical" role="doc-biblioref">2019</a>)</span> helps put this into perspective. <em>“R is like a car’s engine while RStudio is like a car’s dashboard…just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.”</em></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:r-vs-rstuio"></span>
-<img src="images/R_vs_RStudio_1.png" alt="Analogy of difference between R and RStudio [@ismay2019statistical]"  />
-<p class="caption">
-Figure 3.1: Analogy of difference between R and RStudio <span class="citation">(<a href="#ref-ismay2019statistical" role="doc-biblioref">Ismay and Kim 2019</a>)</span>
-</p>
-</div>
-<p>It is important to note that one can write R and do nearly everything you are going to do in this course without using RStudio. However, RStudio has lots of features that make writing, executing, and organizing your R code so much easier. Moreover, realize that there are other IDEs and platforms that you can use (i.e. <a href="https://code.visualstudio.com/">VS code</a>, <a href="https://radiant-rstats.github.io/docs/">Radiant</a>, <a href="https://jupyter.org/">jupyter</a>) to write and execute R code; however, RStudio has become the defacto IDE for R and is heavily used throughout the R community.</p>
-<div class="tip">
-<p>
-Since RStudio has lots of features, it takes time to learn them. A
-good resource to learn more about RStudio are the <a
-href="https://www.rstudio.com/collections/rstudio-essentials/">R Studio
-Essentials</a> collection of videos.
-</p>
-</div>
-</div>
-<div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Installing R and RStudio<a href="lesson-1b-r-rstudio.html#installing-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>It is important that you install R first and then install RStudio. You can download and install R from CRAN, the Comprehensive R Archive Network. It is highly recommended to install a precompiled binary distribution for your operating system (OS); follow these instructions:</p>
-<ol style="list-style-type: decimal">
-<li>Go to <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></li>
-<li>Select the installer for your operating system:
-<ul>
-<li>If you are a Windows user: Click on “Download R for Windows”, then click on “base”, then click on the Download link.</li>
-<li>If you are macOS user: Click on “Download R for (Mac) OS X”, then under “Latest release:” click on R-X.X.X.pkg, where R-X.X.X is the version number. For example, the latest version of R as of April 25, 2022 was R-4.2.0.</li>
-<li>If you are a Linux user: Click on “Download R for Linux” and choose your distribution for more information on installing R for your setup.</li>
-</ul></li>
-<li>Follow the instructions of the installer.</li>
-</ol>
-<p>Next, you can download RStudio’s IDE by following these instructions:</p>
-<ol style="list-style-type: decimal">
-<li>Go to RStudio for desktop <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></li>
-<li>Scroll down to “Installers for Supported Platforms” near the bottom of the page.</li>
-<li>Select the install file for your OS.</li>
-<li>Follow the instructions of the installer.</li>
-</ol>
+<div id="lesson-3a-pipe-operator" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Lesson 3a: Pipe operator<a href="lesson-3a-pipe-operator.html#lesson-3a-pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Removing duplication is an important principle to keep in mind with your code; however, equally important is to keep your code efficient and readable. Efficiency is often accomplished by leveraging functions and iteration in your code (which we cover later in this class). However, efficiency also includes eliminating the creation and saving of unnecessary objects that often result when you are trying to make your code more readable, clear, and explicit. Consequently, writing code that is simple, readable, <em>and</em> efficient is often considered contradictory. For this reason, the <strong>magrittr</strong> package is a powerful tool to have in your data wrangling toolkit.</p>
+<p>The <a href="https://cran.r-project.org/web/packages/magrittr/index.html"><strong>magrittr</strong></a> package was created by <a href="https://twitter.com/stefanbache">Stefan Milton Bache</a> and, in Stefan’s words, has two primary aims: <em>“to decrease development time and to improve readability and maintainability of code.”</em> Hence, it aims to increase efficiency and improve readability; and in the process it greatly simplifies your code. This lesson covers the basics of the <strong>magrittr</strong> toolkit.</p>
 <div class="note">
 <p>
-Installing R and RStudio should be fairly straightforward. However, a
-great set of detailed <a
-href="https://rafalab.github.io/dsbook/installing-r-rstudio.html">step-by-step
-instructions</a> is in Rafael Irizarry’s Introduction to Data Science
-book <span class="citation"><span class="citation">(<a href="#ref-irizarry2019introduction" role="doc-biblioref">Irizarry 2019</a>)</span></span>.
+The primary function in the <strong>magrittr</strong> package is the
+pipe operator (<code>%&gt;%</code>), this operator has been incorporated
+in <strong><em>many</em></strong> packages and you will see it used
+often throughout this class.
 </p>
 </div>
-<p>After you install R and RStudio on your computer, you’ll have two new programs (also called applications) you can open. The R application icon looks like the left image below while the RStudio icon looks like the right image. We’ll always work in RStudio and not in the R application so be sure to select the correct icon.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:r-vs-rstudio-icons"></span>
-<img src="images/R_vs_RStudio_icons.png" alt="Use the RStudio icon (right) and not the R icon (left) to launch your R project. [@ismay2019statistical]"  />
-<p class="caption">
-Figure 3.2: Use the RStudio icon (right) and not the R icon (left) to launch your R project. <span class="citation">(<a href="#ref-ismay2019statistical" role="doc-biblioref">Ismay and Kim 2019</a>)</span>
-</p>
-</div>
-<div class="tip">
-<p>
-If your OS allows, pin the RStudio icon to your desktop or Dock and
-keep the R icon in another location (i.e. Applications for Mac users).
-This makes it natural and efficient to always go to the RStudio icon on
-your desktop for launching the program.
-</p>
-</div>
-<p>After you open RStudio, you should see something similar to the following image. Note that slight differences might exist depending on the version of your RStudio interface.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-interface"></span>
-<img src="images/rstudio-interface.png" alt="RStudio interface to R."  />
-<p class="caption">
-Figure 3.3: RStudio interface to R.
-</p>
-</div>
-<p>You are now ready to start programming!</p>
-</div>
-<div id="understanding-the-rstudio-ide" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Understanding the RStudio IDE<a href="lesson-1b-r-rstudio.html#understanding-the-rstudio-ide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The RStudio IDE is where all the action happens. There are four fundamental windows in the IDE, each with their own purpose. I discuss each briefly below but I highly suggest Oscar Torres-Reyna’s Introduction to RStudio for a thorough understanding of the console<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-console-notation"></span>
-<img src="images/rstudio-console-notation.png" alt="The four fundamental windows within the RStudio IDE"  />
-<p class="caption">
-Figure 3.4: The four fundamental windows within the RStudio IDE
-</p>
-</div>
-<div id="script-editor" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Script Editor<a href="lesson-1b-r-rstudio.html#script-editor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The top left window is where your script files will display. There are multiple forms of script files but the basic one to start with is the .R file. To create a new file you use the <strong>File » New File</strong> menu. To open an existing file you use either the <strong>File » Open File…</strong> menu or the <strong>Recent Files</strong> menu to select from recently opened files. RStudio’s source editor includes a variety of productivity enhancing features including syntax highlighting, code completion, multiple-file editing, and find/replace. A good introduction to the script editor was written by RStudio’s Josh Paulson<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<p>The script editor is a great place to put code you care about. Keep experimenting in the console, but once you have written code that works and does what you want, put it in the script editor. RStudio will automatically save the contents of the editor when you quit RStudio, and will automatically load it when you re-open. Nevertheless, it’s a good idea to save your scripts regularly and to back them up.</p>
-<p>To execute the code in the script editor you have two options:</p>
-<ol style="list-style-type: decimal">
-<li>Place the cursor on the line that you would like to execute and execute Cmd/Ctrl + Enter. Alternatively, you could hit the <strong>Run</strong> button in the toolbar.</li>
-<li>If you want to run <em>all</em> lines of code in the script then you can highlight the lines you want to run and then execute one of the options in #1.</li>
-</ol>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-script-runner"></span>
-<img src="images/run-code.png" alt="Execute lines of code in your script with Cmd/Ctrl + Enter or using the Run button."  />
-<p class="caption">
-Figure 3.5: Execute lines of code in your script with Cmd/Ctrl + Enter or using the Run button.
-</p>
-</div>
-</div>
-<div id="workspace-environment" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Workspace Environment<a href="lesson-1b-r-rstudio.html#workspace-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The top right window is the workspace environment which captures much of your your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-1b-r-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns path for the current working directory</span></span>
-<span id="cb2-2"><a href="lesson-1b-r-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()                  </span>
-<span id="cb2-3"><a href="lesson-1b-r-rstudio.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="lesson-1b-r-rstudio.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set the working directory to a specified directory</span></span>
-<span id="cb2-5"><a href="lesson-1b-r-rstudio.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;path/of/directory&quot;</span>)   </span></code></pre></div>
-<p>For example, if I call <code>getwd()</code> the file path “/Users/b294776/Desktop” is returned. If I want to set the working directory to the “Workspace” folder within the “Desktop” directory I would use <code>setwd("/Users/b294776/Desktop/Workspace")</code>. Now if I call <code>getwd()</code> again it returns “/Users/b294776/Desktop/Workspace”. An alternative solution is to go to the following location in your toolbar <strong>Session » Set Working Directory » Choose Directory</strong> and select the directory of choice (much easier!).</p>
-<p>The workspace environment will also list your user defined objects such as vectors, matrices, data frames, lists, and functions. For example, if you type the following in your console:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-1b-r-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb3-2"><a href="lesson-1b-r-rstudio.html#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
-<p>You will now see <code>x</code> and <code>y</code> listed in your workspace environment. To identify or remove the objects (i.e. vectors, data frames, user defined functions, etc.) in your current R environment:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="lesson-1b-r-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list all objects</span></span>
-<span id="cb4-2"><a href="lesson-1b-r-rstudio.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()              </span>
-<span id="cb4-3"><a href="lesson-1b-r-rstudio.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="lesson-1b-r-rstudio.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># identify if an R object with a given name is present</span></span>
-<span id="cb4-5"><a href="lesson-1b-r-rstudio.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;x&quot;</span>)        </span>
-<span id="cb4-6"><a href="lesson-1b-r-rstudio.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="lesson-1b-r-rstudio.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove defined object from the environment</span></span>
-<span id="cb4-8"><a href="lesson-1b-r-rstudio.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)            </span>
-<span id="cb4-9"><a href="lesson-1b-r-rstudio.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="lesson-1b-r-rstudio.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># you can remove multiple objects</span></span>
-<span id="cb4-11"><a href="lesson-1b-r-rstudio.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x, y)  </span>
-<span id="cb4-12"><a href="lesson-1b-r-rstudio.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="lesson-1b-r-rstudio.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># basically removes everything in the working environment -- use with caution!</span></span>
-<span id="cb4-14"><a href="lesson-1b-r-rstudio.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())    </span></code></pre></div>
-<div class="tip">
-<p>
-If you have a lot of objects in your workspace environment you can
-use the 🧹 icon in the workspace environment tab to clear out
-everything.
-</p>
-</div>
-<p>You can also view previous commands in the workspace environment by clicking the <strong>History</strong> tab, by simply pressing the up arrow on your keyboard, or by typing into the console:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="lesson-1b-r-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># default shows 25 most recent commands</span></span>
-<span id="cb5-2"><a href="lesson-1b-r-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()        </span>
-<span id="cb5-3"><a href="lesson-1b-r-rstudio.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="lesson-1b-r-rstudio.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show 100 most recent commands</span></span>
-<span id="cb5-5"><a href="lesson-1b-r-rstudio.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>(<span class="dv">100</span>)     </span>
-<span id="cb5-6"><a href="lesson-1b-r-rstudio.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="lesson-1b-r-rstudio.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># show entire saved history</span></span>
-<span id="cb5-8"><a href="lesson-1b-r-rstudio.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>(<span class="cn">Inf</span>)  </span></code></pre></div>
-</div>
-<div id="console" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Console<a href="lesson-1b-r-rstudio.html#console" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The bottom left window contains the console. You can code directly in this window but it will not save your code. It is best to use this window when you are simply wanting to perform calculator type functions. This is also where your outputs will be presented when you run code in your script. Go ahead and type the following in your console:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="lesson-1b-r-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
-</div>
-<div id="misc.-displays" class="section level3 hasAnchor" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> Misc. Displays<a href="lesson-1b-r-rstudio.html#misc.-displays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The bottom right window contains multiple tabs. The <strong>Files</strong> tab allows you to see which files are available in your working directory. The <strong>Plots</strong> tab will display any plots/graphics that are produced by your code. The <strong>Packages</strong> tab will list all packages downloaded to your computer and also the ones that are loaded (more on this later). And the <strong>Help</strong> tab allows you to search for topics you need help on and will also display any help responses (more on this later as well).</p>
-</div>
-<div id="workspace-options-shortcuts" class="section level3 hasAnchor" number="3.4.5">
-<h3><span class="header-section-number">3.4.5</span> Workspace Options &amp; Shortcuts<a href="lesson-1b-r-rstudio.html#workspace-options-shortcuts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are multiple options available for you to set and customize both R and your RStudio console. For R, you can read about, and set, available options for the current R session with the following code. For now you don’t need to worry about making any adjustments, just know that many options do exist.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="lesson-1b-r-rstudio.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># learn about available options</span></span>
-<span id="cb7-2"><a href="lesson-1b-r-rstudio.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(options)</span>
-<span id="cb7-3"><a href="lesson-1b-r-rstudio.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="lesson-1b-r-rstudio.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view current option settings</span></span>
-<span id="cb7-5"><a href="lesson-1b-r-rstudio.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>()            </span>
-<span id="cb7-6"><a href="lesson-1b-r-rstudio.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="lesson-1b-r-rstudio.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># change a specific option (i.e. number of digits to print on output)</span></span>
-<span id="cb7-8"><a href="lesson-1b-r-rstudio.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">3</span>)  </span></code></pre></div>
-<p>For a thorough tutorial regarding the RStudio console and how to customize different components check out this <a href="http://dss.princeton.edu/training/RStudio101.pdf">tutorial</a>. You can also find the RStudio console cheatsheet shown below by going to <strong>Help menu » Cheatsheets</strong>. As with most computer programs, there are numerous keyboard shortcuts for working with the console. To access a menu displaying all the shortcuts in RStudio you can use option + shift + k. Within RStudio you can also access them in the <strong>Help menu » Keyboard Shortcuts Help</strong>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-cheat-sheet"></span>
-<img src="images/rstudio-cheatsheet.png" alt="RStudio IDE cheat sheet."  />
-<p class="caption">
-Figure 3.6: RStudio IDE cheat sheet.
-</p>
-</div>
-</div>
-<div id="knowledge-check" class="section level3 hasAnchor" number="3.4.6">
-<h3><span class="header-section-number">3.4.6</span> Knowledge check<a href="lesson-1b-r-rstudio.html#knowledge-check" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="todo">
-<ol style="list-style-type: decimal">
-<li>
-Identify which working directory you are working out of.
-</li>
-<li>
-Create a folder on your computer titled <em>Learning R</em>. Within
-RStudio, set your working directory to this folder.
-</li>
-<li>
-Type <code>pi</code> in the console. Set the option to show 8
-digits. Re-type <code>pi</code> in the console.
-</li>
-<li>
-Type <code>?pi</code> in the console. Note that documentation on
-this object pops up in the Help tab in the Misc. Display.
-</li>
-<li>
-Now check out your code History tab.
-</li>
-<li>
-Create a new .R file and save this as <em>my-first-script</em> (note
-how this now appears in your <em>Learning R</em> folder). Type
-<code>pi</code> in line 1 of this script,
-<code>option(digits = 8)</code> in line 2, and <code>pi</code> again in
-line three. Execute this code one line at a time and then re-execute all
-lines at once.
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="getting-help-1" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Getting help<a href="lesson-1b-r-rstudio.html#getting-help-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The help documentation and support in R is comprehensive and easily accessible from the the console.</p>
-<div id="general-help" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> General Help<a href="lesson-1b-r-rstudio.html#general-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To leverage general help resources you can use:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="lesson-1b-r-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provides general help links</span></span>
-<span id="cb8-2"><a href="lesson-1b-r-rstudio.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help.start</span>()   </span>
-<span id="cb8-3"><a href="lesson-1b-r-rstudio.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="lesson-1b-r-rstudio.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># searches the help system for documentation matching a given character string</span></span>
-<span id="cb8-5"><a href="lesson-1b-r-rstudio.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;linear regression&quot;</span>) </span></code></pre></div>
-<p>Note that the <code>help.search("some text here")</code> function requires a character string enclosed in quotation marks. So if you are in search of time series functions in R, using <code>help.search("time series")</code> will pull up a healthy list of vignettes and code demonstrations that illustrate packages and functions that work with time series data.</p>
-<p>For more direct help on functions that are installed on your computer you can use the following. Test these out in your console:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="lesson-1b-r-rstudio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)      <span class="co"># provides details for specific function </span></span>
-<span id="cb9-2"><a href="lesson-1b-r-rstudio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>?mean           <span class="co"># provides same information as help(functionname) </span></span>
-<span id="cb9-3"><a href="lesson-1b-r-rstudio.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(mean)   <span class="co"># provides examples for said function</span></span></code></pre></div>
-<p>Note that the <code>help()</code> and <code>?</code> function calls only work for functions within loaded packages. You’ll understand what this means shortly.</p>
-</div>
-<div id="getting-help-from-the-web" class="section level3 hasAnchor" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Getting Help From the Web<a href="lesson-1b-r-rstudio.html#getting-help-from-the-web" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Typically, a problem you may be encountering is not new and others have faced, solved, and documented the same issue online. The following resources can be used to search for online help. Although, I typically just Google the problem and find answers relatively quickly.</p>
+<div id="learning-objectives-11" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Learning objectives<a href="lesson-3a-pipe-operator.html#learning-objectives-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Upon completing this module you will be able to:</p>
 <ul>
-<li><code>RSiteSearch("key phrase")</code>: searches for the key phrase in help manuals and archived mailing lists on the <a href="https://www.r-project.org/">R Project website</a>.</li>
-<li><a href="http://stackoverflow.com/">Stack Overflow</a>: a searchable Q&amp;A site oriented toward programming issues. 75% of my answers typically come from Stack Overflow.</li>
-<li><a href="http://stats.stackexchange.com/">Cross Validated</a>: a searchable Q&amp;A site oriented toward statistical analysis.</li>
-<li><a href="https://community.rstudio.com/">RStudio Community</a>: a community for all things R and RStudio where you can get direct answers to your problems and also give back by helping to solve and answer other’s questions.</li>
-<li><a href="http://rseek.org/">R-seek</a>: a Google custom search that is focused on R-specific websites</li>
-<li><a href="http://www.r-bloggers.com/">R-bloggers</a>: a central hub of content collected from over 500 bloggers who provide news and tutorials about R.</li>
+<li>Explain the different approaches commonly used to chain multiple expressions together.</li>
+<li>Understand how the pipe (<code>%&gt;%</code>) operator works along with some alternative pipe operators.</li>
 </ul>
+</div>
+<div id="pipe-operator" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Pipe (<code>%&gt;%</code>) operator<a href="lesson-3a-pipe-operator.html#pipe-operator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The principal function provided by the <strong>magrittr</strong> package is <code>%&gt;%</code>, or what’s called the “pipe” operator. This operator will forward a value, or the result of an expression, into the next function call/expression. For instance a function to filter data can be written as:</p>
+<center>
+<p><code>filter(data, variable == numeric_value)</code></p>
+<p>or</p>
+<p><code>data %&gt;% filter(variable == numeric_value)</code></p>
+</center>
+<p>Both functions complete the same task and the benefit of using <code>%&gt;%</code> may not be immediately evident; however, when you desire to perform multiple functions its advantage becomes obvious. For instance, if we want to filter some data, group it by categories, summarize it, and then order the summarized results we could write it out three different ways.</p>
+<div class="note">
+<p>
+Don’t worry about the details of this code, this is mainly for
+illustration purposes. You will learn all about these functions in later
+lessons!
+</p>
+</div>
+<p><u>Nested Option</u>:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lesson-3a-pipe-operator.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provides the various arrange, summarize, etc functions</span></span>
+<span id="cb148-2"><a href="lesson-3a-pipe-operator.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb148-3"><a href="lesson-3a-pipe-operator.html#cb148-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-4"><a href="lesson-3a-pipe-operator.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co"># perform nested functions</span></span>
+<span id="cb148-5"><a href="lesson-3a-pipe-operator.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(</span>
+<span id="cb148-6"><a href="lesson-3a-pipe-operator.html#cb148-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(</span>
+<span id="cb148-7"><a href="lesson-3a-pipe-operator.html#cb148-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">group_by</span>(</span>
+<span id="cb148-8"><a href="lesson-3a-pipe-operator.html#cb148-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>),</span>
+<span id="cb148-9"><a href="lesson-3a-pipe-operator.html#cb148-9" aria-hidden="true" tabindex="-1"></a>           store_id</span>
+<span id="cb148-10"><a href="lesson-3a-pipe-operator.html#cb148-10" aria-hidden="true" tabindex="-1"></a>          ),</span>
+<span id="cb148-11"><a href="lesson-3a-pipe-operator.html#cb148-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)</span>
+<span id="cb148-12"><a href="lesson-3a-pipe-operator.html#cb148-12" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb148-13"><a href="lesson-3a-pipe-operator.html#cb148-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">desc</span>(avg_sales)</span>
+<span id="cb148-14"><a href="lesson-3a-pipe-operator.html#cb148-14" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb148-15"><a href="lesson-3a-pipe-operator.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
+<span id="cb148-16"><a href="lesson-3a-pipe-operator.html#cb148-16" aria-hidden="true" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
+<span id="cb148-17"><a href="lesson-3a-pipe-operator.html#cb148-17" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb148-18"><a href="lesson-3a-pipe-operator.html#cb148-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
+<span id="cb148-19"><a href="lesson-3a-pipe-operator.html#cb148-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
+<span id="cb148-20"><a href="lesson-3a-pipe-operator.html#cb148-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
+<span id="cb148-21"><a href="lesson-3a-pipe-operator.html#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
+<span id="cb148-22"><a href="lesson-3a-pipe-operator.html#cb148-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
+<span id="cb148-23"><a href="lesson-3a-pipe-operator.html#cb148-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
+<span id="cb148-24"><a href="lesson-3a-pipe-operator.html#cb148-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
+<span id="cb148-25"><a href="lesson-3a-pipe-operator.html#cb148-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
+<span id="cb148-26"><a href="lesson-3a-pipe-operator.html#cb148-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
+<span id="cb148-27"><a href="lesson-3a-pipe-operator.html#cb148-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
+<span id="cb148-28"><a href="lesson-3a-pipe-operator.html#cb148-28" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<p>This first option is considered a “nested” option such the functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more difficult. To make things more readable, people often move to the following approach…</p>
+<p><u>Multiple Object Option</u>:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-3a-pipe-operator.html#cb149-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb149-2"><a href="lesson-3a-pipe-operator.html#cb149-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">group_by</span>(a, store_id)</span>
+<span id="cb149-3"><a href="lesson-3a-pipe-operator.html#cb149-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">summarise</span>(b, <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value))</span>
+<span id="cb149-4"><a href="lesson-3a-pipe-operator.html#cb149-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">arrange</span>(c, <span class="fu">desc</span>(avg_sales))</span>
+<span id="cb149-5"><a href="lesson-3a-pipe-operator.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(d)</span>
+<span id="cb149-6"><a href="lesson-3a-pipe-operator.html#cb149-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
+<span id="cb149-7"><a href="lesson-3a-pipe-operator.html#cb149-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
+<span id="cb149-8"><a href="lesson-3a-pipe-operator.html#cb149-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb149-9"><a href="lesson-3a-pipe-operator.html#cb149-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
+<span id="cb149-10"><a href="lesson-3a-pipe-operator.html#cb149-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
+<span id="cb149-11"><a href="lesson-3a-pipe-operator.html#cb149-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
+<span id="cb149-12"><a href="lesson-3a-pipe-operator.html#cb149-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
+<span id="cb149-13"><a href="lesson-3a-pipe-operator.html#cb149-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
+<span id="cb149-14"><a href="lesson-3a-pipe-operator.html#cb149-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
+<span id="cb149-15"><a href="lesson-3a-pipe-operator.html#cb149-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
+<span id="cb149-16"><a href="lesson-3a-pipe-operator.html#cb149-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
+<span id="cb149-17"><a href="lesson-3a-pipe-operator.html#cb149-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
+<span id="cb149-18"><a href="lesson-3a-pipe-operator.html#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
+<span id="cb149-19"><a href="lesson-3a-pipe-operator.html#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it results in a global environment charlie foxtrot! To provide the same readability (or even better), we can use <code>%&gt;%</code> to string these arguments together without unnecessary object creation…</p>
+<p><u>%&gt;% Option</u>:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lesson-3a-pipe-operator.html#cb150-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="lesson-3a-pipe-operator.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quantity <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="lesson-3a-pipe-operator.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(store_id) <span class="sc">%&gt;%</span></span>
+<span id="cb150-4"><a href="lesson-3a-pipe-operator.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb150-5"><a href="lesson-3a-pipe-operator.html#cb150-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sales))</span>
+<span id="cb150-6"><a href="lesson-3a-pipe-operator.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
+<span id="cb150-7"><a href="lesson-3a-pipe-operator.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
+<span id="cb150-8"><a href="lesson-3a-pipe-operator.html#cb150-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb150-9"><a href="lesson-3a-pipe-operator.html#cb150-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
+<span id="cb150-10"><a href="lesson-3a-pipe-operator.html#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
+<span id="cb150-11"><a href="lesson-3a-pipe-operator.html#cb150-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
+<span id="cb150-12"><a href="lesson-3a-pipe-operator.html#cb150-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
+<span id="cb150-13"><a href="lesson-3a-pipe-operator.html#cb150-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
+<span id="cb150-14"><a href="lesson-3a-pipe-operator.html#cb150-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
+<span id="cb150-15"><a href="lesson-3a-pipe-operator.html#cb150-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
+<span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
+<span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
+<span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
+<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<p>This final option which integrates <code>%&gt;%</code> operators makes for more efficient <em>and</em> legible code. Its efficient in that it doesn’t save unnecessary objects (as in option 2) and performs as effectively (as both option 1 &amp; 2) but makes your code more readable in the process. Its legible in that you can read this as you would read normal prose (we read the <code>%&gt;%</code> as <em>“and then”</em>): “take <code>df</code> <em>and then</em> <code>filter</code> <em>and then</em> <code>group by</code> <em>and then</em> <code>summarize</code> <em>and then</em> <code>arrange</code>.”</p>
+<div class="rmdnote">
+<p>
+Notice how above we didn’t have to load the <strong>magrittr</strong>
+package to use the pipe operator (<code>%&gt;%</code>)? This is because
+the pipe operator has been incorporated into the <strong>dplyr</strong>
+package and since we loaded that package we have direct access to
+<code>%&gt;%</code>. In fact, all <a
+href="https://www.tidyverse.org/packages/">tidyverse</a> packages have
+incorporated the pipe operator.
+</p>
+</div>
+<p>And since R is a functional programming language, meaning that everything you do is basically built on functions, you can use the pipe operator to feed into just about any argument call. For example, we can pipe into a linear regression function and then get the summary of the regression parameters. Note in this case I insert “<code>data = .</code>” into the <code>lm()</code> function. When using the <code>%&gt;%</code> operator the default is the argument that you are forwarding will go in as the <strong>first</strong> argument of the function that follows the <code>%&gt;%</code>. However, in some functions the argument you are forwarding does not go into the default first position. In these cases, you place “.” to signal which argument you want the forwarded expression to go to.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-3a-pipe-operator.html#cb151-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb151-2"><a href="lesson-3a-pipe-operator.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb151-3"><a href="lesson-3a-pipe-operator.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(sales_value <span class="sc">~</span> week <span class="sc">+</span> retail_disc, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb151-4"><a href="lesson-3a-pipe-operator.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb151-5"><a href="lesson-3a-pipe-operator.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb151-6"><a href="lesson-3a-pipe-operator.html#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb151-7"><a href="lesson-3a-pipe-operator.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = sales_value ~ week + retail_disc, data = .)</span></span>
+<span id="cb151-8"><a href="lesson-3a-pipe-operator.html#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb151-9"><a href="lesson-3a-pipe-operator.html#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb151-10"><a href="lesson-3a-pipe-operator.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
+<span id="cb151-11"><a href="lesson-3a-pipe-operator.html#cb151-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  -8.62  -2.19  -1.16   0.34  47.42 </span></span>
+<span id="cb151-12"><a href="lesson-3a-pipe-operator.html#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb151-13"><a href="lesson-3a-pipe-operator.html#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb151-14"><a href="lesson-3a-pipe-operator.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb151-15"><a href="lesson-3a-pipe-operator.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)  3.10845    0.20549   15.13   &lt;2e-16 ***</span></span>
+<span id="cb151-16"><a href="lesson-3a-pipe-operator.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="do">## week         0.00185    0.00641    0.29     0.77    </span></span>
+<span id="cb151-17"><a href="lesson-3a-pipe-operator.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="do">## retail_disc  1.09089    0.10396   10.49   &lt;2e-16 ***</span></span>
+<span id="cb151-18"><a href="lesson-3a-pipe-operator.html#cb151-18" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb151-19"><a href="lesson-3a-pipe-operator.html#cb151-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb151-20"><a href="lesson-3a-pipe-operator.html#cb151-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb151-21"><a href="lesson-3a-pipe-operator.html#cb151-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 4.5 on 2126 degrees of freedom</span></span>
+<span id="cb151-22"><a href="lesson-3a-pipe-operator.html#cb151-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0493, Adjusted R-squared:  0.0484 </span></span>
+<span id="cb151-23"><a href="lesson-3a-pipe-operator.html#cb151-23" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 55.1 on 2 and 2126 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<p>You can also use <code>%&gt;%</code> to feed into plots:</p>
+<div class="note">
+<p>
+You will learn more about plotting techniques in week 5.
+</p>
+</div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lesson-3a-pipe-operator.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualization package</span></span>
+<span id="cb152-2"><a href="lesson-3a-pipe-operator.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb152-3"><a href="lesson-3a-pipe-operator.html#cb152-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-4"><a href="lesson-3a-pipe-operator.html#cb152-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb152-5"><a href="lesson-3a-pipe-operator.html#cb152-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>, week <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb152-6"><a href="lesson-3a-pipe-operator.html#cb152-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(week), <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
+<span id="cb152-7"><a href="lesson-3a-pipe-operator.html#cb152-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb152-8"><a href="lesson-3a-pipe-operator.html#cb152-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-203-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="additional-pipe-operators-optional" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Additional pipe operators (optional)<a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="warning">
 <p>
-Twitter has a thriving R community (<a
-href="https://twitter.com/hashtag/rstats?src=hashtag_click">#rstats</a>)
-and is definitely worth following. However, it is not the place to ask
-for help on specific code functionality.
+You should only review this section after you have a firm grasp on
+how to perform basic data transformation and tidying procedures.
+Consequently, this is a good section to come back to later in the week.
+Don’t worry, you will not be quizzed on any of the content that
+follows!
 </p>
 </div>
-</div>
-<div id="knowledge-check-1" class="section level3 hasAnchor" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Knowledge check<a href="lesson-1b-r-rstudio.html#knowledge-check-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="todo">
-<ol style="list-style-type: decimal">
-<li>
-Does <code>help.start()</code> provide a link to an introduction to
-R manual?
-</li>
-<li>
-Does R’s <code>mode</code> function compute the statistical
-mode?
-</li>
-<li>
-Review at least 5 <a
-href="https://stackoverflow.com/questions/tagged/r">Stack Overflow
-questions about R</a>.
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="errors-warnings-and-messages" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Errors, warnings, and messages<a href="lesson-1b-r-rstudio.html#errors-warnings-and-messages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One thing that intimidates new R users (and new programmers in general) is when they run into <em>errors</em>, <em>warnings</em>, and <em>messages</em>. R reports errors, warnings, and messages in the following way. Don’t worry about what the code is doing, just get familiar with the differences in how <em>errors</em>, <em>warnings</em>, and <em>messages</em> are reported.</p>
-<ul>
-<li><p><strong>Errors</strong>: When the red text is a legitimate error, it will be prefaced with “Error in…” and will try to explain what went wrong. Generally when there’s an error, the code will not run. Think of errors as a red traffic light: something is wrong!</p>
-<div class="note">
+<p><strong>magrittr</strong> also offers some alternative pipe operators. Some functions, such as plotting functions, will cause the string of piped arguments to terminate. The tee (<code>%T&gt;%</code>) operator allows you to continue piping functions that normally cause termination.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lesson-3a-pipe-operator.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># normal piping terminates with the plot() function resulting in</span></span>
+<span id="cb153-2"><a href="lesson-3a-pipe-operator.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NULL results for the summary() function</span></span>
+<span id="cb153-3"><a href="lesson-3a-pipe-operator.html#cb153-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb153-4"><a href="lesson-3a-pipe-operator.html#cb153-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb153-5"><a href="lesson-3a-pipe-operator.html#cb153-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%&gt;%</span></span>
+<span id="cb153-6"><a href="lesson-3a-pipe-operator.html#cb153-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb153-7"><a href="lesson-3a-pipe-operator.html#cb153-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-205-1.png" width="384" style="display: block; margin: auto;" /></p>
+<pre><code>## Length  Class   Mode 
+##      0   NULL   NULL</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-3a-pipe-operator.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load magrittr to use additional pipe operators</span></span>
+<span id="cb155-2"><a href="lesson-3a-pipe-operator.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb155-3"><a href="lesson-3a-pipe-operator.html#cb155-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-4"><a href="lesson-3a-pipe-operator.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inserting %T&gt;% allows you to plot and perform the functions that </span></span>
+<span id="cb155-5"><a href="lesson-3a-pipe-operator.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="co"># follow the plotting function</span></span>
+<span id="cb155-6"><a href="lesson-3a-pipe-operator.html#cb155-6" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb155-7"><a href="lesson-3a-pipe-operator.html#cb155-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb155-8"><a href="lesson-3a-pipe-operator.html#cb155-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%T&gt;%</span></span>
+<span id="cb155-9"><a href="lesson-3a-pipe-operator.html#cb155-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb155-10"><a href="lesson-3a-pipe-operator.html#cb155-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-206-1.png" width="384" style="display: block; margin: auto;" /></p>
+<pre><code>##     quantity      sales_value   
+##  Min.   :    0   Min.   : 0.00  
+##  1st Qu.:    1   1st Qu.: 1.49  
+##  Median :    1   Median : 2.50  
+##  Mean   :  166   Mean   : 3.62  
+##  3rd Qu.:    1   3rd Qu.: 3.99  
+##  Max.   :23735   Max.   :53.14</code></pre>
+<p>The compound assignment <code>%&lt;&gt;%</code> operator is used to update a value by first piping it into one or more expressions, and then assigning the result. For instance, let’s say you want to transform the <code>sales_value</code> variable to a logarithmic measurement. Using <code>%&lt;&gt;%</code> will perform the functions to the right of <code>%&lt;&gt;%</code> and save the changes these functions perform to the variable or data frame called to the left of <code>%&lt;&gt;%</code>.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lesson-3a-pipe-operator.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># note that sales_value is in its typical measurement</span></span>
+<span id="cb157-2"><a href="lesson-3a-pipe-operator.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
+<span id="cb157-3"><a href="lesson-3a-pipe-operator.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  3.86  1.59  1.00 11.87  1.29  2.50</span></span>
+<span id="cb157-4"><a href="lesson-3a-pipe-operator.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-5"><a href="lesson-3a-pipe-operator.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="co"># we can log transform sales_value and save this change using %&lt;&gt;%</span></span>
+<span id="cb157-6"><a href="lesson-3a-pipe-operator.html#cb157-6" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>sales_value <span class="sc">%&lt;&gt;%</span> log</span>
+<span id="cb157-7"><a href="lesson-3a-pipe-operator.html#cb157-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-8"><a href="lesson-3a-pipe-operator.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
+<span id="cb157-9"><a href="lesson-3a-pipe-operator.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.35067 0.46373 0.00000 2.47401 0.25464 0.91629</span></span></code></pre></div>
+<div class="warning">
 <p>
-For references on common errors, check out the following links by <a
- href="https://github.com/noamross/zero-dependency-problems/blob/master/misc/stack-overflow-common-r-errors.md">Noam
-Ross</a>, <a
- href="http://blog.revolutionanalytics.com/2015/03/the-most-common-r-error-messages.html">David
-Smith</a>, and <a
- href="https://rbasics.netlify.app/6-errors.html">Chester Ismay</a>.
+You should be cautious in your use of <code>%&lt;&gt;%</code> since
+it does not change the name of the variable
+<strong><em>and</em></strong> you are overwriting the original
+variable’s values.
 </p>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="lesson-1b-r-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of an error</span></span>
-<span id="cb10-2"><a href="lesson-1b-r-rstudio.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">&#39;a&#39;</span></span>
-<span id="cb10-3"><a href="lesson-1b-r-rstudio.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 1 + &quot;a&quot;: non-numeric argument to binary operator</span></span></code></pre></div></li>
-<li><p><strong>Warnings</strong>: Warning messages will be prefaced with “Warning:” and R will try to explain why there’s a warning. Generally your code will still work, but with some caveats. Think of warnings as a yellow traffic light: everything is working, but watch out/pay attention. Typically when you get a warning you want to figure out what is throwing the warning because the end result may not be what you had intended!</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="lesson-1b-r-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb11-2"><a href="lesson-1b-r-rstudio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb11-3"><a href="lesson-1b-r-rstudio.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="lesson-1b-r-rstudio.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a warning</span></span>
-<span id="cb11-5"><a href="lesson-1b-r-rstudio.html#cb11-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb11-6"><a href="lesson-1b-r-rstudio.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in x + y: longer object length is not a multiple of shorter object length</span></span>
-<span id="cb11-7"><a href="lesson-1b-r-rstudio.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 4 4</span></span></code></pre></div></li>
-<li><p><strong>Messages</strong>: When the text doesn’t start with either “Error” or “Warning”, it’s just a friendly message. You’ll often see these messages when you load R packages or make certain function calls. Think of messages as a green traffic light: everything is working fine and keep on going!</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="lesson-1b-r-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a message</span></span>
-<span id="cb12-2"><a href="lesson-1b-r-rstudio.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span>
-<span id="cb12-3"><a href="lesson-1b-r-rstudio.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Welcome to the completejourney package! Learn more about these data</span></span>
-<span id="cb12-4"><a href="lesson-1b-r-rstudio.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="do">## sets at http://bit.ly/completejourney.</span></span></code></pre></div></li>
+<p>Some functions (e.g. lm, aggregate, cor) have a data argument, which allows the direct use of names inside the data as part of the call. The exposition (<code>%$%</code>) operator is useful when you want to pipe a data frame, which may contain many columns, into a function that is only applied to some of the columns. For example, the correlation (<code>cor</code>) function only requires an <code>x</code> and <code>y</code> argument so if you pipe the customer transaction data into the <code>cor</code> function using <code>%&gt;%</code> you will get an error because <code>cor</code> doesn’t know how to handle <code>df</code>. However, using <code>%$%</code> allows you to say “take this data frame and then perform <code>cor()</code> on these specified columns within <code>df</code>.”</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lesson-3a-pipe-operator.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular piping results in an error</span></span>
+<span id="cb158-2"><a href="lesson-3a-pipe-operator.html#cb158-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb158-3"><a href="lesson-3a-pipe-operator.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb158-4"><a href="lesson-3a-pipe-operator.html#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
+<span id="cb158-5"><a href="lesson-3a-pipe-operator.html#cb158-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in pmatch(use, c(&quot;all.obs&quot;, &quot;complete.obs&quot;, &quot;pairwise.complete.obs&quot;, : object &#39;quantity&#39; not found</span></span>
+<span id="cb158-6"><a href="lesson-3a-pipe-operator.html#cb158-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-7"><a href="lesson-3a-pipe-operator.html#cb158-7" aria-hidden="true" tabindex="-1"></a><span class="co"># using %$% allows you to specify variables of interest</span></span>
+<span id="cb158-8"><a href="lesson-3a-pipe-operator.html#cb158-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb158-9"><a href="lesson-3a-pipe-operator.html#cb158-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%$%</span></span>
+<span id="cb158-10"><a href="lesson-3a-pipe-operator.html#cb158-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
+<span id="cb158-11"><a href="lesson-3a-pipe-operator.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.10263</span></span></code></pre></div>
+</div>
+<div id="additional-resources-2" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Additional resources<a href="lesson-3a-pipe-operator.html#additional-resources-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <strong>magrittr</strong> package and its pipe operators are a great tool for making your code simple, efficient, and readable. There are limitations, or at least suggestions, on when and how you should use the operators. Garrett Grolemund and Hadley Wickham offer some advice on the proper use of pipe operators in their <a href="http://r4ds.had.co.nz/">R for Data Science</a> book. However, the <code>%&gt;%</code> has greatly transformed our ability to write “simplified” code in R. As the pipe gains in popularity you will likely find it in more future packages and being familiar will likely result in better communication of your code.</p>
+<p>Some additional resources regarding <strong>magrittr</strong> and the pipe operators you may find useful:</p>
+<ul>
+<li>The <strong>magrittr</strong> vignette (<code>vignette("magrittr")</code>) in your console) provides additional examples of using pipe operators and functions provided by <strong>magrittr</strong>.</li>
+<li>A <a href="http://www.r-bloggers.com/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/">blog post</a> by Stefan Milton Bache regarding the past, present and future of <strong>magrittr</strong></li>
+<li><a href="http://stackoverflow.com/questions/tagged/magrittr"><strong>magrittr</strong> questions</a> on Stack Overflow</li>
+<li>The <a href="https://cran.r-project.org/web/packages/ensurer/vignettes/ensurer.html"><code>ensurer</code></a> package, also written by <a href="https://twitter.com/stefanbache">Stefan Milton Bache</a>, provides a useful way of verifying and validating data outputs in a sequence of pipe operators.</li>
 </ul>
 </div>
-<div id="exercises-1" class="section level2 hasAnchor" number="3.7">
-<h2><span class="header-section-number">3.7</span> Exercises<a href="lesson-1b-r-rstudio.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-7" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Exercises<a href="lesson-3a-pipe-operator.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="todo">
-<ol style="list-style-type: decimal">
-<li>
-What differentiates R and RStudio?
-</li>
-<li>
-What are the four main panes in RStudio?
-</li>
-<li>
-What function tells you what directory your are operating in?
-</li>
-<li>
-How could you change the directory to a new folder?
-</li>
-<li>
-How could you access R documentation to learn more about the
-<code>lm()</code> function?
-</li>
-</ol>
+<p>
+Look at the code the follows. How would you rewrite this code using
+the pipe operator?
+</p>
 </div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lesson-3a-pipe-operator.html#cb159-1" aria-hidden="true" tabindex="-1"></a>foo_foo_1 <span class="ot">&lt;-</span> <span class="fu">hop</span>(foo_foo, <span class="at">through =</span> forest)</span>
+<span id="cb159-2"><a href="lesson-3a-pipe-operator.html#cb159-2" aria-hidden="true" tabindex="-1"></a>foo_foo_2 <span class="ot">&lt;-</span> <span class="fu">scoop</span>(foo_foo_1, <span class="at">up =</span> field_mice)</span>
+<span id="cb159-3"><a href="lesson-3a-pipe-operator.html#cb159-3" aria-hidden="true" tabindex="-1"></a>foo_foo_3 <span class="ot">&lt;-</span> <span class="fu">bop</span>(foo_foo_2, <span class="at">on =</span> head)</span></code></pre></div>
 
-</div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-irizarry2019introduction" class="csl-entry">
-Irizarry, Rafael A. 2019. <em>Introduction to Data Science: Data Analysis and Prediction Algorithms with r</em>. CRC Press.
-</div>
-<div id="ref-ismay2019statistical" class="csl-entry">
-Ismay, Chester, and Albert Y Kim. 2019. <em>Statistical Inference via Data Science: A ModernDive into r and the Tidyverse</em>. Chapman; Hall/CRC.
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>You can access this tutorial at <a href="http://dss.princeton.edu/training/RStudio101.pdf" class="uri">http://dss.princeton.edu/training/RStudio101.pdf</a>. Note that although it is from 2013 it still is very applicable and does a very thorough introduction<a href="lesson-1b-r-rstudio.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>You can assess the script editor tutorial at <a href="https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code" class="uri">https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code</a><a href="lesson-1b-r-rstudio.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="6">
+<li id="fn6"><p>Don’t repeat yourself (DRY) is a software development principle aimed at reducing repetition. Formulated by Andy Hunt and Dave Thomas in their book <a href="http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1456066112&amp;sr=1-1&amp;keywords=the+pragmatic+programmer">The Pragmatic Programmer</a>, the DRY principle states that “every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” This principle has been widely adopted to imply that you should not duplicate code. Although the principle was meant to be <a href="http://www.artima.com/intv/dry.html">far grander</a> than that, there’s plenty of merit behind this slight misinterpretation.<a href="lesson-3a-pipe-operator.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -843,8 +753,8 @@ Ismay, Chester, and Albert Y Kim. 2019. <em>Statistical Inference via Data Scien
           </div>
         </div>
       </div>
-<a href="lesson-1a-course-overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lesson-1c-r-fundamentals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="overview-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -865,7 +775,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-1/lesson-2.Rmd",
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-3/lesson-1.Rmd",
 "text": "Edit"
 },
 "history": {

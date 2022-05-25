@@ -1,16 +1,213 @@
-# Lesson 1
+# Lesson 3a: Pipe operator
 
-TBD
+```{r setup-3a, include=FALSE}
+chunk <- "```"
+inline <- function(x = "") paste0("`` `r ", x, "` ``")
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE
+)
 
+df <- completejourney::transactions_sample
+```
+
+Removing duplication is an important principle to keep in mind with your code; however, equally important is to keep your code efficient and readable. Efficiency is often accomplished by leveraging functions and iteration in your code (which we cover later in this class). However, efficiency also includes eliminating the creation and saving of unnecessary objects that often result when you are trying to make your code more readable, clear, and explicit. Consequently, writing code that is simple, readable, *and* efficient is often considered contradictory. For this reason, the **magrittr** package is a powerful tool to have in your data wrangling toolkit. 
+
+The [**magrittr**](https://cran.r-project.org/web/packages/magrittr/index.html) package was created by [Stefan Milton Bache](https://twitter.com/stefanbache) and, in Stefan's words, has two primary aims: _"to decrease development time and to improve readability and maintainability of code."_ Hence, it aims to increase efficiency and improve readability; and in the process it greatly simplifies your code. This lesson covers the basics of the **magrittr** toolkit.
+
+```{block, type = "note"}
+The primary function in the **magrittr** package is the pipe operator (`%>%`), this operator has been incorporated in ___many___ packages and you will see it used often throughout this class.  
+```
 
 ## Learning objectives
 
+Upon completing this module you will be able to:
 
-## Content A
+- Explain the different approaches commonly used to chain multiple expressions together.
+- Understand how the pipe (`%>%`) operator works along with some alternative pipe operators.
+
+## Pipe (`%>%`) operator
+
+The principal function provided by the **magrittr** package is `%>%`, or what's called the "pipe" operator. This operator will forward a value, or the result of an expression, into the next function call/expression. For instance a function to filter data can be written as:
+
+<center>
+
+<code>filter(data, variable == numeric_value)</code>
+
+or
+
+<code>data %>% filter(variable == numeric_value)</code>
+
+</center>
+
+Both functions complete the same task and the benefit of using `%>%` may not be immediately evident; however, when you desire to perform multiple functions its advantage becomes obvious. For instance, if we want to filter some data, group it by categories, summarize it, and then order the summarized results we could write it out three different ways. 
+
+```{block, type='note'}
+Don't worry about the details of this code, this is mainly for illustration purposes. You will learn all about these functions in later lessons!
+```
+
+<u>Nested Option</u>:
 
 
-## Content B
+```{r}
+# provides the various arrange, summarize, etc functions
+library(dplyr)
 
+# perform nested functions
+arrange(
+   summarize(
+       group_by(
+           filter(df, quantity > 1),
+           store_id
+          ),
+       avg_sales = mean(sales_value)
+      ),
+   desc(avg_sales)
+ )
+```
+
+This first option is considered a "nested" option such the functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle[^dry], it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more difficult.  To make things more readable, people often move to the following approach...
+
+<u>Multiple Object Option</u>:
+
+```{r}
+a <- filter(df, quantity > 1)
+b <- group_by(a, store_id)
+c <- summarise(b, avg_sales = mean(sales_value))
+d <- arrange(c, desc(avg_sales))
+print(d)
+```
+
+This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects...basically it results in a global environment charlie foxtrot! To provide the same readability (or even better), we can use `%>%` to string these arguments together without unnecessary object creation...
+
+<u>%>% Option</u>:
+
+
+```{r}
+df %>%
+  filter(quantity > 1) %>%
+  group_by(store_id) %>%
+  summarise(avg_sales = mean(sales_value)) %>%
+  arrange(desc(avg_sales))
+```
+
+This final option which integrates `%>%` operators makes for more efficient *and* legible code. Its efficient in that it doesn't save unnecessary objects (as in option 2) and performs as effectively (as both option 1 & 2) but makes your code more readable in the process. Its legible in that you can read this as you would read normal prose (we read the `%>%` as *"and then"*): "take `df` *and then* `filter` *and then* `group by` *and then* `summarize` *and then* `arrange`."
+
+
+```{block, type = "rmdnote"}
+Notice how above we didn't have to load the **magrittr** package to use the pipe operator (`%>%`)?  This is because the pipe operator has been incorporated into the **dplyr** package and since we loaded that package we have direct access to `%>%`.  In fact, all [tidyverse](https://www.tidyverse.org/packages/) packages have incorporated the pipe operator.
+```
+
+And since R is a functional programming language, meaning that everything you do is basically built on functions, you can use the pipe operator to feed into just about any argument call. For example, we can pipe into a linear regression function and then get the summary of the regression parameters. Note in this case I insert "`data = .`" into the `lm()` function. When using the `%>%` operator the default is the argument that you are forwarding will go in as the **first** argument of the function that follows the `%>%`.  However, in some functions the argument you are forwarding does not go into the default first position. In these cases, you place "." to signal which argument you want the forwarded expression to go to.
+
+```{r}
+df %>%
+  filter(store_id == "367") %>%
+  lm(sales_value ~ week + retail_disc, data = .) %>%
+  summary()
+```
+
+You can also use `%>%` to feed into plots:
+
+```{block, type = "note"}
+You will learn more about plotting techniques in week 5.
+```
+
+```{r, fig.width=8, fig.height=3.5}
+# visualization package
+library(ggplot2)
+
+df %>%
+   filter(store_id == "367", week <= 10) %>%
+   ggplot(aes(x = factor(week), y = sales_value)) +
+   geom_jitter(width = .05, alpha = .4) +
+   geom_boxplot(alpha = .1)
+```
+
+
+## Additional pipe operators (optional)
+
+```{block, type = "warning"}
+You should only review this section after you have a firm grasp on how to perform basic data transformation and tidying procedures. Consequently, this is a good section to come back to later in the week. Don't worry, you will not be quizzed on any of the content that follows!
+```
+
+**magrittr** also offers some alternative pipe operators. Some functions, such as plotting functions, will cause the string of piped arguments to terminate.  The tee (`%T>%`) operator allows you to continue piping functions that normally cause termination.
+
+```{r, error=TRUE, fig.width=4, fig.height=4}
+# normal piping terminates with the plot() function resulting in
+# NULL results for the summary() function
+df %>%
+   filter(store_id == "367") %>%
+   select(quantity, sales_value) %>%
+   plot() %>%
+   summary()
+```
+
+```{r, fig.width=4, fig.height=4, message=FALSE}
+# load magrittr to use additional pipe operators
+library(magrittr)
+
+# inserting %T>% allows you to plot and perform the functions that 
+# follow the plotting function
+df %>%
+   filter(store_id == "367") %>%
+   select(quantity, sales_value) %T>%
+   plot() %>%
+   summary()
+```
+
+The compound assignment `%<>%` operator is used to update a value by first piping it into one or more expressions, and then assigning the result. For instance, let's say you want to transform the `sales_value` variable to a logarithmic measurement. Using `%<>%` will perform the functions to the right of `%<>%` and save the changes these functions perform to the variable or data frame called to the left of `%<>%`.
+
+```{r}
+# note that sales_value is in its typical measurement
+head(df$sales_value)
+
+# we can log transform sales_value and save this change using %<>%
+df$sales_value %<>% log
+
+head(df$sales_value)
+```
+
+```{block, type = "warning"}
+You should be cautious in your use of `%<>%` since it does not change the name of the variable ___and___ you are overwriting the original variable's values. 
+```
+
+Some functions (e.g. lm, aggregate, cor) have a data argument, which allows the direct use of names inside the data as part of the call. The exposition (`%$%`) operator is useful when you want to pipe a data frame, which may contain many columns, into a function that is only applied to some of the columns.  For example, the correlation (`cor`) function only requires an `x` and `y` argument so if you pipe the customer transaction data into the `cor` function using `%>%` you will get an error because `cor` doesn't know how to handle `df`. However, using `%$%` allows you to say "take this data frame and then perform `cor()` on these specified columns within `df`."
+
+```{r, error=TRUE}
+# regular piping results in an error
+df %>%
+  filter(store_id == "367") %>%
+  cor(retail_disc, quantity)
+
+# using %$% allows you to specify variables of interest
+df %>%
+  filter(store_id == "367") %$%
+  cor(retail_disc, quantity)
+```
+
+## Additional resources
+
+The **magrittr** package and its pipe operators are a great tool for making your code simple, efficient, and readable. There are limitations, or at least suggestions, on when and how you should use the operators. Garrett Grolemund and Hadley Wickham offer some advice on the proper use of pipe operators in their [R for Data Science](http://r4ds.had.co.nz/) book. However, the `%>%` has greatly transformed our ability to write "simplified" code in R. As the pipe gains in popularity you will likely find it in more future packages and being familiar will likely result in better communication of your code.
+
+Some additional resources regarding **magrittr** and the pipe operators you may find useful:
+
+- The **magrittr** vignette (`vignette("magrittr")`) in your console) provides additional examples of using pipe operators and functions provided by **magrittr**.
+- A [blog post](http://www.r-bloggers.com/simpler-r-coding-with-pipes-the-present-and-future-of-the-magrittr-package/) by Stefan Milton Bache regarding the past, present and future of **magrittr**
+- [**magrittr** questions](http://stackoverflow.com/questions/tagged/magrittr) on Stack Overflow
+- The [`ensurer`](https://cran.r-project.org/web/packages/ensurer/vignettes/ensurer.html) package, also written by [Stefan Milton Bache](https://twitter.com/stefanbache), provides a useful way of verifying and validating data outputs in a sequence of pipe operators.
 
 ## Exercises
 
+```{block, type='todo'}
+Look at the code the follows. How would you rewrite this code using the pipe operator?
+```
+
+```{r, eval=FALSE}
+foo_foo_1 <- hop(foo_foo, through = forest)
+foo_foo_2 <- scoop(foo_foo_1, up = field_mice)
+foo_foo_3 <- bop(foo_foo_2, on = head)
+```
+
+
+[^dry]: Don't repeat yourself (DRY) is a software development principle aimed at reducing repetition. Formulated by Andy Hunt and Dave Thomas in their book [The Pragmatic Programmer](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?s=books&ie=UTF8&qid=1456066112&sr=1-1&keywords=the+pragmatic+programmer), the DRY principle states that "every piece of knowledge must have a single, unambiguous, authoritative representation within a system." This principle has been widely adopted to imply that you should not duplicate code.  Although the principle was meant to be [far grander](http://www.artima.com/intv/dry.html) than that, there's plenty of merit behind this slight misinterpretation.

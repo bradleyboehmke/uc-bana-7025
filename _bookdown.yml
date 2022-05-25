@@ -44,4 +44,5 @@ rmd_files:
 - "module-7/lesson-2.Rmd"
 - "module-7/lab.Rmd"
 
+- "98-compute-environment.Rmd"
 - "99-references.Rmd"

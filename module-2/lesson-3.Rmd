@@ -392,8 +392,3 @@ read_rds('data/x.rds')
 6. Now import the hearts_data_dictionary.csv file, which provides some information on each variable. Do the data types of the hearts.csv variables align with the description of each variable?
 ```
 
-## Computing environment
-
-```{r, echo=FALSE}
-sessioninfo::session_info(pkgs = 'attached')
-```

@@ -467,9 +467,3 @@ Its good to know that we can index and filter data frames in this fashion but la
 3. Index for just the 'mpg' column in `mtcars` using three different approaches: single brackets (`[`), double brackets `[[`, and dollar sign `$`. How do the results differ?
 4. Use one of the methods in #3 to save the 'mpg' column as a vector. Now compute the mean of this vector.
 ```
-
-## Computing environment
-
-```{r, echo=FALSE}
-sessioninfo::session_info(pkgs = 'attached')
-```

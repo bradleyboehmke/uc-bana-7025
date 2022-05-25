@@ -499,9 +499,13 @@ Learn more about R Notebook at RStudio's [tutorial page](http://rmarkdown.rstudi
 
 ## Computing environment
 
-At the end of every lesson, and indeed at the end (or beginning) of any notebook you make, we should include information about the computing environment including the version numbers of all packages we use. We can do that with the following. `sessioninfo()` will provide information on the operating system, version of R along with any specified packages. Here, we specify `pkgs = 'attached'` which means it will only list those packages that have been attached to the R search path with `library(pkg_name)`.
+At the end of of any notebook you make, you should include information about the computing environment including the version numbers of all packages you use. We can do that with the following. `sessioninfo()` will provide information on the operating system, version of R along with any specified packages. Here, we specify `pkgs = 'attached'` which means it will only list those packages that have been attached to the R search path with `library(pkg_name)`. An alternative is to explicitly pass a vector of package names used.
 
-```{r sessioninfo1}
+```{block, type='note'}
+For this book you'll find the computing environment consolidated into one notebook at the end of the book.
+```
+
+```{r}
 sessioninfo::session_info(pkgs = 'attached')
 ```
 
