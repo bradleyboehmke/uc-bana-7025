@@ -1,16 +1,453 @@
-# Lesson 2
+# Lesson 3b: Data transformation
 
-TBD
+```{r setup-3b, include=FALSE}
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE
+)
+```
 
+When wrangling data you often need to create some new variables and filter for certain observations of interest, or maybe you just want to rename the variables or reorder the observations in order to make the data a little easier to work with. You’ll learn how to do all that (and more!) in this lesson, which will teach you how to transform your data using the **dplyr** package 
 
 ## Learning objectives
 
+Upon completing this module you will be able to:
 
-## Content A
+- Filter a data frame for observations of interest.
+- Select and/or rename specific variables.
+- Compute summary statistics.
+- Sort observations.
+- Create new variables.
+
+## Prerequisites
+
+Load the **dplyr** package to provide you access to the functions we'll cover in this lesson.
+
+```{r, message=FALSE}
+library(dplyr)
+```
+
+```{block, type='note'}
+Alternatively, you could load the **tidyverse** package, which automatically loads the **dplyr** package.
+```
 
 
-## Content B
+To illustrate various transformation tasks we will use the following customer transaction data from the [**completejourney**](https://bradleyboehmke.github.io/completejourney/index.html) package:
 
+```{r, message=FALSE}
+library(completejourney)
+
+(df <- transactions_sample)
+```
+
+## Filtering observations {#filter}
+
+Filtering data is a common task to identify and select observations in which a particular variable matches a specific value or condition. The `filter()` function provides this capability. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame. For example, if we want to filter for only transactions at the store with ID 309:
+
+```{r}
+filter(df, store_id == "309")
+```
+
+```{block, type = "tip"}
+You can pipe data into the filter function using the following syntax:  `df %>% filter(store_id == "309")`
+```
+
+When you run that line of code, **dplyr** executes the filtering operation and returns a new data frame. **dplyr** functions never modify their inputs, so if you want to save the result, you’ll need to use the assignment operator, `<-`:
+
+```{r}
+store_309 <- filter(df, store_id == "309")
+store_309
+```
+
+To use filtering effectively, you have to know how to select the observations that you want using comparison operators. R provides the standard suite of comparison operators to include:
+
+```{r, eval=FALSE}
+<   Less than                    !=      Not equal to
+>   Greater than                 %in%    Group membership
+==  Equal to                     is.na   is NA
+<=  Less than or equal to        !is.na  is not NA
+>=  Greater than or equal to     &,|,!   Boolean operators
+```
+
+We can apply several of these comparison operators in the `filter` function.  For example, we can filter for transactions for a particular store ID and household ID:
+
+
+```{r}
+filter(df, store_id == "309", household_id == "1762")
+```
+
+```{block, type = "note"}
+A comma between comparison operators acts just like and `&` operator.  So `filter(data, variable1 == value, variable2 == value)` is the same as `filter(data, variable1 == value & variable2 == value)`
+```
+
+We can continue to add additional operations.  In this example we filter for transactions made:
+
+1. at a particular store ID,
+2. by a particular household,
+3. who purchased more than 4 of a certain product ___or___ the product cost more than \$10.
+
+```{r}
+df %>% filter(
+  store_id == "309", 
+  household_id == "1167",
+  quantity > 4 | sales_value > 10
+  )
+```
+
+A useful shortcut for writing multiple or statements is to use `%in%`.  For example, the following code finds all transactions made at store 309 ___or___ 400.
+
+```{r}
+filter(df, store_id == "309" | store_id == "400")
+```
+
+The `%in%` operator allows us to select every row where `x` is one of the values in `y`. We could use it to rewrite the code above as:
+
+```{r}
+filter(df, store_id %in% c("309", "400"))
+```
+
+There are additional filtering and subsetting functions that are quite useful:
+
+```{r, eval=FALSE}
+# remove duplicate rows
+df %>% distinct() 
+
+# random sample, 50% sample size without replacement
+df %>% sample_frac(size = 0.5, replace = FALSE)
+
+# random sample of 10 rows with replacement
+df %>% sample_n(size = 10, replace = TRUE)
+
+# select rows 3-5
+df %>% slice(3:5)
+
+# select top n entries - in this case ranks variable net_spend_amt and selects
+# the rows with the top 5 values
+df %>% top_n(n = 5, wt = sales_value)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the **completejourney** sample transactions data as we did above...
+
+1. Filter for transactions with greater than 2 units.
+2. Filter for transactions with greater than 2 units during week 25 that occurred at store 441.
+3. Filter for transactions with greater than 2 units during week 25 that occurred at store 343 or 441.
+4. Filter for transactions with greater than 2 units during week 25 that occurred at store 343 or 441 but excludes household 253.
+```
+
+
+## Selecting variables {#select}
+
+It’s not uncommon for us to use data sets with hundreds of variables. In this case, the first challenge is often narrowing in on the variables you’re actually interested in. `select` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables.
+
+`select` is not terribly useful with our transaction data because we only have 8 variables, but you can still get the general idea:
+
+```{r}
+# Select columns by name
+select(df, household_id, store_id, sales_value)
+
+# Select all columns between household_id and sales_value (inclusive)
+select(df, household_id:sales_value)
+
+# Select all columns except those between household_id and sales_value
+select(df, -c(household_id:sales_value))
+```
+
+There are a number of helper functions you can use within `select`:
+
+* `starts_with("abc")`: matches names that begin with “abc”.
+
+* `ends_with("xyz")`: matches names that end with “xyz”.
+
+* `contains("ijk")`: matches names that contain “ijk”.
+
+* `matches("(.)\\1")`: selects variables that match a regular expression. This one matches any variables that contain repeated characters. You’ll learn more about regular expressions in the [character strings chapter](#strings).
+
+* `num_range("x", 1:3)`: matches x1, x2 and x3.
+
+```{block, type = "tip"}
+See `?select` for more details.
+```
+
+For example, we can select all variables that contain "id" in their name:
+
+```{r}
+select(df, contains("id"))
+```
+
+`select` can be used to rename variables, but it’s rarely useful because it drops all of the variables not explicitly mentioned. Instead, use `rename`, which is a variant of `select` that keeps all the variables that aren’t explicitly mentioned:
+
+```{r}
+rename(df, store = store_id, product = product_id)
+```
+
+
+Another option is to use `select` in conjunction with the `everything` helper. This is useful if you have a handful of variables you’d like to move to the start of the data frame.
+
+```{r}
+select(df, household_id, quantity, sales_value, everything())
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Check out the `completejourney::demographics` data set.
+2. Select all columns that start with "household_".
+3. Select all columns that contain "_" and filter for observations where the household has one or more kids.
+```
+
+## Computing summary statistics {#summarize}
+
+Obviously the goal of all this data wrangling is to be able to perform statistical analysis on our data. The `summarize` function allows us to perform the majority of the initial summary statistics when performing exploratory data analysis.  For example, we can compute the mean `sales_value` across all observations:
+
+```{r}
+summarise(df, avg_sales_value = mean(sales_value))
+```
+
+```{block, type = "tip"}
+These data have no missing values.  However, if there are missing values you will need to use `na.rm = TRUE` in the function to remove missing values prior to computing the summary statistic:
+
+`summarize(df, avg_sales_value = mean(sales_value, na.rm = TRUE))`
+```
+
+There are a wide variety of functions you can use within `summarize()`. For example, the following lists just a few examples:
+
+Function  | Description  |
+:-------: | ------------ |
+| `min()`, `max()` | min, max values in vector |
+| `mean()` | mean value |
+| `median()` | median value |
+| `sum()` | sum of all vector values |
+| `var()`, `sd()` | variance/std of vector |
+| `first()`, `last()` | first/last value in vector |
+| `nth()` | nth value in vector |
+| `n()` | number of values in vector |
+| `n_distinct()` | number of distinct values in vector |
+
+As long as the function reduces a vector of values down to a single summarized value, you can use it in `summarize()`.
+
+```{r summarize-functions, echo=FALSE}
+knitr::include_graphics("images/summarize_functions.png")
+```
+
+`summarize` is not terribly useful unless we pair it with another function called `group_by`. This changes the unit of analysis from the complete data set to individual groups. Then, when you use the dplyr verbs on a grouped data frame they’ll be automatically applied “by group”. For example, if we applied exactly the same code to a data frame grouped by `store_id`, we get the average sales value for each `store_id` level:
+
+```{r}
+by_store <- group_by(df, store_id)
+summarize(by_store, avg_sales_value = mean(sales_value))
+```
+
+A more efficient way to write this same code is to use the pipe operator:
+
+```{r}
+df %>%
+  group_by(store_id) %>%
+  summarize(avg_sales_value = mean(sales_value))
+```
+
+We can compute multiple summary statistics:
+
+```{r}
+df %>%
+  group_by(store_id) %>%
+  summarize(
+    `10%` = quantile(sales_value, .1),
+    `50%` = quantile(sales_value, .5),
+    avg_sales_value = mean(sales_value),
+    `90%` = quantile(sales_value, .9),
+    sd = sd(sales_value),
+    n()
+    )
+```
+
+There are additional summarize alternative functions that are quite useful.  Test these out and see how they work:
+
+```{r, eval=FALSE}
+# compute the average for multiple specified variables
+df %>% summarize_at(c("sales_value", "quantity"), mean) 
+
+# compute the average for all numeric variables
+df %>% summarize_if(is.numeric, mean) 
+```
+
+`summarize` is a very universal function that can be used on continuous and categorical variables; however, `count` is a great function to use to compute the number of observations for each level of a categorical variable (or a combination of categorical variables):
+
+```{r}
+# number of observations in each level of store_id
+count(df, store_id)
+
+# number of observations in each level of store_id and sort output
+count(df, store_id, sort = TRUE)
+
+# number of observations in each combination of sort_id & product_id
+count(df, store_id, product_id, sort = TRUE)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the **completejourney** sample transactions data as we did above...
+
+1. Compute the total quantity of items purchased across ***all*** transactions.
+2. Compute the total quantity of items purchased by household.
+3. Compute the total quantity of items purchased by household for only transactions at store 309 where the quantity purchased was greater than one.
+```
+
+## Sorting observations {#sort}
+
+Often, we desire to view observations in rank order for a particular variable(s). The `arrange` function allows us to order data by variables in ascending or descending order.  For example, we can sort our observations based on sales_value:
+
+```{r}
+# default is ascending order
+arrange(df, sales_value)
+
+# use desc() for descending order
+arrange(df, desc(sales_value))
+```
+
+This function becomes particularly useful when combining with summary statistics.  For example, we can quickly find the product with the largest average sales value amount by adding `arrange` to the end of this sequence of functions:
+
+```{r}
+df %>%
+  group_by(product_id) %>%
+  summarize(avg_sales_value = mean(sales_value)) %>%
+  arrange(desc(avg_sales_value))
+```
+
+```{block, type = "note"}
+Missing values (`NA`s) will always be moved to the end of the list regardless if you perform ascending or descending sorting.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Compute the average sales value by household and arrange in descending order to find the household with the largest average spend.
+2. Find the products with the largest median spend.
+3. Compute the total quantity of items purchased by household for only transactions at store 309 where the quantity purchased was greater than one. Which household purchased the largest quantity of items?
+```
+
+## Creating new variables {#mutate}
+
+Often, we want to create a new variable that is a function of the current variables in our data frame. The `mutate` function allows us to add new variables while preserving the existing variables. For example, we can compute the net spend per item by dividing `sales_value` by `quantity`.
+
+```{r}
+mutate(df, spend_per_item = sales_value / quantity)
+```
+
+
+```{block, type = "note"}
+`mutate` always adds new columns at the end of your dataset.
+```
+
+There are many functions for creating new variables that you can use with `mutate`. The key property is that the function must be vectorized: it must take a vector of values as input, return a vector with the same number of values as output. There’s no way to list every possible function that you might use, but here’s a selection of functions that are frequently useful:
+
+| Function  | Description |
+:---------: | ----------- |
+| `+,-,*,/,^` | arithmetic |
+| `x / sum(x)` | arithmetic w/aggregation |
+| `%/%, %%` | modular arithmetic |
+| `log, exp, sqrt` | transformations |
+| `lag, lead` | offsets |
+| `cumsum, cumprod, cum...` | cum/rolling aggregates |
+| `>, >=, <, <=, !=, ==` | logical comparisons |
+| `min_rank, dense_rank` | ranking |
+| `between` | are values between a and b? |
+| `ntile` | bin values into n buckets |
+
+The following provides a few examples of integrating these functions with `mutate`.
+
+```{r}
+# reduce the number of variables so you can see the transformations
+df2 <- select(df, household_id, quantity, sales_value, transaction_timestamp)
+
+# compute total net spend amount per item
+df2 %>% mutate(spend_per_item = sales_value / quantity)
+
+# log transform sales_value
+df2 %>% mutate(log_sales_value = log(sales_value))
+
+# order by date and compute the cumulative sum
+df2 %>% 
+  arrange(transaction_timestamp) %>%
+  mutate(cumsum_sales_value = cumsum(sales_value))
+
+# compute sum of sales_value for each product and 
+# rank order totals across 25 bins
+df %>%
+  group_by(product_id) %>%
+  summarize(total = sum(sales_value)) %>%
+  mutate(bins = ntile(total, 25))
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the **completejourney** sample transactions data as we did above...
+
+1. Create a new column (`total_disc`) that is the sum of all discounts applied to each transaction (`total_disc = coupon_disc + retail_disc + coupon_match_disc`).
+2. Create a new column (`disc_to_sales`) that computes the ratio of total discount to total sales value (`total_disc` / `sales_value`).
+3. Using the results from #2, create a new column `bins` that bins the `disc_to_sales` column into 10 bins. Filter for those transactions with the highest discount to sales ratio (bin 10).
+```
+
+## Putting it altogether
+
+The beauty of **dplyr** is how it makes exploratory data analysis very simple and efficient.  For example, we can combine all the above functions to:
+
+1. group the data by `store_id` and `product_id`,
+2. compute the total `sales_value`,
+3. create a rank order variable,
+4. filter for the top 5 products within each store with the highest total sales value,
+5. sort total by descending order.
+
+```{r}
+df %>%
+  group_by(store_id, product_id) %>%
+  summarize(total = sum(sales_value)) %>%
+  mutate(rank = min_rank(desc(total))) %>%
+  filter(rank <= 5) %>%
+  arrange(desc(total))
+```
 
 ## Exercises
+
+```{block, type='todo'}
+Using what you've learned thus far, can you find the store and week that experienced the greatest week over week growth in the number of units sold? 
+
+The steps to follow include:
+
+1. Group by store and week
+2. Compute sum of the quantity of items sold
+3. Create week over week percent growth in total units sold. You may want to check out the `lag()` function for this step.
+4. Arrange in descending order
+
+See the code chunk hint below.
+```
+
+```{r, eval=FALSE}
+# hint
+df %>%
+  group_by(______, ______) %>% 
+  summarize(______) %>%        
+  mutate(______) %>%           
+  arrange(______)              
+```
+
+## Additional resources 
+
+**dplyr** is an extremely powerful package with many data transformation capabilities.  This chapter discusses the more commonly applied functions but there are many more capabilities provided by **dplyr** not discussed.  Here are some resources to help you learn more about **dplyr**:
+
+* [R for Data Science book, chapter 5](http://r4ds.had.co.nz/transform.html)
+* [RStudio’s Data wrangling with R webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)
+* [**dplyr** vignette](https://dplyr.tidyverse.org/articles/dplyr.html)
+* [DataCamp's Data Manipulation in R with **dplyr** course](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial)
+* [RStudio’s Data wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+
+
+
+
+
+
 

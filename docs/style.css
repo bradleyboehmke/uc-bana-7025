@@ -62,7 +62,7 @@ div.base::before,
 }
 
 .todo::before {
-  content: "Questions: ";
+  content: "To do: ";
   font-weight: bold;
   color: SeaGreen;
 }
