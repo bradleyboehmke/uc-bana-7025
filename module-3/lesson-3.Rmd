@@ -1,0 +1,309 @@
+# Lesson 3c: Tidy data
+
+```{r setup-3b, include=FALSE}
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE,
+  message = FALSE
+)
+```
+
+> *"Cannot emphasize enough how much time you save by putting analysis efforts into tidying data first."* - Hilary Parker
+
+[Jenny Bryan](https://twitter.com/JennyBryan) stated that _"classroom data are like teddy bears and real data are like a grizzley bear with salmon blood dripping out its mouth."_ In essence, she was getting to the point that often when we learn how to perform a modeling approach in the classroom, the data used is provided in a format that appropriately feeds into the modeling tool of choice. In reality, datasets are messy and _"every messy dataset is messy in its own way."_[^tidy1] The concept of ___"tidy data"___ was established by [Hadley Wickham](https://twitter.com/hadleywickham) and represents a _"standardized way to link the structure of a dataset (its physical layout) with its semantics (its meaning)."_[^tidy2]  The objective should always to be to get a dataset into a tidy form which consists of:
+
+1. Each variable forms a column
+2. Each observation forms a row
+3. Each type of observational unit forms a table
+
+```{r tidy-data, echo=FALSE, fig.align='center', fig.cap="Tidy data.", out.height="100%", out.width="100%"}
+knitr::include_graphics("images/tidy-data.png")
+```
+
+To create tidy data you need to be able to reshape your data; preferably via efficient and simple code.  To help with this process Hadley created the [`tidyr`](https://cran.r-project.org/web/packages/tidyr/index.html) package. This lesson covers the basics of `tidyr` to help you reshape your data as necessary.  
+
+```{block, type='tip'}
+If you’d like to learn more about the underlying theory, you might enjoy the *Tidy Data* paper published in the Journal of Statistical Software, http://www.jstatsoft.org/v59/i10/paper.
+```
+
+
+## Learning objectives
+
+Upon completing this module you will be able to:
+
+- Make wide data long and long data wide.
+- Separate and combine parts of columns.
+- Impute missing values
+
+## Prerequisites
+
+Load the `tidyr` package to provide you access to the functions we'll cover in this lesson. We'll also use `dplyr` for a few examples.
+
+```{r load-tidyr, message=FALSE}
+library(tidyr)
+library(dplyr)
+```
+
+
+To illustrate various tidying tasks we will use several untidy datasets provided in the data directory (or via Canvas material download). 
+
+```{block, type='note'}
+These are artificial customer transaction datasets that are designed to mimick actual data.
+```
+
+## Making wide data longer
+
+There are times when our data is considered "wide" or "unstacked" and a common attribute/variable of concern is spread out across columns.  To reformat the data such that these common attributes are *gathered* together as a single variable, the `pivot_longer()` function will take multiple columns and collapse them into key-value pairs, duplicating all other columns as needed.
+
+For example, let's say we have the given data frame.  
+
+```{r load-tidy1}
+(untidy1 <- readr::read_csv("data/untidy1.csv"))
+```
+
+This data is considered untidy in the *wide* sense since the ___month___ variable is structured such that each month represents a variable. If we wanted to compute the total amount each household spent by month, this data set does not provide a convenient shape to work with. To re-structure the month component as an individual variable, we can *pivot this data to be longer* such that each month is within one column variable and the values associated with each month in a second column variable.
+
+```{r gather1}
+untidy1 %>%
+   pivot_longer(cols = Mar:May, names_to = "month", values_to = "net_spend_amt")
+```
+
+This new structure allows us to perform follow-on analysis in a much easier fashion. For example, if we wanted to compute the total amount each household spent by month, we could simply do the following sequence:
+
+```{r, message=FALSE}
+untidy1 %>%
+   pivot_longer(cols = Mar:May, names_to = "month", values_to = "net_spend_amt") %>%
+   group_by(hshd_id, month) %>%
+   summarize(monthly_spend = sum(net_spend_amt))
+```
+
+
+It's important to note that there is flexibility in how you specify the columns you would like to gather. In our example we used `cols = Mar:May` to imply we want to use all the columns including and between `Mar` and `May`. We could also have used the following to produce the same results:
+
+```{r gather2, eval=FALSE}
+untidy1 %>% pivot_longer(cols = Mar:May, names_to = "month", values_to = "net_spend_amt")
+untidy1 %>% pivot_longer(cols = c(Mar, Apr, May), names_to = "month", values_to = "net_spend_amt")
+untidy1 %>% pivot_longer(cols = 3:5, names_to = "month", values_to = "net_spend_amt")
+untidy1 %>% pivot_longer(cols = -c(hshd_id, prod_desc), names_to = "month", values_to = "net_spend_amt")
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the data provided by `tidyr::table4b`:
+
+1. Is this data untidy? If so, why?
+2. Compute the sum of the values across the years for each country.
+3. Now pivot this data set so that it is tidy with the year values represented in their own column called 'year' and the values listed in their own 'population' column.
+4. Using the pipe operator to chain together a sequence of functions, perform #3 and then compute the mean population for each country.
+```
+
+## Making long data wider
+
+There are also times when we are required to turn long formatted data into wide formatted data -- in other words, we want to *pivot data to be wider*. As a complement to `pivot_longer`, the `pivot_wider` function spreads a key-value pair across multiple columns. For example, the given data frame captures total household purchases for each product along with the household's shopping habit (_Premium Loyal_, _Valuable_, etc.).
+
+```{r load-untidy2}
+(untidy2 <- readr::read_csv("data/untidy2.csv"))
+```
+
+Currently, this data set is in a tidy format. But say we wanted to perform a classification model where we try to use the amount spent on each product to predict the shopping habit of each household, we would need to reorganize the data to make it compatible with future algorithms.  To address this, we would need to pivot this data such that each product as its own variable with the total dollar amount spent on each product as the values.  In essence, we are transposing the values in `prod_merch_l20_desc` to be the new variable names (aka `key`) and then adding the values in `net_spend_amt` to be the `value` under each variable name.
+
+```{r spread1}
+untidy2 %>%
+   pivot_wider(names_from = prod_merch_l20_desc, values_from = net_spend_amt)
+```
+
+This results in each household (`hshd_id`) having its own observation.  You probably notice that there are now a lot of missing values which causes `NA` to be populated.  If you were to apply this data to one of the many machine learning algorithms, you would likely run into errors due to the `NA`s.  In this example, we could replace those `NA`s with zeros using `values_fill = 0`, since the household did not purchase any of those products. 
+
+```{r spread2}
+untidy2 %>%
+   pivot_wider(names_from = prod_merch_l20_desc, values_from = net_spend_amt, values_fill = 0)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the data provided by `tidyr::table2`:
+
+1. Is this data untidy? If so, why?
+2. Compute the cases-to-population ratio for each country by year.
+3. Now pivot this data set so that it is tidy with 4 columns: `country`, `year`, `cases`, and `population`.
+4. Using the pipe operator to chain together a sequence of functions, perform #3 and then compute the cases-to-population ratio for each country by year.
+```
+
+## Separate one variable into multiple
+
+Many times a single column variable will capture multiple variables, or even parts of a variable you just don't care about.  This is exemplified in the following `untidy3` data frame.  Here, the `product` variable combines two variables, the product category (i.e. greeting cards, Pasta & pizza sauce) along with the product description (i.e. graduation cards, birthday cards). For many reasons (summary statistics, visualization, modeling) we would likely want to _separate_ these parts into their own variables. 
+
+```{r load-untidy3}
+(untidy3 <- readr::read_csv("data/untidy3.csv"))
+```
+
+This can be accomplished using the `separate` function which separates a single column into multiple columns based on a separator. Additional arguments provide some flexibility with separating columns.
+
+```{r separate1}
+# separate product column into two variables named "prod_category" & "prod_desc"
+untidy3 %>% 
+   separate(col = product, into = c("prod_category", "prod_desc"), sep = ": ")
+```
+
+```{block, type = "note"}
+The default separator is any non alpha-numeric character. In this example there are two: white space `" "` and colon `:` so we need to specify. You can also keep the original column that you are separating by including `remove = FALSE`.
+```
+
+You can also pass a vector of integers to `sep` and `separate()` will interpret the integers as positions to split at. For example, say our household ID (`hshd_id`) value actually represents the the household ***and*** user. So, let's say the first 7 digits is the household identifier and the last 3 digits is the user identifier. We can split this into two new variables with the following:
+
+```{r}
+untidy3 %>% 
+   separate(hshd_id, into = c("hshd_id", "member_id"), sep = 7)
+```
+
+```{block, type='tip'}
+You can use positive and negative values to split the column. Positive values start at 1 on the far-left of the strings; negative value start at -1 on the far-right of the strings.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the data provided by `tidyr::table3`:
+
+1. Is this data untidy? If so, why?
+2. The `rate` variable is actually combining the number of cases ***and*** the population. Split this column such that you have four columns: `country`, `year`, `cases`, and `population`.
+3. Using the pipe operator to chain together a sequence of functions, perform #2 and then compute the cases-to-population ratio for each country by year.
+```
+
+## Combine multiple variables into one
+
+Similarly, there are times when we would like to combine the values of two variables.  As a compliment to `separate`, the `unite` function is a convenient function to paste together multiple variable values into one. Consider the following data frame that has separate date variables. To perform time series analysis or for visualizations we may desire to have a single date column.
+
+```{r load-untidy4}
+(untidy4 <- readr::read_csv("data/untidy4.csv"))
+```
+
+We can accomplish this by *uniting* these columns into one variable with `unite`.  
+
+```{r unite1}
+untidy4 %>% unite(col = "date", year:day, sep = "-")
+```
+
+```{block, type = "note"}
+Don't worry, we'll learn more appropriate ways to deal with dates in a later lesson.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the data provided by `tidyr::table5`:
+
+1. Is this data untidy? If so, why?
+2. Unite and separate the necessary columns such that you have four columns: `country`, `year`, `cases`, and `population`.
+3. Using the pipe operator to chain together a sequence of functions, perform #2 and then compute the cases-to-population ratio for each country by year.
+```
+
+
+## Additional tidying functions
+
+The previous four functions (`pivot_longer`, `pivot_wider`, `separate` and `unite`) are the primary functions you will find yourself using on a continuous basis; however, there are some handy functions that are lesser known with the `tidyr` package.  Consider this untidy data frame.
+
+```{r messy-expenses}
+expenses <- tibble::as_tibble(read.table(header = TRUE, text = "
+        Dept    Year   Month   Day         Cost
+           A    2015      01    01      $500.00
+          NA      NA      02    05       $90.00
+          NA      NA      02    22    $1,250.45
+          NA      NA      03    NA      $325.10
+           B      NA      01    02      $260.00
+          NA      NA      02    05       $90.00
+", stringsAsFactors = FALSE))
+```
+
+Often Excel reports will not repeat certain variables. When we read these reports in, the empty cells are typically filled in with `NA` such as in the `Dept` and `Year` columns of our `expense` data frame. We can fill these values in with the previous entry using `fill()`:
+
+```{r NA-fill}
+expenses %>% fill(Dept, Year)
+```
+
+Also, sometimes accounting values in Excel spreadsheets get read in as a character value, which is the case for the `Cost` variable. We may wish to extract only the numeric part of this regular expression, which can be done with `readr::parse_number`. Note that `parse_number` works on a single variable so when you pipe the `expense` data frame into the function you need to use `%$%` operator as discussed in the Pipe Operator lesson.
+
+```{r parse-number}
+library(magrittr)
+
+expenses %$% readr::parse_number(Cost)
+
+# you can use this to convert and save the Cost column to a numeric variable
+expenses %>% dplyr::mutate(Cost = readr::parse_number(Cost))
+```
+
+You can also easily replace missing (or `NA`) values with a specified value:
+
+```{r replace-na}
+# replace the missing Day value
+expenses %>% replace_na(replace = list(Day = 31))
+
+# replace both the missing Day and Year values
+expenses %>% replace_na(replace = list(Year = 2015, Day = 31))
+```
+
+## Putting it altogether
+
+Since the `%>%` operator is embedded in `tidyr`, we can string multiple operations together to efficiently tidy data *and* make the process easy to read and follow.  To illustrate, let's use the following data, which has multiple *messy* attributes. 
+
+```{r super-messy-data}
+a_mess <- tibble::as_tibble(read.table(header = TRUE, text = "
+   Dep_Unt   Year     Q1     Q2     Q3     Q4
+    A.1      2006     15     NA     19     17
+    B.1        NA     12     13     27     23
+    A.2        NA     22     22     24     20
+    B.2        NA     12     13     25     18
+    A.1      2007     16     14     21     19
+    B.2        NA     13     11     16     15
+    A.2        NA     23     20     26     20
+    B.2        NA     11     12     22     16
+"))
+```
+
+In this case, a tidy data set should result in columns of Dept, Unit, Year, Quarter, and Cost.  Furthermore, we want to fill in the year column where `NA`s currently exist.  And we'll assume that we know the missing value that exists in the Q2 column, and we'd like to update it.
+
+```{r putting-altogether}
+a_mess %>%
+  fill(Year) %>%
+  pivot_longer(cols = Q1:Q4, names_to = "Quarter", values_to = "Cost") %>%
+  separate(Dep_Unt, into = c("Dept", "Unit")) %>%
+  replace_na(replace = list(Cost = 17))
+```
+
+
+## Exercises
+
+1. Is the following data set "tidy"? Why or why not?
+```{r}
+people <- tribble(
+  ~name,             ~names,  ~values,
+  #-----------------|--------|------
+  "Phillip Woods",   "age",       45,
+  "Phillip Woods",   "height",   186,
+  "Phillip Woods",   "age",       50,
+  "Jessica Cordero", "age",       37,
+  "Jessica Cordero", "height",   156
+)
+```
+2. Using the data set above, convert the "name" column into "first_name" and "last_name" columns.
+3. Now pivot this data set such that the "names" and "values" columns are converted into "age" and "height" columns.
+
+
+## Additional resources
+
+This chapter covers most, but not all, of what `tidyr` provides. There are several other resources you can check out to learn more.
+
+* [R for Data Science book, chapter 12](http://r4ds.had.co.nz/tidy-data.html)
+* [R Studio’s Data wrangling with R webinar](https://www.rstudio.com/resources/webinars/data-wrangling-with-r-and-rstudio/)
+* [`tidyr` vignette](https://tidyr.tidyverse.org/articles/tidy-data.html)
+* [RStudio’s Data wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+* [DataCamp's Cleaning Data in R course](https://www.datacamp.com/courses/cleaning-data-in-r)
+
+
+
+
+
+[^tidy1]: Wickham, H. (2014). "Tidy data." Journal of Statistical Software, 59(10). [[document](http://jstatsoft.org/v59/i10)]
+[^tidy2]: Ibid
