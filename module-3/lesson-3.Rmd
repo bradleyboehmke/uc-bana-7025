@@ -1,6 +1,6 @@
 # Lesson 3c: Tidy data
 
-```{r setup-3b, include=FALSE}
+```{r setup-3c, include=FALSE}
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE,

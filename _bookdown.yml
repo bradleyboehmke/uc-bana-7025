@@ -22,6 +22,7 @@ rmd_files:
 - "module-3/module-overview.Rmd"
 - "module-3/lesson-1.Rmd"
 - "module-3/lesson-2.Rmd"
+- "module-3/lesson-3.Rmd"
 - "module-3/lab.Rmd"
 
 - "module-4/module-overview.Rmd"

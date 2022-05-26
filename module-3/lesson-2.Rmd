@@ -61,8 +61,8 @@ store_309
 
 To use filtering effectively, you have to know how to select the observations that you want using **comparison operators**. R provides the standard suite of comparison operators to include:
 
-Operator  | Description  |
-:-------: | ------------ |
+Operator  | Description       |
+:-------: | :---------------- |
 | `<` | less than |
 | `>` | greater than |
 | `==` | equal to |
@@ -75,14 +75,16 @@ Operator  | Description  |
 
 We can apply several of these comparison operators in the `filter` function using **logical operators**. The primary logical operators you will use are:
 
-Operator  | Example  | Description |
-:-------: | ------------ | ------- |
+Operator  | Example  | Description                    |
+:-------: | :------: | :----------------------------- |
 | `&` | `x & y` | intersection of x *and* y |
 | `|` | `x \| y` | union of x *or* y |
 | `!` | `x & !y` | x but exclude y and intersect of y |
 | `xor` | `xor(x, y)` | only values in x and y that are disjointed with one another |
 
-```{r, echo=FALSE, fig.cap="Complete set of boolean operations. x is the left-hand circle, y is the right-hand circle, and the shaded region show which parts each operator selects. <a href="https://r4ds.had.co.nz/transform.html#logical-operators">R4DS</a>"}
+The following visual representation helps to differentiate how these operators work with fictional `x` and `y` data:
+
+```{r, echo=FALSE, fig.cap="Complete set of boolean operations. x is the left-hand circle, y is the right-hand circle, and the shaded region show which parts each operator selects. <a href=https://r4ds.had.co.nz/transform.html#logical-operators>R4DS</a>", out.width="70%", out.height="70%"}
 knitr::include_graphics("images/transform-logical.png")
 ```
 
@@ -237,7 +239,7 @@ These data have no missing values.  However, if there are missing values you wil
 There are a wide variety of functions you can use within `summarize()`. For example, the following lists just a few examples:
 
 Function  | Description  |
-:-------: | ------------ |
+:-------: | :----------- |
 | `min()`, `max()` | min, max values in vector |
 | `mean()` | mean value |
 | `median()` | median value |
@@ -250,7 +252,7 @@ Function  | Description  |
 
 As long as the function reduces a vector of values down to a single summarized value, you can use it in `summarize()`.
 
-```{r summarize-functions, echo=FALSE}
+```{r summarize-functions, echo=FALSE, out.height="80%", out.width="80%", fig.cap="Summarize functions need to condense a vector input down to a single summarized output value."}
 knitr::include_graphics("images/summarize_functions.png")
 ```
 
@@ -365,8 +367,8 @@ mutate(df, spend_per_item = sales_value / quantity)
 
 There are many functions for creating new variables that you can use with `mutate`. The key property is that the function must be vectorized: it must take a vector of values as input, return a vector with the same number of values as output. There’s no way to list every possible function that you might use, but here’s a selection of functions that are frequently useful:
 
-| Function  | Description |
-:---------: | ----------- |
+| Function  | Description     |
+:---------: | :-------------- |
 | `+,-,*,/,^` | arithmetic |
 | `x / sum(x)` | arithmetic w/aggregation |
 | `%/%, %%` | modular arithmetic |

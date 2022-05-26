@@ -309,6 +309,10 @@ long_tracks <- tbl(chinook, sql(sql_query))
 long_tracks
 ```
 
+```{r, echo=FALSE, message=FALSE}
+dbDisconnect(chinook)
+```
+
 
 ## Many other file types
 
