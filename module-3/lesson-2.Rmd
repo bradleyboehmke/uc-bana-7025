@@ -59,25 +59,47 @@ store_309 <- filter(df, store_id == "309")
 store_309
 ```
 
-To use filtering effectively, you have to know how to select the observations that you want using comparison operators. R provides the standard suite of comparison operators to include:
+To use filtering effectively, you have to know how to select the observations that you want using **comparison operators**. R provides the standard suite of comparison operators to include:
 
-```{r, eval=FALSE}
-<   Less than                    !=      Not equal to
->   Greater than                 %in%    Group membership
-==  Equal to                     is.na   is NA
-<=  Less than or equal to        !is.na  is not NA
->=  Greater than or equal to     &,|,!   Boolean operators
+Operator  | Description  |
+:-------: | ------------ |
+| `<` | less than |
+| `>` | greater than |
+| `==` | equal to |
+| `!=` | not equal to |
+| `<=` | less than or equal to |
+| `>=` | greater than or equal to|
+| `%in%` | group membership |
+| `is.na` | is NA |
+| `!is.na` | is not NA |
+
+We can apply several of these comparison operators in the `filter` function using **logical operators**. The primary logical operators you will use are:
+
+Operator  | Example  | Description |
+:-------: | ------------ | ------- |
+| `&` | `x & y` | intersection of x *and* y |
+| `|` | `x \| y` | union of x *or* y |
+| `!` | `x & !y` | x but exclude y and intersect of y |
+| `xor` | `xor(x, y)` | only values in x and y that are disjointed with one another |
+
+```{r, echo=FALSE, fig.cap="Complete set of boolean operations. x is the left-hand circle, y is the right-hand circle, and the shaded region show which parts each operator selects. <a href="https://r4ds.had.co.nz/transform.html#logical-operators">R4DS</a>"}
+knitr::include_graphics("images/transform-logical.png")
 ```
 
-We can apply several of these comparison operators in the `filter` function.  For example, we can filter for transactions for a particular store ID and household ID:
+For example, we can filter for transactions for a particular store ID ***or*** household ID:
 
+```{r, eval=FALSE}
+filter(df, store_id == "309" | household_id == "1762")
+```
 
-```{r}
-filter(df, store_id == "309", household_id == "1762")
+Or if we wanted to filter for transactions for a particular store ID ***and*** household ID:
+
+```{r, eval=FALSE}
+filter(df, store_id == "309" & household_id == "1762")
 ```
 
 ```{block, type = "note"}
-A comma between comparison operators acts just like and `&` operator.  So `filter(data, variable1 == value, variable2 == value)` is the same as `filter(data, variable1 == value & variable2 == value)`
+A comma between comparison operators acts just like and `&` operator.  So `filter(df, store_id == "309", household_id == "1762")` is the same as `filter(df, store_id == "309" & household_id == "1762")`
 ```
 
 We can continue to add additional operations.  In this example we filter for transactions made:
