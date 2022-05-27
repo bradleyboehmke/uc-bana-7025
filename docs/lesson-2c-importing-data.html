@@ -863,10 +863,11 @@ href="https://r4ds.had.co.nz/tibbles.html#tibbles">here</a>.
 </ul>
 <p>An <strong>absolute path</strong> always contains the root elements and the complete list of directories to locate the specific file or folder. For the ames_raw.csv file, the absolute path on my computer is:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-2c-importing-data.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb123-2"><a href="lesson-2c-importing-data.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-3"><a href="lesson-2c-importing-data.html#cb123-3" aria-hidden="true" tabindex="-1"></a>absolute_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&#39;data/ames_raw.csv&#39;</span>)</span>
-<span id="cb123-4"><a href="lesson-2c-importing-data.html#cb123-4" aria-hidden="true" tabindex="-1"></a>absolute_path</span>
-<span id="cb123-5"><a href="lesson-2c-importing-data.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/ames_raw.csv&quot;</span></span></code></pre></div>
+<span id="cb123-2"><a href="lesson-2c-importing-data.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="do">## here() starts at /Users/b294776/Desktop/workspace/training/UC/uc-bana-7025</span></span>
+<span id="cb123-3"><a href="lesson-2c-importing-data.html#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-4"><a href="lesson-2c-importing-data.html#cb123-4" aria-hidden="true" tabindex="-1"></a>absolute_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&#39;data/ames_raw.csv&#39;</span>)</span>
+<span id="cb123-5"><a href="lesson-2c-importing-data.html#cb123-5" aria-hidden="true" tabindex="-1"></a>absolute_path</span>
+<span id="cb123-6"><a href="lesson-2c-importing-data.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/ames_raw.csv&quot;</span></span></code></pre></div>
 <p>I can always use the absolute path in <code>read_csv()</code>:</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lesson-2c-importing-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(absolute_path)</span>
 <span id="cb124-2"><a href="lesson-2c-importing-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
@@ -1133,8 +1134,13 @@ interfaces.
 </div>
 <p>In this example I will illustrate connecting to a local sqlite database. First, let’s load the libraries we’ll need:</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="lesson-2c-importing-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb137-2"><a href="lesson-2c-importing-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb137-3"><a href="lesson-2c-importing-data.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div>
+<span id="cb137-2"><a href="lesson-2c-importing-data.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb137-3"><a href="lesson-2c-importing-data.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: &#39;dbplyr&#39;</span></span>
+<span id="cb137-4"><a href="lesson-2c-importing-data.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="do">## The following objects are masked from &#39;package:dplyr&#39;:</span></span>
+<span id="cb137-5"><a href="lesson-2c-importing-data.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb137-6"><a href="lesson-2c-importing-data.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     ident, sql</span></span>
+<span id="cb137-7"><a href="lesson-2c-importing-data.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb137-8"><a href="lesson-2c-importing-data.html#cb137-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div>
 <p>The following illustrates with the example <a href="https://www.sqlitetutorial.net/sqlite-sample-database/">Chinook Database</a>, which I’ve downloaded to my data directory.</p>
 <div class="note">
 <p>
@@ -1215,8 +1221,13 @@ databases.
 <span id="cb142-16"><a href="lesson-2c-importing-data.html#cb142-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>JSON Files can be imported using the <a href="https://github.com/jeroen/jsonlite">jsonlite</a> library.</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="lesson-2c-importing-data.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb143-2"><a href="lesson-2c-importing-data.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="lesson-2c-importing-data.html#cb143-3" aria-hidden="true" tabindex="-1"></a>imported_json <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&#39;data/json_example.json&#39;</span>)</span></code></pre></div>
+<span id="cb143-2"><a href="lesson-2c-importing-data.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb143-3"><a href="lesson-2c-importing-data.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: &#39;jsonlite&#39;</span></span>
+<span id="cb143-4"><a href="lesson-2c-importing-data.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="do">## The following object is masked from &#39;package:purrr&#39;:</span></span>
+<span id="cb143-5"><a href="lesson-2c-importing-data.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb143-6"><a href="lesson-2c-importing-data.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     flatten</span></span>
+<span id="cb143-7"><a href="lesson-2c-importing-data.html#cb143-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-8"><a href="lesson-2c-importing-data.html#cb143-8" aria-hidden="true" tabindex="-1"></a>imported_json <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&#39;data/json_example.json&#39;</span>)</span></code></pre></div>
 <p>Since JSON files can have multiple dimensions, jsonlite will import JSON files as a list since that is the most flexible data structure in R.</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="lesson-2c-importing-data.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(imported_json)</span>
 <span id="cb144-2"><a href="lesson-2c-importing-data.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;list&quot;</span></span></code></pre></div>
