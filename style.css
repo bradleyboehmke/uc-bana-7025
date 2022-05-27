@@ -62,7 +62,7 @@ div.base::before,
 }
 
 .todo::before {
-  content: "To do: ";
+  content: "TODO: ";
   font-weight: bold;
   color: SeaGreen;
 }
