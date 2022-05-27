@@ -1,16 +1,359 @@
-# Lesson 1
+# Lesson 4a: Relational data
 
-TBD
+```{r setup-4a, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
 
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE,
+  message = FALSE
+)
+```
+
+It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called **relational data** because its the relations, not just the individual data sets, that are important. 
+
+To work with relational data you need join operations that work with pairs of tables. There are two families of verbs designed to work with relational data:
+
+- __Mutating joins__: add new variables to one data frame by matching observations in another.
+- __Filter joins__: filter observations from one data frame based on whether or not they match an observation in the other table.
+
+In this lesson, we are going to look at different ways to apply mutating and filtering joins to relational data sets.
 
 ## Learning objectives
 
+By the end of this lesson you'll be able to:
 
-## Content A
+* Use various mutating joins to combine variables from two tables.
+* Use filtering joins to filter one data set based on observations in another data set.
+
+## Prerequisites
+
+Load the **dplyr** package to provide you access to the join functions we’ll cover in this lesson.
+
+```{r}
+library(dplyr)
+```
+
+To illustrate various joining tasks we will use two very simple data frames `x` & `y`. The colored column represents the “key” variable: these are used to match the rows between the tables. We'll talk more about keys in a second. The grey column represents the “value” column that is carried along for the ride. 
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Two simple data frames.", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/original-dfs.png")
+```
+
+```{r}
+x <- tribble(
+  ~id, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y <- tribble(
+  ~id, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+However, we will also build upon the simple examples by using various data sets from the **completejourney** library:
+
+```{r}
+library(completejourney)
+```
+
+```{block, type='todo'}
+Take some time to read about the various data sets available via **completejourney**.
+
+1. What different data sets are available and what do they represent?
+2. What are the common variables between each table?
+```
+
+## Keys
+
+The variables used to connect two tables are called **keys**. A key is a variable (or set of variables) that uniquely identifies an observation. There are two primary types of keys we'll consider in this lesson:
+
+* A __primary key__ uniquely identifies an observation in its own table
+* A __foreign key__ uniquely identifies an observation in another table
+
+Variables can be both a primary key and a foreign key. For example, within the transactions data `household_id` is a primary key to represent a household identifier for each transaction. `household_id` is also a foreign key in the demographics data set where it can be used to align household demographics to each transaction.
+
+A primary key and the corresponding foreign key in another table form a relation. Relations are typically one-to-many. For example, each transaction has one household, but each household has many transactions. In other data, you’ll occasionally see a 1-to-1 relationship.
+
+When data is cleaned appropriately the keys used to match two tables will be commonly named. For example, the variable that can link our `x` and `y` data sets is named `id`:
+
+```{r}
+intersect(colnames(x), colnames(y))
+```
+
+We can easily see this by looking at the data but when working with larger data sets this becomes more appropriate than just viewing the data. 
+
+```{r}
+intersect(colnames(transactions_sample), colnames(demographics))
+```
+
+```{block, type='note'}
+Although it is preferred, keys do not need to have the same name in both tables. For example, our household identifier could be named `household_id` in the transaction data but be `hshd_id` in the demographics table. The names would be different but they represent the same information.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Using the completejourney data, programmatically identify the common key(s) that between:
+
+1. `transactions_sample` and `products` tables.
+2. `demographics` and `campaigns` tables.
+3. `campaigns` and `campaign_descriptions` tables.
+4. Is there a common key between `transactions_sample` and `coupon_redemptions`? Does this mean we can or cannot join these two data sets?
+```
 
 
-## Content B
+## Mutating joins
 
+Often we have separate data frames that can have common and differing variables for similar observations and we wish to join these data frames together. A mutating join allows you to combine variables from two tables. It first matches observations by their keys, then copies across variables from one table to the other.
+
+**dplyr** offers multiple mutating join functions (`xxx_join()`) that provide alternative ways to join two data frames:
+
+* `inner_join()`: keeps only observations in `x` that match in `y`.
+* `left_join()`: keeps all observations in `x` and adds available information from `y`.
+* `right_join()`: keeps all observations in `y` and adds available information from `x`.
+* `full_join()`: keeps all observations in both `x` and `y`.
+
+Let's explore each of these a little more closely.
+
+
+### Inner join
+
+The simplest type of join is the **inner join**. An inner join matches pairs of observations whenever their keys are equal. Consequently, the output of an inner join is all rows from `x` where there are matching values in `y`, and all columns from `x` and `y`.
+
+```{block, type='note'}
+An inner join is the most restrictive of the joins - it returns only rows with matches across both data frames.
+```
+
+
+The following provides a nice illustration:
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Inner join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/inner-join.gif")
+```
+
+```{r}
+x %>% inner_join(y, by = "id")
+```
+
+### Outer joins
+
+An inner join keeps observations that appear in both tables. However, we often want to retain *all* observations in at least one of the tables. Consequently, we can apply various **outer joins** to retain observations that appear in at least one of the tables. There are three types of outer joins:
+
+* A left join keeps all observations in `x`.
+* A right join keeps all observations in `y`.
+* A full join keeps all observations in `x` and `y`.
+
+#### Left join
+
+With a **left join** we retain all observations from `x`, and we add columns `y`. Rows in `x` where there is no matching key value in `y` will have `NA` values in the new columns.
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Left join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/left-join.gif")
+```
+
+```{r}
+x %>% left_join(y, by = "id")
+```
+
+#### Right join
+
+A **right join** is just a flipped left join where we retain all observations from `y`, and we add columns `x`. Similar to a left join, rows in `y` where there is no matching key value in `x` will have `NA` values in the new columns.
+
+```{block, type='note'}
+Should I use a right join, or a left join? To answer this, ask yourself _“which data frame should retain all of its rows?”_ - and use this one as the baseline. A left join keep all the rows in the first data frame written in the command, whereas a right join keeps all the rows in the second data frame.
+```
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Right join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/right-join.gif")
+```
+
+```{r}
+x %>% right_join(y, by = "id")
+```
+
+#### Full join
+
+We can also perform a **full join** where we keep all observations in `x` and `y`. This join will match observations where the key variable(s) have matching information in both tables and then fill in non-matching values as `NA`.
+
+```{block, type='note'}
+A full join is the most inclusive of the joins - it returns all rows from both data frames.
+```
+
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Full join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/full-join.gif")
+```
+
+```{r}
+x %>% full_join(y, by = "id")
+```
+
+### Differing keys
+
+So far, the keys we've used to join two data frames have had the same name. This was encoded by using `by = "id"`. However, this is not a requirement. In fact, if we exclude the `by` argument then our `xxx_join()` functions will identify all common variable names in both tables and join by those. When this happens we get a message:
+
+```{r, message=TRUE}
+x %>% inner_join(y)
+```
+
+But what happens we our common key variable is named differently in each data frame?
+
+```{r}
+a <- tribble(
+  ~id_1, ~val_a,
+      1, "x1",
+      2, "x2",
+      3, "x3"
+)
+b <- tribble(
+  ~id_2, ~val_b,
+      1, "y1",
+      2, "y2",
+      4, "y3"
+)
+```
+
+In this case, since our common key variable has different names in each table (`id_1` in `a` and `id_2` in `b`), our inner join function doesn't know how to join these two data frames. 
+
+```{r, error=TRUE}
+a %>% inner_join(b)
+```
+
+When this happens, we can explicitly tell our join function to use two unique key names as a common key:
+
+```{r}
+a %>% inner_join(b, by = c("id_1" = "id_2"))
+```
+
+### Bigger example
+
+So far we've used small simple examples to illustrate the differences between joins. Now let's use our **completejourney** data to look at some larger examples.  
+Say we wanted to add product information (via `products`) to each transaction (`transaction_sample`); however, we want to *retain all transactions*. This would suggest a left join so we can keep all transaction observations but simply add product information where possible to each transaction.
+
+First, let's get the common key:
+
+```{r}
+intersect(colnames(transactions_sample), colnames(products))
+```
+
+This aligns to the [data dictionary](https://bradleyboehmke.github.io/completejourney/articles/completejourney.html#dataset-details) so we can trust this is the accurate common key. We can now perform a left join using `product_id` as the common key:
+
+```{block, type='tip'}
+Like `mutate()`, the join functions add variables to the right, so if you have a lot of variables already, the new variables won’t get printed out. You can also use `View()` on the output to show the resulting table in a spreadsheet like view.
+```
+
+```{r}
+transactions_sample %>%
+   left_join(products, by = "product_id")
+```
+
+This has now added product information to each transaction. Consequently, if we wanted to get the total sales across the meat `department` but summarized at the `product_category` level so that we can identify which products generate the greatest sales we could follow this joining procedure with additional skills we learned in previous lessons:
+
+```{r}
+transactions_sample %>%
+   left_join(products, by = "product_id") %>%
+   filter(department == 'MEAT') %>%
+   group_by(product_category) %>%
+   summarize(total_spend = sum(`sales_value`)) %>%
+   arrange(desc(total_spend))
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Join the `transactions_sample` and `demographics` data so that you have household demographics for each transaction. Now compute the total sales by `age` category to identify which age group generates the most sales.
+2. Use successive joins to join `transactions_sample` with `coupons` and then with `coupon_redemptions`. Use the proper join that will only retain those transactions that have coupon and coupon redemption data.
+```
+
+
+## Filtering joins
+
+In certain situations, we may want to filter one data set based on observations in another data set but not add new information. Whereas mutating joins are for the purpose of adding columns and rows from one data set to another, **filtering joins** are for the purpose of filtering. 
+
+Filtering joins include:
+
+* `semi_join()`: keeps all observations in `x` that have a match in `y`.
+* `anti_join()`: drops all observations in `x` that have a match in `y`.
+
+### Semi join
+
+A semi-join keeps all observations in the baseline data frame that have a match in the secondary data frame (but does not add new columns nor duplicate any rows for multiple matches).
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Semi join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/semi-join.gif")
+```
+
+```{r}
+x %>% semi_join(y, by = "id")
+```
+
+### Anti join
+
+The anti join is another “filtering join” that returns rows in the baseline data frame that do not have a match in the secondary data frame.
+
+```{block, type='note'}
+Common scenarios for an anti-join include identifying records not present in another data frame, troubleshooting spelling in a join (reviewing records that should have matched), and examining records that were excluded after another join.
+```
+
+```{r, echo=FALSE, fig.align='center', fig.cap="Anti join ([source](https://github.com/gadenbuie/tidyexplain)).", out.height="50%", out.width="50%"}
+knitr::include_graphics("images/anti-join.gif")
+```
+
+```{r}
+x %>% anti_join(y, by = "id")
+```
+
+### Bigger example
+
+We can use the **completejourney** data to highlight the purpose behind filtering joins. In our `transactions_sample` we have a total of 75,000 transactions.
+
+```{r}
+tally(transactions_sample)
+```
+
+Now say our manager came to us and asked -- _"of all our transactions, how many of them are related to households that we have demographic information on?"_ To answer this question we would use a semi-join, which shows that 42,199 (56%) of our transactions are for customers that we have demographics on.
+
+```{r}
+transactions_sample %>%
+   semi_join(demographics, by = "household_id") %>%
+   tally()
+```
+
+Now, what if our manager asked us the same question but with a slightly different angle -- _"of all our transactions, how many of them are by customers that we **don't** have demographic information on?"_ To answer this question we would use an anti-join, which shows that 32,801 (44%) of our transactions are for customers that we do not have demographics on.
+
+```{r}
+transactions_sample %>%
+   anti_join(demographics, by = "household_id") %>%
+   tally()
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Using the `products` and `transactions_sample` data, how many products have and have not sold? In other words, of all the products we have in our inventory, how many have a been involved in a transaction? How many have not been involved in a transaction?
+2. Using the `demographics` and `transactions_sample` data, identify which `income` level buys the most `quantity` of goods.
+```
 
 ## Exercises
 
+```{block, type='todo'}
+1. Get demographic information for all households that have total sales (`sales_value`) of $100 or more.
+2. Of the households that have total sales of $100 or more, how many of these customers do we not have demographic information on?
+3. Using the `promotions_sample` and `transactions_sample` data, compute the total sales for all products that were in a display in the front of the store (`display_location` --> 1).
+```
+
+## Additional resources
+
+**dplyr**’s join operators are extremely powerful and easy to use once you understand what each `xxx_join()` is doing. Here are some resources to help you learn more about joins:
+
+- [R for Data Science book, chapter 13](https://r4ds.had.co.nz/relational-data.html)
+- [Article on the difference between mutating and filtering joins](https://towardsdatascience.com/level-up-with-semi-joins-in-r-a068426096e0)
+- [**dplyr** vignette](https://dplyr.tidyverse.org/articles/two-table.html)
+- [RStudio's data wrangling cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
