@@ -1,6 +1,9 @@
 # Lesson 1d: Vectors
 
 ```{r setup-1d, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE

@@ -1,6 +1,9 @@
 # Lesson 3b: Data transformation
 
 ```{r setup-3b, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE

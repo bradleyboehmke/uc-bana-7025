@@ -1,6 +1,9 @@
 # Lesson 2b: Data types & structures
 
 ```{r setup-2b, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
 chunk <- "```"
 inline <- function(x = "") paste0("`` `r ", x, "` ``")
 knitr::opts_chunk$set(

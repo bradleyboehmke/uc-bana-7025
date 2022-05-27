@@ -1,6 +1,9 @@
 # Lesson 3c: Tidy data
 
 ```{r setup-3c, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE,

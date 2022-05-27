@@ -1,6 +1,10 @@
 # Lesson 2a: Workflow
 
 ```{r setup-2a, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
+# simplified inline code functionality
 chunk <- "```"
 inline <- function(x = "") paste0("`` `r ", x, "` ``")
 knitr::opts_chunk$set(

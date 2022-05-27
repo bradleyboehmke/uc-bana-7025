@@ -1,8 +1,9 @@
 # Lesson 3a: Pipe operator
 
 ```{r setup-3a, include=FALSE}
-chunk <- "```"
-inline <- function(x = "") paste0("`` `r ", x, "` ``")
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE
@@ -200,7 +201,7 @@ Some additional resources regarding **magrittr** and the pipe operators you may 
 ## Exercises
 
 ```{block, type='todo'}
-Look at the code the follows. How would you rewrite this code using the pipe operator?
+Look at the code that follows. How would you rewrite this code using the pipe operator?
 ```
 
 ```{r, eval=FALSE}
