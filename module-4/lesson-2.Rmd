@@ -1,16 +1,443 @@
-# Lesson 2
+# Lesson 4b: Handling text data
 
-TBD
+```{r setup-4b, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
 
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE,
+  message = FALSE
+)
+```
+
+Dealing with character strings is often under-emphasized in data analysis training. The focus typically remains on numeric values; however, the growth in data collection is also resulting in greater bits of information embedded in text. Consequently, handling, cleaning and processing character strings is becoming a prerequisite in daily data analysis. This lesson is meant to give you the foundation of working with character strings.
 
 ## Learning objectives
 
+By the end of this lesson you'll be able to:
 
-## Content A
+* Perform basic character string manipulations.
+* Use regular expressions to identify and manipulate patterns in character strings.
+
+## Prerequisites
+
+The following packages will be used throughout this lesson.  Base R contains many functions to work with strings but we’ll avoid them because they can be inconsistent, which makes them hard to remember. Instead we’ll use functions from **stringr** for text manipulation and we'll also combine this with the use of **dplyr** for data frame manipulation.
+
+```{r}
+library(dplyr)
+library(stringr)
+```
+
+For data, we'll leverage the **completejourney** data. For example, the `products` data within **completejourney** provides various variables (e.g. `product_category` and `product_type`) that contain character strings we may need to clean, normalize, or identify patterns within.
+
+```{r}
+library(completejourney)
+
+products
+```
+
+## String basics
+
+Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string.  These operations can all be performed with base R functions; however, some operations (or at least their syntax) are greatly simplified with the `stringr` package.  Moreover, `stringr` is typically very useful when combined with `dplyr` data manipulation functions.
+
+### Case conversion
+
+To change the case of a character string we can use `str_to_xxx`:
+
+```{r}
+# we'll focus on the product_category column
+head(products$product_category)
+
+# force everything to lower case
+str_to_lower(products$product_category) %>% head()
+
+# force everything to upper case
+str_to_upper(products$product_category) %>% head()
+```
+
+Typically we want to normalize text by converting everything to lower case but keep the data in our original data frame.  We can combine `str_` functions with `dplyr::mutate` to accomplish this:
+
+```{r}
+products %>% mutate(product_category = str_to_lower(product_category))
+```
+
+```{block, type='note'}
+When we apply `mutate()` to an existing column we do not add a new column, we simply overwrite the existing column.
+```
+
+### Counting characters
+
+There may be times where we are interested in how many characters exist in a string.  Whether you need to extract this information or filter for observations that exceed a certain character length you can use `str_count` to accomplish this:
+
+```{r}
+# count number of characters in product_category
+str_count(products$product_category) %>% head()
+
+# create a new variable with character length
+products %>% 
+  mutate(category_length = str_count(product_category)) %>%
+  select(product_category, category_length)
+
+# filter for product categories that are greater than the mean character length
+products %>% 
+   filter(str_count(product_category) > mean(str_count(product_category), na.rm = TRUE))
+```
+
+### Extracting parts of character strings
+
+If you need to extract parts of a character string you can use `str_sub`.  By default `start = 1` and `end = 3` will tell the function to extract the first through third characters.  If you want to start from the right side of the string then negative numbers such as `start = -1` and `end = -5` will tell the function to extract the last five characters.
+
+```{r}
+# extract parts of a string (example: extract first three characters)
+str_sub(products$product_category, start = 1, end = 3) %>% head()
+
+# create new variable for last five characters
+products %>%
+  select(product_category) %>%
+  mutate(last_five = str_sub(product_category, start = -5, end = -1))
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Using `product_type`, which product has the longest description? How about the shortest?
+2. Using `product_id`, get all products that start with "222".
+```
+
+## Regular expressions
+
+A **regular expression** (aka regex) is a sequence of characters that define a search pattern, mainly for use in pattern matching with text strings.  Typically, regex patterns consist of a combination of alphanumeric characters as well as special characters.  The pattern can also be as simple as a single character or it can be more complex and include several characters.  
+
+To understand how to work with regular expressions in R, we need to consider two primary features of regular expressions.  One has to do with the *syntax*, or the way regex patterns are expressed in R.  The other has to do with the *functions* used for regex matching in R.  You will be exposed to both of these in the following sections.
+
+### Regex basics
+
+The `stringr` package provides us a convenient approach to regular expressions.  The common function call will consist of
+
+<center>
+<code>str_*(string, pattern)</code>
+</center>
+
+where:
+
+* `str_*` represents a wide variety of regex functions depending on what you want to do,
+* `string` represents the character string of concern (i.e. `products$product_category`),
+* `pattern` represents the regex pattern you are looking to match.
+
+For example let's say you are looking for observations where the word "FRUIT" was used in the `product_category` description.  `str_detect` detects the presence or absence of a pattern ("FRUIT" in this example) and returns a logical vector.  Since the output is `TRUE` or `FALSE`, this is a handy function to combine with `filter` to filter for observations that have that pattern.
+
+```{r}
+# detect if the word "FRUIT" is used in each product category description
+str_detect(products$product_category, "FRUIT") %>% head()
+
+# filter for those observations that include the use of "FRUIT"
+products %>% filter(str_detect(product_category, "FRUIT"))
+```
+
+There are wide variety of `str_` functions (check them out by typing `str_` + tab in the console).  For example, check out the following functions that all look for the pattern "FRZN" but provide different outputs:
+
+```{r}
+# count number of instances in each observation
+str_count(products$product_category, "FRZN") %>% head()
+
+# extract the first instance in each observation (NA results when no instance exists)
+str_extract(products$product_category, "FRZN") %>% head()
+
+# locate the start/stop position of the first instance in each observation
+str_locate(products$product_category, "FRZN") %>% head()
+
+# replace all instances of the word "FRZN" with "FROZEN"
+str_replace_all(products$product_category, pattern = "FRZN", replacement = "FROZEN") %>% head()
+```
+
+```{block, type = "tip"}
+The patterns used in the `str_` functions are case sensitive but you can use `regex` to control options (i.e. `str_count(products$product_category, regex("frzn", ignore_case = TRUE))`).
+```
+
+### Multiple Words
+
+In the previous section you saw that you can search for a given word using any of the `str_` functions.  We can build onto this and search for multiple words.  For example, you can search for multiple phrases to identify seasonal products. Say you wanted to identify all products targeting *summer or fall*, rather than search for these words in separate `str_detect()` calls...
+
+```{r}
+# filter for summer or fall items
+products %>% 
+   filter(
+      str_detect(product_category, regex("summer", ignore_case = TRUE)) |
+      str_detect(product_category, regex("fall", ignore_case = TRUE))   
+   )
+```
+
+We can simply search for observations that include the words "summer" or "fall" within a single `str_detect()` call by using `|` between the search terms, which is equivalent to an ___or___ statement.
+
+```{r}
+products %>% 
+   filter(str_detect(product_category, regex("summer|fall", ignore_case = TRUE)))
+```
+
+### Line anchors
+
+Line anchors are used to identify patterns at the beginning or end of an element.  To find a pattern at the beginning of the element we use `^` and a pattern at the end of the element is found with `$`.  For example, if you wanted to find any observations with the word "fruit" in the `product_category` column we can use the following:
+
+```{r}
+# contains "juice"
+products %>% 
+   filter(str_detect(product_category, regex("fruit", ignore_case = TRUE)))
+```
+However, if we only wanted those products where the category *starts with* "fruit" than we can use the `^` anchor:
+
+```{r}
+# starts with "fruit"
+products %>% 
+   filter(str_detect(product_category, regex("^fruit", ignore_case = TRUE)))
+```
+
+Alternatively, if we only wanted those products where the category *ends with* "fruit" than we can use the `$` anchor:
+
+```{r}
+# starts with "fruit"
+products %>% 
+   filter(str_detect(product_category, regex("fruit$", ignore_case = TRUE)))
+```
+
+And we can combine the two if we only wanted those products where the category *starts or ends with* "fruit":
+
+```{r}
+# starts with "fruit"
+products %>% 
+   filter(str_detect(product_category, regex("^fruit|fruit$", ignore_case = TRUE)))
+```
+
+### Metacharacters
+
+Metacharacters consist of non-alphanumeric symbols such as: 
+
+<p>
+<center>
+. &nbsp;&nbsp; \\\ &nbsp;&nbsp; | &nbsp;&nbsp; ( &nbsp;&nbsp; ) &nbsp;&nbsp; [ &nbsp;&nbsp; { &nbsp;&nbsp; $ &nbsp;&nbsp; * &nbsp;&nbsp; + &nbsp;&nbsp;?
+</center>
+</p>
+
+To match metacharacters in regex you need to *escape*. In R, we escape them with a double backslash "\\".  The following displays the general escape syntax for the most common metacharacters:
+
+| Metacharacter | Literal Meaning | Escape Syntax |
+| :-----------: | :-------------- | :-----------: |
+| . | period or dot | `\\.` |
+| $ | dollar sign | `\\$` |
+| * | asterisk | `\\*` |
+| + | plus sign | `\\+` |
+| ? | question mark | `\\?` |
+| \| | vertical bar | `\\\|` |
+| ^ | caret | `\\^` |
+| [ | square bracket | `\\[` |
+| { | curly brace | `\\{` |
+| ( | parenthesis | `\\(` |
+
+The reason we need to escape these characters is because most of these actually have meaning when declaring regular expressions. For example, say we wanted to identify any `product_category` that contains a period ("."). If we simply use the following we actually get ***all*** our records back. 
+
+```{block, type='note'}
+This is because in regex expressions "." is used to match any character.
+```
+
+```{r}
+products %>% 
+    filter(str_detect(product_category, regex(".", ignore_case = TRUE)))
+```
+
+So, we need to use an **escape** ("\\") to tell the regular expression you want to match a literal metacharacter.
+
+```{r}
+products %>% 
+    filter(str_detect(product_category, regex("\\.", ignore_case = TRUE)))
+```
+
+### Character classes
+
+To match one of several characters in a specified set we can enclose the characters of concern with square brackets `[ ]`. In addition, to matching any characters __not__ in a specified character set we can include the caret `^` at the beginning of the set within the brackets. The following displays the general syntax for common character classes but these can be altered easily as shown in the examples that follow:
+
+| Character class | Description             |
+| :-------------: | :---------------------- |
+| [aeiou] | match any specified lower case vowel |
+| [AEIOU] | match any specified upper case vowel |
+| [0123456789] | match any specified numeric values |
+| [0-9] | match any range specified numeric values |
+| [a-z] | match any range of lowercase letters |
+| [A-Z] | match any range of uppercase letters |
+| [a-zA-Z0-9] | match any of the above |
+| [^aeiou] | match anything other than a lowercase vowel |
+| [^0-9] | match anything other than the specified numeric values |
+
+For example, say we wanted to find any products where the `package_size` is not a round numeric size in ounces. The following identifies any rows where `package_size` contains a dot (remember, we need to escape that character with `\\.`) followed by "oz".
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("\\.[0-9] oz", ignore_case = TRUE)))
+```
+
+Now, say we wanted to do the same but we are interested in any packages that are in ounces ("OZ") or pounds ("LB"). Your first reaction is probably to do something like:
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("\\.[0-9] oz|lb", ignore_case = TRUE)))
+```
+
+Wait! The first observation is in pounds but its a round number and not a decimal.  This is because our regex (`\\.[0-9] oz|lb`) is actually looking for any package size where its a decimal of ounces (`\\.[0-9] oz`) ***or*** in pounds (`lb`). 
+
+We need to modify our regex just a tad. If we change it to `\\.[0-9] (oz|lb)` (note that `oz|lb` is now in parenthesis), we are now specifying to search for `\\.[0-9]` followed by "oz" or "lb".
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("\\.[0-9] (oz|lb)", ignore_case = TRUE)))
+```
+
+Now, say we wanted to find any package size that contains a decimal between 0-.4:
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("\\.[0-4] (oz|lb)", ignore_case = TRUE)))
+```
+
+### Shorthand character classes
+
+Since certain character classes are used often, a series of shorthand character classes are available. For example, rather than use `[0-9]` every time we are searching for a number in a regex, we can use just use `\\d` to match any digit. The following are a few of the commonly used shorthand character classes:
+
+| Syntax | Description             |
+| :----: | :---------------------- |
+| `\\d`  | match any digit |
+| `\\D`  | match any non-digit |
+| `\\s`  | match a space character |
+| `\\S`  | match a non-space character |
+| `\\w`  | match a word |
+| `\\W`  | match a non-word |
+| `\\b`  | match a word boundary |
+| `\\B`  | match a non-word boundary |
 
 
-## Content B
+We can use these to find patterns such as...
 
+Find all products where the `package_size` starts with a numeric digit:
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("^\\d")))
+```
+
+Or all products where the `package_size` starts with a non-digit:
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("^\\D")))
+```
+
+### POSIX character classes
+
+Closely related to regex character classes are POSIX character classes which are expressed in double brackets `[[ ]]`. Some commonly used POSIX character classes include:
+
+| Syntax | Description             |
+| :----: | :---------------------- |
+| `[[:lower:]]` | lower case letters |
+| `[[:upper:]]` | upper case letters |
+| `[[:alpha:]]` | alphabetic characters `[[:lower:]]` + `[[:alpha:]]` |
+| `[[:digit:]]` | numeric values |
+| `[[:alnum:]]` | alpha numeric values `[[:alpha:]]` + `[[:digit:]]` |
+| `[[:blank:]]` | blank characters (e.g. space, tab) |
+| `[[:punct:]]` | punctuation characters (e.g. ! . , ? & / ( [)
+
+For example, if we wanted to find any products where the `package_size` includes a punctuation in the description:
+
+```{r}
+products %>% 
+   select(product_type, package_size) %>%
+   filter(str_detect(package_size, regex("[[:punct:]]")))
+```
+
+### Repetition
+
+When we want to match a __certain number__ of characters that meet a certain criteria we can apply repetition operators to our pattern searches. Common repetition operataors include:
+
+| Syntax | Description             |
+| :----: | :---------------------- |
+| `.` | wildcard to match **any character once** |
+| `?` | the preceding item is optional and will be matched **at most once** |
+| `*` | the preceding item will be matched **zero or more times** |
+| `+` | the preceding item will be matched **one or more times** |
+| `{n}` | the preceding item will be matched **exactly n times** |
+| `{n,}` | the preceding item will be matched **n or more times** |
+| `{n,m}` | the preceding item will be matched **at least n times but not more than m times** |
+
+For example, say we want to find all products where the `package_size` contains at least 3 digits:
+
+```{r}
+products %>% 
+   select(product_category, package_size) %>%
+   filter(str_detect(package_size, regex("\\d{3,}")))
+```
+
+One thing you probably notice is that the above syntax will match three or more digits within the entire character string. But what if we wanted to identify repetition of a pattern sequence. For example, say we wanted to find `product_id`s where the number "8" is repeated. We can use a **[backreference](https://www.regular-expressions.info/backref.html)** to do so. A backreference will match the same text as previously matched within parentheses. So, in this example, we look for any repeated sequences of the number 8 in `product_id`.
+
+```{r}
+products %>% 
+   filter(str_detect(product_id, regex("(8)\\1")))
+```
+
+What if we wanted to look for `product_id`s that contain three "8"s in a row then we need to repeat that pattern:
+
+```{r}
+products %>% 
+   filter(str_detect(product_id, regex("(8)\\1{2}")))
+```
+
+### Putting it altogether
+
+Ok, let's use a few tools we've learned to answer a question we may get asked by our boss. Say we were asked to identify the top 5 products that have the most total sales; however, we only want to focus on those products that weigh 10lbs or more. We can applly the following steps:
+
+1. filter for regex `"^\\d{2,}(\\.)?.*lb"` which means:
+   - `^\\d{2,}`: starts with at least 2 numeric digits
+   - `(\\.)?.`: followed by an optional decimal
+   - `.*lb`: followed by a character zero or more times
+2. take the resulting product list and inner join with transactions so we only retain those transactions and products that have a matching product ID in both tables,
+3. compute total sales grouped by product (here we use product type just to provide us more context over the product ID),
+4. and then use `slice_max` to get the top 5 `total_sales` values (you could also just use `arrange(desc(total_sales))`).
+
+```{r}
+products %>%
+   filter(str_detect(package_size, regex("^\\d{2,}(\\.)?.*lb", ignore_case = TRUE))) %>%
+   inner_join(transactions_sample, by = "product_id") %>%
+   group_by(product_type) %>%
+   summarize(total_sales = sum(sales_value)) %>%
+   slice_max(total_sales, n = 5)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. How many `products` contain the word "bulk" in `product_type`?
+2. How many `products` do not contain punctuation in their `package_size`?
+3. Find all frozen pizza products. Be careful, this is not straight forward!
+```
 
 ## Exercises
 
+```{block, type='todo'}
+To answer these questions you'll need to use the `products` and `transactions_sample` data frames.
+
+1. Identify all different products that contain "pizza" in their `product_type` description. Which product produces the greatest amount of total sales?
+2. Identify all products that are categorized (`product_category`) as pizza but are considered a snack or appetizer (`product_type`). Which of these products have the most sales (measured by quantity)?
+3. How many products contain `package_size`s that do not contain a numeric value.
+```
+
+## Additional resources
+
+Character string data are often considered semi-structured data. Text can be structured in a specified field; however, the quality and consistency of the text input can be far from structured. Consequently, managing and manipulating character strings can be extremely tedious and unique to each data wrangling process. As a result, taking the time to learn the nuances of dealing with character strings and regex functions can provide a great return on investment; however, the functions and techniques required will likely be greater than what I could offer here. So here are additional resources that are worth reading and learning from:
+
+* [`stringr` Package Vignette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
+* [R for Data Science, ch. 14](http://r4ds.had.co.nz/strings.html)
+* [Text Mining with R](https://www.tidytextmining.com/)
+* [Regular Expressions](http://www.regular-expressions.info/)
+* [Mastering Regular Expressions](https://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/ref=sr_1_1?keywords=mastering+regular+expressions&qid=1653827690&sr=8-1)
