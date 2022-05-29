@@ -28,6 +28,7 @@ rmd_files:
 - "module-4/module-overview.Rmd"
 - "module-4/lesson-1.Rmd"
 - "module-4/lesson-2.Rmd"
+- "module-4/lesson-3.Rmd"
 - "module-4/lab.Rmd"
 
 - "module-5/module-overview.Rmd"
