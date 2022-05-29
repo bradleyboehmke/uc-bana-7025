@@ -39,7 +39,7 @@ products
 
 ## String basics
 
-Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string.  These operations can all be performed with base R functions; however, some operations (or at least their syntax) are greatly simplified with the `stringr` package.  Moreover, `stringr` is typically very useful when combined with `dplyr` data manipulation functions.
+Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string.  These operations can all be performed with base R functions; however, some operations (or at least their syntax) are greatly simplified with the **stringr** package.  Moreover, **stringr** is typically very useful when combined with `dplyr` data manipulation functions.
 
 ### Case conversion
 
@@ -113,7 +113,7 @@ To understand how to work with regular expressions in R, we need to consider two
 
 ### Regex basics
 
-The `stringr` package provides us a convenient approach to regular expressions.  The common function call will consist of
+The **stringr** package provides us a convenient approach to regular expressions.  The common function call will consist of
 
 <center>
 <code>str_*(string, pattern)</code>
@@ -233,6 +233,8 @@ To match metacharacters in regex you need to *escape*. In R, we escape them with
 | { | curly brace | `\\{` |
 | ( | parenthesis | `\\(` |
 
+Table: Escaping metacharacters.
+
 The reason we need to escape these characters is because most of these actually have meaning when declaring regular expressions. For example, say we wanted to identify any `product_category` that contains a period ("."). If we simply use the following we actually get ***all*** our records back. 
 
 ```{block, type='note'}
@@ -266,6 +268,8 @@ To match one of several characters in a specified set we can enclose the charact
 | [a-zA-Z0-9] | match any of the above |
 | [^aeiou] | match anything other than a lowercase vowel |
 | [^0-9] | match anything other than the specified numeric values |
+
+Table: Common character classes.
 
 For example, say we wanted to find any products where the `package_size` is not a round numeric size in ounces. The following identifies any rows where `package_size` contains a dot (remember, we need to escape that character with `\\.`) followed by "oz".
 
@@ -316,6 +320,7 @@ Since certain character classes are used often, a series of shorthand character 
 | `\\b`  | match a word boundary |
 | `\\B`  | match a non-word boundary |
 
+Table: Common shorthand character classes.
 
 We can use these to find patterns such as...
 
@@ -347,7 +352,9 @@ Closely related to regex character classes are POSIX character classes which are
 | `[[:digit:]]` | numeric values |
 | `[[:alnum:]]` | alpha numeric values `[[:alpha:]]` + `[[:digit:]]` |
 | `[[:blank:]]` | blank characters (e.g. space, tab) |
-| `[[:punct:]]` | punctuation characters (e.g. ! . , ? & / ( [)
+| `[[:punct:]]` | punctuation characters (e.g. ! . , ? & / ( [ )
+
+Table: Common POSIX character classes.
 
 For example, if we wanted to find any products where the `package_size` includes a punctuation in the description:
 
@@ -359,7 +366,7 @@ products %>%
 
 ### Repetition
 
-When we want to match a __certain number__ of characters that meet a certain criteria we can apply repetition operators to our pattern searches. Common repetition operataors include:
+When we want to match a __certain number__ of characters that meet a certain criteria we can apply repetition operators to our pattern searches. Common repetition operators include:
 
 | Syntax | Description             |
 | :----: | :---------------------- |
@@ -370,6 +377,8 @@ When we want to match a __certain number__ of characters that meet a certain cri
 | `{n}` | the preceding item will be matched **exactly n times** |
 | `{n,}` | the preceding item will be matched **n or more times** |
 | `{n,m}` | the preceding item will be matched **at least n times but not more than m times** |
+
+Table: Common repetition operators.
 
 For example, say we want to find all products where the `package_size` contains at least 3 digits:
 
@@ -436,7 +445,7 @@ To answer these questions you'll need to use the `products` and `transactions_sa
 
 Character string data are often considered semi-structured data. Text can be structured in a specified field; however, the quality and consistency of the text input can be far from structured. Consequently, managing and manipulating character strings can be extremely tedious and unique to each data wrangling process. As a result, taking the time to learn the nuances of dealing with character strings and regex functions can provide a great return on investment; however, the functions and techniques required will likely be greater than what I could offer here. So here are additional resources that are worth reading and learning from:
 
-* [`stringr` Package Vignette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
+* [**stringr** Package Vignette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
 * [R for Data Science, ch. 14](http://r4ds.had.co.nz/strings.html)
 * [Text Mining with R](https://www.tidytextmining.com/)
 * [Regular Expressions](http://www.regular-expressions.info/)

@@ -76,6 +76,8 @@ Operator  | Description       |
 | `is.na` | is NA |
 | `!is.na` | is not NA |
 
+Table: Comparison operators.
+
 We can apply several of these comparison operators in the `filter` function using **logical operators**. The primary logical operators you will use are:
 
 Operator  | Example  | Description                    |
@@ -84,6 +86,8 @@ Operator  | Example  | Description                    |
 | `|` | `x \| y` | union of x *or* y |
 | `!` | `x & !y` | x but exclude y and intersect of y |
 | `xor` | `xor(x, y)` | only values in x and y that are disjointed with one another |
+
+Table: Boolean logical operators.
 
 The following visual representation helps to differentiate how these operators work with fictional `x` and `y` data:
 
@@ -253,6 +257,8 @@ Function  | Description  |
 | `n()` | number of values in vector |
 | `n_distinct()` | number of distinct values in vector |
 
+Table: Example summary functions.
+
 As long as the function reduces a vector of values down to a single summarized value, you can use it in `summarize()`.
 
 ```{r summarize-functions, echo=FALSE, out.height="80%", out.width="80%", fig.cap="Summarize functions need to condense a vector input down to a single summarized output value."}
@@ -382,6 +388,8 @@ There are many functions for creating new variables that you can use with `mutat
 | `min_rank, dense_rank` | ranking |
 | `between` | are values between a and b? |
 | `ntile` | bin values into n buckets |
+
+Table: Example window (aka vectorized) functions.
 
 The following provides a few examples of integrating these functions with `mutate`.
 

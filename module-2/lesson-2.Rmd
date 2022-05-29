@@ -90,6 +90,8 @@ char_num <- as.numeric(char)
 |  Factor        |   `is.factor`         |   `as.factor`      |
 |  Complex       |   `is.complex`        |   `as.complex`     |
 
+Table: Functions to test and and coerce data types.
+
 ```{block, type = 'note'}
 In later modules we will learn how to wrangle these different data types plus other special data types that are built on top of these classes (i.e. date-time stamps, missing values). For now, I just want you to understand the foundational data types built into R.
 ```
@@ -118,7 +120,7 @@ All the elements inside a vector must be of the same class
 ```
 
 
-```{r data_struc, echo=FALSE, out.width="40%", fig.align="center"}
+```{r datastruc, echo=FALSE, out.width="40%", fig.align="center", fig.cap='Scalars versus vectors. In R, the only difference is the number of elements.'}
 knitr::include_graphics(path = "images/scal_vec.png")
 ```
 
@@ -126,7 +128,7 @@ knitr::include_graphics(path = "images/scal_vec.png")
 
 Another useful data structure used in many disciplines such as population ecology, theoretical and applied statistics is the matrix. A **matrix** is simply a vector that has additional attributes called dimensions. **Arrays** are just multidimensional matrices. Again, matrices and arrays must contain elements all of the same data class.
 
-```{r data_struc2, echo=FALSE, out.width="50%", fig.align="center"}
+```{r datastruc2, echo=FALSE, out.width="50%", fig.align="center", fig.cap='Matrices versus arrays.'}
 knitr::include_graphics(path = "images/mat_array.png")
 ```
 
@@ -369,6 +371,7 @@ As an example, the data frame below contains total quantity and sales for a groc
 
 ```{r import-data-html, eval=knitr::is_html_output(), echo=FALSE, collapse=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
+set.seed(123)
 
 transactions <- completejourney::transactions_sample
 products <- completejourney::products
@@ -379,10 +382,10 @@ transactions %>%
    summarize(total_quantity = sum(quantity, na.rm = FALSE),
              total_sales    = sum(sales_value, na.rm = FALSE)) %>%
    ungroup() %>%
-   sample_n(20) %>%
+   sample_n(10) %>%
    arrange(household_id, product_category) %>% 
    mutate(multiple_items = total_quantity > 1) %>%
-   knitr::kable(row.names = FALSE)
+   knitr::kable(row.names = FALSE, caption = 'Sample data frame')
 ```
 
 

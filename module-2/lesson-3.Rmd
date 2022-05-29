@@ -37,7 +37,7 @@ R memory is session-specific, so quitting R (i.e. shutting down RStudio) removes
 
 Here is a visualization of this process:
 
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center', fig.cap='Conceptualizing how R imports data.'}
 knitr::include_graphics("images/import-framework.png")
 ```
 
