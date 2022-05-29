@@ -1,0 +1,326 @@
+# Lesson 4c: Handling dates & times
+
+```{r setup-4c, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
+knitr::opts_chunk$set(
+  fig.align = "center",
+  collapse = TRUE,
+  message = FALSE
+)
+```
+
+Real world data are often associated with dates and time; however, dealing with dates accurately can appear to be a complicated task due to the variety in formats and accounting for time-zone differences and leap years. R has a range of functions that allow you to work with dates and times. Furthermore, packages such as `lubridate` make it easier to work with dates and times.
+
+## Learning objectives
+
+By the end of this lesson you'll be able to:
+
+* Create date and time data.
+* Extract & manipulate parts of dates and times.
+* Perform calculations with dates and times.
+
+## Prerequisites
+
+For this lesson, we will use the packages supplied by `tidyverse` for supporting roles; however, the bulk of the emphasis will be on using the `lubridate` package which provides useful functions for working with dates and times. 
+
+```{r load-lubridate}
+library(tidyverse)  # provides supporting data wrangling functions
+library(lubridate)  # provides functions for working with dates & times
+```
+
+To illustrate various transformation tasks on dates we will use the transactions data from **completejourney**. Note how `transaction_timestamp` is a `<dttm>` type, which stands for a date-time data type.
+
+```{r}
+library(completejourney)
+
+glimpse(transactions_sample)
+```
+
+## Getting current date & time
+
+To get current date and time information:
+
+```{r}
+Sys.timezone()
+
+Sys.Date()
+
+Sys.time()
+```
+
+If using the lubridate package:
+
+```{r}
+today()
+
+now()
+```
+
+## Creating dates
+
+When date and time data are imported into R they will often default to a character string. This requires us to convert strings to dates. We may also have multiple strings that we want to merge to create a date variable.
+
+### Convert strings to dates
+
+To convert a character string that is already in a date format (YYYY-MM-DD) into a date object, we can use one of the `lubridate` parsing functions. One of the many benefits of the `lubridate` package is that it automatically recognizes the common separators used when recording dates (“-“, “/”, “.”, and “”). As a result, you only need to focus on specifying the order of the date elements to determine the parsing function applied.  The different parsing functions available in `lubridate` include:
+
+| Order of elements in date-time | Parsing function |
+| :----------------------------- | :--------------- |
+| year, month, day | `ymd()` |
+| year, day, month | `ydm()` |
+| month, day, year | `mdy()` |
+| day, month, year | `dmy()` |
+| hour, minute | `hm()` |
+| hour, minute, second | `hms()` |
+| year, month, day, hour, minute, second | `ymd_hms()` |
+
+Table: Date-time parsing functions.
+
+For example, consider the three different character strings that follow.  We can convert each one to a date or date-time object with the relevant `lubridate` parsing function.
+
+```{r demo-parsing}
+x <- c("2015-07-01", "2015-08-01", "2015-09-01")
+y <- c("07/01/2015", "08/01/2015", "09/01/2015")
+z <- c("2015-07-01 12:59:59", "2015-08-01 02:45:22", "2015-09-01 15:05:12")
+
+ymd(x)
+
+mdy(y)
+
+ymd_hms(z)
+```
+
+You can also use `lubridate` functions within `dplyr` functions.  Say, for example, that our transaction timestamp in our data was not already a `dttm` date type. 
+
+```{r}
+non_dates <- transactions_sample %>% 
+   mutate(date = as.character(transaction_timestamp))
+
+glimpse(non_dates)
+```
+
+We can easily convert this to a date-time by using the appropriate parsing function:
+
+```{r}
+non_dates %>%
+   mutate(date = ymd_hms(date)) %>%
+   glimpse()
+```
+
+### Create dates by merging data
+
+Sometimes parts of your date-time are collected in separate elements/columns. For example, in the following data that comes from a data frame supplied by the `nycflights13` package, the year, month, day, hour, and minute values are all separated into their own columns.
+
+```{r}
+library(nycflights13)
+
+flights %>% 
+  select(year, month, day, hour, minute)
+```
+
+To create a date-time value from this sort of input, use `make_date()` for dates and `make_datetime()` for date-times:
+
+```{r}
+flights %>% 
+  select(year, month, day, hour, minute) %>% 
+  mutate(departure = make_datetime(year, month, day, hour, minute))
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Using any of the parsing functions to convert your birthday to a date object.
+2. Now save the date of your birthday into 3 separate character string variables: `year`, `month`, `day` and convert these three separate variables into a single date with `make_datetime()`
+```
+
+
+## Extract & manipulate parts of dates
+
+`lubridate` also provides several accessor function that allow you to easily extract and manipulate individual elements of a date.  The available accessor functions include:
+
+| Date component | Accessor function |
+| :------------- | :------------ |
+| Year | `year()` |
+| Month | `month()` |
+| Week | `week()` |
+| Day of year | `yday()` |
+| Day of month | `mday()` |
+| Day of week | `wday()` |
+| Hour | `hour()` |
+| Minute | `minute()` |
+| Second | `second() `|
+| Time zone | `tz()` |
+
+Table: Date-time component accessor functions.
+
+To extract an individual element of the date variable you simply use the accessor function desired. Note that the accessor variables have additional arguments that can be used to show the name of the date element in full or abbreviated form.
+
+```{r}
+x <- c("2015-07-01", "2015-08-01", "2015-09-01")
+
+year(x)
+
+# default is numerical value
+month(x)
+
+# show abbreviated name
+month(x, label = TRUE)
+
+# show unabbreviated name
+month(x, label = TRUE, abbr = FALSE)
+
+wday(x, label = TRUE, abbr = FALSE)
+```
+
+This can become handy when you want to perform quick data mining on certain aspects of data.  Say we want to get the number of transactions by day for the month of December.  By combining `lubridate` and `dplyr` functions we can easily filter for December transactions and count the number of transactions for each day.
+
+```{r}
+transactions_sample %>%
+   filter(month(transaction_timestamp) == 12) %>%
+   count(day(transaction_timestamp))
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Get the day of the week that you were born on. The default will print out a number but you can use the `label` parameter to get the name of the day (i.e. Sun, Mon, ..., Sat).
+2. Using `transactions_sample` compute the total sales by the day of the week. Which day produces the largest sales? Which day produces the smallest sales?
+```
+
+## Calculations with dates
+
+Since R stores date and time objects as numbers, this allows you to perform various calculations such as logical comparisons, computing the duration between different dates, and adding/subtracting periods (months, days, hours, minutes, etc.) to dates and times.
+
+```{r, warning=FALSE}
+x <- today()
+x
+
+y <- ymd("2018-06-01")
+
+x > y
+
+x - y
+```
+
+### Durations
+
+In R, when you subtract two dates, you get a difftime object. A difftime class object records a time span of seconds, minutes, hours, days, or weeks. This ambiguity can make difftimes a little painful to work with, so **lubridate** provides an alternative which always uses seconds as the duration but will summarize that duration to the nearest "useful" period (years, weeks, days).
+
+```{r}
+x <- ymd_hm("2018-06-01 12:10")
+y <- ymd_hm("2016-03-21 13:54")
+z <- ymd_hm("2018-05-21 13:54")
+
+# base R difftime results
+x - y
+x - z
+
+# lubridate::as.duration difftime results
+as.duration(x - y)
+as.duration(x - z)
+```
+
+Working with durations can be useful when performing data mining as we can perform normal statistical procedures with durations. For example, we can compute the duration between the first and last transaction date for each household to find those households that have been shopping with us the longest.
+
+```{r}
+transactions_sample %>%
+   group_by(household_id) %>%
+   summarize(
+      first_date = min(transaction_timestamp),
+      last_date = max(transaction_timestamp)
+   ) %>%
+   mutate(difference = as.duration(last_date - first_date)) %>%
+   arrange(desc(difference))
+```
+
+In addition to `as.duration()`, `lubridate` provides several duration functions (`dseconds`, `dhours`, `dyears`, etc.) that will convert a value to the number of seconds for the duration period of interest.
+
+```{r}
+dseconds(55)
+dminutes(25)
+ddays(30)
+dweeks(3)
+dyears(4)
+```
+
+This makes for efficient data mining as we do not need to worry about spending time to correctly compute duration periods, we simply use the right duration function of interest. For example, we can build upon the example above and filter our transactions for only those customers that have been shopping with us for at least 25 weeks.
+
+
+```{r}
+transactions_sample %>%
+   group_by(household_id) %>%
+   summarize(
+      first_date = min(transaction_timestamp),
+      last_date = max(transaction_timestamp)
+   ) %>%
+   mutate(difference = as.duration(last_date - first_date)) %>%
+   filter(difference >= dweeks(25))
+```
+
+
+```{block, type = "warning"}
+The duration functions (`dxxx()`) represent an exact number of seconds and does not consider the differences due to leap year and daylight savings time adjustments.
+```
+
+It's important to note that the duration functions __do not__ capture differences in time due to leap year or daylight savings time adjustments. For example, if we add two hours to the given date-time provided in `one_am` we go from 1am to 4am.  Why?  Because this is the date-time that daylight savings occurred.
+
+```{r}
+one_am <- ymd_hms("2018-03-11 01:00:00", tz = "America/New_York")
+
+one_am
+
+one_am + dhours(2)
+```
+
+This is where working with __periods__ can help us.
+
+### Periods
+
+Periods are time spans but don’t have a fixed length in seconds, instead they work with calendar friendly time periods that account for unique instances like daylight savings time and leap years.  That allows them work in a more intuitive way. 
+
+Like durations, periods can be created with a number of friendly constructor functions.
+
+```{r}
+seconds(55)
+minutes(25)
+days(30)
+weeks(3)
+years(4)
+```
+
+When we add periods to any existing date-time, it will add calendar and/or clock "correct" time periods.  For example, if we add two hours to our daylight savings time we created previously, it will result in two "normal" clock hours being added to our time even though daylight savings occurred at 2am.
+
+```{r}
+# daylight savings date
+one_am
+
+# add two hours
+one_am + hours(2)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Compute the last (most recent) transaction date in our `transactions_sample` data.
+2. Now identify shoppers that haven't made a transaction within 3 months of this date.
+```
+
+
+## Exercises
+
+```{block, type='todo'}
+1. Compute the total `sales_value` of all transactions made Thanksgiving Day during the year of our available transactions (November 23, 2017).
+2. What is the average time of date across all transactions?
+3. Which household shops the earliest in the day (on average) and which household shops the latest?
+```
+
+
+## Additional resources
+
+For additional resources on learning and dealing with dates I recommend the following:
+
+* [R for Data Science, Chapter 16](http://r4ds.had.co.nz/dates-and-times.html#introduction-10)
+* [Dates and times made easy with `lubridate`](http://www.jstatsoft.org/article/view/v040i03)
+* [Date and time classes in R](https://www.r-project.org/doc/Rnews/Rnews_2004-1.pdf)
