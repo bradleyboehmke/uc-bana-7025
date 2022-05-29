@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>19 Lesson 4b: Handling text data | Data Wrangling with R</title>
+  <meta name="description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="19 Lesson 4b: Handling text data | Data Wrangling with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="19 Lesson 4b: Handling text data | Data Wrangling with R" />
+  <meta name="twitter:site" content="@bradleyboehmke" />
+  <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
+  
+
+<meta name="author" content="Bradley Boehmke" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-4a-relational-data.html"/>
+<link rel="next" href="lab-3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UC BANA 7025: Data Wrangling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i>Material</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions-used-in-this-book"><i class="fa fa-check"></i>Conventions used in this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Module 1</b></span></li>
+<li class="chapter" data-level="1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview.html"><a href="overview.html#learning-objectives-1"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="overview.html"><a href="overview.html#tasks"><i class="fa fa-check"></i><b>1.2</b> Tasks</a></li>
+<li class="chapter" data-level="1.3" data-path="overview.html"><a href="overview.html#course-readings"><i class="fa fa-check"></i><b>1.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html"><i class="fa fa-check"></i><b>2</b> Lesson 1a: Course overview</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#learning-objectives-2"><i class="fa fa-check"></i><b>2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#purpose-of-this-course"><i class="fa fa-check"></i><b>2.2</b> Purpose of this course</a></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#assumptions-pre-requisites"><i class="fa fa-check"></i><b>2.3</b> Assumptions &amp; Pre-requisites</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-staff"><i class="fa fa-check"></i><b>2.4</b> Course Staff</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-logistics"><i class="fa fa-check"></i><b>2.5</b> Course Logistics</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#grading"><i class="fa fa-check"></i><b>2.6</b> Grading</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#getting-help"><i class="fa fa-check"></i><b>2.7</b> Getting Help</a></li>
+<li class="chapter" data-level="2.8" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#fine-print"><i class="fa fa-check"></i><b>2.8</b> Fine Print</a></li>
+<li class="chapter" data-level="2.9" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#exercises"><i class="fa fa-check"></i><b>2.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html"><i class="fa fa-check"></i><b>3</b> Lesson 1b: R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#learning-objectives-3"><i class="fa fa-check"></i><b>3.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#r-vs.-rstudio"><i class="fa fa-check"></i><b>3.2</b> R vs. RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>3.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="3.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#understanding-the-rstudio-ide"><i class="fa fa-check"></i><b>3.4</b> Understanding the RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#script-editor"><i class="fa fa-check"></i><b>3.4.1</b> Script Editor</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-environment"><i class="fa fa-check"></i><b>3.4.2</b> Workspace Environment</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#console"><i class="fa fa-check"></i><b>3.4.3</b> Console</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#misc.-displays"><i class="fa fa-check"></i><b>3.4.4</b> Misc. Displays</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-options-shortcuts"><i class="fa fa-check"></i><b>3.4.5</b> Workspace Options &amp; Shortcuts</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check"><i class="fa fa-check"></i><b>3.4.6</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-1"><i class="fa fa-check"></i><b>3.5</b> Getting help</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#general-help"><i class="fa fa-check"></i><b>3.5.1</b> General Help</a></li>
+<li class="chapter" data-level="3.5.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-from-the-web"><i class="fa fa-check"></i><b>3.5.2</b> Getting Help From the Web</a></li>
+<li class="chapter" data-level="3.5.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check-1"><i class="fa fa-check"></i><b>3.5.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>3.6</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="3.7" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html"><i class="fa fa-check"></i><b>4</b> Lesson 1c: R fundamentals</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#learning-objectives-4"><i class="fa fa-check"></i><b>4.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment-evaluation"><i class="fa fa-check"></i><b>4.2</b> Assignment &amp; evaluation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment"><i class="fa fa-check"></i><b>4.2.1</b> Assignment</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#evaluation"><i class="fa fa-check"></i><b>4.2.2</b> Evaluation</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#case-sensitivity"><i class="fa fa-check"></i><b>4.2.3</b> Case Sensitivity</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-2"><i class="fa fa-check"></i><b>4.2.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#r-as-a-calculator"><i class="fa fa-check"></i><b>4.3</b> R as a calculator</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#basic-arithmetic"><i class="fa fa-check"></i><b>4.3.1</b> Basic Arithmetic</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#miscellaneous-mathematical-functions"><i class="fa fa-check"></i><b>4.3.2</b> Miscellaneous Mathematical Functions</a></li>
+<li class="chapter" data-level="4.3.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>4.3.3</b> Infinite, and NaN Numbers</a></li>
+<li class="chapter" data-level="4.3.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>4.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>4.4</b> Working with packages</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>4.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="4.4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>4.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="4.4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>4.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="4.4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>4.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="4.4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>4.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="4.4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>4.4.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>4.5</b> Style guide</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>4.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>4.5.2</b> Organization</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>4.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>4.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#exercises-2"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html"><i class="fa fa-check"></i><b>5</b> Lesson 1d: Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>5.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>5.2.2</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>5.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>5.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>5.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>5.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>5.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>5.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#operations"><i class="fa fa-check"></i><b>5.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>5.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#missing-data"><i class="fa fa-check"></i><b>5.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>5.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#vectorization"><i class="fa fa-check"></i><b>5.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>5.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#recycling"><i class="fa fa-check"></i><b>5.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>5.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#exercises-3"><i class="fa fa-check"></i><b>5.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lab.html"><a href="lab.html"><i class="fa fa-check"></i><b>6</b> Lab</a></li>
+<li class="part"><span><b>II Module 2</b></span></li>
+<li class="chapter" data-level="7" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>7</b> Overview</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-6"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>7.2</b> Tasks</a></li>
+<li class="chapter" data-level="7.3" data-path="overview-1.html"><a href="overview-1.html#course-readings-1"><i class="fa fa-check"></i><b>7.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>8</b> Lesson 2a: Workflow</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-7"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>8.2</b> R Projects</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>8.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="8.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>8.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>8.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>8.3</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>8.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>8.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>8.3.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>8.4</b> R Notebooks</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>8.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>8.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>8.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>8.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>8.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-4"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>8.6</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>9</b> Lesson 2b: Data types &amp; structures</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>9.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>9.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>9.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>9.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>9.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>9.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="9.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>9.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="9.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>9.3.3</b> Lists</a></li>
+<li class="chapter" data-level="9.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>9.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-5"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html"><i class="fa fa-check"></i><b>10</b> Lesson 2c: Importing data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#learning-objectives-9"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#data-memory"><i class="fa fa-check"></i><b>10.2</b> Data &amp; memory</a></li>
+<li class="chapter" data-level="10.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#delimited-files"><i class="fa fa-check"></i><b>10.3</b> Delimited files</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#tibbles"><i class="fa fa-check"></i><b>10.3.1</b> Tibbles</a></li>
+<li class="chapter" data-level="10.3.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#file-paths"><i class="fa fa-check"></i><b>10.3.2</b> File paths</a></li>
+<li class="chapter" data-level="10.3.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#metadata"><i class="fa fa-check"></i><b>10.3.3</b> Metadata</a></li>
+<li class="chapter" data-level="10.3.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#knowledge-check-18"><i class="fa fa-check"></i><b>10.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#excel-files"><i class="fa fa-check"></i><b>10.4</b> Excel files</a></li>
+<li class="chapter" data-level="10.5" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#sql-databases"><i class="fa fa-check"></i><b>10.5</b> SQL databases</a></li>
+<li class="chapter" data-level="10.6" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#many-other-file-types"><i class="fa fa-check"></i><b>10.6</b> Many other file types</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#json-files"><i class="fa fa-check"></i><b>10.6.1</b> JSON files</a></li>
+<li class="chapter" data-level="10.6.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#r-object-files"><i class="fa fa-check"></i><b>10.6.2</b> R object files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#exercises-6"><i class="fa fa-check"></i><b>10.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>11</b> Lab</a></li>
+<li class="part"><span><b>III Module 3</b></span></li>
+<li class="chapter" data-level="12" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>12</b> Overview</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-10"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>12.2</b> Tasks</a></li>
+<li class="chapter" data-level="12.3" data-path="overview-2.html"><a href="overview-2.html#course-readings-2"><i class="fa fa-check"></i><b>12.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html"><i class="fa fa-check"></i><b>13</b> Lesson 3a: Pipe operator</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#learning-objectives-11"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#pipe-operator"><i class="fa fa-check"></i><b>13.2</b> Pipe (<code>%&gt;%</code>) operator</a></li>
+<li class="chapter" data-level="13.3" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional"><i class="fa fa-check"></i><b>13.3</b> Additional pipe operators (optional)</a></li>
+<li class="chapter" data-level="13.4" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-resources-2"><i class="fa fa-check"></i><b>13.4</b> Additional resources</a></li>
+<li class="chapter" data-level="13.5" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html"><i class="fa fa-check"></i><b>14</b> Lesson 3b: Data transformation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#learning-objectives-12"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#prerequisites"><i class="fa fa-check"></i><b>14.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="14.3" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#filter"><i class="fa fa-check"></i><b>14.3</b> Filtering observations</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-19"><i class="fa fa-check"></i><b>14.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#select"><i class="fa fa-check"></i><b>14.4</b> Selecting variables</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-20"><i class="fa fa-check"></i><b>14.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#summarize"><i class="fa fa-check"></i><b>14.5</b> Computing summary statistics</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-21"><i class="fa fa-check"></i><b>14.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#sort"><i class="fa fa-check"></i><b>14.6</b> Sorting observations</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-22"><i class="fa fa-check"></i><b>14.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#mutate"><i class="fa fa-check"></i><b>14.7</b> Creating new variables</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-23"><i class="fa fa-check"></i><b>14.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#putting-it-altogether"><i class="fa fa-check"></i><b>14.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="14.9" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#exercises-8"><i class="fa fa-check"></i><b>14.9</b> Exercises</a></li>
+<li class="chapter" data-level="14.10" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#additional-resources-3"><i class="fa fa-check"></i><b>14.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html"><i class="fa fa-check"></i><b>15</b> Lesson 3c: Tidy data</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#learning-objectives-13"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="15.2" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#prerequisites-1"><i class="fa fa-check"></i><b>15.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="15.3" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-wide-data-longer"><i class="fa fa-check"></i><b>15.3</b> Making wide data longer</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-24"><i class="fa fa-check"></i><b>15.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-long-data-wider"><i class="fa fa-check"></i><b>15.4</b> Making long data wider</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-25"><i class="fa fa-check"></i><b>15.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#separate-one-variable-into-multiple"><i class="fa fa-check"></i><b>15.5</b> Separate one variable into multiple</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-26"><i class="fa fa-check"></i><b>15.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#combine-multiple-variables-into-one"><i class="fa fa-check"></i><b>15.6</b> Combine multiple variables into one</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-27"><i class="fa fa-check"></i><b>15.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-tidying-functions"><i class="fa fa-check"></i><b>15.7</b> Additional tidying functions</a></li>
+<li class="chapter" data-level="15.8" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#putting-it-altogether-1"><i class="fa fa-check"></i><b>15.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="15.9" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#exercises-9"><i class="fa fa-check"></i><b>15.9</b> Exercises</a></li>
+<li class="chapter" data-level="15.10" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-resources-4"><i class="fa fa-check"></i><b>15.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>16</b> Lab</a></li>
+<li class="part"><span><b>IV Module 4</b></span></li>
+<li class="chapter" data-level="17" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>17</b> Overview</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-14"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>17.2</b> Tasks</a></li>
+<li class="chapter" data-level="17.3" data-path="overview-3.html"><a href="overview-3.html#course-readings-3"><i class="fa fa-check"></i><b>17.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html"><i class="fa fa-check"></i><b>18</b> Lesson 4a: Relational data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#learning-objectives-15"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="18.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#prerequisites-2"><i class="fa fa-check"></i><b>18.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="18.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#keys"><i class="fa fa-check"></i><b>18.3</b> Keys</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-28"><i class="fa fa-check"></i><b>18.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>18.4</b> Mutating joins</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#inner-join"><i class="fa fa-check"></i><b>18.4.1</b> Inner join</a></li>
+<li class="chapter" data-level="18.4.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#outer-joins"><i class="fa fa-check"></i><b>18.4.2</b> Outer joins</a></li>
+<li class="chapter" data-level="18.4.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#differing-keys"><i class="fa fa-check"></i><b>18.4.3</b> Differing keys</a></li>
+<li class="chapter" data-level="18.4.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example"><i class="fa fa-check"></i><b>18.4.4</b> Bigger example</a></li>
+<li class="chapter" data-level="18.4.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-29"><i class="fa fa-check"></i><b>18.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>18.5</b> Filtering joins</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#semi-join"><i class="fa fa-check"></i><b>18.5.1</b> Semi join</a></li>
+<li class="chapter" data-level="18.5.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#anti-join"><i class="fa fa-check"></i><b>18.5.2</b> Anti join</a></li>
+<li class="chapter" data-level="18.5.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example-1"><i class="fa fa-check"></i><b>18.5.3</b> Bigger example</a></li>
+<li class="chapter" data-level="18.5.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-30"><i class="fa fa-check"></i><b>18.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#exercises-10"><i class="fa fa-check"></i><b>18.6</b> Exercises</a></li>
+<li class="chapter" data-level="18.7" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#additional-resources-5"><i class="fa fa-check"></i><b>18.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html"><i class="fa fa-check"></i><b>19</b> Lesson 4b: Handling text data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#learning-objectives-16"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="19.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#prerequisites-3"><i class="fa fa-check"></i><b>19.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="19.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#string-basics"><i class="fa fa-check"></i><b>19.3</b> String basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#case-conversion"><i class="fa fa-check"></i><b>19.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="19.3.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#counting-characters"><i class="fa fa-check"></i><b>19.3.2</b> Counting characters</a></li>
+<li class="chapter" data-level="19.3.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#extracting-parts-of-character-strings"><i class="fa fa-check"></i><b>19.3.3</b> Extracting parts of character strings</a></li>
+<li class="chapter" data-level="19.3.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-31"><i class="fa fa-check"></i><b>19.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regular-expressions"><i class="fa fa-check"></i><b>19.4</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regex-basics"><i class="fa fa-check"></i><b>19.4.1</b> Regex basics</a></li>
+<li class="chapter" data-level="19.4.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#multiple-words"><i class="fa fa-check"></i><b>19.4.2</b> Multiple Words</a></li>
+<li class="chapter" data-level="19.4.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#line-anchors"><i class="fa fa-check"></i><b>19.4.3</b> Line anchors</a></li>
+<li class="chapter" data-level="19.4.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#metacharacters"><i class="fa fa-check"></i><b>19.4.4</b> Metacharacters</a></li>
+<li class="chapter" data-level="19.4.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#character-classes"><i class="fa fa-check"></i><b>19.4.5</b> Character classes</a></li>
+<li class="chapter" data-level="19.4.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#shorthand-character-classes"><i class="fa fa-check"></i><b>19.4.6</b> Shorthand character classes</a></li>
+<li class="chapter" data-level="19.4.7" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#posix-character-classes"><i class="fa fa-check"></i><b>19.4.7</b> POSIX character classes</a></li>
+<li class="chapter" data-level="19.4.8" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#repetition"><i class="fa fa-check"></i><b>19.4.8</b> Repetition</a></li>
+<li class="chapter" data-level="19.4.9" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#putting-it-altogether-2"><i class="fa fa-check"></i><b>19.4.9</b> Putting it altogether</a></li>
+<li class="chapter" data-level="19.4.10" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-32"><i class="fa fa-check"></i><b>19.4.10</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#exercises-11"><i class="fa fa-check"></i><b>19.5</b> Exercises</a></li>
+<li class="chapter" data-level="19.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#additional-resources-6"><i class="fa fa-check"></i><b>19.6</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>20</b> Lab</a></li>
+<li class="part"><span><b>V Module 5</b></span></li>
+<li class="chapter" data-level="21" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>21</b> Overview</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-17"><i class="fa fa-check"></i><b>21.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>21.2</b> Tasks</a></li>
+<li class="chapter" data-level="21.3" data-path="overview-4.html"><a href="overview-4.html#course-readings-4"><i class="fa fa-check"></i><b>21.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>22</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="lesson-1.html"><a href="lesson-1.html#learning-objectives-18"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="22.2" data-path="lesson-1.html"><a href="lesson-1.html#content-a"><i class="fa fa-check"></i><b>22.2</b> Content A</a></li>
+<li class="chapter" data-level="22.3" data-path="lesson-1.html"><a href="lesson-1.html#content-b"><i class="fa fa-check"></i><b>22.3</b> Content B</a></li>
+<li class="chapter" data-level="22.4" data-path="lesson-1.html"><a href="lesson-1.html#exercises-12"><i class="fa fa-check"></i><b>22.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>23</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="lesson-2.html"><a href="lesson-2.html#learning-objectives-19"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="23.2" data-path="lesson-2.html"><a href="lesson-2.html#content-a-1"><i class="fa fa-check"></i><b>23.2</b> Content A</a></li>
+<li class="chapter" data-level="23.3" data-path="lesson-2.html"><a href="lesson-2.html#content-b-1"><i class="fa fa-check"></i><b>23.3</b> Content B</a></li>
+<li class="chapter" data-level="23.4" data-path="lesson-2.html"><a href="lesson-2.html#exercises-13"><i class="fa fa-check"></i><b>23.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="lab-4.html"><a href="lab-4.html"><i class="fa fa-check"></i><b>24</b> Lab</a></li>
+<li class="part"><span><b>VI Module 6</b></span></li>
+<li class="chapter" data-level="25" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>25</b> Overview</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-20"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>25.2</b> Tasks</a></li>
+<li class="chapter" data-level="25.3" data-path="overview-5.html"><a href="overview-5.html#course-readings-5"><i class="fa fa-check"></i><b>25.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="lesson-1-1.html"><a href="lesson-1-1.html"><i class="fa fa-check"></i><b>26</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="lesson-1-1.html"><a href="lesson-1-1.html#learning-objectives-21"><i class="fa fa-check"></i><b>26.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="26.2" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-a-2"><i class="fa fa-check"></i><b>26.2</b> Content A</a></li>
+<li class="chapter" data-level="26.3" data-path="lesson-1-1.html"><a href="lesson-1-1.html#content-b-2"><i class="fa fa-check"></i><b>26.3</b> Content B</a></li>
+<li class="chapter" data-level="26.4" data-path="lesson-1-1.html"><a href="lesson-1-1.html#exercises-14"><i class="fa fa-check"></i><b>26.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="lesson-2-1.html"><a href="lesson-2-1.html"><i class="fa fa-check"></i><b>27</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="lesson-2-1.html"><a href="lesson-2-1.html#learning-objectives-22"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="27.2" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-a-3"><i class="fa fa-check"></i><b>27.2</b> Content A</a></li>
+<li class="chapter" data-level="27.3" data-path="lesson-2-1.html"><a href="lesson-2-1.html#content-b-3"><i class="fa fa-check"></i><b>27.3</b> Content B</a></li>
+<li class="chapter" data-level="27.4" data-path="lesson-2-1.html"><a href="lesson-2-1.html#exercises-15"><i class="fa fa-check"></i><b>27.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="lab-5.html"><a href="lab-5.html"><i class="fa fa-check"></i><b>28</b> Lab</a></li>
+<li class="part"><span><b>VII Module 7</b></span></li>
+<li class="chapter" data-level="29" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>29</b> Overview</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-23"><i class="fa fa-check"></i><b>29.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="29.2" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>29.2</b> Tasks</a></li>
+<li class="chapter" data-level="29.3" data-path="overview-6.html"><a href="overview-6.html#course-readings-6"><i class="fa fa-check"></i><b>29.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="lesson-1-2.html"><a href="lesson-1-2.html"><i class="fa fa-check"></i><b>30</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="lesson-1-2.html"><a href="lesson-1-2.html#learning-objectives-24"><i class="fa fa-check"></i><b>30.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="30.2" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-a-4"><i class="fa fa-check"></i><b>30.2</b> Content A</a></li>
+<li class="chapter" data-level="30.3" data-path="lesson-1-2.html"><a href="lesson-1-2.html#content-b-4"><i class="fa fa-check"></i><b>30.3</b> Content B</a></li>
+<li class="chapter" data-level="30.4" data-path="lesson-1-2.html"><a href="lesson-1-2.html#exercises-16"><i class="fa fa-check"></i><b>30.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="lesson-2-2.html"><a href="lesson-2-2.html"><i class="fa fa-check"></i><b>31</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="lesson-2-2.html"><a href="lesson-2-2.html#learning-objectives-25"><i class="fa fa-check"></i><b>31.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="31.2" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-a-5"><i class="fa fa-check"></i><b>31.2</b> Content A</a></li>
+<li class="chapter" data-level="31.3" data-path="lesson-2-2.html"><a href="lesson-2-2.html#content-b-5"><i class="fa fa-check"></i><b>31.3</b> Content B</a></li>
+<li class="chapter" data-level="31.4" data-path="lesson-2-2.html"><a href="lesson-2-2.html#exercises-17"><i class="fa fa-check"></i><b>31.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>32</b> Lab</a></li>
+<li class="part"><span><b>VIII Additional Content</b></span></li>
+<li class="chapter" data-level="" data-path="computing-environment-1.html"><a href="computing-environment-1.html"><i class="fa fa-check"></i>Computing Environment</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-4b-handling-text-data" class="section level1 hasAnchor" number="19">
+<h1><span class="header-section-number">19</span> Lesson 4b: Handling text data<a href="lesson-4b-handling-text-data.html#lesson-4b-handling-text-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Dealing with character strings is often under-emphasized in data analysis training. The focus typically remains on numeric values; however, the growth in data collection is also resulting in greater bits of information embedded in text. Consequently, handling, cleaning and processing character strings is becoming a prerequisite in daily data analysis. This lesson is meant to give you the foundation of working with character strings.</p>
+<div id="learning-objectives-16" class="section level2 hasAnchor" number="19.1">
+<h2><span class="header-section-number">19.1</span> Learning objectives<a href="lesson-4b-handling-text-data.html#learning-objectives-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this lesson you’ll be able to:</p>
+<ul>
+<li>Perform basic character string manipulations.</li>
+<li>Use regular expressions to identify and manipulate patterns in character strings.</li>
+</ul>
+</div>
+<div id="prerequisites-3" class="section level2 hasAnchor" number="19.2">
+<h2><span class="header-section-number">19.2</span> Prerequisites<a href="lesson-4b-handling-text-data.html#prerequisites-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following packages will be used throughout this lesson. Base R contains many functions to work with strings but we’ll avoid them because they can be inconsistent, which makes them hard to remember. Instead we’ll use functions from <strong>stringr</strong> for text manipulation and we’ll also combine this with the use of <strong>dplyr</strong> for data frame manipulation.</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="lesson-4b-handling-text-data.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb227-2"><a href="lesson-4b-handling-text-data.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<p>For data, we’ll leverage the <strong>completejourney</strong> data. For example, the <code>products</code> data within <strong>completejourney</strong> provides various variables (e.g. <code>product_category</code> and <code>product_type</code>) that contain character strings we may need to clean, normalize, or identify patterns within.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="lesson-4b-handling-text-data.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span>
+<span id="cb228-2"><a href="lesson-4b-handling-text-data.html#cb228-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-3"><a href="lesson-4b-handling-text-data.html#cb228-3" aria-hidden="true" tabindex="-1"></a>products</span>
+<span id="cb228-4"><a href="lesson-4b-handling-text-data.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 92,331 × 7</span></span>
+<span id="cb228-5"><a href="lesson-4b-handling-text-data.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department    brand    product_category     product_type package_size</span></span>
+<span id="cb228-6"><a href="lesson-4b-handling-text-data.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;         &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb228-7"><a href="lesson-4b-handling-text-data.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 25671      2               GROCERY       National FRZN ICE             ICE - CRUSH… 22 LB       </span></span>
+<span id="cb228-8"><a href="lesson-4b-handling-text-data.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 26081      2               MISCELLANEOUS National &lt;NA&gt;                 &lt;NA&gt;         &lt;NA&gt;        </span></span>
+<span id="cb228-9"><a href="lesson-4b-handling-text-data.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 26093      69              PASTRY        Private  BREAD                BREAD:ITALI… &lt;NA&gt;        </span></span>
+<span id="cb228-10"><a href="lesson-4b-handling-text-data.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 26190      69              GROCERY       Private  FRUIT - SHELF STABLE APPLE SAUCE  50 OZ       </span></span>
+<span id="cb228-11"><a href="lesson-4b-handling-text-data.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 26355      69              GROCERY       Private  COOKIES/CONES        SPECIALTY C… 14 OZ       </span></span>
+<span id="cb228-12"><a href="lesson-4b-handling-text-data.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 26426      69              GROCERY       Private  SPICES &amp; EXTRACTS    SPICES &amp; SE… 2.5 OZ      </span></span>
+<span id="cb228-13"><a href="lesson-4b-handling-text-data.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 26540      69              GROCERY       Private  COOKIES/CONES        TRAY PACK/C… 16 OZ       </span></span>
+<span id="cb228-14"><a href="lesson-4b-handling-text-data.html#cb228-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 26601      69              DRUG GM       Private  VITAMINS             VITAMIN - M… 300 CT(1)   </span></span>
+<span id="cb228-15"><a href="lesson-4b-handling-text-data.html#cb228-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 26636      69              PASTRY        Private  BREAKFAST SWEETS     SW GDS: SW … &lt;NA&gt;        </span></span>
+<span id="cb228-16"><a href="lesson-4b-handling-text-data.html#cb228-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 26691      16              GROCERY       Private  PNT BTR/JELLY/JAMS   HONEY        12 OZ       </span></span>
+<span id="cb228-17"><a href="lesson-4b-handling-text-data.html#cb228-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 92,321 more rows</span></span></code></pre></div>
+</div>
+<div id="string-basics" class="section level2 hasAnchor" number="19.3">
+<h2><span class="header-section-number">19.3</span> String basics<a href="lesson-4b-handling-text-data.html#string-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string. These operations can all be performed with base R functions; however, some operations (or at least their syntax) are greatly simplified with the <code>stringr</code> package. Moreover, <code>stringr</code> is typically very useful when combined with <code>dplyr</code> data manipulation functions.</p>
+<div id="case-conversion" class="section level3 hasAnchor" number="19.3.1">
+<h3><span class="header-section-number">19.3.1</span> Case conversion<a href="lesson-4b-handling-text-data.html#case-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To change the case of a character string we can use <code>str_to_xxx</code>:</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="lesson-4b-handling-text-data.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we&#39;ll focus on the product_category column</span></span>
+<span id="cb229-2"><a href="lesson-4b-handling-text-data.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(products<span class="sc">$</span>product_category)</span>
+<span id="cb229-3"><a href="lesson-4b-handling-text-data.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;FRZN ICE&quot;             NA                     &quot;BREAD&quot;                &quot;FRUIT - SHELF STABLE&quot;</span></span>
+<span id="cb229-4"><a href="lesson-4b-handling-text-data.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;COOKIES/CONES&quot;        &quot;SPICES &amp; EXTRACTS&quot;</span></span>
+<span id="cb229-5"><a href="lesson-4b-handling-text-data.html#cb229-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-6"><a href="lesson-4b-handling-text-data.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="co"># force everything to lower case</span></span>
+<span id="cb229-7"><a href="lesson-4b-handling-text-data.html#cb229-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_lower</span>(products<span class="sc">$</span>product_category) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb229-8"><a href="lesson-4b-handling-text-data.html#cb229-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;frzn ice&quot;             NA                     &quot;bread&quot;                &quot;fruit - shelf stable&quot;</span></span>
+<span id="cb229-9"><a href="lesson-4b-handling-text-data.html#cb229-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;cookies/cones&quot;        &quot;spices &amp; extracts&quot;</span></span>
+<span id="cb229-10"><a href="lesson-4b-handling-text-data.html#cb229-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-11"><a href="lesson-4b-handling-text-data.html#cb229-11" aria-hidden="true" tabindex="-1"></a><span class="co"># force everything to upper case</span></span>
+<span id="cb229-12"><a href="lesson-4b-handling-text-data.html#cb229-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str_to_upper</span>(products<span class="sc">$</span>product_category) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb229-13"><a href="lesson-4b-handling-text-data.html#cb229-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;FRZN ICE&quot;             NA                     &quot;BREAD&quot;                &quot;FRUIT - SHELF STABLE&quot;</span></span>
+<span id="cb229-14"><a href="lesson-4b-handling-text-data.html#cb229-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;COOKIES/CONES&quot;        &quot;SPICES &amp; EXTRACTS&quot;</span></span></code></pre></div>
+<p>Typically we want to normalize text by converting everything to lower case but keep the data in our original data frame. We can combine <code>str_</code> functions with <code>dplyr::mutate</code> to accomplish this:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="lesson-4b-handling-text-data.html#cb230-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">product_category =</span> <span class="fu">str_to_lower</span>(product_category))</span>
+<span id="cb230-2"><a href="lesson-4b-handling-text-data.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 92,331 × 7</span></span>
+<span id="cb230-3"><a href="lesson-4b-handling-text-data.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department    brand    product_category     product_type package_size</span></span>
+<span id="cb230-4"><a href="lesson-4b-handling-text-data.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;         &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb230-5"><a href="lesson-4b-handling-text-data.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 25671      2               GROCERY       National frzn ice             ICE - CRUSH… 22 LB       </span></span>
+<span id="cb230-6"><a href="lesson-4b-handling-text-data.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 26081      2               MISCELLANEOUS National &lt;NA&gt;                 &lt;NA&gt;         &lt;NA&gt;        </span></span>
+<span id="cb230-7"><a href="lesson-4b-handling-text-data.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 26093      69              PASTRY        Private  bread                BREAD:ITALI… &lt;NA&gt;        </span></span>
+<span id="cb230-8"><a href="lesson-4b-handling-text-data.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 26190      69              GROCERY       Private  fruit - shelf stable APPLE SAUCE  50 OZ       </span></span>
+<span id="cb230-9"><a href="lesson-4b-handling-text-data.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 26355      69              GROCERY       Private  cookies/cones        SPECIALTY C… 14 OZ       </span></span>
+<span id="cb230-10"><a href="lesson-4b-handling-text-data.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 26426      69              GROCERY       Private  spices &amp; extracts    SPICES &amp; SE… 2.5 OZ      </span></span>
+<span id="cb230-11"><a href="lesson-4b-handling-text-data.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 26540      69              GROCERY       Private  cookies/cones        TRAY PACK/C… 16 OZ       </span></span>
+<span id="cb230-12"><a href="lesson-4b-handling-text-data.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 26601      69              DRUG GM       Private  vitamins             VITAMIN - M… 300 CT(1)   </span></span>
+<span id="cb230-13"><a href="lesson-4b-handling-text-data.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 26636      69              PASTRY        Private  breakfast sweets     SW GDS: SW … &lt;NA&gt;        </span></span>
+<span id="cb230-14"><a href="lesson-4b-handling-text-data.html#cb230-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 26691      16              GROCERY       Private  pnt btr/jelly/jams   HONEY        12 OZ       </span></span>
+<span id="cb230-15"><a href="lesson-4b-handling-text-data.html#cb230-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 92,321 more rows</span></span></code></pre></div>
+<div class="note">
+<p>
+When we apply <code>mutate()</code> to an existing column we do not
+add a new column, we simply overwrite the existing column.
+</p>
+</div>
+</div>
+<div id="counting-characters" class="section level3 hasAnchor" number="19.3.2">
+<h3><span class="header-section-number">19.3.2</span> Counting characters<a href="lesson-4b-handling-text-data.html#counting-characters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There may be times where we are interested in how many characters exist in a string. Whether you need to extract this information or filter for observations that exceed a certain character length you can use <code>str_count</code> to accomplish this:</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="lesson-4b-handling-text-data.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count number of characters in product_category</span></span>
+<span id="cb231-2"><a href="lesson-4b-handling-text-data.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(products<span class="sc">$</span>product_category) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb231-3"><a href="lesson-4b-handling-text-data.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  8 NA  5 20 13 17</span></span>
+<span id="cb231-4"><a href="lesson-4b-handling-text-data.html#cb231-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-5"><a href="lesson-4b-handling-text-data.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable with character length</span></span>
+<span id="cb231-6"><a href="lesson-4b-handling-text-data.html#cb231-6" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb231-7"><a href="lesson-4b-handling-text-data.html#cb231-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category_length =</span> <span class="fu">str_count</span>(product_category)) <span class="sc">%&gt;%</span></span>
+<span id="cb231-8"><a href="lesson-4b-handling-text-data.html#cb231-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(product_category, category_length)</span>
+<span id="cb231-9"><a href="lesson-4b-handling-text-data.html#cb231-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 92,331 × 2</span></span>
+<span id="cb231-10"><a href="lesson-4b-handling-text-data.html#cb231-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_category     category_length</span></span>
+<span id="cb231-11"><a href="lesson-4b-handling-text-data.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                          &lt;int&gt;</span></span>
+<span id="cb231-12"><a href="lesson-4b-handling-text-data.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 FRZN ICE                           8</span></span>
+<span id="cb231-13"><a href="lesson-4b-handling-text-data.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 &lt;NA&gt;                              NA</span></span>
+<span id="cb231-14"><a href="lesson-4b-handling-text-data.html#cb231-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 BREAD                              5</span></span>
+<span id="cb231-15"><a href="lesson-4b-handling-text-data.html#cb231-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 FRUIT - SHELF STABLE              20</span></span>
+<span id="cb231-16"><a href="lesson-4b-handling-text-data.html#cb231-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 COOKIES/CONES                     13</span></span>
+<span id="cb231-17"><a href="lesson-4b-handling-text-data.html#cb231-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 SPICES &amp; EXTRACTS                 17</span></span>
+<span id="cb231-18"><a href="lesson-4b-handling-text-data.html#cb231-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 COOKIES/CONES                     13</span></span>
+<span id="cb231-19"><a href="lesson-4b-handling-text-data.html#cb231-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 VITAMINS                           8</span></span>
+<span id="cb231-20"><a href="lesson-4b-handling-text-data.html#cb231-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 BREAKFAST SWEETS                  16</span></span>
+<span id="cb231-21"><a href="lesson-4b-handling-text-data.html#cb231-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 PNT BTR/JELLY/JAMS                18</span></span>
+<span id="cb231-22"><a href="lesson-4b-handling-text-data.html#cb231-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 92,321 more rows</span></span>
+<span id="cb231-23"><a href="lesson-4b-handling-text-data.html#cb231-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-24"><a href="lesson-4b-handling-text-data.html#cb231-24" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for product categories that are greater than the mean character length</span></span>
+<span id="cb231-25"><a href="lesson-4b-handling-text-data.html#cb231-25" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb231-26"><a href="lesson-4b-handling-text-data.html#cb231-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_count</span>(product_category) <span class="sc">&gt;</span> <span class="fu">mean</span>(<span class="fu">str_count</span>(product_category), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb231-27"><a href="lesson-4b-handling-text-data.html#cb231-27" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 45,192 × 7</span></span>
+<span id="cb231-28"><a href="lesson-4b-handling-text-data.html#cb231-28" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand   product_category       product_type   package_size</span></span>
+<span id="cb231-29"><a href="lesson-4b-handling-text-data.html#cb231-29" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;   &lt;chr&gt;                  &lt;chr&gt;          &lt;chr&gt;       </span></span>
+<span id="cb231-30"><a href="lesson-4b-handling-text-data.html#cb231-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26190      69              GROCERY    Private FRUIT - SHELF STABLE   APPLE SAUCE    50 OZ       </span></span>
+<span id="cb231-31"><a href="lesson-4b-handling-text-data.html#cb231-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 26426      69              GROCERY    Private SPICES &amp; EXTRACTS      SPICES &amp; SEAS… 2.5 OZ      </span></span>
+<span id="cb231-32"><a href="lesson-4b-handling-text-data.html#cb231-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 26636      69              PASTRY     Private BREAKFAST SWEETS       SW GDS: SW RO… &lt;NA&gt;        </span></span>
+<span id="cb231-33"><a href="lesson-4b-handling-text-data.html#cb231-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 26691      16              GROCERY    Private PNT BTR/JELLY/JAMS     HONEY          12 OZ       </span></span>
+<span id="cb231-34"><a href="lesson-4b-handling-text-data.html#cb231-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 26738      69              GROCERY    Private ICE CREAM/MILK/SHERBTS TRADITIONAL    56 OZ       </span></span>
+<span id="cb231-35"><a href="lesson-4b-handling-text-data.html#cb231-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 26941      69              GROCERY    Private ICE CREAM/MILK/SHERBTS TRADITIONAL    56 OZ       </span></span>
+<span id="cb231-36"><a href="lesson-4b-handling-text-data.html#cb231-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 27030      69              GROCERY    Private ICE CREAM/MILK/SHERBTS TRADITIONAL    56 OZ       </span></span>
+<span id="cb231-37"><a href="lesson-4b-handling-text-data.html#cb231-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 27152      69              GROCERY    Private SPICES &amp; EXTRACTS      SPICES &amp; SEAS… 4 OZ        </span></span>
+<span id="cb231-38"><a href="lesson-4b-handling-text-data.html#cb231-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 27158      69              GROCERY    Private ICE CREAM/MILK/SHERBTS TRADITIONAL    56 OZ       </span></span>
+<span id="cb231-39"><a href="lesson-4b-handling-text-data.html#cb231-39" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 27334      69              DRUG GM    Private DIETARY AID PRODUCTS   DIET CNTRL LI… &lt;NA&gt;        </span></span>
+<span id="cb231-40"><a href="lesson-4b-handling-text-data.html#cb231-40" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 45,182 more rows</span></span></code></pre></div>
+</div>
+<div id="extracting-parts-of-character-strings" class="section level3 hasAnchor" number="19.3.3">
+<h3><span class="header-section-number">19.3.3</span> Extracting parts of character strings<a href="lesson-4b-handling-text-data.html#extracting-parts-of-character-strings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you need to extract parts of a character string you can use <code>str_sub</code>. By default <code>start = 1</code> and <code>end = 3</code> will tell the function to extract the first through third characters. If you want to start from the right side of the string then negative numbers such as <code>start = -1</code> and <code>end = -5</code> will tell the function to extract the last five characters.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="lesson-4b-handling-text-data.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract parts of a string (example: extract first three characters)</span></span>
+<span id="cb232-2"><a href="lesson-4b-handling-text-data.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(products<span class="sc">$</span>product_category, <span class="at">start =</span> <span class="dv">1</span>, <span class="at">end =</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb232-3"><a href="lesson-4b-handling-text-data.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;FRZ&quot; NA    &quot;BRE&quot; &quot;FRU&quot; &quot;COO&quot; &quot;SPI&quot;</span></span>
+<span id="cb232-4"><a href="lesson-4b-handling-text-data.html#cb232-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb232-5"><a href="lesson-4b-handling-text-data.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create new variable for last five characters</span></span>
+<span id="cb232-6"><a href="lesson-4b-handling-text-data.html#cb232-6" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span></span>
+<span id="cb232-7"><a href="lesson-4b-handling-text-data.html#cb232-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(product_category) <span class="sc">%&gt;%</span></span>
+<span id="cb232-8"><a href="lesson-4b-handling-text-data.html#cb232-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">last_five =</span> <span class="fu">str_sub</span>(product_category, <span class="at">start =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">end =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb232-9"><a href="lesson-4b-handling-text-data.html#cb232-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 92,331 × 2</span></span>
+<span id="cb232-10"><a href="lesson-4b-handling-text-data.html#cb232-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_category     last_five</span></span>
+<span id="cb232-11"><a href="lesson-4b-handling-text-data.html#cb232-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                &lt;chr&gt;    </span></span>
+<span id="cb232-12"><a href="lesson-4b-handling-text-data.html#cb232-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 FRZN ICE             N ICE    </span></span>
+<span id="cb232-13"><a href="lesson-4b-handling-text-data.html#cb232-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 &lt;NA&gt;                 &lt;NA&gt;     </span></span>
+<span id="cb232-14"><a href="lesson-4b-handling-text-data.html#cb232-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 BREAD                BREAD    </span></span>
+<span id="cb232-15"><a href="lesson-4b-handling-text-data.html#cb232-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 FRUIT - SHELF STABLE TABLE    </span></span>
+<span id="cb232-16"><a href="lesson-4b-handling-text-data.html#cb232-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 COOKIES/CONES        CONES    </span></span>
+<span id="cb232-17"><a href="lesson-4b-handling-text-data.html#cb232-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 SPICES &amp; EXTRACTS    RACTS    </span></span>
+<span id="cb232-18"><a href="lesson-4b-handling-text-data.html#cb232-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 COOKIES/CONES        CONES    </span></span>
+<span id="cb232-19"><a href="lesson-4b-handling-text-data.html#cb232-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 VITAMINS             AMINS    </span></span>
+<span id="cb232-20"><a href="lesson-4b-handling-text-data.html#cb232-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 BREAKFAST SWEETS     WEETS    </span></span>
+<span id="cb232-21"><a href="lesson-4b-handling-text-data.html#cb232-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 PNT BTR/JELLY/JAMS   /JAMS    </span></span>
+<span id="cb232-22"><a href="lesson-4b-handling-text-data.html#cb232-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 92,321 more rows</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-31" class="section level3 hasAnchor" number="19.3.4">
+<h3><span class="header-section-number">19.3.4</span> Knowledge check<a href="lesson-4b-handling-text-data.html#knowledge-check-31" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Using <code>product_type</code>, which product has the longest
+description? How about the shortest?
+</li>
+<li>
+Using <code>product_id</code>, get all products that start with
+“222”.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="regular-expressions" class="section level2 hasAnchor" number="19.4">
+<h2><span class="header-section-number">19.4</span> Regular expressions<a href="lesson-4b-handling-text-data.html#regular-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <strong>regular expression</strong> (aka regex) is a sequence of characters that define a search pattern, mainly for use in pattern matching with text strings. Typically, regex patterns consist of a combination of alphanumeric characters as well as special characters. The pattern can also be as simple as a single character or it can be more complex and include several characters.</p>
+<p>To understand how to work with regular expressions in R, we need to consider two primary features of regular expressions. One has to do with the <em>syntax</em>, or the way regex patterns are expressed in R. The other has to do with the <em>functions</em> used for regex matching in R. You will be exposed to both of these in the following sections.</p>
+<div id="regex-basics" class="section level3 hasAnchor" number="19.4.1">
+<h3><span class="header-section-number">19.4.1</span> Regex basics<a href="lesson-4b-handling-text-data.html#regex-basics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>stringr</code> package provides us a convenient approach to regular expressions. The common function call will consist of</p>
+<center>
+<code>str_*(string, pattern)</code>
+</center>
+<p>where:</p>
+<ul>
+<li><code>str_*</code> represents a wide variety of regex functions depending on what you want to do,</li>
+<li><code>string</code> represents the character string of concern (i.e. <code>products$product_category</code>),</li>
+<li><code>pattern</code> represents the regex pattern you are looking to match.</li>
+</ul>
+<p>For example let’s say you are looking for observations where the word “FRUIT” was used in the <code>product_category</code> description. <code>str_detect</code> detects the presence or absence of a pattern (“FRUIT” in this example) and returns a logical vector. Since the output is <code>TRUE</code> or <code>FALSE</code>, this is a handy function to combine with <code>filter</code> to filter for observations that have that pattern.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="lesson-4b-handling-text-data.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># detect if the word &quot;FRUIT&quot; is used in each product category description</span></span>
+<span id="cb233-2"><a href="lesson-4b-handling-text-data.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(products<span class="sc">$</span>product_category, <span class="st">&quot;FRUIT&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb233-3"><a href="lesson-4b-handling-text-data.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE    NA FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb233-4"><a href="lesson-4b-handling-text-data.html#cb233-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-5"><a href="lesson-4b-handling-text-data.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for those observations that include the use of &quot;FRUIT&quot;</span></span>
+<span id="cb233-6"><a href="lesson-4b-handling-text-data.html#cb233-6" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="st">&quot;FRUIT&quot;</span>))</span>
+<span id="cb233-7"><a href="lesson-4b-handling-text-data.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,153 × 7</span></span>
+<span id="cb233-8"><a href="lesson-4b-handling-text-data.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category        product_type package_size</span></span>
+<span id="cb233-9"><a href="lesson-4b-handling-text-data.html#cb233-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                   &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb233-10"><a href="lesson-4b-handling-text-data.html#cb233-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26190      69              GROCERY    Private  FRUIT - SHELF STABLE    APPLE SAUCE  50 OZ       </span></span>
+<span id="cb233-11"><a href="lesson-4b-handling-text-data.html#cb233-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 27503      69              GROCERY    Private  FRUIT - SHELF STABLE    CRANBERRY S… 16 OZ       </span></span>
+<span id="cb233-12"><a href="lesson-4b-handling-text-data.html#cb233-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 27960      69              GROCERY    Private  FRZN FRUITS             FROZEN FRUIT 16 OZ       </span></span>
+<span id="cb233-13"><a href="lesson-4b-handling-text-data.html#cb233-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 33048      5820            PRODUCE    National ORGANICS FRUIT &amp; VEGET… ORGANIC CIT… 2 LB BAG    </span></span>
+<span id="cb233-14"><a href="lesson-4b-handling-text-data.html#cb233-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 37543      876             NUTRITION  National DRIED FRUIT             RAISINS      24 OZ       </span></span>
+<span id="cb233-15"><a href="lesson-4b-handling-text-data.html#cb233-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 44599      69              GROCERY    Private  FRUIT - SHELF STABLE    FRUIT COCKT… 15.25 OZ    </span></span>
+<span id="cb233-16"><a href="lesson-4b-handling-text-data.html#cb233-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 45218      69              GROCERY    Private  FRUIT - SHELF STABLE    PEARS        15.25 OZ    </span></span>
+<span id="cb233-17"><a href="lesson-4b-handling-text-data.html#cb233-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 45607      69              GROCERY    Private  FRUIT - SHELF STABLE    PINEAPPLE    8 OZ        </span></span>
+<span id="cb233-18"><a href="lesson-4b-handling-text-data.html#cb233-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 49748      69              GROCERY    Private  FRUIT - SHELF STABLE    MANDARIN OR… 15 OZ       </span></span>
+<span id="cb233-19"><a href="lesson-4b-handling-text-data.html#cb233-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 49930      2               PRODUCE    National STONE FRUIT             PEACHES YEL… &lt;NA&gt;        </span></span>
+<span id="cb233-20"><a href="lesson-4b-handling-text-data.html#cb233-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,143 more rows</span></span></code></pre></div>
+<p>There are wide variety of <code>str_</code> functions (check them out by typing <code>str_</code> + tab in the console). For example, check out the following functions that all look for the pattern “FRZN” but provide different outputs:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="lesson-4b-handling-text-data.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count number of instances in each observation</span></span>
+<span id="cb234-2"><a href="lesson-4b-handling-text-data.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(products<span class="sc">$</span>product_category, <span class="st">&quot;FRZN&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb234-3"><a href="lesson-4b-handling-text-data.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1 NA  0  0  0  0</span></span>
+<span id="cb234-4"><a href="lesson-4b-handling-text-data.html#cb234-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-5"><a href="lesson-4b-handling-text-data.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the first instance in each observation (NA results when no instance exists)</span></span>
+<span id="cb234-6"><a href="lesson-4b-handling-text-data.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(products<span class="sc">$</span>product_category, <span class="st">&quot;FRZN&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb234-7"><a href="lesson-4b-handling-text-data.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;FRZN&quot; NA     NA     NA     NA     NA</span></span>
+<span id="cb234-8"><a href="lesson-4b-handling-text-data.html#cb234-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-9"><a href="lesson-4b-handling-text-data.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="co"># locate the start/stop position of the first instance in each observation</span></span>
+<span id="cb234-10"><a href="lesson-4b-handling-text-data.html#cb234-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(products<span class="sc">$</span>product_category, <span class="st">&quot;FRZN&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb234-11"><a href="lesson-4b-handling-text-data.html#cb234-11" aria-hidden="true" tabindex="-1"></a><span class="do">##      start end</span></span>
+<span id="cb234-12"><a href="lesson-4b-handling-text-data.html#cb234-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]     1   4</span></span>
+<span id="cb234-13"><a href="lesson-4b-handling-text-data.html#cb234-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    NA  NA</span></span>
+<span id="cb234-14"><a href="lesson-4b-handling-text-data.html#cb234-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    NA  NA</span></span>
+<span id="cb234-15"><a href="lesson-4b-handling-text-data.html#cb234-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]    NA  NA</span></span>
+<span id="cb234-16"><a href="lesson-4b-handling-text-data.html#cb234-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]    NA  NA</span></span>
+<span id="cb234-17"><a href="lesson-4b-handling-text-data.html#cb234-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]    NA  NA</span></span>
+<span id="cb234-18"><a href="lesson-4b-handling-text-data.html#cb234-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-19"><a href="lesson-4b-handling-text-data.html#cb234-19" aria-hidden="true" tabindex="-1"></a><span class="co"># replace all instances of the word &quot;FRZN&quot; with &quot;FROZEN&quot;</span></span>
+<span id="cb234-20"><a href="lesson-4b-handling-text-data.html#cb234-20" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(products<span class="sc">$</span>product_category, <span class="at">pattern =</span> <span class="st">&quot;FRZN&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;FROZEN&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb234-21"><a href="lesson-4b-handling-text-data.html#cb234-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;FROZEN ICE&quot;           NA                     &quot;BREAD&quot;                &quot;FRUIT - SHELF STABLE&quot;</span></span>
+<span id="cb234-22"><a href="lesson-4b-handling-text-data.html#cb234-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;COOKIES/CONES&quot;        &quot;SPICES &amp; EXTRACTS&quot;</span></span></code></pre></div>
+<div class="tip">
+<p>
+The patterns used in the <code>str_</code> functions are case
+sensitive but you can use <code>regex</code> to control options
+(i.e. <code>str_count(products$product_category, regex(“frzn”, ignore_case = TRUE))</code>).
+</p>
+</div>
+</div>
+<div id="multiple-words" class="section level3 hasAnchor" number="19.4.2">
+<h3><span class="header-section-number">19.4.2</span> Multiple Words<a href="lesson-4b-handling-text-data.html#multiple-words" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous section you saw that you can search for a given word using any of the <code>str_</code> functions. We can build onto this and search for multiple words. For example, you can search for multiple phrases to identify seasonal products. Say you wanted to identify all products targeting <em>summer or fall</em>, rather than search for these words in separate <code>str_detect()</code> calls…</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="lesson-4b-handling-text-data.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for summer or fall items</span></span>
+<span id="cb235-2"><a href="lesson-4b-handling-text-data.html#cb235-2" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb235-3"><a href="lesson-4b-handling-text-data.html#cb235-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(</span>
+<span id="cb235-4"><a href="lesson-4b-handling-text-data.html#cb235-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;summer&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">|</span></span>
+<span id="cb235-5"><a href="lesson-4b-handling-text-data.html#cb235-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;fall&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))   </span>
+<span id="cb235-6"><a href="lesson-4b-handling-text-data.html#cb235-6" aria-hidden="true" tabindex="-1"></a>   )</span>
+<span id="cb235-7"><a href="lesson-4b-handling-text-data.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 651 × 7</span></span>
+<span id="cb235-8"><a href="lesson-4b-handling-text-data.html#cb235-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category       product_type  package_size</span></span>
+<span id="cb235-9"><a href="lesson-4b-handling-text-data.html#cb235-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       </span></span>
+<span id="cb235-10"><a href="lesson-4b-handling-text-data.html#cb235-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 37073      69              DRUG GM    Private  SPRING/SUMMER SEASONAL GRILL ACCESS… &lt;NA&gt;        </span></span>
+<span id="cb235-11"><a href="lesson-4b-handling-text-data.html#cb235-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 91614      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 3 CT        </span></span>
+<span id="cb235-12"><a href="lesson-4b-handling-text-data.html#cb235-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 99090      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 2 CT        </span></span>
+<span id="cb235-13"><a href="lesson-4b-handling-text-data.html#cb235-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 99172      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 2 CT        </span></span>
+<span id="cb235-14"><a href="lesson-4b-handling-text-data.html#cb235-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 106668     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb235-15"><a href="lesson-4b-handling-text-data.html#cb235-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 182402     2160            DRUG GM    National SPRING/SUMMER SEASONAL COOLERS       28 QT       </span></span>
+<span id="cb235-16"><a href="lesson-4b-handling-text-data.html#cb235-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 276046     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb235-17"><a href="lesson-4b-handling-text-data.html#cb235-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 461689     5759            DRUG GM    National SPRING/SUMMER SEASONAL MISC HOLIDAYS &lt;NA&gt;        </span></span>
+<span id="cb235-18"><a href="lesson-4b-handling-text-data.html#cb235-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 504050     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb235-19"><a href="lesson-4b-handling-text-data.html#cb235-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 555735     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb235-20"><a href="lesson-4b-handling-text-data.html#cb235-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 641 more rows</span></span></code></pre></div>
+<p>We can simply search for observations that include the words “summer” or “fall” within a single <code>str_detect()</code> call by using <code>|</code> between the search terms, which is equivalent to an <strong><em>or</em></strong> statement.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="lesson-4b-handling-text-data.html#cb236-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb236-2"><a href="lesson-4b-handling-text-data.html#cb236-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;summer|fall&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb236-3"><a href="lesson-4b-handling-text-data.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 651 × 7</span></span>
+<span id="cb236-4"><a href="lesson-4b-handling-text-data.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category       product_type  package_size</span></span>
+<span id="cb236-5"><a href="lesson-4b-handling-text-data.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       </span></span>
+<span id="cb236-6"><a href="lesson-4b-handling-text-data.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 37073      69              DRUG GM    Private  SPRING/SUMMER SEASONAL GRILL ACCESS… &lt;NA&gt;        </span></span>
+<span id="cb236-7"><a href="lesson-4b-handling-text-data.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 91614      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 3 CT        </span></span>
+<span id="cb236-8"><a href="lesson-4b-handling-text-data.html#cb236-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 99090      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 2 CT        </span></span>
+<span id="cb236-9"><a href="lesson-4b-handling-text-data.html#cb236-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 99172      1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… 2 CT        </span></span>
+<span id="cb236-10"><a href="lesson-4b-handling-text-data.html#cb236-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 106668     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb236-11"><a href="lesson-4b-handling-text-data.html#cb236-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 182402     2160            DRUG GM    National SPRING/SUMMER SEASONAL COOLERS       28 QT       </span></span>
+<span id="cb236-12"><a href="lesson-4b-handling-text-data.html#cb236-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 276046     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb236-13"><a href="lesson-4b-handling-text-data.html#cb236-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 461689     5759            DRUG GM    National SPRING/SUMMER SEASONAL MISC HOLIDAYS &lt;NA&gt;        </span></span>
+<span id="cb236-14"><a href="lesson-4b-handling-text-data.html#cb236-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 504050     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb236-15"><a href="lesson-4b-handling-text-data.html#cb236-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 555735     1277            DRUG GM    National SPRING/SUMMER SEASONAL DISPOSABLE F… &lt;NA&gt;        </span></span>
+<span id="cb236-16"><a href="lesson-4b-handling-text-data.html#cb236-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 641 more rows</span></span></code></pre></div>
+</div>
+<div id="line-anchors" class="section level3 hasAnchor" number="19.4.3">
+<h3><span class="header-section-number">19.4.3</span> Line anchors<a href="lesson-4b-handling-text-data.html#line-anchors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Line anchors are used to identify patterns at the beginning or end of an element. To find a pattern at the beginning of the element we use <code>^</code> and a pattern at the end of the element is found with <code>$</code>. For example, if you wanted to find any observations with the word “fruit” in the <code>product_category</code> column we can use the following:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="lesson-4b-handling-text-data.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contains &quot;juice&quot;</span></span>
+<span id="cb237-2"><a href="lesson-4b-handling-text-data.html#cb237-2" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb237-3"><a href="lesson-4b-handling-text-data.html#cb237-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;fruit&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb237-4"><a href="lesson-4b-handling-text-data.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,153 × 7</span></span>
+<span id="cb237-5"><a href="lesson-4b-handling-text-data.html#cb237-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category        product_type package_size</span></span>
+<span id="cb237-6"><a href="lesson-4b-handling-text-data.html#cb237-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                   &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb237-7"><a href="lesson-4b-handling-text-data.html#cb237-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26190      69              GROCERY    Private  FRUIT - SHELF STABLE    APPLE SAUCE  50 OZ       </span></span>
+<span id="cb237-8"><a href="lesson-4b-handling-text-data.html#cb237-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 27503      69              GROCERY    Private  FRUIT - SHELF STABLE    CRANBERRY S… 16 OZ       </span></span>
+<span id="cb237-9"><a href="lesson-4b-handling-text-data.html#cb237-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 27960      69              GROCERY    Private  FRZN FRUITS             FROZEN FRUIT 16 OZ       </span></span>
+<span id="cb237-10"><a href="lesson-4b-handling-text-data.html#cb237-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 33048      5820            PRODUCE    National ORGANICS FRUIT &amp; VEGET… ORGANIC CIT… 2 LB BAG    </span></span>
+<span id="cb237-11"><a href="lesson-4b-handling-text-data.html#cb237-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 37543      876             NUTRITION  National DRIED FRUIT             RAISINS      24 OZ       </span></span>
+<span id="cb237-12"><a href="lesson-4b-handling-text-data.html#cb237-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 44599      69              GROCERY    Private  FRUIT - SHELF STABLE    FRUIT COCKT… 15.25 OZ    </span></span>
+<span id="cb237-13"><a href="lesson-4b-handling-text-data.html#cb237-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 45218      69              GROCERY    Private  FRUIT - SHELF STABLE    PEARS        15.25 OZ    </span></span>
+<span id="cb237-14"><a href="lesson-4b-handling-text-data.html#cb237-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 45607      69              GROCERY    Private  FRUIT - SHELF STABLE    PINEAPPLE    8 OZ        </span></span>
+<span id="cb237-15"><a href="lesson-4b-handling-text-data.html#cb237-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 49748      69              GROCERY    Private  FRUIT - SHELF STABLE    MANDARIN OR… 15 OZ       </span></span>
+<span id="cb237-16"><a href="lesson-4b-handling-text-data.html#cb237-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 49930      2               PRODUCE    National STONE FRUIT             PEACHES YEL… &lt;NA&gt;        </span></span>
+<span id="cb237-17"><a href="lesson-4b-handling-text-data.html#cb237-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,143 more rows</span></span></code></pre></div>
+<p>However, if we only wanted those products where the category <em>starts with</em> “fruit” than we can use the <code>^</code> anchor:</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="lesson-4b-handling-text-data.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starts with &quot;fruit&quot;</span></span>
+<span id="cb238-2"><a href="lesson-4b-handling-text-data.html#cb238-2" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb238-3"><a href="lesson-4b-handling-text-data.html#cb238-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;^fruit&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb238-4"><a href="lesson-4b-handling-text-data.html#cb238-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 396 × 7</span></span>
+<span id="cb238-5"><a href="lesson-4b-handling-text-data.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category     product_type    package_size</span></span>
+<span id="cb238-6"><a href="lesson-4b-handling-text-data.html#cb238-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;           &lt;chr&gt;       </span></span>
+<span id="cb238-7"><a href="lesson-4b-handling-text-data.html#cb238-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26190      69              GROCERY    Private  FRUIT - SHELF STABLE APPLE SAUCE     50 OZ       </span></span>
+<span id="cb238-8"><a href="lesson-4b-handling-text-data.html#cb238-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 27503      69              GROCERY    Private  FRUIT - SHELF STABLE CRANBERRY SAUCE 16 OZ       </span></span>
+<span id="cb238-9"><a href="lesson-4b-handling-text-data.html#cb238-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 44599      69              GROCERY    Private  FRUIT - SHELF STABLE FRUIT COCKTAIL… 15.25 OZ    </span></span>
+<span id="cb238-10"><a href="lesson-4b-handling-text-data.html#cb238-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 45218      69              GROCERY    Private  FRUIT - SHELF STABLE PEARS           15.25 OZ    </span></span>
+<span id="cb238-11"><a href="lesson-4b-handling-text-data.html#cb238-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 45607      69              GROCERY    Private  FRUIT - SHELF STABLE PINEAPPLE       8 OZ        </span></span>
+<span id="cb238-12"><a href="lesson-4b-handling-text-data.html#cb238-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 49748      69              GROCERY    Private  FRUIT - SHELF STABLE MANDARIN ORANG… 15 OZ       </span></span>
+<span id="cb238-13"><a href="lesson-4b-handling-text-data.html#cb238-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 52240      69              GROCERY    Private  FRUIT - SHELF STABLE FRUIT COCKTAIL… 15 OZ       </span></span>
+<span id="cb238-14"><a href="lesson-4b-handling-text-data.html#cb238-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 53854      170             GROCERY    National FRUIT - SHELF STABLE FRUIT BOWL AND… 4 OZ        </span></span>
+<span id="cb238-15"><a href="lesson-4b-handling-text-data.html#cb238-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 54776      69              GROCERY    Private  FRUIT - SHELF STABLE FRUIT COCKTAIL… 15 OZ       </span></span>
+<span id="cb238-16"><a href="lesson-4b-handling-text-data.html#cb238-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 58782      170             GROCERY    National FRUIT - SHELF STABLE FRUIT BOWL AND… 6/3.9 OZ    </span></span>
+<span id="cb238-17"><a href="lesson-4b-handling-text-data.html#cb238-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 386 more rows</span></span></code></pre></div>
+<p>Alternatively, if we only wanted those products where the category <em>ends with</em> “fruit” than we can use the <code>$</code> anchor:</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="lesson-4b-handling-text-data.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starts with &quot;fruit&quot;</span></span>
+<span id="cb239-2"><a href="lesson-4b-handling-text-data.html#cb239-2" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb239-3"><a href="lesson-4b-handling-text-data.html#cb239-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;fruit$&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb239-4"><a href="lesson-4b-handling-text-data.html#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 398 × 7</span></span>
+<span id="cb239-5"><a href="lesson-4b-handling-text-data.html#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category product_type        package_size</span></span>
+<span id="cb239-6"><a href="lesson-4b-handling-text-data.html#cb239-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;            &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb239-7"><a href="lesson-4b-handling-text-data.html#cb239-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 37543      876             NUTRITION  National DRIED FRUIT      RAISINS             24 OZ       </span></span>
+<span id="cb239-8"><a href="lesson-4b-handling-text-data.html#cb239-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 49930      2               PRODUCE    National STONE FRUIT      PEACHES YELLOW FLE… &lt;NA&gt;        </span></span>
+<span id="cb239-9"><a href="lesson-4b-handling-text-data.html#cb239-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 54460      69              NUTRITION  Private  DRIED FRUIT      RAISINS             24 OZ BAG   </span></span>
+<span id="cb239-10"><a href="lesson-4b-handling-text-data.html#cb239-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 64583      2               PRODUCE    National TROPICAL FRUIT   TROPICAL FRUIT - O… CTN         </span></span>
+<span id="cb239-11"><a href="lesson-4b-handling-text-data.html#cb239-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 71432      876             NUTRITION  National DRIED FRUIT      DRIED FRUIT - OTHER 7 OZ        </span></span>
+<span id="cb239-12"><a href="lesson-4b-handling-text-data.html#cb239-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 71792      876             NUTRITION  National DRIED FRUIT      DRIED FRUIT - OTHER 7 OZ        </span></span>
+<span id="cb239-13"><a href="lesson-4b-handling-text-data.html#cb239-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 78306      612             NUTRITION  National DRIED FRUIT      DRIED FRUIT - OTHER 6 OZ        </span></span>
+<span id="cb239-14"><a href="lesson-4b-handling-text-data.html#cb239-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 84804      612             NUTRITION  National DRIED FRUIT      DRIED FRUIT - OTHER 6 OZ        </span></span>
+<span id="cb239-15"><a href="lesson-4b-handling-text-data.html#cb239-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 119875     1587            NUTRITION  National DRIED FRUIT      DRIED FRUIT - OTHER 6 OZ        </span></span>
+<span id="cb239-16"><a href="lesson-4b-handling-text-data.html#cb239-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 136217     2               PRODUCE    National STONE FRUIT      CHERRIES RED        2 LB        </span></span>
+<span id="cb239-17"><a href="lesson-4b-handling-text-data.html#cb239-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 388 more rows</span></span></code></pre></div>
+<p>And we can combine the two if we only wanted those products where the category <em>starts or ends with</em> “fruit”:</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="lesson-4b-handling-text-data.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="co"># starts with &quot;fruit&quot;</span></span>
+<span id="cb240-2"><a href="lesson-4b-handling-text-data.html#cb240-2" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb240-3"><a href="lesson-4b-handling-text-data.html#cb240-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;^fruit|fruit$&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb240-4"><a href="lesson-4b-handling-text-data.html#cb240-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 794 × 7</span></span>
+<span id="cb240-5"><a href="lesson-4b-handling-text-data.html#cb240-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category     product_type    package_size</span></span>
+<span id="cb240-6"><a href="lesson-4b-handling-text-data.html#cb240-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;           &lt;chr&gt;       </span></span>
+<span id="cb240-7"><a href="lesson-4b-handling-text-data.html#cb240-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26190      69              GROCERY    Private  FRUIT - SHELF STABLE APPLE SAUCE     50 OZ       </span></span>
+<span id="cb240-8"><a href="lesson-4b-handling-text-data.html#cb240-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 27503      69              GROCERY    Private  FRUIT - SHELF STABLE CRANBERRY SAUCE 16 OZ       </span></span>
+<span id="cb240-9"><a href="lesson-4b-handling-text-data.html#cb240-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 37543      876             NUTRITION  National DRIED FRUIT          RAISINS         24 OZ       </span></span>
+<span id="cb240-10"><a href="lesson-4b-handling-text-data.html#cb240-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 44599      69              GROCERY    Private  FRUIT - SHELF STABLE FRUIT COCKTAIL… 15.25 OZ    </span></span>
+<span id="cb240-11"><a href="lesson-4b-handling-text-data.html#cb240-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 45218      69              GROCERY    Private  FRUIT - SHELF STABLE PEARS           15.25 OZ    </span></span>
+<span id="cb240-12"><a href="lesson-4b-handling-text-data.html#cb240-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 45607      69              GROCERY    Private  FRUIT - SHELF STABLE PINEAPPLE       8 OZ        </span></span>
+<span id="cb240-13"><a href="lesson-4b-handling-text-data.html#cb240-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 49748      69              GROCERY    Private  FRUIT - SHELF STABLE MANDARIN ORANG… 15 OZ       </span></span>
+<span id="cb240-14"><a href="lesson-4b-handling-text-data.html#cb240-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 49930      2               PRODUCE    National STONE FRUIT          PEACHES YELLOW… &lt;NA&gt;        </span></span>
+<span id="cb240-15"><a href="lesson-4b-handling-text-data.html#cb240-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 52240      69              GROCERY    Private  FRUIT - SHELF STABLE FRUIT COCKTAIL… 15 OZ       </span></span>
+<span id="cb240-16"><a href="lesson-4b-handling-text-data.html#cb240-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 53854      170             GROCERY    National FRUIT - SHELF STABLE FRUIT BOWL AND… 4 OZ        </span></span>
+<span id="cb240-17"><a href="lesson-4b-handling-text-data.html#cb240-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 784 more rows</span></span></code></pre></div>
+</div>
+<div id="metacharacters" class="section level3 hasAnchor" number="19.4.4">
+<h3><span class="header-section-number">19.4.4</span> Metacharacters<a href="lesson-4b-handling-text-data.html#metacharacters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Metacharacters consist of non-alphanumeric symbols such as:</p>
+<p>
+<center>
+.    \    |    (    )    [    {    $    *    +   ?
+</center>
+</p>
+<p>To match metacharacters in regex you need to <em>escape</em>. In R, we escape them with a double backslash “\”. The following displays the general escape syntax for the most common metacharacters:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Metacharacter</th>
+<th align="left">Literal Meaning</th>
+<th align="center">Escape Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.</td>
+<td align="left">period or dot</td>
+<td align="center"><code>\\.</code></td>
+</tr>
+<tr class="even">
+<td align="center">$</td>
+<td align="left">dollar sign</td>
+<td align="center"><code>\\$</code></td>
+</tr>
+<tr class="odd">
+<td align="center">*</td>
+<td align="left">asterisk</td>
+<td align="center"><code>\\*</code></td>
+</tr>
+<tr class="even">
+<td align="center">+</td>
+<td align="left">plus sign</td>
+<td align="center"><code>\\+</code></td>
+</tr>
+<tr class="odd">
+<td align="center">?</td>
+<td align="left">question mark</td>
+<td align="center"><code>\\?</code></td>
+</tr>
+<tr class="even">
+<td align="center">|</td>
+<td align="left">vertical bar</td>
+<td align="center"><code>\\\|</code></td>
+</tr>
+<tr class="odd">
+<td align="center">^</td>
+<td align="left">caret</td>
+<td align="center"><code>\\^</code></td>
+</tr>
+<tr class="even">
+<td align="center">[</td>
+<td align="left">square bracket</td>
+<td align="center"><code>\\[</code></td>
+</tr>
+<tr class="odd">
+<td align="center">{</td>
+<td align="left">curly brace</td>
+<td align="center"><code>\\{</code></td>
+</tr>
+<tr class="even">
+<td align="center">(</td>
+<td align="left">parenthesis</td>
+<td align="center"><code>\\(</code></td>
+</tr>
+</tbody>
+</table>
+<p>The reason we need to escape these characters is because most of these actually have meaning when declaring regular expressions. For example, say we wanted to identify any <code>product_category</code> that contains a period (“.”). If we simply use the following we actually get <strong><em>all</em></strong> our records back.</p>
+<div class="note">
+<p>
+This is because in regex expressions “.” is used to match any
+character.
+</p>
+</div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="lesson-4b-handling-text-data.html#cb241-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb241-2"><a href="lesson-4b-handling-text-data.html#cb241-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;.&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb241-3"><a href="lesson-4b-handling-text-data.html#cb241-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 91,791 × 7</span></span>
+<span id="cb241-4"><a href="lesson-4b-handling-text-data.html#cb241-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category       product_type  package_size</span></span>
+<span id="cb241-5"><a href="lesson-4b-handling-text-data.html#cb241-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       </span></span>
+<span id="cb241-6"><a href="lesson-4b-handling-text-data.html#cb241-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 25671      2               GROCERY    National FRZN ICE               ICE - CRUSHE… 22 LB       </span></span>
+<span id="cb241-7"><a href="lesson-4b-handling-text-data.html#cb241-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 26093      69              PASTRY     Private  BREAD                  BREAD:ITALIA… &lt;NA&gt;        </span></span>
+<span id="cb241-8"><a href="lesson-4b-handling-text-data.html#cb241-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 26190      69              GROCERY    Private  FRUIT - SHELF STABLE   APPLE SAUCE   50 OZ       </span></span>
+<span id="cb241-9"><a href="lesson-4b-handling-text-data.html#cb241-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 26355      69              GROCERY    Private  COOKIES/CONES          SPECIALTY CO… 14 OZ       </span></span>
+<span id="cb241-10"><a href="lesson-4b-handling-text-data.html#cb241-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 26426      69              GROCERY    Private  SPICES &amp; EXTRACTS      SPICES &amp; SEA… 2.5 OZ      </span></span>
+<span id="cb241-11"><a href="lesson-4b-handling-text-data.html#cb241-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 26540      69              GROCERY    Private  COOKIES/CONES          TRAY PACK/CH… 16 OZ       </span></span>
+<span id="cb241-12"><a href="lesson-4b-handling-text-data.html#cb241-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 26601      69              DRUG GM    Private  VITAMINS               VITAMIN - MI… 300 CT(1)   </span></span>
+<span id="cb241-13"><a href="lesson-4b-handling-text-data.html#cb241-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 26636      69              PASTRY     Private  BREAKFAST SWEETS       SW GDS: SW R… &lt;NA&gt;        </span></span>
+<span id="cb241-14"><a href="lesson-4b-handling-text-data.html#cb241-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 26691      16              GROCERY    Private  PNT BTR/JELLY/JAMS     HONEY         12 OZ       </span></span>
+<span id="cb241-15"><a href="lesson-4b-handling-text-data.html#cb241-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 26738      69              GROCERY    Private  ICE CREAM/MILK/SHERBTS TRADITIONAL   56 OZ       </span></span>
+<span id="cb241-16"><a href="lesson-4b-handling-text-data.html#cb241-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 91,781 more rows</span></span></code></pre></div>
+<p>So, we need to use an <strong>escape</strong> (“\”) to tell the regular expression you want to match a literal metacharacter.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lesson-4b-handling-text-data.html#cb242-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb242-2"><a href="lesson-4b-handling-text-data.html#cb242-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_category, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb242-3"><a href="lesson-4b-handling-text-data.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 247 × 7</span></span>
+<span id="cb242-4"><a href="lesson-4b-handling-text-data.html#cb242-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department brand    product_category product_type        package_size</span></span>
+<span id="cb242-5"><a href="lesson-4b-handling-text-data.html#cb242-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;      &lt;fct&gt;    &lt;chr&gt;            &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb242-6"><a href="lesson-4b-handling-text-data.html#cb242-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 43361      1916            GROCERY    National MISC. DAIRY      MEXICAN SOFT TORTI… 33 OZ       </span></span>
+<span id="cb242-7"><a href="lesson-4b-handling-text-data.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 50776      69              GROCERY    Private  MISC. DAIRY      REFRIGERATED PUDDI… 24 OZ       </span></span>
+<span id="cb242-8"><a href="lesson-4b-handling-text-data.html#cb242-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 53070      69              GROCERY    Private  MISC. DAIRY      REFRIGERATED PUDDI… 24 OZ       </span></span>
+<span id="cb242-9"><a href="lesson-4b-handling-text-data.html#cb242-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 60924      435             GROCERY    National MISC. DAIRY      REFRIGERATED PASTA  9 OZ        </span></span>
+<span id="cb242-10"><a href="lesson-4b-handling-text-data.html#cb242-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 64623      289             GROCERY    National MISC. DAIRY      MISC DAIRY REFIGER… 20 OZ       </span></span>
+<span id="cb242-11"><a href="lesson-4b-handling-text-data.html#cb242-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 68011      908             GROCERY    National MISC. DAIRY      REFRIGERATED MEXIC… 14.1 OZ     </span></span>
+<span id="cb242-12"><a href="lesson-4b-handling-text-data.html#cb242-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 68924      289             GROCERY    National MISC. DAIRY      MISC DAIRY REFIGER… 20 OZ       </span></span>
+<span id="cb242-13"><a href="lesson-4b-handling-text-data.html#cb242-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 79411      1046            GROCERY    National MISC. DAIRY      REFRIGERATED PUDDI… 6 PK/4 OZ   </span></span>
+<span id="cb242-14"><a href="lesson-4b-handling-text-data.html#cb242-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 81194      69              GROCERY    Private  MISC. DAIRY      REFRIGERATED MEXIC… 20 OZ       </span></span>
+<span id="cb242-15"><a href="lesson-4b-handling-text-data.html#cb242-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 82250      69              GROCERY    Private  MISC. DAIRY      REFRIGERATED MEXIC… 6 OZ        </span></span>
+<span id="cb242-16"><a href="lesson-4b-handling-text-data.html#cb242-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 237 more rows</span></span></code></pre></div>
+</div>
+<div id="character-classes" class="section level3 hasAnchor" number="19.4.5">
+<h3><span class="header-section-number">19.4.5</span> Character classes<a href="lesson-4b-handling-text-data.html#character-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To match one of several characters in a specified set we can enclose the characters of concern with square brackets <code>[ ]</code>. In addition, to matching any characters <strong>not</strong> in a specified character set we can include the caret <code>^</code> at the beginning of the set within the brackets. The following displays the general syntax for common character classes but these can be altered easily as shown in the examples that follow:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Character class</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">[aeiou]</td>
+<td align="left">match any specified lower case vowel</td>
+</tr>
+<tr class="even">
+<td align="center">[AEIOU]</td>
+<td align="left">match any specified upper case vowel</td>
+</tr>
+<tr class="odd">
+<td align="center">[0123456789]</td>
+<td align="left">match any specified numeric values</td>
+</tr>
+<tr class="even">
+<td align="center">[0-9]</td>
+<td align="left">match any range specified numeric values</td>
+</tr>
+<tr class="odd">
+<td align="center">[a-z]</td>
+<td align="left">match any range of lowercase letters</td>
+</tr>
+<tr class="even">
+<td align="center">[A-Z]</td>
+<td align="left">match any range of uppercase letters</td>
+</tr>
+<tr class="odd">
+<td align="center">[a-zA-Z0-9]</td>
+<td align="left">match any of the above</td>
+</tr>
+<tr class="even">
+<td align="center">[^aeiou]</td>
+<td align="left">match anything other than a lowercase vowel</td>
+</tr>
+<tr class="odd">
+<td align="center">[^0-9]</td>
+<td align="left">match anything other than the specified numeric values</td>
+</tr>
+</tbody>
+</table>
+<p>For example, say we wanted to find any products where the <code>package_size</code> is not a round numeric size in ounces. The following identifies any rows where <code>package_size</code> contains a dot (remember, we need to escape that character with <code>\\.</code>) followed by “oz”.</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="lesson-4b-handling-text-data.html#cb243-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb243-2"><a href="lesson-4b-handling-text-data.html#cb243-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb243-3"><a href="lesson-4b-handling-text-data.html#cb243-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.[0-9] oz&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb243-4"><a href="lesson-4b-handling-text-data.html#cb243-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10,454 × 2</span></span>
+<span id="cb243-5"><a href="lesson-4b-handling-text-data.html#cb243-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type        package_size</span></span>
+<span id="cb243-6"><a href="lesson-4b-handling-text-data.html#cb243-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb243-7"><a href="lesson-4b-handling-text-data.html#cb243-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 SPICES &amp; SEASONINGS 2.5 OZ      </span></span>
+<span id="cb243-8"><a href="lesson-4b-handling-text-data.html#cb243-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 SKILLET DINNERS     5.8 OZ      </span></span>
+<span id="cb243-9"><a href="lesson-4b-handling-text-data.html#cb243-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb243-10"><a href="lesson-4b-handling-text-data.html#cb243-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 GROUND COFFEE       34.5 OZ     </span></span>
+<span id="cb243-11"><a href="lesson-4b-handling-text-data.html#cb243-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb243-12"><a href="lesson-4b-handling-text-data.html#cb243-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 SW GDS: MUFFINS     10.8 OZ     </span></span>
+<span id="cb243-13"><a href="lesson-4b-handling-text-data.html#cb243-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 GELATIN             .3 OZ       </span></span>
+<span id="cb243-14"><a href="lesson-4b-handling-text-data.html#cb243-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 GELATIN             .3 OZ       </span></span>
+<span id="cb243-15"><a href="lesson-4b-handling-text-data.html#cb243-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 GELATIN             .3 OZ       </span></span>
+<span id="cb243-16"><a href="lesson-4b-handling-text-data.html#cb243-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 SKILLET DINNERS     6.2 OZ      </span></span>
+<span id="cb243-17"><a href="lesson-4b-handling-text-data.html#cb243-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 10,444 more rows</span></span></code></pre></div>
+<p>Now, say we wanted to do the same but we are interested in any packages that are in ounces (“OZ”) or pounds (“LB”). Your first reaction is probably to do something like:</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lesson-4b-handling-text-data.html#cb244-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb244-2"><a href="lesson-4b-handling-text-data.html#cb244-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb244-3"><a href="lesson-4b-handling-text-data.html#cb244-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.[0-9] oz|lb&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb244-4"><a href="lesson-4b-handling-text-data.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 13,012 × 2</span></span>
+<span id="cb244-5"><a href="lesson-4b-handling-text-data.html#cb244-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type        package_size</span></span>
+<span id="cb244-6"><a href="lesson-4b-handling-text-data.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb244-7"><a href="lesson-4b-handling-text-data.html#cb244-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 ICE - CRUSHED/CUBED 22 LB       </span></span>
+<span id="cb244-8"><a href="lesson-4b-handling-text-data.html#cb244-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 SPICES &amp; SEASONINGS 2.5 OZ      </span></span>
+<span id="cb244-9"><a href="lesson-4b-handling-text-data.html#cb244-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 SKILLET DINNERS     5.8 OZ      </span></span>
+<span id="cb244-10"><a href="lesson-4b-handling-text-data.html#cb244-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb244-11"><a href="lesson-4b-handling-text-data.html#cb244-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 GROUND COFFEE       34.5 OZ     </span></span>
+<span id="cb244-12"><a href="lesson-4b-handling-text-data.html#cb244-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb244-13"><a href="lesson-4b-handling-text-data.html#cb244-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 SW GDS: MUFFINS     10.8 OZ     </span></span>
+<span id="cb244-14"><a href="lesson-4b-handling-text-data.html#cb244-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 GELATIN             .3 OZ       </span></span>
+<span id="cb244-15"><a href="lesson-4b-handling-text-data.html#cb244-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 GELATIN             .3 OZ       </span></span>
+<span id="cb244-16"><a href="lesson-4b-handling-text-data.html#cb244-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 GELATIN             .3 OZ       </span></span>
+<span id="cb244-17"><a href="lesson-4b-handling-text-data.html#cb244-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 13,002 more rows</span></span></code></pre></div>
+<p>Wait! The first observation is in pounds but its a round number and not a decimal. This is because our regex (<code>\\.[0-9] oz|lb</code>) is actually looking for any package size where its a decimal of ounces (<code>\\.[0-9] oz</code>) <strong><em>or</em></strong> in pounds (<code>lb</code>).</p>
+<p>We need to modify our regex just a tad. If we change it to <code>\\.[0-9] (oz|lb)</code> (note that <code>oz|lb</code> is now in parenthesis), we are now specifying to search for <code>\\.[0-9]</code> followed by “oz” or “lb”.</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="lesson-4b-handling-text-data.html#cb245-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb245-2"><a href="lesson-4b-handling-text-data.html#cb245-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb245-3"><a href="lesson-4b-handling-text-data.html#cb245-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.[0-9] (oz|lb)&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb245-4"><a href="lesson-4b-handling-text-data.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10,712 × 2</span></span>
+<span id="cb245-5"><a href="lesson-4b-handling-text-data.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type        package_size</span></span>
+<span id="cb245-6"><a href="lesson-4b-handling-text-data.html#cb245-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb245-7"><a href="lesson-4b-handling-text-data.html#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 SPICES &amp; SEASONINGS 2.5 OZ      </span></span>
+<span id="cb245-8"><a href="lesson-4b-handling-text-data.html#cb245-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 SKILLET DINNERS     5.8 OZ      </span></span>
+<span id="cb245-9"><a href="lesson-4b-handling-text-data.html#cb245-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb245-10"><a href="lesson-4b-handling-text-data.html#cb245-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 GROUND COFFEE       34.5 OZ     </span></span>
+<span id="cb245-11"><a href="lesson-4b-handling-text-data.html#cb245-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb245-12"><a href="lesson-4b-handling-text-data.html#cb245-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 SW GDS: MUFFINS     10.8 OZ     </span></span>
+<span id="cb245-13"><a href="lesson-4b-handling-text-data.html#cb245-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 GELATIN             .3 OZ       </span></span>
+<span id="cb245-14"><a href="lesson-4b-handling-text-data.html#cb245-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 GELATIN             .3 OZ       </span></span>
+<span id="cb245-15"><a href="lesson-4b-handling-text-data.html#cb245-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 GELATIN             .3 OZ       </span></span>
+<span id="cb245-16"><a href="lesson-4b-handling-text-data.html#cb245-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 SKILLET DINNERS     6.2 OZ      </span></span>
+<span id="cb245-17"><a href="lesson-4b-handling-text-data.html#cb245-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 10,702 more rows</span></span></code></pre></div>
+<p>Now, say we wanted to find any package size that contains a decimal between 0-.4:</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="lesson-4b-handling-text-data.html#cb246-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb246-2"><a href="lesson-4b-handling-text-data.html#cb246-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb246-3"><a href="lesson-4b-handling-text-data.html#cb246-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.[0-4] (oz|lb)&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb246-4"><a href="lesson-4b-handling-text-data.html#cb246-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,092 × 2</span></span>
+<span id="cb246-5"><a href="lesson-4b-handling-text-data.html#cb246-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type                   package_size</span></span>
+<span id="cb246-6"><a href="lesson-4b-handling-text-data.html#cb246-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                          &lt;chr&gt;       </span></span>
+<span id="cb246-7"><a href="lesson-4b-handling-text-data.html#cb246-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 GELATIN                        .3 OZ       </span></span>
+<span id="cb246-8"><a href="lesson-4b-handling-text-data.html#cb246-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 GELATIN                        .3 OZ       </span></span>
+<span id="cb246-9"><a href="lesson-4b-handling-text-data.html#cb246-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 GELATIN                        .3 OZ       </span></span>
+<span id="cb246-10"><a href="lesson-4b-handling-text-data.html#cb246-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 SKILLET DINNERS                6.2 OZ      </span></span>
+<span id="cb246-11"><a href="lesson-4b-handling-text-data.html#cb246-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 SKILLET DINNERS                6.4 OZ      </span></span>
+<span id="cb246-12"><a href="lesson-4b-handling-text-data.html#cb246-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 RICE SIDE DISH MIXES DRY       4.3 OZ      </span></span>
+<span id="cb246-13"><a href="lesson-4b-handling-text-data.html#cb246-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 ADULT CEREAL                   17.3 OZ     </span></span>
+<span id="cb246-14"><a href="lesson-4b-handling-text-data.html#cb246-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 NOODLE SIDE DISH MIXES         6.2 OZ      </span></span>
+<span id="cb246-15"><a href="lesson-4b-handling-text-data.html#cb246-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 CANDY BARS (SINGLES)(INCLUDING 1.4 OZ      </span></span>
+<span id="cb246-16"><a href="lesson-4b-handling-text-data.html#cb246-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 DRINKS - CARB JUICE (OVER 50%  25.4 OZ     </span></span>
+<span id="cb246-17"><a href="lesson-4b-handling-text-data.html#cb246-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,082 more rows</span></span></code></pre></div>
+</div>
+<div id="shorthand-character-classes" class="section level3 hasAnchor" number="19.4.6">
+<h3><span class="header-section-number">19.4.6</span> Shorthand character classes<a href="lesson-4b-handling-text-data.html#shorthand-character-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Since certain character classes are used often, a series of shorthand character classes are available. For example, rather than use <code>[0-9]</code> every time we are searching for a number in a regex, we can use just use <code>\\d</code> to match any digit. The following are a few of the commonly used shorthand character classes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Syntax</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>\\d</code></td>
+<td align="left">match any digit</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\\D</code></td>
+<td align="left">match any non-digit</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>\\s</code></td>
+<td align="left">match a space character</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\\S</code></td>
+<td align="left">match a non-space character</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>\\w</code></td>
+<td align="left">match a word</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\\W</code></td>
+<td align="left">match a non-word</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>\\b</code></td>
+<td align="left">match a word boundary</td>
+</tr>
+<tr class="even">
+<td align="center"><code>\\B</code></td>
+<td align="left">match a non-word boundary</td>
+</tr>
+</tbody>
+</table>
+<p>We can use these to find patterns such as…</p>
+<p>Find all products where the <code>package_size</code> starts with a numeric digit:</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="lesson-4b-handling-text-data.html#cb247-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb247-2"><a href="lesson-4b-handling-text-data.html#cb247-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb247-3"><a href="lesson-4b-handling-text-data.html#cb247-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;^</span><span class="sc">\\</span><span class="st">d&quot;</span>)))</span>
+<span id="cb247-4"><a href="lesson-4b-handling-text-data.html#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 59,790 × 2</span></span>
+<span id="cb247-5"><a href="lesson-4b-handling-text-data.html#cb247-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type                package_size</span></span>
+<span id="cb247-6"><a href="lesson-4b-handling-text-data.html#cb247-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                       &lt;chr&gt;       </span></span>
+<span id="cb247-7"><a href="lesson-4b-handling-text-data.html#cb247-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 ICE - CRUSHED/CUBED         22 LB       </span></span>
+<span id="cb247-8"><a href="lesson-4b-handling-text-data.html#cb247-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 APPLE SAUCE                 50 OZ       </span></span>
+<span id="cb247-9"><a href="lesson-4b-handling-text-data.html#cb247-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 SPECIALTY COOKIES           14 OZ       </span></span>
+<span id="cb247-10"><a href="lesson-4b-handling-text-data.html#cb247-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 SPICES &amp; SEASONINGS         2.5 OZ      </span></span>
+<span id="cb247-11"><a href="lesson-4b-handling-text-data.html#cb247-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 TRAY PACK/CHOC CHIP COOKIES 16 OZ       </span></span>
+<span id="cb247-12"><a href="lesson-4b-handling-text-data.html#cb247-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 VITAMIN - MINERALS          300 CT(1)   </span></span>
+<span id="cb247-13"><a href="lesson-4b-handling-text-data.html#cb247-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 HONEY                       12 OZ       </span></span>
+<span id="cb247-14"><a href="lesson-4b-handling-text-data.html#cb247-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 TRADITIONAL                 56 OZ       </span></span>
+<span id="cb247-15"><a href="lesson-4b-handling-text-data.html#cb247-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 TRADITIONAL                 56 OZ       </span></span>
+<span id="cb247-16"><a href="lesson-4b-handling-text-data.html#cb247-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 TRADITIONAL                 56 OZ       </span></span>
+<span id="cb247-17"><a href="lesson-4b-handling-text-data.html#cb247-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 59,780 more rows</span></span></code></pre></div>
+<p>Or all products where the <code>package_size</code> starts with a non-digit:</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lesson-4b-handling-text-data.html#cb248-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb248-2"><a href="lesson-4b-handling-text-data.html#cb248-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb248-3"><a href="lesson-4b-handling-text-data.html#cb248-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;^</span><span class="sc">\\</span><span class="st">D&quot;</span>)))</span>
+<span id="cb248-4"><a href="lesson-4b-handling-text-data.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,955 × 2</span></span>
+<span id="cb248-5"><a href="lesson-4b-handling-text-data.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type                   package_size</span></span>
+<span id="cb248-6"><a href="lesson-4b-handling-text-data.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                          &lt;chr&gt;       </span></span>
+<span id="cb248-7"><a href="lesson-4b-handling-text-data.html#cb248-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 NATURAL CHEESE EXACT WT CHUNKS A B D  8 OZ </span></span>
+<span id="cb248-8"><a href="lesson-4b-handling-text-data.html#cb248-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 GELATIN                        .3 OZ       </span></span>
+<span id="cb248-9"><a href="lesson-4b-handling-text-data.html#cb248-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 GELATIN                        .3 OZ       </span></span>
+<span id="cb248-10"><a href="lesson-4b-handling-text-data.html#cb248-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 GELATIN                        .3 OZ       </span></span>
+<span id="cb248-11"><a href="lesson-4b-handling-text-data.html#cb248-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 AMMONIA                        .5 GAL      </span></span>
+<span id="cb248-12"><a href="lesson-4b-handling-text-data.html#cb248-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 EGGS - X-LARGE                 A D   1 DZ  </span></span>
+<span id="cb248-13"><a href="lesson-4b-handling-text-data.html#cb248-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 STRING CHEESE                  AB    8 OZ  </span></span>
+<span id="cb248-14"><a href="lesson-4b-handling-text-data.html#cb248-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 EGGS - MEDIUM                  ABD   1 DZ  </span></span>
+<span id="cb248-15"><a href="lesson-4b-handling-text-data.html#cb248-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 SPICES &amp; SEASONINGS            .56 OZ      </span></span>
+<span id="cb248-16"><a href="lesson-4b-handling-text-data.html#cb248-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 STRING CHEESE                  AB    8 OZ  </span></span>
+<span id="cb248-17"><a href="lesson-4b-handling-text-data.html#cb248-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,945 more rows</span></span></code></pre></div>
+</div>
+<div id="posix-character-classes" class="section level3 hasAnchor" number="19.4.7">
+<h3><span class="header-section-number">19.4.7</span> POSIX character classes<a href="lesson-4b-handling-text-data.html#posix-character-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Closely related to regex character classes are POSIX character classes which are expressed in double brackets <code>[[ ]]</code>. Some commonly used POSIX character classes include:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Syntax</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>[[:lower:]]</code></td>
+<td align="left">lower case letters</td>
+</tr>
+<tr class="even">
+<td align="center"><code>[[:upper:]]</code></td>
+<td align="left">upper case letters</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>[[:alpha:]]</code></td>
+<td align="left">alphabetic characters <code>[[:lower:]]</code> + <code>[[:alpha:]]</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>[[:digit:]]</code></td>
+<td align="left">numeric values</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>[[:alnum:]]</code></td>
+<td align="left">alpha numeric values <code>[[:alpha:]]</code> + <code>[[:digit:]]</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>[[:blank:]]</code></td>
+<td align="left">blank characters (e.g. space, tab)</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>[[:punct:]]</code></td>
+<td align="left">punctuation characters (e.g. ! . , ? &amp; / ( [)</td>
+</tr>
+</tbody>
+</table>
+<p>For example, if we wanted to find any products where the <code>package_size</code> includes a punctuation in the description:</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="lesson-4b-handling-text-data.html#cb249-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb249-2"><a href="lesson-4b-handling-text-data.html#cb249-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_type, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb249-3"><a href="lesson-4b-handling-text-data.html#cb249-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;[[:punct:]]&quot;</span>)))</span>
+<span id="cb249-4"><a href="lesson-4b-handling-text-data.html#cb249-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 17,891 × 2</span></span>
+<span id="cb249-5"><a href="lesson-4b-handling-text-data.html#cb249-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_type        package_size</span></span>
+<span id="cb249-6"><a href="lesson-4b-handling-text-data.html#cb249-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;               &lt;chr&gt;       </span></span>
+<span id="cb249-7"><a href="lesson-4b-handling-text-data.html#cb249-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 SPICES &amp; SEASONINGS 2.5 OZ      </span></span>
+<span id="cb249-8"><a href="lesson-4b-handling-text-data.html#cb249-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 VITAMIN - MINERALS  300 CT(1)   </span></span>
+<span id="cb249-9"><a href="lesson-4b-handling-text-data.html#cb249-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 TRADITIONAL         1/2 GAL     </span></span>
+<span id="cb249-10"><a href="lesson-4b-handling-text-data.html#cb249-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 SKILLET DINNERS     5.8 OZ      </span></span>
+<span id="cb249-11"><a href="lesson-4b-handling-text-data.html#cb249-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb249-12"><a href="lesson-4b-handling-text-data.html#cb249-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 GROUND COFFEE       34.5 OZ     </span></span>
+<span id="cb249-13"><a href="lesson-4b-handling-text-data.html#cb249-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 SKILLET DINNERS     6.5 OZ      </span></span>
+<span id="cb249-14"><a href="lesson-4b-handling-text-data.html#cb249-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 AMMONIA             1/2 GAL     </span></span>
+<span id="cb249-15"><a href="lesson-4b-handling-text-data.html#cb249-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 SW GDS: MUFFINS     10.8 OZ     </span></span>
+<span id="cb249-16"><a href="lesson-4b-handling-text-data.html#cb249-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 GELATIN             .3 OZ       </span></span>
+<span id="cb249-17"><a href="lesson-4b-handling-text-data.html#cb249-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 17,881 more rows</span></span></code></pre></div>
+</div>
+<div id="repetition" class="section level3 hasAnchor" number="19.4.8">
+<h3><span class="header-section-number">19.4.8</span> Repetition<a href="lesson-4b-handling-text-data.html#repetition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we want to match a <strong>certain number</strong> of characters that meet a certain criteria we can apply repetition operators to our pattern searches. Common repetition operataors include:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="79%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Syntax</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>.</code></td>
+<td align="left">wildcard to match <strong>any character once</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><code>?</code></td>
+<td align="left">the preceding item is optional and will be matched <strong>at most once</strong></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>*</code></td>
+<td align="left">the preceding item will be matched <strong>zero or more times</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><code>+</code></td>
+<td align="left">the preceding item will be matched <strong>one or more times</strong></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>{n}</code></td>
+<td align="left">the preceding item will be matched <strong>exactly n times</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><code>{n,}</code></td>
+<td align="left">the preceding item will be matched <strong>n or more times</strong></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>{n,m}</code></td>
+<td align="left">the preceding item will be matched <strong>at least n times but not more than m times</strong></td>
+</tr>
+</tbody>
+</table>
+<p>For example, say we want to find all products where the <code>package_size</code> contains at least 3 digits:</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lesson-4b-handling-text-data.html#cb250-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb250-2"><a href="lesson-4b-handling-text-data.html#cb250-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(product_category, package_size) <span class="sc">%&gt;%</span></span>
+<span id="cb250-3"><a href="lesson-4b-handling-text-data.html#cb250-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">d{3,}&quot;</span>)))</span>
+<span id="cb250-4"><a href="lesson-4b-handling-text-data.html#cb250-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,313 × 2</span></span>
+<span id="cb250-5"><a href="lesson-4b-handling-text-data.html#cb250-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_category       package_size</span></span>
+<span id="cb250-6"><a href="lesson-4b-handling-text-data.html#cb250-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                  &lt;chr&gt;       </span></span>
+<span id="cb250-7"><a href="lesson-4b-handling-text-data.html#cb250-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 VITAMINS               300 CT(1)   </span></span>
+<span id="cb250-8"><a href="lesson-4b-handling-text-data.html#cb250-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 FACIAL TISS/DNR NAPKIN 250 CT      </span></span>
+<span id="cb250-9"><a href="lesson-4b-handling-text-data.html#cb250-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 CANDY - CHECKLANE      1.625 OZ    </span></span>
+<span id="cb250-10"><a href="lesson-4b-handling-text-data.html#cb250-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 TEAS                   100 CT      </span></span>
+<span id="cb250-11"><a href="lesson-4b-handling-text-data.html#cb250-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 ANALGESICS             100 CT      </span></span>
+<span id="cb250-12"><a href="lesson-4b-handling-text-data.html#cb250-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 COFFEE FILTERS         200 CT      </span></span>
+<span id="cb250-13"><a href="lesson-4b-handling-text-data.html#cb250-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 CANDY - PACKAGED       10.125 OZ   </span></span>
+<span id="cb250-14"><a href="lesson-4b-handling-text-data.html#cb250-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 TEAS                   100 CT      </span></span>
+<span id="cb250-15"><a href="lesson-4b-handling-text-data.html#cb250-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 TEAS                   100 CT      </span></span>
+<span id="cb250-16"><a href="lesson-4b-handling-text-data.html#cb250-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 ISOTONIC DRINKS        128 OZ      </span></span>
+<span id="cb250-17"><a href="lesson-4b-handling-text-data.html#cb250-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,303 more rows</span></span></code></pre></div>
+<p>One thing you probably notice is that the above syntax will match three or more digits within the entire character string. But what if we wanted to identify repetition of a pattern sequence. For example, say we wanted to find <code>product_id</code>s where the number “8” is repeated. We can use a <strong><a href="https://www.regular-expressions.info/backref.html">backreference</a></strong> to do so. A backreference will match the same text as previously matched within parentheses. So, in this example, we look for any repeated sequences of the number 8 in <code>product_id</code>.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="lesson-4b-handling-text-data.html#cb251-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb251-2"><a href="lesson-4b-handling-text-data.html#cb251-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_id, <span class="fu">regex</span>(<span class="st">&quot;(8)</span><span class="sc">\\</span><span class="st">1&quot;</span>)))</span>
+<span id="cb251-3"><a href="lesson-4b-handling-text-data.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4,750 × 7</span></span>
+<span id="cb251-4"><a href="lesson-4b-handling-text-data.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department    brand    product_category     product_type package_size</span></span>
+<span id="cb251-5"><a href="lesson-4b-handling-text-data.html#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;         &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb251-6"><a href="lesson-4b-handling-text-data.html#cb251-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 26889      32              DRUG GM       National MAGAZINE             TV/MOVIE-MA… &lt;NA&gt;        </span></span>
+<span id="cb251-7"><a href="lesson-4b-handling-text-data.html#cb251-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 28889      69              SEAFOOD-PCKGD Private  SEAFOOD - FROZEN     SEAFOOD-FRZ… 12 OZ       </span></span>
+<span id="cb251-8"><a href="lesson-4b-handling-text-data.html#cb251-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 28892      69              GROCERY       Private  FROZEN PIZZA         SNACKS/APPE… 20 OZ       </span></span>
+<span id="cb251-9"><a href="lesson-4b-handling-text-data.html#cb251-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 28897      69              GROCERY       Private  EGGS                 EGGS - X-LA… A D   1 DZ  </span></span>
+<span id="cb251-10"><a href="lesson-4b-handling-text-data.html#cb251-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 32888      1075            GROCERY       National CRACKERS/MISC BKD FD SNACK CRACK… 8.5 OZ      </span></span>
+<span id="cb251-11"><a href="lesson-4b-handling-text-data.html#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 33882      544             GROCERY       National BAG SNACKS           TORTILLA/NA… 13 OZ       </span></span>
+<span id="cb251-12"><a href="lesson-4b-handling-text-data.html#cb251-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 33883      764             GROCERY       National LAUNDRY ADDITIVES    FABRIC SOFT… 40 LOAD     </span></span>
+<span id="cb251-13"><a href="lesson-4b-handling-text-data.html#cb251-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 36880      69              GROCERY       Private  CRACKERS/MISC BKD FD SOUP CRACKE… 16 OZ       </span></span>
+<span id="cb251-14"><a href="lesson-4b-handling-text-data.html#cb251-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 37889      317             GROCERY       National SALD DRSNG/SNDWCH S… POURABLE SA… 8 OZ        </span></span>
+<span id="cb251-15"><a href="lesson-4b-handling-text-data.html#cb251-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 38877      1884            GROCERY       National MILK BY-PRODUCTS     SOUR CREAMS  16 OZ       </span></span>
+<span id="cb251-16"><a href="lesson-4b-handling-text-data.html#cb251-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 4,740 more rows</span></span></code></pre></div>
+<p>What if we wanted to look for <code>product_id</code>s that contain three “8”s in a row then we need to repeat that pattern:</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="lesson-4b-handling-text-data.html#cb252-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span> </span>
+<span id="cb252-2"><a href="lesson-4b-handling-text-data.html#cb252-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(product_id, <span class="fu">regex</span>(<span class="st">&quot;(8)</span><span class="sc">\\</span><span class="st">1{2}&quot;</span>)))</span>
+<span id="cb252-3"><a href="lesson-4b-handling-text-data.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 343 × 7</span></span>
+<span id="cb252-4"><a href="lesson-4b-handling-text-data.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    product_id manufacturer_id department    brand    product_category     product_type package_size</span></span>
+<span id="cb252-5"><a href="lesson-4b-handling-text-data.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;         &lt;fct&gt;    &lt;chr&gt;                &lt;chr&gt;        &lt;chr&gt;       </span></span>
+<span id="cb252-6"><a href="lesson-4b-handling-text-data.html#cb252-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 28889      69              SEAFOOD-PCKGD Private  SEAFOOD - FROZEN     SEAFOOD-FRZ… 12 OZ       </span></span>
+<span id="cb252-7"><a href="lesson-4b-handling-text-data.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 32888      1075            GROCERY       National CRACKERS/MISC BKD FD SNACK CRACK… 8.5 OZ      </span></span>
+<span id="cb252-8"><a href="lesson-4b-handling-text-data.html#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 62888      69              GROCERY       Private  LAUNDRY ADDITIVES    FABRIC SOFT… 60 LOADS    </span></span>
+<span id="cb252-9"><a href="lesson-4b-handling-text-data.html#cb252-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 75888      1448            GROCERY       National CAT LITTER           LITTER ACCE… 12 CT       </span></span>
+<span id="cb252-10"><a href="lesson-4b-handling-text-data.html#cb252-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 78888      1051            DRUG GM       National ELECTRICAL SUPPPLIES DECOR BULBS  2 CT        </span></span>
+<span id="cb252-11"><a href="lesson-4b-handling-text-data.html#cb252-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 88832      348             DRUG GM       National CANDY - CHECKLANE    CHEWING GUM  12 CT       </span></span>
+<span id="cb252-12"><a href="lesson-4b-handling-text-data.html#cb252-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 108889     69              MEAT-PCKGD    Private  LUNCHMEAT            POULTRY      1 LB        </span></span>
+<span id="cb252-13"><a href="lesson-4b-handling-text-data.html#cb252-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 124888     857             DRUG GM       National CANDY - CHECKLANE    CANDY BARS … 1 CT        </span></span>
+<span id="cb252-14"><a href="lesson-4b-handling-text-data.html#cb252-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 238885     3830            SALAD BAR     National SALAD BAR            SALAD BAR F… &lt;NA&gt;        </span></span>
+<span id="cb252-15"><a href="lesson-4b-handling-text-data.html#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 255888     5474            DRUG GM       National NEWSPAPER            NEWSPAPER    &lt;NA&gt;        </span></span>
+<span id="cb252-16"><a href="lesson-4b-handling-text-data.html#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 333 more rows</span></span></code></pre></div>
+</div>
+<div id="putting-it-altogether-2" class="section level3 hasAnchor" number="19.4.9">
+<h3><span class="header-section-number">19.4.9</span> Putting it altogether<a href="lesson-4b-handling-text-data.html#putting-it-altogether-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ok, let’s use a few tools we’ve learned to answer a question we may get asked by our boss. Say we were asked to identify the top 5 products that have the most total sales; however, we only want to focus on those products that weigh 10lbs or more. We can applly the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>filter for regex <code>"^\\d{2,}(\\.)?.*lb"</code> which means:
+<ul>
+<li><code>^\\d{2,}</code>: starts with at least 2 numeric digits</li>
+<li><code>(\\.)?.</code>: followed by an optional decimal</li>
+<li><code>.*lb</code>: followed by a character zero or more times</li>
+</ul></li>
+<li>take the resulting product list and inner join with transactions so we only retain those transactions and products that have a matching product ID in both tables,</li>
+<li>compute total sales grouped by product (here we use product type just to provide us more context over the product ID),</li>
+<li>and then use <code>slice_max</code> to get the top 5 <code>total_sales</code> values (you could also just use <code>arrange(desc(total_sales))</code>).</li>
+</ol>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="lesson-4b-handling-text-data.html#cb253-1" aria-hidden="true" tabindex="-1"></a>products <span class="sc">%&gt;%</span></span>
+<span id="cb253-2"><a href="lesson-4b-handling-text-data.html#cb253-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">str_detect</span>(package_size, <span class="fu">regex</span>(<span class="st">&quot;^</span><span class="sc">\\</span><span class="st">d{2,}(</span><span class="sc">\\</span><span class="st">.)?.*lb&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb253-3"><a href="lesson-4b-handling-text-data.html#cb253-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">inner_join</span>(transactions_sample, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb253-4"><a href="lesson-4b-handling-text-data.html#cb253-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(product_type) <span class="sc">%&gt;%</span></span>
+<span id="cb253-5"><a href="lesson-4b-handling-text-data.html#cb253-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_sales =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb253-6"><a href="lesson-4b-handling-text-data.html#cb253-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">slice_max</span>(total_sales, <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb253-7"><a href="lesson-4b-handling-text-data.html#cb253-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 × 2</span></span>
+<span id="cb253-8"><a href="lesson-4b-handling-text-data.html#cb253-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   product_type                  total_sales</span></span>
+<span id="cb253-9"><a href="lesson-4b-handling-text-data.html#cb253-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                               &lt;dbl&gt;</span></span>
+<span id="cb253-10"><a href="lesson-4b-handling-text-data.html#cb253-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 BANANAS                              887.</span></span>
+<span id="cb253-11"><a href="lesson-4b-handling-text-data.html#cb253-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 GRAPES RED                           527.</span></span>
+<span id="cb253-12"><a href="lesson-4b-handling-text-data.html#cb253-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 GRAPES WHITE                         507.</span></span>
+<span id="cb253-13"><a href="lesson-4b-handling-text-data.html#cb253-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 TOMATOES HOTHOUSE ON THE VINE        364.</span></span>
+<span id="cb253-14"><a href="lesson-4b-handling-text-data.html#cb253-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 POTATOES RUSSET (BULK&amp;BAG)           346.</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-32" class="section level3 hasAnchor" number="19.4.10">
+<h3><span class="header-section-number">19.4.10</span> Knowledge check<a href="lesson-4b-handling-text-data.html#knowledge-check-32" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+How many <code>products</code> contain the word “bulk” in
+<code>product_type</code>?
+</li>
+<li>
+How many <code>products</code> do not contain punctuation in their
+<code>package_size</code>?
+</li>
+<li>
+Find all frozen pizza products. Be careful, this is not straight
+forward!
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exercises-11" class="section level2 hasAnchor" number="19.5">
+<h2><span class="header-section-number">19.5</span> Exercises<a href="lesson-4b-handling-text-data.html#exercises-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<p>
+To answer these questions you’ll need to use the
+<code>products</code> and <code>transactions_sample</code> data
+frames.
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Identify all different products that contain “pizza” in their
+<code>product_type</code> description. Which product produces the
+greatest amount of total sales?
+</li>
+<li>
+Identify all products that are categorized
+(<code>product_category</code>) as pizza but are considered a snack or
+appetizer (<code>product_type</code>). Which of these products have the
+most sales (measured by quantity)?
+</li>
+<li>
+How many products contain <code>package_size</code>s that do not
+contain a numeric value.
+</li>
+</ol>
+</div>
+</div>
+<div id="additional-resources-6" class="section level2 hasAnchor" number="19.6">
+<h2><span class="header-section-number">19.6</span> Additional resources<a href="lesson-4b-handling-text-data.html#additional-resources-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Character string data are often considered semi-structured data. Text can be structured in a specified field; however, the quality and consistency of the text input can be far from structured. Consequently, managing and manipulating character strings can be extremely tedious and unique to each data wrangling process. As a result, taking the time to learn the nuances of dealing with character strings and regex functions can provide a great return on investment; however, the functions and techniques required will likely be greater than what I could offer here. So here are additional resources that are worth reading and learning from:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html"><code>stringr</code> Package Vignette</a></li>
+<li><a href="http://r4ds.had.co.nz/strings.html">R for Data Science, ch. 14</a></li>
+<li><a href="https://www.tidytextmining.com/">Text Mining with R</a></li>
+<li><a href="http://www.regular-expressions.info/">Regular Expressions</a></li>
+<li><a href="https://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124/ref=sr_1_1?keywords=mastering+regular+expressions&amp;qid=1653827690&amp;sr=8-1">Mastering Regular Expressions</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-4a-relational-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-4/lesson-2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
