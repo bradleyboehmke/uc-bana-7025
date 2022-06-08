@@ -80,7 +80,7 @@ ggplot(df, aes(x = quantity, y = sales_value)) +
    geom_point()
 ```
 
-```{r, echo=FALSE, fig.height=3.5, fig.width=11}
+```{r first-plot-scatterplot-rendered, echo=FALSE, fig.height=3.5, fig.width=11}
 library(gridExtra)
 
 # create canvas
