@@ -675,16 +675,16 @@ div.csl-indent {
 <span id="cb256-2"><a href="lesson-4c-handling-dates-times.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;America/New_York&quot;</span></span>
 <span id="cb256-3"><a href="lesson-4c-handling-dates-times.html#cb256-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb256-4"><a href="lesson-4c-handling-dates-times.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span>
-<span id="cb256-5"><a href="lesson-4c-handling-dates-times.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-06&quot;</span></span>
+<span id="cb256-5"><a href="lesson-4c-handling-dates-times.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-08&quot;</span></span>
 <span id="cb256-6"><a href="lesson-4c-handling-dates-times.html#cb256-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb256-7"><a href="lesson-4c-handling-dates-times.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span>
-<span id="cb256-8"><a href="lesson-4c-handling-dates-times.html#cb256-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-06 13:16:00 EDT&quot;</span></span></code></pre></div>
+<span id="cb256-8"><a href="lesson-4c-handling-dates-times.html#cb256-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-08 17:20:38 EDT&quot;</span></span></code></pre></div>
 <p>If using the lubridate package:</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="lesson-4c-handling-dates-times.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span>
-<span id="cb257-2"><a href="lesson-4c-handling-dates-times.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-06&quot;</span></span>
+<span id="cb257-2"><a href="lesson-4c-handling-dates-times.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-08&quot;</span></span>
 <span id="cb257-3"><a href="lesson-4c-handling-dates-times.html#cb257-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb257-4"><a href="lesson-4c-handling-dates-times.html#cb257-4" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span>
-<span id="cb257-5"><a href="lesson-4c-handling-dates-times.html#cb257-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-06 13:16:00 EDT&quot;</span></span></code></pre></div>
+<span id="cb257-5"><a href="lesson-4c-handling-dates-times.html#cb257-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-08 17:20:38 EDT&quot;</span></span></code></pre></div>
 </div>
 <div id="creating-dates" class="section level2 hasAnchor" number="20.4">
 <h2><span class="header-section-number">20.4</span> Creating dates<a href="lesson-4c-handling-dates-times.html#creating-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -958,7 +958,7 @@ produces the smallest sales?
 <p>Since R stores date and time objects as numbers, this allows you to perform various calculations such as logical comparisons, computing the duration between different dates, and adding/subtracting periods (months, days, hours, minutes, etc.) to dates and times.</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="lesson-4c-handling-dates-times.html#cb265-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
 <span id="cb265-2"><a href="lesson-4c-handling-dates-times.html#cb265-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb265-3"><a href="lesson-4c-handling-dates-times.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-06&quot;</span></span>
+<span id="cb265-3"><a href="lesson-4c-handling-dates-times.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2022-06-08&quot;</span></span>
 <span id="cb265-4"><a href="lesson-4c-handling-dates-times.html#cb265-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb265-5"><a href="lesson-4c-handling-dates-times.html#cb265-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2018-06-01&quot;</span>)</span>
 <span id="cb265-6"><a href="lesson-4c-handling-dates-times.html#cb265-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -966,7 +966,7 @@ produces the smallest sales?
 <span id="cb265-8"><a href="lesson-4c-handling-dates-times.html#cb265-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
 <span id="cb265-9"><a href="lesson-4c-handling-dates-times.html#cb265-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb265-10"><a href="lesson-4c-handling-dates-times.html#cb265-10" aria-hidden="true" tabindex="-1"></a>x <span class="sc">-</span> y</span>
-<span id="cb265-11"><a href="lesson-4c-handling-dates-times.html#cb265-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 1466 days</span></span></code></pre></div>
+<span id="cb265-11"><a href="lesson-4c-handling-dates-times.html#cb265-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Time difference of 1468 days</span></span></code></pre></div>
 <div id="durations" class="section level3 hasAnchor" number="20.6.1">
 <h3><span class="header-section-number">20.6.1</span> Durations<a href="lesson-4c-handling-dates-times.html#durations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, when you subtract two dates, you get a difftime object. A difftime class object records a time span of seconds, minutes, hours, days, or weeks. This ambiguity can make difftimes a little painful to work with, so <strong>lubridate</strong> provides an alternative which always uses seconds as the duration but will summarize that duration to the nearest “useful” period (years, weeks, days).</p>
