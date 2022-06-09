@@ -1,16 +1,328 @@
-# Lesson 2
+# Lesson 5b: Handling factors
 
-TBD
+```{r setup-5b, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
 
+knitr::opts_chunk$set(
+  fig.align = "center",
+  fig.height = 3.5,
+  fig.width = 6,
+  collapse = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+So far we've learned to work with several different data types such as strings and dates. However, one data type we haven't discussed much are **factors**. Factors are used to represent categorical data and can be unordered or ordered. 
+
+One can think of a factor as an integer vector where each integer has a label. In fact, factors are built on top of integer vectors using two attributes: the `class()`, “factor”, which makes them behave differently from regular integer vectors, and the `levels()`, which defines the set of allowed values. Factors are important in statistical modeling and can be treated specially depending on the model used. Moreover, factors can influence how visualizations are displayed which is why we are introducing this lesson during this module. 
+
+Consequently, understanding how to manage factors is important and this lesson will provide you the basics of managing categorical data as factors.
 
 ## Learning objectives
 
+By the end of this lesson you will be able to:
 
-## Content A
+* Describe what factors are and why we use them.
+* Create factors from character strings.
+* Modify factor levels and orders to help in your data wrangling.
+
+## Prerequisites
+
+For this lesson you will need to load the **tidyverse** suite of packages. The primary emphasis will be on the **forcats** package which is automatically loaded when you load tidyverse. **forcats** provides tools for dealing with **cat**egorical variables (and it’s an anagram of factors!).
+
+```{r}
+library(ggplot2)          # for plotting capabilities
+library(completejourney)  # for data
+library(dplyr)            # for additional data wrangling
+```
 
 
-## Content B
+## Creating factors & inspecting factors
 
+### Some basics
+
+Imagine that you have a variable that records month:
+
+```{r}
+m1 <- c("Aug", "Oct", "Jan", "Mar")
+```
+
+Using a string to record this variable has two problems:
+
+1. There are only twelve possible months, and there’s nothing saving you from typos:
+
+   ```{r}
+   m2 <- c("Aug", "Oct", "Jam", "Mar")
+   ```
+2. It doesn’t sort in a useful way:
+
+   ```{r}
+   sort(m1)
+   ```
+
+You can fix both of these problems with a factor. To create a factor you must start by creating a list of the valid **levels**:
+
+```{r}
+month_levels <- c(
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+)
+```
+
+Now you can create a factor:
+
+```{r}
+(my_months <- factor(m1, levels = month_levels))
+
+sort(my_months)
+```
+
+And any values not in the set will be silently converted to NA:
+
+```{r}
+# misspelled month is forced to NA
+factor(m2, levels = month_levels)
+```
+
+We can use `class()` as we have in the past to verify the vector is a factor and use `levels` to extract the levels of the factor:
+
+```{r}
+class(my_months)
+levels(my_months)
+```
+
+
+### Factors in data frames
+
+When factors are stored in a tibble, you will notice them by the `<fct>` heading; however, you can’t see their levels. One way to see them is with count():
+
+```{r}
+promotions_sample %>%
+   count(display_location)
+```
+
+When we plot a factor variable ggplot will plot the values in the order of the factor:
+
+```{r}
+ggplot(promotions_sample, aes(display_location)) +
+   geom_bar()
+```
+
+By default, ggplot2 will drop levels that don’t have any values...
+
+```{r}
+promotions_sample %>%
+   count(display_location) %>%
+   filter(n > 5000) %>%
+   ggplot(aes(display_location, n)) +
+   geom_col()
+```
+
+... but you can force them to display with `scale_x_discrete(drop = FALSE)`:
+
+```{r}
+promotions_sample %>%
+   count(display_location) %>%
+   filter(n > 5000) %>%
+   ggplot(aes(display_location, n)) +
+   geom_col() +
+   scale_x_discrete(drop = FALSE)
+```
+
+### Ordinal factors
+
+Sometimes factors will be ordinal. You will notice this by the `<ord>` description in a tibble:
+
+```{r}
+demographics
+```
+
+And we can verify with `class()`:
+
+```{r}
+class(demographics$age)
+```
+
+Ordinal factors are pretty much the same as regular factors, its just an explicit way of saying that this factor has levels that should retain an order. We can probably agree that a factor for colors has no order. There is no inherent order of our colors. 
+
+Consequently, the levels of this factor will simply be based on the alphabetical order of discrete values in the `colors` vector:
+
+```{r}
+colors <- c('blue', 'green', 'blue', 'yellow', 'blue', 'green')
+factor(colors)
+```
+
+Or we could specify the levels explicitly:
+
+```{r}
+options <- c('blue', 'red', 'yellow', 'green')
+factor(colors, levels = options)
+```
+
+However, some factors do have inherent ordering. For example, say we have a vector of the sizes of a container:
+
+```{r}
+sizes <- c('small', 'large', 'large', 'medium', 'small', 'large')
+factor(sizes)
+```
+
+In this case, we may want to ensure that our levels follow an explicit ordinal hierarchy:
+
+```{r}
+options <- c('small', 'medium', 'large')
+factor(sizes, levels = options, ordered = TRUE)
+```
+
+```{block, type = 'note'}
+This ordinal nature typically does not have a large impact in exploratory data analysis but as we progress into statistical modeling and machine learning it does play a bigger role.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. What kind of factor is the `home_ownership` variable in the `demographics` data?
+2. What are the levels of this factor?
+3. Are all levels represented in this data? In other words, is there at least one or more observations for each level?
+4. Create a bar plot for this variable where all levels are illustrated in the plot.
+```
+
+## Modifying factor order
+
+It’s often useful to change the order of the factor levels. This is most often beneficial for visualizations but can also become useful when dealing with machine learning algorithm such as one of the generalized linear regression family models where the first level of a factor becomes the default baseline.
+
+As an example, say we wish to create a bar chart of homeownership frequency. By default, the bars will be plotted in the order of the levels; however, if we wish to change the order of the levels with explicit values than we can use `fct_relevel` inside of the `mutate` function to change the levels.
+
+```{r, fig.width=10}
+p1 <- ggplot(demographics, aes(home_ownership)) +
+   geom_bar() +
+   ggtitle('Original order') +
+   coord_flip()
+
+new_levels <- c("Unknown", "Probable Renter", "Probable Homeowner", "Renter", "Homeowner")
+p2 <- demographics %>%
+   mutate(home_ownership = fct_relevel(home_ownership, levels = new_levels)) %>%
+   ggplot(aes(home_ownership)) +
+   geom_bar() +
+   ggtitle('New order') +
+   coord_flip()
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+```
+
+A similar function is `fct_reorder`. Consider the following chart which plots the top 20 levels of prod_desc with the largest average net_spend_amt.
+
+```{r, fig.height=5}
+spend_by_dept <- transactions_sample %>%
+   inner_join(products, by = "product_id") %>%
+   group_by(department) %>%
+   summarize(total_spend = sum(sales_value))
+
+ggplot(spend_by_dept, aes(total_spend, department)) +
+   geom_point()
+```
+
+In the above chart, there is no natural order of the levels; rather, we wish to communicate those categories with the largest values in a rank-order fashion. To highlight the pattern in this chart we can improve it by reordering the levels of `department` based on the values of `total_spend` using `fct_reorder()`.
+
+```{r, fig.height=5}
+ggplot(spend_by_dept, aes(total_spend, fct_reorder(department, total_spend))) +
+   geom_point()
+```
+
+```{block, type='tip'}
+When reording factor levels for plots its best to do it within the `ggplot` call. When you want to reorder factor levels more permanently it is best to do it within `mutate`.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Create a bar plot for the `age` variable in the `demographics` data.
+2. Now create a bar plot where the bars are ordered based on the count of observations and not the original factor level order.
+```
+
+## Modifying factor levels
+
+Sometimes you need to do more than just reorder factors. This may include recoding values, combining different levels, and dropping unused levels.
+
+Consider our total sales by department. Let's coerce our department's to a factor.
+
+```{r}
+spend_by_dept <- mutate(spend_by_dept, department = factor(department))
+spend_by_dept
+```
+
+If we wanted to rename categories we can use `fct_recode`. This allows us to rename one or more factor levels at a time.
+
+```{r, fig.height=5}
+spend_by_dept %>%
+   mutate(department = fct_recode(
+      department,
+      "STORE SUPPLIES" = "CNTRL/STORE SUP",
+      "OVER COUNTER PHARMA" = "DRUG GM"
+      )) %>%
+   ggplot(aes(total_spend, fct_reorder(department, total_spend))) +
+   geom_point()
+```
+
+```{block, type='note'}
+`fct_recode` will leave levels that aren’t explicitly mentioned as is, and will warn you if you accidentally refer to a level that doesn’t exist.
+```
+
+To combine groups, you can assign multiple old levels to the same new level:
+
+```{r}
+spend_by_dept %>%
+   mutate(department = fct_recode(
+      department,
+      "MEAT & SEAFOOD" = "MEAT",
+      "MEAT & SEAFOOD" = "SEAFOOD"
+      ))
+```
+
+If you want to collapse a lot of levels, `fct_collapse` is a useful variant of `fct_recode`. For each new variable, you can provide a vector of old levels.
+
+```{r}
+spend_by_dept %>%
+   mutate(department = fct_collapse(
+      department,
+      "MEAT & SEAFOOD" = c("MEAT", "MEAT-PCKGD", "SEAFOOD", "SEAFOOD-PCKGD")
+      ))
+```
+
+Sometimes you just want to lump together all the small groups to make a plot or table simpler. That’s the job of `fct_lump()`, which progressively lumps together the smallest groups until it reaches the specified number of desired groups (n).
+
+```{r}
+transactions_sample %>%
+   inner_join(products, by = "product_id") %>%
+   mutate(department = fct_lump(department, n = 10)) %>%
+   group_by(department) %>%
+   summarize(total_spend = sum(sales_value)) %>%
+   ggplot(aes(total_spend, fct_reorder(department, total_spend))) +
+   geom_point()
+```
+
+
+### Knowledge check
+
+```{block, type='todo'}
+1. Create a bar plot of the `income` variable in `demographics`.
+2. Now recode the levels of the `income` variable so that you have 3 income levels:
+   - Low income = < $50K income
+   - Middle income = between $50-125K
+   - Upper income = > $125K
+3. 
+```
 
 ## Exercises
 
+```{block, type='todo'}
+1. Filter the `products` data for "BREAD" category. Now lump all bread `product_types` into 10 categories. Which category has the most observations? How many observations fall in the "Other" category?
+2. Now plot the result from #1 with a bar plot and reorder the bars so they are ordered by number of observations.
+```
+
+## Additional Resources
+
+```{block, type='tip'}
+If you want to learn more about factors, I recommend reading Amelia McNamara and Nicholas Horton’s paper, [*Wrangling categorical data in R*](https://peerj.com/preprints/3163/). This paper lays out some of the history discussed in [*stringsAsFactors: An unauthorized biography*](http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/) and [*stringsAsFactors = <sigh>*](http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh), and compares the tidy approaches to categorical data outlined in this lesson with base R methods.
+```

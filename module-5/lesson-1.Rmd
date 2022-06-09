@@ -22,7 +22,7 @@ By the end of this lesson you will be able to:
 * Manipulate and control the aesthetics of your plots (i.e. colors, scales).
 * Put together various ggplot parameters to produce a refined plot with a title, subtitle, proper axis titles, etc.
 
-## Replication Requirements
+## Prerequisites
 
 To reproduce the code throughout this lesson you will need to load the **ggplot2** package along with a couple others. 
 
