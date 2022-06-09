@@ -6,6 +6,8 @@ rm(list = ls())
 
 knitr::opts_chunk$set(
   fig.align = "center",
+  fig.height = 3.5,
+  fig.width = 6,
   collapse = TRUE,
   message = FALSE,
   warning = FALSE
@@ -80,7 +82,7 @@ ggplot(df, aes(x = quantity, y = sales_value)) +
    geom_point()
 ```
 
-```{r first-plot-scatterplot-rendered, echo=FALSE, fig.height=3.5, fig.width=11}
+```{r first-plot-scatterplot-rendered, echo=FALSE, fig.width=11}
 library(gridExtra)
 
 # create canvas
@@ -108,7 +110,7 @@ Just as we've seen in the previous lessons, we can continue to use the pipe oper
 Just remember to use the + operator to add new layers to ggplot. It is very common for people to pipe into ggplot and then continue to use the %>% operator to add new ggplot layers. This will result in an error!
 ```
 
-```{r, fig.height=3.5, fig.width=6}
+```{r}
 df %>%
    filter(quantity > 100) %>%
    ggplot(aes(x = quantity, y = sales_value)) +
@@ -130,7 +132,7 @@ The ___aesthetic mappings___ take properties of the data and use them to influen
 
 All aesthetics for a plot are specified in the `aes()` function call (later in this lesson you will see that each `geom` layer can have its own `aes` specification). For example, we can add a mapping from the variable `household_size` to a color characteristic:
 
-```{r scatterplot-by-store, echo=TRUE, fig.height=3.5, fig.width=6}
+```{r scatterplot-by-store, echo=TRUE}
 df %>%
    ggplot(aes(x = quantity, y = sales_value, color = household_size)) +
    geom_point()
@@ -139,7 +141,7 @@ df %>%
 
 Note that using the `aes()` function will cause the visual channel to be based on the data specified in the argument. For example, using `aes(color = "blue")` won’t cause the geometry’s color to be “blue”, but will instead cause the visual channel to be mapped from the vector `c("blue")` — as if we only had a single type of engine that happened to be called “blue”. If you wish to apply an aesthetic property to an entire geometry, you can set that property as an argument within the `geom_xxx_()` method, outside of the `aes()` call:
 
-```{r scatterplot-specifying-all-points-as-blue, fig.height=3.5, fig.width=6}
+```{r scatterplot-specifying-all-points-as-blue, fig.width=5}
 ggplot(df, aes(x = quantity, y = sales_value)) +
   geom_point(color = "blue")
 ```
@@ -212,7 +214,7 @@ graphs<-grid.arrange(p1, p3, p2, p4, ncol = 2)
 
 What makes this really powerful is that you can add ___multiple___ geometries to a plot, thus allowing you to create complex graphics showing multiple aspects of your data.
 
-```{r scatterplot-with-smoothed-line, fig.height=3.5, fig.width=6}
+```{r scatterplot-with-smoothed-line, fig.width=5}
 # plot with both points and smoothed line
 ggplot(df, aes(x = quantity, y = sales_value)) +
   geom_point() +
@@ -224,7 +226,7 @@ Of course the aesthetics for each `geom` can be different, so you could show mul
 
 For example, we can plot both points and a smoothed line for the same `x` and `y` variable but specify unique colors within each `geom`:
 
-```{r scatterplot-with-smoothed-line-and-specified-color, fig.height=3.5, fig.width=6}
+```{r scatterplot-with-smoothed-line-and-specified-color, fig.width=5}
 ggplot(df, aes(x = quantity, y = sales_value)) +
   geom_point(color = "blue") +
   geom_smooth(color = "red")
@@ -272,7 +274,7 @@ grid.arrange(p1, p2, nrow = 1)
 If you look at the bar chart below displaying the frequency of store IDs, you’ll notice that the the y axis was defined for us as the _count_ of observations for each **household_size**. This count isn’t part of the data set (it’s not a column in the df data set), but is instead a ___statistical transformation___ that the `geom_bar` automatically applies to the data. In particular, it applies the `stat_count` transformation.
 
 
-```{r statistical-transformation, fig.height=4}
+```{r statistical-transformation}
 ggplot(df, aes(x = household_size)) +
   geom_bar() 
 ```
@@ -288,7 +290,7 @@ household_size_count
 
 We can use `stat = "identity"` within `geom_bar` to plot our bar height values to this variable. Also, note that we now include n for our y variable:
 
-```{r counts-bar-plot, fig.height=4}
+```{r counts-bar-plot}
 ggplot(household_size_count, aes(x = household_size, y = n)) +
   geom_bar(stat = "identity")
 ```
@@ -296,7 +298,7 @@ ggplot(household_size_count, aes(x = household_size, y = n)) +
 
 We can also call `stat_` functions directly to add additional layers. For example, below is a graph that visualizes the relationship between the total sales value for each basket (aka checkout) across the different income levels. We create a scatterplot of total sales value for each for each basket and then use `stat_summary` to plot the median total sales value. It appears that there is a slight increase in median checkout sales value as income increases. 
 
-```{r stat-transformation-mean, fig.height=4}
+```{r stat-transformation-mean, fig.width=8}
 df %>%
    group_by(income, basket_id) %>%
    summarize(total_sale = sum(sales_value)) %>%
@@ -317,7 +319,7 @@ df %>%
 
 In addition to a default statistical transformation, each `geom` also has a default ___position adjustment___ which specifies a set of “rules” as to how different components should be positioned relative to each other. This position is noticeable in a `geom_bar` if you map a different variable to the color visual characteristic. Below is a bar chart that uses color to visualize the proportion of brand purchases (Private represents the stores special private brand and National represents commonly available brands).
 
-```{r position-adjustments, fig.width=6}
+```{r position-adjustments}
 ggplot(df, aes(x = household_size, fill = brand)) +
    geom_bar()
 ```
@@ -386,7 +388,7 @@ Each scale can be represented by a function with the following name: `scale_`, f
 
 While the default scales will work fine, it is possible to explicitly add different scales to replace the defaults. For example, you can use a scale to change the direction of an axis:
 
-```{r flip-axes, fig.height=4, fig.width=4}
+```{r flip-axes}
 # total area size and spend relationship, ordered in reverse
 ggplot(df, aes(x = quantity, y = sales_value)) +
    geom_point() +
@@ -397,7 +399,7 @@ ggplot(df, aes(x = quantity, y = sales_value)) +
   
 Similarly, you can use `scale_x_log10()` and `scale_x_sqrt()` to transform your scale. You can also use `scales` to format your axes. For example, you can make the y-axis have a percent scale.
 
-```{r bar-y-axis-percentage-format, fig.width=6, fig.height=4}
+```{r bar-y-axis-percentage-format}
 ggplot(df, aes(x = household_size, fill = brand)) + 
   geom_bar(position = "fill") +
   scale_y_continuous(breaks = seq(0, 1, by = .2), labels = scales::percent)
@@ -418,7 +420,7 @@ ggplot(df, aes(x = quantity, y = sales_value, color = household_size)) +
   scale_color_brewer(palette = "Set3")
 ```
   
-```{r color-brewer-palette-example2, echo=FALSE, fig.width=10, fig.height=4}
+```{r color-brewer-palette-example2, echo=FALSE, fig.width=12}
 # default color brewer
 p1 <- ggplot(df, aes(x = quantity, y = sales_value, color = household_size)) +
   geom_point() +
@@ -465,7 +467,7 @@ ggplot(df, aes(x = household_size)) +
   coord_flip()
 ```
   
-```{r coordinate2, echo=FALSE, fig.width=10, fig.height=4}
+```{r coordinate2, echo=FALSE, fig.width=10}
 # zoom in with coord_cartesian
 p1 <- ggplot(df, aes(x = quantity, y = sales_value)) +
   geom_point() +
