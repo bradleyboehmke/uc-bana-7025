@@ -805,7 +805,7 @@ You will learn more about plotting techniques in week 5.
 <span id="cb152-6"><a href="lesson-3a-pipe-operator.html#cb152-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(week), <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
 <span id="cb152-7"><a href="lesson-3a-pipe-operator.html#cb152-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb152-8"><a href="lesson-3a-pipe-operator.html#cb152-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-209-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-204-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="additional-pipe-operators-optional" class="section level2 hasAnchor" number="13.3">
 <h2><span class="header-section-number">13.3</span> Additional pipe operators (optional)<a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -826,7 +826,7 @@ follows!
 <span id="cb153-5"><a href="lesson-3a-pipe-operator.html#cb153-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%&gt;%</span></span>
 <span id="cb153-6"><a href="lesson-3a-pipe-operator.html#cb153-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb153-7"><a href="lesson-3a-pipe-operator.html#cb153-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-211-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-206-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>## Length  Class   Mode 
 ##      0   NULL   NULL</code></pre>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-3a-pipe-operator.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load magrittr to use additional pipe operators</span></span>
@@ -839,7 +839,7 @@ follows!
 <span id="cb155-8"><a href="lesson-3a-pipe-operator.html#cb155-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%T&gt;%</span></span>
 <span id="cb155-9"><a href="lesson-3a-pipe-operator.html#cb155-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb155-10"><a href="lesson-3a-pipe-operator.html#cb155-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-212-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-207-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>##     quantity      sales_value   
 ##  Min.   :    0   Min.   : 0.00  
 ##  1st Qu.:    1   1st Qu.: 1.49  

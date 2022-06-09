@@ -670,7 +670,7 @@ div.csl-indent {
 <p>Load the <strong>dplyr</strong> package to provide you access to the join functions we’ll cover in this lesson.</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="lesson-4a-relational-data.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>To illustrate various joining tasks we will use two very simple data frames <code>x</code> &amp; <code>y</code>. The colored column represents the “key” variable: these are used to match the rows between the tables. We’ll talk more about keys in a second. The grey column represents the “value” column that is carried along for the ride.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-271"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-266"></span>
 <img src="images/original-dfs.png" alt="Two simple data frames." width="50%" height="50%" />
 <p class="caption">
 Figure 18.1: Two simple data frames.
@@ -779,7 +779,7 @@ rows with matches across both data frames.
 </p>
 </div>
 <p>The following provides a nice illustration:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-280"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-275"></span>
 <img src="images/inner-join.gif" alt="Inner join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -803,7 +803,7 @@ Figure 18.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">sour
 <div id="left-join" class="section level4 hasAnchor" number="18.4.2.1">
 <h4><span class="header-section-number">18.4.2.1</span> Left join<a href="lesson-4a-relational-data.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With a <strong>left join</strong> we retain all observations from <code>x</code>, and we add columns <code>y</code>. Rows in <code>x</code> where there is no matching key value in <code>y</code> will have <code>NA</code> values in the new columns.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-282"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-277"></span>
 <img src="images/left-join.gif" alt="Left join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.3: Left join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -829,7 +829,7 @@ first data frame written in the command, whereas a right join keeps all
 the rows in the second data frame.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-285"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-280"></span>
 <img src="images/right-join.gif" alt="Right join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.4: Right join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -852,7 +852,7 @@ A full join is the most inclusive of the joins - it returns all rows
 from both data frames.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-288"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-283"></span>
 <img src="images/full-join.gif" alt="Full join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.5: Full join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -988,7 +988,7 @@ coupon and coupon redemption data.
 <div id="semi-join" class="section level3 hasAnchor" number="18.5.1">
 <h3><span class="header-section-number">18.5.1</span> Semi join<a href="lesson-4a-relational-data.html#semi-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A semi-join keeps all observations in the baseline data frame that have a match in the secondary data frame (but does not add new columns nor duplicate any rows for multiple matches).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-299"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-294"></span>
 <img src="images/semi-join.gif" alt="Semi join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.6: Semi join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -1012,7 +1012,7 @@ present in another data frame, troubleshooting spelling in a join
 were excluded after another join.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-302"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-297"></span>
 <img src="images/anti-join.gif" alt="Anti join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 18.7: Anti join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).

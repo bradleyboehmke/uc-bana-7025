@@ -728,14 +728,14 @@ div.csl-indent {
 <p>When we plot a factor variable ggplot will plot the values in the order of the factor:</p>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="lesson-5b-handling-factors.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions_sample, <span class="fu">aes</span>(display_location)) <span class="sc">+</span></span>
 <span id="cb310-2"><a href="lesson-5b-handling-factors.html#cb310-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-391-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-386-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>By default, ggplot2 will drop levels that don’t have any values…</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="lesson-5b-handling-factors.html#cb311-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb311-2"><a href="lesson-5b-handling-factors.html#cb311-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
 <span id="cb311-3"><a href="lesson-5b-handling-factors.html#cb311-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb311-4"><a href="lesson-5b-handling-factors.html#cb311-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb311-5"><a href="lesson-5b-handling-factors.html#cb311-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-392-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-387-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>… but you can force them to display with <code>scale_x_discrete(drop = FALSE)</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="lesson-5b-handling-factors.html#cb312-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb312-2"><a href="lesson-5b-handling-factors.html#cb312-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
@@ -743,7 +743,7 @@ div.csl-indent {
 <span id="cb312-4"><a href="lesson-5b-handling-factors.html#cb312-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb312-5"><a href="lesson-5b-handling-factors.html#cb312-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb312-6"><a href="lesson-5b-handling-factors.html#cb312-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-393-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-388-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ordinal-factors" class="section level3 hasAnchor" number="24.3.3">
 <h3><span class="header-section-number">24.3.3</span> Ordinal factors<a href="lesson-5b-handling-factors.html#ordinal-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -836,7 +836,7 @@ in the plot.
 <span id="cb319-12"><a href="lesson-5b-handling-factors.html#cb319-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_flip</span>()</span>
 <span id="cb319-13"><a href="lesson-5b-handling-factors.html#cb319-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb319-14"><a href="lesson-5b-handling-factors.html#cb319-14" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-402-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-397-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>A similar function is <code>fct_reorder</code>. Consider the following chart which plots the top 20 levels of prod_desc with the largest average net_spend_amt.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="lesson-5b-handling-factors.html#cb320-1" aria-hidden="true" tabindex="-1"></a>spend_by_dept <span class="ot">&lt;-</span> transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb320-2"><a href="lesson-5b-handling-factors.html#cb320-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">inner_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -845,11 +845,11 @@ in the plot.
 <span id="cb320-5"><a href="lesson-5b-handling-factors.html#cb320-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb320-6"><a href="lesson-5b-handling-factors.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, department)) <span class="sc">+</span></span>
 <span id="cb320-7"><a href="lesson-5b-handling-factors.html#cb320-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-403-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-398-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>In the above chart, there is no natural order of the levels; rather, we wish to communicate those categories with the largest values in a rank-order fashion. To highlight the pattern in this chart we can improve it by reordering the levels of <code>department</code> based on the values of <code>total_spend</code> using <code>fct_reorder()</code>.</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="lesson-5b-handling-factors.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb321-2"><a href="lesson-5b-handling-factors.html#cb321-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-404-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-399-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="tip">
 <p>
 When reording factor levels for plots its best to do it within the
@@ -902,7 +902,7 @@ of observations and not the original factor level order.
 <span id="cb323-6"><a href="lesson-5b-handling-factors.html#cb323-6" aria-hidden="true" tabindex="-1"></a>      )) <span class="sc">%&gt;%</span></span>
 <span id="cb323-7"><a href="lesson-5b-handling-factors.html#cb323-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb323-8"><a href="lesson-5b-handling-factors.html#cb323-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-408-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-403-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="note">
 <p>
 <code>fct_recode</code> will leave levels that aren’t explicitly
@@ -959,7 +959,7 @@ that doesn’t exist.
 <span id="cb326-5"><a href="lesson-5b-handling-factors.html#cb326-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_spend =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
 <span id="cb326-6"><a href="lesson-5b-handling-factors.html#cb326-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb326-7"><a href="lesson-5b-handling-factors.html#cb326-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-407-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div id="knowledge-check-47" class="section level3 hasAnchor" number="24.5.1">
 <h3><span class="header-section-number">24.5.1</span> Knowledge check<a href="lesson-5b-handling-factors.html#knowledge-check-47" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
