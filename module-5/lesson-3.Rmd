@@ -44,7 +44,9 @@ ames
 We also demonstrate some useful functions from a few other packages throughout the lesson. To replicate all the code in this lesson you'll need to install the following additional packages:
 
 ```{r, eval=FALSE}
-pkgs <- c("AmesHousing", "ggridges", "GGally", "hexbin", "naniar", "treemap", "viridis")
+pkgs <- c("AmesHousing", "ggridges", "GGally", 
+          "glue","gridExtra", "hexbin", "naniar", 
+          "treemap", "viridis")
 install.packages(pkgs)
 ```
 
@@ -81,7 +83,7 @@ Histograms are often overlooked, yet they are a very efficient means for communi
 
 To get a quick sense of how our home sale prices are distributed across the 2,930 observations in the stores data we can generate a simple histogram by applying ggplot’s `geom_histogram()` function. This histogram tells us several important features about our variable:
 
-```{r}
+```{r lesson-5-1}
 ggplot(ames, aes(x = Sale_Price)) +
    geom_histogram() +
    scale_x_continuous(labels = scales::dollar)
@@ -587,7 +589,7 @@ In most analyses, data are usually multivariate by nature, and the analytics are
 
 For example, we can compare `Sale_Price` with `Gr_Liv_Area` using a simple scatter plot. We can also include information on other variables by using color, shape, and point size. For instance, we can use a different point shape and color to indicate homes with and without central air conditioning (`Central_Air`). The below plot illustrates that there are far more homes with central air; furthermore, the homes without central air tend to have less square footage and lower sale prices.
 
-```{r}
+```{r lesson-5-plot-ac1}
 ggplot(ames, aes(
    x = Gr_Liv_Area, 
    y = Sale_Price,
@@ -599,7 +601,7 @@ ggplot(ames, aes(
 
 Although we lowered the opacity of each point, the over crowded plot makes it difficult to distinguish the relationships between homes with and without air conditioning. Another approach is to use facetting which provides more clarity between the differences in air and non-air conditioned homes.
 
-```{r, fig.width=8}
+```{r lesson-5-plot-ac2, fig.width=8}
 ames %>%
    mutate(Central_Air = fct_recode(
      Central_Air, 
@@ -614,7 +616,7 @@ ames %>%
 
 However, as before, when there are many levels in a categorical variable it becomes hard to compare differences by only incorporating color or shape features. An alternative is to create small multiples. Below we compare the relationship between `Sale_Price` and `Gr_Liv_Area` and how this relationship differs across the different house styles (`House_Style`).
 
-```{r, fig.width=10, fig.height=6}
+```{r lesson-5-housestyle, fig.width=10, fig.height=6}
 ggplot(ames, aes(x = Gr_Liv_Area, y = Sale_Price)) +
    geom_point(alpha = 0.2) +
    scale_x_log10() +
@@ -625,7 +627,7 @@ ggplot(ames, aes(x = Gr_Liv_Area, y = Sale_Price)) +
 
 We can start to add several of the features discussed in this lesson to highlight multivariate features. For example, here we assess the relationship between sales price and above ground square footage for homes with and without central air conditioning and across the different housing styles. For each house style and central air category we can see where the values are clustered and how the linear relationship changes. For all home styles, houses with central air have a higher selling price with a steeper slope than those without central air. Also, those plots without density markings and linear lines for the no central air category (red) tell us that there are no more than one observation in these groups; so this identifies gaps across multivariate categories of interest.
 
-```{r, fig.width=10, fig.height=6}
+```{r lesson-5-central-house-syle, fig.width=10, fig.height=6}
 ggplot(ames, aes(Gr_Liv_Area, Sale_Price, 
                  color = Central_Air, shape = Central_Air)) +
    geom_point(alpha = 0.2) +
@@ -643,7 +645,7 @@ ggplot(ames, aes(Gr_Liv_Area, Sale_Price,
 
 Parallel coordinate plots (PCPs) are also a great way to visualize continuous variables across multiple variables. In PCPs, a vertical axis is drawn for each variable. Then each observation is represented by drawing a line that connects its values on the different axis, creating a multivariate profile. To create a PCP, we can use the `ggparcoord()` function from the **GGally** package. By default, `GGally::ggparcoord()` will standardize the variables based on a *z-score* distribution; however, there are many options for scaling (see `?GGally::ggparcoord`). A benefit of using PCPs is that you can visualize observations across both continuous and categorical variables. In the example below we include `Overall_Qual`, an ordered factor with ten levels "Very Poor" < "Poor" < "Fair" < ... < "Excellent" < "Very Excellent" having integer values of 1–10. When including a factor variable, `GGally::ggparcoord()` will use the factor integer levels as their corresponding value, so it is important to appropriately order any factors you want to include.
 
-```{r, fig.width=8}
+```{r lesson-5-parcoord1, fig.width=8}
 # Variables of interest
 variables <- c("Sale_Price", "Year_Built", "Year_Remod_Add", "Overall_Qual")
 
@@ -657,7 +659,7 @@ The darker bands in the above plot illustrate several features. The observations
 
 We can make this more explicit by adding a new variable to indicate if a sale price is above average. We can then tell `GGally::ggparcood()` to group by this new variable. Now we clearly see that above average sale prices are related to much newer homes.
 
-```{r, fig.width=9}
+```{r lesson-5-parcoord2, fig.width=9}
 ames %>%
    select(variables) %>%
    mutate(Above_Avg = Sale_Price > mean(Sale_Price)) %>%
@@ -677,7 +679,7 @@ Mosaic plots are a graphical method for visualizing data from two or more qualit
 * Right plot: we can see that far more homes that sold below the average sale price have 1 car garages where almost all homes that sold above the average sale price have 2-3 car garages.
 
 
-```{r, fig.width=14, fig.height=7}
+```{r lesson-5-mosaic, fig.width=14, fig.height=7}
 ames2 <- ames %>%
   mutate(
     Above_Avg = Sale_Price > mean(Sale_Price),
@@ -694,7 +696,7 @@ mosaicplot(Above_Avg ~ Garage_Type + Garage_Cars, data = ames2, las = 1)
 
 Tree maps are also a useful visualization aimed at assessing the hierarchical structure of data. Tree maps are primarily used to assess a numeric value across multiple categories. It can be useful to assess the counts or proportions of a categorical variable nested within other categorical variables. For example, we can use a tree map to visualize the above right mosaic plot that illustrates the number of homes sold above and below average sales price with different garage characteristics. Again, we can see in the tree map that houses with above average prices tend to have attached 2 and 3-car garages. Houses sold below average price have more attached 1-car garages and also have far more detached garages.
 
-```{r, fig.height=5, fig.width=10}
+```{r lesson-5-treemap, fig.height=5, fig.width=10}
 ames %>% 
    mutate(Above_Below = ifelse(Sale_Price > mean(Sale_Price), "Above Avg", "Below Avg")) %>%
    count(Garage_Type, Garage_Cars, Above_Below) %>%
@@ -708,7 +710,7 @@ ames %>%
 
 A *heat map* is essentially a false color image of a matrix or data set. Heat maps can be extremely useful in identifying clusters of values; a common use is in plotting a correlation matrix. In the example below we select all the numeric variables in `ames`, compute the correlation matrix between them, and visualize the results with a heat map. Bright/dark spots represent clusters of observations with similar correlations. We can see that `Sale_Price` (3rd row from bottom) has a relatively weak linear association with variables such as `BsmtFin_Sf_1`, `Bsmt_Unf_SF`, `Longitude`, and `Enclosed_Porch`. The larger correlations values for `Sale_Price` align with variables such as `Garage_Cars`, `Garage_Area`, and `First_Flr_SF`, etc.
 
-```{r 04-heat-map-01, fig.height=9, fig.width=9}
+```{r lesson-5-heat-map-01, fig.height=9, fig.width=9}
 ames %>%
   select_if(is.numeric) %>%          # select all the numeric columns
   cor() %>%                          # compute the correlation matrix
@@ -724,7 +726,7 @@ When dealing with a small data set (or subset of a large data set), it can be us
 
 In this example we see a pretty good relationship between `Sale_Price` and the `Total_Bsmt_SF` and `First_Flr_SF` features along with a couple others.
 
-```{r 04-ggpairs-01, fig.width=12, fig.height=10}
+```{r lesson-5-ggpairs-01, fig.width=12, fig.height=10}
 ames %>%
   select(Sale_Price, contains("sf")) %>%  # select column names containing "sf"
   GGally::ggpairs()
@@ -744,7 +746,7 @@ Data quality is an important issue for any project involving analyzing data. Dat
 
 It is important to understand the distribution of missing values (i.e., `NA`) is any data set. So far, we have been using a pre-processed version of the Ames housing data set (via the `AmesHousing::make_ames()` function). However, if we use the raw Ames housing data (via `AmesHousing::ames_raw`), there are actually `r scales::comma(sum(is.na(AmesHousing::ames_raw)))` missing values---there is at least one missing values in each row of the original data! 
 
-```{r}
+```{r lesson-5-missing-sum}
 ames_raw <- AmesHousing::ames_raw
 sum(is.na(ames_raw))
 ```
@@ -753,7 +755,7 @@ It is important to understand the distribution of missing values in a data set i
 
 We can use the [**naniar**](https://naniar.njtierney.com/index.html) package to assess missing data. For example, the below plot allows us to easily see where the majority of missing values occur (i.e., in the variables `Pool QC`, `Misc Feature`, `Alley`, `Fence`, and `Fireplace Qu`). Due to their high frequency of missingness, these variables would likely need to be removed prior to statistical analysis, or imputed (i.e., filled in with intelligent guesses). 
 
-```{r, fig.height=8}
+```{r lesson-5-missing-n, fig.height=9.5}
 library(naniar)
 
 gg_miss_var(ames_raw)
@@ -761,7 +763,7 @@ gg_miss_var(ames_raw)
 
 We can also spot obvious patterns of missingness. For example, plotting missing values across all variables and observations allow us to identify when missing values appear to occur within the same observations across certain features. For example, the below shows us that when missing values appear for one of the garage features nearly all other garage variables are also missing. 
 
-```{r, fig.height=8, fig.width=15}
+```{r lesson-5-missing-obs, fig.height=8, fig.width=15}
 vis_miss(ames_raw)
 ```
 
@@ -780,7 +782,7 @@ You can control how many features to visualize with `nsets`. By default it will 
 ```
 
 
-```{r, fig.height=8, fig.width=12}
+```{r lesson-5-missing-int, fig.height=8, fig.width=12}
 ames_raw %>%
    gg_miss_upset(nsets = 10)
 ```
