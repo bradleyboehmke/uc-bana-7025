@@ -1,16 +1,391 @@
-# Lesson 1
+# Lesson 6a: Conditional statements
 
-TBD
+```{r setup-6a, include=FALSE}
+# clean up saved items that may carry over from previous lessons
+rm(list = ls())
+
+knitr::opts_chunk$set(
+  fig.align = "center",
+  fig.height = 3.5,
+  fig.width = 6,
+  collapse = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  cache = TRUE
+)
+```
+
+Conditional statements are a key part of any programming language. Their purpose is to evaluate if some condition holds and then execute a particular task depending on the result. In this lesson we'll perform some basic if and if-else conditional assessments and then build on those by adding multiple conditional assessments and also look at vectorized approaches.
 
 
 ## Learning objectives
 
+By the end of this lesson you will be able to:
 
-## Content A
+1. Apply basic `if` and `if...else` statements.
+2. Add multiple conditional assessments.
+3. Apply non-vectorized and vectorized conditional statements.
+4. Incorporate these approaches for data mining data frames.
+
+## Prerequisites
+
+Many base R functions exist to perform control statements; however, we can also perform extensions of control statements using functions in the tidyverse package.
+
+```{r}
+library(tidyverse)
+```
+
+To illustrate various control tasks we will use the Complete Journey customer transaction data.
+
+```{r}
+transactions <- completejourney::transactions_sample
+```
 
 
-## Content B
+## `if` statement
 
+The conditional `if` statement is used to test an expression. If the `test_expression` is `TRUE`, the statement gets executed. But if it’s `FALSE`, nothing happens.
+
+```{r, eval=FALSE}
+# syntax of if statement
+if (test_expression) {
+   statement
+}
+```
+
+Say, for example, that we want R to print a message depending on the value of `x`:
+
+```{r}
+set.seed(10)
+x <- runif(1)
+```
+
+If the condition is `TRUE` then the statement within the brackets is executed:
+
+```{r}
+if (x > .5) {
+  paste("x equals", round(x, 2), "which is greater than 0.5")
+}
+```
+
+However, if the condition is `FALSE` then the statement is not executed:
+
+```{r}
+if (x > .7) {
+  paste("x equals", round(x, 2), "which is greater than 0.7")
+}
+```
+
+Now say you have a vector of values that you would like to test. One would think you would just perform the following; however, you can see that you will get an error:
+
+```{r, error=TRUE}
+x <- c(8, 3, -2, 5)
+
+if (x < 0) {
+  print("x contains a negative number")
+}
+```
+
+This is because `if()` is not vectorized and it seeks to assess a single logical condition.
+To assess if a condition holds among multiple inputs, use `any()` or `all()`.
+
+`any()` looks to see if *at least one* value in the vector meets the condition:
+
+```{r}
+any(x < 0)
+
+if(any(x < 0)) {
+  print("x contains a negative number")
+}
+```
+
+While `all()` looks to see if *all* values in the vector meets the condition:
+
+```{r}
+all(x < 0)
+
+if (all(x < 0)) {
+  print("x contains a negative number")
+}
+```
+
+```{block, type='note'}
+There are actually two ways to write this `if` statement; since the body of the statement is only one line you can write it with or without curly braces. I recommend getting in the habit of using curly braces, that way if you build onto `if` statements with additional functions in the body or add an `else` statement later you will not run into issues with unexpected code procedures.
+```
+
+```{r}
+# without curly braces
+if(any(x < 0)) print("x contains negative numbers")
+
+# with curly braces produces same result
+if (any(x < 0)) {
+   print("x contains negative numbers")
+}
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Fill in the following code chunk so that:
+
+* Ff month has value 1-9 the file name printed out will be "data/month-0X.csv"
+* What happens if the month value is 10-12?
+```
+
+```{r, eval=FALSE}
+month <- 4
+
+if (month _____) {
+  paste0("data/", "Month-0", month, ".csv")
+}
+```
+
+
+## `ifelse` statement
+
+The conditional `if...else` statement is used to test an expression similar to the `if` statement. However, rather than nothing happening if the `test_expression` is `FALSE`, the `else` part of the function will be evaluated.
+
+```{r, eval=FALSE}
+# syntax of if...else statement
+if (test_expression) {
+   statement 1
+} else {
+   statement 2
+}
+```
+
+The following extends the `if` example illustrated in the previous section.  Here, the `if...else` statement tests if any values in a vector are negative; if `TRUE` it produces one output and if `FALSE` it produces the else output.
+
+```{r}
+# this test results in statement 1 being executed
+x <- c(8, 3, -2, 5)
+
+if (any(x < 0)) {
+   print("x contains negative numbers")
+} else {
+   print("x contains all positive numbers")
+}
+
+# this test results in statement 2 (or the else statement) being executed
+y <- c(8, 3, 2, 5)
+
+if (any(y < 0)) {
+   print("y contains negative numbers")
+} else {
+   print("y contains all positive numbers")
+}
+```
+
+
+### Knowledge check
+
+```{block, type='todo'}
+Fill in the following code chunk so that:
+
+* if month has value 1-9 the file name printed out will be "data/month-0X.csv"
+* if month has value 10-12 the file name printed out will be "data/month-1X.csv"
+* test it out for when month equals 4, 6, 10, & 12
+```
+
+```{r, eval=FALSE}
+month <- 4
+
+if (month _____) {
+   paste0("data/", "Month-0", month, ".csv")
+} else {
+   paste0("data/", "Month-", month, ".csv")
+}
+```
+
+## Multiple conditions
+
+We can continue to expand an `if...else` statement to assess more than just binary conditions by incorporating `else if` steps:
+
+```{r}
+x <- 0
+
+if (x < 0) {
+   print("x is a negative number")
+} else if (x > 0) {
+   print("x is a positive number")
+} else {
+   print("x is zero")
+}
+```
+
+```{block, type='note'}
+Note how we extend by following `else` with `if()`. But we should always end with an `else`.
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Fill in the following code chunk so that:
+
+* if month has value 1-9 the file name printed out will be "data/month-0X.csv"
+* if month has value 10-12 the file name printed out will be "data/month-1X.csv"
+* if month is an invalid month number (not 1-12), the result printed out is "Invalid month"
+* test it out for when month equals 6, 10, & 13
+```
+
+```{r, eval=FALSE}
+month <- 4
+
+if (month _____) {
+   paste0("data/", "Month-0", month, ".csv")
+} else if (month _____) {
+   paste0("data/", "Month-", month, ".csv")
+} else {
+   print("_____")
+}
+```
+
+## Vectorized approaches
+
+So far, we have focused on controlling the flow based on a single conditional statement. Basically, given one element we assess if that element meets a certain condition ***or*** multiple elements we simply assess if the condition holds for `all`/`any` elements:
+
+```{r non-vect-conditional, echo=FALSE, fig.cap='Illustration of non-vectorized conditional statements.'}
+knitr::include_graphics("images/non-vectorized.png")
+```
+
+However, what if we want to assess the condition against each element and execute code if that condition is `TRUE` for each element (aka vectorized)?
+
+```{r vect-conditional, echo=FALSE, fig.cap='Illustration of vectorized conditional statements.'}
+knitr::include_graphics("images/vectorized-conditional-statement.png")
+```
+
+We can vectorize an `if...else` statement a couple of ways. One option is to use the `ifelse()` function built in base R:
+
+```{r}
+(x <- c(runif(5), NA))
+
+ifelse(x > .5, "greater than", "less than")
+```
+
+Second, we can use `dplyr::if_else()`, which provides a little more stability in output type and flexibility in what to do with missing values:
+
+```{r}
+if_else(x > .5, "greater than", "less than", missing = "something else")
+```
+
+However, in both cases, they can only assess binary conditional statements. If we want to vectorize multiple conditions (i.e. `if...else...if...else`) then the best approach is to use `dplyr::case_when()`. 
+
+The syntax for `case_when()` can be a little confusing at first. Basically, a conditional expression looks like `condition ~ code to execute`. Consequently:
+
+* `x < .3` is the first condition to assess and if it is `TRUE` then the result is what comes after the `~`.
+* If the first condition is not met, then `case_when` will evaluate the second, third, etc. until it finds a condition that is true.
+* If you include `TRUE ~ some_expression` at the end then any element that does not meet a prior condition will be considered `TRUE` and the expression will be evaluated. So in the below code, any element that doesn't meet the prior conditions will be lumped into an "out of bounds" category.
+
+```{r}
+set.seed(123)
+(x <- c(runif(10), NA, Inf, 1.25))
+
+dplyr::case_when(
+  x < .3   ~ "low",
+  x < .7   ~ "medium",
+  x < .9   ~ "medium high",
+  x <=1.0  ~ "high",
+  is.na(x) ~ "missing",
+  TRUE     ~ "out of bounds"
+)
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Re-write the below code using a vectorized approach. Test the results with `month <- 1:13`.
+```
+
+```{r, eval=FALSE}
+month <- 1:13
+
+if (month %in% 1:9) {
+   paste0("data/", "Month-0", month, ".csv")
+} else if (month %in% 10:12) {
+   paste0("data/", "Month-", month, ".csv")
+} else {
+   print("Invalid month")
+}
+```
+
+## With data frames
+
+So how can we leverage these skills when performing exploratory data analysis? Most common is to use use `ifelse()`, `if_else()`, and `case_when()` within `dplyr::mutate()`. 
+
+ For example, say we want to create a new variable that classifies transactions above \$10 as "high value" otherwise they are "low value".  We can use the `dplyr::if_else` function within `mutate` to perform this.
+ 
+```{r}
+# I use select simply to reduce the size of the data set so you can easily
+# see results
+transactions %>%
+   select(household_id, basket_id, sales_value) %>%
+   mutate(value = if_else(sales_value > 10, 'high value', 'low value'))
+```
+ 
+```{block, type = "tip"}
+`dplyr::if_else` is preferred to the base R `ifelse` function because it allows you to work with missing values more conveniently.
+```
+
+When we want to perform multiple `if_else` statements within `mutate` we can embed multiple `if_else` statements within each other.  Unfortunately, this gets pretty confusing quickly so a more convenient approach is to use `case_when`.  For example, we can create a new variable that results in the following:
+
+* Large purchase: `quantity > 20` or `sales_value > 10`  
+* Medium purchase: `quantity > 10` or `sales_value > 5`
+* small purchase: `quantity > 0` or `sales_value > 0`
+* Alternative transaction: all other transactions
+
+```{r}
+# I use select simply to reduce the size of the data set so you can easily
+# see results
+transactions %>%
+   select(household_id, basket_id, quantity, sales_value) %>%
+   mutate(
+     value = case_when(
+       quantity > 20 | sales_value > 10 ~ "Large purchase",
+       quantity > 10 | sales_value > 5  ~ "Medium purchase",
+       quantity > 0 | sales_value > 0  ~ "Small purchase",
+       TRUE ~ "Alternative transaction"
+     )
+   )
+```
+
+### Knowledge check
+
+```{block, type='todo'}
+Fill in the blanks below to assign each transaction to a power rating of 1, 2, 3, or 4 based on the `sales_value` variable:
+
+   - power_rating = 1: if `sales_value` < 25th percentile
+   - power_rating = 2: if `sales_value` < 50th percentile
+   - power_rating = 3: if `sales_value` < 75th percentile
+   - power_rating = 4: if `sales_value` >= 75th percentile
+
+**Hint:** use `quantile(x, perc_value)`
+```
+
+```{r, eval=FALSE}
+transactions %>%
+   select(household_id, basket_id, quantity, sales_value) %>%
+   mutate(
+     power_rating = case_when(
+       ______ ~ 1,
+       ______ ~ 2,
+       ______ ~ 3,
+       ______ ~ 4
+     )
+   )
+```
 
 ## Exercises
+
+```{block, type='todo'}
+Using the Complete Journey `transactions_sample` data:
+
+1. Create a new column titled `total_disc` that is the sum of all discounts applied to each transaction.
+2. Create a new column `disc_rating` that classifies each transaction as:
+   - 'none': if `total_disc` == 0
+   - 'low': if `total_disc` < 25th percentile
+   - 'medium': if `total_disc` < 75th percentile
+   - 'high': if `total_disc` >= 75th percentile
+   - 'other': for any transaction that doesn't meet any of the above conditions
+3. How many transactions are in each of the above `disc_rating` categories?
+```
 
