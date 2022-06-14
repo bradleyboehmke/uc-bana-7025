@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Lesson 1c: R fundamentals | Data Wrangling with R</title>
+  <title>29 Lesson 6b: Iteration statements | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Lesson 1c: R fundamentals | Data Wrangling with R" />
+  <meta property="og:title" content="29 Lesson 6b: Iteration statements | Data Wrangling with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
   <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Lesson 1c: R fundamentals | Data Wrangling with R" />
+  <meta name="twitter:title" content="29 Lesson 6b: Iteration statements | Data Wrangling with R" />
   <meta name="twitter:site" content="@bradleyboehmke" />
   <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lesson-1b-r-rstudio.html"/>
-<link rel="next" href="lesson-1d-vectors.html"/>
+<link rel="prev" href="lesson-6a-conditional-statements.html"/>
+<link rel="next" href="lab-5.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -720,536 +720,466 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lesson-1c-r-fundamentals" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Lesson 1c: R fundamentals<a href="lesson-1c-r-fundamentals.html#lesson-1c-r-fundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This lesson serves to introduce you to many of the basics of R to get you comfortable. This includes understanding how to assign and evaluate expressions, performing basic calculator-like activities, the idea of vectorization and packages. Finally, I offer some basic styling guidelines to help you write code that is easier to digest by others.</p>
-<div id="learning-objectives-4" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Learning objectives<a href="lesson-1c-r-fundamentals.html#learning-objectives-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Upon completing this module you will be able to:</p>
-<ul>
-<li>Assign values to variables and evaluate them.</li>
-<li>Perform basic mathematical operations.</li>
-<li>Explain what packages and be able to install and load them.</li>
-<li>Understand and apply basic styling guidelines to your code.</li>
-</ul>
+<div id="lesson-6b-iteration-statements" class="section level1 hasAnchor" number="29">
+<h1><span class="header-section-number">29</span> Lesson 6b: Iteration statements<a href="lesson-6b-iteration-statements.html#lesson-6b-iteration-statements" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Often, we need to execute repetitive code statements a particular number of times. Or, we may even need to execute code for an undetermined number of times until a certain condition no longer holds. There are multiple ways we can achieve this and in this lesson we will cover several of the more common approaches to perform iteration.</p>
+<div id="learning-objectives-24" class="section level2 hasAnchor" number="29.1">
+<h2><span class="header-section-number">29.1</span> Learning objectives<a href="lesson-6b-iteration-statements.html#learning-objectives-24" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this module you will be able to:</p>
+<ol style="list-style-type: decimal">
+<li>Apply <code>for</code>, <code>while</code>, and <code>repeat</code> to execute repetitive code statements.</li>
+<li>Incorporate <code>break</code> and <code>next</code> to control looping statements.</li>
+<li>Use functional programming to perform repetitive code statements.</li>
+</ol>
 </div>
-<div id="assignment-evaluation" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Assignment &amp; evaluation<a href="lesson-1c-r-fundamentals.html#assignment-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="assignment" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Assignment<a href="lesson-1c-r-fundamentals.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first operator you’ll run into is the <strong>assignment operator</strong>. The assignment operator is used to <em>assign</em> a value. For instance we can assign the value 3 to the variable <code>x</code> using the <code>&lt;-</code> assignment operator.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="lesson-1c-r-fundamentals.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># idiomatic assignment</span></span>
-<span id="cb13-2"><a href="lesson-1c-r-fundamentals.html#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
+<div id="for-loops" class="section level2 hasAnchor" number="29.2">
+<h2><span class="header-section-number">29.2</span> <code>for</code> loops<a href="lesson-6b-iteration-statements.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>for</code> loop is used to execute repetitive code statements for a particular number of times. The general syntax is provided below where <code>i</code> is the counter and as <code>i</code> assumes each sequential value the code in the body will be performed for that ith value.</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="lesson-6b-iteration-statements.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of for loop</span></span>
+<span id="cb397-2"><a href="lesson-6b-iteration-statements.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> sequence) {</span>
+<span id="cb397-3"><a href="lesson-6b-iteration-statements.html#cb397-3" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>do stuff here with i<span class="sc">&gt;</span></span>
+<span id="cb397-4"><a href="lesson-6b-iteration-statements.html#cb397-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>There are three main components of a <code>for</code> loop to consider:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Sequence</strong>: the sequence of values to iterate over.</li>
+<li><strong>Body</strong>: apply some function(s) to the object we are iterating over.</li>
+<li><strong>Output</strong>: You must specify what to do with the result. This may include printing out a result or modifying the object in place.</li>
+</ol>
+<p>For example, the following for loop iterates through each value (2018, 2011, …, 2022) and performs the paste and print functions inside the curly brackets.</p>
+<div class="tip">
+<p>
+Note how we use <code>year</code> in place of <code>i</code>. Its
+always good to be more descriptive with your iteration terms so its
+clearer to others what you are referring to.
+</p>
+</div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="lesson-6b-iteration-statements.html#cb398-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2018</span><span class="sc">:</span><span class="dv">2022</span>)</span>
+<span id="cb398-2"><a href="lesson-6b-iteration-statements.html#cb398-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-3"><a href="lesson-6b-iteration-statements.html#cb398-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb398-4"><a href="lesson-6b-iteration-statements.html#cb398-4" aria-hidden="true" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;The year is&quot;</span>, year)</span>
+<span id="cb398-5"><a href="lesson-6b-iteration-statements.html#cb398-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
+<span id="cb398-6"><a href="lesson-6b-iteration-statements.html#cb398-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb398-7"><a href="lesson-6b-iteration-statements.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2018&quot;</span></span>
+<span id="cb398-8"><a href="lesson-6b-iteration-statements.html#cb398-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2019&quot;</span></span>
+<span id="cb398-9"><a href="lesson-6b-iteration-statements.html#cb398-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2020&quot;</span></span>
+<span id="cb398-10"><a href="lesson-6b-iteration-statements.html#cb398-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2021&quot;</span></span>
+<span id="cb398-11"><a href="lesson-6b-iteration-statements.html#cb398-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2022&quot;</span></span></code></pre></div>
+<p>In the above example, <code>year</code> refers directly to the value of the element in <code>years</code>. However, sometimes we want to refer to the index value rather than the value. To do this, we primarily use <code>seq_along</code>. <code>seq_along()</code> is a function that creates a vector that contains a sequence of numbers from 1 to the length of the object:</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="lesson-6b-iteration-statements.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(years)</span>
+<span id="cb399-2"><a href="lesson-6b-iteration-statements.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
+<p>To use <code>seq_along</code> with a <code>for</code> loop we just specify it in the sequence portion of the <code>for</code> loop:</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="lesson-6b-iteration-statements.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (index <span class="cf">in</span> <span class="fu">seq_along</span>(years)) {</span>
+<span id="cb400-2"><a href="lesson-6b-iteration-statements.html#cb400-2" aria-hidden="true" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Element &quot;</span>, index, <span class="st">&quot;: &quot;</span>, years[index])</span>
+<span id="cb400-3"><a href="lesson-6b-iteration-statements.html#cb400-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
+<span id="cb400-4"><a href="lesson-6b-iteration-statements.html#cb400-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb400-5"><a href="lesson-6b-iteration-statements.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 1: 2018&quot;</span></span>
+<span id="cb400-6"><a href="lesson-6b-iteration-statements.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 2: 2019&quot;</span></span>
+<span id="cb400-7"><a href="lesson-6b-iteration-statements.html#cb400-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 3: 2020&quot;</span></span>
+<span id="cb400-8"><a href="lesson-6b-iteration-statements.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 4: 2021&quot;</span></span>
+<span id="cb400-9"><a href="lesson-6b-iteration-statements.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 5: 2022&quot;</span></span></code></pre></div>
+<div id="knowledge-check-56" class="section level3 hasAnchor" number="29.2.1">
+<h3><span class="header-section-number">29.2.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-56" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can see all data sets that we have in the “data” folder with <code>list.files()</code>:</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="lesson-6b-iteration-statements.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb401-2"><a href="lesson-6b-iteration-statements.html#cb401-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-3"><a href="lesson-6b-iteration-statements.html#cb401-3" aria-hidden="true" tabindex="-1"></a>monthly_data_files <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data/monthly_data&quot;</span>)</span>
+<span id="cb401-4"><a href="lesson-6b-iteration-statements.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(monthly_data_files)</span>
+<span id="cb401-5"><a href="lesson-6b-iteration-statements.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot; &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
+<span id="cb401-6"><a href="lesson-6b-iteration-statements.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot; &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span></code></pre></div>
+<p>Say we wanted to import one of these files into R:</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="lesson-6b-iteration-statements.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here&#39;s a single file</span></span>
+<span id="cb402-2"><a href="lesson-6b-iteration-statements.html#cb402-2" aria-hidden="true" tabindex="-1"></a>(first_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)[<span class="dv">1</span>])</span>
+<span id="cb402-3"><a href="lesson-6b-iteration-statements.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Month-01.csv&quot;</span></span>
+<span id="cb402-4"><a href="lesson-6b-iteration-statements.html#cb402-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-5"><a href="lesson-6b-iteration-statements.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create path and import this single file</span></span>
+<span id="cb402-6"><a href="lesson-6b-iteration-statements.html#cb402-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(monthly_data_files, first_df))</span>
+<span id="cb402-7"><a href="lesson-6b-iteration-statements.html#cb402-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-8"><a href="lesson-6b-iteration-statements.html#cb402-8" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new name for file</span></span>
+<span id="cb402-9"><a href="lesson-6b-iteration-statements.html#cb402-9" aria-hidden="true" tabindex="-1"></a>(new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(first_df, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>))</span>
+<span id="cb402-10"><a href="lesson-6b-iteration-statements.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Month-01&quot;</span></span>
+<span id="cb402-11"><a href="lesson-6b-iteration-statements.html#cb402-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-12"><a href="lesson-6b-iteration-statements.html#cb402-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dynamically rename file</span></span>
+<span id="cb402-13"><a href="lesson-6b-iteration-statements.html#cb402-13" aria-hidden="true" tabindex="-1"></a><span class="fu">assign</span>(new_name, df)</span></code></pre></div>
+<div class="todo">
+<p>
+Can you incorporate these procedures into a for loop to import all
+the data files?
+</p>
+</div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="lesson-6b-iteration-statements.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> _____) {</span>
+<span id="cb403-2"><a href="lesson-6b-iteration-statements.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1: import data</span></span>
+<span id="cb403-3"><a href="lesson-6b-iteration-statements.html#cb403-3" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(_____)</span>
+<span id="cb403-4"><a href="lesson-6b-iteration-statements.html#cb403-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb403-5"><a href="lesson-6b-iteration-statements.html#cb403-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2: remove &quot;.csv&quot; from file name</span></span>
+<span id="cb403-6"><a href="lesson-6b-iteration-statements.html#cb403-6" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> _____</span>
+<span id="cb403-7"><a href="lesson-6b-iteration-statements.html#cb403-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb403-8"><a href="lesson-6b-iteration-statements.html#cb403-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3: dynamically rename file</span></span>
+<span id="cb403-9"><a href="lesson-6b-iteration-statements.html#cb403-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(_____, _____)</span>
+<span id="cb403-10"><a href="lesson-6b-iteration-statements.html#cb403-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="controlling-sequences" class="section level2 hasAnchor" number="29.3">
+<h2><span class="header-section-number">29.3</span> Controlling sequences<a href="lesson-6b-iteration-statements.html#controlling-sequences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two ways to control the progression of a loop:</p>
+<ul>
+<li><code>next</code>: terminates the current iteration and advances to the next.</li>
+<li><code>break</code>: exits the entire for loop.</li>
+</ul>
+<p>Both are used in conjunction with <code>if</code> statements. For example, this <code>for</code> loop will iterate for each element in <code>year</code>; however, when it gets to the element that equals the year of <code>covid</code> (2020) it will break out and end the for loop process.</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="lesson-6b-iteration-statements.html#cb404-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
+<span id="cb404-2"><a href="lesson-6b-iteration-statements.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-3"><a href="lesson-6b-iteration-statements.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb404-4"><a href="lesson-6b-iteration-statements.html#cb404-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">break</span></span>
+<span id="cb404-5"><a href="lesson-6b-iteration-statements.html#cb404-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
+<span id="cb404-6"><a href="lesson-6b-iteration-statements.html#cb404-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb404-7"><a href="lesson-6b-iteration-statements.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
+<span id="cb404-8"><a href="lesson-6b-iteration-statements.html#cb404-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2019</span></span></code></pre></div>
+<p>The <code>next</code> argument is useful when we want to skip the current iteration of a loop without terminating it. On encountering <code>next</code>, the R parser skips further evaluation and starts the next iteration of the loop. In this example, the for loop will iterate for each element in <code>year</code>; however, when it gets to the element that equals <code>covid</code> it will skip the rest of the code execution simply jump to the next iteration.</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="lesson-6b-iteration-statements.html#cb405-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
+<span id="cb405-2"><a href="lesson-6b-iteration-statements.html#cb405-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb405-3"><a href="lesson-6b-iteration-statements.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb405-4"><a href="lesson-6b-iteration-statements.html#cb405-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">next</span></span>
+<span id="cb405-5"><a href="lesson-6b-iteration-statements.html#cb405-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
+<span id="cb405-6"><a href="lesson-6b-iteration-statements.html#cb405-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb405-7"><a href="lesson-6b-iteration-statements.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
+<span id="cb405-8"><a href="lesson-6b-iteration-statements.html#cb405-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2019</span></span>
+<span id="cb405-9"><a href="lesson-6b-iteration-statements.html#cb405-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2021</span></span>
+<span id="cb405-10"><a href="lesson-6b-iteration-statements.html#cb405-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2022</span></span></code></pre></div>
+<div id="knowledge-check-57" class="section level3 hasAnchor" number="29.3.1">
+<h3><span class="header-section-number">29.3.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-57" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following code identifies the month of the data set from our monthly data files in the last knowledge check:</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="lesson-6b-iteration-statements.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data files</span></span>
+<span id="cb406-2"><a href="lesson-6b-iteration-statements.html#cb406-2" aria-hidden="true" tabindex="-1"></a>(data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files))</span>
+<span id="cb406-3"><a href="lesson-6b-iteration-statements.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot; &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
+<span id="cb406-4"><a href="lesson-6b-iteration-statements.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot; &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span>
+<span id="cb406-5"><a href="lesson-6b-iteration-statements.html#cb406-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-6"><a href="lesson-6b-iteration-statements.html#cb406-6" aria-hidden="true" tabindex="-1"></a><span class="co"># extract month number</span></span>
+<span id="cb406-7"><a href="lesson-6b-iteration-statements.html#cb406-7" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(data_files, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>))</span>
+<span id="cb406-8"><a href="lesson-6b-iteration-statements.html#cb406-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
+<div class="todo">
+<p>
+Modify the following <code>for</code> loop with a <code>next</code>
+or <code>break</code> statement to:
+</p>
+<ol style="list-style-type: decimal">
+<li>
+only import Month-01 through Month-07
+</li>
+<li>
+only import Month-08 through Month-10
+</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="lesson-6b-iteration-statements.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify this code chunk with you next/break statement</span></span>
+<span id="cb407-2"><a href="lesson-6b-iteration-statements.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
+<span id="cb407-3"><a href="lesson-6b-iteration-statements.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
+<span id="cb407-4"><a href="lesson-6b-iteration-statements.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
+<span id="cb407-5"><a href="lesson-6b-iteration-statements.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
+<span id="cb407-6"><a href="lesson-6b-iteration-statements.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
+<span id="cb407-7"><a href="lesson-6b-iteration-statements.html#cb407-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
+<span id="cb407-8"><a href="lesson-6b-iteration-statements.html#cb407-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="repeating-code-for-undefined-number-of-iterations" class="section level2 hasAnchor" number="29.4">
+<h2><span class="header-section-number">29.4</span> Repeating code for undefined number of iterations<a href="lesson-6b-iteration-statements.html#repeating-code-for-undefined-number-of-iterations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes we need to execute code for an undetermined number of times until a certain condition no longer holds.</p>
+<p>There are two very similar options to do this:</p>
+<ul>
+<li><code>while</code> loop</li>
+<li><code>repeat</code> loop</li>
+</ul>
+<div id="while-loop" class="section level3 hasAnchor" number="29.4.1">
+<h3><span class="header-section-number">29.4.1</span> <code>while</code> loop<a href="lesson-6b-iteration-statements.html#while-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With a <code>while</code> loop we:</p>
+<ol style="list-style-type: decimal">
+<li>Test condition first</li>
+<li>Then execute code</li>
+</ol>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="lesson-6b-iteration-statements.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condition) {</span>
+<span id="cb408-2"><a href="lesson-6b-iteration-statements.html#cb408-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
+<span id="cb408-3"><a href="lesson-6b-iteration-statements.html#cb408-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>For example, the probability of flipping 10 coins and getting all heads or tails is <span class="math inline">\((\frac{1}{2})^{10} = 0.0009765625\)</span> (1 in 1024 tries). Let’s implement this and see how many times it’ll take to accomplish this feat.</p>
+<p>The following <code>while</code> statement will check if the number of unique values in <code>flip</code> are 1, which implies that we flipped all heads or tails. If it is not equal to 1 then we repeat the process of flipping 10 coins and incrementing the number of tries. When our condition statement <code>length(unique(flip)) != 1</code> is <code>FALSE</code> then we exit the <code>while</code> loop.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="lesson-6b-iteration-statements.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a coin</span></span>
+<span id="cb409-2"><a href="lesson-6b-iteration-statements.html#cb409-2" aria-hidden="true" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
+<span id="cb409-3"><a href="lesson-6b-iteration-statements.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-4"><a href="lesson-6b-iteration-statements.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set number of tries to zero</span></span>
+<span id="cb409-5"><a href="lesson-6b-iteration-statements.html#cb409-5" aria-hidden="true" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb409-6"><a href="lesson-6b-iteration-statements.html#cb409-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-7"><a href="lesson-6b-iteration-statements.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="co"># this will be used to imitate a flip of 10 coins</span></span>
+<span id="cb409-8"><a href="lesson-6b-iteration-statements.html#cb409-8" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb409-9"><a href="lesson-6b-iteration-statements.html#cb409-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-10"><a href="lesson-6b-iteration-statements.html#cb409-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">!=</span> <span class="dv">1</span>) {</span>
+<span id="cb409-11"><a href="lesson-6b-iteration-statements.html#cb409-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
+<span id="cb409-12"><a href="lesson-6b-iteration-statements.html#cb409-12" aria-hidden="true" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb409-13"><a href="lesson-6b-iteration-statements.html#cb409-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb409-14"><a href="lesson-6b-iteration-statements.html#cb409-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
+<span id="cb409-15"><a href="lesson-6b-iteration-statements.html#cb409-15" aria-hidden="true" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb409-16"><a href="lesson-6b-iteration-statements.html#cb409-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb409-17"><a href="lesson-6b-iteration-statements.html#cb409-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-18"><a href="lesson-6b-iteration-statements.html#cb409-18" aria-hidden="true" tabindex="-1"></a>n_tries</span>
+<span id="cb409-19"><a href="lesson-6b-iteration-statements.html#cb409-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 553</span></span></code></pre></div>
+</div>
+<div id="repeat-loop" class="section level3 hasAnchor" number="29.4.2">
+<h3><span class="header-section-number">29.4.2</span> <code>repeat</code> loop<a href="lesson-6b-iteration-statements.html#repeat-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With a <code>repeat</code> loop we:</p>
+<ol style="list-style-type: decimal">
+<li>Execute code first</li>
+<li>Then test condition</li>
+</ol>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="lesson-6b-iteration-statements.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb410-2"><a href="lesson-6b-iteration-statements.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
+<span id="cb410-3"><a href="lesson-6b-iteration-statements.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(condition) <span class="cf">break</span>  </span>
+<span id="cb410-4"><a href="lesson-6b-iteration-statements.html#cb410-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We can perform the same exercise as above to assess how many times it takes to flip 10 coins and get all heads or tails. The main difference here is <code>repeat</code> performs the action and then we incorporate a conditional statement to see if the flip is all heads or tails (<code>length(unique(flip)) == 1</code>) and if so we break out of the loop.</p>
+<div class="warning">
+<p>
+Notice that you need to incorporate the conditional statement in
+<code>repeat</code>, otherwise it will continue looping
+indefinitely!
+</p>
+</div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="lesson-6b-iteration-statements.html#cb411-1" aria-hidden="true" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
+<span id="cb411-2"><a href="lesson-6b-iteration-statements.html#cb411-2" aria-hidden="true" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb411-3"><a href="lesson-6b-iteration-statements.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb411-4"><a href="lesson-6b-iteration-statements.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
+<span id="cb411-5"><a href="lesson-6b-iteration-statements.html#cb411-5" aria-hidden="true" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb411-6"><a href="lesson-6b-iteration-statements.html#cb411-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb411-7"><a href="lesson-6b-iteration-statements.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
+<span id="cb411-8"><a href="lesson-6b-iteration-statements.html#cb411-8" aria-hidden="true" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb411-9"><a href="lesson-6b-iteration-statements.html#cb411-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb411-10"><a href="lesson-6b-iteration-statements.html#cb411-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if current flip contains all heads or tails break</span></span>
+<span id="cb411-11"><a href="lesson-6b-iteration-statements.html#cb411-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb411-12"><a href="lesson-6b-iteration-statements.html#cb411-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(n_tries)</span>
+<span id="cb411-13"><a href="lesson-6b-iteration-statements.html#cb411-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb411-14"><a href="lesson-6b-iteration-statements.html#cb411-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb411-15"><a href="lesson-6b-iteration-statements.html#cb411-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-16"><a href="lesson-6b-iteration-statements.html#cb411-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 63</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-58" class="section level3 hasAnchor" number="29.4.3">
+<h3><span class="header-section-number">29.4.3</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-58" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<p>
+An elementary example of a random walk is the random walk on the
+integer number line, <span class="math inline"><span class="math inline">\(\mathbb{Z}\)</span></span>,
+which starts at 0 and at each step moves +1 or −1 with equal
+probability.
+</p>
+<p>
+Fill in the incomplete code chunk below perform a random walk
+starting at value 0, with each step either adding or subtracting 1. Have
+your random walk stop if the value it exceeds 100 or if the number of
+steps taken exceeds 10,000.
+</p>
+</div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="lesson-6b-iteration-statements.html#cb412-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb412-2"><a href="lesson-6b-iteration-statements.html#cb412-2" aria-hidden="true" tabindex="-1"></a>step <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb412-3"><a href="lesson-6b-iteration-statements.html#cb412-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb412-4"><a href="lesson-6b-iteration-statements.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb412-5"><a href="lesson-6b-iteration-statements.html#cb412-5" aria-hidden="true" tabindex="-1"></a>   <span class="co"># randomly add or subtract 1</span></span>
+<span id="cb412-6"><a href="lesson-6b-iteration-statements.html#cb412-6" aria-hidden="true" tabindex="-1"></a>   random_step <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">1</span>)</span>
+<span id="cb412-7"><a href="lesson-6b-iteration-statements.html#cb412-7" aria-hidden="true" tabindex="-1"></a>   value <span class="ot">&lt;-</span> value <span class="sc">+</span> _______</span>
+<span id="cb412-8"><a href="lesson-6b-iteration-statements.html#cb412-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb412-9"><a href="lesson-6b-iteration-statements.html#cb412-9" aria-hidden="true" tabindex="-1"></a>   <span class="co"># count step</span></span>
+<span id="cb412-10"><a href="lesson-6b-iteration-statements.html#cb412-10" aria-hidden="true" tabindex="-1"></a>   step <span class="ot">&lt;-</span> step <span class="sc">+</span> __</span>
+<span id="cb412-11"><a href="lesson-6b-iteration-statements.html#cb412-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb412-12"><a href="lesson-6b-iteration-statements.html#cb412-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># break once our walk exceeds 100</span></span>
+<span id="cb412-13"><a href="lesson-6b-iteration-statements.html#cb412-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (______ <span class="sc">==</span> <span class="dv">100</span> <span class="sc">|</span> _____ <span class="sc">&gt;</span> <span class="dv">10000</span>) {</span>
+<span id="cb412-14"><a href="lesson-6b-iteration-statements.html#cb412-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">print</span>(step)</span>
+<span id="cb412-15"><a href="lesson-6b-iteration-statements.html#cb412-15" aria-hidden="true" tabindex="-1"></a>     <span class="cf">break</span></span>
+<span id="cb412-16"><a href="lesson-6b-iteration-statements.html#cb412-16" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb412-17"><a href="lesson-6b-iteration-statements.html#cb412-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</div>
+<div id="iteration-with-functional-programming" class="section level2 hasAnchor" number="29.5">
+<h2><span class="header-section-number">29.5</span> Iteration with functional programming<a href="lesson-6b-iteration-statements.html#iteration-with-functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Iteration can be summed up as <strong>FOR EACH ____ DO ____</strong>. For example, in the previous knowledge checks we saw this code:</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="lesson-6b-iteration-statements.html#cb413-1" aria-hidden="true" tabindex="-1"></a>data_files <span class="ot">&lt;-</span> data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)</span>
+<span id="cb413-2"><a href="lesson-6b-iteration-statements.html#cb413-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-3"><a href="lesson-6b-iteration-statements.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
+<span id="cb413-4"><a href="lesson-6b-iteration-statements.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
+<span id="cb413-5"><a href="lesson-6b-iteration-statements.html#cb413-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
+<span id="cb413-6"><a href="lesson-6b-iteration-statements.html#cb413-6" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
+<span id="cb413-7"><a href="lesson-6b-iteration-statements.html#cb413-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
+<span id="cb413-8"><a href="lesson-6b-iteration-statements.html#cb413-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
+<span id="cb413-9"><a href="lesson-6b-iteration-statements.html#cb413-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The intent of this approach is <strong>FOR EACH file DO importing procedure</strong>. However, sometimes when reading <code>for</code> loops it’s tough to focus on the primary intent.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:for-each"></span>
+<img src="images/for-each.png" alt="Intent of iteration statements."  />
+<p class="caption">
+Figure 29.1: Intent of iteration statements.
+</p>
+</div>
+<p>Functional programming turns this idea into a function which, as we’ll see in later examples, can help to make iteration more efficient, strict, and explicit!</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:for-each-fp"></span>
+<img src="images/fp-image1.png" alt="Functional programming view of iteration statements."  />
+<p class="caption">
+Figure 29.2: Functional programming view of iteration statements.
+</p>
+</div>
+<p>The <a href="https://purrr.tidyverse.org/"><strong>purrr</strong></a> package provides functional programming tools that:</p>
+<ul>
+<li>for each element of x</li>
+<li>apply function f and</li>
+<li>provide consistent output</li>
+</ul>
+<p>The most common use of <strong>purrr</strong> functions focus around the family of <code>map()</code> functions. The family of <code>map</code> functions provided by <code>purrr</code> consist of vectorized functions which minimize your need to explicitly create loops. The initial functions we’ll explore include</p>
+<ul>
+<li><code>map()</code> outputs a list.</li>
+<li><code>map_lgl()</code> outputs a logical vector.</li>
+<li><code>map_int()</code> outputs an integer vector.</li>
+<li><code>map_dbl()</code> outputs a double vector.</li>
+<li><code>map_chr()</code> outputs a character vector.</li>
+<li><code>map_df()</code> outputs a data frame.</li>
+</ul>
+<p>These functions all behave in a similar manner - they each take a vector as input, applies a function to each piece, and then returns a new vector that’s the same length as the input. The primary difference is in the object they return.</p>
+<p>For example, say we wanted to iterate over the Complete Journey <code>demographics</code> data frame and compute the number of unique values for each column. We could do this with a <code>for</code> loop, which would look like this:</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="lesson-6b-iteration-statements.html#cb414-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">colnames</span>(completejourney<span class="sc">::</span>demographics)</span>
+<span id="cb414-2"><a href="lesson-6b-iteration-statements.html#cb414-2" aria-hidden="true" tabindex="-1"></a>distinct_values <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&#39;integer&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(cols))</span>
+<span id="cb414-3"><a href="lesson-6b-iteration-statements.html#cb414-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-4"><a href="lesson-6b-iteration-statements.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="fu">seq_along</span>(cols)) {</span>
+<span id="cb414-5"><a href="lesson-6b-iteration-statements.html#cb414-5" aria-hidden="true" tabindex="-1"></a>   n_dist <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(completejourney<span class="sc">::</span>demographics[column])</span>
+<span id="cb414-6"><a href="lesson-6b-iteration-statements.html#cb414-6" aria-hidden="true" tabindex="-1"></a>   distinct_values[column] <span class="ot">&lt;-</span> n_dist</span>
+<span id="cb414-7"><a href="lesson-6b-iteration-statements.html#cb414-7" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb414-8"><a href="lesson-6b-iteration-statements.html#cb414-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-9"><a href="lesson-6b-iteration-statements.html#cb414-9" aria-hidden="true" tabindex="-1"></a>distinct_values</span>
+<span id="cb414-10"><a href="lesson-6b-iteration-statements.html#cb414-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 801   6  12   5   3   5   4   4</span></span></code></pre></div>
+<p>However, admittedly, this is a bit busy and its tough to see what the primary intent of this code is. Alternatively, we could apply <code>purrr::map</code>, which in this example will iterate over each column of <code>completejourney::demographics</code> and apply the <code>n_distinct</code> function.</p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="lesson-6b-iteration-statements.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse automatically loads purrr</span></span>
+<span id="cb415-2"><a href="lesson-6b-iteration-statements.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb415-3"><a href="lesson-6b-iteration-statements.html#cb415-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-4"><a href="lesson-6b-iteration-statements.html#cb415-4" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
+<span id="cb415-5"><a href="lesson-6b-iteration-statements.html#cb415-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(n_distinct)</span>
+<span id="cb415-6"><a href="lesson-6b-iteration-statements.html#cb415-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_id</span></span>
+<span id="cb415-7"><a href="lesson-6b-iteration-statements.html#cb415-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 801</span></span>
+<span id="cb415-8"><a href="lesson-6b-iteration-statements.html#cb415-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-9"><a href="lesson-6b-iteration-statements.html#cb415-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $age</span></span>
+<span id="cb415-10"><a href="lesson-6b-iteration-statements.html#cb415-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb415-11"><a href="lesson-6b-iteration-statements.html#cb415-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-12"><a href="lesson-6b-iteration-statements.html#cb415-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $income</span></span>
+<span id="cb415-13"><a href="lesson-6b-iteration-statements.html#cb415-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
+<span id="cb415-14"><a href="lesson-6b-iteration-statements.html#cb415-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-15"><a href="lesson-6b-iteration-statements.html#cb415-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $home_ownership</span></span>
+<span id="cb415-16"><a href="lesson-6b-iteration-statements.html#cb415-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb415-17"><a href="lesson-6b-iteration-statements.html#cb415-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-18"><a href="lesson-6b-iteration-statements.html#cb415-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $marital_status</span></span>
+<span id="cb415-19"><a href="lesson-6b-iteration-statements.html#cb415-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb415-20"><a href="lesson-6b-iteration-statements.html#cb415-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-21"><a href="lesson-6b-iteration-statements.html#cb415-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_size</span></span>
+<span id="cb415-22"><a href="lesson-6b-iteration-statements.html#cb415-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb415-23"><a href="lesson-6b-iteration-statements.html#cb415-23" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-24"><a href="lesson-6b-iteration-statements.html#cb415-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_comp</span></span>
+<span id="cb415-25"><a href="lesson-6b-iteration-statements.html#cb415-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb415-26"><a href="lesson-6b-iteration-statements.html#cb415-26" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-27"><a href="lesson-6b-iteration-statements.html#cb415-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $kids_count</span></span>
+<span id="cb415-28"><a href="lesson-6b-iteration-statements.html#cb415-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<p>Notice how the above results in a named list. If instead we wanted a vector to be returned we can us <code>map_int</code>:</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lesson-6b-iteration-statements.html#cb416-1" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
+<span id="cb416-2"><a href="lesson-6b-iteration-statements.html#cb416-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_int</span>(n_distinct)</span>
+<span id="cb416-3"><a href="lesson-6b-iteration-statements.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status household_size </span></span>
+<span id="cb416-4"><a href="lesson-6b-iteration-statements.html#cb416-4" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3              5 </span></span>
+<span id="cb416-5"><a href="lesson-6b-iteration-statements.html#cb416-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb416-6"><a href="lesson-6b-iteration-statements.html#cb416-6" aria-hidden="true" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<p>We can apply other <code>map</code> functions to our input as well; we simply need to think about what we expect the output to be and that directs us to use the relevant <code>map</code> function:</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="lesson-6b-iteration-statements.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical output</span></span>
+<span id="cb417-2"><a href="lesson-6b-iteration-statements.html#cb417-2" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_lgl</span>(is.factor)</span>
+<span id="cb417-3"><a href="lesson-6b-iteration-statements.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status household_size </span></span>
+<span id="cb417-4"><a href="lesson-6b-iteration-statements.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="do">##          FALSE           TRUE           TRUE           TRUE           TRUE           TRUE </span></span>
+<span id="cb417-5"><a href="lesson-6b-iteration-statements.html#cb417-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb417-6"><a href="lesson-6b-iteration-statements.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="do">##           TRUE           TRUE</span></span>
+<span id="cb417-7"><a href="lesson-6b-iteration-statements.html#cb417-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb417-8"><a href="lesson-6b-iteration-statements.html#cb417-8" aria-hidden="true" tabindex="-1"></a><span class="co"># integer output</span></span>
+<span id="cb417-9"><a href="lesson-6b-iteration-statements.html#cb417-9" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb417-10"><a href="lesson-6b-iteration-statements.html#cb417-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status household_size </span></span>
+<span id="cb417-11"><a href="lesson-6b-iteration-statements.html#cb417-11" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3              5 </span></span>
+<span id="cb417-12"><a href="lesson-6b-iteration-statements.html#cb417-12" aria-hidden="true" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb417-13"><a href="lesson-6b-iteration-statements.html#cb417-13" aria-hidden="true" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<p>Notice the last function applied looks different. The map functions provide a few shortcuts that you can use with the <code>.f</code> argument in order to save a little typing. The syntax for creating an anonymous function in R is quite verbose so <strong>purrr</strong> provides a convenient shortcut: a one-sided formula where <code>.</code> inside of <code>unique</code> points where the data should be evaluated.</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="lesson-6b-iteration-statements.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># traditional anonymous function approach</span></span>
+<span id="cb418-2"><a href="lesson-6b-iteration-statements.html#cb418-2" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="cf">function</span>(x) <span class="fu">length</span>(<span class="fu">unique</span>(x)))</span>
+<span id="cb418-3"><a href="lesson-6b-iteration-statements.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status household_size </span></span>
+<span id="cb418-4"><a href="lesson-6b-iteration-statements.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3              5 </span></span>
+<span id="cb418-5"><a href="lesson-6b-iteration-statements.html#cb418-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb418-6"><a href="lesson-6b-iteration-statements.html#cb418-6" aria-hidden="true" tabindex="-1"></a><span class="do">##              4              4</span></span>
+<span id="cb418-7"><a href="lesson-6b-iteration-statements.html#cb418-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-8"><a href="lesson-6b-iteration-statements.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="co"># one-sided formula approach</span></span>
+<span id="cb418-9"><a href="lesson-6b-iteration-statements.html#cb418-9" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb418-10"><a href="lesson-6b-iteration-statements.html#cb418-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status household_size </span></span>
+<span id="cb418-11"><a href="lesson-6b-iteration-statements.html#cb418-11" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3              5 </span></span>
+<span id="cb418-12"><a href="lesson-6b-iteration-statements.html#cb418-12" aria-hidden="true" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb418-13"><a href="lesson-6b-iteration-statements.html#cb418-13" aria-hidden="true" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<p>This, along with chaining multiple map functions together, can make for very efficient data mining. To provide a toy example, the following uses the <code>diamonds</code> data set provided by <strong>ggplot2</strong> and:</p>
+<ol style="list-style-type: decimal">
+<li>breaks the data set into separate data frames based on the <code>cut</code> variable,</li>
+<li>applies a linear regression model to each data frame,</li>
+<li>extracts the summary of each linear regression model, and</li>
+<li>computes the <span class="math inline">\(R^2\)</span> for each model.</li>
+</ol>
 <div class="note">
 <p>
-R is a dynamically typed programming language which means it will
-perform the process of verifying and enforcing the constraints of types
-at run-time. If you are unfamiliar with dynamically versus
-statically-typed languages then do not worry about this detail. Just
-realize that dynamically typed languages allow for the simplicity of
-running the above command and R automatically inferring that
-<code>3</code> should be a numeric type rather than a character
-string.
+Don’t worry, in the next module you’ll learn more about applying
+statistical models to your data. For now, just work through each line of
+code to get insight into the input and output of each <code>map</code>
+step.
 </p>
 </div>
-<p>Interestingly, R actually allows for five assignment operators<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="lesson-1c-r-fundamentals.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># leftward assignment</span></span>
-<span id="cb14-2"><a href="lesson-1c-r-fundamentals.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> value</span>
-<span id="cb14-3"><a href="lesson-1c-r-fundamentals.html#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> value</span>
-<span id="cb14-4"><a href="lesson-1c-r-fundamentals.html#cb14-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;&lt;-</span> value</span>
-<span id="cb14-5"><a href="lesson-1c-r-fundamentals.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="lesson-1c-r-fundamentals.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rightward assignment</span></span>
-<span id="cb14-7"><a href="lesson-1c-r-fundamentals.html#cb14-7" aria-hidden="true" tabindex="-1"></a>value <span class="ot">-&gt;</span> x</span>
-<span id="cb14-8"><a href="lesson-1c-r-fundamentals.html#cb14-8" aria-hidden="true" tabindex="-1"></a>value <span class="ot">-&gt;&gt;</span> x</span></code></pre></div>
-<p>The original assignment operator in R was <code>&lt;-</code> and has continued to be the preferred among R users. The <code>=</code> assignment operator was <a href="http://developer.r-project.org/equalAssign.html">added in 2001</a> primarily because it is the accepted assignment operator in many other languages and beginners to R coming from other languages were so prone to use it. Using <code>=</code> is not <em>wrong</em>, just realize that most R programmers prefer to keep <code>=</code> reserved for argument association and use <code>&lt;-</code> for assignment.</p>
-<p>The operators <code>&lt;&lt;-</code> is normally only used in functions or looping constructs which we will not get into the details. And the rightward assignment operators perform the same as their leftward counterparts, they just assign the value in an opposite direction.</p>
-<p>Overwhelmed yet? Don’t be. This is just meant to show you that there are options and you will likely come across them sooner or later. My suggestion is to stick with the tried, true, and idiomatic <code>&lt;-</code> operator. This is the most conventional assignment operator used and is what you will find in all the base R source code…which means it should be good enough for you.</p>
-</div>
-<div id="evaluation" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Evaluation<a href="lesson-1c-r-fundamentals.html#evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can then evaluate the variable by simply typing x at the command line which will return the value of <code>x</code>. Note that prior to the value returned you’ll see <code>## [1]</code> in the console. This simply implies that the output returned is the first output. Note that you can type any comments in your code by preceding the comment with the hash tag (<code>#</code>) symbol. Any values, symbols, and texts following <code>#</code> will not be evaluated.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="lesson-1c-r-fundamentals.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluation</span></span>
-<span id="cb15-2"><a href="lesson-1c-r-fundamentals.html#cb15-2" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb15-3"><a href="lesson-1c-r-fundamentals.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div>
-</div>
-<div id="case-sensitivity" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Case Sensitivity<a href="lesson-1c-r-fundamentals.html#case-sensitivity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Lastly, note that R is a case sensitive programming language. Meaning all variables, functions, and objects must be called by their exact spelling:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="lesson-1c-r-fundamentals.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb16-2"><a href="lesson-1c-r-fundamentals.html#cb16-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> </span>
-<span id="cb16-3"><a href="lesson-1c-r-fundamentals.html#cb16-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb16-4"><a href="lesson-1c-r-fundamentals.html#cb16-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y <span class="sc">*</span> z</span>
-<span id="cb16-5"><a href="lesson-1c-r-fundamentals.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
-<span id="cb16-6"><a href="lesson-1c-r-fundamentals.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="lesson-1c-r-fundamentals.html#cb16-7" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> Y <span class="sc">*</span> z </span>
-<span id="cb16-8"><a href="lesson-1c-r-fundamentals.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(expr, envir, enclos): object &#39;Y&#39; not found</span></span></code></pre></div>
-</div>
-<div id="knowledge-check-2" class="section level3 hasAnchor" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Knowledge check<a href="lesson-1c-r-fundamentals.html#knowledge-check-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="lesson-6b-iteration-statements.html#cb419-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb419-2"><a href="lesson-6b-iteration-statements.html#cb419-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">split</span>(.<span class="sc">$</span>cut) <span class="sc">%&gt;%</span> </span>
+<span id="cb419-3"><a href="lesson-6b-iteration-statements.html#cb419-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(<span class="sc">~</span><span class="fu">lm</span>(price <span class="sc">~</span> carat, <span class="at">data =</span> .)) <span class="sc">%&gt;%</span></span>
+<span id="cb419-4"><a href="lesson-6b-iteration-statements.html#cb419-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(summary) <span class="sc">%&gt;%</span> </span>
+<span id="cb419-5"><a href="lesson-6b-iteration-statements.html#cb419-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_dbl</span>(<span class="sc">~</span>.<span class="sc">$</span>r.squared)</span>
+<span id="cb419-6"><a href="lesson-6b-iteration-statements.html#cb419-6" aria-hidden="true" tabindex="-1"></a><span class="do">##      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb419-7"><a href="lesson-6b-iteration-statements.html#cb419-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   0.73839   0.85095   0.85816   0.85563   0.86709</span></span></code></pre></div>
+<div id="knowledge-check-59" class="section level3 hasAnchor" number="29.5.1">
+<h3><span class="header-section-number">29.5.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-59" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
+<p>
+With the built-in <code>airquality</code> data set, use the most
+appropriate map functions to answer these three questions:
+</p>
 <ol style="list-style-type: decimal">
 <li>
-Assign the value 5 to variable <code>x</code> (note how this shows
-up in your Global Environment).
+How many n_distinct values are in each column?
 </li>
 <li>
-Assign the character <code>“abc”</code> to variable
-<code>y</code>.
+Are there any missing values in this data set?
 </li>
 <li>
-Evaluate the value of <code>x</code> and <code>y</code> at in the
-console.
-</li>
-<li>
-Now use the <code>rm()</code> function to remove these objects from
-you working environment.
+What is the standard deviation for each variable?
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div id="r-as-a-calculator" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> R as a calculator<a href="lesson-1c-r-fundamentals.html#r-as-a-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="basic-arithmetic" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Basic Arithmetic<a href="lesson-1c-r-fundamentals.html#basic-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>At its most basic function R can be used as a calculator. When applying basic arithmetic, the PEMDAS order of operations applies: <strong>p</strong>arentheses first followed by <strong>e</strong>xponentiation, <strong>m</strong>ultiplication and <strong>d</strong>ivision, and finally <strong>a</strong>ddition and <strong>s</strong>ubtraction.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="lesson-1c-r-fundamentals.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb17-2"><a href="lesson-1c-r-fundamentals.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8.36</span></span>
-<span id="cb17-3"><a href="lesson-1c-r-fundamentals.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="lesson-1c-r-fundamentals.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">/</span> (<span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb17-5"><a href="lesson-1c-r-fundamentals.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8.36</span></span>
-<span id="cb17-6"><a href="lesson-1c-r-fundamentals.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="lesson-1c-r-fundamentals.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb17-8"><a href="lesson-1c-r-fundamentals.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11.24</span></span>
-<span id="cb17-9"><a href="lesson-1c-r-fundamentals.html#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="lesson-1c-r-fundamentals.html#cb17-10" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span>) <span class="sc">/</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb17-11"><a href="lesson-1c-r-fundamentals.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.68</span></span></code></pre></div>
-<p>By default R will display seven digits but this can be changed using <code>options()</code> as previously outlined.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="lesson-1c-r-fundamentals.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span></span>
-<span id="cb18-2"><a href="lesson-1c-r-fundamentals.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.14286</span></span>
-<span id="cb18-3"><a href="lesson-1c-r-fundamentals.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="lesson-1c-r-fundamentals.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb18-5"><a href="lesson-1c-r-fundamentals.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span></span>
-<span id="cb18-6"><a href="lesson-1c-r-fundamentals.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.143</span></span></code></pre></div>
-<p>Also, large numbers will be expressed in scientific notation which can also be adjusted using <code>options()</code>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="lesson-1c-r-fundamentals.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">888888</span> <span class="sc">*</span> <span class="dv">888888</span></span>
-<span id="cb19-2"><a href="lesson-1c-r-fundamentals.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 7.9e+11</span></span>
-<span id="cb19-3"><a href="lesson-1c-r-fundamentals.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="lesson-1c-r-fundamentals.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span>
-<span id="cb19-5"><a href="lesson-1c-r-fundamentals.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="dv">888888</span> <span class="sc">*</span> <span class="dv">888888</span></span>
-<span id="cb19-6"><a href="lesson-1c-r-fundamentals.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 790121876544</span></span></code></pre></div>
-<p>Note that the largest number of digits that can be displayed is 22. Requesting any larger number of digits will result in an error message.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="lesson-1c-r-fundamentals.html#cb20-1" aria-hidden="true" tabindex="-1"></a>pi</span>
-<span id="cb20-2"><a href="lesson-1c-r-fundamentals.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592654</span></span>
-<span id="cb20-3"><a href="lesson-1c-r-fundamentals.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="lesson-1c-r-fundamentals.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">22</span>)</span>
-<span id="cb20-5"><a href="lesson-1c-r-fundamentals.html#cb20-5" aria-hidden="true" tabindex="-1"></a>pi</span>
-<span id="cb20-6"><a href="lesson-1c-r-fundamentals.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592653589793115998</span></span>
-<span id="cb20-7"><a href="lesson-1c-r-fundamentals.html#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="lesson-1c-r-fundamentals.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">23</span>)</span>
-<span id="cb20-9"><a href="lesson-1c-r-fundamentals.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in options(digits = 23): invalid &#39;digits&#39; parameter, allowed 1...22</span></span>
-<span id="cb20-10"><a href="lesson-1c-r-fundamentals.html#cb20-10" aria-hidden="true" tabindex="-1"></a>pi</span>
-<span id="cb20-11"><a href="lesson-1c-r-fundamentals.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592653589793115998</span></span></code></pre></div>
-<p>We can also perform integer divide (<code>%/%</code>) and modulo (<code>%%</code>) functions. The integer divide function will give the integer part of a fraction while the modulo will provide the remainder.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="lesson-1c-r-fundamentals.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular division</span></span>
-<span id="cb21-2"><a href="lesson-1c-r-fundamentals.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">/</span> <span class="dv">4</span></span>
-<span id="cb21-3"><a href="lesson-1c-r-fundamentals.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10.5</span></span>
-<span id="cb21-4"><a href="lesson-1c-r-fundamentals.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="lesson-1c-r-fundamentals.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># integer division</span></span>
-<span id="cb21-6"><a href="lesson-1c-r-fundamentals.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">%/%</span> <span class="dv">4</span></span>
-<span id="cb21-7"><a href="lesson-1c-r-fundamentals.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span>
-<span id="cb21-8"><a href="lesson-1c-r-fundamentals.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="lesson-1c-r-fundamentals.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># modulo (remainder)</span></span>
-<span id="cb21-10"><a href="lesson-1c-r-fundamentals.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">%%</span> <span class="dv">4</span></span>
-<span id="cb21-11"><a href="lesson-1c-r-fundamentals.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
-</div>
-<div id="miscellaneous-mathematical-functions" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Miscellaneous Mathematical Functions<a href="lesson-1c-r-fundamentals.html#miscellaneous-mathematical-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are many built-in functions to be aware of. These include but are not limited to the following. Go ahead and run this code in your console.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="lesson-1c-r-fundamentals.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb22-2"><a href="lesson-1c-r-fundamentals.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="lesson-1c-r-fundamentals.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x)      <span class="co"># absolute value</span></span>
-<span id="cb22-4"><a href="lesson-1c-r-fundamentals.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)     <span class="co"># square root</span></span>
-<span id="cb22-5"><a href="lesson-1c-r-fundamentals.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x)      <span class="co"># exponential transformation</span></span>
-<span id="cb22-6"><a href="lesson-1c-r-fundamentals.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)      <span class="co"># logarithmic transformation</span></span>
-<span id="cb22-7"><a href="lesson-1c-r-fundamentals.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x)      <span class="co"># cosine and other trigonometric functions</span></span></code></pre></div>
-</div>
-<div id="infinite-and-nan-numbers" class="section level3 hasAnchor" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Infinite, and NaN Numbers<a href="lesson-1c-r-fundamentals.html#infinite-and-nan-numbers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>When performing undefined calculations, R will produce <code>Inf</code> (infinity) and <code>NaN</code> (not a number) outputs. These can easily pop up in regular data wrangling tasks and later modules will discuss how to work with these types of outputs along with missing values.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="lesson-1c-r-fundamentals.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># infinity</span></span>
-<span id="cb23-2"><a href="lesson-1c-r-fundamentals.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">0</span></span>
-<span id="cb23-3"><a href="lesson-1c-r-fundamentals.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] Inf</span></span>
-<span id="cb23-4"><a href="lesson-1c-r-fundamentals.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="lesson-1c-r-fundamentals.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># infinity minus infinity</span></span>
-<span id="cb23-6"><a href="lesson-1c-r-fundamentals.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="cn">Inf</span> <span class="sc">-</span> <span class="cn">Inf</span></span>
-<span id="cb23-7"><a href="lesson-1c-r-fundamentals.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span>
-<span id="cb23-8"><a href="lesson-1c-r-fundamentals.html#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="lesson-1c-r-fundamentals.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># negative infinity</span></span>
-<span id="cb23-10"><a href="lesson-1c-r-fundamentals.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> <span class="dv">0</span></span>
-<span id="cb23-11"><a href="lesson-1c-r-fundamentals.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -Inf</span></span>
-<span id="cb23-12"><a href="lesson-1c-r-fundamentals.html#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="lesson-1c-r-fundamentals.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not a number</span></span>
-<span id="cb23-14"><a href="lesson-1c-r-fundamentals.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span>
-<span id="cb23-15"><a href="lesson-1c-r-fundamentals.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span>
-<span id="cb23-16"><a href="lesson-1c-r-fundamentals.html#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-17"><a href="lesson-1c-r-fundamentals.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># square root of -9</span></span>
-<span id="cb23-18"><a href="lesson-1c-r-fundamentals.html#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="sc">-</span><span class="dv">9</span>)</span>
-<span id="cb23-19"><a href="lesson-1c-r-fundamentals.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in sqrt(-9): NaNs produced</span></span>
-<span id="cb23-20"><a href="lesson-1c-r-fundamentals.html#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span></code></pre></div>
-</div>
-<div id="knowledge-check-3" class="section level3 hasAnchor" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Knowledge check<a href="lesson-1c-r-fundamentals.html#knowledge-check-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exercises-16" class="section level2 hasAnchor" number="29.6">
+<h2><span class="header-section-number">29.6</span> Exercises<a href="lesson-6b-iteration-statements.html#exercises-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
-Assign the values 1000, 5, and 0.05 to variables <code>D</code>,
-<code>K</code>, and <code>h</code> respectively.
+Use <code>purrr::map_dfr</code> to import each of the
+<code>monthly_data/Month-XX.csv</code> data files and combine into one
+single data frame.
 </li>
 <li>
-Compute <span class="math inline"><span class="math inline">\(2 \times D \times K\)</span></span>.
+Check the current class of each column
+i.e. (<code>class(df$Account_ID)</code>). Since the time stamp variable
+has two classes, you can’t condense this down to an atomic vector.
 </li>
 <li>
-Compute <span class="math inline"><span class="math inline">\(\frac{2 \times D \times K}{h}\)</span></span>.
-</li>
-<li>
-Now put this together to compute the Economic Order Quantity, which
-is <span class="math inline"><span class="math inline">\(\sqrt{\frac{2 \times D \times K}{h}}\)</span></span>. Save the output as <code>Q</code>.
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="working-with-packages" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Working with packages<a href="lesson-1c-r-fundamentals.html#working-with-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests and provides an easy method to share with others <span class="citation">(<a href="#ref-wickham2015r" role="doc-biblioref">Wickham 2015</a>)</span>. As of April 2022 there were nearly 19,000 packages available on <a href="https://cran.r-project.org/">CRAN</a>, 2,000 on <a href="https://www.bioconductor.org/">Bioconductor</a>, and countless more available through <a href="https://github.com/">GitHub</a>. This huge variety of packages is one of the reasons that R is so successful: chances are that someone has already solved a problem that you’re working on, and you can benefit from their work by downloading and using their package.</p>
-<div id="installing-packages" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Installing Packages<a href="lesson-1c-r-fundamentals.html#installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The most common place to get packages is from CRAN. To install packages from CRAN you use <code>install.packages("packagename")</code>. For instance, if you want to install the <strong>ggplot2</strong> package, which is a very popular visualization package you would type the following in the console:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="lesson-1c-r-fundamentals.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install package from CRAN</span></span>
-<span id="cb24-2"><a href="lesson-1c-r-fundamentals.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>) </span></code></pre></div>
-<p>As previously stated, packages are also available through Bioconductor and GitHub. Bioconductor provides R packages primarily for genomic data analyses and packages on GitHub are usually under development but have not gone through all the checks and balances to be loaded onto CRAN (aka download and use these packages at your discretion). You can learn how to install Bioconductor packages <a href="https://www.bioconductor.org/install/">here</a> and GitHub packages <a href="https://cran.r-project.org/web/packages/githubinstall/vignettes/githubinstall.html">here</a>.</p>
-</div>
-<div id="loading-packages" class="section level3 hasAnchor" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Loading Packages<a href="lesson-1c-r-fundamentals.html#loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once the package is downloaded to your computer you can access the functions and resources provided by the package in two different ways:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="lesson-1c-r-fundamentals.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package to use in the current R session</span></span>
-<span id="cb25-2"><a href="lesson-1c-r-fundamentals.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(packagename)         </span>
-<span id="cb25-3"><a href="lesson-1c-r-fundamentals.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="lesson-1c-r-fundamentals.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use a particular function within a package without loading the package</span></span>
-<span id="cb25-5"><a href="lesson-1c-r-fundamentals.html#cb25-5" aria-hidden="true" tabindex="-1"></a>packagename<span class="sc">::</span>functionname   </span></code></pre></div>
-<p>For instance, if you want to have full access to the <strong>dplyr</strong> package you would use <code>library(dplyr)</code>; however, if you just wanted to use the <code>filter()</code> function which is provided by the <strong>dplyr</strong> package without fully loading <strong>dplyr</strong> you can use <code>dplyr::filter(...)</code><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
-</div>
-<div id="getting-help-on-packages" class="section level3 hasAnchor" number="4.4.3">
-<h3><span class="header-section-number">4.4.3</span> Getting Help on Packages<a href="lesson-1c-r-fundamentals.html#getting-help-on-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For more direct help on packages that are installed on your computer you can use the <code>help</code> and <code>vignette</code> functions. Here we can get help on the <strong>ggplot2</strong> package with the following:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="lesson-1c-r-fundamentals.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">&quot;ggplot2&quot;</span>)      <span class="co"># provides details regarding contents of a package</span></span>
-<span id="cb26-2"><a href="lesson-1c-r-fundamentals.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="at">package =</span> <span class="st">&quot;ggplot2&quot;</span>)  <span class="co"># list vignettes available for a specific package</span></span>
-<span id="cb26-3"><a href="lesson-1c-r-fundamentals.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;ggplot2-specs&quot;</span>)      <span class="co"># view specific vignette</span></span>
-<span id="cb26-4"><a href="lesson-1c-r-fundamentals.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>()                     <span class="co"># view all vignettes on your computer</span></span></code></pre></div>
-<p>Note that some packages will have multiple vignettes. For instance <code>vignette(package = "grid")</code> will list the 13 vignettes available for the <strong>grid</strong> package. To access one of the specific vignettes you simply use <code>vignette("vignettename")</code>.</p>
-</div>
-<div id="useful-packages" class="section level3 hasAnchor" number="4.4.4">
-<h3><span class="header-section-number">4.4.4</span> Useful Packages<a href="lesson-1c-r-fundamentals.html#useful-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are thousands of helpful R packages for you to use, but navigating them all can be a challenge. To help you out, RStudio compiled a <a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">guide</a> to some of the best packages for loading, manipulating, visualizing, analyzing, and reporting data. In addition, their list captures packages that specialize in spatial data, time series and financial data, increasing spead and performance, and developing your own R packages.</p>
-</div>
-<div id="knowledge-check-4" class="section level3 hasAnchor" number="4.4.5">
-<h3><span class="header-section-number">4.4.5</span> Knowledge check<a href="lesson-1c-r-fundamentals.html#knowledge-check-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="todo">
-<ul>
-<li>
-Install the <strong>completejourney</strong> package.
-</li>
-<li>
-Load the <strong>completejourney</strong> package.
-</li>
-<li>
-Access the help documentation for the
-<strong>completejourney</strong> package.
-</li>
-<li>
-Check out the vignette(s) for <strong>completejourney</strong>.
-</li>
-<li>
-Call the <code>get_transactions()</code> function provided by
-<strong>completejourney</strong> and save the output to a
-<code>transactions</code> variable (note that this takes a little time
-as you are trying to download 1.5 million transactions!).
-</li>
-</ul>
-</div>
-</div>
-<div id="tidyverse" class="section level3 hasAnchor" number="4.4.6">
-<h3><span class="header-section-number">4.4.6</span> Tidyverse<a href="lesson-1c-r-fundamentals.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures; and this group of packages has become extremely popular and common across the data science community. You will learn about many of these packages throughout this course.</p>
-<div class="tip">
-<p>
-Take a little time to familiarize yourself with the <a
-href="https://www.tidyverse.org/">Tidyverse</a>. Not only will you find
-high-level descriptions of the different <a
-href="https://www.tidyverse.org/packages/">tidyverse packages</a> but
-you will also find a lot of educational content that you can and should
-take advantage of!
-</p>
-</div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tidyverse"></span>
-<img src="images/what-is-tidyverse.png" alt="Tidyverse is a collection of packages designed to simplify many tasks throughout the data analysis process."  />
-<p class="caption">
-Figure 4.1: Tidyverse is a collection of packages designed to simplify many tasks throughout the data analysis process.
-</p>
-</div>
-<p>Let’s go ahead and install the <strong>tidyverse</strong> package, which will actually install a bunch of other packages for us.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="lesson-1c-r-fundamentals.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
-<div class="tip">
-<p>
-The single line of code above 👆…
-</p>
-<p>
-is equivalent to running the 29 lines of code below 👇!
-</p>
-</div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="lesson-1c-r-fundamentals.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb28-2"><a href="lesson-1c-r-fundamentals.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
-<span id="cb28-3"><a href="lesson-1c-r-fundamentals.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
-<span id="cb28-4"><a href="lesson-1c-r-fundamentals.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
-<span id="cb28-5"><a href="lesson-1c-r-fundamentals.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;purrr&quot;</span>)</span>
-<span id="cb28-6"><a href="lesson-1c-r-fundamentals.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb28-7"><a href="lesson-1c-r-fundamentals.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
-<span id="cb28-8"><a href="lesson-1c-r-fundamentals.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;forcats&quot;</span>)</span>
-<span id="cb28-9"><a href="lesson-1c-r-fundamentals.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cli&quot;</span>)</span>
-<span id="cb28-10"><a href="lesson-1c-r-fundamentals.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;crayon&quot;</span>)</span>
-<span id="cb28-11"><a href="lesson-1c-r-fundamentals.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dbplyr&quot;</span>)</span>
-<span id="cb28-12"><a href="lesson-1c-r-fundamentals.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dtplyr&quot;</span>)</span>
-<span id="cb28-13"><a href="lesson-1c-r-fundamentals.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;googledrive&quot;</span>)</span>
-<span id="cb28-14"><a href="lesson-1c-r-fundamentals.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;googlesheets4&quot;</span>)</span>
-<span id="cb28-15"><a href="lesson-1c-r-fundamentals.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span>
-<span id="cb28-16"><a href="lesson-1c-r-fundamentals.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;hms&quot;</span>)</span>
-<span id="cb28-17"><a href="lesson-1c-r-fundamentals.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span>
-<span id="cb28-18"><a href="lesson-1c-r-fundamentals.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
-<span id="cb28-19"><a href="lesson-1c-r-fundamentals.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lubridate&quot;</span>)</span>
-<span id="cb28-20"><a href="lesson-1c-r-fundamentals.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
-<span id="cb28-21"><a href="lesson-1c-r-fundamentals.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelr&quot;</span>)</span>
-<span id="cb28-22"><a href="lesson-1c-r-fundamentals.html#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pillar&quot;</span>)</span>
-<span id="cb28-23"><a href="lesson-1c-r-fundamentals.html#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
-<span id="cb28-24"><a href="lesson-1c-r-fundamentals.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reprex&quot;</span>)</span>
-<span id="cb28-25"><a href="lesson-1c-r-fundamentals.html#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rlang&quot;</span>)</span>
-<span id="cb28-26"><a href="lesson-1c-r-fundamentals.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rstudioapi&quot;</span>)</span>
-<span id="cb28-27"><a href="lesson-1c-r-fundamentals.html#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
-<span id="cb28-28"><a href="lesson-1c-r-fundamentals.html#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span></code></pre></div>
-<p>If we load the <strong>tidyverse</strong> package we will see that it loads 8 packages for us: <strong>ggplot2</strong>_, <strong>tibble</strong>, <strong>tidyr</strong>, <strong>readr</strong>, <strong>purrr</strong>, <strong>dplyr</strong>, <strong>stringr</strong>, and <strong>forcats</strong>. These are packages that we will tend to use in almost any data analysis project.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="lesson-1c-r-fundamentals.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div class="tip">
-<p>
-The single line of code above 👆…
-</p>
-<p>
-is equivalent to running the 8 lines of code below 👇!
-</p>
-</div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="lesson-1c-r-fundamentals.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb30-2"><a href="lesson-1c-r-fundamentals.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) </span>
-<span id="cb30-3"><a href="lesson-1c-r-fundamentals.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) </span>
-<span id="cb30-4"><a href="lesson-1c-r-fundamentals.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) </span>
-<span id="cb30-5"><a href="lesson-1c-r-fundamentals.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr) </span>
-<span id="cb30-6"><a href="lesson-1c-r-fundamentals.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
-<span id="cb30-7"><a href="lesson-1c-r-fundamentals.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr) </span>
-<span id="cb30-8"><a href="lesson-1c-r-fundamentals.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span></code></pre></div>
-</div>
-</div>
-<div id="style-guide" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Style guide<a href="lesson-1c-r-fundamentals.html#style-guide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<blockquote>
-<p><em>“Good coding style is like using correct punctuation. You can manage without it, but it sure makes things easier to read.”</em> - Hadley Wickham</p>
-</blockquote>
-<p>As a medium of communication, its important to realize that the readability of code does in fact make a difference. Well styled code has many benefits to include making it easy to i) read, ii) extend, and iii) debug. Unfortunately, R does not come with official guidelines for code styling but such is an inconvenient truth of most open source software. However, this should not lead you to believe there is no style to be followed and over time implicit guidelines for proper code styling have been documented.</p>
-<p>What follows are a few of the basic guidelines from the <a href="https://style.tidyverse.org/">tidyverse style guide</a>. These suggestions will help you get started with good styling suggestions as you begin this book but as you progress you should leverage the far more detailed tidyverse style guide along with useful packages such as <a href="https://github.com/jimhester/lintr"><strong>lintr</strong></a> and <a href="http://styler.r-lib.org/"><strong>styler</strong></a> to help enforce good code syntax on yourself.</p>
-<div id="notation-and-naming" class="section level3 hasAnchor" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Notation and Naming<a href="lesson-1c-r-fundamentals.html#notation-and-naming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>File names should be meaningful and end with a <code>.R</code> extension.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="lesson-1c-r-fundamentals.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
-<span id="cb31-2"><a href="lesson-1c-r-fundamentals.html#cb31-2" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">-</span>analysis.R</span>
-<span id="cb31-3"><a href="lesson-1c-r-fundamentals.html#cb31-3" aria-hidden="true" tabindex="-1"></a>emerson<span class="sc">-</span>text<span class="sc">-</span>analysis.R</span>
-<span id="cb31-4"><a href="lesson-1c-r-fundamentals.html#cb31-4" aria-hidden="true" tabindex="-1"></a>lesson<span class="sc">-</span>1b<span class="sc">-</span>homework.R</span>
-<span id="cb31-5"><a href="lesson-1c-r-fundamentals.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="lesson-1c-r-fundamentals.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
-<span id="cb31-7"><a href="lesson-1c-r-fundamentals.html#cb31-7" aria-hidden="true" tabindex="-1"></a>basic<span class="sc">-</span>stuff.r</span>
-<span id="cb31-8"><a href="lesson-1c-r-fundamentals.html#cb31-8" aria-hidden="true" tabindex="-1"></a>detail.r</span></code></pre></div>
-<p>If files need to be run in sequence, prefix them with numbers:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="lesson-1c-r-fundamentals.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">-</span>download.R</span>
-<span id="cb32-2"><a href="lesson-1c-r-fundamentals.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>preprocessing.R</span>
-<span id="cb32-3"><a href="lesson-1c-r-fundamentals.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">-</span>explore.R</span>
-<span id="cb32-4"><a href="lesson-1c-r-fundamentals.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">-</span>fit<span class="sc">-</span>model.R</span></code></pre></div>
-<p>In R, naming conventions for variables and functions are famously muddled. They include the following:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="lesson-1c-r-fundamentals.html#cb33-1" aria-hidden="true" tabindex="-1"></a>namingconvention        <span class="co"># all lower case; no separator</span></span>
-<span id="cb33-2"><a href="lesson-1c-r-fundamentals.html#cb33-2" aria-hidden="true" tabindex="-1"></a>naming.convention       <span class="co"># period separator</span></span>
-<span id="cb33-3"><a href="lesson-1c-r-fundamentals.html#cb33-3" aria-hidden="true" tabindex="-1"></a>naming_convention       <span class="co"># underscore separator (aka snake case)</span></span>
-<span id="cb33-4"><a href="lesson-1c-r-fundamentals.html#cb33-4" aria-hidden="true" tabindex="-1"></a>namingConvention        <span class="co"># lower camel case</span></span>
-<span id="cb33-5"><a href="lesson-1c-r-fundamentals.html#cb33-5" aria-hidden="true" tabindex="-1"></a>NamingConvention        <span class="co"># upper camel case</span></span></code></pre></div>
-<p>Historically, there has been no clearly preferred approach with multiple naming styles sometimes used within a single package. Bottom line, your naming convention will be driven by your preference but the ultimate goal should be consistency.</p>
-<div class="tip">
-<p>
-Vast majority of the R community uses lowercase with an underscore
-(“_“) to separate words within a variable/function name (‘snake_case’).
-Furthermore, variable names should be nouns and function names should be
-verbs to help distinguish their purpose. Also, refrain from using
-existing names of functions (i.e. mean, sum, true).
-</p>
-</div>
-</div>
-<div id="organization" class="section level3 hasAnchor" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Organization<a href="lesson-1c-r-fundamentals.html#organization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Organization of your code is also important. There’s nothing like trying to decipher 500 lines of code that has no organization. The easiest way to achieve organization is to comment your code. When you have large sections within your script you should separate them to make it obvious of the distinct purpose of the code.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="lesson-1c-r-fundamentals.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download Data -------------------------------------------------------------------</span></span>
-<span id="cb34-2"><a href="lesson-1c-r-fundamentals.html#cb34-2" aria-hidden="true" tabindex="-1"></a>lines of code here</span>
-<span id="cb34-3"><a href="lesson-1c-r-fundamentals.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="lesson-1c-r-fundamentals.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess Data -----------------------------------------------------------------</span></span>
-<span id="cb34-5"><a href="lesson-1c-r-fundamentals.html#cb34-5" aria-hidden="true" tabindex="-1"></a>lines of code here</span>
-<span id="cb34-6"><a href="lesson-1c-r-fundamentals.html#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="lesson-1c-r-fundamentals.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory Analysis ------------------------------------------------------------</span></span>
-<span id="cb34-8"><a href="lesson-1c-r-fundamentals.html#cb34-8" aria-hidden="true" tabindex="-1"></a>lines of code here</span></code></pre></div>
-<div class="tip">
-<p>
-You can easily add these section breaks within RStudio wth
-Cmd+Shift+R.
-</p>
-</div>
-<p>Then comments for specific lines of code can be done as follows:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="lesson-1c-r-fundamentals.html#cb35-1" aria-hidden="true" tabindex="-1"></a>code_1  <span class="co"># short comments can be placed to the right of code </span></span>
-<span id="cb35-2"><a href="lesson-1c-r-fundamentals.html#cb35-2" aria-hidden="true" tabindex="-1"></a>code_2  <span class="co"># blah</span></span>
-<span id="cb35-3"><a href="lesson-1c-r-fundamentals.html#cb35-3" aria-hidden="true" tabindex="-1"></a>code_3  <span class="co"># blah</span></span>
-<span id="cb35-4"><a href="lesson-1c-r-fundamentals.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="lesson-1c-r-fundamentals.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># or comments can be placed above a line of code</span></span>
-<span id="cb35-6"><a href="lesson-1c-r-fundamentals.html#cb35-6" aria-hidden="true" tabindex="-1"></a>code_4</span>
-<span id="cb35-7"><a href="lesson-1c-r-fundamentals.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-8"><a href="lesson-1c-r-fundamentals.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Or extremely long lines of commentary that go beyond the suggested 80 </span></span>
-<span id="cb35-9"><a href="lesson-1c-r-fundamentals.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># characters per line can be broken up into multiple lines. Just don&#39;t forget</span></span>
-<span id="cb35-10"><a href="lesson-1c-r-fundamentals.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to use the hash on each.</span></span>
-<span id="cb35-11"><a href="lesson-1c-r-fundamentals.html#cb35-11" aria-hidden="true" tabindex="-1"></a>code_5</span></code></pre></div>
-<div class="tip">
-<p>
-You can easily comment or uncomment lines by highlighting the line
-and then pressing Cmd+Shift+C.
-</p>
-</div>
-</div>
-<div id="syntax" class="section level3 hasAnchor" number="4.5.3">
-<h3><span class="header-section-number">4.5.3</span> Syntax<a href="lesson-1c-r-fundamentals.html#syntax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The maximum number of characters on a single line of code should be 80 or less. If you are using RStudio you can have a margin displayed so you know when you need to break to a new line<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Also, when indenting your code use two spaces rather than using tabs. The only exception is if a line break occurs inside parentheses. In this case it is common to do either of the following:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="lesson-1c-r-fundamentals.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
-<span id="cb36-2"><a href="lesson-1c-r-fundamentals.html#cb36-2" aria-hidden="true" tabindex="-1"></a>super_long_name <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 0:00&quot;</span>), </span>
-<span id="cb36-3"><a href="lesson-1c-r-fundamentals.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 12:00&quot;</span>), </span>
-<span id="cb36-4"><a href="lesson-1c-r-fundamentals.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">by =</span> <span class="st">&quot;hour&quot;</span>)</span>
-<span id="cb36-5"><a href="lesson-1c-r-fundamentals.html#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="lesson-1c-r-fundamentals.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
-<span id="cb36-7"><a href="lesson-1c-r-fundamentals.html#cb36-7" aria-hidden="true" tabindex="-1"></a>super_long_name <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
-<span id="cb36-8"><a href="lesson-1c-r-fundamentals.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 0:00&quot;</span>),</span>
-<span id="cb36-9"><a href="lesson-1c-r-fundamentals.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 12:00&quot;</span>),</span>
-<span id="cb36-10"><a href="lesson-1c-r-fundamentals.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;hour&quot;</span></span>
-<span id="cb36-11"><a href="lesson-1c-r-fundamentals.html#cb36-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p>Proper spacing within your code also helps with readability. Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.). The same rule applies when using <code>=</code> in function calls. Always put a space after a comma, and never before.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="lesson-1c-r-fundamentals.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
-<span id="cb37-2"><a href="lesson-1c-r-fundamentals.html#cb37-2" aria-hidden="true" tabindex="-1"></a>average <span class="ot">&lt;-</span> <span class="fu">mean</span>(feet <span class="sc">/</span> <span class="dv">12</span> <span class="sc">+</span> inches, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb37-3"><a href="lesson-1c-r-fundamentals.html#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="lesson-1c-r-fundamentals.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
-<span id="cb37-5"><a href="lesson-1c-r-fundamentals.html#cb37-5" aria-hidden="true" tabindex="-1"></a>average<span class="ot">&lt;-</span><span class="fu">mean</span>(feet<span class="sc">/</span><span class="dv">12</span><span class="sc">+</span>inches,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p>There’s a small exception to this rule: <code>:</code>, <code>::</code> and <code>:::</code> don’t need spaces around them.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="lesson-1c-r-fundamentals.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
-<span id="cb38-2"><a href="lesson-1c-r-fundamentals.html#cb38-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb38-3"><a href="lesson-1c-r-fundamentals.html#cb38-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span>get</span>
-<span id="cb38-4"><a href="lesson-1c-r-fundamentals.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="lesson-1c-r-fundamentals.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
-<span id="cb38-6"><a href="lesson-1c-r-fundamentals.html#cb38-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb38-7"><a href="lesson-1c-r-fundamentals.html#cb38-7" aria-hidden="true" tabindex="-1"></a>base <span class="sc">::</span> get</span></code></pre></div>
-<p>It is important to think about style when communicating any form of language. Writing code is no exception and is especially important if your code will be read by others. Following these basic style guides will get you on the right track for writing code that can be easily communicated to others.</p>
-</div>
-<div id="knowledge-check-5" class="section level3 hasAnchor" number="4.5.4">
-<h3><span class="header-section-number">4.5.4</span> Knowledge check<a href="lesson-1c-r-fundamentals.html#knowledge-check-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="todo">
-<ol style="list-style-type: decimal">
-<li>
-Review chapters 1 &amp; 2 in the <a
-href="https://style.tidyverse.org/index.html">Tidyverse Style
-Guide</a>.
-</li>
-<li>
-Go back through the script you’ve been writing to execute the
-exercises in this module and make sure
-<ul>
-<li>
-your naming conventions are consistent,
-</li>
-<li>
-your code is nicely organized and annotated,
-</li>
-<li>
-your syntax includes proper spacing.
-</li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="exercises-2" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Exercises<a href="lesson-1c-r-fundamentals.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="todo">
-<ol style="list-style-type: decimal">
-<li>
-Say you have a 12” pizza. Compute the area of the pizza and assign
-that value to the variable <code>area</code>. Now say the
-<code>cost</code> of the pizza was $8. Compute the cost per square inch
-and assign that value to a variable <code>ppsi</code>.
-</li>
-<li>
-Based on the style guide section rename the <code>ppsi</code>
-variable in question 1 to be more meaningful.
-</li>
-<li>
-If you did not already do so, install the <strong>tidyverse</strong>
-package.
-</li>
-<li>
-How many vignettes does the <strong>dplyr</strong> package
-have?
-</li>
-<li>
-Where can you go to learn more about the <strong>tidyverse</strong>
-packages?
-</li>
-<li>
-When you load the <strong>tidyverse</strong> packages what other
-packages is it automatically loading for you?
-</li>
-<li>
-Using the resource in #5, explain at a high-level what the packages
-in #6 do.
+How many unique values exist in each column?
 </li>
 </ol>
 </div>
 
 </div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-wickham2015r" class="csl-entry">
-———. 2015. <em>R Packages: Organize, Test, Document, and Share Your Code</em>. " O’Reilly Media, Inc.".
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>There are even more provided by third party packages such as <strong>zeallot</strong>.<a href="lesson-1c-r-fundamentals.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Here, <code>...</code> just represents the arguments that you would include in this function<a href="lesson-1c-r-fundamentals.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p><strong>Tools » Global Options » Code » Display</strong><a href="lesson-1c-r-fundamentals.html#fnref5" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="lesson-1b-r-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lesson-1d-vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lesson-6a-conditional-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1270,7 +1200,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-1/lesson-3.Rmd",
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-6/lesson-2.Rmd",
 "text": "Edit"
 },
 "history": {

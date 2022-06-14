@@ -9,8 +9,7 @@ chunk <- "```"
 inline <- function(x = "") paste0("`` `r ", x, "` ``")
 knitr::opts_chunk$set(
   fig.align = "center",
-  collapse = TRUE,
-  cache = TRUE
+  collapse = TRUE
 )
 ```
 

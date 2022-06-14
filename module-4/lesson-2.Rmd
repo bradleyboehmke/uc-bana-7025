@@ -7,8 +7,7 @@ rm(list = ls())
 knitr::opts_chunk$set(
   fig.align = "center",
   collapse = TRUE,
-  message = FALSE,
-  cache = TRUE
+  message = FALSE
 )
 ```
 

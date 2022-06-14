@@ -3,8 +3,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   fig.align = "center",
-  collapse = TRUE,
-  cache = TRUE
+  collapse = TRUE
 )
 ```
 
