@@ -40,6 +40,7 @@ rmd_files:
 - "module-6/module-overview.Rmd"
 - "module-6/lesson-1.Rmd"
 - "module-6/lesson-2.Rmd"
+- "module-6/lesson-3.Rmd"
 - "module-6/lab.Rmd"
 
 - "module-7/module-overview.Rmd"

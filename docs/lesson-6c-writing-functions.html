@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>30 Lesson 6c: Writing functions | Data Wrangling with R</title>
+  <meta name="description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="30 Lesson 6c: Writing functions | Data Wrangling with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="30 Lesson 6c: Writing functions | Data Wrangling with R" />
+  <meta name="twitter:site" content="@bradleyboehmke" />
+  <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
+  
+
+<meta name="author" content="Bradley Boehmke" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-6b-iteration-statements.html"/>
+<link rel="next" href="lab-5.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UC BANA 7025: Data Wrangling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i>Material</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions-used-in-this-book"><i class="fa fa-check"></i>Conventions used in this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Module 1</b></span></li>
+<li class="chapter" data-level="1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview.html"><a href="overview.html#learning-objectives-1"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="overview.html"><a href="overview.html#tasks"><i class="fa fa-check"></i><b>1.2</b> Tasks</a></li>
+<li class="chapter" data-level="1.3" data-path="overview.html"><a href="overview.html#course-readings"><i class="fa fa-check"></i><b>1.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html"><i class="fa fa-check"></i><b>2</b> Lesson 1a: Course overview</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#learning-objectives-2"><i class="fa fa-check"></i><b>2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#purpose-of-this-course"><i class="fa fa-check"></i><b>2.2</b> Purpose of this course</a></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#assumptions-pre-requisites"><i class="fa fa-check"></i><b>2.3</b> Assumptions &amp; Pre-requisites</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-staff"><i class="fa fa-check"></i><b>2.4</b> Course Staff</a></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#course-logistics"><i class="fa fa-check"></i><b>2.5</b> Course Logistics</a></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#grading"><i class="fa fa-check"></i><b>2.6</b> Grading</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#getting-help"><i class="fa fa-check"></i><b>2.7</b> Getting Help</a></li>
+<li class="chapter" data-level="2.8" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#fine-print"><i class="fa fa-check"></i><b>2.8</b> Fine Print</a></li>
+<li class="chapter" data-level="2.9" data-path="lesson-1a-course-overview.html"><a href="lesson-1a-course-overview.html#exercises"><i class="fa fa-check"></i><b>2.9</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html"><i class="fa fa-check"></i><b>3</b> Lesson 1b: R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#learning-objectives-3"><i class="fa fa-check"></i><b>3.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#r-vs.-rstudio"><i class="fa fa-check"></i><b>3.2</b> R vs. RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>3.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="3.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#understanding-the-rstudio-ide"><i class="fa fa-check"></i><b>3.4</b> Understanding the RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#script-editor"><i class="fa fa-check"></i><b>3.4.1</b> Script Editor</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-environment"><i class="fa fa-check"></i><b>3.4.2</b> Workspace Environment</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#console"><i class="fa fa-check"></i><b>3.4.3</b> Console</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#misc.-displays"><i class="fa fa-check"></i><b>3.4.4</b> Misc. Displays</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#workspace-options-shortcuts"><i class="fa fa-check"></i><b>3.4.5</b> Workspace Options &amp; Shortcuts</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check"><i class="fa fa-check"></i><b>3.4.6</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-1"><i class="fa fa-check"></i><b>3.5</b> Getting help</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#general-help"><i class="fa fa-check"></i><b>3.5.1</b> General Help</a></li>
+<li class="chapter" data-level="3.5.2" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#getting-help-from-the-web"><i class="fa fa-check"></i><b>3.5.2</b> Getting Help From the Web</a></li>
+<li class="chapter" data-level="3.5.3" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#knowledge-check-1"><i class="fa fa-check"></i><b>3.5.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>3.6</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="3.7" data-path="lesson-1b-r-rstudio.html"><a href="lesson-1b-r-rstudio.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html"><i class="fa fa-check"></i><b>4</b> Lesson 1c: R fundamentals</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#learning-objectives-4"><i class="fa fa-check"></i><b>4.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment-evaluation"><i class="fa fa-check"></i><b>4.2</b> Assignment &amp; evaluation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#assignment"><i class="fa fa-check"></i><b>4.2.1</b> Assignment</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#evaluation"><i class="fa fa-check"></i><b>4.2.2</b> Evaluation</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#case-sensitivity"><i class="fa fa-check"></i><b>4.2.3</b> Case Sensitivity</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-2"><i class="fa fa-check"></i><b>4.2.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#r-as-a-calculator"><i class="fa fa-check"></i><b>4.3</b> R as a calculator</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#basic-arithmetic"><i class="fa fa-check"></i><b>4.3.1</b> Basic Arithmetic</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#miscellaneous-mathematical-functions"><i class="fa fa-check"></i><b>4.3.2</b> Miscellaneous Mathematical Functions</a></li>
+<li class="chapter" data-level="4.3.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>4.3.3</b> Infinite, and NaN Numbers</a></li>
+<li class="chapter" data-level="4.3.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>4.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>4.4</b> Working with packages</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>4.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="4.4.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>4.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="4.4.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>4.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="4.4.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>4.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="4.4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>4.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="4.4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>4.4.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>4.5</b> Style guide</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>4.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>4.5.2</b> Organization</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>4.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>4.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-r-fundamentals.html"><a href="lesson-1c-r-fundamentals.html#exercises-2"><i class="fa fa-check"></i><b>4.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html"><i class="fa fa-check"></i><b>5</b> Lesson 1d: Vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>5.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>5.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>5.2.2</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>5.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>5.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>5.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>5.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>5.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>5.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#operations"><i class="fa fa-check"></i><b>5.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>5.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#missing-data"><i class="fa fa-check"></i><b>5.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>5.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#vectorization"><i class="fa fa-check"></i><b>5.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>5.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="5.7.2" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#recycling"><i class="fa fa-check"></i><b>5.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="5.7.3" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>5.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="lesson-1d-vectors.html"><a href="lesson-1d-vectors.html#exercises-3"><i class="fa fa-check"></i><b>5.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lab.html"><a href="lab.html"><i class="fa fa-check"></i><b>6</b> Lab</a></li>
+<li class="part"><span><b>II Module 2</b></span></li>
+<li class="chapter" data-level="7" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>7</b> Overview</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-6"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>7.2</b> Tasks</a></li>
+<li class="chapter" data-level="7.3" data-path="overview-1.html"><a href="overview-1.html#course-readings-1"><i class="fa fa-check"></i><b>7.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>8</b> Lesson 2a: Workflow</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-7"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>8.2</b> R Projects</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>8.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="8.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>8.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>8.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>8.3</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>8.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>8.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>8.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>8.3.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>8.4</b> R Notebooks</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>8.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="8.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>8.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="8.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>8.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="8.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>8.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="8.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>8.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-4"><i class="fa fa-check"></i><b>8.5</b> Exercises</a></li>
+<li class="chapter" data-level="8.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>8.6</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>9</b> Lesson 2b: Data types &amp; structures</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-8"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>9.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>9.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>9.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="9.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>9.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>9.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>9.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="9.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>9.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="9.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>9.3.3</b> Lists</a></li>
+<li class="chapter" data-level="9.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>9.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-5"><i class="fa fa-check"></i><b>9.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html"><i class="fa fa-check"></i><b>10</b> Lesson 2c: Importing data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#learning-objectives-9"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#data-memory"><i class="fa fa-check"></i><b>10.2</b> Data &amp; memory</a></li>
+<li class="chapter" data-level="10.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#delimited-files"><i class="fa fa-check"></i><b>10.3</b> Delimited files</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#tibbles"><i class="fa fa-check"></i><b>10.3.1</b> Tibbles</a></li>
+<li class="chapter" data-level="10.3.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#file-paths"><i class="fa fa-check"></i><b>10.3.2</b> File paths</a></li>
+<li class="chapter" data-level="10.3.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#metadata"><i class="fa fa-check"></i><b>10.3.3</b> Metadata</a></li>
+<li class="chapter" data-level="10.3.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#knowledge-check-18"><i class="fa fa-check"></i><b>10.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#excel-files"><i class="fa fa-check"></i><b>10.4</b> Excel files</a></li>
+<li class="chapter" data-level="10.5" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#sql-databases"><i class="fa fa-check"></i><b>10.5</b> SQL databases</a></li>
+<li class="chapter" data-level="10.6" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#many-other-file-types"><i class="fa fa-check"></i><b>10.6</b> Many other file types</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#json-files"><i class="fa fa-check"></i><b>10.6.1</b> JSON files</a></li>
+<li class="chapter" data-level="10.6.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#r-object-files"><i class="fa fa-check"></i><b>10.6.2</b> R object files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#exercises-6"><i class="fa fa-check"></i><b>10.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lab-1.html"><a href="lab-1.html"><i class="fa fa-check"></i><b>11</b> Lab</a></li>
+<li class="part"><span><b>III Module 3</b></span></li>
+<li class="chapter" data-level="12" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>12</b> Overview</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-10"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>12.2</b> Tasks</a></li>
+<li class="chapter" data-level="12.3" data-path="overview-2.html"><a href="overview-2.html#course-readings-2"><i class="fa fa-check"></i><b>12.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html"><i class="fa fa-check"></i><b>13</b> Lesson 3a: Pipe operator</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#learning-objectives-11"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#pipe-operator"><i class="fa fa-check"></i><b>13.2</b> Pipe (<code>%&gt;%</code>) operator</a></li>
+<li class="chapter" data-level="13.3" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional"><i class="fa fa-check"></i><b>13.3</b> Additional pipe operators (optional)</a></li>
+<li class="chapter" data-level="13.4" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-resources-2"><i class="fa fa-check"></i><b>13.4</b> Additional resources</a></li>
+<li class="chapter" data-level="13.5" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#exercises-7"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html"><i class="fa fa-check"></i><b>14</b> Lesson 3b: Data transformation</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#learning-objectives-12"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#prerequisites"><i class="fa fa-check"></i><b>14.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="14.3" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#filter"><i class="fa fa-check"></i><b>14.3</b> Filtering observations</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-19"><i class="fa fa-check"></i><b>14.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#select"><i class="fa fa-check"></i><b>14.4</b> Selecting variables</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-20"><i class="fa fa-check"></i><b>14.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#summarize"><i class="fa fa-check"></i><b>14.5</b> Computing summary statistics</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-21"><i class="fa fa-check"></i><b>14.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#sort"><i class="fa fa-check"></i><b>14.6</b> Sorting observations</a>
+<ul>
+<li class="chapter" data-level="14.6.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-22"><i class="fa fa-check"></i><b>14.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.7" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#mutate"><i class="fa fa-check"></i><b>14.7</b> Creating new variables</a>
+<ul>
+<li class="chapter" data-level="14.7.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-23"><i class="fa fa-check"></i><b>14.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.8" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#putting-it-altogether"><i class="fa fa-check"></i><b>14.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="14.9" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#exercises-8"><i class="fa fa-check"></i><b>14.9</b> Exercises</a></li>
+<li class="chapter" data-level="14.10" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#additional-resources-3"><i class="fa fa-check"></i><b>14.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html"><i class="fa fa-check"></i><b>15</b> Lesson 3c: Tidy data</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#learning-objectives-13"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="15.2" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#prerequisites-1"><i class="fa fa-check"></i><b>15.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="15.3" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-wide-data-longer"><i class="fa fa-check"></i><b>15.3</b> Making wide data longer</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-24"><i class="fa fa-check"></i><b>15.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-long-data-wider"><i class="fa fa-check"></i><b>15.4</b> Making long data wider</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-25"><i class="fa fa-check"></i><b>15.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#separate-one-variable-into-multiple"><i class="fa fa-check"></i><b>15.5</b> Separate one variable into multiple</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-26"><i class="fa fa-check"></i><b>15.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#combine-multiple-variables-into-one"><i class="fa fa-check"></i><b>15.6</b> Combine multiple variables into one</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-27"><i class="fa fa-check"></i><b>15.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-tidying-functions"><i class="fa fa-check"></i><b>15.7</b> Additional tidying functions</a></li>
+<li class="chapter" data-level="15.8" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#putting-it-altogether-1"><i class="fa fa-check"></i><b>15.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="15.9" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#exercises-9"><i class="fa fa-check"></i><b>15.9</b> Exercises</a></li>
+<li class="chapter" data-level="15.10" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-resources-4"><i class="fa fa-check"></i><b>15.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="lab-2.html"><a href="lab-2.html"><i class="fa fa-check"></i><b>16</b> Lab</a></li>
+<li class="part"><span><b>IV Module 4</b></span></li>
+<li class="chapter" data-level="17" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>17</b> Overview</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-14"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>17.2</b> Tasks</a></li>
+<li class="chapter" data-level="17.3" data-path="overview-3.html"><a href="overview-3.html#course-readings-3"><i class="fa fa-check"></i><b>17.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html"><i class="fa fa-check"></i><b>18</b> Lesson 4a: Relational data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#learning-objectives-15"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="18.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#prerequisites-2"><i class="fa fa-check"></i><b>18.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="18.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#keys"><i class="fa fa-check"></i><b>18.3</b> Keys</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-28"><i class="fa fa-check"></i><b>18.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>18.4</b> Mutating joins</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#inner-join"><i class="fa fa-check"></i><b>18.4.1</b> Inner join</a></li>
+<li class="chapter" data-level="18.4.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#outer-joins"><i class="fa fa-check"></i><b>18.4.2</b> Outer joins</a></li>
+<li class="chapter" data-level="18.4.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#differing-keys"><i class="fa fa-check"></i><b>18.4.3</b> Differing keys</a></li>
+<li class="chapter" data-level="18.4.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example"><i class="fa fa-check"></i><b>18.4.4</b> Bigger example</a></li>
+<li class="chapter" data-level="18.4.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-29"><i class="fa fa-check"></i><b>18.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>18.5</b> Filtering joins</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#semi-join"><i class="fa fa-check"></i><b>18.5.1</b> Semi join</a></li>
+<li class="chapter" data-level="18.5.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#anti-join"><i class="fa fa-check"></i><b>18.5.2</b> Anti join</a></li>
+<li class="chapter" data-level="18.5.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example-1"><i class="fa fa-check"></i><b>18.5.3</b> Bigger example</a></li>
+<li class="chapter" data-level="18.5.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-30"><i class="fa fa-check"></i><b>18.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#exercises-10"><i class="fa fa-check"></i><b>18.6</b> Exercises</a></li>
+<li class="chapter" data-level="18.7" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#additional-resources-5"><i class="fa fa-check"></i><b>18.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html"><i class="fa fa-check"></i><b>19</b> Lesson 4b: Handling text data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#learning-objectives-16"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="19.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#prerequisites-3"><i class="fa fa-check"></i><b>19.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="19.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#string-basics"><i class="fa fa-check"></i><b>19.3</b> String basics</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#case-conversion"><i class="fa fa-check"></i><b>19.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="19.3.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#counting-characters"><i class="fa fa-check"></i><b>19.3.2</b> Counting characters</a></li>
+<li class="chapter" data-level="19.3.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#extracting-parts-of-character-strings"><i class="fa fa-check"></i><b>19.3.3</b> Extracting parts of character strings</a></li>
+<li class="chapter" data-level="19.3.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-31"><i class="fa fa-check"></i><b>19.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regular-expressions"><i class="fa fa-check"></i><b>19.4</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regex-basics"><i class="fa fa-check"></i><b>19.4.1</b> Regex basics</a></li>
+<li class="chapter" data-level="19.4.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#multiple-words"><i class="fa fa-check"></i><b>19.4.2</b> Multiple Words</a></li>
+<li class="chapter" data-level="19.4.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#line-anchors"><i class="fa fa-check"></i><b>19.4.3</b> Line anchors</a></li>
+<li class="chapter" data-level="19.4.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#metacharacters"><i class="fa fa-check"></i><b>19.4.4</b> Metacharacters</a></li>
+<li class="chapter" data-level="19.4.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#character-classes"><i class="fa fa-check"></i><b>19.4.5</b> Character classes</a></li>
+<li class="chapter" data-level="19.4.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#shorthand-character-classes"><i class="fa fa-check"></i><b>19.4.6</b> Shorthand character classes</a></li>
+<li class="chapter" data-level="19.4.7" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#posix-character-classes"><i class="fa fa-check"></i><b>19.4.7</b> POSIX character classes</a></li>
+<li class="chapter" data-level="19.4.8" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#repetition"><i class="fa fa-check"></i><b>19.4.8</b> Repetition</a></li>
+<li class="chapter" data-level="19.4.9" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#putting-it-altogether-2"><i class="fa fa-check"></i><b>19.4.9</b> Putting it altogether</a></li>
+<li class="chapter" data-level="19.4.10" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-32"><i class="fa fa-check"></i><b>19.4.10</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#exercises-11"><i class="fa fa-check"></i><b>19.5</b> Exercises</a></li>
+<li class="chapter" data-level="19.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#additional-resources-6"><i class="fa fa-check"></i><b>19.6</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html"><i class="fa fa-check"></i><b>20</b> Lesson 4c: Handling dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#learning-objectives-17"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="20.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#prerequisites-4"><i class="fa fa-check"></i><b>20.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="20.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#getting-current-date-time"><i class="fa fa-check"></i><b>20.3</b> Getting current date &amp; time</a></li>
+<li class="chapter" data-level="20.4" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#creating-dates"><i class="fa fa-check"></i><b>20.4</b> Creating dates</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#convert-strings-to-dates"><i class="fa fa-check"></i><b>20.4.1</b> Convert strings to dates</a></li>
+<li class="chapter" data-level="20.4.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#create-dates-by-merging-data"><i class="fa fa-check"></i><b>20.4.2</b> Create dates by merging data</a></li>
+<li class="chapter" data-level="20.4.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-33"><i class="fa fa-check"></i><b>20.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#extract-manipulate-parts-of-dates"><i class="fa fa-check"></i><b>20.5</b> Extract &amp; manipulate parts of dates</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-34"><i class="fa fa-check"></i><b>20.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#calculations-with-dates"><i class="fa fa-check"></i><b>20.6</b> Calculations with dates</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#durations"><i class="fa fa-check"></i><b>20.6.1</b> Durations</a></li>
+<li class="chapter" data-level="20.6.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#periods"><i class="fa fa-check"></i><b>20.6.2</b> Periods</a></li>
+<li class="chapter" data-level="20.6.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-35"><i class="fa fa-check"></i><b>20.6.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#exercises-12"><i class="fa fa-check"></i><b>20.7</b> Exercises</a></li>
+<li class="chapter" data-level="20.8" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#additional-resources-7"><i class="fa fa-check"></i><b>20.8</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="lab-3.html"><a href="lab-3.html"><i class="fa fa-check"></i><b>21</b> Lab</a></li>
+<li class="part"><span><b>V Module 5</b></span></li>
+<li class="chapter" data-level="22" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>22</b> Overview</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-18"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="22.2" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>22.2</b> Tasks</a></li>
+<li class="chapter" data-level="22.3" data-path="overview-4.html"><a href="overview-4.html#course-readings-4"><i class="fa fa-check"></i><b>22.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>23</b> Lesson 5a: Introduction to ggplot2</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#learning-objectives-19"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="23.2" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#prerequisites-5"><i class="fa fa-check"></i><b>23.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="23.3" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#grammar-of-graphics"><i class="fa fa-check"></i><b>23.3</b> Grammar of Graphics</a></li>
+<li class="chapter" data-level="23.4" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#the-basics"><i class="fa fa-check"></i><b>23.4</b> The Basics</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-36"><i class="fa fa-check"></i><b>23.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#aesthetic-mappings"><i class="fa fa-check"></i><b>23.5</b> Aesthetic Mappings</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-37"><i class="fa fa-check"></i><b>23.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#specifying-geometric-shapes"><i class="fa fa-check"></i><b>23.6</b> Specifying Geometric Shapes</a>
+<ul>
+<li class="chapter" data-level="23.6.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-38"><i class="fa fa-check"></i><b>23.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.7" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#statistical-transformations"><i class="fa fa-check"></i><b>23.7</b> Statistical Transformations</a>
+<ul>
+<li class="chapter" data-level="23.7.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-39"><i class="fa fa-check"></i><b>23.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.8" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#position-adjustments"><i class="fa fa-check"></i><b>23.8</b> Position Adjustments</a>
+<ul>
+<li class="chapter" data-level="23.8.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-40"><i class="fa fa-check"></i><b>23.8.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.9" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#managing-scales"><i class="fa fa-check"></i><b>23.9</b> Managing Scales</a>
+<ul>
+<li class="chapter" data-level="23.9.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-41"><i class="fa fa-check"></i><b>23.9.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.10" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#coordinate-systems"><i class="fa fa-check"></i><b>23.10</b> Coordinate Systems</a>
+<ul>
+<li class="chapter" data-level="23.10.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-42"><i class="fa fa-check"></i><b>23.10.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.11" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#facets"><i class="fa fa-check"></i><b>23.11</b> Facets</a>
+<ul>
+<li class="chapter" data-level="23.11.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-43"><i class="fa fa-check"></i><b>23.11.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.12" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#labels-annotations"><i class="fa fa-check"></i><b>23.12</b> Labels &amp; Annotations</a>
+<ul>
+<li class="chapter" data-level="23.12.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-44"><i class="fa fa-check"></i><b>23.12.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.13" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#exercises-13"><i class="fa fa-check"></i><b>23.13</b> Exercises</a></li>
+<li class="chapter" data-level="23.14" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#additional-resources-on-ggplot2"><i class="fa fa-check"></i><b>23.14</b> Additional Resources on <strong>ggplot2</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html"><i class="fa fa-check"></i><b>24</b> Lesson 5b: Handling factors</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#learning-objectives-20"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#prerequisites-6"><i class="fa fa-check"></i><b>24.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="24.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#creating-factors-inspecting-factors"><i class="fa fa-check"></i><b>24.3</b> Creating factors &amp; inspecting factors</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#some-basics"><i class="fa fa-check"></i><b>24.3.1</b> Some basics</a></li>
+<li class="chapter" data-level="24.3.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#factors-in-data-frames"><i class="fa fa-check"></i><b>24.3.2</b> Factors in data frames</a></li>
+<li class="chapter" data-level="24.3.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#ordinal-factors"><i class="fa fa-check"></i><b>24.3.3</b> Ordinal factors</a></li>
+<li class="chapter" data-level="24.3.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-45"><i class="fa fa-check"></i><b>24.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-order"><i class="fa fa-check"></i><b>24.4</b> Modifying factor order</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-46"><i class="fa fa-check"></i><b>24.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.5" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-levels"><i class="fa fa-check"></i><b>24.5</b> Modifying factor levels</a>
+<ul>
+<li class="chapter" data-level="24.5.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-47"><i class="fa fa-check"></i><b>24.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.6" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#exercises-14"><i class="fa fa-check"></i><b>24.6</b> Exercises</a></li>
+<li class="chapter" data-level="24.7" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#additional-resources-8"><i class="fa fa-check"></i><b>24.7</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html"><i class="fa fa-check"></i><b>25</b> Lesson 5c: Visual data exploration</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#learning-objectives-21"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#prerequisites-7"><i class="fa fa-check"></i><b>25.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="25.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#univariate-distributions"><i class="fa fa-check"></i><b>25.3</b> Univariate Distributions</a>
+<ul>
+<li class="chapter" data-level="25.3.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#histograms"><i class="fa fa-check"></i><b>25.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="25.3.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>25.3.2</b> Quantile-quantile plots</a></li>
+<li class="chapter" data-level="25.3.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#box-plots"><i class="fa fa-check"></i><b>25.3.3</b> Box plots</a></li>
+<li class="chapter" data-level="25.3.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#categorical-variables"><i class="fa fa-check"></i><b>25.3.4</b> Categorical variables</a></li>
+<li class="chapter" data-level="25.3.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bar-charts"><i class="fa fa-check"></i><b>25.3.5</b> Bar charts</a></li>
+<li class="chapter" data-level="25.3.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#dot-plots"><i class="fa fa-check"></i><b>25.3.6</b> Dot plots</a></li>
+<li class="chapter" data-level="25.3.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#pie-charts"><i class="fa fa-check"></i><b>25.3.7</b> Pie charts</a></li>
+<li class="chapter" data-level="25.3.8" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-48"><i class="fa fa-check"></i><b>25.3.8</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="25.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bivariate-relationships"><i class="fa fa-check"></i><b>25.4</b> Bivariate relationships</a>
+<ul>
+<li class="chapter" data-level="25.4.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#scatter-plots"><i class="fa fa-check"></i><b>25.4.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="25.4.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#strip-plots"><i class="fa fa-check"></i><b>25.4.2</b> Strip plots</a></li>
+<li class="chapter" data-level="25.4.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#overlays-faceting"><i class="fa fa-check"></i><b>25.4.3</b> Overlays &amp; faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="25.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#multivariate-relationships"><i class="fa fa-check"></i><b>25.5</b> Multivariate relationships</a>
+<ul>
+<li class="chapter" data-level="25.5.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#layering-variables"><i class="fa fa-check"></i><b>25.5.1</b> Layering variables</a></li>
+<li class="chapter" data-level="25.5.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#parallel-coordinate-plots"><i class="fa fa-check"></i><b>25.5.2</b> Parallel coordinate plots</a></li>
+<li class="chapter" data-level="25.5.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#mosaic-plots"><i class="fa fa-check"></i><b>25.5.3</b> Mosaic plots</a></li>
+<li class="chapter" data-level="25.5.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#tree-maps"><i class="fa fa-check"></i><b>25.5.4</b> Tree maps</a></li>
+<li class="chapter" data-level="25.5.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#heat-maps"><i class="fa fa-check"></i><b>25.5.5</b> Heat maps</a></li>
+<li class="chapter" data-level="25.5.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#generalized-pairs-plot"><i class="fa fa-check"></i><b>25.5.6</b> Generalized pairs plot</a></li>
+<li class="chapter" data-level="25.5.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-49"><i class="fa fa-check"></i><b>25.5.7</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="25.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#data-quality"><i class="fa fa-check"></i><b>25.6</b> Data quality</a>
+<ul>
+<li class="chapter" data-level="25.6.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-50"><i class="fa fa-check"></i><b>25.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="25.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#exercise"><i class="fa fa-check"></i><b>25.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="lab-4.html"><a href="lab-4.html"><i class="fa fa-check"></i><b>26</b> Lab</a></li>
+<li class="part"><span><b>VI Module 6</b></span></li>
+<li class="chapter" data-level="27" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>27</b> Overview</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-22"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="27.2" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>27.2</b> Tasks</a></li>
+<li class="chapter" data-level="27.3" data-path="overview-5.html"><a href="overview-5.html#course-readings-5"><i class="fa fa-check"></i><b>27.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html"><i class="fa fa-check"></i><b>28</b> Lesson 6a: Conditional statements</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#learning-objectives-23"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="28.2" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#prerequisites-8"><i class="fa fa-check"></i><b>28.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="28.3" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#if-statement"><i class="fa fa-check"></i><b>28.3</b> <code>if</code> statement</a>
+<ul>
+<li class="chapter" data-level="28.3.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-51"><i class="fa fa-check"></i><b>28.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="28.4" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#ifelse-statement"><i class="fa fa-check"></i><b>28.4</b> <code>ifelse</code> statement</a>
+<ul>
+<li class="chapter" data-level="28.4.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-52"><i class="fa fa-check"></i><b>28.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="28.5" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#multiple-conditions"><i class="fa fa-check"></i><b>28.5</b> Multiple conditions</a>
+<ul>
+<li class="chapter" data-level="28.5.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-53"><i class="fa fa-check"></i><b>28.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="28.6" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#vectorized-approaches"><i class="fa fa-check"></i><b>28.6</b> Vectorized approaches</a>
+<ul>
+<li class="chapter" data-level="28.6.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-54"><i class="fa fa-check"></i><b>28.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="28.7" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#with-data-frames"><i class="fa fa-check"></i><b>28.7</b> With data frames</a>
+<ul>
+<li class="chapter" data-level="28.7.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-55"><i class="fa fa-check"></i><b>28.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="28.8" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#exercises-15"><i class="fa fa-check"></i><b>28.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html"><i class="fa fa-check"></i><b>29</b> Lesson 6b: Iteration statements</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#learning-objectives-24"><i class="fa fa-check"></i><b>29.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="29.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#for-loops"><i class="fa fa-check"></i><b>29.2</b> <code>for</code> loops</a>
+<ul>
+<li class="chapter" data-level="29.2.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-56"><i class="fa fa-check"></i><b>29.2.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#controlling-sequences"><i class="fa fa-check"></i><b>29.3</b> Controlling sequences</a>
+<ul>
+<li class="chapter" data-level="29.3.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-57"><i class="fa fa-check"></i><b>29.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeating-code-for-undefined-number-of-iterations"><i class="fa fa-check"></i><b>29.4</b> Repeating code for undefined number of iterations</a>
+<ul>
+<li class="chapter" data-level="29.4.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#while-loop"><i class="fa fa-check"></i><b>29.4.1</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="29.4.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeat-loop"><i class="fa fa-check"></i><b>29.4.2</b> <code>repeat</code> loop</a></li>
+<li class="chapter" data-level="29.4.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-58"><i class="fa fa-check"></i><b>29.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#iteration-with-functional-programming"><i class="fa fa-check"></i><b>29.5</b> Iteration with functional programming</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-59"><i class="fa fa-check"></i><b>29.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="29.6" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#exercises-16"><i class="fa fa-check"></i><b>29.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html"><i class="fa fa-check"></i><b>30</b> Lesson 6c: Writing functions</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#learning-objectives-25"><i class="fa fa-check"></i><b>30.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="30.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#when-to-write-functions"><i class="fa fa-check"></i><b>30.2</b> When to write functions</a></li>
+<li class="chapter" data-level="30.3" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-components"><i class="fa fa-check"></i><b>30.3</b> Function components</a>
+<ul>
+<li class="chapter" data-level="30.3.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-60"><i class="fa fa-check"></i><b>30.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="30.4" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-arguments"><i class="fa fa-check"></i><b>30.4</b> Function arguments</a>
+<ul>
+<li class="chapter" data-level="30.4.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-61"><i class="fa fa-check"></i><b>30.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="30.5" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#checking-arguments-and-other-conditions"><i class="fa fa-check"></i><b>30.5</b> Checking arguments and other conditions</a>
+<ul>
+<li class="chapter" data-level="30.5.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-62"><i class="fa fa-check"></i><b>30.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="30.6" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#lazy-evaluation"><i class="fa fa-check"></i><b>30.6</b> Lazy evaluation</a></li>
+<li class="chapter" data-level="30.7" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#status-updates"><i class="fa fa-check"></i><b>30.7</b> Status updates</a>
+<ul>
+<li class="chapter" data-level="30.7.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-1-base-r"><i class="fa fa-check"></i><b>30.7.1</b> Option 1: Base R</a></li>
+<li class="chapter" data-level="30.7.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-2-progress-package"><i class="fa fa-check"></i><b>30.7.2</b> Option 2: <code>progress</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="30.8" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#distributing-your-functions"><i class="fa fa-check"></i><b>30.8</b> Distributing your functions</a></li>
+<li class="chapter" data-level="30.9" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#exercises-17"><i class="fa fa-check"></i><b>30.9</b> Exercises</a></li>
+<li class="chapter" data-level="30.10" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#additional-resources-9"><i class="fa fa-check"></i><b>30.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="lab-5.html"><a href="lab-5.html"><i class="fa fa-check"></i><b>31</b> Lab</a></li>
+<li class="part"><span><b>VII Module 7</b></span></li>
+<li class="chapter" data-level="32" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>32</b> Overview</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-26"><i class="fa fa-check"></i><b>32.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="32.2" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>32.2</b> Tasks</a></li>
+<li class="chapter" data-level="32.3" data-path="overview-6.html"><a href="overview-6.html#course-readings-6"><i class="fa fa-check"></i><b>32.3</b> Course readings</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="lesson-1.html"><a href="lesson-1.html"><i class="fa fa-check"></i><b>33</b> Lesson 1</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="lesson-1.html"><a href="lesson-1.html#learning-objectives-27"><i class="fa fa-check"></i><b>33.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="33.2" data-path="lesson-1.html"><a href="lesson-1.html#content-a"><i class="fa fa-check"></i><b>33.2</b> Content A</a></li>
+<li class="chapter" data-level="33.3" data-path="lesson-1.html"><a href="lesson-1.html#content-b"><i class="fa fa-check"></i><b>33.3</b> Content B</a></li>
+<li class="chapter" data-level="33.4" data-path="lesson-1.html"><a href="lesson-1.html#exercises-18"><i class="fa fa-check"></i><b>33.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="lesson-2.html"><a href="lesson-2.html"><i class="fa fa-check"></i><b>34</b> Lesson 2</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="lesson-2.html"><a href="lesson-2.html#learning-objectives-28"><i class="fa fa-check"></i><b>34.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="34.2" data-path="lesson-2.html"><a href="lesson-2.html#content-a-1"><i class="fa fa-check"></i><b>34.2</b> Content A</a></li>
+<li class="chapter" data-level="34.3" data-path="lesson-2.html"><a href="lesson-2.html#content-b-1"><i class="fa fa-check"></i><b>34.3</b> Content B</a></li>
+<li class="chapter" data-level="34.4" data-path="lesson-2.html"><a href="lesson-2.html#exercises-19"><i class="fa fa-check"></i><b>34.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>35</b> Lab</a></li>
+<li class="part"><span><b>VIII Additional Content</b></span></li>
+<li class="chapter" data-level="" data-path="computing-environment-1.html"><a href="computing-environment-1.html"><i class="fa fa-check"></i>Computing Environment</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-6c-writing-functions" class="section level1 hasAnchor" number="30">
+<h1><span class="header-section-number">30</span> Lesson 6c: Writing functions<a href="lesson-6c-writing-functions.html#lesson-6c-writing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>R is a functional programming language, meaning that everything you do is basically built on functions. However, moving beyond simply using pre-built functions to writing your own functions is when your capabilities really start to take off and your code development/writing takes on a new level of efficiency. Functions allow you to reduce code duplication by automating a generalized task to be applied recursively. Whenever you catch yourself repeating a function or copy and pasting code there is a good change that you should write a function to eliminate the redundancies.</p>
+<p>Unfortunately, due to their abstractness, grasping the idea of writing functions (let alone writing them well) can take some time. However, in this lesson I provide you with the basic knowledge of how functions operate in R to get you started on the right path.</p>
+<div id="learning-objectives-25" class="section level2 hasAnchor" number="30.1">
+<h2><span class="header-section-number">30.1</span> Learning objectives<a href="lesson-6c-writing-functions.html#learning-objectives-25" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul>
+<li>Identify when you should re-write code into a function.</li>
+<li>Understand the general components of functions.</li>
+<li>Allow users of your functions to specify function arguments in different ways.</li>
+<li>Incorporate messages, warnings, and error handling into your functions.</li>
+<li>Use evaluation rules so arguments can be used only when necessary.</li>
+<li>Save &amp; source your own functions for reuse.</li>
+</ul>
+</div>
+<div id="when-to-write-functions" class="section level2 hasAnchor" number="30.2">
+<h2><span class="header-section-number">30.2</span> When to write functions<a href="lesson-6c-writing-functions.html#when-to-write-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="note">
+<p>
+This section is taken directly from <a
+href="http://r4ds.had.co.nz/">R for Data Science</a> by Garrett
+Grolemund and Hadley Wickham and is a great example of how to first
+start thinking about functions.
+</p>
+</div>
+<p>You should consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e. you now have three copies of the same code). For example, take a look at this code. What does it do?</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="lesson-6c-writing-functions.html#cb420-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb420-2"><a href="lesson-6c-writing-functions.html#cb420-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb420-3"><a href="lesson-6c-writing-functions.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb420-4"><a href="lesson-6c-writing-functions.html#cb420-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb420-5"><a href="lesson-6c-writing-functions.html#cb420-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb420-6"><a href="lesson-6c-writing-functions.html#cb420-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb420-7"><a href="lesson-6c-writing-functions.html#cb420-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-8"><a href="lesson-6c-writing-functions.html#cb420-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>a <span class="ot">&lt;-</span> (df<span class="sc">$</span>a <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> </span>
+<span id="cb420-9"><a href="lesson-6c-writing-functions.html#cb420-9" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">max</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb420-10"><a href="lesson-6c-writing-functions.html#cb420-10" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>b <span class="ot">&lt;-</span> (df<span class="sc">$</span>b <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>b, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> </span>
+<span id="cb420-11"><a href="lesson-6c-writing-functions.html#cb420-11" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">max</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>b, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb420-12"><a href="lesson-6c-writing-functions.html#cb420-12" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>c <span class="ot">&lt;-</span> (df<span class="sc">$</span>c <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> </span>
+<span id="cb420-13"><a href="lesson-6c-writing-functions.html#cb420-13" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">max</span>(df<span class="sc">$</span>c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>c, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb420-14"><a href="lesson-6c-writing-functions.html#cb420-14" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>d <span class="ot">&lt;-</span> (df<span class="sc">$</span>d <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>d, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> </span>
+<span id="cb420-15"><a href="lesson-6c-writing-functions.html#cb420-15" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">max</span>(df<span class="sc">$</span>d, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>d, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<p>You might be able to puzzle out that this rescales each column to have a range from 0 to 1. But did you spot the mistake? I made an error when copying-and-pasting the code for <code>df$b</code>: I forgot to change an <code>a</code> to a <code>b</code>. Extracting repeated code out into a function is a good idea because it prevents you from making this type of mistake.</p>
+<p>To write a function you need to first analyze the code. How many inputs does it have?</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="lesson-6c-writing-functions.html#cb421-1" aria-hidden="true" tabindex="-1"></a>(df<span class="sc">$</span>a <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span></span>
+<span id="cb421-2"><a href="lesson-6c-writing-functions.html#cb421-2" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">max</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(df<span class="sc">$</span>a, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<p>This code only has one input: <code>df$a</code>. (It’s a little suprisingly that <code>TRUE</code> is not an input: you can explore why in the exercise below). To make the single input more clear, it’s a good idea to rewrite the code using temporary variables with a general name. Here this function only takes one vector of input, so I’ll call it <code>x</code>:</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="lesson-6c-writing-functions.html#cb422-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb422-2"><a href="lesson-6c-writing-functions.html#cb422-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">-</span> <span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> (<span class="fu">max</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">min</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb422-3"><a href="lesson-6c-writing-functions.html#cb422-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.00000 0.11111 0.22222 0.33333 0.44444 0.55556 0.66667 0.77778 0.88889 1.00000</span></span></code></pre></div>
+<p>There is some duplication in this code. We’re computing the range of the data three times, but it makes sense to do it in one step:</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="lesson-6c-writing-functions.html#cb423-1" aria-hidden="true" tabindex="-1"></a>rng <span class="ot">&lt;-</span> <span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb423-2"><a href="lesson-6c-writing-functions.html#cb423-2" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">-</span> rng[<span class="dv">1</span>]) <span class="sc">/</span> (rng[<span class="dv">2</span>] <span class="sc">-</span> rng[<span class="dv">1</span>])</span>
+<span id="cb423-3"><a href="lesson-6c-writing-functions.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.00000 0.11111 0.22222 0.33333 0.44444 0.55556 0.66667 0.77778 0.88889 1.00000</span></span></code></pre></div>
+<p>Pulling out intermediate calculations into named variables is a good practice because it makes it more clear what the code is doing. Now that I’ve simplified the code, and checked that it still works, I can turn it into a function:</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="lesson-6c-writing-functions.html#cb424-1" aria-hidden="true" tabindex="-1"></a>rescale01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb424-2"><a href="lesson-6c-writing-functions.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  rng <span class="ot">&lt;-</span> <span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb424-3"><a href="lesson-6c-writing-functions.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> rng[<span class="dv">1</span>]) <span class="sc">/</span> (rng[<span class="dv">2</span>] <span class="sc">-</span> rng[<span class="dv">1</span>])</span>
+<span id="cb424-4"><a href="lesson-6c-writing-functions.html#cb424-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb424-5"><a href="lesson-6c-writing-functions.html#cb424-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-6"><a href="lesson-6c-writing-functions.html#cb424-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rescale01</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>))</span>
+<span id="cb424-7"><a href="lesson-6c-writing-functions.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.0 0.5 1.0</span></span></code></pre></div>
+</div>
+<div id="function-components" class="section level2 hasAnchor" number="30.3">
+<h2><span class="header-section-number">30.3</span> Function components<a href="lesson-6c-writing-functions.html#function-components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>With the exception of primitive functions all R functions have three parts:</p>
+<ul>
+<li><code>body()</code>: the code inside the function</li>
+<li><code>formals()</code>: the list of arguments used to call the function</li>
+<li><code>environment()</code>: the mapping of the location(s) of the function’s variables</li>
+</ul>
+<p>In most of the subsequent examples, we will be using the transaction table from the Complete Journey data.</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="lesson-6c-writing-functions.html#cb425-1" aria-hidden="true" tabindex="-1"></a>transactions <span class="ot">&lt;-</span> completejourney<span class="sc">::</span>transactions_sample</span></code></pre></div>
+<p>To illustrate the function components we talked about, let’s build a function that finds the total sales for a store, for a given week. In the function that follows, the body of the function includes the summation equation that needs to be calculated, and then rounded to two decimals. The formals (or arguments) required for the function are the <code>store_id</code>, and the specific <code>week</code> for which we need the sales. And the environment shows that function operates in the global environment.</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="lesson-6c-writing-functions.html#cb426-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="cf">function</span>(store, week) {</span>
+<span id="cb426-2"><a href="lesson-6c-writing-functions.html#cb426-2" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb426-3"><a href="lesson-6c-writing-functions.html#cb426-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># aggregation function     </span></span>
+<span id="cb426-4"><a href="lesson-6c-writing-functions.html#cb426-4" aria-hidden="true" tabindex="-1"></a>   store_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb426-5"><a href="lesson-6c-writing-functions.html#cb426-5" aria-hidden="true" tabindex="-1"></a>      transactions<span class="sc">$</span>sales_value,</span>
+<span id="cb426-6"><a href="lesson-6c-writing-functions.html#cb426-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="fu">list</span>(</span>
+<span id="cb426-7"><a href="lesson-6c-writing-functions.html#cb426-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">store_id =</span> transactions<span class="sc">$</span>store_id,</span>
+<span id="cb426-8"><a href="lesson-6c-writing-functions.html#cb426-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">week =</span> transactions<span class="sc">$</span>week), <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span></span>
+<span id="cb426-9"><a href="lesson-6c-writing-functions.html#cb426-9" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb426-10"><a href="lesson-6c-writing-functions.html#cb426-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb426-11"><a href="lesson-6c-writing-functions.html#cb426-11" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get result for relevant store &amp; week</span></span>
+<span id="cb426-12"><a href="lesson-6c-writing-functions.html#cb426-12" aria-hidden="true" tabindex="-1"></a>   valid_store <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>store_id <span class="sc">==</span> store</span>
+<span id="cb426-13"><a href="lesson-6c-writing-functions.html#cb426-13" aria-hidden="true" tabindex="-1"></a>   valid_week <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>week <span class="sc">==</span> week</span>
+<span id="cb426-14"><a href="lesson-6c-writing-functions.html#cb426-14" aria-hidden="true" tabindex="-1"></a>   result <span class="ot">&lt;-</span> store_sales[valid_store <span class="sc">&amp;</span> valid_week, <span class="st">&#39;x&#39;</span>]</span>
+<span id="cb426-15"><a href="lesson-6c-writing-functions.html#cb426-15" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb426-16"><a href="lesson-6c-writing-functions.html#cb426-16" aria-hidden="true" tabindex="-1"></a>   <span class="co"># round and return result</span></span>
+<span id="cb426-17"><a href="lesson-6c-writing-functions.html#cb426-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(result, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb426-18"><a href="lesson-6c-writing-functions.html#cb426-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb426-19"><a href="lesson-6c-writing-functions.html#cb426-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-20"><a href="lesson-6c-writing-functions.html#cb426-20" aria-hidden="true" tabindex="-1"></a><span class="fu">body</span>(sales)</span>
+<span id="cb426-21"><a href="lesson-6c-writing-functions.html#cb426-21" aria-hidden="true" tabindex="-1"></a><span class="do">## {</span></span>
+<span id="cb426-22"><a href="lesson-6c-writing-functions.html#cb426-22" aria-hidden="true" tabindex="-1"></a><span class="do">##     store_sales &lt;- aggregate(transactions$sales_value, by = list(store_id = transactions$store_id, </span></span>
+<span id="cb426-23"><a href="lesson-6c-writing-functions.html#cb426-23" aria-hidden="true" tabindex="-1"></a><span class="do">##         week = transactions$week), FUN = &quot;sum&quot;)</span></span>
+<span id="cb426-24"><a href="lesson-6c-writing-functions.html#cb426-24" aria-hidden="true" tabindex="-1"></a><span class="do">##     valid_store &lt;- store_sales$store_id == store</span></span>
+<span id="cb426-25"><a href="lesson-6c-writing-functions.html#cb426-25" aria-hidden="true" tabindex="-1"></a><span class="do">##     valid_week &lt;- store_sales$week == week</span></span>
+<span id="cb426-26"><a href="lesson-6c-writing-functions.html#cb426-26" aria-hidden="true" tabindex="-1"></a><span class="do">##     result &lt;- store_sales[valid_store &amp; valid_week, &quot;x&quot;]</span></span>
+<span id="cb426-27"><a href="lesson-6c-writing-functions.html#cb426-27" aria-hidden="true" tabindex="-1"></a><span class="do">##     round(result, digits = 2)</span></span>
+<span id="cb426-28"><a href="lesson-6c-writing-functions.html#cb426-28" aria-hidden="true" tabindex="-1"></a><span class="do">## }</span></span>
+<span id="cb426-29"><a href="lesson-6c-writing-functions.html#cb426-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-30"><a href="lesson-6c-writing-functions.html#cb426-30" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(sales)</span>
+<span id="cb426-31"><a href="lesson-6c-writing-functions.html#cb426-31" aria-hidden="true" tabindex="-1"></a><span class="do">## $store</span></span>
+<span id="cb426-32"><a href="lesson-6c-writing-functions.html#cb426-32" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb426-33"><a href="lesson-6c-writing-functions.html#cb426-33" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb426-34"><a href="lesson-6c-writing-functions.html#cb426-34" aria-hidden="true" tabindex="-1"></a><span class="do">## $week</span></span>
+<span id="cb426-35"><a href="lesson-6c-writing-functions.html#cb426-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-36"><a href="lesson-6c-writing-functions.html#cb426-36" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(sales)</span>
+<span id="cb426-37"><a href="lesson-6c-writing-functions.html#cb426-37" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;environment: R_GlobalEnv&gt;</span></span></code></pre></div>
+<div id="knowledge-check-60" class="section level3 hasAnchor" number="30.3.1">
+<h3><span class="header-section-number">30.3.1</span> Knowledge check<a href="lesson-6c-writing-functions.html#knowledge-check-60" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<p>
+Identify the arguments, body, and environment of:
+</p>
+<ol style="list-style-type: decimal">
+<li>
+<code>read.csv</code>
+</li>
+<li>
+<code>dplyr::add_count</code>
+</li>
+<li>
+<code>sum</code>
+</li>
+<li>
+Do one of the above functions behave a bit differently when you try
+to get the <code>body</code> and/or <code>environment</code>?
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="function-arguments" class="section level2 hasAnchor" number="30.4">
+<h2><span class="header-section-number">30.4</span> Function arguments<a href="lesson-6c-writing-functions.html#function-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To perform the <code>sales()</code> function we can call the arguments in different ways.</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="lesson-6c-writing-functions.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using argument names</span></span>
+<span id="cb427-2"><a href="lesson-6c-writing-functions.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="at">store =</span> <span class="dv">309</span>, <span class="at">week =</span> <span class="dv">31</span>)</span>
+<span id="cb427-3"><a href="lesson-6c-writing-functions.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 29.76</span></span>
+<span id="cb427-4"><a href="lesson-6c-writing-functions.html#cb427-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-5"><a href="lesson-6c-writing-functions.html#cb427-5" aria-hidden="true" tabindex="-1"></a><span class="co"># same as above but without using names (aka &quot;positional matching&quot;)</span></span>
+<span id="cb427-6"><a href="lesson-6c-writing-functions.html#cb427-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="dv">31</span>)</span>
+<span id="cb427-7"><a href="lesson-6c-writing-functions.html#cb427-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 29.76</span></span>
+<span id="cb427-8"><a href="lesson-6c-writing-functions.html#cb427-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-9"><a href="lesson-6c-writing-functions.html#cb427-9" aria-hidden="true" tabindex="-1"></a><span class="co"># if using names you can change the order</span></span>
+<span id="cb427-10"><a href="lesson-6c-writing-functions.html#cb427-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="at">week =</span> <span class="dv">31</span>, <span class="at">store =</span> <span class="dv">309</span>)</span>
+<span id="cb427-11"><a href="lesson-6c-writing-functions.html#cb427-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 29.76</span></span>
+<span id="cb427-12"><a href="lesson-6c-writing-functions.html#cb427-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb427-13"><a href="lesson-6c-writing-functions.html#cb427-13" aria-hidden="true" tabindex="-1"></a><span class="co"># if not using names you must insert arguments in proper order</span></span>
+<span id="cb427-14"><a href="lesson-6c-writing-functions.html#cb427-14" aria-hidden="true" tabindex="-1"></a><span class="co"># in this e.g. the function assumes store_id = 317, and week = 27</span></span>
+<span id="cb427-15"><a href="lesson-6c-writing-functions.html#cb427-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">317</span>, <span class="dv">27</span>)</span>
+<span id="cb427-16"><a href="lesson-6c-writing-functions.html#cb427-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 17.1</span></span></code></pre></div>
+<p>Note that when building a function you can also set default values for arguments. In our original <code>sales()</code>, we did not provide any default values, so if we do not supply all the argument parameters an error will be returned. However, if we set default values then the function will use the stated default if any parameters are missing:</p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="lesson-6c-writing-functions.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># missing the week argument</span></span>
+<span id="cb428-2"><a href="lesson-6c-writing-functions.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>)</span>
+<span id="cb428-3"><a href="lesson-6c-writing-functions.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in sales(309): argument &quot;week&quot; is missing, with no default</span></span>
+<span id="cb428-4"><a href="lesson-6c-writing-functions.html#cb428-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-5"><a href="lesson-6c-writing-functions.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="co"># creating default argument values</span></span>
+<span id="cb428-6"><a href="lesson-6c-writing-functions.html#cb428-6" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="cf">function</span>(store, <span class="at">week =</span> <span class="dv">52</span>) {</span>
+<span id="cb428-7"><a href="lesson-6c-writing-functions.html#cb428-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-8"><a href="lesson-6c-writing-functions.html#cb428-8" aria-hidden="true" tabindex="-1"></a>   <span class="co"># aggregation function</span></span>
+<span id="cb428-9"><a href="lesson-6c-writing-functions.html#cb428-9" aria-hidden="true" tabindex="-1"></a>   store_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb428-10"><a href="lesson-6c-writing-functions.html#cb428-10" aria-hidden="true" tabindex="-1"></a>      transactions<span class="sc">$</span>sales_value,</span>
+<span id="cb428-11"><a href="lesson-6c-writing-functions.html#cb428-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="fu">list</span>(</span>
+<span id="cb428-12"><a href="lesson-6c-writing-functions.html#cb428-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">store_id =</span> transactions<span class="sc">$</span>store_id,</span>
+<span id="cb428-13"><a href="lesson-6c-writing-functions.html#cb428-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">week =</span> transactions<span class="sc">$</span>week), <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span></span>
+<span id="cb428-14"><a href="lesson-6c-writing-functions.html#cb428-14" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb428-15"><a href="lesson-6c-writing-functions.html#cb428-15" aria-hidden="true" tabindex="-1"></a>       </span>
+<span id="cb428-16"><a href="lesson-6c-writing-functions.html#cb428-16" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get result for relevant store &amp; week</span></span>
+<span id="cb428-17"><a href="lesson-6c-writing-functions.html#cb428-17" aria-hidden="true" tabindex="-1"></a>   valid_store <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>store_id <span class="sc">==</span> store</span>
+<span id="cb428-18"><a href="lesson-6c-writing-functions.html#cb428-18" aria-hidden="true" tabindex="-1"></a>   valid_week <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>week <span class="sc">==</span> week</span>
+<span id="cb428-19"><a href="lesson-6c-writing-functions.html#cb428-19" aria-hidden="true" tabindex="-1"></a>   result <span class="ot">&lt;-</span> store_sales[valid_store <span class="sc">&amp;</span> valid_week, <span class="st">&#39;x&#39;</span>]</span>
+<span id="cb428-20"><a href="lesson-6c-writing-functions.html#cb428-20" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb428-21"><a href="lesson-6c-writing-functions.html#cb428-21" aria-hidden="true" tabindex="-1"></a>   <span class="co"># round and return result</span></span>
+<span id="cb428-22"><a href="lesson-6c-writing-functions.html#cb428-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(result, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb428-23"><a href="lesson-6c-writing-functions.html#cb428-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb428-24"><a href="lesson-6c-writing-functions.html#cb428-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-25"><a href="lesson-6c-writing-functions.html#cb428-25" aria-hidden="true" tabindex="-1"></a><span class="co"># function will use default values</span></span>
+<span id="cb428-26"><a href="lesson-6c-writing-functions.html#cb428-26" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>)</span>
+<span id="cb428-27"><a href="lesson-6c-writing-functions.html#cb428-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6.49</span></span>
+<span id="cb428-28"><a href="lesson-6c-writing-functions.html#cb428-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-29"><a href="lesson-6c-writing-functions.html#cb428-29" aria-hidden="true" tabindex="-1"></a><span class="co"># specifying a different week value</span></span>
+<span id="cb428-30"><a href="lesson-6c-writing-functions.html#cb428-30" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="dv">48</span>)</span>
+<span id="cb428-31"><a href="lesson-6c-writing-functions.html#cb428-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 25.14</span></span></code></pre></div>
+<div id="knowledge-check-61" class="section level3 hasAnchor" number="30.4.1">
+<h3><span class="header-section-number">30.4.1</span> Knowledge check<a href="lesson-6c-writing-functions.html#knowledge-check-61" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Define a function titled ratio that takes arguments <code>x</code>
+and <code>y</code> and returns their ratio, <span class="math inline"><span class="math inline">\(\frac{x}{y}\)</span></span>.
+</li>
+<li>
+Now add a third variable <code>digits</code> that allows you to
+round the output to a specified decimal.
+</li>
+<li>
+Now set the default to 2.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="checking-arguments-and-other-conditions" class="section level2 hasAnchor" number="30.5">
+<h2><span class="header-section-number">30.5</span> Checking arguments and other conditions<a href="lesson-6c-writing-functions.html#checking-arguments-and-other-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ve created a function that allows users to specify their inputs. But how do we ensure they provide us with the right kind of inputs? Or what if we want to be able to provide some sort of feedback to the user?</p>
+<p>There are several ways to signal conditions to function users:</p>
+<ul>
+<li><code>stop()</code> &amp; <code>stopifnot()</code>: signal an error (no way for a function to continue and execution must stop)</li>
+<li><code>warning()</code>: signal a warning (something has gone wrong but the function has been able to at least partially recover.)</li>
+<li><code>message()</code>: signal an informative message (function works fine but user should be informed of something.)</li>
+</ul>
+<p>The stop functions are most commonly used to check for proper inputs but can be used to stop the function procedures because the user’s environment is not properly established. When applying <code>stop</code> we should always weigh the benefits of highly custom, informative error messages (via <code>stop</code>) versus short to the point (via <code>stopifnot</code>)</p>
+<div class="note">
+<p>
+When using the stop functions execution will stop at the first
+violation.
+</p>
+</div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="lesson-6c-writing-functions.html#cb429-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="cf">function</span>(store, <span class="at">week =</span> <span class="dv">52</span>) {</span>
+<span id="cb429-2"><a href="lesson-6c-writing-functions.html#cb429-2" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb429-3"><a href="lesson-6c-writing-functions.html#cb429-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># validate arguments</span></span>
+<span id="cb429-4"><a href="lesson-6c-writing-functions.html#cb429-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(store) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.numeric</span>(week)) {</span>
+<span id="cb429-5"><a href="lesson-6c-writing-functions.html#cb429-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;`store` and `week` arguments must be numeric values&quot;</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb429-6"><a href="lesson-6c-writing-functions.html#cb429-6" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb429-7"><a href="lesson-6c-writing-functions.html#cb429-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb429-8"><a href="lesson-6c-writing-functions.html#cb429-8" aria-hidden="true" tabindex="-1"></a>   <span class="co"># aggregation function</span></span>
+<span id="cb429-9"><a href="lesson-6c-writing-functions.html#cb429-9" aria-hidden="true" tabindex="-1"></a>   store_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb429-10"><a href="lesson-6c-writing-functions.html#cb429-10" aria-hidden="true" tabindex="-1"></a>      transactions<span class="sc">$</span>sales_value,</span>
+<span id="cb429-11"><a href="lesson-6c-writing-functions.html#cb429-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="fu">list</span>(</span>
+<span id="cb429-12"><a href="lesson-6c-writing-functions.html#cb429-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">store_id =</span> transactions<span class="sc">$</span>store_id,</span>
+<span id="cb429-13"><a href="lesson-6c-writing-functions.html#cb429-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">week =</span> transactions<span class="sc">$</span>week</span>
+<span id="cb429-14"><a href="lesson-6c-writing-functions.html#cb429-14" aria-hidden="true" tabindex="-1"></a>         ), <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span></span>
+<span id="cb429-15"><a href="lesson-6c-writing-functions.html#cb429-15" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb429-16"><a href="lesson-6c-writing-functions.html#cb429-16" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb429-17"><a href="lesson-6c-writing-functions.html#cb429-17" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get result for relevant store &amp; week</span></span>
+<span id="cb429-18"><a href="lesson-6c-writing-functions.html#cb429-18" aria-hidden="true" tabindex="-1"></a>   valid_store <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>store_id <span class="sc">==</span> store</span>
+<span id="cb429-19"><a href="lesson-6c-writing-functions.html#cb429-19" aria-hidden="true" tabindex="-1"></a>   valid_week <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>week <span class="sc">==</span> week</span>
+<span id="cb429-20"><a href="lesson-6c-writing-functions.html#cb429-20" aria-hidden="true" tabindex="-1"></a>   result <span class="ot">&lt;-</span> store_sales[valid_store <span class="sc">&amp;</span> valid_week, <span class="st">&#39;x&#39;</span>]</span>
+<span id="cb429-21"><a href="lesson-6c-writing-functions.html#cb429-21" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb429-22"><a href="lesson-6c-writing-functions.html#cb429-22" aria-hidden="true" tabindex="-1"></a>   <span class="co"># round result</span></span>
+<span id="cb429-23"><a href="lesson-6c-writing-functions.html#cb429-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(result, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb429-24"><a href="lesson-6c-writing-functions.html#cb429-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="lesson-6c-writing-functions.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># valid inputs</span></span>
+<span id="cb430-2"><a href="lesson-6c-writing-functions.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="dv">48</span>)</span>
+<span id="cb430-3"><a href="lesson-6c-writing-functions.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in match.fun(FUN): argument &quot;FUN&quot; is missing, with no default</span></span>
+<span id="cb430-4"><a href="lesson-6c-writing-functions.html#cb430-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-5"><a href="lesson-6c-writing-functions.html#cb430-5" aria-hidden="true" tabindex="-1"></a><span class="co"># invalid inputs</span></span>
+<span id="cb430-6"><a href="lesson-6c-writing-functions.html#cb430-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="st">&quot;48&quot;</span>)</span>
+<span id="cb430-7"><a href="lesson-6c-writing-functions.html#cb430-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Error: `store` and `week` arguments must be numeric values</span></span></code></pre></div>
+<p><code>warnings()</code> are rarely used but can be useful to signal non-terminating concerns such as:</p>
+<ul>
+<li>hyperparameter clashes in a grid search</li>
+<li>an extremely long compute time and the user may want to re-assess</li>
+<li>deprecated functions</li>
+<li>NAs, NULLs, Infs exist, which result in NA output</li>
+</ul>
+<p>For example, many of the <strong>lubridate</strong> functions throw a warning message if one of the dates in a vector are not in a standard date format that includes day, month and year:</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="lesson-6c-writing-functions.html#cb431-1" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">mdy</span>(<span class="fu">c</span>(<span class="st">&quot;2-1-2019&quot;</span>, <span class="st">&quot;1995&quot;</span>))</span>
+<span id="cb431-2"><a href="lesson-6c-writing-functions.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: 1 failed to parse.</span></span>
+<span id="cb431-3"><a href="lesson-6c-writing-functions.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2019-02-01&quot; NA</span></span></code></pre></div>
+<p>For example, say that we knew there was an issue with our data collection process for the last week of the year and incomplete sales data was reported. If we want to ensure users of our function are aware of this concern we could add a warning message.</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="lesson-6c-writing-functions.html#cb432-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="cf">function</span>(store, <span class="at">week =</span> <span class="dv">52</span>) {</span>
+<span id="cb432-2"><a href="lesson-6c-writing-functions.html#cb432-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-3"><a href="lesson-6c-writing-functions.html#cb432-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># add warning message</span></span>
+<span id="cb432-4"><a href="lesson-6c-writing-functions.html#cb432-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (week <span class="sc">==</span> <span class="dv">52</span>) {</span>
+<span id="cb432-5"><a href="lesson-6c-writing-functions.html#cb432-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">warning</span>(<span class="st">&quot;Due to EOY reporting issues week 52 has incomplete sales data&quot;</span>, </span>
+<span id="cb432-6"><a href="lesson-6c-writing-functions.html#cb432-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">call. =</span> <span class="cn">FALSE</span>)  </span>
+<span id="cb432-7"><a href="lesson-6c-writing-functions.html#cb432-7" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb432-8"><a href="lesson-6c-writing-functions.html#cb432-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb432-9"><a href="lesson-6c-writing-functions.html#cb432-9" aria-hidden="true" tabindex="-1"></a>   <span class="co"># check inputs</span></span>
+<span id="cb432-10"><a href="lesson-6c-writing-functions.html#cb432-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(store) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.numeric</span>(week)) {</span>
+<span id="cb432-11"><a href="lesson-6c-writing-functions.html#cb432-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;`store` and `week` arguments must be numeric values&quot;</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb432-12"><a href="lesson-6c-writing-functions.html#cb432-12" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb432-13"><a href="lesson-6c-writing-functions.html#cb432-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb432-14"><a href="lesson-6c-writing-functions.html#cb432-14" aria-hidden="true" tabindex="-1"></a>   <span class="co"># aggregation function</span></span>
+<span id="cb432-15"><a href="lesson-6c-writing-functions.html#cb432-15" aria-hidden="true" tabindex="-1"></a>   store_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb432-16"><a href="lesson-6c-writing-functions.html#cb432-16" aria-hidden="true" tabindex="-1"></a>      transactions<span class="sc">$</span>sales_value,</span>
+<span id="cb432-17"><a href="lesson-6c-writing-functions.html#cb432-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="fu">list</span>(</span>
+<span id="cb432-18"><a href="lesson-6c-writing-functions.html#cb432-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">store_id =</span> transactions<span class="sc">$</span>store_id,</span>
+<span id="cb432-19"><a href="lesson-6c-writing-functions.html#cb432-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">week =</span> transactions<span class="sc">$</span>week</span>
+<span id="cb432-20"><a href="lesson-6c-writing-functions.html#cb432-20" aria-hidden="true" tabindex="-1"></a>         ), <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span></span>
+<span id="cb432-21"><a href="lesson-6c-writing-functions.html#cb432-21" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb432-22"><a href="lesson-6c-writing-functions.html#cb432-22" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb432-23"><a href="lesson-6c-writing-functions.html#cb432-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get result for relevant store &amp; week</span></span>
+<span id="cb432-24"><a href="lesson-6c-writing-functions.html#cb432-24" aria-hidden="true" tabindex="-1"></a>   valid_store <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>store_id <span class="sc">==</span> store</span>
+<span id="cb432-25"><a href="lesson-6c-writing-functions.html#cb432-25" aria-hidden="true" tabindex="-1"></a>   valid_week <span class="ot">&lt;-</span> store_sales<span class="sc">$</span>week <span class="sc">==</span> week</span>
+<span id="cb432-26"><a href="lesson-6c-writing-functions.html#cb432-26" aria-hidden="true" tabindex="-1"></a>   result <span class="ot">&lt;-</span> store_sales[valid_store <span class="sc">&amp;</span> valid_week, <span class="st">&#39;x&#39;</span>]</span>
+<span id="cb432-27"><a href="lesson-6c-writing-functions.html#cb432-27" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb432-28"><a href="lesson-6c-writing-functions.html#cb432-28" aria-hidden="true" tabindex="-1"></a>   <span class="co"># round result</span></span>
+<span id="cb432-29"><a href="lesson-6c-writing-functions.html#cb432-29" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(result, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb432-30"><a href="lesson-6c-writing-functions.html#cb432-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb432-31"><a href="lesson-6c-writing-functions.html#cb432-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-32"><a href="lesson-6c-writing-functions.html#cb432-32" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="dv">52</span>)</span>
+<span id="cb432-33"><a href="lesson-6c-writing-functions.html#cb432-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Due to EOY reporting issues week 52 has incomplete sales data</span></span>
+<span id="cb432-34"><a href="lesson-6c-writing-functions.html#cb432-34" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6.49</span></span></code></pre></div>
+<p><code>message()</code> is designed to be informational and we use them to tell the user that you’ve done something on their behalf. Examples include:</p>
+<ul>
+<li><p>Setting default arguments that may be non-trivial</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="lesson-6c-writing-functions.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb433-2"><a href="lesson-6c-writing-functions.html#cb433-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb433-3"><a href="lesson-6c-writing-functions.html#cb433-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb433-4"><a href="lesson-6c-writing-functions.html#cb433-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_histogram</span>()</span>
+<span id="cb433-5"><a href="lesson-6c-writing-functions.html#cb433-5" aria-hidden="true" tabindex="-1"></a><span class="do">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-518-1.png" width="576" style="display: block; margin: auto;" /></p></li>
+<li><p>how information was interpreted by the function</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="lesson-6c-writing-functions.html#cb434-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;monthly_data&quot;</span>, <span class="st">&quot;Month-01.csv&quot;</span>))</span>
+<span id="cb434-2"><a href="lesson-6c-writing-functions.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 54535 Columns: 10</span></span>
+<span id="cb434-3"><a href="lesson-6c-writing-functions.html#cb434-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb434-4"><a href="lesson-6c-writing-functions.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb434-5"><a href="lesson-6c-writing-functions.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr  (4): Factor_C, Factor_E, Transaction_Status, Month</span></span>
+<span id="cb434-6"><a href="lesson-6c-writing-functions.html#cb434-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl  (5): Account_ID, Factor_A, Factor_B, Factor_D, Response</span></span>
+<span id="cb434-7"><a href="lesson-6c-writing-functions.html#cb434-7" aria-hidden="true" tabindex="-1"></a><span class="do">## dttm (1): Transaction_Timestamp</span></span>
+<span id="cb434-8"><a href="lesson-6c-writing-functions.html#cb434-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb434-9"><a href="lesson-6c-writing-functions.html#cb434-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb434-10"><a href="lesson-6c-writing-functions.html#cb434-10" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div></li>
+</ul>
+<p>Or any other reasons. In our case, we may want to signal to the user how many observations are being included in our aggregation.</p>
+<div class="tip">
+<p>
+When providing messages like the below, its always good practice to
+provide an option to suppress messages.
+</p>
+</div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="lesson-6c-writing-functions.html#cb435-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="cf">function</span>(store, <span class="at">week =</span> <span class="dv">52</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb435-2"><a href="lesson-6c-writing-functions.html#cb435-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb435-3"><a href="lesson-6c-writing-functions.html#cb435-3" aria-hidden="true" tabindex="-1"></a>   <span class="co"># add warning message</span></span>
+<span id="cb435-4"><a href="lesson-6c-writing-functions.html#cb435-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (week <span class="sc">==</span> <span class="dv">52</span>) {</span>
+<span id="cb435-5"><a href="lesson-6c-writing-functions.html#cb435-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">warning</span>(<span class="st">&quot;Due to EOY reporting issues week 52 has incomplete sales data&quot;</span>, </span>
+<span id="cb435-6"><a href="lesson-6c-writing-functions.html#cb435-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">call. =</span> <span class="cn">FALSE</span>)  </span>
+<span id="cb435-7"><a href="lesson-6c-writing-functions.html#cb435-7" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb435-8"><a href="lesson-6c-writing-functions.html#cb435-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb435-9"><a href="lesson-6c-writing-functions.html#cb435-9" aria-hidden="true" tabindex="-1"></a>   <span class="co"># check inputs</span></span>
+<span id="cb435-10"><a href="lesson-6c-writing-functions.html#cb435-10" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(store) <span class="sc">|</span> <span class="sc">!</span><span class="fu">is.numeric</span>(week)) {</span>
+<span id="cb435-11"><a href="lesson-6c-writing-functions.html#cb435-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">&quot;`store` and `week` arguments must be numeric values&quot;</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb435-12"><a href="lesson-6c-writing-functions.html#cb435-12" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb435-13"><a href="lesson-6c-writing-functions.html#cb435-13" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb435-14"><a href="lesson-6c-writing-functions.html#cb435-14" aria-hidden="true" tabindex="-1"></a>   <span class="co"># aggregation function</span></span>
+<span id="cb435-15"><a href="lesson-6c-writing-functions.html#cb435-15" aria-hidden="true" tabindex="-1"></a>   store_sales <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb435-16"><a href="lesson-6c-writing-functions.html#cb435-16" aria-hidden="true" tabindex="-1"></a>     transactions<span class="sc">$</span>sales_value,</span>
+<span id="cb435-17"><a href="lesson-6c-writing-functions.html#cb435-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">by =</span> <span class="fu">list</span>(</span>
+<span id="cb435-18"><a href="lesson-6c-writing-functions.html#cb435-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">store_id =</span> transactions<span class="sc">$</span>store_id, </span>
+<span id="cb435-19"><a href="lesson-6c-writing-functions.html#cb435-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">week =</span> transactions<span class="sc">$</span>week), <span class="at">FUN =</span> <span class="st">&quot;sum&quot;</span></span>
+<span id="cb435-20"><a href="lesson-6c-writing-functions.html#cb435-20" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb435-21"><a href="lesson-6c-writing-functions.html#cb435-21" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb435-22"><a href="lesson-6c-writing-functions.html#cb435-22" aria-hidden="true" tabindex="-1"></a>   <span class="co"># get n observations </span></span>
+<span id="cb435-23"><a href="lesson-6c-writing-functions.html#cb435-23" aria-hidden="true" tabindex="-1"></a>   valid_store <span class="ot">=</span> transactions<span class="sc">$</span>store_id <span class="sc">==</span> store</span>
+<span id="cb435-24"><a href="lesson-6c-writing-functions.html#cb435-24" aria-hidden="true" tabindex="-1"></a>   valid_week <span class="ot">=</span> transactions<span class="sc">$</span>week <span class="sc">==</span> week</span>
+<span id="cb435-25"><a href="lesson-6c-writing-functions.html#cb435-25" aria-hidden="true" tabindex="-1"></a>   n_obs <span class="ot">=</span> <span class="fu">nrow</span>(transactions[valid_store <span class="sc">&amp;</span> valid_week, ])</span>
+<span id="cb435-26"><a href="lesson-6c-writing-functions.html#cb435-26" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb435-27"><a href="lesson-6c-writing-functions.html#cb435-27" aria-hidden="true" tabindex="-1"></a>   <span class="co"># provide message</span></span>
+<span id="cb435-28"><a href="lesson-6c-writing-functions.html#cb435-28" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (verbose) {</span>
+<span id="cb435-29"><a href="lesson-6c-writing-functions.html#cb435-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">message</span>(<span class="st">&quot;Store &quot;</span>, store, <span class="st">&quot; had &quot;</span>, n_obs, <span class="st">&quot; transactions during week &quot;</span>, week)</span>
+<span id="cb435-30"><a href="lesson-6c-writing-functions.html#cb435-30" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb435-31"><a href="lesson-6c-writing-functions.html#cb435-31" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb435-32"><a href="lesson-6c-writing-functions.html#cb435-32" aria-hidden="true" tabindex="-1"></a>   <span class="co"># round output</span></span>
+<span id="cb435-33"><a href="lesson-6c-writing-functions.html#cb435-33" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(store_sales<span class="sc">$</span>x[<span class="fu">which</span>(store_sales<span class="sc">$</span>store_id <span class="sc">==</span> store <span class="sc">&amp;</span> store_sales<span class="sc">$</span>week <span class="sc">==</span> week)], <span class="dv">2</span>)</span>
+<span id="cb435-34"><a href="lesson-6c-writing-functions.html#cb435-34" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb435-35"><a href="lesson-6c-writing-functions.html#cb435-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb435-36"><a href="lesson-6c-writing-functions.html#cb435-36" aria-hidden="true" tabindex="-1"></a><span class="fu">sales</span>(<span class="dv">309</span>, <span class="dv">50</span>)</span>
+<span id="cb435-37"><a href="lesson-6c-writing-functions.html#cb435-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Store 309 had 4 transactions during week 50</span></span>
+<span id="cb435-38"><a href="lesson-6c-writing-functions.html#cb435-38" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10.34</span></span></code></pre></div>
+<div id="knowledge-check-62" class="section level3 hasAnchor" number="30.5.1">
+<h3><span class="header-section-number">30.5.1</span> Knowledge check<a href="lesson-6c-writing-functions.html#knowledge-check-62" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Take a look at the following function that we introduced at the beginning of this lesson:</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="lesson-6c-writing-functions.html#cb436-1" aria-hidden="true" tabindex="-1"></a>rescale <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">digits =</span> <span class="dv">2</span>){</span>
+<span id="cb436-2"><a href="lesson-6c-writing-functions.html#cb436-2" aria-hidden="true" tabindex="-1"></a>   rng <span class="ot">&lt;-</span> <span class="fu">range</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb436-3"><a href="lesson-6c-writing-functions.html#cb436-3" aria-hidden="true" tabindex="-1"></a>   scaled <span class="ot">&lt;-</span> (x <span class="sc">-</span> rng[<span class="dv">1</span>]) <span class="sc">/</span> (rng[<span class="dv">2</span>] <span class="sc">-</span> rng[<span class="dv">1</span>])</span>
+<span id="cb436-4"><a href="lesson-6c-writing-functions.html#cb436-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">round</span>(scaled, <span class="at">digits =</span> digits)</span>
+<span id="cb436-5"><a href="lesson-6c-writing-functions.html#cb436-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb436-6"><a href="lesson-6c-writing-functions.html#cb436-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-7"><a href="lesson-6c-writing-functions.html#cb436-7" aria-hidden="true" tabindex="-1"></a><span class="co"># test vector</span></span>
+<span id="cb436-8"><a href="lesson-6c-writing-functions.html#cb436-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb436-9"><a href="lesson-6c-writing-functions.html#cb436-9" aria-hidden="true" tabindex="-1"></a>test_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">20</span>, <span class="at">min =</span> <span class="dv">25</span>, <span class="at">max =</span> <span class="dv">40</span>), <span class="cn">NA</span>)</span>
+<span id="cb436-10"><a href="lesson-6c-writing-functions.html#cb436-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-11"><a href="lesson-6c-writing-functions.html#cb436-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rescale</span>(test_vector)</span>
+<span id="cb436-12"><a href="lesson-6c-writing-functions.html#cb436-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.27 0.82 0.40 0.92 0.98 0.00 0.53 0.93 0.56 0.45 1.00 0.45 0.69 0.58 0.07 0.94 0.22 0.00 0.31 1.00   NA</span></span></code></pre></div>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Move the <code>na.rm = TRUE</code> option to the function arguments
+so that the user can control whether or not to remove missing
+values.
+</li>
+<li>
+Add a <code>stop</code> that throws an error if the user supplies
+non-numeric values for <code>x</code>.
+</li>
+<li>
+Add a <code>warning()</code> that tells the user <code>NA</code>s
+are present (if they use <code>na.rm = FALSE</code>)
+</li>
+<li>
+Add a <code>message()</code> that tells the user how many
+<code>NA</code>s were removed
+</li>
+</ol>
+</div>
+<p>Your results should look something like this:</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="lesson-6c-writing-functions.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results in an error</span></span>
+<span id="cb437-2"><a href="lesson-6c-writing-functions.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rescale</span>(letters)</span>
+<span id="cb437-3"><a href="lesson-6c-writing-functions.html#cb437-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error: `x` must be a numeric atomic vector</span></span>
+<span id="cb437-4"><a href="lesson-6c-writing-functions.html#cb437-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb437-5"><a href="lesson-6c-writing-functions.html#cb437-5" aria-hidden="true" tabindex="-1"></a><span class="co"># results in warning</span></span>
+<span id="cb437-6"><a href="lesson-6c-writing-functions.html#cb437-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rescale</span>(test_vector, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb437-7"><a href="lesson-6c-writing-functions.html#cb437-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: There are 1 NAs. Remove them with `na.rm = TRUE`</span></span>
+<span id="cb437-8"><a href="lesson-6c-writing-functions.html#cb437-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</span></span>
+<span id="cb437-9"><a href="lesson-6c-writing-functions.html#cb437-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb437-10"><a href="lesson-6c-writing-functions.html#cb437-10" aria-hidden="true" tabindex="-1"></a><span class="co"># results in message</span></span>
+<span id="cb437-11"><a href="lesson-6c-writing-functions.html#cb437-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rescale</span>(test_vector)</span>
+<span id="cb437-12"><a href="lesson-6c-writing-functions.html#cb437-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 NAs were removed.</span></span>
+<span id="cb437-13"><a href="lesson-6c-writing-functions.html#cb437-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.27 0.82 0.40 0.92 0.98 0.00 0.53 0.93 0.56 0.45 1.00 0.45 0.69 0.58 0.07 0.94 0.22 0.00 0.31 1.00</span></span></code></pre></div>
+</div>
+</div>
+<div id="lazy-evaluation" class="section level2 hasAnchor" number="30.6">
+<h2><span class="header-section-number">30.6</span> Lazy evaluation<a href="lesson-6c-writing-functions.html#lazy-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R functions perform “lazy” evaluation, in which arguments are only evaluated if required in the body of the function.</p>
+<p>Take the following function as an example, <code>x</code> is not used in the body of the function so even passing <code>stop</code> to <code>x</code> does not result in an error because <code>x</code> is never evaluated.</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="lesson-6c-writing-functions.html#cb438-1" aria-hidden="true" tabindex="-1"></a>h01 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb438-2"><a href="lesson-6c-writing-functions.html#cb438-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">10</span></span>
+<span id="cb438-3"><a href="lesson-6c-writing-functions.html#cb438-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb438-4"><a href="lesson-6c-writing-functions.html#cb438-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-5"><a href="lesson-6c-writing-functions.html#cb438-5" aria-hidden="true" tabindex="-1"></a><span class="fu">h01</span>(<span class="at">x =</span> <span class="fu">stop</span>(<span class="st">&quot;This is an error!&quot;</span>))</span>
+<span id="cb438-6"><a href="lesson-6c-writing-functions.html#cb438-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span></code></pre></div>
+<p>This provides you with lots of flexibility in when and how to evaluate inputs</p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="lesson-6c-writing-functions.html#cb439-1" aria-hidden="true" tabindex="-1"></a>h02 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb439-2"><a href="lesson-6c-writing-functions.html#cb439-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span>(<span class="fu">missing</span>(z)) {</span>
+<span id="cb439-3"><a href="lesson-6c-writing-functions.html#cb439-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">sum</span>(x, y)</span>
+<span id="cb439-4"><a href="lesson-6c-writing-functions.html#cb439-4" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb439-5"><a href="lesson-6c-writing-functions.html#cb439-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">sum</span>(x, y, z)</span>
+<span id="cb439-6"><a href="lesson-6c-writing-functions.html#cb439-6" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb439-7"><a href="lesson-6c-writing-functions.html#cb439-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb439-8"><a href="lesson-6c-writing-functions.html#cb439-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-9"><a href="lesson-6c-writing-functions.html#cb439-9" aria-hidden="true" tabindex="-1"></a><span class="co"># z does not exist</span></span>
+<span id="cb439-10"><a href="lesson-6c-writing-functions.html#cb439-10" aria-hidden="true" tabindex="-1"></a><span class="fu">h02</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">2</span>)</span>
+<span id="cb439-11"><a href="lesson-6c-writing-functions.html#cb439-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb439-12"><a href="lesson-6c-writing-functions.html#cb439-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-13"><a href="lesson-6c-writing-functions.html#cb439-13" aria-hidden="true" tabindex="-1"></a><span class="co"># z does exist</span></span>
+<span id="cb439-14"><a href="lesson-6c-writing-functions.html#cb439-14" aria-hidden="true" tabindex="-1"></a><span class="fu">h02</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">2</span>, <span class="at">z =</span> <span class="dv">3</span>)</span>
+<span id="cb439-15"><a href="lesson-6c-writing-functions.html#cb439-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span></code></pre></div>
+<p>This may not seem useful but one of the more common applications is to use <code>NULL</code> to indicate that a variable is not required but can be used if supplied. For example, in the following function we add a <code>multiplier</code> argument. When <code>multiplier</code> is <code>NULL</code> we do not do anything with it but when its not <code>NULL</code> we multiply our output (<code>pv</code>) by the supplied value.</p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="lesson-6c-writing-functions.html#cb440-1" aria-hidden="true" tabindex="-1"></a>compute_pv <span class="ot">&lt;-</span> <span class="cf">function</span>(fv, r, n, <span class="at">multiplier =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb440-2"><a href="lesson-6c-writing-functions.html#cb440-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># compute present value</span></span>
+<span id="cb440-3"><a href="lesson-6c-writing-functions.html#cb440-3" aria-hidden="true" tabindex="-1"></a>   pv <span class="ot">&lt;-</span> <span class="fu">round</span>(fv <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> r)<span class="sc">^</span>n)</span>
+<span id="cb440-4"><a href="lesson-6c-writing-functions.html#cb440-4" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb440-5"><a href="lesson-6c-writing-functions.html#cb440-5" aria-hidden="true" tabindex="-1"></a>   <span class="co"># apply multiplier if its supplied</span></span>
+<span id="cb440-6"><a href="lesson-6c-writing-functions.html#cb440-6" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (<span class="fu">is.null</span>(multiplier)) {</span>
+<span id="cb440-7"><a href="lesson-6c-writing-functions.html#cb440-7" aria-hidden="true" tabindex="-1"></a>      pv</span>
+<span id="cb440-8"><a href="lesson-6c-writing-functions.html#cb440-8" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb440-9"><a href="lesson-6c-writing-functions.html#cb440-9" aria-hidden="true" tabindex="-1"></a>      pv <span class="sc">*</span> multiplier</span>
+<span id="cb440-10"><a href="lesson-6c-writing-functions.html#cb440-10" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb440-11"><a href="lesson-6c-writing-functions.html#cb440-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb440-12"><a href="lesson-6c-writing-functions.html#cb440-12" aria-hidden="true" tabindex="-1"></a><span class="co"># w/o multiplier</span></span>
+<span id="cb440-13"><a href="lesson-6c-writing-functions.html#cb440-13" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_pv</span>(<span class="dv">1000</span>, .<span class="dv">05</span>, <span class="dv">10</span>)</span>
+<span id="cb440-14"><a href="lesson-6c-writing-functions.html#cb440-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 614</span></span>
+<span id="cb440-15"><a href="lesson-6c-writing-functions.html#cb440-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb440-16"><a href="lesson-6c-writing-functions.html#cb440-16" aria-hidden="true" tabindex="-1"></a><span class="co"># with multiplier</span></span>
+<span id="cb440-17"><a href="lesson-6c-writing-functions.html#cb440-17" aria-hidden="true" tabindex="-1"></a><span class="fu">compute_pv</span>(<span class="dv">1000</span>, .<span class="dv">05</span>, <span class="dv">10</span>, <span class="at">multiplier =</span> <span class="fl">1.25</span>)</span>
+<span id="cb440-18"><a href="lesson-6c-writing-functions.html#cb440-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 767.5</span></span></code></pre></div>
+</div>
+<div id="status-updates" class="section level2 hasAnchor" number="30.7">
+<h2><span class="header-section-number">30.7</span> Status updates<a href="lesson-6c-writing-functions.html#status-updates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When functions include an iterative nature (i.e. looping), a nice feature to include in your functions, both for yourself and other analysts, is a status output to inform the user how much computation has been done (i.e. how many loops have been performed) and how much is left.</p>
+<div id="option-1-base-r" class="section level3 hasAnchor" number="30.7.1">
+<h3><span class="header-section-number">30.7.1</span> Option 1: Base R<a href="lesson-6c-writing-functions.html#option-1-base-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In base R we can create a simplistic status output by using <code>txtProgressBar</code> and <code>setTxtProgressBar</code>. There is some customization options with these such as width of progress bar, line type, etc. Also, note that it is good practice to add an argument that lets the user run the function in silent mode (provides more flexibility).</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="lesson-6c-writing-functions.html#cb441-1" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n, <span class="at">verbose =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb441-2"><a href="lesson-6c-writing-functions.html#cb441-2" aria-hidden="true" tabindex="-1"></a>  status <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb441-3"><a href="lesson-6c-writing-functions.html#cb441-3" aria-hidden="true" tabindex="-1"></a>  iterate <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb441-4"><a href="lesson-6c-writing-functions.html#cb441-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb441-5"><a href="lesson-6c-writing-functions.html#cb441-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create progress bar</span></span>
+<span id="cb441-6"><a href="lesson-6c-writing-functions.html#cb441-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(verbose) pb <span class="ot">&lt;-</span> <span class="fu">txtProgressBar</span>(<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="fu">length</span>(n), <span class="at">style =</span> <span class="dv">3</span>)</span>
+<span id="cb441-7"><a href="lesson-6c-writing-functions.html#cb441-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb441-8"><a href="lesson-6c-writing-functions.html#cb441-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># some iteration in your loop</span></span>
+<span id="cb441-9"><a href="lesson-6c-writing-functions.html#cb441-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(iterate)) {</span>
+<span id="cb441-10"><a href="lesson-6c-writing-functions.html#cb441-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb441-11"><a href="lesson-6c-writing-functions.html#cb441-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># some functionality</span></span>
+<span id="cb441-12"><a href="lesson-6c-writing-functions.html#cb441-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(x)</span>
+<span id="cb441-13"><a href="lesson-6c-writing-functions.html#cb441-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb441-14"><a href="lesson-6c-writing-functions.html#cb441-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update progress bar</span></span>
+<span id="cb441-15"><a href="lesson-6c-writing-functions.html#cb441-15" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span>(verbose) <span class="fu">setTxtProgressBar</span>(pb, i<span class="sc">/</span>n)</span>
+<span id="cb441-16"><a href="lesson-6c-writing-functions.html#cb441-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb441-17"><a href="lesson-6c-writing-functions.html#cb441-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb441-18"><a href="lesson-6c-writing-functions.html#cb441-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb441-19"><a href="lesson-6c-writing-functions.html#cb441-19" aria-hidden="true" tabindex="-1"></a><span class="fu">f1</span>(<span class="at">x =</span> .<span class="dv">2</span>, <span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb441-20"><a href="lesson-6c-writing-functions.html#cb441-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb441-21"><a href="lesson-6c-writing-functions.html#cb441-21" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-22"><a href="lesson-6c-writing-functions.html#cb441-22" aria-hidden="true" tabindex="-1"></a>  <span class="er">|</span>                                                                                      <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb441-23"><a href="lesson-6c-writing-functions.html#cb441-23" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-24"><a href="lesson-6c-writing-functions.html#cb441-24" aria-hidden="true" tabindex="-1"></a>  <span class="er">|=========</span>                                                                             <span class="er">|</span>  <span class="dv">10</span>%</span>
+<span id="cb441-25"><a href="lesson-6c-writing-functions.html#cb441-25" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-26"><a href="lesson-6c-writing-functions.html#cb441-26" aria-hidden="true" tabindex="-1"></a>  <span class="er">|=================</span>                                                                     <span class="er">|</span>  <span class="dv">20</span>%</span>
+<span id="cb441-27"><a href="lesson-6c-writing-functions.html#cb441-27" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-28"><a href="lesson-6c-writing-functions.html#cb441-28" aria-hidden="true" tabindex="-1"></a>  <span class="er">|==========================</span>                                                            <span class="er">|</span>  <span class="dv">30</span>%</span>
+<span id="cb441-29"><a href="lesson-6c-writing-functions.html#cb441-29" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-30"><a href="lesson-6c-writing-functions.html#cb441-30" aria-hidden="true" tabindex="-1"></a>  <span class="er">|==================================</span>                                                    <span class="er">|</span>  <span class="dv">40</span>%</span>
+<span id="cb441-31"><a href="lesson-6c-writing-functions.html#cb441-31" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-32"><a href="lesson-6c-writing-functions.html#cb441-32" aria-hidden="true" tabindex="-1"></a>  <span class="er">|===========================================</span>                                           <span class="er">|</span>  <span class="dv">50</span>%</span>
+<span id="cb441-33"><a href="lesson-6c-writing-functions.html#cb441-33" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-34"><a href="lesson-6c-writing-functions.html#cb441-34" aria-hidden="true" tabindex="-1"></a>  <span class="er">|====================================================</span>                                  <span class="er">|</span>  <span class="dv">60</span>%</span>
+<span id="cb441-35"><a href="lesson-6c-writing-functions.html#cb441-35" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-36"><a href="lesson-6c-writing-functions.html#cb441-36" aria-hidden="true" tabindex="-1"></a>  <span class="er">|============================================================</span>                          <span class="er">|</span>  <span class="dv">70</span>%</span>
+<span id="cb441-37"><a href="lesson-6c-writing-functions.html#cb441-37" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-38"><a href="lesson-6c-writing-functions.html#cb441-38" aria-hidden="true" tabindex="-1"></a>  <span class="er">|=====================================================================</span>                 <span class="er">|</span>  <span class="dv">80</span>%</span>
+<span id="cb441-39"><a href="lesson-6c-writing-functions.html#cb441-39" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-40"><a href="lesson-6c-writing-functions.html#cb441-40" aria-hidden="true" tabindex="-1"></a>  <span class="er">|=============================================================================</span>         <span class="er">|</span>  <span class="dv">90</span>%</span>
+<span id="cb441-41"><a href="lesson-6c-writing-functions.html#cb441-41" aria-hidden="true" tabindex="-1"></a>  <span class="sc">|</span>                                                                                            </span>
+<span id="cb441-42"><a href="lesson-6c-writing-functions.html#cb441-42" aria-hidden="true" tabindex="-1"></a>  <span class="er">|======================================================================================|</span> <span class="dv">100</span>%</span></code></pre></div>
+</div>
+<div id="option-2-progress-package" class="section level3 hasAnchor" number="30.7.2">
+<h3><span class="header-section-number">30.7.2</span> Option 2: <code>progress</code> package<a href="lesson-6c-writing-functions.html#option-2-progress-package" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An alternative approach is the <code>progress</code> package. <code>progress</code> allows you to provide estimated time until completion, elapsed time in seconds, a spinner, etc. <code>progress</code> is also useful when your function is downloading many files as it will show download rate (bytes per second) and total bytes downloaded. Check out ?<code>progress_bar</code> for more details.</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="lesson-6c-writing-functions.html#cb442-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n, <span class="at">verbose =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb442-2"><a href="lesson-6c-writing-functions.html#cb442-2" aria-hidden="true" tabindex="-1"></a>  iterate <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n</span>
+<span id="cb442-3"><a href="lesson-6c-writing-functions.html#cb442-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb442-4"><a href="lesson-6c-writing-functions.html#cb442-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create progress bar</span></span>
+<span id="cb442-5"><a href="lesson-6c-writing-functions.html#cb442-5" aria-hidden="true" tabindex="-1"></a>  pb <span class="ot">&lt;-</span> progress<span class="sc">::</span>progress_bar<span class="sc">$</span><span class="fu">new</span>(</span>
+<span id="cb442-6"><a href="lesson-6c-writing-functions.html#cb442-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;  computing [:bar] :percent eta: :eta&quot;</span>,</span>
+<span id="cb442-7"><a href="lesson-6c-writing-functions.html#cb442-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> n, <span class="at">width =</span> <span class="dv">60</span>, <span class="at">force =</span> <span class="cn">TRUE</span></span>
+<span id="cb442-8"><a href="lesson-6c-writing-functions.html#cb442-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb442-9"><a href="lesson-6c-writing-functions.html#cb442-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb442-10"><a href="lesson-6c-writing-functions.html#cb442-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(iterate)) {</span>
+<span id="cb442-11"><a href="lesson-6c-writing-functions.html#cb442-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># some functionality</span></span>
+<span id="cb442-12"><a href="lesson-6c-writing-functions.html#cb442-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(x)</span>
+<span id="cb442-13"><a href="lesson-6c-writing-functions.html#cb442-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb442-14"><a href="lesson-6c-writing-functions.html#cb442-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># report progress</span></span>
+<span id="cb442-15"><a href="lesson-6c-writing-functions.html#cb442-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(verbose) pb<span class="sc">$</span><span class="fu">tick</span>()</span>
+<span id="cb442-16"><a href="lesson-6c-writing-functions.html#cb442-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb442-17"><a href="lesson-6c-writing-functions.html#cb442-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb442-18"><a href="lesson-6c-writing-functions.html#cb442-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb442-19"><a href="lesson-6c-writing-functions.html#cb442-19" aria-hidden="true" tabindex="-1"></a><span class="fu">f2</span>(.<span class="dv">3</span>, <span class="dv">20</span>)</span>
+<span id="cb442-20"><a href="lesson-6c-writing-functions.html#cb442-20" aria-hidden="true" tabindex="-1"></a><span class="do">## computing [==&gt;-----------------------------] 10% eta: 3s computing</span></span>
+<span id="cb442-21"><a href="lesson-6c-writing-functions.html#cb442-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [====&gt;---------------------------] 15% eta: 3s computing [=====&gt;--------------------------]</span></span>
+<span id="cb442-22"><a href="lesson-6c-writing-functions.html#cb442-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 20% eta: 4s computing [=======&gt;------------------------] 25% eta: 4s computing</span></span>
+<span id="cb442-23"><a href="lesson-6c-writing-functions.html#cb442-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [=========&gt;----------------------] 30% eta: 4s computing [==========&gt;---------------------]</span></span>
+<span id="cb442-24"><a href="lesson-6c-writing-functions.html#cb442-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 35% eta: 3s computing [============&gt;-------------------] 40% eta: 3s computing</span></span>
+<span id="cb442-25"><a href="lesson-6c-writing-functions.html#cb442-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [=============&gt;------------------] 45% eta: 3s computing [===============&gt;----------------]</span></span>
+<span id="cb442-26"><a href="lesson-6c-writing-functions.html#cb442-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 50% eta: 3s computing [=================&gt;--------------] 55% eta: 2s computing</span></span>
+<span id="cb442-27"><a href="lesson-6c-writing-functions.html#cb442-27" aria-hidden="true" tabindex="-1"></a><span class="do">## [==================&gt;-------------] 60% eta: 2s computing [====================&gt;-----------]</span></span>
+<span id="cb442-28"><a href="lesson-6c-writing-functions.html#cb442-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 65% eta: 2s computing [=====================&gt;----------] 70% eta: 2s computing</span></span>
+<span id="cb442-29"><a href="lesson-6c-writing-functions.html#cb442-29" aria-hidden="true" tabindex="-1"></a><span class="do">## [=======================&gt;--------] 75% eta: 1s computing [=========================&gt;------]</span></span>
+<span id="cb442-30"><a href="lesson-6c-writing-functions.html#cb442-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 80% eta: 1s computing [==========================&gt;-----] 85% eta: 1s computing</span></span>
+<span id="cb442-31"><a href="lesson-6c-writing-functions.html#cb442-31" aria-hidden="true" tabindex="-1"></a><span class="do">## [============================&gt;---] 90% eta: 1s computing [=============================&gt;--] 95%</span></span>
+<span id="cb442-32"><a href="lesson-6c-writing-functions.html#cb442-32" aria-hidden="true" tabindex="-1"></a><span class="do">## eta: 0s computing [================================] 100% eta: 0s</span></span></code></pre></div>
+</div>
+</div>
+<div id="distributing-your-functions" class="section level2 hasAnchor" number="30.8">
+<h2><span class="header-section-number">30.8</span> Distributing your functions<a href="lesson-6c-writing-functions.html#distributing-your-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you want to save a function to be used at other times and within other scripts there are two main ways to do this. One way is to build a package which is discussed in more details <a href="http://r-pkgs.had.co.nz/">here</a>. Another option, and the one discussed here, is to save the function in a script. For example, we can save a script that contains a <code>PV()</code> function that computes the <a href="https://www.calculatorsoup.com/calculators/financial/present-value-calculator.php#:~:text=The%20present%20value%20formula%20is,is%20n%20in%20the%20formula">present value</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pv-script"></span>
+<img src="images/pv-script.png" alt="PV.R script that contains a function to compute the present value."  />
+<p class="caption">
+Figure 30.1: PV.R script that contains a function to compute the present value.
+</p>
+</div>
+<p>Now, if we are working in a fresh script you’ll see that we have no objects and functions in our working environment:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pv-script-source"></span>
+<img src="images/pv-script-source.png" alt="Fresh session."  />
+<p class="caption">
+Figure 30.2: Fresh session.
+</p>
+</div>
+<p>If we want to use the PV function in th PV.R script we can simply read in the function by sourcing the script using <code>source("PV.R")</code>. Now, you’ll notice that we have the <code>PV()</code> function in our global environment and can use it as normal. Note that if you are working in a different directory then where the PV.R file is located you’ll need to include the proper command to access the relevant directory.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pv-script-source2"></span>
+<img src="images/pv-script-source2.png" alt="Sourcing the PV.R script."  />
+<p class="caption">
+Figure 30.3: Sourcing the PV.R script.
+</p>
+</div>
+</div>
+<div id="exercises-17" class="section level2 hasAnchor" number="30.9">
+<h2><span class="header-section-number">30.9</span> Exercises<a href="lesson-6c-writing-functions.html#exercises-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<p>
+Practice writing the following functions and test them on the given
+test vector. There is source code in the following code chunk that you
+can re-write into the following functions:
+</p>
+<ul>
+<li>
+<code>variance()</code>
+</li>
+<li>
+<code>std_dev()</code>
+</li>
+<li>
+<code>std_error()</code>
+</li>
+<li>
+<code>skewness()</code>
+</li>
+</ul>
+<p>
+Be sure to add a parameter that handles missing values and add
+appropriate warnings and messages.
+</p>
+</div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="lesson-6c-writing-functions.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function that computes the variance of x</span></span>
+<span id="cb443-2"><a href="lesson-6c-writing-functions.html#cb443-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb443-3"><a href="lesson-6c-writing-functions.html#cb443-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-4"><a href="lesson-6c-writing-functions.html#cb443-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function that computes the standard deviation of x</span></span>
+<span id="cb443-5"><a href="lesson-6c-writing-functions.html#cb443-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>((<span class="dv">1</span> <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb443-6"><a href="lesson-6c-writing-functions.html#cb443-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-7"><a href="lesson-6c-writing-functions.html#cb443-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function that computes the standard error of x</span></span>
+<span id="cb443-8"><a href="lesson-6c-writing-functions.html#cb443-8" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">/</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb443-9"><a href="lesson-6c-writing-functions.html#cb443-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(var_x <span class="sc">/</span> <span class="fu">length</span>(x))</span>
+<span id="cb443-10"><a href="lesson-6c-writing-functions.html#cb443-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb443-11"><a href="lesson-6c-writing-functions.html#cb443-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function that computes the skewness of x</span></span>
+<span id="cb443-12"><a href="lesson-6c-writing-functions.html#cb443-12" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb443-13"><a href="lesson-6c-writing-functions.html#cb443-13" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">var</span>(x)</span>
+<span id="cb443-14"><a href="lesson-6c-writing-functions.html#cb443-14" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb443-15"><a href="lesson-6c-writing-functions.html#cb443-15" aria-hidden="true" tabindex="-1"></a>third.moment <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">*</span> <span class="fu">sum</span>((x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">3</span>)</span>
+<span id="cb443-16"><a href="lesson-6c-writing-functions.html#cb443-16" aria-hidden="true" tabindex="-1"></a>third.moment <span class="sc">/</span> (<span class="fu">var</span>(x)<span class="sc">^</span>(<span class="dv">3</span> <span class="sc">/</span> <span class="dv">2</span>))</span></code></pre></div>
+<p>Using the following test vector you should get these results:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="lesson-6c-writing-functions.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test vector</span></span>
+<span id="cb444-2"><a href="lesson-6c-writing-functions.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb444-3"><a href="lesson-6c-writing-functions.html#cb444-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb444-4"><a href="lesson-6c-writing-functions.html#cb444-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-5"><a href="lesson-6c-writing-functions.html#cb444-5" aria-hidden="true" tabindex="-1"></a><span class="co"># variance function output</span></span>
+<span id="cb444-6"><a href="lesson-6c-writing-functions.html#cb444-6" aria-hidden="true" tabindex="-1"></a><span class="fu">variance</span>(x)</span>
+<span id="cb444-7"><a href="lesson-6c-writing-functions.html#cb444-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb444-8"><a href="lesson-6c-writing-functions.html#cb444-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-9"><a href="lesson-6c-writing-functions.html#cb444-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stardard dev output</span></span>
+<span id="cb444-10"><a href="lesson-6c-writing-functions.html#cb444-10" aria-hidden="true" tabindex="-1"></a><span class="fu">std_dev</span>(x)</span>
+<span id="cb444-11"><a href="lesson-6c-writing-functions.html#cb444-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.7</span></span>
+<span id="cb444-12"><a href="lesson-6c-writing-functions.html#cb444-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-13"><a href="lesson-6c-writing-functions.html#cb444-13" aria-hidden="true" tabindex="-1"></a><span class="co"># standard error output</span></span>
+<span id="cb444-14"><a href="lesson-6c-writing-functions.html#cb444-14" aria-hidden="true" tabindex="-1"></a><span class="fu">std_error</span>(x)</span>
+<span id="cb444-15"><a href="lesson-6c-writing-functions.html#cb444-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.17</span></span>
+<span id="cb444-16"><a href="lesson-6c-writing-functions.html#cb444-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-17"><a href="lesson-6c-writing-functions.html#cb444-17" aria-hidden="true" tabindex="-1"></a><span class="co"># skewness output</span></span>
+<span id="cb444-18"><a href="lesson-6c-writing-functions.html#cb444-18" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(x)</span>
+<span id="cb444-19"><a href="lesson-6c-writing-functions.html#cb444-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.3</span></span></code></pre></div>
+<p>Now store these functions in a separate script and <code>source</code> them in a fresh R session.</p>
+</div>
+<div id="additional-resources-9" class="section level2 hasAnchor" number="30.10">
+<h2><span class="header-section-number">30.10</span> Additional resources<a href="lesson-6c-writing-functions.html#additional-resources-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Functions are a fundamental building block of R and writing functions is a core activity of an R programmer. It represents the key step of the transition from a mere “user” to a developer who creates new functionality for R. As a result, its important to turn your existing, informal knowledge of functions into a rigorous understanding of what functions are and how they work. A few additional resources that can help you get to the next step of understanding functions include:</p>
+<ul>
+<li><a href="http://adv-r.had.co.nz/Functions.html">Hadley Wickham’s Advanced R book</a></li>
+<li><a href="https://leanpub.com/rprogramming">Roger Peng’s R Programming for Data Science book</a></li>
+<li><a href="https://www.datacamp.com/courses/intermediate-r?utm_source=functions_r_tutorial_post&amp;utm_medium=blog&amp;utm_campaign=functions_r_tutorial_post">DataCamp’s Intermediate R course</a></li>
+<li><a href="https://www.coursera.org/course/rprog">Coursera’s R Programming course</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-6b-iteration-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-6/lesson-3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
