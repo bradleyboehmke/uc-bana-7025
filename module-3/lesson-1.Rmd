@@ -6,8 +6,7 @@ rm(list = ls())
 
 knitr::opts_chunk$set(
   fig.align = "center",
-  collapse = TRUE,
-  cache = TRUE
+  collapse = TRUE
 )
 
 df <- completejourney::transactions_sample

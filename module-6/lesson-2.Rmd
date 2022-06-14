@@ -421,6 +421,12 @@ With the built-in `airquality` data set, use the most appropriate map functions 
 3. What is the standard deviation for each variable?
 ```
 
+
+```{block, type='tip'}
+If you want to get deeper into functional programming with **purrr** check out [Section 21.5 of R for Data Science](https://r4ds.had.co.nz/iteration.html#the-map-functions).
+```
+
+
 ## Exercises
 
 ```{block, type='todo'}
