@@ -10,8 +10,7 @@ knitr::opts_chunk$set(
   fig.width = 6,
   collapse = TRUE,
   message = FALSE,
-  warning = FALSE,
-  cache = TRUE
+  warning = FALSE
 )
 ```
 
@@ -128,7 +127,7 @@ if (any(x < 0)) {
 ```{block, type='todo'}
 Fill in the following code chunk so that:
 
-* Ff month has value 1-9 the file name printed out will be "data/month-0X.csv"
+* If month has value 1-9 the file name printed out will be "data/Month-0X.csv"
 * What happens if the month value is 10-12?
 ```
 
