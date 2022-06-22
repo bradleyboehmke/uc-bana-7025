@@ -46,6 +46,7 @@ rmd_files:
 - "module-7/module-overview.Rmd"
 - "module-7/lesson-1.Rmd"
 - "module-7/lesson-2.Rmd"
+- "module-7/lesson-3.Rmd"
 - "module-7/lab.Rmd"
 
 - "98-compute-environment.Rmd"

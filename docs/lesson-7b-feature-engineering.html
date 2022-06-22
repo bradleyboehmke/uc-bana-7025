@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Data Wrangling with R</title>
+  <title>34 Lesson 7b: Feature engineering | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Data Wrangling with R" />
+  <meta property="og:title" content="34 Lesson 7b: Feature engineering | Data Wrangling with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
   <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Data Wrangling with R" />
+  <meta name="twitter:title" content="34 Lesson 7b: Feature engineering | Data Wrangling with R" />
   <meta name="twitter:site" content="@bradleyboehmke" />
   <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="computing-environment-1.html"/>
-
+<link rel="prev" href="lesson-7a-first-model-with-tidymodels.html"/>
+<link rel="next" href="lesson-7c-model-evaluation-selection.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -789,61 +789,736 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lesson-7b-feature-engineering" class="section level1 hasAnchor" number="34">
+<h1><span class="header-section-number">34</span> Lesson 7b: Feature engineering<a href="lesson-7b-feature-engineering.html#lesson-7b-feature-engineering" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data preprocessing and engineering techniques generally refer to the addition, deletion, or transformation of data. In this lesson we introduce you to another tidymodels package, <a href="https://recipes.tidymodels.org/"><strong>recipes</strong></a>, which is designed to help you preprocess your data before training your model. Recipes are built as a series of preprocessing steps, such as:</p>
+<ul>
+<li>converting qualitative predictors to indicator variables (also known as dummy variables),</li>
+<li>transforming data to be on a different scale (e.g., taking the logarithm of a variable),</li>
+<li>transforming whole groups of predictors together,
+extracting key features from raw variables (e.g., getting the day of the week out of a date variable),</li>
+</ul>
+<p>and so on. Although there is an ever-growing number of ways to preprocess your data, we’ll focus on a few common feature engineering steps applied to numeric and categorical data. This will provide you with a foundation of how to perform feature engineering.</p>
+<div id="learning-objectives-28" class="section level2 hasAnchor" number="34.1">
+<h2><span class="header-section-number">34.1</span> Learning objectives<a href="lesson-7b-feature-engineering.html#learning-objectives-28" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this lesson you’ll be able to:</p>
+<ul>
+<li>Explain how to apply feature engineering steps with the <strong>recipes</strong> package.</li>
+<li>Filter out low informative features.</li>
+<li>Normalize and standardize numeric features.</li>
+<li>Pre-process nominal and ordinal features.</li>
+<li>Combine multiple feature engineering steps into one recipe and train a model with it.</li>
+</ul>
+</div>
+<div id="prerequisites-10" class="section level2 hasAnchor" number="34.2">
+<h2><span class="header-section-number">34.2</span> Prerequisites<a href="lesson-7b-feature-engineering.html#prerequisites-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this lesson we’ll use the <strong>recipes</strong> package with is automatically loaded with <strong>tidymodels</strong> and we’ll use the <code>ames</code> housing data.</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="lesson-7b-feature-engineering.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb458-2"><a href="lesson-7b-feature-engineering.html#cb458-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb458-3"><a href="lesson-7b-feature-engineering.html#cb458-3" aria-hidden="true" tabindex="-1"></a>ames <span class="ot">&lt;-</span> AmesHousing<span class="sc">::</span><span class="fu">make_ames</span>()</span></code></pre></div>
+<p>Let’s go ahead and create our train-test split:</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="lesson-7b-feature-engineering.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create train/test split</span></span>
+<span id="cb459-2"><a href="lesson-7b-feature-engineering.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># for reproducibility</span></span>
+<span id="cb459-3"><a href="lesson-7b-feature-engineering.html#cb459-3" aria-hidden="true" tabindex="-1"></a>split  <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.7</span>)</span>
+<span id="cb459-4"><a href="lesson-7b-feature-engineering.html#cb459-4" aria-hidden="true" tabindex="-1"></a>train  <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb459-5"><a href="lesson-7b-feature-engineering.html#cb459-5" aria-hidden="true" tabindex="-1"></a>test   <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span></code></pre></div>
+</div>
+<div id="create-a-recipe" class="section level2 hasAnchor" number="34.3">
+<h2><span class="header-section-number">34.3</span> Create a recipe<a href="lesson-7b-feature-engineering.html#create-a-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started, let’s create a model recipe that we will build upon and apply in a model downstream. Before training the model, we can use a recipe to create and/or modify predictors and conduct some preprocessing required by the model.</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="lesson-7b-feature-engineering.html#cb460-1" aria-hidden="true" tabindex="-1"></a>ames_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> ., <span class="at">data =</span> train)</span></code></pre></div>
+<p>Now we can start adding steps onto our recipe using the pipe operator and applying specific feature engineering tasks. The sections that follow provide some discussion as to why we apply each feature engineering step and then we demonstrate how to add it to our recipe.</p>
+</div>
+<div id="feature-filtering" class="section level2 hasAnchor" number="34.4">
+<h2><span class="header-section-number">34.4</span> Feature filtering<a href="lesson-7b-feature-engineering.html#feature-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In many data analyses and modeling projects we end up with hundreds or even thousands of collected features. From a practical perspective, a model with more features often becomes harder to interpret and is costly to compute. Some models are more resistant to non-informative predictors (e.g., the Lasso and tree-based methods) than others.</p>
+<p>Although the performance of some of our models are not significantly affected by non-informative predictors, the time to train these models can be negatively impacted as more features are added. Consequently, filtering or reducing features prior to modeling may significantly speed up training time.</p>
+<p>Zero and near-zero variance variables are low-hanging fruit to eliminate. Zero variance variables, meaning the feature only contains a single unique value, provides no useful information to a model. Some algorithms are unaffected by zero variance features. However, features that have near-zero variance also offer very little, if any, information to a model. Furthermore, they can cause problems during resampling as there is a high probability that a given sample will only contain a single unique value (the dominant value) for that feature.</p>
+<div class="tip">
+<p>
+A rule of thumb for detecting near-zero variance features are
+identifying and removing features with <span class="math inline"><span class="math inline">\(\leq 5-10\)</span></span>% variance.
+</p>
+</div>
+<p>For the Ames data, we do not have any zero variance predictors but there are many features that meet the near-zero threshold. The following shows all features where there is less than 5% variance in distinct values.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+rowname
+</th>
+<th style="text-align:right;">
+freqRatio
+</th>
+<th style="text-align:right;">
+percentUnique
+</th>
+<th style="text-align:left;">
+zeroVar
+</th>
+<th style="text-align:left;">
+nzv
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Street
+</td>
+<td style="text-align:right;">
+292.000
+</td>
+<td style="text-align:right;">
+0.09751
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alley
+</td>
+<td style="text-align:right;">
+23.605
+</td>
+<td style="text-align:right;">
+0.14627
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Utilities
+</td>
+<td style="text-align:right;">
+2049.000
+</td>
+<td style="text-align:right;">
+0.14627
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Land_Slope
+</td>
+<td style="text-align:right;">
+22.182
+</td>
+<td style="text-align:right;">
+0.14627
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Land_Contour
+</td>
+<td style="text-align:right;">
+21.453
+</td>
+<td style="text-align:right;">
+0.19503
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kitchen_AbvGr
+</td>
+<td style="text-align:right;">
+21.250
+</td>
+<td style="text-align:right;">
+0.19503
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pool_QC
+</td>
+<td style="text-align:right;">
+680.667
+</td>
+<td style="text-align:right;">
+0.24378
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Roof_Matl
+</td>
+<td style="text-align:right;">
+144.643
+</td>
+<td style="text-align:right;">
+0.29254
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bsmt_Cond
+</td>
+<td style="text-align:right;">
+20.761
+</td>
+<td style="text-align:right;">
+0.29254
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Heating
+</td>
+<td style="text-align:right;">
+100.900
+</td>
+<td style="text-align:right;">
+0.29254
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Misc_Feature
+</td>
+<td style="text-align:right;">
+27.403
+</td>
+<td style="text-align:right;">
+0.29254
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BsmtFin_Type_2
+</td>
+<td style="text-align:right;">
+25.779
+</td>
+<td style="text-align:right;">
+0.34130
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Condition_2
+</td>
+<td style="text-align:right;">
+202.700
+</td>
+<td style="text-align:right;">
+0.39005
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Functional
+</td>
+<td style="text-align:right;">
+39.729
+</td>
+<td style="text-align:right;">
+0.39005
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pool_Area
+</td>
+<td style="text-align:right;">
+2042.000
+</td>
+<td style="text-align:right;">
+0.48757
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Three_season_porch
+</td>
+<td style="text-align:right;">
+675.333
+</td>
+<td style="text-align:right;">
+0.97513
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Low_Qual_Fin_SF
+</td>
+<td style="text-align:right;">
+504.500
+</td>
+<td style="text-align:right;">
+1.41394
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Misc_Val
+</td>
+<td style="text-align:right;">
+141.000
+</td>
+<td style="text-align:right;">
+1.51146
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can filter out near-zero variance features with <code>step_nzv()</code>. Within <code>step_nzv()</code> we specify which features to apply this to. There are several helper functions to make it easy to apply the step to <code>all_predictors()</code>, <code>all_numeric()</code> variables, <code>all_nominal()</code> variables, and more.</p>
+<div class="tip">
+<p>
+See the different variable selectors <a
+href="https://recipes.tidymodels.org/reference/has_role.html#ref-usage">here</a>.
+</p>
+</div>
+<p>In this example we filter out all predictor variables that have less than 10% variance in values.</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="lesson-7b-feature-engineering.html#cb461-1" aria-hidden="true" tabindex="-1"></a>nzv <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb461-2"><a href="lesson-7b-feature-engineering.html#cb461-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>(), <span class="at">unique_cut =</span> <span class="dv">10</span>) <span class="co"># threshold as % (10%)</span></span></code></pre></div>
+<div class="note">
+<p>
+The result of the above code is not to actually apply the feature
+engineering steps but, rather, to create an object that holds the
+feature engineering logic (or recipe) to be applied later on.
+</p>
+</div>
+</div>
+<div id="numeric-features" class="section level2 hasAnchor" number="34.5">
+<h2><span class="header-section-number">34.5</span> Numeric features<a href="lesson-7b-feature-engineering.html#numeric-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Numeric features can create a host of problems for certain models when their distributions are skewed, contain outliers, or have a wide range in magnitudes. Tree-based models are quite immune to these types of problems in the feature space, but many other models (e.g., GLMs, regularized regression, KNN, support vector machines, neural networks) can be greatly hampered by these issues. Normalizing and standardizing heavily skewed features can help minimize these concerns.</p>
+<div id="skewness" class="section level3 hasAnchor" number="34.5.1">
+<h3><span class="header-section-number">34.5.1</span> Skewness<a href="lesson-7b-feature-engineering.html#skewness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Parametric models that have distributional assumptions (e.g., GLMs, and regularized models) can benefit from minimizing the skewness of numeric features. When normalizing many variables, it’s best to use the Box-Cox (when feature values are strictly positive) or Yeo-Johnson (when feature values are not strictly positive) procedures as these methods will identify if a transformation is required and what the optimal transformation will be.</p>
+<div class="tip">
+<p>
+Non-parametric models are rarely affected by skewed features;
+however, normalizing features will not have a negative effect on these
+models’ performance. For example, normalizing features will only shift
+the optimal split points in tree-based algorithms. Consequently, when in
+doubt, normalize.
+</p>
+</div>
+<p>We can normalize our numeric predictor variables with <code>step_YeoJohnson()</code>:</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="lesson-7b-feature-engineering.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize all numeric features</span></span>
+<span id="cb462-2"><a href="lesson-7b-feature-engineering.html#cb462-2" aria-hidden="true" tabindex="-1"></a>X_norm <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb462-3"><a href="lesson-7b-feature-engineering.html#cb462-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_YeoJohnson</span>(<span class="fu">all_predictors</span>(), <span class="fu">all_numeric</span>())                 </span></code></pre></div>
+</div>
+<div id="standardization" class="section level3 hasAnchor" number="34.5.2">
+<h3><span class="header-section-number">34.5.2</span> Standardization<a href="lesson-7b-feature-engineering.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We must also consider the scale on which the individual features are measured. What are the largest and smallest values across all features and do they span several orders of magnitude? Models that incorporate smooth functions of input features are sensitive to the scale of the inputs. For example, <span class="math inline">\(5X+2\)</span> is a simple linear function of the input <em>X</em>, and the scale of its output depends directly on the scale of the input. Many algorithms use linear functions within their algorithms, some more obvious (e.g., GLMs and regularized regression) than others (e.g., neural networks, support vector machines, and principal components analysis). Other examples include algorithms that use distance measures such as the Euclidean distance (e.g., <em>k</em> nearest neighbor, <em>k</em>-means clustering, and hierarchical clustering).</p>
+<p>For these models and modeling components, it is often a good idea to standardize the features. Standardizing features includes <em>centering</em> and <em>scaling</em> so that numeric variables have zero mean and unit variance, which provides a common comparable unit of measure across all the variables.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:engineering-standardizing"></span>
+<img src="_main_files/figure-html/engineering-standardizing-1.png" alt="Standardizing features allows all features to be compared on a common value scale regardless of their real value differences." width="768" />
+<p class="caption">
+Figure 34.1: Standardizing features allows all features to be compared on a common value scale regardless of their real value differences.
+</p>
+</div>
+<p>We can standardize our numeric features in one of two ways – note that <code>step_normalize()</code> is just a wrapper that combines <code>step_center()</code> and <code>step_scale()</code>.</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="lesson-7b-feature-engineering.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
+<span id="cb463-2"><a href="lesson-7b-feature-engineering.html#cb463-2" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb463-3"><a href="lesson-7b-feature-engineering.html#cb463-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_center</span>(<span class="fu">predictors</span>(), <span class="fu">all_numeric</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb463-4"><a href="lesson-7b-feature-engineering.html#cb463-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_scale</span>(<span class="fu">predictors</span>(), <span class="fu">all_numeric</span>())</span>
+<span id="cb463-5"><a href="lesson-7b-feature-engineering.html#cb463-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb463-6"><a href="lesson-7b-feature-engineering.html#cb463-6" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
+<span id="cb463-7"><a href="lesson-7b-feature-engineering.html#cb463-7" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb463-8"><a href="lesson-7b-feature-engineering.html#cb463-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_normalize</span>(<span class="fu">predictors</span>(), <span class="fu">all_numeric</span>())</span></code></pre></div>
+</div>
+</div>
+<div id="categorical-features" class="section level2 hasAnchor" number="34.6">
+<h2><span class="header-section-number">34.6</span> Categorical features<a href="lesson-7b-feature-engineering.html#categorical-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most models require that the predictors take numeric form. There are exceptions; for example, tree-based models naturally handle numeric or categorical features. However, even tree-based models can benefit from pre-processing categorical features. The following sections will discuss a few of the more common approaches to engineer categorical features.</p>
+<div id="one-hot-dummy-encoding" class="section level3 hasAnchor" number="34.6.1">
+<h3><span class="header-section-number">34.6.1</span> One-hot &amp; dummy encoding<a href="lesson-7b-feature-engineering.html#one-hot-dummy-encoding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many ways to recode categorical variables as numeric. The most common is referred to as one-hot encoding, where we transpose our categorical variables so that each level of the feature is represented as a boolean value. For example, one-hot encoding the left data frame in the below figure results in <code>X</code> being converted into three columns, one for each level. This is called less than <em>full rank</em> encoding . However, this creates perfect collinearity which causes problems with some predictive modeling algorithms (e.g., ordinary linear regression and neural networks). Alternatively, we can create a full-rank encoding by dropping one of the levels (level <code>c</code> has been dropped). This is referred to as <em>dummy</em> encoding.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:engineering-one-hot"></span>
+<img src="images/ohe-vs-dummy.png" alt="Eight observations containing a categorical feature X and the difference in how one-hot and dummy encoding transforms this feature." width="99%" height="99%" />
+<p class="caption">
+Figure 34.2: Eight observations containing a categorical feature X and the difference in how one-hot and dummy encoding transforms this feature.
+</p>
+</div>
+<p>We can use <code>step_dummy()</code> to add a one-hot or dummy encoding to our recipe:</p>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="lesson-7b-feature-engineering.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one-hot encode</span></span>
+<span id="cb464-2"><a href="lesson-7b-feature-engineering.html#cb464-2" aria-hidden="true" tabindex="-1"></a>ohe <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb464-3"><a href="lesson-7b-feature-engineering.html#cb464-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="at">one_hot =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb464-4"><a href="lesson-7b-feature-engineering.html#cb464-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb464-5"><a href="lesson-7b-feature-engineering.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy encode</span></span>
+<span id="cb464-6"><a href="lesson-7b-feature-engineering.html#cb464-6" aria-hidden="true" tabindex="-1"></a>de <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb464-7"><a href="lesson-7b-feature-engineering.html#cb464-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="at">one_hot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="ordinal-encoding" class="section level3 hasAnchor" number="34.6.2">
+<h3><span class="header-section-number">34.6.2</span> Ordinal encoding<a href="lesson-7b-feature-engineering.html#ordinal-encoding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If a categorical feature is naturally ordered then numerically encoding the feature based on its order is a natural choice (most commonly referred to as ordinal encoding). For example, the various quality features in the Ames housing data are ordinal in nature (ranging from <code>Very_Poor</code> to <code>Very_Excellent</code>).</p>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="lesson-7b-feature-engineering.html#cb465-1" aria-hidden="true" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>))</span>
+<span id="cb465-2"><a href="lesson-7b-feature-engineering.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,051 × 11</span></span>
+<span id="cb465-3"><a href="lesson-7b-feature-engineering.html#cb465-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    Overall_Qual Overall_Cond Exter_Qual Exter_Cond Bsmt_Qual Bsmt_Cond Heating_QC</span></span>
+<span id="cb465-4"><a href="lesson-7b-feature-engineering.html#cb465-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;        &lt;fct&gt;        &lt;fct&gt;      &lt;fct&gt;      &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt;     </span></span>
+<span id="cb465-5"><a href="lesson-7b-feature-engineering.html#cb465-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Very_Good    Average      Good       Typical    Good      Good      Excellent </span></span>
+<span id="cb465-6"><a href="lesson-7b-feature-engineering.html#cb465-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Above_Avera… Average      Good       Typical    Good      Typical   Excellent </span></span>
+<span id="cb465-7"><a href="lesson-7b-feature-engineering.html#cb465-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Below_Avera… Average      Typical    Typical    Good      Typical   Good      </span></span>
+<span id="cb465-8"><a href="lesson-7b-feature-engineering.html#cb465-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Very_Good    Average      Good       Typical    Good      Typical   Excellent </span></span>
+<span id="cb465-9"><a href="lesson-7b-feature-engineering.html#cb465-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Above_Avera… Good         Typical    Typical    Typical   Good      Typical   </span></span>
+<span id="cb465-10"><a href="lesson-7b-feature-engineering.html#cb465-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Good         Average      Good       Typical    Good      Typical   Excellent </span></span>
+<span id="cb465-11"><a href="lesson-7b-feature-engineering.html#cb465-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Above_Avera… Average      Typical    Typical    Good      Typical   Excellent </span></span>
+<span id="cb465-12"><a href="lesson-7b-feature-engineering.html#cb465-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Average      Average      Typical    Typical    Typical   Typical   Typical   </span></span>
+<span id="cb465-13"><a href="lesson-7b-feature-engineering.html#cb465-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Average      Good         Typical    Typical    Fair      Typical   Typical   </span></span>
+<span id="cb465-14"><a href="lesson-7b-feature-engineering.html#cb465-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Below_Avera… Average      Typical    Typical    Typical   Typical   Typical   </span></span>
+<span id="cb465-15"><a href="lesson-7b-feature-engineering.html#cb465-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,041 more rows, and 4 more variables: Kitchen_Qual &lt;fct&gt;,</span></span>
+<span id="cb465-16"><a href="lesson-7b-feature-engineering.html#cb465-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   Garage_Qual &lt;fct&gt;, Garage_Cond &lt;fct&gt;, Pool_QC &lt;fct&gt;</span></span></code></pre></div>
+<p>Ordinal encoding these features provides a natural and intuitive interpretation and can logically be applied to all models.</p>
+<p>If your features are already ordered factors then you can simply apply <code>step_ordinalscore()</code> to ordinal encode:</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="lesson-7b-feature-engineering.html#cb466-1" aria-hidden="true" tabindex="-1"></a>ord <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb466-2"><a href="lesson-7b-feature-engineering.html#cb466-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_ordinalscore</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>))</span></code></pre></div>
+<p>However, if we look at some of our quality features we see they are factors but their levels are not necessarily ordered. Moreover, some have a unique value that represents that feature doesn’t exist in the house (i.e. No_Basement).</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="lesson-7b-feature-engineering.html#cb467-1" aria-hidden="true" tabindex="-1"></a>train <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Bsmt_Qual) <span class="sc">%&gt;%</span> <span class="fu">levels</span>()</span>
+<span id="cb467-2"><a href="lesson-7b-feature-engineering.html#cb467-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Excellent&quot;   &quot;Fair&quot;        &quot;Good&quot;        &quot;No_Basement&quot; &quot;Poor&quot;       </span></span>
+<span id="cb467-3"><a href="lesson-7b-feature-engineering.html#cb467-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [6] &quot;Typical&quot;</span></span></code></pre></div>
+<p>So in this case we’re going to apply several feature engineering steps to:</p>
+<ol style="list-style-type: decimal">
+<li>convert quality features to factors with specified levels,</li>
+<li>convert any missed levels (i.e. No_Basement, No_Pool) to “None”,</li>
+<li>move “None” level to front (‘None’, ‘Very_Poor’, …, ‘Very_Excellent’),</li>
+<li>convert factor level to integer value (‘None’ = 0, ‘Very_Poor’ = 1, …,
+‘Very_Excellent’ = 11)</li>
+</ol>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="lesson-7b-feature-engineering.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify levels in order</span></span>
+<span id="cb468-2"><a href="lesson-7b-feature-engineering.html#cb468-2" aria-hidden="true" tabindex="-1"></a>lvls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Very_Poor&quot;</span>, <span class="st">&quot;Poor&quot;</span>, <span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Below_Average&quot;</span>, <span class="st">&quot;Average&quot;</span>, <span class="st">&quot;Typical&quot;</span>, </span>
+<span id="cb468-3"><a href="lesson-7b-feature-engineering.html#cb468-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Above_Average&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Very_Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>, <span class="st">&quot;Very_Excellent&quot;</span>)</span>
+<span id="cb468-4"><a href="lesson-7b-feature-engineering.html#cb468-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb468-5"><a href="lesson-7b-feature-engineering.html#cb468-5" aria-hidden="true" tabindex="-1"></a><span class="co"># apply ordinal encoding to quality features</span></span>
+<span id="cb468-6"><a href="lesson-7b-feature-engineering.html#cb468-6" aria-hidden="true" tabindex="-1"></a>ord_lbl <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb468-7"><a href="lesson-7b-feature-engineering.html#cb468-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># 1. convert quality features to factors with specified levels</span></span>
+<span id="cb468-8"><a href="lesson-7b-feature-engineering.html#cb468-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_string2factor</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">levels =</span> lvls, <span class="at">ordered =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb468-9"><a href="lesson-7b-feature-engineering.html#cb468-9" aria-hidden="true" tabindex="-1"></a>   <span class="co"># 2. convert any missed levels (i.e. No_Basement, No_Pool) to &quot;None&quot;</span></span>
+<span id="cb468-10"><a href="lesson-7b-feature-engineering.html#cb468-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_unknown</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">new_level =</span> <span class="st">&quot;None&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb468-11"><a href="lesson-7b-feature-engineering.html#cb468-11" aria-hidden="true" tabindex="-1"></a>   <span class="co"># 3. move &quot;None&quot; level to front (&#39;None&#39;, &#39;Very_Poor&#39;, ..., &#39;Very_Excellent&#39;)</span></span>
+<span id="cb468-12"><a href="lesson-7b-feature-engineering.html#cb468-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_relevel</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">ref_level =</span> <span class="st">&quot;None&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb468-13"><a href="lesson-7b-feature-engineering.html#cb468-13" aria-hidden="true" tabindex="-1"></a>   <span class="co"># 4. convert factor level to integer value</span></span>
+<span id="cb468-14"><a href="lesson-7b-feature-engineering.html#cb468-14" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_integer</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>))</span></code></pre></div>
+<p>Did this work, let’s take a look. If we want to apply a recipe to a data set we can apply:</p>
+<ul>
+<li><code>prep</code>: estimate feature engineering parameters based on training data.</li>
+<li><code>bake</code>: apply the prepped recipe to new data.</li>
+</ul>
+<p>We can see that our quality variables are now ordinal encoded.</p>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="lesson-7b-feature-engineering.html#cb469-1" aria-hidden="true" tabindex="-1"></a>baked_recipe <span class="ot">&lt;-</span> ord_lbl <span class="sc">%&gt;%</span></span>
+<span id="cb469-2"><a href="lesson-7b-feature-engineering.html#cb469-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">prep</span>(<span class="at">training =</span> train) <span class="sc">%&gt;%</span></span>
+<span id="cb469-3"><a href="lesson-7b-feature-engineering.html#cb469-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bake</span>(<span class="at">new_data =</span> train)</span>
+<span id="cb469-4"><a href="lesson-7b-feature-engineering.html#cb469-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-5"><a href="lesson-7b-feature-engineering.html#cb469-5" aria-hidden="true" tabindex="-1"></a>baked_recipe <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>))</span>
+<span id="cb469-6"><a href="lesson-7b-feature-engineering.html#cb469-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,051 × 11</span></span>
+<span id="cb469-7"><a href="lesson-7b-feature-engineering.html#cb469-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    Overall_Qual Overall_Cond Exter_Qual Exter_Cond Bsmt_Qual Bsmt_Cond Heating_QC</span></span>
+<span id="cb469-8"><a href="lesson-7b-feature-engineering.html#cb469-8" aria-hidden="true" tabindex="-1"></a><span class="do">##           &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb469-9"><a href="lesson-7b-feature-engineering.html#cb469-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1            9            6          4          6         4         4          2</span></span>
+<span id="cb469-10"><a href="lesson-7b-feature-engineering.html#cb469-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2            7            6          4          6         4         7          2</span></span>
+<span id="cb469-11"><a href="lesson-7b-feature-engineering.html#cb469-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3            5            6          5          6         4         7          4</span></span>
+<span id="cb469-12"><a href="lesson-7b-feature-engineering.html#cb469-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4            9            6          4          6         4         7          2</span></span>
+<span id="cb469-13"><a href="lesson-7b-feature-engineering.html#cb469-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5            7            8          5          6         7         4          6</span></span>
+<span id="cb469-14"><a href="lesson-7b-feature-engineering.html#cb469-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6            8            6          4          6         4         7          2</span></span>
+<span id="cb469-15"><a href="lesson-7b-feature-engineering.html#cb469-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7            7            6          5          6         4         7          2</span></span>
+<span id="cb469-16"><a href="lesson-7b-feature-engineering.html#cb469-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8            6            6          5          6         7         7          6</span></span>
+<span id="cb469-17"><a href="lesson-7b-feature-engineering.html#cb469-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9            6            8          5          6         3         7          6</span></span>
+<span id="cb469-18"><a href="lesson-7b-feature-engineering.html#cb469-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10            5            6          5          6         7         7          6</span></span>
+<span id="cb469-19"><a href="lesson-7b-feature-engineering.html#cb469-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,041 more rows, and 4 more variables: Kitchen_Qual &lt;dbl&gt;,</span></span>
+<span id="cb469-20"><a href="lesson-7b-feature-engineering.html#cb469-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   Garage_Qual &lt;dbl&gt;, Garage_Cond &lt;dbl&gt;, Pool_QC &lt;dbl&gt;</span></span></code></pre></div>
+<p>And if we want to see how the numeric values are mapped to the original data we can. Here, I just focus on the original <code>Overall_Qual</code> values and how they compare to the encoded values.</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="lesson-7b-feature-engineering.html#cb470-1" aria-hidden="true" tabindex="-1"></a>encoded_Overall_Qual <span class="ot">&lt;-</span> baked_recipe <span class="sc">%&gt;%</span> </span>
+<span id="cb470-2"><a href="lesson-7b-feature-engineering.html#cb470-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(Overall_Qual) <span class="sc">%&gt;%</span></span>
+<span id="cb470-3"><a href="lesson-7b-feature-engineering.html#cb470-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="at">encoded_Overall_Qual =</span> Overall_Qual)</span>
+<span id="cb470-4"><a href="lesson-7b-feature-engineering.html#cb470-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-5"><a href="lesson-7b-feature-engineering.html#cb470-5" aria-hidden="true" tabindex="-1"></a>train <span class="sc">%&gt;%</span></span>
+<span id="cb470-6"><a href="lesson-7b-feature-engineering.html#cb470-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(Overall_Qual) <span class="sc">%&gt;%</span></span>
+<span id="cb470-7"><a href="lesson-7b-feature-engineering.html#cb470-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_cols</span>(encoded_Overall_Qual) <span class="sc">%&gt;%</span></span>
+<span id="cb470-8"><a href="lesson-7b-feature-engineering.html#cb470-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(Overall_Qual, encoded_Overall_Qual)</span>
+<span id="cb470-9"><a href="lesson-7b-feature-engineering.html#cb470-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 × 3</span></span>
+<span id="cb470-10"><a href="lesson-7b-feature-engineering.html#cb470-10" aria-hidden="true" tabindex="-1"></a><span class="do">##    Overall_Qual   encoded_Overall_Qual     n</span></span>
+<span id="cb470-11"><a href="lesson-7b-feature-engineering.html#cb470-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                         &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb470-12"><a href="lesson-7b-feature-engineering.html#cb470-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Very_Poor                         2     3</span></span>
+<span id="cb470-13"><a href="lesson-7b-feature-engineering.html#cb470-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Poor                              3     9</span></span>
+<span id="cb470-14"><a href="lesson-7b-feature-engineering.html#cb470-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Fair                              4    30</span></span>
+<span id="cb470-15"><a href="lesson-7b-feature-engineering.html#cb470-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Below_Average                     5   168</span></span>
+<span id="cb470-16"><a href="lesson-7b-feature-engineering.html#cb470-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Average                           6   587</span></span>
+<span id="cb470-17"><a href="lesson-7b-feature-engineering.html#cb470-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Above_Average                     7   509</span></span>
+<span id="cb470-18"><a href="lesson-7b-feature-engineering.html#cb470-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Good                              8   419</span></span>
+<span id="cb470-19"><a href="lesson-7b-feature-engineering.html#cb470-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Very_Good                         9   235</span></span>
+<span id="cb470-20"><a href="lesson-7b-feature-engineering.html#cb470-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Excellent                        10    65</span></span>
+<span id="cb470-21"><a href="lesson-7b-feature-engineering.html#cb470-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Very_Excellent                   11    26</span></span></code></pre></div>
+</div>
+<div id="lumping" class="section level3 hasAnchor" number="34.6.3">
+<h3><span class="header-section-number">34.6.3</span> Lumping<a href="lesson-7b-feature-engineering.html#lumping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes features will contain levels that have very few observations. For example, there are 28 unique neighborhoods represented in the Ames housing data but several of them only have a few observations.</p>
+<pre><code>## # A tibble: 28 × 2
+##    Neighborhood            n
+##    &lt;fct&gt;               &lt;int&gt;
+##  1 Green_Hills             1
+##  2 Landmark                1
+##  3 Greens                  6
+##  4 Blueste                 8
+##  5 Northpark_Villa        16
+##  6 Veenker                18
+##  7 Briardale              20
+##  8 Bloomington_Heights    22
+##  9 Meadow_Village         26
+## 10 Clear_Creek            29
+## # … with 18 more rows</code></pre>
+<p>Sometimes we can benefit from collapsing, or “lumping” these into a lesser number of categories. In the above examples, we may want to collapse all levels that are observed in less than 1% of the training sample into an “other” category. We can use <code>step_other()</code> to do so. However, lumping should be used sparingly as there is often a loss in model performance <span class="citation">(<a href="#ref-apm" role="doc-biblioref">Kuhn and Johnson 2013</a>)</span>.</p>
+<div class="tip">
+<p>
+Tree-based models often perform exceptionally well with high
+cardinality features and are not as impacted by levels with small
+representation.
+</p>
+</div>
+<p>The following lumps all neighborhoods that represent less than 1% of observations into an “other” category.</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="lesson-7b-feature-engineering.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lump levels for two features</span></span>
+<span id="cb472-2"><a href="lesson-7b-feature-engineering.html#cb472-2" aria-hidden="true" tabindex="-1"></a>rare_encoder <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb472-3"><a href="lesson-7b-feature-engineering.html#cb472-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.01</span>, <span class="at">other =</span> <span class="st">&quot;other&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="fit-a-model-with-a-recipe" class="section level2 hasAnchor" number="34.7">
+<h2><span class="header-section-number">34.7</span> Fit a model with a recipe<a href="lesson-7b-feature-engineering.html#fit-a-model-with-a-recipe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s combine these feature engineering tasks into one recipe and then train a model with it.</p>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="lesson-7b-feature-engineering.html#cb473-1" aria-hidden="true" tabindex="-1"></a>ames_recipe <span class="ot">&lt;-</span> ames_recipe <span class="sc">%&gt;%</span></span>
+<span id="cb473-2"><a href="lesson-7b-feature-engineering.html#cb473-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_nzv</span>(<span class="fu">all_predictors</span>(), <span class="at">unique_cut =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-3"><a href="lesson-7b-feature-engineering.html#cb473-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_YeoJohnson</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb473-4"><a href="lesson-7b-feature-engineering.html#cb473-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb473-5"><a href="lesson-7b-feature-engineering.html#cb473-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_string2factor</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">levels =</span> lvls, <span class="at">ordered =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb473-6"><a href="lesson-7b-feature-engineering.html#cb473-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_unknown</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">new_level =</span> <span class="st">&quot;None&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-7"><a href="lesson-7b-feature-engineering.html#cb473-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_relevel</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>), <span class="at">ref_level =</span> <span class="st">&quot;None&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb473-8"><a href="lesson-7b-feature-engineering.html#cb473-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_integer</span>(<span class="fu">matches</span>(<span class="st">&#39;Qual$|QC$|_Cond$&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb473-9"><a href="lesson-7b-feature-engineering.html#cb473-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">step_other</span>(<span class="fu">all_nominal_predictors</span>(), <span class="at">threshold =</span> <span class="fl">0.01</span>, <span class="at">other =</span> <span class="st">&quot;other&quot;</span>)</span></code></pre></div>
+<p>Let’s go ahead and build a random forest model using the ranger engine (which is the default).</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="lesson-7b-feature-engineering.html#cb474-1" aria-hidden="true" tabindex="-1"></a>rf_mod <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb474-2"><a href="lesson-7b-feature-engineering.html#cb474-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">set_mode</span>(<span class="st">&#39;regression&#39;</span>)</span></code></pre></div>
+<p>We will want to use our recipe across several steps as we train and test our model. We will:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Process the recipe using the training set</strong>: This involves any estimation or calculations based on the training set. For our recipe, the training set will be used to determine which predictors will have zero-variance in the training set, and should be slated for removal, what the mean and scale is in order to standardize the numeric features, etc.</p></li>
+<li><p><strong>Apply the recipe to the training set</strong>: We create the final predictor set on the training set.</p></li>
+<li><p><strong>Apply the recipe to the test set</strong>: We create the final predictor set on the test set. Nothing is recomputed and no information from the test set is used here; the feature engineering statistics computed from the training set are applied to the test set.</p></li>
+</ol>
+<p>To simplify this process, we can use a model workflow, which pairs a model and recipe together. This is a straightforward approach because different recipes are often needed for different models, so when a model and recipe are bundled, it becomes easier to train and test workflows. We’ll use the <a href="https://workflows.tidymodels.org/"><strong>workflows</strong> package</a> from tidymodels to bundle our parsnip model (<code>rf_mod</code>) with our recipe (<code>ames_recipe</code>).</p>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="lesson-7b-feature-engineering.html#cb475-1" aria-hidden="true" tabindex="-1"></a>rf_wflow <span class="ot">&lt;-</span> </span>
+<span id="cb475-2"><a href="lesson-7b-feature-engineering.html#cb475-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb475-3"><a href="lesson-7b-feature-engineering.html#cb475-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(rf_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-4"><a href="lesson-7b-feature-engineering.html#cb475-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(ames_recipe)</span>
+<span id="cb475-5"><a href="lesson-7b-feature-engineering.html#cb475-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb475-6"><a href="lesson-7b-feature-engineering.html#cb475-6" aria-hidden="true" tabindex="-1"></a>rf_wflow</span>
+<span id="cb475-7"><a href="lesson-7b-feature-engineering.html#cb475-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ══ Workflow ═════════════════════════════════════════════════════════════════════</span></span>
+<span id="cb475-8"><a href="lesson-7b-feature-engineering.html#cb475-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Preprocessor: Recipe</span></span>
+<span id="cb475-9"><a href="lesson-7b-feature-engineering.html#cb475-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Model: rand_forest()</span></span>
+<span id="cb475-10"><a href="lesson-7b-feature-engineering.html#cb475-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb475-11"><a href="lesson-7b-feature-engineering.html#cb475-11" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Preprocessor ─────────────────────────────────────────────────────────────────</span></span>
+<span id="cb475-12"><a href="lesson-7b-feature-engineering.html#cb475-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 8 Recipe Steps</span></span>
+<span id="cb475-13"><a href="lesson-7b-feature-engineering.html#cb475-13" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb475-14"><a href="lesson-7b-feature-engineering.html#cb475-14" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_nzv()</span></span>
+<span id="cb475-15"><a href="lesson-7b-feature-engineering.html#cb475-15" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_YeoJohnson()</span></span>
+<span id="cb475-16"><a href="lesson-7b-feature-engineering.html#cb475-16" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_normalize()</span></span>
+<span id="cb475-17"><a href="lesson-7b-feature-engineering.html#cb475-17" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_string2factor()</span></span>
+<span id="cb475-18"><a href="lesson-7b-feature-engineering.html#cb475-18" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_unknown()</span></span>
+<span id="cb475-19"><a href="lesson-7b-feature-engineering.html#cb475-19" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_relevel()</span></span>
+<span id="cb475-20"><a href="lesson-7b-feature-engineering.html#cb475-20" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_integer()</span></span>
+<span id="cb475-21"><a href="lesson-7b-feature-engineering.html#cb475-21" aria-hidden="true" tabindex="-1"></a><span class="do">## • step_other()</span></span>
+<span id="cb475-22"><a href="lesson-7b-feature-engineering.html#cb475-22" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb475-23"><a href="lesson-7b-feature-engineering.html#cb475-23" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Model ────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb475-24"><a href="lesson-7b-feature-engineering.html#cb475-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Random Forest Model Specification (regression)</span></span>
+<span id="cb475-25"><a href="lesson-7b-feature-engineering.html#cb475-25" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb475-26"><a href="lesson-7b-feature-engineering.html#cb475-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Computational engine: ranger</span></span></code></pre></div>
+<p>Now, there is a single function that can be used to prepare the recipe and train the model from the resulting predictors:</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="lesson-7b-feature-engineering.html#cb476-1" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> rf_wflow <span class="sc">%&gt;%</span></span>
+<span id="cb476-2"><a href="lesson-7b-feature-engineering.html#cb476-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">fit</span>(<span class="at">data =</span> train)</span></code></pre></div>
+<p>The <code>rf_fit</code> object has the finalized recipe and fitted model objects inside. You may want to extract the model or recipe objects from the workflow. To do this, you can use the helper functions <code>extract_fit_parsnip()</code> and <code>extract_recipe()</code>.</p>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="lesson-7b-feature-engineering.html#cb477-1" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="sc">%&gt;%</span></span>
+<span id="cb477-2"><a href="lesson-7b-feature-engineering.html#cb477-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">extract_fit_parsnip</span>()</span>
+<span id="cb477-3"><a href="lesson-7b-feature-engineering.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="do">## parsnip model object</span></span>
+<span id="cb477-4"><a href="lesson-7b-feature-engineering.html#cb477-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb477-5"><a href="lesson-7b-feature-engineering.html#cb477-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Ranger result</span></span>
+<span id="cb477-6"><a href="lesson-7b-feature-engineering.html#cb477-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb477-7"><a href="lesson-7b-feature-engineering.html#cb477-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb477-8"><a href="lesson-7b-feature-engineering.html#cb477-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  ranger::ranger(x = maybe_data_frame(x), y = y, num.threads = 1,      verbose = FALSE, seed = sample.int(10^5, 1)) </span></span>
+<span id="cb477-9"><a href="lesson-7b-feature-engineering.html#cb477-9" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb477-10"><a href="lesson-7b-feature-engineering.html#cb477-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Type:                             Regression </span></span>
+<span id="cb477-11"><a href="lesson-7b-feature-engineering.html#cb477-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of trees:                  500 </span></span>
+<span id="cb477-12"><a href="lesson-7b-feature-engineering.html#cb477-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Sample size:                      2051 </span></span>
+<span id="cb477-13"><a href="lesson-7b-feature-engineering.html#cb477-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of independent variables:  59 </span></span>
+<span id="cb477-14"><a href="lesson-7b-feature-engineering.html#cb477-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Mtry:                             7 </span></span>
+<span id="cb477-15"><a href="lesson-7b-feature-engineering.html#cb477-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Target node size:                 5 </span></span>
+<span id="cb477-16"><a href="lesson-7b-feature-engineering.html#cb477-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Variable importance mode:         none </span></span>
+<span id="cb477-17"><a href="lesson-7b-feature-engineering.html#cb477-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Splitrule:                        variance </span></span>
+<span id="cb477-18"><a href="lesson-7b-feature-engineering.html#cb477-18" aria-hidden="true" tabindex="-1"></a><span class="do">## OOB prediction error (MSE):       678431876 </span></span>
+<span id="cb477-19"><a href="lesson-7b-feature-engineering.html#cb477-19" aria-hidden="true" tabindex="-1"></a><span class="do">## R squared (OOB):                  0.89461</span></span></code></pre></div>
+<p>Just as in the last lesson, we can make predictions with our fit model object and evaluate the model performance. Here, we compute the RMSE on our test data and we see we have a much better performance than previous models.</p>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="lesson-7b-feature-engineering.html#cb478-1" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="sc">%&gt;%</span></span>
+<span id="cb478-2"><a href="lesson-7b-feature-engineering.html#cb478-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">predict</span>(test) <span class="sc">%&gt;%</span></span>
+<span id="cb478-3"><a href="lesson-7b-feature-engineering.html#cb478-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_cols</span>(test <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price)) <span class="sc">%&gt;%</span></span>
+<span id="cb478-4"><a href="lesson-7b-feature-engineering.html#cb478-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rmse</span>(<span class="at">truth =</span> Sale_Price, <span class="at">estimate =</span> .pred)</span>
+<span id="cb478-5"><a href="lesson-7b-feature-engineering.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb478-6"><a href="lesson-7b-feature-engineering.html#cb478-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   .metric .estimator .estimate</span></span>
+<span id="cb478-7"><a href="lesson-7b-feature-engineering.html#cb478-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb478-8"><a href="lesson-7b-feature-engineering.html#cb478-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 rmse    standard      25330.</span></span></code></pre></div>
+<div class="note">
+<p>
+This improved performance could be a result of using a model that
+fits the data better, using more features, or from the feature
+engineering. Or, most likely, a combination of all the above!
+</p>
+</div>
+</div>
+<div id="exercises-19" class="section level2 hasAnchor" number="34.8">
+<h2><span class="header-section-number">34.8</span> Exercises<a href="lesson-7b-feature-engineering.html#exercises-19" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<p>
+Using the ames housing data…
+</p>
+<ol style="list-style-type: decimal">
+<li>
+Rather than ordinal encode the quality and condition features
+(i.e. <code>step_integer(matches(“Qual|Cond|QC”))</code>), one-hot
+encode these features.
+</li>
+<li>
+What is the difference in the number of features in your training
+set?
+</li>
+<li>
+Apply this new recipe to the same random forest model and compute
+the test RMSE. How does the performance differ?
+</li>
+<li>
+Identify three new feature engineering steps that are provided by <a
+href="https://recipes.tidymodels.org/">recipes</a>:
+<ul>
+<li>
+Why would these feature engineering steps be applicable to the Ames
+data?
+</li>
+<li>
+Apply these feature engineering steps along with the same random
+forest model. How do your results change?
+</li>
+</ul>
+</li>
+</ol>
+</div>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Buuren, S. van. 2012. <em>Flexible Imputation of Missing Data</em>. Chapman &amp; Hall/CRC Interdisciplinary Statistics. Taylor &amp; Francis.
-</div>
-<div class="csl-entry">
-Dasu, Tamraparni, and Theodore Johnson. 2003. <em>Exploratory Data Mining and Data Cleaning</em>. Vol. 479. John Wiley &amp; Sons.
-</div>
-<div class="csl-entry">
-Harrison Jr, David, and Daniel L Rubinfeld. 1978. <span>“Hedonic Housing Prices and the Demand for Clean Air.”</span> <em>Journal of Environmental Economics and Management</em> 5 (1): 81–102.
-</div>
-<div class="csl-entry">
-Irizarry, Rafael A. 2019. <em>Introduction to Data Science: Data Analysis and Prediction Algorithms with r</em>. CRC Press.
-</div>
-<div class="csl-entry">
-Ismay, Chester, and Albert Y Kim. 2019. <em>Statistical Inference via Data Science: A ModernDive into r and the Tidyverse</em>. Chapman; Hall/CRC.
-</div>
-<div class="csl-entry">
+<div id="ref-apm" class="csl-entry">
 Kuhn, Max, and Kjell Johnson. 2013. <em>Applied Predictive Modeling</em>. Vol. 26. Springer.
 </div>
-<div class="csl-entry">
-van Buuren, Stef, and Karin Groothuis-Oudshoorn. 2011. <span>“<span class="nocase">mice</span>: Multivariate Imputation by Chained Equations in r.”</span> <em>Journal of Statistical Software</em> 45 (3): 1–67. <a href="https://doi.org/10.18637/jss.v045.i03">https://doi.org/10.18637/jss.v045.i03</a>.
 </div>
-<div class="csl-entry">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>The Journal of Statistical Software</em> 59. <a href="http://www.jstatsoft.org/v59/i10/">http://www.jstatsoft.org/v59/i10/</a>.
-</div>
-<div class="csl-entry">
-———. 2015. <em>R Packages: Organize, Test, Document, and Share Your Code</em>. " O’Reilly Media, Inc.".
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="computing-environment-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="lesson-7a-first-model-with-tidymodels.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-7c-model-evaluation-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -864,7 +1539,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/99-references.Rmd",
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-7/lesson-2.Rmd",
 "text": "Edit"
 },
 "history": {
