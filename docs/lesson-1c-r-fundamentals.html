@@ -761,9 +761,19 @@ div.csl-indent {
 <li class="chapter" data-level="35" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html"><i class="fa fa-check"></i><b>35</b> Lesson 7c: Model evaluation &amp; selection</a>
 <ul>
 <li class="chapter" data-level="35.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#learning-objectives-29"><i class="fa fa-check"></i><b>35.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-a"><i class="fa fa-check"></i><b>35.2</b> Content A</a></li>
-<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-b"><i class="fa fa-check"></i><b>35.3</b> Content B</a></li>
-<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.4</b> Exercises</a></li>
+<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#prerequisites-11"><i class="fa fa-check"></i><b>35.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#resampling-cross-validation"><i class="fa fa-check"></i><b>35.3</b> Resampling &amp; cross-validation</a></li>
+<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>35.4</b> K-fold cross-validation</a></li>
+<li class="chapter" data-level="35.5" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning"><i class="fa fa-check"></i><b>35.5</b> Hyperparameter tuning</a>
+<ul>
+<li class="chapter" data-level="35.5.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#bias"><i class="fa fa-check"></i><b>35.5.1</b> Bias</a></li>
+<li class="chapter" data-level="35.5.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#variance"><i class="fa fa-check"></i><b>35.5.2</b> Variance</a></li>
+<li class="chapter" data-level="35.5.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameters"><i class="fa fa-check"></i><b>35.5.3</b> Hyperparameters</a></li>
+<li class="chapter" data-level="35.5.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#full-cartesian-grid-search"><i class="fa fa-check"></i><b>35.5.4</b> Full cartesian grid search</a></li>
+</ul></li>
+<li class="chapter" data-level="35.6" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#finalizing-our-model"><i class="fa fa-check"></i><b>35.6</b> Finalizing our model</a></li>
+<li class="chapter" data-level="35.7" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.7</b> Exercises</a></li>
+<li class="chapter" data-level="35.8" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#additional-resources-10"><i class="fa fa-check"></i><b>35.8</b> Additional resources</a></li>
 </ul></li>
 <li class="chapter" data-level="36" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>36</b> Lab</a></li>
 <li class="part"><span><b>VIII Additional Content</b></span></li>
@@ -1107,12 +1117,12 @@ is equivalent to running the 29 lines of code below 👇!
 <span id="cb28-28"><a href="lesson-1c-r-fundamentals.html#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span></code></pre></div>
 <p>If we load the <strong>tidyverse</strong> package we will see that it loads 8 packages for us: <strong>ggplot2</strong>_, <strong>tibble</strong>, <strong>tidyr</strong>, <strong>readr</strong>, <strong>purrr</strong>, <strong>dplyr</strong>, <strong>stringr</strong>, and <strong>forcats</strong>. These are packages that we will tend to use in almost any data analysis project.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="lesson-1c-r-fundamentals.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-2"><a href="lesson-1c-r-fundamentals.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb29-2"><a href="lesson-1c-r-fundamentals.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
 <span id="cb29-3"><a href="lesson-1c-r-fundamentals.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span></span>
 <span id="cb29-4"><a href="lesson-1c-r-fundamentals.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span></span>
 <span id="cb29-5"><a href="lesson-1c-r-fundamentals.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span></span>
 <span id="cb29-6"><a href="lesson-1c-r-fundamentals.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ readr   2.1.2     ✔ forcats 0.5.1</span></span>
-<span id="cb29-7"><a href="lesson-1c-r-fundamentals.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb29-7"><a href="lesson-1c-r-fundamentals.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
 <span id="cb29-8"><a href="lesson-1c-r-fundamentals.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ✖ dplyr::filter() masks stats::filter()</span></span>
 <span id="cb29-9"><a href="lesson-1c-r-fundamentals.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ✖ dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 <div class="tip">

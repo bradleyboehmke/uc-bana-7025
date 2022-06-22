@@ -761,9 +761,19 @@ div.csl-indent {
 <li class="chapter" data-level="35" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html"><i class="fa fa-check"></i><b>35</b> Lesson 7c: Model evaluation &amp; selection</a>
 <ul>
 <li class="chapter" data-level="35.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#learning-objectives-29"><i class="fa fa-check"></i><b>35.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-a"><i class="fa fa-check"></i><b>35.2</b> Content A</a></li>
-<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-b"><i class="fa fa-check"></i><b>35.3</b> Content B</a></li>
-<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.4</b> Exercises</a></li>
+<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#prerequisites-11"><i class="fa fa-check"></i><b>35.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#resampling-cross-validation"><i class="fa fa-check"></i><b>35.3</b> Resampling &amp; cross-validation</a></li>
+<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>35.4</b> K-fold cross-validation</a></li>
+<li class="chapter" data-level="35.5" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning"><i class="fa fa-check"></i><b>35.5</b> Hyperparameter tuning</a>
+<ul>
+<li class="chapter" data-level="35.5.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#bias"><i class="fa fa-check"></i><b>35.5.1</b> Bias</a></li>
+<li class="chapter" data-level="35.5.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#variance"><i class="fa fa-check"></i><b>35.5.2</b> Variance</a></li>
+<li class="chapter" data-level="35.5.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameters"><i class="fa fa-check"></i><b>35.5.3</b> Hyperparameters</a></li>
+<li class="chapter" data-level="35.5.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#full-cartesian-grid-search"><i class="fa fa-check"></i><b>35.5.4</b> Full cartesian grid search</a></li>
+</ul></li>
+<li class="chapter" data-level="35.6" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#finalizing-our-model"><i class="fa fa-check"></i><b>35.6</b> Finalizing our model</a></li>
+<li class="chapter" data-level="35.7" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.7</b> Exercises</a></li>
+<li class="chapter" data-level="35.8" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#additional-resources-10"><i class="fa fa-check"></i><b>35.8</b> Additional resources</a></li>
 </ul></li>
 <li class="chapter" data-level="36" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>36</b> Lab</a></li>
 <li class="part"><span><b>VIII Additional Content</b></span></li>
@@ -891,20 +901,19 @@ div.csl-indent {
 <p>Sometimes factors will be ordinal. You will notice this by the <code>&lt;ord&gt;</code> description in a tibble:</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="lesson-5b-handling-factors.html#cb313-1" aria-hidden="true" tabindex="-1"></a>demographics</span>
 <span id="cb313-2"><a href="lesson-5b-handling-factors.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 801 × 8</span></span>
-<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_ownership marital_status household_size</span></span>
-<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;         </span></span>
-<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner      Married        2             </span></span>
-<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner      Unmarried      1             </span></span>
-<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;           Unmarried      1             </span></span>
-<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;           Unmarried      1             </span></span>
-<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner      Married        4             </span></span>
-<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;           Married        5+            </span></span>
-<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;           Married        4             </span></span>
-<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner      Unmarried      1             </span></span>
-<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner      Married        5+            </span></span>
-<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner      Married        2             </span></span>
-<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and 2 more variables: household_comp &lt;ord&gt;,</span></span>
-<span id="cb313-16"><a href="lesson-5b-handling-factors.html#cb313-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   kids_count &lt;ord&gt;</span></span></code></pre></div>
+<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_ownership marital_status household_size household_comp  </span></span>
+<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;           </span></span>
+<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner      Married        2              2 Adults No Kids</span></span>
+<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner      Unmarried      1              1 Adult No Kids </span></span>
+<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;           Unmarried      1              1 Adult No Kids </span></span>
+<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;           Unmarried      1              1 Adult No Kids </span></span>
+<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner      Married        4              2 Adults Kids   </span></span>
+<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;           Married        5+             2 Adults Kids   </span></span>
+<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;           Married        4              2 Adults Kids   </span></span>
+<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner      Unmarried      1              1 Adult No Kids </span></span>
+<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner      Married        5+             2 Adults Kids   </span></span>
+<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner      Married        2              2 Adults No Kids</span></span>
+<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and 1 more variable: kids_count &lt;ord&gt;</span></span></code></pre></div>
 <p>And we can verify with <code>class()</code>:</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="lesson-5b-handling-factors.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(demographics<span class="sc">$</span>age)</span>
 <span id="cb314-2"><a href="lesson-5b-handling-factors.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;ordered&quot; &quot;factor&quot;</span></span></code></pre></div>

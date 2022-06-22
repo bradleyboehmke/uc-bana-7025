@@ -761,9 +761,19 @@ div.csl-indent {
 <li class="chapter" data-level="35" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html"><i class="fa fa-check"></i><b>35</b> Lesson 7c: Model evaluation &amp; selection</a>
 <ul>
 <li class="chapter" data-level="35.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#learning-objectives-29"><i class="fa fa-check"></i><b>35.1</b> Learning objectives</a></li>
-<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-a"><i class="fa fa-check"></i><b>35.2</b> Content A</a></li>
-<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#content-b"><i class="fa fa-check"></i><b>35.3</b> Content B</a></li>
-<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.4</b> Exercises</a></li>
+<li class="chapter" data-level="35.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#prerequisites-11"><i class="fa fa-check"></i><b>35.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="35.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#resampling-cross-validation"><i class="fa fa-check"></i><b>35.3</b> Resampling &amp; cross-validation</a></li>
+<li class="chapter" data-level="35.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>35.4</b> K-fold cross-validation</a></li>
+<li class="chapter" data-level="35.5" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning"><i class="fa fa-check"></i><b>35.5</b> Hyperparameter tuning</a>
+<ul>
+<li class="chapter" data-level="35.5.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#bias"><i class="fa fa-check"></i><b>35.5.1</b> Bias</a></li>
+<li class="chapter" data-level="35.5.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#variance"><i class="fa fa-check"></i><b>35.5.2</b> Variance</a></li>
+<li class="chapter" data-level="35.5.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameters"><i class="fa fa-check"></i><b>35.5.3</b> Hyperparameters</a></li>
+<li class="chapter" data-level="35.5.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#full-cartesian-grid-search"><i class="fa fa-check"></i><b>35.5.4</b> Full cartesian grid search</a></li>
+</ul></li>
+<li class="chapter" data-level="35.6" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#finalizing-our-model"><i class="fa fa-check"></i><b>35.6</b> Finalizing our model</a></li>
+<li class="chapter" data-level="35.7" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-20"><i class="fa fa-check"></i><b>35.7</b> Exercises</a></li>
+<li class="chapter" data-level="35.8" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#additional-resources-10"><i class="fa fa-check"></i><b>35.8</b> Additional resources</a></li>
 </ul></li>
 <li class="chapter" data-level="36" data-path="lab-6.html"><a href="lab-6.html"><i class="fa fa-check"></i><b>36</b> Lab</a></li>
 <li class="part"><span><b>VIII Additional Content</b></span></li>
@@ -1193,8 +1203,8 @@ vs. scalars), we will cover what this means in later a module.
 <span id="cb71-2"><a href="lesson-1d-vectors.html#cb71-2" aria-hidden="true" tabindex="-1"></a>odd_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
 <span id="cb71-3"><a href="lesson-1d-vectors.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-4"><a href="lesson-1d-vectors.html#cb71-4" aria-hidden="true" tabindex="-1"></a>even_length <span class="sc">+</span> odd_length</span>
-<span id="cb71-5"><a href="lesson-1d-vectors.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object length is not a multiple of</span></span>
-<span id="cb71-6"><a href="lesson-1d-vectors.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">## shorter object length</span></span>
+<span id="cb71-5"><a href="lesson-1d-vectors.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object length is not a multiple of shorter object</span></span>
+<span id="cb71-6"><a href="lesson-1d-vectors.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">## length</span></span>
 <span id="cb71-7"><a href="lesson-1d-vectors.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-11" class="section level3 hasAnchor" number="5.7.3">
