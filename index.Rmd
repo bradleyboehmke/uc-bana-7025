@@ -17,7 +17,7 @@ description: "Master the art of data wrangling with the R programming language."
 # Syllabus {-}
 
 ```{block, type = "note"}
-This repository contains additional resources for the UC BANA 7025 Data Wrangling course. The following is a truncated syllabus; for the full syllabus along with complete course content please visit the online course content in [Canvas](https://uc.instructure.com/). 
+This is the primary "textbook" for the UC BANA 7025 Data Wrangling course. The following is a truncated syllabus; for the full syllabus along with complete course content please visit the online course content in [Canvas](https://uc.instructure.com/). 
 ```
 
 Welcome to ___Data Wrangling with R___! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
@@ -37,6 +37,7 @@ This course will guide you through the data wrangling process along with give yo
 * Visualize data
 * Make your code efficient by using control statements & iteration
 * Write your own functions
+* Train and evaluate predictive models
 
 ...all with R!
 
@@ -46,17 +47,17 @@ This course assumes no prior knowledge of R. Experience with programming concept
 
 ## Material {-}
 
-The bulk of the classroom material will be provided via this book, the recorded lectures, and class notes. In some cases there are additional recommended readings, all of which are readily available online.
+The bulk of the classroom material will be provided via this book, the recorded lectures, and any additional resources provided via Canvas. In some cases there may be additional recommended readings, all of which are readily available online.
 
 ## Class Structure {-}
 
 __Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two or more primary lessons and associated quizzes along with a lab.
 
-__Lessons__: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various "Your Turn" exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.
+__Lessons__: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various "TODO" exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.
 
 __Quizzes__: There will be a short quiz associated with _each lesson_. These quizzes will be hosted in the course website on Canvas. Please check Canvas for due dates for these quizzes.
 
-__Labs__: There will be a lab associated with _each module_. For these labs students will be guided through a case study step-by-step. The aim is to provide a detailed view on how to manage a variety of complex real-world data; how to convert real problems into data wrangling and analysis problems; and to apply R to address these problems and extract insights from the data. Submission of these labs will be done through the course website on Canvas. Please check Canvas for due dates for these labs.
+__Labs__: There will be a lab associated with _each module_. For these labs students will be guided through a case study step-by-step. The aim is to provide a detailed view on how to manage a variety of complex real-world data; how to convert real problems into data wrangling and analysis problems; and to apply R to address these problems and extract insights from the data. These labs will be provided via the course website on Canvas and the submission of these labs will also be done through the course website on Canvas. Please check Canvas for due dates for these labs.
 
 __Project__: TBD
 
@@ -70,17 +71,17 @@ See the [Canvas](https://uc.instructure.com/) course webpage for a detailed sche
 | Module        | Description                                         |
 |:-------------:|:----------------------------------------------------|
 | **1**         | **Introduction**                                    |
-|               | Intro to data wrangling, R, and this course         |
 |               | R fundamentals & the Rstudio IDE                    |
+|               | Deeper understanding of vectors                     |
 | **2**         | **Reproducible Documents and Importing Data**       |
 |               | Managing your workflow and reproducibility          |
-|               | Importing data and understanding the basics of it   |
+|               | Data structures & importing data                    |
 | **3**         | **Tidy Data and Data Manipulation**                 |
-|               | Tidying & preparing data for analysis               |
-|               | Data manipulation                                   |
+|               | Data manipulation & summarization                   |
+|               | Tidy data                                           |
 | **4**         | **Relational Data and More Tidyverse Packages**     |
 |               | Relational data                                     |
-|               | Leveraging the Tidyverse to simplify data wrangling |
+|               | Leveraging the Tidyverse to text & date-time data   |
 | **5**         | **Data Visualization & Exploration**                |
 |               | Data visualization                                  |
 |               | Exploratory data analysis                           |
@@ -88,8 +89,8 @@ See the [Canvas](https://uc.instructure.com/) course webpage for a detailed sche
 |               | Control statements & iteration                      |
 |               | Writing functions                                   |
 | **7**         | **Introduction to Applied Modeling**                |
-|               | Correlation & pattern discovery                     |
-|               | Introduction to machine learning                    |
+|               | Introduction to tidymodels                          |
+|               | Feature engineering & model evaluation/selection    |
 
 ## Conventions used in this book {-}
 

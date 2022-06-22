@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Lesson 1b: R fundamentals | Data Wrangling with R</title>
+  <meta name="description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Lesson 1b: R fundamentals | Data Wrangling with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Lesson 1b: R fundamentals | Data Wrangling with R" />
+  <meta name="twitter:site" content="@bradleyboehmke" />
+  <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
+  
+
+<meta name="author" content="Bradley Boehmke" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-1a-r-rstudio.html"/>
+<link rel="next" href="lesson-1c-vectors.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UC BANA 7025: Data Wrangling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i>Material</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions-used-in-this-book"><i class="fa fa-check"></i>Conventions used in this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Module 1</b></span></li>
+<li class="chapter" data-level="1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview.html"><a href="overview.html#learning-objectives-1"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="overview.html"><a href="overview.html#estimated-time-requirement"><i class="fa fa-check"></i><b>1.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="1.3" data-path="overview.html"><a href="overview.html#tasks"><i class="fa fa-check"></i><b>1.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html"><i class="fa fa-check"></i><b>2</b> Lesson 1a: R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#learning-objectives-2"><i class="fa fa-check"></i><b>2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#r-vs.-rstudio"><i class="fa fa-check"></i><b>2.2</b> R vs. RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>2.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#understanding-the-rstudio-ide"><i class="fa fa-check"></i><b>2.4</b> Understanding the RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#script-editor"><i class="fa fa-check"></i><b>2.4.1</b> Script Editor</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#workspace-environment"><i class="fa fa-check"></i><b>2.4.2</b> Workspace Environment</a></li>
+<li class="chapter" data-level="2.4.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#console"><i class="fa fa-check"></i><b>2.4.3</b> Console</a></li>
+<li class="chapter" data-level="2.4.4" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#misc.-displays"><i class="fa fa-check"></i><b>2.4.4</b> Misc. Displays</a></li>
+<li class="chapter" data-level="2.4.5" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#workspace-options-shortcuts"><i class="fa fa-check"></i><b>2.4.5</b> Workspace Options &amp; Shortcuts</a></li>
+<li class="chapter" data-level="2.4.6" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#knowledge-check"><i class="fa fa-check"></i><b>2.4.6</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>2.5</b> Getting help</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#general-help"><i class="fa fa-check"></i><b>2.5.1</b> General Help</a></li>
+<li class="chapter" data-level="2.5.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#getting-help-from-the-web"><i class="fa fa-check"></i><b>2.5.2</b> Getting Help From the Web</a></li>
+<li class="chapter" data-level="2.5.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#knowledge-check-1"><i class="fa fa-check"></i><b>2.5.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>2.6</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> Lesson 1b: R fundamentals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#learning-objectives-3"><i class="fa fa-check"></i><b>3.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#assignment-evaluation"><i class="fa fa-check"></i><b>3.2</b> Assignment &amp; evaluation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#assignment"><i class="fa fa-check"></i><b>3.2.1</b> Assignment</a></li>
+<li class="chapter" data-level="3.2.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#evaluation"><i class="fa fa-check"></i><b>3.2.2</b> Evaluation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#case-sensitivity"><i class="fa fa-check"></i><b>3.2.3</b> Case Sensitivity</a></li>
+<li class="chapter" data-level="3.2.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-2"><i class="fa fa-check"></i><b>3.2.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.3</b> R as a calculator</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#basic-arithmetic"><i class="fa fa-check"></i><b>3.3.1</b> Basic Arithmetic</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#miscellaneous-mathematical-functions"><i class="fa fa-check"></i><b>3.3.2</b> Miscellaneous Mathematical Functions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>3.3.3</b> Infinite, and NaN Numbers</a></li>
+<li class="chapter" data-level="3.3.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>3.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>3.4</b> Working with packages</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>3.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>3.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>3.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>3.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>3.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>3.4.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>3.5</b> Style guide</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>3.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="3.5.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>3.5.2</b> Organization</a></li>
+<li class="chapter" data-level="3.5.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>3.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="3.5.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>3.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#exercises-1"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html"><i class="fa fa-check"></i><b>4</b> Lesson 1c: Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#learning-objectives-4"><i class="fa fa-check"></i><b>4.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>4.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>4.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>4.2.2</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>4.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>4.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>4.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="4.3.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>4.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>4.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>4.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#operations"><i class="fa fa-check"></i><b>4.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>4.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#missing-data"><i class="fa fa-check"></i><b>4.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>4.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#vectorization"><i class="fa fa-check"></i><b>4.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>4.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="4.7.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#recycling"><i class="fa fa-check"></i><b>4.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="4.7.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>4.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#exercises-2"><i class="fa fa-check"></i><b>4.8</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Module 2</b></span></li>
+<li class="chapter" data-level="5" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>5</b> Overview</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="overview-1.html"><a href="overview-1.html#estimated-time-requirement-1"><i class="fa fa-check"></i><b>5.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="5.3" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>5.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>6</b> Lesson 2a: Workflow</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-6"><i class="fa fa-check"></i><b>6.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>6.2</b> R Projects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>6.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>6.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>6.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>6.3</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>6.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>6.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>6.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>6.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>6.3.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>6.4</b> R Notebooks</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>6.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>6.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>6.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-7"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>7.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>7.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>7.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>7.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>7.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>7.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>7.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="7.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>7.3.3</b> Lists</a></li>
+<li class="chapter" data-level="7.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>7.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html"><i class="fa fa-check"></i><b>8</b> Lesson 2c: Importing data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#learning-objectives-8"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#data-memory"><i class="fa fa-check"></i><b>8.2</b> Data &amp; memory</a></li>
+<li class="chapter" data-level="8.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#delimited-files"><i class="fa fa-check"></i><b>8.3</b> Delimited files</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#tibbles"><i class="fa fa-check"></i><b>8.3.1</b> Tibbles</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#file-paths"><i class="fa fa-check"></i><b>8.3.2</b> File paths</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#metadata"><i class="fa fa-check"></i><b>8.3.3</b> Metadata</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#knowledge-check-18"><i class="fa fa-check"></i><b>8.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#excel-files"><i class="fa fa-check"></i><b>8.4</b> Excel files</a></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#sql-databases"><i class="fa fa-check"></i><b>8.5</b> SQL databases</a></li>
+<li class="chapter" data-level="8.6" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#many-other-file-types"><i class="fa fa-check"></i><b>8.6</b> Many other file types</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#json-files"><i class="fa fa-check"></i><b>8.6.1</b> JSON files</a></li>
+<li class="chapter" data-level="8.6.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#r-object-files"><i class="fa fa-check"></i><b>8.6.2</b> R object files</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#exercises-5"><i class="fa fa-check"></i><b>8.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Module 3</b></span></li>
+<li class="chapter" data-level="9" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>9</b> Overview</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-9"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="overview-2.html"><a href="overview-2.html#estimated-time-requirement-2"><i class="fa fa-check"></i><b>9.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="9.3" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>9.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html"><i class="fa fa-check"></i><b>10</b> Lesson 3a: Pipe operator</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#learning-objectives-10"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#pipe-operator"><i class="fa fa-check"></i><b>10.2</b> Pipe (<code>%&gt;%</code>) operator</a></li>
+<li class="chapter" data-level="10.3" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional"><i class="fa fa-check"></i><b>10.3</b> Additional pipe operators (optional)</a></li>
+<li class="chapter" data-level="10.4" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-resources-2"><i class="fa fa-check"></i><b>10.4</b> Additional resources</a></li>
+<li class="chapter" data-level="10.5" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#exercises-6"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html"><i class="fa fa-check"></i><b>11</b> Lesson 3b: Data transformation</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#learning-objectives-11"><i class="fa fa-check"></i><b>11.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="11.2" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#prerequisites"><i class="fa fa-check"></i><b>11.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="11.3" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#filter"><i class="fa fa-check"></i><b>11.3</b> Filtering observations</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-19"><i class="fa fa-check"></i><b>11.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#select"><i class="fa fa-check"></i><b>11.4</b> Selecting variables</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-20"><i class="fa fa-check"></i><b>11.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#summarize"><i class="fa fa-check"></i><b>11.5</b> Computing summary statistics</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-21"><i class="fa fa-check"></i><b>11.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#sort"><i class="fa fa-check"></i><b>11.6</b> Sorting observations</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-22"><i class="fa fa-check"></i><b>11.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#mutate"><i class="fa fa-check"></i><b>11.7</b> Creating new variables</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-23"><i class="fa fa-check"></i><b>11.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#putting-it-altogether"><i class="fa fa-check"></i><b>11.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="11.9" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#exercises-7"><i class="fa fa-check"></i><b>11.9</b> Exercises</a></li>
+<li class="chapter" data-level="11.10" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#additional-resources-3"><i class="fa fa-check"></i><b>11.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html"><i class="fa fa-check"></i><b>12</b> Lesson 3c: Tidy data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#learning-objectives-12"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#prerequisites-1"><i class="fa fa-check"></i><b>12.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="12.3" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-wide-data-longer"><i class="fa fa-check"></i><b>12.3</b> Making wide data longer</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-24"><i class="fa fa-check"></i><b>12.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-long-data-wider"><i class="fa fa-check"></i><b>12.4</b> Making long data wider</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-25"><i class="fa fa-check"></i><b>12.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#separate-one-variable-into-multiple"><i class="fa fa-check"></i><b>12.5</b> Separate one variable into multiple</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-26"><i class="fa fa-check"></i><b>12.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#combine-multiple-variables-into-one"><i class="fa fa-check"></i><b>12.6</b> Combine multiple variables into one</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-27"><i class="fa fa-check"></i><b>12.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-tidying-functions"><i class="fa fa-check"></i><b>12.7</b> Additional tidying functions</a></li>
+<li class="chapter" data-level="12.8" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#putting-it-altogether-1"><i class="fa fa-check"></i><b>12.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="12.9" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#exercises-8"><i class="fa fa-check"></i><b>12.9</b> Exercises</a></li>
+<li class="chapter" data-level="12.10" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-resources-4"><i class="fa fa-check"></i><b>12.10</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>IV Module 4</b></span></li>
+<li class="chapter" data-level="13" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>13</b> Overview</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-13"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="overview-3.html"><a href="overview-3.html#estimated-time-requirement-3"><i class="fa fa-check"></i><b>13.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="13.3" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>13.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html"><i class="fa fa-check"></i><b>14</b> Lesson 4a: Relational data</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#learning-objectives-14"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#prerequisites-2"><i class="fa fa-check"></i><b>14.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="14.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#keys"><i class="fa fa-check"></i><b>14.3</b> Keys</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-28"><i class="fa fa-check"></i><b>14.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>14.4</b> Mutating joins</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#inner-join"><i class="fa fa-check"></i><b>14.4.1</b> Inner join</a></li>
+<li class="chapter" data-level="14.4.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#outer-joins"><i class="fa fa-check"></i><b>14.4.2</b> Outer joins</a></li>
+<li class="chapter" data-level="14.4.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#differing-keys"><i class="fa fa-check"></i><b>14.4.3</b> Differing keys</a></li>
+<li class="chapter" data-level="14.4.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example"><i class="fa fa-check"></i><b>14.4.4</b> Bigger example</a></li>
+<li class="chapter" data-level="14.4.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-29"><i class="fa fa-check"></i><b>14.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>14.5</b> Filtering joins</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#semi-join"><i class="fa fa-check"></i><b>14.5.1</b> Semi join</a></li>
+<li class="chapter" data-level="14.5.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#anti-join"><i class="fa fa-check"></i><b>14.5.2</b> Anti join</a></li>
+<li class="chapter" data-level="14.5.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example-1"><i class="fa fa-check"></i><b>14.5.3</b> Bigger example</a></li>
+<li class="chapter" data-level="14.5.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-30"><i class="fa fa-check"></i><b>14.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#exercises-9"><i class="fa fa-check"></i><b>14.6</b> Exercises</a></li>
+<li class="chapter" data-level="14.7" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#additional-resources-5"><i class="fa fa-check"></i><b>14.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html"><i class="fa fa-check"></i><b>15</b> Lesson 4b: Handling text data</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#learning-objectives-15"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="15.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#prerequisites-3"><i class="fa fa-check"></i><b>15.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="15.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#string-basics"><i class="fa fa-check"></i><b>15.3</b> String basics</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#case-conversion"><i class="fa fa-check"></i><b>15.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="15.3.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#counting-characters"><i class="fa fa-check"></i><b>15.3.2</b> Counting characters</a></li>
+<li class="chapter" data-level="15.3.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#extracting-parts-of-character-strings"><i class="fa fa-check"></i><b>15.3.3</b> Extracting parts of character strings</a></li>
+<li class="chapter" data-level="15.3.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-31"><i class="fa fa-check"></i><b>15.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regular-expressions"><i class="fa fa-check"></i><b>15.4</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regex-basics"><i class="fa fa-check"></i><b>15.4.1</b> Regex basics</a></li>
+<li class="chapter" data-level="15.4.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#multiple-words"><i class="fa fa-check"></i><b>15.4.2</b> Multiple Words</a></li>
+<li class="chapter" data-level="15.4.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#line-anchors"><i class="fa fa-check"></i><b>15.4.3</b> Line anchors</a></li>
+<li class="chapter" data-level="15.4.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#metacharacters"><i class="fa fa-check"></i><b>15.4.4</b> Metacharacters</a></li>
+<li class="chapter" data-level="15.4.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#character-classes"><i class="fa fa-check"></i><b>15.4.5</b> Character classes</a></li>
+<li class="chapter" data-level="15.4.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#shorthand-character-classes"><i class="fa fa-check"></i><b>15.4.6</b> Shorthand character classes</a></li>
+<li class="chapter" data-level="15.4.7" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#posix-character-classes"><i class="fa fa-check"></i><b>15.4.7</b> POSIX character classes</a></li>
+<li class="chapter" data-level="15.4.8" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#repetition"><i class="fa fa-check"></i><b>15.4.8</b> Repetition</a></li>
+<li class="chapter" data-level="15.4.9" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#putting-it-altogether-2"><i class="fa fa-check"></i><b>15.4.9</b> Putting it altogether</a></li>
+<li class="chapter" data-level="15.4.10" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-32"><i class="fa fa-check"></i><b>15.4.10</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#exercises-10"><i class="fa fa-check"></i><b>15.5</b> Exercises</a></li>
+<li class="chapter" data-level="15.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#additional-resources-6"><i class="fa fa-check"></i><b>15.6</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html"><i class="fa fa-check"></i><b>16</b> Lesson 4c: Handling dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#learning-objectives-16"><i class="fa fa-check"></i><b>16.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="16.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#prerequisites-4"><i class="fa fa-check"></i><b>16.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="16.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#getting-current-date-time"><i class="fa fa-check"></i><b>16.3</b> Getting current date &amp; time</a></li>
+<li class="chapter" data-level="16.4" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#creating-dates"><i class="fa fa-check"></i><b>16.4</b> Creating dates</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#convert-strings-to-dates"><i class="fa fa-check"></i><b>16.4.1</b> Convert strings to dates</a></li>
+<li class="chapter" data-level="16.4.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#create-dates-by-merging-data"><i class="fa fa-check"></i><b>16.4.2</b> Create dates by merging data</a></li>
+<li class="chapter" data-level="16.4.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-33"><i class="fa fa-check"></i><b>16.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#extract-manipulate-parts-of-dates"><i class="fa fa-check"></i><b>16.5</b> Extract &amp; manipulate parts of dates</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-34"><i class="fa fa-check"></i><b>16.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#calculations-with-dates"><i class="fa fa-check"></i><b>16.6</b> Calculations with dates</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#durations"><i class="fa fa-check"></i><b>16.6.1</b> Durations</a></li>
+<li class="chapter" data-level="16.6.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#periods"><i class="fa fa-check"></i><b>16.6.2</b> Periods</a></li>
+<li class="chapter" data-level="16.6.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-35"><i class="fa fa-check"></i><b>16.6.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#exercises-11"><i class="fa fa-check"></i><b>16.7</b> Exercises</a></li>
+<li class="chapter" data-level="16.8" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#additional-resources-7"><i class="fa fa-check"></i><b>16.8</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>V Module 5</b></span></li>
+<li class="chapter" data-level="17" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>17</b> Overview</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-17"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="overview-4.html"><a href="overview-4.html#estimated-time-requirement-4"><i class="fa fa-check"></i><b>17.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="17.3" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>17.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>18</b> Lesson 5a: Introduction to ggplot2</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#learning-objectives-18"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="18.2" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#prerequisites-5"><i class="fa fa-check"></i><b>18.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="18.3" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#grammar-of-graphics"><i class="fa fa-check"></i><b>18.3</b> Grammar of Graphics</a></li>
+<li class="chapter" data-level="18.4" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#the-basics"><i class="fa fa-check"></i><b>18.4</b> The Basics</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-36"><i class="fa fa-check"></i><b>18.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#aesthetic-mappings"><i class="fa fa-check"></i><b>18.5</b> Aesthetic Mappings</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-37"><i class="fa fa-check"></i><b>18.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#specifying-geometric-shapes"><i class="fa fa-check"></i><b>18.6</b> Specifying Geometric Shapes</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-38"><i class="fa fa-check"></i><b>18.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#statistical-transformations"><i class="fa fa-check"></i><b>18.7</b> Statistical Transformations</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-39"><i class="fa fa-check"></i><b>18.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#position-adjustments"><i class="fa fa-check"></i><b>18.8</b> Position Adjustments</a>
+<ul>
+<li class="chapter" data-level="18.8.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-40"><i class="fa fa-check"></i><b>18.8.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.9" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#managing-scales"><i class="fa fa-check"></i><b>18.9</b> Managing Scales</a>
+<ul>
+<li class="chapter" data-level="18.9.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-41"><i class="fa fa-check"></i><b>18.9.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.10" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#coordinate-systems"><i class="fa fa-check"></i><b>18.10</b> Coordinate Systems</a>
+<ul>
+<li class="chapter" data-level="18.10.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-42"><i class="fa fa-check"></i><b>18.10.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.11" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#facets"><i class="fa fa-check"></i><b>18.11</b> Facets</a>
+<ul>
+<li class="chapter" data-level="18.11.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-43"><i class="fa fa-check"></i><b>18.11.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.12" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#labels-annotations"><i class="fa fa-check"></i><b>18.12</b> Labels &amp; Annotations</a>
+<ul>
+<li class="chapter" data-level="18.12.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-44"><i class="fa fa-check"></i><b>18.12.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.13" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#exercises-12"><i class="fa fa-check"></i><b>18.13</b> Exercises</a></li>
+<li class="chapter" data-level="18.14" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#additional-resources-on-ggplot2"><i class="fa fa-check"></i><b>18.14</b> Additional Resources on <strong>ggplot2</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html"><i class="fa fa-check"></i><b>19</b> Lesson 5b: Handling factors</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#learning-objectives-19"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="19.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#prerequisites-6"><i class="fa fa-check"></i><b>19.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="19.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#creating-factors-inspecting-factors"><i class="fa fa-check"></i><b>19.3</b> Creating factors &amp; inspecting factors</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#some-basics"><i class="fa fa-check"></i><b>19.3.1</b> Some basics</a></li>
+<li class="chapter" data-level="19.3.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#factors-in-data-frames"><i class="fa fa-check"></i><b>19.3.2</b> Factors in data frames</a></li>
+<li class="chapter" data-level="19.3.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#ordinal-factors"><i class="fa fa-check"></i><b>19.3.3</b> Ordinal factors</a></li>
+<li class="chapter" data-level="19.3.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-45"><i class="fa fa-check"></i><b>19.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-order"><i class="fa fa-check"></i><b>19.4</b> Modifying factor order</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-46"><i class="fa fa-check"></i><b>19.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-levels"><i class="fa fa-check"></i><b>19.5</b> Modifying factor levels</a>
+<ul>
+<li class="chapter" data-level="19.5.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-47"><i class="fa fa-check"></i><b>19.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#exercises-13"><i class="fa fa-check"></i><b>19.6</b> Exercises</a></li>
+<li class="chapter" data-level="19.7" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#additional-resources-8"><i class="fa fa-check"></i><b>19.7</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html"><i class="fa fa-check"></i><b>20</b> Lesson 5c: Visual data exploration</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#learning-objectives-20"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="20.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#prerequisites-7"><i class="fa fa-check"></i><b>20.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="20.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#univariate-distributions"><i class="fa fa-check"></i><b>20.3</b> Univariate Distributions</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#histograms"><i class="fa fa-check"></i><b>20.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="20.3.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>20.3.2</b> Quantile-quantile plots</a></li>
+<li class="chapter" data-level="20.3.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#box-plots"><i class="fa fa-check"></i><b>20.3.3</b> Box plots</a></li>
+<li class="chapter" data-level="20.3.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#categorical-variables"><i class="fa fa-check"></i><b>20.3.4</b> Categorical variables</a></li>
+<li class="chapter" data-level="20.3.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bar-charts"><i class="fa fa-check"></i><b>20.3.5</b> Bar charts</a></li>
+<li class="chapter" data-level="20.3.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#dot-plots"><i class="fa fa-check"></i><b>20.3.6</b> Dot plots</a></li>
+<li class="chapter" data-level="20.3.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#pie-charts"><i class="fa fa-check"></i><b>20.3.7</b> Pie charts</a></li>
+<li class="chapter" data-level="20.3.8" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-48"><i class="fa fa-check"></i><b>20.3.8</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bivariate-relationships"><i class="fa fa-check"></i><b>20.4</b> Bivariate relationships</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#scatter-plots"><i class="fa fa-check"></i><b>20.4.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="20.4.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#strip-plots"><i class="fa fa-check"></i><b>20.4.2</b> Strip plots</a></li>
+<li class="chapter" data-level="20.4.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#overlays-faceting"><i class="fa fa-check"></i><b>20.4.3</b> Overlays &amp; faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#multivariate-relationships"><i class="fa fa-check"></i><b>20.5</b> Multivariate relationships</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#layering-variables"><i class="fa fa-check"></i><b>20.5.1</b> Layering variables</a></li>
+<li class="chapter" data-level="20.5.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#parallel-coordinate-plots"><i class="fa fa-check"></i><b>20.5.2</b> Parallel coordinate plots</a></li>
+<li class="chapter" data-level="20.5.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#mosaic-plots"><i class="fa fa-check"></i><b>20.5.3</b> Mosaic plots</a></li>
+<li class="chapter" data-level="20.5.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#tree-maps"><i class="fa fa-check"></i><b>20.5.4</b> Tree maps</a></li>
+<li class="chapter" data-level="20.5.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#heat-maps"><i class="fa fa-check"></i><b>20.5.5</b> Heat maps</a></li>
+<li class="chapter" data-level="20.5.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#generalized-pairs-plot"><i class="fa fa-check"></i><b>20.5.6</b> Generalized pairs plot</a></li>
+<li class="chapter" data-level="20.5.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-49"><i class="fa fa-check"></i><b>20.5.7</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#data-quality"><i class="fa fa-check"></i><b>20.6</b> Data quality</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-50"><i class="fa fa-check"></i><b>20.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#exercise"><i class="fa fa-check"></i><b>20.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>VI Module 6</b></span></li>
+<li class="chapter" data-level="21" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>21</b> Overview</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-21"><i class="fa fa-check"></i><b>21.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="overview-5.html"><a href="overview-5.html#estimated-time-requirement-5"><i class="fa fa-check"></i><b>21.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="21.3" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>21.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html"><i class="fa fa-check"></i><b>22</b> Lesson 6a: Conditional statements</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#learning-objectives-22"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="22.2" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#prerequisites-8"><i class="fa fa-check"></i><b>22.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="22.3" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#if-statement"><i class="fa fa-check"></i><b>22.3</b> <code>if</code> statement</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-51"><i class="fa fa-check"></i><b>22.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#ifelse-statement"><i class="fa fa-check"></i><b>22.4</b> <code>ifelse</code> statement</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-52"><i class="fa fa-check"></i><b>22.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#multiple-conditions"><i class="fa fa-check"></i><b>22.5</b> Multiple conditions</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-53"><i class="fa fa-check"></i><b>22.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.6" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#vectorized-approaches"><i class="fa fa-check"></i><b>22.6</b> Vectorized approaches</a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-54"><i class="fa fa-check"></i><b>22.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#with-data-frames"><i class="fa fa-check"></i><b>22.7</b> With data frames</a>
+<ul>
+<li class="chapter" data-level="22.7.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-55"><i class="fa fa-check"></i><b>22.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.8" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#exercises-14"><i class="fa fa-check"></i><b>22.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html"><i class="fa fa-check"></i><b>23</b> Lesson 6b: Iteration statements</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#learning-objectives-23"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="23.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#for-loops"><i class="fa fa-check"></i><b>23.2</b> <code>for</code> loops</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-56"><i class="fa fa-check"></i><b>23.2.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#controlling-sequences"><i class="fa fa-check"></i><b>23.3</b> Controlling sequences</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-57"><i class="fa fa-check"></i><b>23.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeating-code-for-undefined-number-of-iterations"><i class="fa fa-check"></i><b>23.4</b> Repeating code for undefined number of iterations</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#while-loop"><i class="fa fa-check"></i><b>23.4.1</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="23.4.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeat-loop"><i class="fa fa-check"></i><b>23.4.2</b> <code>repeat</code> loop</a></li>
+<li class="chapter" data-level="23.4.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-58"><i class="fa fa-check"></i><b>23.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#iteration-with-functional-programming"><i class="fa fa-check"></i><b>23.5</b> Iteration with functional programming</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-59"><i class="fa fa-check"></i><b>23.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#exercises-15"><i class="fa fa-check"></i><b>23.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html"><i class="fa fa-check"></i><b>24</b> Lesson 6c: Writing functions</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#learning-objectives-24"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#when-to-write-functions"><i class="fa fa-check"></i><b>24.2</b> When to write functions</a></li>
+<li class="chapter" data-level="24.3" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-components"><i class="fa fa-check"></i><b>24.3</b> Function components</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-60"><i class="fa fa-check"></i><b>24.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-arguments"><i class="fa fa-check"></i><b>24.4</b> Function arguments</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-61"><i class="fa fa-check"></i><b>24.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.5" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#checking-arguments-and-other-conditions"><i class="fa fa-check"></i><b>24.5</b> Checking arguments and other conditions</a>
+<ul>
+<li class="chapter" data-level="24.5.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-62"><i class="fa fa-check"></i><b>24.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.6" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#lazy-evaluation"><i class="fa fa-check"></i><b>24.6</b> Lazy evaluation</a></li>
+<li class="chapter" data-level="24.7" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#status-updates"><i class="fa fa-check"></i><b>24.7</b> Status updates</a>
+<ul>
+<li class="chapter" data-level="24.7.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-1-base-r"><i class="fa fa-check"></i><b>24.7.1</b> Option 1: Base R</a></li>
+<li class="chapter" data-level="24.7.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-2-progress-package"><i class="fa fa-check"></i><b>24.7.2</b> Option 2: <code>progress</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="24.8" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#distributing-your-functions"><i class="fa fa-check"></i><b>24.8</b> Distributing your functions</a></li>
+<li class="chapter" data-level="24.9" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#exercises-16"><i class="fa fa-check"></i><b>24.9</b> Exercises</a></li>
+<li class="chapter" data-level="24.10" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#additional-resources-9"><i class="fa fa-check"></i><b>24.10</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>VII Module 7</b></span></li>
+<li class="chapter" data-level="25" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>25</b> Overview</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-25"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="overview-6.html"><a href="overview-6.html#estimated-time-requirement-6"><i class="fa fa-check"></i><b>25.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="25.3" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>25.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html"><i class="fa fa-check"></i><b>26</b> Lesson 7a: First model with Tidymodels</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#learning-objectives-26"><i class="fa fa-check"></i><b>26.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="26.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#prerequisites-9"><i class="fa fa-check"></i><b>26.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="26.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#data-splitting"><i class="fa fa-check"></i><b>26.3</b> Data splitting</a>
+<ul>
+<li class="chapter" data-level="26.3.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#simple-random-sampling"><i class="fa fa-check"></i><b>26.3.1</b> Simple random sampling</a></li>
+<li class="chapter" data-level="26.3.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#stratified-sampling"><i class="fa fa-check"></i><b>26.3.2</b> Stratified sampling</a></li>
+<li class="chapter" data-level="26.3.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-63"><i class="fa fa-check"></i><b>26.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#building-models"><i class="fa fa-check"></i><b>26.4</b> Building models</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-64"><i class="fa fa-check"></i><b>26.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#making-predictions"><i class="fa fa-check"></i><b>26.5</b> Making predictions</a>
+<ul>
+<li class="chapter" data-level="26.5.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-65"><i class="fa fa-check"></i><b>26.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.6" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#evaluating-model-performance"><i class="fa fa-check"></i><b>26.6</b> Evaluating model performance</a>
+<ul>
+<li class="chapter" data-level="26.6.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#regression-models"><i class="fa fa-check"></i><b>26.6.1</b> Regression models</a></li>
+<li class="chapter" data-level="26.6.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#classification-models"><i class="fa fa-check"></i><b>26.6.2</b> Classification models</a></li>
+<li class="chapter" data-level="26.6.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-66"><i class="fa fa-check"></i><b>26.6.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.7" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#exercises-17"><i class="fa fa-check"></i><b>26.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html"><i class="fa fa-check"></i><b>27</b> Lesson 7b: Feature engineering</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#learning-objectives-27"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="27.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#prerequisites-10"><i class="fa fa-check"></i><b>27.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="27.3" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#create-a-recipe"><i class="fa fa-check"></i><b>27.3</b> Create a recipe</a></li>
+<li class="chapter" data-level="27.4" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#feature-filtering"><i class="fa fa-check"></i><b>27.4</b> Feature filtering</a></li>
+<li class="chapter" data-level="27.5" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#numeric-features"><i class="fa fa-check"></i><b>27.5</b> Numeric features</a>
+<ul>
+<li class="chapter" data-level="27.5.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#skewness"><i class="fa fa-check"></i><b>27.5.1</b> Skewness</a></li>
+<li class="chapter" data-level="27.5.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#standardization"><i class="fa fa-check"></i><b>27.5.2</b> Standardization</a></li>
+</ul></li>
+<li class="chapter" data-level="27.6" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#categorical-features"><i class="fa fa-check"></i><b>27.6</b> Categorical features</a>
+<ul>
+<li class="chapter" data-level="27.6.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#one-hot-dummy-encoding"><i class="fa fa-check"></i><b>27.6.1</b> One-hot &amp; dummy encoding</a></li>
+<li class="chapter" data-level="27.6.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#ordinal-encoding"><i class="fa fa-check"></i><b>27.6.2</b> Ordinal encoding</a></li>
+<li class="chapter" data-level="27.6.3" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#lumping"><i class="fa fa-check"></i><b>27.6.3</b> Lumping</a></li>
+</ul></li>
+<li class="chapter" data-level="27.7" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#fit-a-model-with-a-recipe"><i class="fa fa-check"></i><b>27.7</b> Fit a model with a recipe</a></li>
+<li class="chapter" data-level="27.8" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#exercises-18"><i class="fa fa-check"></i><b>27.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html"><i class="fa fa-check"></i><b>28</b> Lesson 7c: Model evaluation &amp; selection</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#learning-objectives-28"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="28.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#prerequisites-11"><i class="fa fa-check"></i><b>28.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="28.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#resampling-cross-validation"><i class="fa fa-check"></i><b>28.3</b> Resampling &amp; cross-validation</a></li>
+<li class="chapter" data-level="28.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>28.4</b> K-fold cross-validation</a></li>
+<li class="chapter" data-level="28.5" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning"><i class="fa fa-check"></i><b>28.5</b> Hyperparameter tuning</a>
+<ul>
+<li class="chapter" data-level="28.5.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#bias"><i class="fa fa-check"></i><b>28.5.1</b> Bias</a></li>
+<li class="chapter" data-level="28.5.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#variance"><i class="fa fa-check"></i><b>28.5.2</b> Variance</a></li>
+<li class="chapter" data-level="28.5.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameters"><i class="fa fa-check"></i><b>28.5.3</b> Hyperparameters</a></li>
+<li class="chapter" data-level="28.5.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#full-cartesian-grid-search"><i class="fa fa-check"></i><b>28.5.4</b> Full cartesian grid search</a></li>
+</ul></li>
+<li class="chapter" data-level="28.6" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#finalizing-our-model"><i class="fa fa-check"></i><b>28.6</b> Finalizing our model</a></li>
+<li class="chapter" data-level="28.7" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-19"><i class="fa fa-check"></i><b>28.7</b> Exercises</a></li>
+<li class="chapter" data-level="28.8" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#additional-resources-10"><i class="fa fa-check"></i><b>28.8</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Additional Content</b></span></li>
+<li class="chapter" data-level="" data-path="computing-environment-1.html"><a href="computing-environment-1.html"><i class="fa fa-check"></i>Computing Environment</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-1b-r-fundamentals" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Lesson 1b: R fundamentals<a href="lesson-1b-r-fundamentals.html#lesson-1b-r-fundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This lesson serves to introduce you to many of the basics of R to get you comfortable. This includes understanding how to assign and evaluate expressions, performing basic calculator-like activities, the idea of vectorization and packages. Finally, I offer some basic styling guidelines to help you write code that is easier to digest by others.</p>
+<div id="learning-objectives-3" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Learning objectives<a href="lesson-1b-r-fundamentals.html#learning-objectives-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Upon completing this module you will be able to:</p>
+<ul>
+<li>Assign values to variables and evaluate them.</li>
+<li>Perform basic mathematical operations.</li>
+<li>Explain what packages and be able to install and load them.</li>
+<li>Understand and apply basic styling guidelines to your code.</li>
+</ul>
+</div>
+<div id="assignment-evaluation" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Assignment &amp; evaluation<a href="lesson-1b-r-fundamentals.html#assignment-evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="assignment" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Assignment<a href="lesson-1b-r-fundamentals.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first operator you’ll run into is the <strong>assignment operator</strong>. The assignment operator is used to <em>assign</em> a value. For instance we can assign the value 3 to the variable <code>x</code> using the <code>&lt;-</code> assignment operator.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="lesson-1b-r-fundamentals.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># idiomatic assignment</span></span>
+<span id="cb13-2"><a href="lesson-1b-r-fundamentals.html#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
+<div class="note">
+<p>
+R is a dynamically typed programming language which means it will
+perform the process of verifying and enforcing the constraints of types
+at run-time. If you are unfamiliar with dynamically versus
+statically-typed languages then do not worry about this detail. Just
+realize that dynamically typed languages allow for the simplicity of
+running the above command and R automatically inferring that
+<code>3</code> should be a numeric type rather than a character
+string.
+</p>
+</div>
+<p>Interestingly, R actually allows for five assignment operators<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="lesson-1b-r-fundamentals.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># leftward assignment</span></span>
+<span id="cb14-2"><a href="lesson-1b-r-fundamentals.html#cb14-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> value</span>
+<span id="cb14-3"><a href="lesson-1b-r-fundamentals.html#cb14-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> value</span>
+<span id="cb14-4"><a href="lesson-1b-r-fundamentals.html#cb14-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;&lt;-</span> value</span>
+<span id="cb14-5"><a href="lesson-1b-r-fundamentals.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="lesson-1b-r-fundamentals.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rightward assignment</span></span>
+<span id="cb14-7"><a href="lesson-1b-r-fundamentals.html#cb14-7" aria-hidden="true" tabindex="-1"></a>value <span class="ot">-&gt;</span> x</span>
+<span id="cb14-8"><a href="lesson-1b-r-fundamentals.html#cb14-8" aria-hidden="true" tabindex="-1"></a>value <span class="ot">-&gt;&gt;</span> x</span></code></pre></div>
+<p>The original assignment operator in R was <code>&lt;-</code> and has continued to be the preferred among R users. The <code>=</code> assignment operator was <a href="http://developer.r-project.org/equalAssign.html">added in 2001</a> primarily because it is the accepted assignment operator in many other languages and beginners to R coming from other languages were so prone to use it. Using <code>=</code> is not <em>wrong</em>, just realize that most R programmers prefer to keep <code>=</code> reserved for argument association and use <code>&lt;-</code> for assignment.</p>
+<p>The operators <code>&lt;&lt;-</code> is normally only used in functions or looping constructs which we will not get into the details. And the rightward assignment operators perform the same as their leftward counterparts, they just assign the value in an opposite direction.</p>
+<p>Overwhelmed yet? Don’t be. This is just meant to show you that there are options and you will likely come across them sooner or later. My suggestion is to stick with the tried, true, and idiomatic <code>&lt;-</code> operator. This is the most conventional assignment operator used and is what you will find in all the base R source code…which means it should be good enough for you.</p>
+</div>
+<div id="evaluation" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Evaluation<a href="lesson-1b-r-fundamentals.html#evaluation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can then evaluate the variable by simply typing x at the command line which will return the value of <code>x</code>. Note that prior to the value returned you’ll see <code>## [1]</code> in the console. This simply implies that the output returned is the first output. Note that you can type any comments in your code by preceding the comment with the hash tag (<code>#</code>) symbol. Any values, symbols, and texts following <code>#</code> will not be evaluated.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="lesson-1b-r-fundamentals.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluation</span></span>
+<span id="cb15-2"><a href="lesson-1b-r-fundamentals.html#cb15-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb15-3"><a href="lesson-1b-r-fundamentals.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span></code></pre></div>
+</div>
+<div id="case-sensitivity" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Case Sensitivity<a href="lesson-1b-r-fundamentals.html#case-sensitivity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lastly, note that R is a case sensitive programming language. Meaning all variables, functions, and objects must be called by their exact spelling:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="lesson-1b-r-fundamentals.html#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb16-2"><a href="lesson-1b-r-fundamentals.html#cb16-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> </span>
+<span id="cb16-3"><a href="lesson-1b-r-fundamentals.html#cb16-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb16-4"><a href="lesson-1b-r-fundamentals.html#cb16-4" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y <span class="sc">*</span> z</span>
+<span id="cb16-5"><a href="lesson-1b-r-fundamentals.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
+<span id="cb16-6"><a href="lesson-1b-r-fundamentals.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="lesson-1b-r-fundamentals.html#cb16-7" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> Y <span class="sc">*</span> z </span>
+<span id="cb16-8"><a href="lesson-1b-r-fundamentals.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(expr, envir, enclos): object &#39;Y&#39; not found</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-2" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Knowledge check<a href="lesson-1b-r-fundamentals.html#knowledge-check-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Assign the value 5 to variable <code>x</code> (note how this shows
+up in your Global Environment).
+</li>
+<li>
+Assign the character <code>“abc”</code> to variable
+<code>y</code>.
+</li>
+<li>
+Evaluate the value of <code>x</code> and <code>y</code> at in the
+console.
+</li>
+<li>
+Now use the <code>rm()</code> function to remove these objects from
+you working environment.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="r-as-a-calculator" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> R as a calculator<a href="lesson-1b-r-fundamentals.html#r-as-a-calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basic-arithmetic" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Basic Arithmetic<a href="lesson-1b-r-fundamentals.html#basic-arithmetic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>At its most basic function R can be used as a calculator. When applying basic arithmetic, the PEMDAS order of operations applies: <strong>p</strong>arentheses first followed by <strong>e</strong>xponentiation, <strong>m</strong>ultiplication and <strong>d</strong>ivision, and finally <strong>a</strong>ddition and <strong>s</strong>ubtraction.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="lesson-1b-r-fundamentals.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb17-2"><a href="lesson-1b-r-fundamentals.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8.36</span></span>
+<span id="cb17-3"><a href="lesson-1b-r-fundamentals.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="lesson-1b-r-fundamentals.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span> <span class="sc">/</span> (<span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb17-5"><a href="lesson-1b-r-fundamentals.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8.36</span></span>
+<span id="cb17-6"><a href="lesson-1b-r-fundamentals.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="lesson-1b-r-fundamentals.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> (<span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb17-8"><a href="lesson-1b-r-fundamentals.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11.24</span></span>
+<span id="cb17-9"><a href="lesson-1b-r-fundamentals.html#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="lesson-1b-r-fundamentals.html#cb17-10" aria-hidden="true" tabindex="-1"></a>(<span class="dv">8</span> <span class="sc">+</span> <span class="dv">9</span>) <span class="sc">/</span> <span class="dv">5</span> <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb17-11"><a href="lesson-1b-r-fundamentals.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.68</span></span></code></pre></div>
+<p>By default R will display seven digits but this can be changed using <code>options()</code> as previously outlined.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="lesson-1b-r-fundamentals.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span></span>
+<span id="cb18-2"><a href="lesson-1b-r-fundamentals.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1428571</span></span>
+<span id="cb18-3"><a href="lesson-1b-r-fundamentals.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="lesson-1b-r-fundamentals.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb18-5"><a href="lesson-1b-r-fundamentals.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">7</span></span>
+<span id="cb18-6"><a href="lesson-1b-r-fundamentals.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.143</span></span></code></pre></div>
+<p>Also, large numbers will be expressed in scientific notation which can also be adjusted using <code>options()</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="lesson-1b-r-fundamentals.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">888888</span> <span class="sc">*</span> <span class="dv">888888</span></span>
+<span id="cb19-2"><a href="lesson-1b-r-fundamentals.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 7.9e+11</span></span>
+<span id="cb19-3"><a href="lesson-1b-r-fundamentals.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="lesson-1b-r-fundamentals.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">10</span>)</span>
+<span id="cb19-5"><a href="lesson-1b-r-fundamentals.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="dv">888888</span> <span class="sc">*</span> <span class="dv">888888</span></span>
+<span id="cb19-6"><a href="lesson-1b-r-fundamentals.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 790121876544</span></span></code></pre></div>
+<p>Note that the largest number of digits that can be displayed is 22. Requesting any larger number of digits will result in an error message.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="lesson-1b-r-fundamentals.html#cb20-1" aria-hidden="true" tabindex="-1"></a>pi</span>
+<span id="cb20-2"><a href="lesson-1b-r-fundamentals.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592654</span></span>
+<span id="cb20-3"><a href="lesson-1b-r-fundamentals.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="lesson-1b-r-fundamentals.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">22</span>)</span>
+<span id="cb20-5"><a href="lesson-1b-r-fundamentals.html#cb20-5" aria-hidden="true" tabindex="-1"></a>pi</span>
+<span id="cb20-6"><a href="lesson-1b-r-fundamentals.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592653589793115998</span></span>
+<span id="cb20-7"><a href="lesson-1b-r-fundamentals.html#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="lesson-1b-r-fundamentals.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">23</span>)</span>
+<span id="cb20-9"><a href="lesson-1b-r-fundamentals.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in options(digits = 23): invalid &#39;digits&#39; parameter, allowed 1...22</span></span>
+<span id="cb20-10"><a href="lesson-1b-r-fundamentals.html#cb20-10" aria-hidden="true" tabindex="-1"></a>pi</span>
+<span id="cb20-11"><a href="lesson-1b-r-fundamentals.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.141592653589793115998</span></span></code></pre></div>
+<p>We can also perform integer divide (<code>%/%</code>) and modulo (<code>%%</code>) functions. The integer divide function will give the integer part of a fraction while the modulo will provide the remainder.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="lesson-1b-r-fundamentals.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regular division</span></span>
+<span id="cb21-2"><a href="lesson-1b-r-fundamentals.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">/</span> <span class="dv">4</span></span>
+<span id="cb21-3"><a href="lesson-1b-r-fundamentals.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10.5</span></span>
+<span id="cb21-4"><a href="lesson-1b-r-fundamentals.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="lesson-1b-r-fundamentals.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># integer division</span></span>
+<span id="cb21-6"><a href="lesson-1b-r-fundamentals.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">%/%</span> <span class="dv">4</span></span>
+<span id="cb21-7"><a href="lesson-1b-r-fundamentals.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span>
+<span id="cb21-8"><a href="lesson-1b-r-fundamentals.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="lesson-1b-r-fundamentals.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># modulo (remainder)</span></span>
+<span id="cb21-10"><a href="lesson-1b-r-fundamentals.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span> <span class="sc">%%</span> <span class="dv">4</span></span>
+<span id="cb21-11"><a href="lesson-1b-r-fundamentals.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
+</div>
+<div id="miscellaneous-mathematical-functions" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Miscellaneous Mathematical Functions<a href="lesson-1b-r-fundamentals.html#miscellaneous-mathematical-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many built-in functions to be aware of. These include but are not limited to the following. Go ahead and run this code in your console.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="lesson-1b-r-fundamentals.html#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb22-2"><a href="lesson-1b-r-fundamentals.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="lesson-1b-r-fundamentals.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(x)      <span class="co"># absolute value</span></span>
+<span id="cb22-4"><a href="lesson-1b-r-fundamentals.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)     <span class="co"># square root</span></span>
+<span id="cb22-5"><a href="lesson-1b-r-fundamentals.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(x)      <span class="co"># exponential transformation</span></span>
+<span id="cb22-6"><a href="lesson-1b-r-fundamentals.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)      <span class="co"># logarithmic transformation</span></span>
+<span id="cb22-7"><a href="lesson-1b-r-fundamentals.html#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cos</span>(x)      <span class="co"># cosine and other trigonometric functions</span></span></code></pre></div>
+</div>
+<div id="infinite-and-nan-numbers" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Infinite, and NaN Numbers<a href="lesson-1b-r-fundamentals.html#infinite-and-nan-numbers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When performing undefined calculations, R will produce <code>Inf</code> (infinity) and <code>NaN</code> (not a number) outputs. These can easily pop up in regular data wrangling tasks and later modules will discuss how to work with these types of outputs along with missing values.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="lesson-1b-r-fundamentals.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># infinity</span></span>
+<span id="cb23-2"><a href="lesson-1b-r-fundamentals.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="dv">0</span></span>
+<span id="cb23-3"><a href="lesson-1b-r-fundamentals.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] Inf</span></span>
+<span id="cb23-4"><a href="lesson-1b-r-fundamentals.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="lesson-1b-r-fundamentals.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># infinity minus infinity</span></span>
+<span id="cb23-6"><a href="lesson-1b-r-fundamentals.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="cn">Inf</span> <span class="sc">-</span> <span class="cn">Inf</span></span>
+<span id="cb23-7"><a href="lesson-1b-r-fundamentals.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span>
+<span id="cb23-8"><a href="lesson-1b-r-fundamentals.html#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="lesson-1b-r-fundamentals.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># negative infinity</span></span>
+<span id="cb23-10"><a href="lesson-1b-r-fundamentals.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">1</span> <span class="sc">/</span> <span class="dv">0</span></span>
+<span id="cb23-11"><a href="lesson-1b-r-fundamentals.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -Inf</span></span>
+<span id="cb23-12"><a href="lesson-1b-r-fundamentals.html#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="lesson-1b-r-fundamentals.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># not a number</span></span>
+<span id="cb23-14"><a href="lesson-1b-r-fundamentals.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">/</span> <span class="dv">0</span></span>
+<span id="cb23-15"><a href="lesson-1b-r-fundamentals.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span>
+<span id="cb23-16"><a href="lesson-1b-r-fundamentals.html#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="lesson-1b-r-fundamentals.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># square root of -9</span></span>
+<span id="cb23-18"><a href="lesson-1b-r-fundamentals.html#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="sc">-</span><span class="dv">9</span>)</span>
+<span id="cb23-19"><a href="lesson-1b-r-fundamentals.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in sqrt(-9): NaNs produced</span></span>
+<span id="cb23-20"><a href="lesson-1b-r-fundamentals.html#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NaN</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-3" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Knowledge check<a href="lesson-1b-r-fundamentals.html#knowledge-check-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Assign the values 1000, 5, and 0.05 to variables <code>D</code>,
+<code>K</code>, and <code>h</code> respectively.
+</li>
+<li>
+Compute <span class="math inline"><span class="math inline">\(2 \times D \times K\)</span></span>.
+</li>
+<li>
+Compute <span class="math inline"><span class="math inline">\(\frac{2 \times D \times K}{h}\)</span></span>.
+</li>
+<li>
+Now put this together to compute the Economic Order Quantity, which
+is <span class="math inline"><span class="math inline">\(\sqrt{\frac{2 \times D \times K}{h}}\)</span></span>. Save the output as <code>Q</code>.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="working-with-packages" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Working with packages<a href="lesson-1b-r-fundamentals.html#working-with-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests and provides an easy method to share with others <span class="citation">(<a href="#ref-wickham2015r" role="doc-biblioref">Wickham 2015</a>)</span>. As of April 2022 there were nearly 19,000 packages available on <a href="https://cran.r-project.org/">CRAN</a>, 2,000 on <a href="https://www.bioconductor.org/">Bioconductor</a>, and countless more available through <a href="https://github.com/">GitHub</a>. This huge variety of packages is one of the reasons that R is so successful: chances are that someone has already solved a problem that you’re working on, and you can benefit from their work by downloading and using their package.</p>
+<div id="installing-packages" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Installing Packages<a href="lesson-1b-r-fundamentals.html#installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most common place to get packages is from CRAN. To install packages from CRAN you use <code>install.packages("packagename")</code>. For instance, if you want to install the <strong>ggplot2</strong> package, which is a very popular visualization package you would type the following in the console:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="lesson-1b-r-fundamentals.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install package from CRAN</span></span>
+<span id="cb24-2"><a href="lesson-1b-r-fundamentals.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>) </span></code></pre></div>
+<p>As previously stated, packages are also available through Bioconductor and GitHub. Bioconductor provides R packages primarily for genomic data analyses and packages on GitHub are usually under development but have not gone through all the checks and balances to be loaded onto CRAN (aka download and use these packages at your discretion). You can learn how to install Bioconductor packages <a href="https://www.bioconductor.org/install/">here</a> and GitHub packages <a href="https://cran.r-project.org/web/packages/githubinstall/vignettes/githubinstall.html">here</a>.</p>
+</div>
+<div id="loading-packages" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Loading Packages<a href="lesson-1b-r-fundamentals.html#loading-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once the package is downloaded to your computer you can access the functions and resources provided by the package in two different ways:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="lesson-1b-r-fundamentals.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package to use in the current R session</span></span>
+<span id="cb25-2"><a href="lesson-1b-r-fundamentals.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(packagename)         </span>
+<span id="cb25-3"><a href="lesson-1b-r-fundamentals.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="lesson-1b-r-fundamentals.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># use a particular function within a package without loading the package</span></span>
+<span id="cb25-5"><a href="lesson-1b-r-fundamentals.html#cb25-5" aria-hidden="true" tabindex="-1"></a>packagename<span class="sc">::</span>functionname   </span></code></pre></div>
+<p>For instance, if you want to have full access to the <strong>dplyr</strong> package you would use <code>library(dplyr)</code>; however, if you just wanted to use the <code>filter()</code> function which is provided by the <strong>dplyr</strong> package without fully loading <strong>dplyr</strong> you can use <code>dplyr::filter(...)</code><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+</div>
+<div id="getting-help-on-packages" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Getting Help on Packages<a href="lesson-1b-r-fundamentals.html#getting-help-on-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For more direct help on packages that are installed on your computer you can use the <code>help</code> and <code>vignette</code> functions. Here we can get help on the <strong>ggplot2</strong> package with the following:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="lesson-1b-r-fundamentals.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">&quot;ggplot2&quot;</span>)      <span class="co"># provides details regarding contents of a package</span></span>
+<span id="cb26-2"><a href="lesson-1b-r-fundamentals.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="at">package =</span> <span class="st">&quot;ggplot2&quot;</span>)  <span class="co"># list vignettes available for a specific package</span></span>
+<span id="cb26-3"><a href="lesson-1b-r-fundamentals.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;ggplot2-specs&quot;</span>)      <span class="co"># view specific vignette</span></span>
+<span id="cb26-4"><a href="lesson-1b-r-fundamentals.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>()                     <span class="co"># view all vignettes on your computer</span></span></code></pre></div>
+<p>Note that some packages will have multiple vignettes. For instance <code>vignette(package = "grid")</code> will list the 13 vignettes available for the <strong>grid</strong> package. To access one of the specific vignettes you simply use <code>vignette("vignettename")</code>.</p>
+</div>
+<div id="useful-packages" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Useful Packages<a href="lesson-1b-r-fundamentals.html#useful-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are thousands of helpful R packages for you to use, but navigating them all can be a challenge. To help you out, RStudio compiled a <a href="https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages">guide</a> to some of the best packages for loading, manipulating, visualizing, analyzing, and reporting data. In addition, their list captures packages that specialize in spatial data, time series and financial data, increasing spead and performance, and developing your own R packages.</p>
+</div>
+<div id="knowledge-check-4" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Knowledge check<a href="lesson-1b-r-fundamentals.html#knowledge-check-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ul>
+<li>
+Install the <strong>completejourney</strong> package.
+</li>
+<li>
+Load the <strong>completejourney</strong> package.
+</li>
+<li>
+Access the help documentation for the
+<strong>completejourney</strong> package.
+</li>
+<li>
+Check out the vignette(s) for <strong>completejourney</strong>.
+</li>
+<li>
+Call the <code>get_transactions()</code> function provided by
+<strong>completejourney</strong> and save the output to a
+<code>transactions</code> variable (note that this takes a little time
+as you are trying to download 1.5 million transactions!).
+</li>
+</ul>
+</div>
+</div>
+<div id="tidyverse" class="section level3 hasAnchor" number="3.4.6">
+<h3><span class="header-section-number">3.4.6</span> Tidyverse<a href="lesson-1b-r-fundamentals.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures; and this group of packages has become extremely popular and common across the data science community. You will learn about many of these packages throughout this course.</p>
+<div class="tip">
+<p>
+Take a little time to familiarize yourself with the <a
+href="https://www.tidyverse.org/">Tidyverse</a>. Not only will you find
+high-level descriptions of the different <a
+href="https://www.tidyverse.org/packages/">tidyverse packages</a> but
+you will also find a lot of educational content that you can and should
+take advantage of!
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tidyverse"></span>
+<img src="images/what-is-tidyverse.png" alt="Tidyverse is a collection of packages designed to simplify many tasks throughout the data analysis process." width="1344" />
+<p class="caption">
+Figure 3.1: Tidyverse is a collection of packages designed to simplify many tasks throughout the data analysis process.
+</p>
+</div>
+<p>Let’s go ahead and install the <strong>tidyverse</strong> package, which will actually install a bunch of other packages for us.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="lesson-1b-r-fundamentals.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="tip">
+<p>
+The single line of code above 👆…
+</p>
+<p>
+is equivalent to running the 29 lines of code below 👇!
+</p>
+</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="lesson-1b-r-fundamentals.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb28-2"><a href="lesson-1b-r-fundamentals.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb28-3"><a href="lesson-1b-r-fundamentals.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span>
+<span id="cb28-4"><a href="lesson-1b-r-fundamentals.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
+<span id="cb28-5"><a href="lesson-1b-r-fundamentals.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;purrr&quot;</span>)</span>
+<span id="cb28-6"><a href="lesson-1b-r-fundamentals.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb28-7"><a href="lesson-1b-r-fundamentals.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb28-8"><a href="lesson-1b-r-fundamentals.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;forcats&quot;</span>)</span>
+<span id="cb28-9"><a href="lesson-1b-r-fundamentals.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cli&quot;</span>)</span>
+<span id="cb28-10"><a href="lesson-1b-r-fundamentals.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;crayon&quot;</span>)</span>
+<span id="cb28-11"><a href="lesson-1b-r-fundamentals.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dbplyr&quot;</span>)</span>
+<span id="cb28-12"><a href="lesson-1b-r-fundamentals.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dtplyr&quot;</span>)</span>
+<span id="cb28-13"><a href="lesson-1b-r-fundamentals.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;googledrive&quot;</span>)</span>
+<span id="cb28-14"><a href="lesson-1b-r-fundamentals.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;googlesheets4&quot;</span>)</span>
+<span id="cb28-15"><a href="lesson-1b-r-fundamentals.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;haven&quot;</span>)</span>
+<span id="cb28-16"><a href="lesson-1b-r-fundamentals.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;hms&quot;</span>)</span>
+<span id="cb28-17"><a href="lesson-1b-r-fundamentals.html#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span>
+<span id="cb28-18"><a href="lesson-1b-r-fundamentals.html#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
+<span id="cb28-19"><a href="lesson-1b-r-fundamentals.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lubridate&quot;</span>)</span>
+<span id="cb28-20"><a href="lesson-1b-r-fundamentals.html#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;magrittr&quot;</span>)</span>
+<span id="cb28-21"><a href="lesson-1b-r-fundamentals.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelr&quot;</span>)</span>
+<span id="cb28-22"><a href="lesson-1b-r-fundamentals.html#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pillar&quot;</span>)</span>
+<span id="cb28-23"><a href="lesson-1b-r-fundamentals.html#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb28-24"><a href="lesson-1b-r-fundamentals.html#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;reprex&quot;</span>)</span>
+<span id="cb28-25"><a href="lesson-1b-r-fundamentals.html#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rlang&quot;</span>)</span>
+<span id="cb28-26"><a href="lesson-1b-r-fundamentals.html#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rstudioapi&quot;</span>)</span>
+<span id="cb28-27"><a href="lesson-1b-r-fundamentals.html#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb28-28"><a href="lesson-1b-r-fundamentals.html#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span></code></pre></div>
+<p>If we load the <strong>tidyverse</strong> package we will see that it loads 8 packages for us: <strong>ggplot2</strong>_, <strong>tibble</strong>, <strong>tidyr</strong>, <strong>readr</strong>, <strong>purrr</strong>, <strong>dplyr</strong>, <strong>stringr</strong>, and <strong>forcats</strong>. These are packages that we will tend to use in almost any data analysis project.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="lesson-1b-r-fundamentals.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-2"><a href="lesson-1b-r-fundamentals.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ──────────────────────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb29-3"><a href="lesson-1b-r-fundamentals.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span></span>
+<span id="cb29-4"><a href="lesson-1b-r-fundamentals.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span></span>
+<span id="cb29-5"><a href="lesson-1b-r-fundamentals.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span></span>
+<span id="cb29-6"><a href="lesson-1b-r-fundamentals.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✔ readr   2.1.2     ✔ forcats 0.5.1</span></span>
+<span id="cb29-7"><a href="lesson-1b-r-fundamentals.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb29-8"><a href="lesson-1b-r-fundamentals.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ✖ dplyr::filter() masks stats::filter()</span></span>
+<span id="cb29-9"><a href="lesson-1b-r-fundamentals.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ✖ dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<div class="tip">
+<p>
+The single line of code above 👆…
+</p>
+<p>
+is equivalent to running the 8 lines of code below 👇!
+</p>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="lesson-1b-r-fundamentals.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
+<span id="cb30-2"><a href="lesson-1b-r-fundamentals.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) </span>
+<span id="cb30-3"><a href="lesson-1b-r-fundamentals.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) </span>
+<span id="cb30-4"><a href="lesson-1b-r-fundamentals.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr) </span>
+<span id="cb30-5"><a href="lesson-1b-r-fundamentals.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr) </span>
+<span id="cb30-6"><a href="lesson-1b-r-fundamentals.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb30-7"><a href="lesson-1b-r-fundamentals.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr) </span>
+<span id="cb30-8"><a href="lesson-1b-r-fundamentals.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span></code></pre></div>
+</div>
+</div>
+<div id="style-guide" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Style guide<a href="lesson-1b-r-fundamentals.html#style-guide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><em>“Good coding style is like using correct punctuation. You can manage without it, but it sure makes things easier to read.”</em> - Hadley Wickham</p>
+</blockquote>
+<p>As a medium of communication, its important to realize that the readability of code does in fact make a difference. Well styled code has many benefits to include making it easy to i) read, ii) extend, and iii) debug. Unfortunately, R does not come with official guidelines for code styling but such is an inconvenient truth of most open source software. However, this should not lead you to believe there is no style to be followed and over time implicit guidelines for proper code styling have been documented.</p>
+<p>What follows are a few of the basic guidelines from the <a href="https://style.tidyverse.org/">tidyverse style guide</a>. These suggestions will help you get started with good styling suggestions as you begin this book but as you progress you should leverage the far more detailed tidyverse style guide along with useful packages such as <a href="https://github.com/jimhester/lintr"><strong>lintr</strong></a> and <a href="http://styler.r-lib.org/"><strong>styler</strong></a> to help enforce good code syntax on yourself.</p>
+<div id="notation-and-naming" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Notation and Naming<a href="lesson-1b-r-fundamentals.html#notation-and-naming" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>File names should be meaningful and end with a <code>.R</code> extension.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="lesson-1b-r-fundamentals.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb31-2"><a href="lesson-1b-r-fundamentals.html#cb31-2" aria-hidden="true" tabindex="-1"></a>weather<span class="sc">-</span>analysis.R</span>
+<span id="cb31-3"><a href="lesson-1b-r-fundamentals.html#cb31-3" aria-hidden="true" tabindex="-1"></a>emerson<span class="sc">-</span>text<span class="sc">-</span>analysis.R</span>
+<span id="cb31-4"><a href="lesson-1b-r-fundamentals.html#cb31-4" aria-hidden="true" tabindex="-1"></a>lesson<span class="sc">-</span>1b<span class="sc">-</span>homework.R</span>
+<span id="cb31-5"><a href="lesson-1b-r-fundamentals.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="lesson-1b-r-fundamentals.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb31-7"><a href="lesson-1b-r-fundamentals.html#cb31-7" aria-hidden="true" tabindex="-1"></a>basic<span class="sc">-</span>stuff.r</span>
+<span id="cb31-8"><a href="lesson-1b-r-fundamentals.html#cb31-8" aria-hidden="true" tabindex="-1"></a>detail.r</span></code></pre></div>
+<p>If files need to be run in sequence, prefix them with numbers:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="lesson-1b-r-fundamentals.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">-</span>download.R</span>
+<span id="cb32-2"><a href="lesson-1b-r-fundamentals.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>preprocessing.R</span>
+<span id="cb32-3"><a href="lesson-1b-r-fundamentals.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">-</span>explore.R</span>
+<span id="cb32-4"><a href="lesson-1b-r-fundamentals.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">-</span>fit<span class="sc">-</span>model.R</span></code></pre></div>
+<p>In R, naming conventions for variables and functions are famously muddled. They include the following:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="lesson-1b-r-fundamentals.html#cb33-1" aria-hidden="true" tabindex="-1"></a>namingconvention        <span class="co"># all lower case; no separator</span></span>
+<span id="cb33-2"><a href="lesson-1b-r-fundamentals.html#cb33-2" aria-hidden="true" tabindex="-1"></a>naming.convention       <span class="co"># period separator</span></span>
+<span id="cb33-3"><a href="lesson-1b-r-fundamentals.html#cb33-3" aria-hidden="true" tabindex="-1"></a>naming_convention       <span class="co"># underscore separator (aka snake case)</span></span>
+<span id="cb33-4"><a href="lesson-1b-r-fundamentals.html#cb33-4" aria-hidden="true" tabindex="-1"></a>namingConvention        <span class="co"># lower camel case</span></span>
+<span id="cb33-5"><a href="lesson-1b-r-fundamentals.html#cb33-5" aria-hidden="true" tabindex="-1"></a>NamingConvention        <span class="co"># upper camel case</span></span></code></pre></div>
+<p>Historically, there has been no clearly preferred approach with multiple naming styles sometimes used within a single package. Bottom line, your naming convention will be driven by your preference but the ultimate goal should be consistency.</p>
+<div class="tip">
+<p>
+Vast majority of the R community uses lowercase with an underscore
+(“_“) to separate words within a variable/function name (‘snake_case’).
+Furthermore, variable names should be nouns and function names should be
+verbs to help distinguish their purpose. Also, refrain from using
+existing names of functions (i.e. mean, sum, true).
+</p>
+</div>
+</div>
+<div id="organization" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Organization<a href="lesson-1b-r-fundamentals.html#organization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Organization of your code is also important. There’s nothing like trying to decipher 500 lines of code that has no organization. The easiest way to achieve organization is to comment your code. When you have large sections within your script you should separate them to make it obvious of the distinct purpose of the code.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="lesson-1b-r-fundamentals.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download Data -------------------------------------------------------------------</span></span>
+<span id="cb34-2"><a href="lesson-1b-r-fundamentals.html#cb34-2" aria-hidden="true" tabindex="-1"></a>lines of code here</span>
+<span id="cb34-3"><a href="lesson-1b-r-fundamentals.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="lesson-1b-r-fundamentals.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess Data -----------------------------------------------------------------</span></span>
+<span id="cb34-5"><a href="lesson-1b-r-fundamentals.html#cb34-5" aria-hidden="true" tabindex="-1"></a>lines of code here</span>
+<span id="cb34-6"><a href="lesson-1b-r-fundamentals.html#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="lesson-1b-r-fundamentals.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory Analysis ------------------------------------------------------------</span></span>
+<span id="cb34-8"><a href="lesson-1b-r-fundamentals.html#cb34-8" aria-hidden="true" tabindex="-1"></a>lines of code here</span></code></pre></div>
+<div class="tip">
+<p>
+You can easily add these section breaks within RStudio wth
+Cmd+Shift+R.
+</p>
+</div>
+<p>Then comments for specific lines of code can be done as follows:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="lesson-1b-r-fundamentals.html#cb35-1" aria-hidden="true" tabindex="-1"></a>code_1  <span class="co"># short comments can be placed to the right of code </span></span>
+<span id="cb35-2"><a href="lesson-1b-r-fundamentals.html#cb35-2" aria-hidden="true" tabindex="-1"></a>code_2  <span class="co"># blah</span></span>
+<span id="cb35-3"><a href="lesson-1b-r-fundamentals.html#cb35-3" aria-hidden="true" tabindex="-1"></a>code_3  <span class="co"># blah</span></span>
+<span id="cb35-4"><a href="lesson-1b-r-fundamentals.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="lesson-1b-r-fundamentals.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># or comments can be placed above a line of code</span></span>
+<span id="cb35-6"><a href="lesson-1b-r-fundamentals.html#cb35-6" aria-hidden="true" tabindex="-1"></a>code_4</span>
+<span id="cb35-7"><a href="lesson-1b-r-fundamentals.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="lesson-1b-r-fundamentals.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Or extremely long lines of commentary that go beyond the suggested 80 </span></span>
+<span id="cb35-9"><a href="lesson-1b-r-fundamentals.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># characters per line can be broken up into multiple lines. Just don&#39;t forget</span></span>
+<span id="cb35-10"><a href="lesson-1b-r-fundamentals.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to use the hash on each.</span></span>
+<span id="cb35-11"><a href="lesson-1b-r-fundamentals.html#cb35-11" aria-hidden="true" tabindex="-1"></a>code_5</span></code></pre></div>
+<div class="tip">
+<p>
+You can easily comment or uncomment lines by highlighting the line
+and then pressing Cmd+Shift+C.
+</p>
+</div>
+</div>
+<div id="syntax" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Syntax<a href="lesson-1b-r-fundamentals.html#syntax" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The maximum number of characters on a single line of code should be 80 or less. If you are using RStudio you can have a margin displayed so you know when you need to break to a new line<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Also, when indenting your code use two spaces rather than using tabs. The only exception is if a line break occurs inside parentheses. In this case it is common to do either of the following:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="lesson-1b-r-fundamentals.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># option 1</span></span>
+<span id="cb36-2"><a href="lesson-1b-r-fundamentals.html#cb36-2" aria-hidden="true" tabindex="-1"></a>super_long_name <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 0:00&quot;</span>), </span>
+<span id="cb36-3"><a href="lesson-1b-r-fundamentals.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 12:00&quot;</span>), </span>
+<span id="cb36-4"><a href="lesson-1b-r-fundamentals.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">by =</span> <span class="st">&quot;hour&quot;</span>)</span>
+<span id="cb36-5"><a href="lesson-1b-r-fundamentals.html#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="lesson-1b-r-fundamentals.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
+<span id="cb36-7"><a href="lesson-1b-r-fundamentals.html#cb36-7" aria-hidden="true" tabindex="-1"></a>super_long_name <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
+<span id="cb36-8"><a href="lesson-1b-r-fundamentals.html#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 0:00&quot;</span>),</span>
+<span id="cb36-9"><a href="lesson-1b-r-fundamentals.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ymd_hm</span>(<span class="st">&quot;2015-1-1 12:00&quot;</span>),</span>
+<span id="cb36-10"><a href="lesson-1b-r-fundamentals.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;hour&quot;</span></span>
+<span id="cb36-11"><a href="lesson-1b-r-fundamentals.html#cb36-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Proper spacing within your code also helps with readability. Place spaces around all infix operators (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.). The same rule applies when using <code>=</code> in function calls. Always put a space after a comma, and never before.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="lesson-1b-r-fundamentals.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb37-2"><a href="lesson-1b-r-fundamentals.html#cb37-2" aria-hidden="true" tabindex="-1"></a>average <span class="ot">&lt;-</span> <span class="fu">mean</span>(feet <span class="sc">/</span> <span class="dv">12</span> <span class="sc">+</span> inches, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-3"><a href="lesson-1b-r-fundamentals.html#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="lesson-1b-r-fundamentals.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb37-5"><a href="lesson-1b-r-fundamentals.html#cb37-5" aria-hidden="true" tabindex="-1"></a>average<span class="ot">&lt;-</span><span class="fu">mean</span>(feet<span class="sc">/</span><span class="dv">12</span><span class="sc">+</span>inches,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>There’s a small exception to this rule: <code>:</code>, <code>::</code> and <code>:::</code> don’t need spaces around them.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="lesson-1b-r-fundamentals.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb38-2"><a href="lesson-1b-r-fundamentals.html#cb38-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb38-3"><a href="lesson-1b-r-fundamentals.html#cb38-3" aria-hidden="true" tabindex="-1"></a>base<span class="sc">::</span>get</span>
+<span id="cb38-4"><a href="lesson-1b-r-fundamentals.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="lesson-1b-r-fundamentals.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb38-6"><a href="lesson-1b-r-fundamentals.html#cb38-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb38-7"><a href="lesson-1b-r-fundamentals.html#cb38-7" aria-hidden="true" tabindex="-1"></a>base <span class="sc">::</span> get</span></code></pre></div>
+<p>It is important to think about style when communicating any form of language. Writing code is no exception and is especially important if your code will be read by others. Following these basic style guides will get you on the right track for writing code that can be easily communicated to others.</p>
+</div>
+<div id="knowledge-check-5" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Knowledge check<a href="lesson-1b-r-fundamentals.html#knowledge-check-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Review chapters 1 &amp; 2 in the <a
+href="https://style.tidyverse.org/index.html">Tidyverse Style
+Guide</a>.
+</li>
+<li>
+Go back through the script you’ve been writing to execute the
+exercises in this module and make sure
+<ul>
+<li>
+your naming conventions are consistent,
+</li>
+<li>
+your code is nicely organized and annotated,
+</li>
+<li>
+your syntax includes proper spacing.
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Exercises<a href="lesson-1b-r-fundamentals.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Say you have a 12” pizza. Compute the area of the pizza and assign
+that value to the variable <code>area</code>. Now say the
+<code>cost</code> of the pizza was $8. Compute the cost per square inch
+and assign that value to a variable <code>ppsi</code>.
+</li>
+<li>
+Based on the style guide section rename the <code>ppsi</code>
+variable in question 1 to be more meaningful.
+</li>
+<li>
+If you did not already do so, install the <strong>tidyverse</strong>
+package.
+</li>
+<li>
+How many vignettes does the <strong>dplyr</strong> package
+have?
+</li>
+<li>
+Where can you go to learn more about the <strong>tidyverse</strong>
+packages?
+</li>
+<li>
+When you load the <strong>tidyverse</strong> packages what other
+packages is it automatically loading for you?
+</li>
+<li>
+Using the resource in #5, explain at a high-level what the packages
+in #6 do.
+</li>
+</ol>
+</div>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-wickham2015r" class="csl-entry">
+———. 2015. <em>R Packages: Organize, Test, Document, and Share Your Code</em>. " O’Reilly Media, Inc.".
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>There are even more provided by third party packages such as <strong>zeallot</strong>.<a href="lesson-1b-r-fundamentals.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Here, <code>...</code> just represents the arguments that you would include in this function<a href="lesson-1b-r-fundamentals.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><strong>Tools » Global Options » Code » Display</strong><a href="lesson-1b-r-fundamentals.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-1a-r-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lesson-1c-vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-1/lesson-2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

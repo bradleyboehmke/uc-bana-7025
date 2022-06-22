@@ -2,22 +2,25 @@
 
 # Overview
 
-Video that introduces module -- use introductory ML section/slides
-
-Now that you are equipped with powerful programming tools we can finally move into the world of applied modeling. In this module we'll build on your new tools of data wrangling and programming to fit, analyze, and understand different applied modeling techniques. First, you will gain a basic understanding of discovering relationships across variables and using models for data exploration. Then you will learn about the machine learning process and how to start applying it with R. This will give you the foundation to start building your own machine learning toolbox.
+Now that you are equipped with powerful programming tools we can finally move into the world of applied modeling. In this module we'll build on your new tools of data wrangling and programming to fit, analyze, and evaluate predictive models. 
 
 ## Learning objectives
 
 By the end of this module you should be able to:
 
-- Identify covariate relationships within your data.
-- Explain the modeling process and apply it within your R workflow.
-- Apply and explain the results of a few foundational machine learning algorithms.
+- Split your data into training and test sets.
+- Instantiate, train, fit, and evaluate a basic predictive model.
+- Apply feature engineering steps to preprocess numeric and categorical data.
+- Perform resampling and hyperparameter grid searche procedures for robust model evaluation and selection.
+
+## Estimated time requirement
+
+The estimated time to go through the module lessons is about 3-4 hours.
 
 ## Tasks
 
-- TBD
-
-## Course readings
-
-- TBD
+```{block, type='todo'}
+* Work through the 3 module lessons.
+* Upon finishing each lesson take the associated lesson quizzes on Canvas. Be sure to complete the lesson quiz no later than the due date listed on Canvas.
+* Check Canvas for this week's lab, lab quiz due date, and any additional content (i.e. in-class material)
+```

@@ -2,7 +2,7 @@
 
 # Overview
 
-In the last module we discussed general guidelines for first interacting with a new data set. In module 3 we want to build on those activities by learning how to clean and tidy our data, and then beginning our journey to creating insights with data through data manipulation.
+In the last module we discussed general guidelines for first interacting with a new data set. In module 3 we want to build on those activities by learning how to clean and tidy our data, and then begin our journey to creating insights with data through data manipulation.
 
 ## Learning objectives
 
@@ -13,10 +13,14 @@ By the end of this module you should be able to:
 - Manipulate your data by applying filters, selecting and renaming columns, creating new variables, and more.
 - Compute descriptive statistics across all observations and within different grouped levels of observations.
 
+## Estimated time requirement
+
+The estimated time to go through the module lessons is about 3 hours.
+
 ## Tasks
 
-- TBD
-
-## Course readings
-
-- TBD
+```{block, type='todo'}
+* Work through the 3 module lessons.
+* Upon finishing each lesson take the associated lesson quizzes on Canvas. Be sure to complete the lesson quiz no later than the due date listed on Canvas.
+* Check Canvas for this week's lab, lab quiz due date, and any additional content (i.e. in-class material)
+```

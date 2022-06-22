@@ -14,12 +14,16 @@ By the end of this module you should be able to:
 
 - Use a variety of control statements to control the flow of code evaluation.
 - Simplify repetitive code with R's looping statements.
-- Understand when and how to write a function.
+- Understand when and how to write functions.
+
+## Estimated time requirement
+
+The estimated time to go through the module lessons is about 3 hours.
 
 ## Tasks
 
-- TBD
-
-## Course readings
-
-- TBD
+```{block, type='todo'}
+* Work through the 3 module lessons.
+* Upon finishing each lesson take the associated lesson quizzes on Canvas. Be sure to complete the lesson quiz no later than the due date listed on Canvas.
+* Check Canvas for this week's lab, lab quiz due date, and any additional content (i.e. in-class material)
+```

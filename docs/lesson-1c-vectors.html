@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Lesson 1c: Vectors | Data Wrangling with R</title>
+  <meta name="description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Lesson 1c: Vectors | Data Wrangling with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Master the art of data wrangling with the R programming language." />
+  <meta name="github-repo" content="bradleyboehmke/uc-bana-7025" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Lesson 1c: Vectors | Data Wrangling with R" />
+  <meta name="twitter:site" content="@bradleyboehmke" />
+  <meta name="twitter:description" content="Master the art of data wrangling with the R programming language." />
+  
+
+<meta name="author" content="Bradley Boehmke" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lesson-1b-r-fundamentals.html"/>
+<link rel="next" href="overview-1.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">UC BANA 7025: Data Wrangling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Syllabus</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#material"><i class="fa fa-check"></i>Material</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-structure"><i class="fa fa-check"></i>Class Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#conventions-used-in-this-book"><i class="fa fa-check"></i>Conventions used in this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Module 1</b></span></li>
+<li class="chapter" data-level="1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview.html"><a href="overview.html#learning-objectives-1"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="1.2" data-path="overview.html"><a href="overview.html#estimated-time-requirement"><i class="fa fa-check"></i><b>1.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="1.3" data-path="overview.html"><a href="overview.html#tasks"><i class="fa fa-check"></i><b>1.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html"><i class="fa fa-check"></i><b>2</b> Lesson 1a: R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#learning-objectives-2"><i class="fa fa-check"></i><b>2.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="2.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#r-vs.-rstudio"><i class="fa fa-check"></i><b>2.2</b> R vs. RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>2.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="2.4" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#understanding-the-rstudio-ide"><i class="fa fa-check"></i><b>2.4</b> Understanding the RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#script-editor"><i class="fa fa-check"></i><b>2.4.1</b> Script Editor</a></li>
+<li class="chapter" data-level="2.4.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#workspace-environment"><i class="fa fa-check"></i><b>2.4.2</b> Workspace Environment</a></li>
+<li class="chapter" data-level="2.4.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#console"><i class="fa fa-check"></i><b>2.4.3</b> Console</a></li>
+<li class="chapter" data-level="2.4.4" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#misc.-displays"><i class="fa fa-check"></i><b>2.4.4</b> Misc. Displays</a></li>
+<li class="chapter" data-level="2.4.5" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#workspace-options-shortcuts"><i class="fa fa-check"></i><b>2.4.5</b> Workspace Options &amp; Shortcuts</a></li>
+<li class="chapter" data-level="2.4.6" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#knowledge-check"><i class="fa fa-check"></i><b>2.4.6</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>2.5</b> Getting help</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#general-help"><i class="fa fa-check"></i><b>2.5.1</b> General Help</a></li>
+<li class="chapter" data-level="2.5.2" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#getting-help-from-the-web"><i class="fa fa-check"></i><b>2.5.2</b> Getting Help From the Web</a></li>
+<li class="chapter" data-level="2.5.3" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#knowledge-check-1"><i class="fa fa-check"></i><b>2.5.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#errors-warnings-and-messages"><i class="fa fa-check"></i><b>2.6</b> Errors, warnings, and messages</a></li>
+<li class="chapter" data-level="2.7" data-path="lesson-1a-r-rstudio.html"><a href="lesson-1a-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>2.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> Lesson 1b: R fundamentals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#learning-objectives-3"><i class="fa fa-check"></i><b>3.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="3.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#assignment-evaluation"><i class="fa fa-check"></i><b>3.2</b> Assignment &amp; evaluation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#assignment"><i class="fa fa-check"></i><b>3.2.1</b> Assignment</a></li>
+<li class="chapter" data-level="3.2.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#evaluation"><i class="fa fa-check"></i><b>3.2.2</b> Evaluation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#case-sensitivity"><i class="fa fa-check"></i><b>3.2.3</b> Case Sensitivity</a></li>
+<li class="chapter" data-level="3.2.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-2"><i class="fa fa-check"></i><b>3.2.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.3</b> R as a calculator</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#basic-arithmetic"><i class="fa fa-check"></i><b>3.3.1</b> Basic Arithmetic</a></li>
+<li class="chapter" data-level="3.3.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#miscellaneous-mathematical-functions"><i class="fa fa-check"></i><b>3.3.2</b> Miscellaneous Mathematical Functions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#infinite-and-nan-numbers"><i class="fa fa-check"></i><b>3.3.3</b> Infinite, and NaN Numbers</a></li>
+<li class="chapter" data-level="3.3.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-3"><i class="fa fa-check"></i><b>3.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#working-with-packages"><i class="fa fa-check"></i><b>3.4</b> Working with packages</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#installing-packages"><i class="fa fa-check"></i><b>3.4.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#loading-packages"><i class="fa fa-check"></i><b>3.4.2</b> Loading Packages</a></li>
+<li class="chapter" data-level="3.4.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#getting-help-on-packages"><i class="fa fa-check"></i><b>3.4.3</b> Getting Help on Packages</a></li>
+<li class="chapter" data-level="3.4.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#useful-packages"><i class="fa fa-check"></i><b>3.4.4</b> Useful Packages</a></li>
+<li class="chapter" data-level="3.4.5" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-4"><i class="fa fa-check"></i><b>3.4.5</b> Knowledge check</a></li>
+<li class="chapter" data-level="3.4.6" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#tidyverse"><i class="fa fa-check"></i><b>3.4.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#style-guide"><i class="fa fa-check"></i><b>3.5</b> Style guide</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#notation-and-naming"><i class="fa fa-check"></i><b>3.5.1</b> Notation and Naming</a></li>
+<li class="chapter" data-level="3.5.2" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#organization"><i class="fa fa-check"></i><b>3.5.2</b> Organization</a></li>
+<li class="chapter" data-level="3.5.3" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#syntax"><i class="fa fa-check"></i><b>3.5.3</b> Syntax</a></li>
+<li class="chapter" data-level="3.5.4" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#knowledge-check-5"><i class="fa fa-check"></i><b>3.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="lesson-1b-r-fundamentals.html"><a href="lesson-1b-r-fundamentals.html#exercises-1"><i class="fa fa-check"></i><b>3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html"><i class="fa fa-check"></i><b>4</b> Lesson 1c: Vectors</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#learning-objectives-4"><i class="fa fa-check"></i><b>4.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="4.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#creating-vectors"><i class="fa fa-check"></i><b>4.2</b> Creating vectors</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#creating-sequences"><i class="fa fa-check"></i><b>4.2.1</b> Creating sequences</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-6"><i class="fa fa-check"></i><b>4.2.2</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#extracting-elements"><i class="fa fa-check"></i><b>4.3</b> Extracting elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#positional-indexing"><i class="fa fa-check"></i><b>4.3.1</b> Positional indexing</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#logical-indexing"><i class="fa fa-check"></i><b>4.3.2</b> Logical indexing</a></li>
+<li class="chapter" data-level="4.3.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-7"><i class="fa fa-check"></i><b>4.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#replacing-elements"><i class="fa fa-check"></i><b>4.4</b> Replacing elements</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-8"><i class="fa fa-check"></i><b>4.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#operations"><i class="fa fa-check"></i><b>4.5</b> Operations</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-9"><i class="fa fa-check"></i><b>4.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#missing-data"><i class="fa fa-check"></i><b>4.6</b> Missing data</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-10"><i class="fa fa-check"></i><b>4.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#vectorization"><i class="fa fa-check"></i><b>4.7</b> Vectorization</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#looping-versus-vectorization"><i class="fa fa-check"></i><b>4.7.1</b> Looping versus Vectorization</a></li>
+<li class="chapter" data-level="4.7.2" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#recycling"><i class="fa fa-check"></i><b>4.7.2</b> Recycling</a></li>
+<li class="chapter" data-level="4.7.3" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#knowledge-check-11"><i class="fa fa-check"></i><b>4.7.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="lesson-1c-vectors.html"><a href="lesson-1c-vectors.html#exercises-2"><i class="fa fa-check"></i><b>4.8</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>II Module 2</b></span></li>
+<li class="chapter" data-level="5" data-path="overview-1.html"><a href="overview-1.html"><i class="fa fa-check"></i><b>5</b> Overview</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="overview-1.html"><a href="overview-1.html#learning-objectives-5"><i class="fa fa-check"></i><b>5.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="5.2" data-path="overview-1.html"><a href="overview-1.html#estimated-time-requirement-1"><i class="fa fa-check"></i><b>5.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="5.3" data-path="overview-1.html"><a href="overview-1.html#tasks-1"><i class="fa fa-check"></i><b>5.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html"><i class="fa fa-check"></i><b>6</b> Lesson 2a: Workflow</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#learning-objectives-6"><i class="fa fa-check"></i><b>6.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="6.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-projects"><i class="fa fa-check"></i><b>6.2</b> R Projects</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-projects"><i class="fa fa-check"></i><b>6.2.1</b> Creating Projects</a></li>
+<li class="chapter" data-level="6.2.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#so-whats-different"><i class="fa fa-check"></i><b>6.2.2</b> So What’s Different?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-12"><i class="fa fa-check"></i><b>6.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-markdown"><i class="fa fa-check"></i><b>6.3</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-markdown-file"><i class="fa fa-check"></i><b>6.3.1</b> Creating an R Markdown File</a></li>
+<li class="chapter" data-level="6.3.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#components-of-an-r-markdown-file"><i class="fa fa-check"></i><b>6.3.2</b> Components of an R Markdown File</a></li>
+<li class="chapter" data-level="6.3.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knitting-the-r-markdown-file"><i class="fa fa-check"></i><b>6.3.3</b> Knitting the R Markdown File</a></li>
+<li class="chapter" data-level="6.3.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources"><i class="fa fa-check"></i><b>6.3.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="6.3.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-13"><i class="fa fa-check"></i><b>6.3.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#r-notebooks"><i class="fa fa-check"></i><b>6.4</b> R Notebooks</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#creating-an-r-notebook"><i class="fa fa-check"></i><b>6.4.1</b> Creating an R Notebook</a></li>
+<li class="chapter" data-level="6.4.2" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#interactiveness-of-an-r-notebook"><i class="fa fa-check"></i><b>6.4.2</b> Interactiveness of an R Notebook</a></li>
+<li class="chapter" data-level="6.4.3" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#saving-sharing-previewing-knitting-an-r-notebook"><i class="fa fa-check"></i><b>6.4.3</b> Saving, Sharing, Previewing &amp; Knitting an R Notebook</a></li>
+<li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
+<li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#learning-objectives-7"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-types"><i class="fa fa-check"></i><b>7.2</b> Data types</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#determining-the-type"><i class="fa fa-check"></i><b>7.2.1</b> Determining the type</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#type-conversion"><i class="fa fa-check"></i><b>7.2.2</b> Type conversion</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#knowledge-check-15"><i class="fa fa-check"></i><b>7.2.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-structures"><i class="fa fa-check"></i><b>7.3</b> Data structures</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#scalars-and-vectors"><i class="fa fa-check"></i><b>7.3.1</b> Scalars and vectors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#matrices-and-arrays"><i class="fa fa-check"></i><b>7.3.2</b> Matrices and arrays</a></li>
+<li class="chapter" data-level="7.3.3" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#lists"><i class="fa fa-check"></i><b>7.3.3</b> Lists</a></li>
+<li class="chapter" data-level="7.3.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#data-frames"><i class="fa fa-check"></i><b>7.3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html#exercises-4"><i class="fa fa-check"></i><b>7.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html"><i class="fa fa-check"></i><b>8</b> Lesson 2c: Importing data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#learning-objectives-8"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="8.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#data-memory"><i class="fa fa-check"></i><b>8.2</b> Data &amp; memory</a></li>
+<li class="chapter" data-level="8.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#delimited-files"><i class="fa fa-check"></i><b>8.3</b> Delimited files</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#tibbles"><i class="fa fa-check"></i><b>8.3.1</b> Tibbles</a></li>
+<li class="chapter" data-level="8.3.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#file-paths"><i class="fa fa-check"></i><b>8.3.2</b> File paths</a></li>
+<li class="chapter" data-level="8.3.3" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#metadata"><i class="fa fa-check"></i><b>8.3.3</b> Metadata</a></li>
+<li class="chapter" data-level="8.3.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#knowledge-check-18"><i class="fa fa-check"></i><b>8.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#excel-files"><i class="fa fa-check"></i><b>8.4</b> Excel files</a></li>
+<li class="chapter" data-level="8.5" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#sql-databases"><i class="fa fa-check"></i><b>8.5</b> SQL databases</a></li>
+<li class="chapter" data-level="8.6" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#many-other-file-types"><i class="fa fa-check"></i><b>8.6</b> Many other file types</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#json-files"><i class="fa fa-check"></i><b>8.6.1</b> JSON files</a></li>
+<li class="chapter" data-level="8.6.2" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#r-object-files"><i class="fa fa-check"></i><b>8.6.2</b> R object files</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="lesson-2c-importing-data.html"><a href="lesson-2c-importing-data.html#exercises-5"><i class="fa fa-check"></i><b>8.7</b> Exercises</a></li>
+</ul></li>
+<li class="part"><span><b>III Module 3</b></span></li>
+<li class="chapter" data-level="9" data-path="overview-2.html"><a href="overview-2.html"><i class="fa fa-check"></i><b>9</b> Overview</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="overview-2.html"><a href="overview-2.html#learning-objectives-9"><i class="fa fa-check"></i><b>9.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="9.2" data-path="overview-2.html"><a href="overview-2.html#estimated-time-requirement-2"><i class="fa fa-check"></i><b>9.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="9.3" data-path="overview-2.html"><a href="overview-2.html#tasks-2"><i class="fa fa-check"></i><b>9.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html"><i class="fa fa-check"></i><b>10</b> Lesson 3a: Pipe operator</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#learning-objectives-10"><i class="fa fa-check"></i><b>10.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="10.2" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#pipe-operator"><i class="fa fa-check"></i><b>10.2</b> Pipe (<code>%&gt;%</code>) operator</a></li>
+<li class="chapter" data-level="10.3" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional"><i class="fa fa-check"></i><b>10.3</b> Additional pipe operators (optional)</a></li>
+<li class="chapter" data-level="10.4" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#additional-resources-2"><i class="fa fa-check"></i><b>10.4</b> Additional resources</a></li>
+<li class="chapter" data-level="10.5" data-path="lesson-3a-pipe-operator.html"><a href="lesson-3a-pipe-operator.html#exercises-6"><i class="fa fa-check"></i><b>10.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html"><i class="fa fa-check"></i><b>11</b> Lesson 3b: Data transformation</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#learning-objectives-11"><i class="fa fa-check"></i><b>11.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="11.2" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#prerequisites"><i class="fa fa-check"></i><b>11.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="11.3" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#filter"><i class="fa fa-check"></i><b>11.3</b> Filtering observations</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-19"><i class="fa fa-check"></i><b>11.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#select"><i class="fa fa-check"></i><b>11.4</b> Selecting variables</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-20"><i class="fa fa-check"></i><b>11.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#summarize"><i class="fa fa-check"></i><b>11.5</b> Computing summary statistics</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-21"><i class="fa fa-check"></i><b>11.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#sort"><i class="fa fa-check"></i><b>11.6</b> Sorting observations</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-22"><i class="fa fa-check"></i><b>11.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#mutate"><i class="fa fa-check"></i><b>11.7</b> Creating new variables</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#knowledge-check-23"><i class="fa fa-check"></i><b>11.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#putting-it-altogether"><i class="fa fa-check"></i><b>11.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="11.9" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#exercises-7"><i class="fa fa-check"></i><b>11.9</b> Exercises</a></li>
+<li class="chapter" data-level="11.10" data-path="lesson-3b-data-transformation.html"><a href="lesson-3b-data-transformation.html#additional-resources-3"><i class="fa fa-check"></i><b>11.10</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html"><i class="fa fa-check"></i><b>12</b> Lesson 3c: Tidy data</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#learning-objectives-12"><i class="fa fa-check"></i><b>12.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="12.2" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#prerequisites-1"><i class="fa fa-check"></i><b>12.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="12.3" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-wide-data-longer"><i class="fa fa-check"></i><b>12.3</b> Making wide data longer</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-24"><i class="fa fa-check"></i><b>12.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#making-long-data-wider"><i class="fa fa-check"></i><b>12.4</b> Making long data wider</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-25"><i class="fa fa-check"></i><b>12.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#separate-one-variable-into-multiple"><i class="fa fa-check"></i><b>12.5</b> Separate one variable into multiple</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-26"><i class="fa fa-check"></i><b>12.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#combine-multiple-variables-into-one"><i class="fa fa-check"></i><b>12.6</b> Combine multiple variables into one</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#knowledge-check-27"><i class="fa fa-check"></i><b>12.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-tidying-functions"><i class="fa fa-check"></i><b>12.7</b> Additional tidying functions</a></li>
+<li class="chapter" data-level="12.8" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#putting-it-altogether-1"><i class="fa fa-check"></i><b>12.8</b> Putting it altogether</a></li>
+<li class="chapter" data-level="12.9" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#exercises-8"><i class="fa fa-check"></i><b>12.9</b> Exercises</a></li>
+<li class="chapter" data-level="12.10" data-path="lesson-3c-tidy-data.html"><a href="lesson-3c-tidy-data.html#additional-resources-4"><i class="fa fa-check"></i><b>12.10</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>IV Module 4</b></span></li>
+<li class="chapter" data-level="13" data-path="overview-3.html"><a href="overview-3.html"><i class="fa fa-check"></i><b>13</b> Overview</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="overview-3.html"><a href="overview-3.html#learning-objectives-13"><i class="fa fa-check"></i><b>13.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="13.2" data-path="overview-3.html"><a href="overview-3.html#estimated-time-requirement-3"><i class="fa fa-check"></i><b>13.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="13.3" data-path="overview-3.html"><a href="overview-3.html#tasks-3"><i class="fa fa-check"></i><b>13.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html"><i class="fa fa-check"></i><b>14</b> Lesson 4a: Relational data</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#learning-objectives-14"><i class="fa fa-check"></i><b>14.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="14.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#prerequisites-2"><i class="fa fa-check"></i><b>14.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="14.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#keys"><i class="fa fa-check"></i><b>14.3</b> Keys</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-28"><i class="fa fa-check"></i><b>14.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#mutating-joins"><i class="fa fa-check"></i><b>14.4</b> Mutating joins</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#inner-join"><i class="fa fa-check"></i><b>14.4.1</b> Inner join</a></li>
+<li class="chapter" data-level="14.4.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#outer-joins"><i class="fa fa-check"></i><b>14.4.2</b> Outer joins</a></li>
+<li class="chapter" data-level="14.4.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#differing-keys"><i class="fa fa-check"></i><b>14.4.3</b> Differing keys</a></li>
+<li class="chapter" data-level="14.4.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example"><i class="fa fa-check"></i><b>14.4.4</b> Bigger example</a></li>
+<li class="chapter" data-level="14.4.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-29"><i class="fa fa-check"></i><b>14.4.5</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#filtering-joins"><i class="fa fa-check"></i><b>14.5</b> Filtering joins</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#semi-join"><i class="fa fa-check"></i><b>14.5.1</b> Semi join</a></li>
+<li class="chapter" data-level="14.5.2" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#anti-join"><i class="fa fa-check"></i><b>14.5.2</b> Anti join</a></li>
+<li class="chapter" data-level="14.5.3" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#bigger-example-1"><i class="fa fa-check"></i><b>14.5.3</b> Bigger example</a></li>
+<li class="chapter" data-level="14.5.4" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#knowledge-check-30"><i class="fa fa-check"></i><b>14.5.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#exercises-9"><i class="fa fa-check"></i><b>14.6</b> Exercises</a></li>
+<li class="chapter" data-level="14.7" data-path="lesson-4a-relational-data.html"><a href="lesson-4a-relational-data.html#additional-resources-5"><i class="fa fa-check"></i><b>14.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html"><i class="fa fa-check"></i><b>15</b> Lesson 4b: Handling text data</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#learning-objectives-15"><i class="fa fa-check"></i><b>15.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="15.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#prerequisites-3"><i class="fa fa-check"></i><b>15.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="15.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#string-basics"><i class="fa fa-check"></i><b>15.3</b> String basics</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#case-conversion"><i class="fa fa-check"></i><b>15.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="15.3.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#counting-characters"><i class="fa fa-check"></i><b>15.3.2</b> Counting characters</a></li>
+<li class="chapter" data-level="15.3.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#extracting-parts-of-character-strings"><i class="fa fa-check"></i><b>15.3.3</b> Extracting parts of character strings</a></li>
+<li class="chapter" data-level="15.3.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-31"><i class="fa fa-check"></i><b>15.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regular-expressions"><i class="fa fa-check"></i><b>15.4</b> Regular expressions</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#regex-basics"><i class="fa fa-check"></i><b>15.4.1</b> Regex basics</a></li>
+<li class="chapter" data-level="15.4.2" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#multiple-words"><i class="fa fa-check"></i><b>15.4.2</b> Multiple Words</a></li>
+<li class="chapter" data-level="15.4.3" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#line-anchors"><i class="fa fa-check"></i><b>15.4.3</b> Line anchors</a></li>
+<li class="chapter" data-level="15.4.4" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#metacharacters"><i class="fa fa-check"></i><b>15.4.4</b> Metacharacters</a></li>
+<li class="chapter" data-level="15.4.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#character-classes"><i class="fa fa-check"></i><b>15.4.5</b> Character classes</a></li>
+<li class="chapter" data-level="15.4.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#shorthand-character-classes"><i class="fa fa-check"></i><b>15.4.6</b> Shorthand character classes</a></li>
+<li class="chapter" data-level="15.4.7" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#posix-character-classes"><i class="fa fa-check"></i><b>15.4.7</b> POSIX character classes</a></li>
+<li class="chapter" data-level="15.4.8" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#repetition"><i class="fa fa-check"></i><b>15.4.8</b> Repetition</a></li>
+<li class="chapter" data-level="15.4.9" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#putting-it-altogether-2"><i class="fa fa-check"></i><b>15.4.9</b> Putting it altogether</a></li>
+<li class="chapter" data-level="15.4.10" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#knowledge-check-32"><i class="fa fa-check"></i><b>15.4.10</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#exercises-10"><i class="fa fa-check"></i><b>15.5</b> Exercises</a></li>
+<li class="chapter" data-level="15.6" data-path="lesson-4b-handling-text-data.html"><a href="lesson-4b-handling-text-data.html#additional-resources-6"><i class="fa fa-check"></i><b>15.6</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html"><i class="fa fa-check"></i><b>16</b> Lesson 4c: Handling dates &amp; times</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#learning-objectives-16"><i class="fa fa-check"></i><b>16.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="16.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#prerequisites-4"><i class="fa fa-check"></i><b>16.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="16.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#getting-current-date-time"><i class="fa fa-check"></i><b>16.3</b> Getting current date &amp; time</a></li>
+<li class="chapter" data-level="16.4" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#creating-dates"><i class="fa fa-check"></i><b>16.4</b> Creating dates</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#convert-strings-to-dates"><i class="fa fa-check"></i><b>16.4.1</b> Convert strings to dates</a></li>
+<li class="chapter" data-level="16.4.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#create-dates-by-merging-data"><i class="fa fa-check"></i><b>16.4.2</b> Create dates by merging data</a></li>
+<li class="chapter" data-level="16.4.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-33"><i class="fa fa-check"></i><b>16.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#extract-manipulate-parts-of-dates"><i class="fa fa-check"></i><b>16.5</b> Extract &amp; manipulate parts of dates</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-34"><i class="fa fa-check"></i><b>16.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#calculations-with-dates"><i class="fa fa-check"></i><b>16.6</b> Calculations with dates</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#durations"><i class="fa fa-check"></i><b>16.6.1</b> Durations</a></li>
+<li class="chapter" data-level="16.6.2" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#periods"><i class="fa fa-check"></i><b>16.6.2</b> Periods</a></li>
+<li class="chapter" data-level="16.6.3" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#knowledge-check-35"><i class="fa fa-check"></i><b>16.6.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#exercises-11"><i class="fa fa-check"></i><b>16.7</b> Exercises</a></li>
+<li class="chapter" data-level="16.8" data-path="lesson-4c-handling-dates-times.html"><a href="lesson-4c-handling-dates-times.html#additional-resources-7"><i class="fa fa-check"></i><b>16.8</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>V Module 5</b></span></li>
+<li class="chapter" data-level="17" data-path="overview-4.html"><a href="overview-4.html"><i class="fa fa-check"></i><b>17</b> Overview</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="overview-4.html"><a href="overview-4.html#learning-objectives-17"><i class="fa fa-check"></i><b>17.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="17.2" data-path="overview-4.html"><a href="overview-4.html#estimated-time-requirement-4"><i class="fa fa-check"></i><b>17.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="17.3" data-path="overview-4.html"><a href="overview-4.html#tasks-4"><i class="fa fa-check"></i><b>17.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html"><i class="fa fa-check"></i><b>18</b> Lesson 5a: Introduction to ggplot2</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#learning-objectives-18"><i class="fa fa-check"></i><b>18.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="18.2" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#prerequisites-5"><i class="fa fa-check"></i><b>18.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="18.3" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#grammar-of-graphics"><i class="fa fa-check"></i><b>18.3</b> Grammar of Graphics</a></li>
+<li class="chapter" data-level="18.4" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#the-basics"><i class="fa fa-check"></i><b>18.4</b> The Basics</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-36"><i class="fa fa-check"></i><b>18.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#aesthetic-mappings"><i class="fa fa-check"></i><b>18.5</b> Aesthetic Mappings</a>
+<ul>
+<li class="chapter" data-level="18.5.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-37"><i class="fa fa-check"></i><b>18.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.6" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#specifying-geometric-shapes"><i class="fa fa-check"></i><b>18.6</b> Specifying Geometric Shapes</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-38"><i class="fa fa-check"></i><b>18.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.7" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#statistical-transformations"><i class="fa fa-check"></i><b>18.7</b> Statistical Transformations</a>
+<ul>
+<li class="chapter" data-level="18.7.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-39"><i class="fa fa-check"></i><b>18.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.8" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#position-adjustments"><i class="fa fa-check"></i><b>18.8</b> Position Adjustments</a>
+<ul>
+<li class="chapter" data-level="18.8.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-40"><i class="fa fa-check"></i><b>18.8.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.9" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#managing-scales"><i class="fa fa-check"></i><b>18.9</b> Managing Scales</a>
+<ul>
+<li class="chapter" data-level="18.9.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-41"><i class="fa fa-check"></i><b>18.9.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.10" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#coordinate-systems"><i class="fa fa-check"></i><b>18.10</b> Coordinate Systems</a>
+<ul>
+<li class="chapter" data-level="18.10.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-42"><i class="fa fa-check"></i><b>18.10.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.11" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#facets"><i class="fa fa-check"></i><b>18.11</b> Facets</a>
+<ul>
+<li class="chapter" data-level="18.11.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-43"><i class="fa fa-check"></i><b>18.11.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.12" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#labels-annotations"><i class="fa fa-check"></i><b>18.12</b> Labels &amp; Annotations</a>
+<ul>
+<li class="chapter" data-level="18.12.1" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-44"><i class="fa fa-check"></i><b>18.12.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="18.13" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#exercises-12"><i class="fa fa-check"></i><b>18.13</b> Exercises</a></li>
+<li class="chapter" data-level="18.14" data-path="lesson-5a-introduction-to-ggplot2.html"><a href="lesson-5a-introduction-to-ggplot2.html#additional-resources-on-ggplot2"><i class="fa fa-check"></i><b>18.14</b> Additional Resources on <strong>ggplot2</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html"><i class="fa fa-check"></i><b>19</b> Lesson 5b: Handling factors</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#learning-objectives-19"><i class="fa fa-check"></i><b>19.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="19.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#prerequisites-6"><i class="fa fa-check"></i><b>19.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="19.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#creating-factors-inspecting-factors"><i class="fa fa-check"></i><b>19.3</b> Creating factors &amp; inspecting factors</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#some-basics"><i class="fa fa-check"></i><b>19.3.1</b> Some basics</a></li>
+<li class="chapter" data-level="19.3.2" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#factors-in-data-frames"><i class="fa fa-check"></i><b>19.3.2</b> Factors in data frames</a></li>
+<li class="chapter" data-level="19.3.3" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#ordinal-factors"><i class="fa fa-check"></i><b>19.3.3</b> Ordinal factors</a></li>
+<li class="chapter" data-level="19.3.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-45"><i class="fa fa-check"></i><b>19.3.4</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-order"><i class="fa fa-check"></i><b>19.4</b> Modifying factor order</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-46"><i class="fa fa-check"></i><b>19.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#modifying-factor-levels"><i class="fa fa-check"></i><b>19.5</b> Modifying factor levels</a>
+<ul>
+<li class="chapter" data-level="19.5.1" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#knowledge-check-47"><i class="fa fa-check"></i><b>19.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#exercises-13"><i class="fa fa-check"></i><b>19.6</b> Exercises</a></li>
+<li class="chapter" data-level="19.7" data-path="lesson-5b-handling-factors.html"><a href="lesson-5b-handling-factors.html#additional-resources-8"><i class="fa fa-check"></i><b>19.7</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html"><i class="fa fa-check"></i><b>20</b> Lesson 5c: Visual data exploration</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#learning-objectives-20"><i class="fa fa-check"></i><b>20.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="20.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#prerequisites-7"><i class="fa fa-check"></i><b>20.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="20.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#univariate-distributions"><i class="fa fa-check"></i><b>20.3</b> Univariate Distributions</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#histograms"><i class="fa fa-check"></i><b>20.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="20.3.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#quantile-quantile-plots"><i class="fa fa-check"></i><b>20.3.2</b> Quantile-quantile plots</a></li>
+<li class="chapter" data-level="20.3.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#box-plots"><i class="fa fa-check"></i><b>20.3.3</b> Box plots</a></li>
+<li class="chapter" data-level="20.3.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#categorical-variables"><i class="fa fa-check"></i><b>20.3.4</b> Categorical variables</a></li>
+<li class="chapter" data-level="20.3.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bar-charts"><i class="fa fa-check"></i><b>20.3.5</b> Bar charts</a></li>
+<li class="chapter" data-level="20.3.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#dot-plots"><i class="fa fa-check"></i><b>20.3.6</b> Dot plots</a></li>
+<li class="chapter" data-level="20.3.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#pie-charts"><i class="fa fa-check"></i><b>20.3.7</b> Pie charts</a></li>
+<li class="chapter" data-level="20.3.8" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-48"><i class="fa fa-check"></i><b>20.3.8</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#bivariate-relationships"><i class="fa fa-check"></i><b>20.4</b> Bivariate relationships</a>
+<ul>
+<li class="chapter" data-level="20.4.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#scatter-plots"><i class="fa fa-check"></i><b>20.4.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="20.4.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#strip-plots"><i class="fa fa-check"></i><b>20.4.2</b> Strip plots</a></li>
+<li class="chapter" data-level="20.4.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#overlays-faceting"><i class="fa fa-check"></i><b>20.4.3</b> Overlays &amp; faceting</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#multivariate-relationships"><i class="fa fa-check"></i><b>20.5</b> Multivariate relationships</a>
+<ul>
+<li class="chapter" data-level="20.5.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#layering-variables"><i class="fa fa-check"></i><b>20.5.1</b> Layering variables</a></li>
+<li class="chapter" data-level="20.5.2" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#parallel-coordinate-plots"><i class="fa fa-check"></i><b>20.5.2</b> Parallel coordinate plots</a></li>
+<li class="chapter" data-level="20.5.3" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#mosaic-plots"><i class="fa fa-check"></i><b>20.5.3</b> Mosaic plots</a></li>
+<li class="chapter" data-level="20.5.4" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#tree-maps"><i class="fa fa-check"></i><b>20.5.4</b> Tree maps</a></li>
+<li class="chapter" data-level="20.5.5" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#heat-maps"><i class="fa fa-check"></i><b>20.5.5</b> Heat maps</a></li>
+<li class="chapter" data-level="20.5.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#generalized-pairs-plot"><i class="fa fa-check"></i><b>20.5.6</b> Generalized pairs plot</a></li>
+<li class="chapter" data-level="20.5.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-49"><i class="fa fa-check"></i><b>20.5.7</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.6" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#data-quality"><i class="fa fa-check"></i><b>20.6</b> Data quality</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#knowledge-check-50"><i class="fa fa-check"></i><b>20.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="20.7" data-path="lesson-5c-visual-data-exploration.html"><a href="lesson-5c-visual-data-exploration.html#exercise"><i class="fa fa-check"></i><b>20.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>VI Module 6</b></span></li>
+<li class="chapter" data-level="21" data-path="overview-5.html"><a href="overview-5.html"><i class="fa fa-check"></i><b>21</b> Overview</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="overview-5.html"><a href="overview-5.html#learning-objectives-21"><i class="fa fa-check"></i><b>21.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="21.2" data-path="overview-5.html"><a href="overview-5.html#estimated-time-requirement-5"><i class="fa fa-check"></i><b>21.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="21.3" data-path="overview-5.html"><a href="overview-5.html#tasks-5"><i class="fa fa-check"></i><b>21.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html"><i class="fa fa-check"></i><b>22</b> Lesson 6a: Conditional statements</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#learning-objectives-22"><i class="fa fa-check"></i><b>22.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="22.2" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#prerequisites-8"><i class="fa fa-check"></i><b>22.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="22.3" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#if-statement"><i class="fa fa-check"></i><b>22.3</b> <code>if</code> statement</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-51"><i class="fa fa-check"></i><b>22.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#ifelse-statement"><i class="fa fa-check"></i><b>22.4</b> <code>ifelse</code> statement</a>
+<ul>
+<li class="chapter" data-level="22.4.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-52"><i class="fa fa-check"></i><b>22.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.5" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#multiple-conditions"><i class="fa fa-check"></i><b>22.5</b> Multiple conditions</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-53"><i class="fa fa-check"></i><b>22.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.6" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#vectorized-approaches"><i class="fa fa-check"></i><b>22.6</b> Vectorized approaches</a>
+<ul>
+<li class="chapter" data-level="22.6.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-54"><i class="fa fa-check"></i><b>22.6.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.7" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#with-data-frames"><i class="fa fa-check"></i><b>22.7</b> With data frames</a>
+<ul>
+<li class="chapter" data-level="22.7.1" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#knowledge-check-55"><i class="fa fa-check"></i><b>22.7.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="22.8" data-path="lesson-6a-conditional-statements.html"><a href="lesson-6a-conditional-statements.html#exercises-14"><i class="fa fa-check"></i><b>22.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html"><i class="fa fa-check"></i><b>23</b> Lesson 6b: Iteration statements</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#learning-objectives-23"><i class="fa fa-check"></i><b>23.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="23.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#for-loops"><i class="fa fa-check"></i><b>23.2</b> <code>for</code> loops</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-56"><i class="fa fa-check"></i><b>23.2.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#controlling-sequences"><i class="fa fa-check"></i><b>23.3</b> Controlling sequences</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-57"><i class="fa fa-check"></i><b>23.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeating-code-for-undefined-number-of-iterations"><i class="fa fa-check"></i><b>23.4</b> Repeating code for undefined number of iterations</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#while-loop"><i class="fa fa-check"></i><b>23.4.1</b> <code>while</code> loop</a></li>
+<li class="chapter" data-level="23.4.2" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#repeat-loop"><i class="fa fa-check"></i><b>23.4.2</b> <code>repeat</code> loop</a></li>
+<li class="chapter" data-level="23.4.3" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-58"><i class="fa fa-check"></i><b>23.4.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#iteration-with-functional-programming"><i class="fa fa-check"></i><b>23.5</b> Iteration with functional programming</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#knowledge-check-59"><i class="fa fa-check"></i><b>23.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="lesson-6b-iteration-statements.html"><a href="lesson-6b-iteration-statements.html#exercises-15"><i class="fa fa-check"></i><b>23.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html"><i class="fa fa-check"></i><b>24</b> Lesson 6c: Writing functions</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#learning-objectives-24"><i class="fa fa-check"></i><b>24.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="24.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#when-to-write-functions"><i class="fa fa-check"></i><b>24.2</b> When to write functions</a></li>
+<li class="chapter" data-level="24.3" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-components"><i class="fa fa-check"></i><b>24.3</b> Function components</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-60"><i class="fa fa-check"></i><b>24.3.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#function-arguments"><i class="fa fa-check"></i><b>24.4</b> Function arguments</a>
+<ul>
+<li class="chapter" data-level="24.4.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-61"><i class="fa fa-check"></i><b>24.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.5" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#checking-arguments-and-other-conditions"><i class="fa fa-check"></i><b>24.5</b> Checking arguments and other conditions</a>
+<ul>
+<li class="chapter" data-level="24.5.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#knowledge-check-62"><i class="fa fa-check"></i><b>24.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="24.6" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#lazy-evaluation"><i class="fa fa-check"></i><b>24.6</b> Lazy evaluation</a></li>
+<li class="chapter" data-level="24.7" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#status-updates"><i class="fa fa-check"></i><b>24.7</b> Status updates</a>
+<ul>
+<li class="chapter" data-level="24.7.1" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-1-base-r"><i class="fa fa-check"></i><b>24.7.1</b> Option 1: Base R</a></li>
+<li class="chapter" data-level="24.7.2" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#option-2-progress-package"><i class="fa fa-check"></i><b>24.7.2</b> Option 2: <code>progress</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="24.8" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#distributing-your-functions"><i class="fa fa-check"></i><b>24.8</b> Distributing your functions</a></li>
+<li class="chapter" data-level="24.9" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#exercises-16"><i class="fa fa-check"></i><b>24.9</b> Exercises</a></li>
+<li class="chapter" data-level="24.10" data-path="lesson-6c-writing-functions.html"><a href="lesson-6c-writing-functions.html#additional-resources-9"><i class="fa fa-check"></i><b>24.10</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>VII Module 7</b></span></li>
+<li class="chapter" data-level="25" data-path="overview-6.html"><a href="overview-6.html"><i class="fa fa-check"></i><b>25</b> Overview</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="overview-6.html"><a href="overview-6.html#learning-objectives-25"><i class="fa fa-check"></i><b>25.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="25.2" data-path="overview-6.html"><a href="overview-6.html#estimated-time-requirement-6"><i class="fa fa-check"></i><b>25.2</b> Estimated time requirement</a></li>
+<li class="chapter" data-level="25.3" data-path="overview-6.html"><a href="overview-6.html#tasks-6"><i class="fa fa-check"></i><b>25.3</b> Tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html"><i class="fa fa-check"></i><b>26</b> Lesson 7a: First model with Tidymodels</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#learning-objectives-26"><i class="fa fa-check"></i><b>26.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="26.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#prerequisites-9"><i class="fa fa-check"></i><b>26.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="26.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#data-splitting"><i class="fa fa-check"></i><b>26.3</b> Data splitting</a>
+<ul>
+<li class="chapter" data-level="26.3.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#simple-random-sampling"><i class="fa fa-check"></i><b>26.3.1</b> Simple random sampling</a></li>
+<li class="chapter" data-level="26.3.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#stratified-sampling"><i class="fa fa-check"></i><b>26.3.2</b> Stratified sampling</a></li>
+<li class="chapter" data-level="26.3.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-63"><i class="fa fa-check"></i><b>26.3.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.4" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#building-models"><i class="fa fa-check"></i><b>26.4</b> Building models</a>
+<ul>
+<li class="chapter" data-level="26.4.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-64"><i class="fa fa-check"></i><b>26.4.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.5" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#making-predictions"><i class="fa fa-check"></i><b>26.5</b> Making predictions</a>
+<ul>
+<li class="chapter" data-level="26.5.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-65"><i class="fa fa-check"></i><b>26.5.1</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.6" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#evaluating-model-performance"><i class="fa fa-check"></i><b>26.6</b> Evaluating model performance</a>
+<ul>
+<li class="chapter" data-level="26.6.1" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#regression-models"><i class="fa fa-check"></i><b>26.6.1</b> Regression models</a></li>
+<li class="chapter" data-level="26.6.2" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#classification-models"><i class="fa fa-check"></i><b>26.6.2</b> Classification models</a></li>
+<li class="chapter" data-level="26.6.3" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-66"><i class="fa fa-check"></i><b>26.6.3</b> Knowledge check</a></li>
+</ul></li>
+<li class="chapter" data-level="26.7" data-path="lesson-7a-first-model-with-tidymodels.html"><a href="lesson-7a-first-model-with-tidymodels.html#exercises-17"><i class="fa fa-check"></i><b>26.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html"><i class="fa fa-check"></i><b>27</b> Lesson 7b: Feature engineering</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#learning-objectives-27"><i class="fa fa-check"></i><b>27.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="27.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#prerequisites-10"><i class="fa fa-check"></i><b>27.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="27.3" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#create-a-recipe"><i class="fa fa-check"></i><b>27.3</b> Create a recipe</a></li>
+<li class="chapter" data-level="27.4" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#feature-filtering"><i class="fa fa-check"></i><b>27.4</b> Feature filtering</a></li>
+<li class="chapter" data-level="27.5" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#numeric-features"><i class="fa fa-check"></i><b>27.5</b> Numeric features</a>
+<ul>
+<li class="chapter" data-level="27.5.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#skewness"><i class="fa fa-check"></i><b>27.5.1</b> Skewness</a></li>
+<li class="chapter" data-level="27.5.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#standardization"><i class="fa fa-check"></i><b>27.5.2</b> Standardization</a></li>
+</ul></li>
+<li class="chapter" data-level="27.6" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#categorical-features"><i class="fa fa-check"></i><b>27.6</b> Categorical features</a>
+<ul>
+<li class="chapter" data-level="27.6.1" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#one-hot-dummy-encoding"><i class="fa fa-check"></i><b>27.6.1</b> One-hot &amp; dummy encoding</a></li>
+<li class="chapter" data-level="27.6.2" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#ordinal-encoding"><i class="fa fa-check"></i><b>27.6.2</b> Ordinal encoding</a></li>
+<li class="chapter" data-level="27.6.3" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#lumping"><i class="fa fa-check"></i><b>27.6.3</b> Lumping</a></li>
+</ul></li>
+<li class="chapter" data-level="27.7" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#fit-a-model-with-a-recipe"><i class="fa fa-check"></i><b>27.7</b> Fit a model with a recipe</a></li>
+<li class="chapter" data-level="27.8" data-path="lesson-7b-feature-engineering.html"><a href="lesson-7b-feature-engineering.html#exercises-18"><i class="fa fa-check"></i><b>27.8</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html"><i class="fa fa-check"></i><b>28</b> Lesson 7c: Model evaluation &amp; selection</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#learning-objectives-28"><i class="fa fa-check"></i><b>28.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="28.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#prerequisites-11"><i class="fa fa-check"></i><b>28.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="28.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#resampling-cross-validation"><i class="fa fa-check"></i><b>28.3</b> Resampling &amp; cross-validation</a></li>
+<li class="chapter" data-level="28.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>28.4</b> K-fold cross-validation</a></li>
+<li class="chapter" data-level="28.5" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning"><i class="fa fa-check"></i><b>28.5</b> Hyperparameter tuning</a>
+<ul>
+<li class="chapter" data-level="28.5.1" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#bias"><i class="fa fa-check"></i><b>28.5.1</b> Bias</a></li>
+<li class="chapter" data-level="28.5.2" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#variance"><i class="fa fa-check"></i><b>28.5.2</b> Variance</a></li>
+<li class="chapter" data-level="28.5.3" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#hyperparameters"><i class="fa fa-check"></i><b>28.5.3</b> Hyperparameters</a></li>
+<li class="chapter" data-level="28.5.4" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#full-cartesian-grid-search"><i class="fa fa-check"></i><b>28.5.4</b> Full cartesian grid search</a></li>
+</ul></li>
+<li class="chapter" data-level="28.6" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#finalizing-our-model"><i class="fa fa-check"></i><b>28.6</b> Finalizing our model</a></li>
+<li class="chapter" data-level="28.7" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#exercises-19"><i class="fa fa-check"></i><b>28.7</b> Exercises</a></li>
+<li class="chapter" data-level="28.8" data-path="lesson-7c-model-evaluation-selection.html"><a href="lesson-7c-model-evaluation-selection.html#additional-resources-10"><i class="fa fa-check"></i><b>28.8</b> Additional resources</a></li>
+</ul></li>
+<li class="part"><span><b>VIII Additional Content</b></span></li>
+<li class="chapter" data-level="" data-path="computing-environment-1.html"><a href="computing-environment-1.html"><i class="fa fa-check"></i>Computing Environment</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.uc.edu/" target="blank">University of Cincinnati</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Wrangling with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lesson-1c-vectors" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Lesson 1c: Vectors<a href="lesson-1c-vectors.html#lesson-1c-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the last module we started to explore how to use R as a calculator. This is great; however, we were only working with individual values. Often, we want to work on several values at once so we need a structure that will hold multiple pieces of data. We will discuss data structures more in the next module but in this lesson we introduce the <strong>vector</strong>, which is <em>the</em> fundamental data structure in R. Once you have a good grasp of working with vectors, then working with other data structures because much easier.</p>
+<div id="learning-objectives-4" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Learning objectives<a href="lesson-1c-vectors.html#learning-objectives-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul>
+<li>Create vectors.</li>
+<li>Extract and replace elements within a vector.</li>
+<li>Perform basic operations on a vector (i.e. compute the mean).</li>
+<li>Work with missing data in a vector.</li>
+<li>Explain and take advantage of vectorization.</li>
+</ul>
+</div>
+<div id="creating-vectors" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Creating vectors<a href="lesson-1c-vectors.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are multiple ways to create vectors but the first one you’ll be introduced to is by using <code>c()</code>. The <code>c()</code> function is short for concatenate and we use it to join together a series of values and store them in a vector.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="lesson-1c-vectors.html#cb39-1" aria-hidden="true" tabindex="-1"></a>my_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span></code></pre></div>
+<p>To examine the value of our new object we can simply type out the name of the object as we did before:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lesson-1c-vectors.html#cb40-1" aria-hidden="true" tabindex="-1"></a>my_vec</span>
+<span id="cb40-2"><a href="lesson-1c-vectors.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 4 3 3 7</span></span></code></pre></div>
+<div id="creating-sequences" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Creating sequences<a href="lesson-1c-vectors.html#creating-sequences" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes it can be useful to create a vector that contains a regular sequence of values in steps of one. Here we can make use of a shortcut using the <code>:</code> symbol.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="lesson-1c-vectors.html#cb41-1" aria-hidden="true" tabindex="-1"></a>my_seq <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>     <span class="co"># create regular sequence</span></span>
+<span id="cb41-2"><a href="lesson-1c-vectors.html#cb41-2" aria-hidden="true" tabindex="-1"></a>my_seq</span>
+<span id="cb41-3"><a href="lesson-1c-vectors.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb41-4"><a href="lesson-1c-vectors.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="lesson-1c-vectors.html#cb41-5" aria-hidden="true" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>    <span class="co"># in decending order</span></span>
+<span id="cb41-6"><a href="lesson-1c-vectors.html#cb41-6" aria-hidden="true" tabindex="-1"></a>my_seq2</span>
+<span id="cb41-7"><a href="lesson-1c-vectors.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 10  9  8  7  6  5  4  3  2  1</span></span></code></pre></div>
+<p>Other useful functions for generating vectors of sequences include the <code>seq()</code> and <code>rep()</code> functions. For example, to generate a sequence from 1 to 5 in steps of 0.5</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lesson-1c-vectors.html#cb42-1" aria-hidden="true" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.5</span>)</span>
+<span id="cb42-2"><a href="lesson-1c-vectors.html#cb42-2" aria-hidden="true" tabindex="-1"></a>my_seq2</span>
+<span id="cb42-3"><a href="lesson-1c-vectors.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</span></span></code></pre></div>
+<p>Here we’ve used the arguments <code>from =</code> and <code>to =</code> to define the limits of the sequence and the <code>by =</code> argument to specify the increment of the sequence. Play around with other values for these arguments to see their effect.</p>
+<p>The <code>rep()</code> function allows you to replicate (repeat) values a specified number of times. To repeat the value 2, 10 times</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="lesson-1c-vectors.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats 2, 10 times</span></span>
+<span id="cb43-2"><a href="lesson-1c-vectors.html#cb43-2" aria-hidden="true" tabindex="-1"></a>my_seq3 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb43-3"><a href="lesson-1c-vectors.html#cb43-3" aria-hidden="true" tabindex="-1"></a>my_seq3</span>
+<span id="cb43-4"><a href="lesson-1c-vectors.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 2 2 2 2 2 2 2 2 2 2</span></span></code></pre></div>
+<p>You can also repeat non-numeric values</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="lesson-1c-vectors.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats ‘abc’ 3 times</span></span>
+<span id="cb44-2"><a href="lesson-1c-vectors.html#cb44-2" aria-hidden="true" tabindex="-1"></a>my_seq4 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;abc&quot;</span>, <span class="at">times =</span> <span class="dv">3</span>)     </span>
+<span id="cb44-3"><a href="lesson-1c-vectors.html#cb44-3" aria-hidden="true" tabindex="-1"></a>my_seq4</span>
+<span id="cb44-4"><a href="lesson-1c-vectors.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;</span></span></code></pre></div>
+<p>or each element of a series</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="lesson-1c-vectors.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats the series 1 to 5, 3 times</span></span>
+<span id="cb45-2"><a href="lesson-1c-vectors.html#cb45-2" aria-hidden="true" tabindex="-1"></a>my_seq5 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">3</span>) </span>
+<span id="cb45-3"><a href="lesson-1c-vectors.html#cb45-3" aria-hidden="true" tabindex="-1"></a>my_seq5</span>
+<span id="cb45-4"><a href="lesson-1c-vectors.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</span></span></code></pre></div>
+<p>or elements of a series</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lesson-1c-vectors.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
+<span id="cb46-2"><a href="lesson-1c-vectors.html#cb46-2" aria-hidden="true" tabindex="-1"></a>my_seq6 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb46-3"><a href="lesson-1c-vectors.html#cb46-3" aria-hidden="true" tabindex="-1"></a>my_seq6</span>
+<span id="cb46-4"><a href="lesson-1c-vectors.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5</span></span></code></pre></div>
+<p>We can also repeat a non-sequential series</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="lesson-1c-vectors.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
+<span id="cb47-2"><a href="lesson-1c-vectors.html#cb47-2" aria-hidden="true" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb47-3"><a href="lesson-1c-vectors.html#cb47-3" aria-hidden="true" tabindex="-1"></a>my_seq7</span>
+<span id="cb47-4"><a href="lesson-1c-vectors.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
+<p>Note in the code above how we’ve used the <code>c()</code> function inside the <code>seq()</code> function. Nesting functions allows us to build quite complex commands within a single line of code and is a very common practice when using R. However, care needs to be taken as too many nested functions can make your code quite difficult for others to understand (or yourself some time in the future!). We could rewrite the code above to explicitly separate the two different steps to generate our vector. Either approach will give the same result, you just need to use your own judgement as to which is more readable.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lesson-1c-vectors.html#cb48-1" aria-hidden="true" tabindex="-1"></a>in_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>)</span>
+<span id="cb48-2"><a href="lesson-1c-vectors.html#cb48-2" aria-hidden="true" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(in_vec, <span class="at">each =</span> <span class="dv">3</span>) </span>
+<span id="cb48-3"><a href="lesson-1c-vectors.html#cb48-3" aria-hidden="true" tabindex="-1"></a>my_seq7</span>
+<span id="cb48-4"><a href="lesson-1c-vectors.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-6" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Use <code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in lbs) of 10 children: 75, 95, 92, 89, 101, 87,
+79, 92, 70, 99.
+</li>
+<li>
+Use the <code>seq()</code> function to create a sequence of numbers
+ranging from 0 to 1 in steps of 0.1.
+</li>
+<li>
+Generate the following sequences. You will need to experiment with
+the arguments to the <code>rep()</code> function to generate these
+sequences:
+<ul>
+<li>
+1 2 3 1 2 3 1 2 3
+</li>
+<li>
+“a” “a” “a” “c” “c” “c” “e” “e” “e” “g” “g” “g”
+</li>
+<li>
+“a” “c” “e” “g” “a” “c” “e” “g” “a” “c” “e” “g”
+</li>
+<li>
+1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3
+</li>
+<li>
+1 1 1 1 1 2 2 2 2 3 3 3 4 4 5
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="extracting-elements" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Extracting elements<a href="lesson-1c-vectors.html#extracting-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To extract (also known as indexing) one or more values (more generally known as elements) from a vector we use the square bracket <code>[ ]</code> notation. The general approach is to name the object you wish to extract from, then a set of square brackets with an index of the element you wish to extract contained within the square brackets.</p>
+<div class="tip">
+<p>
+This index can be a position or the result of a logical test.
+</p>
+</div>
+<div id="positional-indexing" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Positional indexing<a href="lesson-1c-vectors.html#positional-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="lesson-1c-vectors.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the 3rd value</span></span>
+<span id="cb49-2"><a href="lesson-1c-vectors.html#cb49-2" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">3</span>]</span>
+<span id="cb49-3"><a href="lesson-1c-vectors.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb49-4"><a href="lesson-1c-vectors.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="lesson-1c-vectors.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if you want to assign this value in another object</span></span>
+<span id="cb49-6"><a href="lesson-1c-vectors.html#cb49-6" aria-hidden="true" tabindex="-1"></a>val_3 <span class="ot">&lt;-</span> my_vec[<span class="dv">3</span>]</span>
+<span id="cb49-7"><a href="lesson-1c-vectors.html#cb49-7" aria-hidden="true" tabindex="-1"></a>val_3</span>
+<span id="cb49-8"><a href="lesson-1c-vectors.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
+<div class="note">
+<p>
+Note that the positional index starts at 1 rather than 0 like some
+other other programming languages (i.e. Python).
+</p>
+</div>
+<p>We can also extract more than one value by using the <code>c()</code> function inside the square brackets. Here we extract the 1<sup>st</sup>, 5<sup>th</sup>, 6<sup>th</sup> and 8<sup>th</sup> element from the <code>my_vec</code> object</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lesson-1c-vectors.html#cb50-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>)]</span>
+<span id="cb50-2"><a href="lesson-1c-vectors.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 4 3 7</span></span></code></pre></div>
+<p>Or we can extract a range of values using the <code>:</code> notation. To extract the values from the 3<sup>rd</sup> to the 8<sup>th</sup> elements</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-1c-vectors.html#cb51-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb51-2"><a href="lesson-1c-vectors.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 6 4 3 3 7</span></span></code></pre></div>
+</div>
+<div id="logical-indexing" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Logical indexing<a href="lesson-1c-vectors.html#logical-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another really useful way to extract data from a vector is to use a <strong>logical expression</strong> as an index. For example, to extract all elements with a <em>value greater than 4</em> in the vector <code>my_vec</code></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-1c-vectors.html#cb52-1" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">4</span>]</span>
+<span id="cb52-2"><a href="lesson-1c-vectors.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
+<p>Here, the logical expression is <code>my_vec &gt; 4</code> and R will only extract those elements that satisfy this logical condition. So how does this actually work? If we look at the output of just the logical expression without the square brackets you can see that R returns a vector containing either <code>TRUE</code> or <code>FALSE</code> which correspond to whether the logical condition is satisfied for each element. In this case only the 4<sup>th</sup> and 8<sup>th</sup> elements return a <code>TRUE</code> as their value is greater than 4.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="lesson-1c-vectors.html#cb53-1" aria-hidden="true" tabindex="-1"></a>my_vec <span class="sc">&gt;</span> <span class="dv">4</span></span>
+<span id="cb53-2"><a href="lesson-1c-vectors.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</span></span></code></pre></div>
+<p>So what R is actually doing under the hood is equivalent to</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-1c-vectors.html#cb54-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span>
+<span id="cb54-2"><a href="lesson-1c-vectors.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
+<p>and only those element that are <code>TRUE</code> will be extracted.</p>
+<p>In addition to the <code>&lt;</code> and <code>&gt;</code> operators you can also use composite operators to increase the complexity of your expressions. For example the expression for ‘greater or equal to’ is <code>&gt;=</code>. To test whether a value is equal to a value we need to use a double equals symbol <code>==</code> and for ‘not equal to’ we use <code>!=</code> (the <code>!</code> symbol means ‘not’).</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="lesson-1c-vectors.html#cb55-1" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;=</span> <span class="dv">4</span>]        <span class="co"># values greater or equal to 4</span></span>
+<span id="cb55-2"><a href="lesson-1c-vectors.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 4 7</span></span>
+<span id="cb55-3"><a href="lesson-1c-vectors.html#cb55-3" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">4</span>]         <span class="co"># values less than 4</span></span>
+<span id="cb55-4"><a href="lesson-1c-vectors.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 3 3</span></span>
+<span id="cb55-5"><a href="lesson-1c-vectors.html#cb55-5" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>]        <span class="co"># values less than or equal to 4</span></span>
+<span id="cb55-6"><a href="lesson-1c-vectors.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 4 3 3</span></span>
+<span id="cb55-7"><a href="lesson-1c-vectors.html#cb55-7" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">==</span> <span class="dv">4</span>]        <span class="co"># values equal to 4</span></span>
+<span id="cb55-8"><a href="lesson-1c-vectors.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb55-9"><a href="lesson-1c-vectors.html#cb55-9" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">!=</span> <span class="dv">4</span>]        <span class="co"># values not equal to 4</span></span>
+<span id="cb55-10"><a href="lesson-1c-vectors.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 3 3 7</span></span></code></pre></div>
+<p>We can also combine multiple logical expressions using <strong>Boolean expressions</strong>. In R the <code>&amp;</code> symbol means AND and the <code>|</code> symbol means OR. For example, to extract values in <code>my_vec</code> which are less than 6 AND greater than 2</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="lesson-1c-vectors.html#cb56-1" aria-hidden="true" tabindex="-1"></a>val26 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">&amp;</span> my_vec <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
+<span id="cb56-2"><a href="lesson-1c-vectors.html#cb56-2" aria-hidden="true" tabindex="-1"></a>val26</span>
+<span id="cb56-3"><a href="lesson-1c-vectors.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3 4 3 3</span></span></code></pre></div>
+<p>or extract values in <code>my_vec</code> that are greater than 6 OR less than 3</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="lesson-1c-vectors.html#cb57-1" aria-hidden="true" tabindex="-1"></a>val63 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">6</span> <span class="sc">|</span> my_vec <span class="sc">&lt;</span> <span class="dv">3</span>]</span>
+<span id="cb57-2"><a href="lesson-1c-vectors.html#cb57-2" aria-hidden="true" tabindex="-1"></a>val63</span>
+<span id="cb57-3"><a href="lesson-1c-vectors.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 1 7</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-7" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Use <code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in lbs) of 10 children: 75, 95, 92, 89, 101, 87,
+79, 92, 70, 99.
+</li>
+<li>
+Extract the weights for the first and last child.
+</li>
+<li>
+Extract the weights for the first five children.
+</li>
+<li>
+Extract the weights for those children that weigh over 90lbs.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="replacing-elements" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Replacing elements<a href="lesson-1c-vectors.html#replacing-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can change the values of some elements in a vector using our <code>[ ]</code> notation in combination with the assignment operator <code>&lt;-</code>. For example, to replace the 4<sup>th</sup> value of our <code>my_vec</code> object from <code>6</code> to <code>500</code></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="lesson-1c-vectors.html#cb58-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb58-2"><a href="lesson-1c-vectors.html#cb58-2" aria-hidden="true" tabindex="-1"></a>my_vec</span>
+<span id="cb58-3"><a href="lesson-1c-vectors.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4   3   3   7</span></span></code></pre></div>
+<p>We can also replace more than one value or even replace values based on a logical expression</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="lesson-1c-vectors.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the 6th and 7th element with 100</span></span>
+<span id="cb59-2"><a href="lesson-1c-vectors.html#cb59-2" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)] <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb59-3"><a href="lesson-1c-vectors.html#cb59-3" aria-hidden="true" tabindex="-1"></a>my_vec</span>
+<span id="cb59-4"><a href="lesson-1c-vectors.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4 100 100   7</span></span>
+<span id="cb59-5"><a href="lesson-1c-vectors.html#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="lesson-1c-vectors.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># replace element that are less than or equal to 4 with 1000</span></span>
+<span id="cb59-7"><a href="lesson-1c-vectors.html#cb59-7" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb59-8"><a href="lesson-1c-vectors.html#cb59-8" aria-hidden="true" tabindex="-1"></a>my_vec</span>
+<span id="cb59-9"><a href="lesson-1c-vectors.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000  500 1000  100  100    7</span></span></code></pre></div>
+<div id="knowledge-check-8" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Use <code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in lbs) of 10 children: 75, 95, 92, 89, 101, 87,
+79, 92, 70, 99.
+</li>
+<li>
+Say we made a mistake and the third child actually weighs 96, change
+the value for that element.
+</li>
+<li>
+Say the minimum weight allowed to be recorded is 80lbs. Change the
+value for all elements that are less than 80 to be equal to 80.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="operations" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Operations<a href="lesson-1c-vectors.html#operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can use other functions to perform useful operations on vectors. For example, we can calculate the mean, variance, standard deviation and number of elements in our vector by using the <code>mean()</code>, <code>var()</code>, <code>sd()</code> and <code>length()</code> functions</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="lesson-1c-vectors.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_vec)    <span class="co"># returns the mean of my_vec</span></span>
+<span id="cb60-2"><a href="lesson-1c-vectors.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 588.38</span></span>
+<span id="cb60-3"><a href="lesson-1c-vectors.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(my_vec)     <span class="co"># returns the variance of my_vec</span></span>
+<span id="cb60-4"><a href="lesson-1c-vectors.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 214367</span></span>
+<span id="cb60-5"><a href="lesson-1c-vectors.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(my_vec)      <span class="co"># returns the standard deviation of my_vec</span></span>
+<span id="cb60-6"><a href="lesson-1c-vectors.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 463</span></span>
+<span id="cb60-7"><a href="lesson-1c-vectors.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(my_vec)  <span class="co"># returns the number of elements in my_vec</span></span>
+<span id="cb60-8"><a href="lesson-1c-vectors.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code></pre></div>
+<p>If we wanted to use any of these values later on in our analysis we can just assign the resulting value to another object</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="lesson-1c-vectors.html#cb61-1" aria-hidden="true" tabindex="-1"></a>vec_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_vec)</span>
+<span id="cb61-2"><a href="lesson-1c-vectors.html#cb61-2" aria-hidden="true" tabindex="-1"></a>vec_mean</span>
+<span id="cb61-3"><a href="lesson-1c-vectors.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 588.38</span></span></code></pre></div>
+<p>We can also sort values in our element:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lesson-1c-vectors.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ascending order</span></span>
+<span id="cb62-2"><a href="lesson-1c-vectors.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(my_vec)</span>
+<span id="cb62-3"><a href="lesson-1c-vectors.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]    7  100  100  500 1000 1000 1000 1000</span></span>
+<span id="cb62-4"><a href="lesson-1c-vectors.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="lesson-1c-vectors.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># decending order</span></span>
+<span id="cb62-6"><a href="lesson-1c-vectors.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(my_vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-7"><a href="lesson-1c-vectors.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000 1000  500  100  100    7</span></span></code></pre></div>
+<div class="note">
+<p>
+There are a lot operations that we can perform on vectors. As we
+progress through this course we’ll see many of these in action.
+</p>
+</div>
+<div id="knowledge-check-9" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Use <code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in lbs) of 10 children: 75, 95, 92, 89, 101, 87,
+79, 92, 70, 99.
+</li>
+<li>
+Identify functions that will compute the minimum and maximum values
+in this vector.
+</li>
+<li>
+What is the mean, median, and standard deviation of child
+weights?
+</li>
+<li>
+Apply the <code>summary()</code> function on this vector. What does
+this return?
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="missing-data" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Missing data<a href="lesson-1c-vectors.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, missing data is usually represented by an <code>NA</code> symbol meaning ‘Not Available’. Data may be missing for a whole bunch of reasons, maybe your machine broke down, maybe the weather was too bad to collect data on a particular day, etc. Missing data can be a pain in the proverbial both from an R perspective and also a statistical perspective. From an R perspective missing data can be problematic as different functions deal with missing data in different ways. For example, let’s say we collected air temperature readings over 10 days, but our thermometer broke on day 2 and again on day 9 so we have no data for those days</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-1c-vectors.html#cb63-1" aria-hidden="true" tabindex="-1"></a>temp  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="cn">NA</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">6.5</span>, <span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">5.5</span>)</span>
+<span id="cb63-2"><a href="lesson-1c-vectors.html#cb63-2" aria-hidden="true" tabindex="-1"></a>temp</span>
+<span id="cb63-3"><a href="lesson-1c-vectors.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA 5.5</span></span></code></pre></div>
+<p>We now want to calculate the mean temperature over these days using the <code>mean()</code> function</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lesson-1c-vectors.html#cb64-1" aria-hidden="true" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
+<span id="cb64-2"><a href="lesson-1c-vectors.html#cb64-2" aria-hidden="true" tabindex="-1"></a>mean_temp</span>
+<span id="cb64-3"><a href="lesson-1c-vectors.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NA</span></span></code></pre></div>
+<p>Flippin heck, what’s happened here? Why does the <code>mean()</code> function return an <code>NA</code>? Actually, R is doing something very sensible (at least in our opinion!). If a vector has a missing value then the only possible value to return when calculating a mean is <code>NA</code>. R doesn’t know that you perhaps want to ignore the <code>NA</code> values. Happily, if we look at the help file via <code>help("mean")</code> we can see there is an argument <code>na.rm =</code> which is set to <code>FALSE</code> by default.</p>
+<div class="tip">
+<p>
+Most statistical operators will have an <code>na.rm</code> parameter
+that takes a <code>TRUE</code> or <code>FALSE</code> argument indicating
+whether NA values should be stripped before the computation
+proceeds.
+</p>
+</div>
+<p>If we change this argument to <code>na.rm = TRUE</code> when we use the <code>mean()</code> function this will allow us to ignore the <code>NA</code> values when calculating the mean</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-1c-vectors.html#cb65-1" aria-hidden="true" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-2"><a href="lesson-1c-vectors.html#cb65-2" aria-hidden="true" tabindex="-1"></a>mean_temp</span>
+<span id="cb65-3"><a href="lesson-1c-vectors.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6.2875</span></span></code></pre></div>
+<p>It’s important to note that the <code>NA</code> values have not been removed from our <code>temp</code> object (that would be bad practice), rather the <code>mean()</code> function has just ignored them. The point of the above is to highlight how we can change the default behaviour of a function using an appropriate argument.</p>
+<div id="knowledge-check-10" class="section level3 hasAnchor" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Use <code>c()</code> to create a vector called <code>weight</code>
+containing the weight (in lbs) of 10 children: 75, 95, 92, 89, 101, NA,
+79, 92, 70, 99.
+</li>
+<li>
+Compute the min, max, mean, median, and standard deviation of child
+weights?
+</li>
+<li>
+Apply the <code>summary()</code> function on this vector. How does
+this differ from before?
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="vectorization" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Vectorization<a href="lesson-1c-vectors.html#vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="looping-versus-vectorization" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Looping versus Vectorization<a href="lesson-1c-vectors.html#looping-versus-vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A key difference between R and many other languages is a topic known as vectorization. What does this mean? It means that many functions that are to be applied individually to each element in a vector of numbers require a loop assessment to evaluate; however, in R many of these functions have been coded in C to perform much faster than a for loop would perform. For example, let’s say you want to add the elements of two separate vectors of numbers (<code>x</code> and <code>y</code>).</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lesson-1c-vectors.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb66-2"><a href="lesson-1c-vectors.html#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb66-3"><a href="lesson-1c-vectors.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="lesson-1c-vectors.html#cb66-4" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb66-5"><a href="lesson-1c-vectors.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 3 4</span></span>
+<span id="cb66-6"><a href="lesson-1c-vectors.html#cb66-6" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb66-7"><a href="lesson-1c-vectors.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 4</span></span></code></pre></div>
+<p>In other languages you might have to run a loop to add two vectors together. In this <code>for</code> loop I print each iteration to show that the loop calculates the sum for the first elements in each vector, then performs the sum for the second elements, etc.</p>
+<div class="note">
+<p>
+Don’t worry if you don’t understand each piece of this code. This is
+just for illustration purposes! You will learn about looping procedures
+in a later module.
+</p>
+</div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lesson-1c-vectors.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty vector to store results</span></span>
+<span id="cb67-2"><a href="lesson-1c-vectors.html#cb67-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="cn">NULL</span>)</span>
+<span id="cb67-3"><a href="lesson-1c-vectors.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="lesson-1c-vectors.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># `for` loop to add corresponding elements in each vector</span></span>
+<span id="cb67-5"><a href="lesson-1c-vectors.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb67-6"><a href="lesson-1c-vectors.html#cb67-6" aria-hidden="true" tabindex="-1"></a>        z[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i]</span>
+<span id="cb67-7"><a href="lesson-1c-vectors.html#cb67-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(z)</span>
+<span id="cb67-8"><a href="lesson-1c-vectors.html#cb67-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb67-9"><a href="lesson-1c-vectors.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb67-10"><a href="lesson-1c-vectors.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5</span></span>
+<span id="cb67-11"><a href="lesson-1c-vectors.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span></code></pre></div>
+<p>Instead, in R, <code>+</code> is a <strong><em>vectorized</em></strong> function which can operate on entire vectors at once. So rather than creating <code>for</code> loops for many functions, you can just use simple syntax to perform element-wise operations with both vectors:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lesson-1c-vectors.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add each element in x and y</span></span>
+<span id="cb68-2"><a href="lesson-1c-vectors.html#cb68-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span>
+<span id="cb68-3"><a href="lesson-1c-vectors.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span>
+<span id="cb68-4"><a href="lesson-1c-vectors.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="lesson-1c-vectors.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply each element in x and y</span></span>
+<span id="cb68-6"><a href="lesson-1c-vectors.html#cb68-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span>
+<span id="cb68-7"><a href="lesson-1c-vectors.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1  6 16</span></span>
+<span id="cb68-8"><a href="lesson-1c-vectors.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="lesson-1c-vectors.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compare each element in x to y</span></span>
+<span id="cb68-10"><a href="lesson-1c-vectors.html#cb68-10" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span>
+<span id="cb68-11"><a href="lesson-1c-vectors.html#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE  TRUE FALSE</span></span></code></pre></div>
+</div>
+<div id="recycling" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Recycling<a href="lesson-1c-vectors.html#recycling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When performing vector operations in R, it is important to know about <em>recycling</em>. When performing an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector. For example:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-1c-vectors.html#cb69-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb69-2"><a href="lesson-1c-vectors.html#cb69-2" aria-hidden="true" tabindex="-1"></a>short <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb69-3"><a href="lesson-1c-vectors.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="lesson-1c-vectors.html#cb69-4" aria-hidden="true" tabindex="-1"></a>long</span>
+<span id="cb69-5"><a href="lesson-1c-vectors.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb69-6"><a href="lesson-1c-vectors.html#cb69-6" aria-hidden="true" tabindex="-1"></a>short</span>
+<span id="cb69-7"><a href="lesson-1c-vectors.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span>
+<span id="cb69-8"><a href="lesson-1c-vectors.html#cb69-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-9"><a href="lesson-1c-vectors.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co"># R will recycle (reuse) the short vector until it reaches </span></span>
+<span id="cb69-10"><a href="lesson-1c-vectors.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the end of the long vector</span></span>
+<span id="cb69-11"><a href="lesson-1c-vectors.html#cb69-11" aria-hidden="true" tabindex="-1"></a>long <span class="sc">+</span> short</span>
+<span id="cb69-12"><a href="lesson-1c-vectors.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  2  4  6  8 10  7  9 11 13 15</span></span></code></pre></div>
+<p>The elements of <code>long</code> and <code>short</code> are added together starting from the first element of both vectors. When R reaches the end of the short vector, it starts again at the first element of <code>short</code> and continues until it reaches the last element of the <code>long</code> vector. This functionality is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector long by 3:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lesson-1c-vectors.html#cb70-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb70-2"><a href="lesson-1c-vectors.html#cb70-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb70-3"><a href="lesson-1c-vectors.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="lesson-1c-vectors.html#cb70-4" aria-hidden="true" tabindex="-1"></a>long <span class="sc">*</span> c</span>
+<span id="cb70-5"><a href="lesson-1c-vectors.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  6  9 12 15 18 21 24 27 30</span></span></code></pre></div>
+<p>There are no <a href="https://softwareengineering.stackexchange.com/questions/238033/what-does-it-mean-when-data-is-scalar">scalars</a> in R, so <code>c</code> is actually a vector of length 1; in order to add its value to every element of <code>long</code>, it is recycled to match the length of <code>long</code>.</p>
+<div class="note">
+<p>
+Don’t get hung up with some of the verbiage used here (i.e. vectors
+vs. scalars), we will cover what this means in later a module.
+</p>
+</div>
+<p>When the length of the longer object is a multiple of the shorter object length, the recycling occurs silently. When the longer object length is not a multiple of the shorter object length, a warning is given:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lesson-1c-vectors.html#cb71-1" aria-hidden="true" tabindex="-1"></a>even_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb71-2"><a href="lesson-1c-vectors.html#cb71-2" aria-hidden="true" tabindex="-1"></a>odd_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb71-3"><a href="lesson-1c-vectors.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="lesson-1c-vectors.html#cb71-4" aria-hidden="true" tabindex="-1"></a>even_length <span class="sc">+</span> odd_length</span>
+<span id="cb71-5"><a href="lesson-1c-vectors.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object length is not a multiple of shorter object</span></span>
+<span id="cb71-6"><a href="lesson-1c-vectors.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">## length</span></span>
+<span id="cb71-7"><a href="lesson-1c-vectors.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
+</div>
+<div id="knowledge-check-11" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Create this vector <code>my_vec &lt;- 1:10</code>.
+</li>
+<li>
+Add 1 to every element in <code>my_vec</code>.
+</li>
+<li>
+Divide every element in <code>my_vec</code> by 2.
+</li>
+<li>
+Create a second vector <code>my_vec2 &lt;- 10:18</code> and add
+<code>my_vec</code> to <code>my_vec2</code>.
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="exercises-2" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Exercises<a href="lesson-1c-vectors.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="todo">
+<ol style="list-style-type: decimal">
+<li>
+Create a vector called weight containing the weight (in kg) of 10
+children: 69, 62, 57, 59, 59, 64, 56, 66, 67, 66.
+</li>
+<li>
+Create a vector called height containing the height (in cm) of the
+same 10 children: 112, 102, 83, 84, 99, 90, 77, 112, 133, 112.
+</li>
+<li>
+Use the <code>summary()</code> function to summarize these
+data.
+</li>
+<li>
+Extract the height of the 2nd, 3rd, 9th and 10th child and assign
+these heights to a variable called <code>some_child</code>.
+</li>
+<li>
+Also extract all the heights of children less than or equal to 99 cm
+and assign to a variable called <code>shorter_child</code>.
+</li>
+<li>
+Use the information in your weight and height variables to calculate
+the body mass index (BMI) for each child. The BMI is calculated as
+weight (in kg) divided by the square of the height (in meters). Store
+the results of this calculation in a variable called <code>bmi</code>.
+Note: you don’t need to do this calculation for each child individually,
+you can leverage vectorization to do this!
+</li>
+</ol>
+</div>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lesson-1b-r-fundamentals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="overview-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/bradleyboehmke/uc-bana-7025/edit/master/module-1/lesson-3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -2,7 +2,9 @@
 
 # Overview
 
-Welcome to module 2! This module will focus on ...
+Welcome to module 2! This module has two main focuses. First, it introduces you to working in a project structure within RStudio. It also will cover the different type of formats that you can use to write code along with text. This will give you the skills to create reproducible reports. 
+
+Second, discuss the main data types and structures used in R. But most importantly, get started on importing data into R so we can start wrangling real data sets.
 
 ## Learning objectives
 
@@ -10,13 +12,18 @@ By the end of this module you should be able to:
 
 - Use RStudio Projects to organize a data wrangling project.
 - Understand how to use R scripts, R Markdown, and R Notebook documents to make your data wrangling projects and outputs reproducible.
-- Import data from a variety of sources and perform basic tasks to understand simple attributes about your imported dataset.
-- Describe key differences between different data structures.
+- Describe key differences between different data types and structures.
+- Import data from a variety of sources and perform basic tasks to understand simple attributes about your imported data set.
+
+
+## Estimated time requirement
+
+The estimated time to go through the module lessons is about 3 hours.
 
 ## Tasks
 
-TBD
-
-## Course readings
-
-TBD
+```{block, type='todo'}
+* Work through the 3 module lessons.
+* Upon finishing each lesson take the associated lesson quizzes on Canvas. Be sure to complete the lesson quiz no later than the due date listed on Canvas.
+* Check Canvas for this week's lab, lab quiz due date, and any additional content (i.e. in-class material)
+```

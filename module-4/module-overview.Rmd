@@ -4,7 +4,7 @@
 
 It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called *relational* data because it is the relations, not just the individual datasets, that are important.
 
-Moreover, as data scientists work across multiple datasets they often find themselves working with different data types (i.e. numeric, categorical, date-times) and this can present many challenges.
+Moreover, as data scientists work across multiple data sets they often find themselves working with different data types (i.e. numeric, categorical, date-times, text) and this can present many challenges.
 
 In this module we'll explore how to use different join operations when working with relational data along with introduce additional Tidyverse packages that will simplify working with different data types.
 
@@ -13,12 +13,17 @@ In this module we'll explore how to use different join operations when working w
 By the end of this module you should be able to:
 
 - Describe and apply the different join operations.
-- Identify and manipulate a variety of different data types.
+- Manipulate and analyze text data.
+- Manipulate and analyze date-time data.
+
+## Estimated time requirement
+
+The estimated time to go through the module lessons is about 3 hours.
 
 ## Tasks
 
-- TBD
-
-## Course readings
-
-- TBD
+```{block, type='todo'}
+* Work through the 3 module lessons.
+* Upon finishing each lesson take the associated lesson quizzes on Canvas. Be sure to complete the lesson quiz no later than the due date listed on Canvas.
+* Check Canvas for this week's lab, lab quiz due date, and any additional content (i.e. in-class material)
+```

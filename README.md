@@ -18,6 +18,7 @@ Upon successfully completing this course, you will be able to:
 * Visualize data
 * Make your code efficient by using control statements & iteration
 * Write your own functions
+* Train and evaluate predictive models
 
 ...all with R!
 
@@ -26,17 +27,17 @@ Upon successfully completing this course, you will be able to:
 | Module        | Description                                         |
 |:-------------:|:----------------------------------------------------|
 | **1**         | **Introduction**                                    |
-|               | Intro to data wrangling, R, and this course         |
 |               | R fundamentals & the Rstudio IDE                    |
+|               | Deeper understanding of vectors                     |
 | **2**         | **Reproducible Documents and Importing Data**       |
 |               | Managing your workflow and reproducibility          |
-|               | Importing data and understanding the basics of it   |
+|               | Data structures & importing data                    |
 | **3**         | **Tidy Data and Data Manipulation**                 |
-|               | Tidying & preparing data for analysis               |
-|               | Data manipulation                                   |
+|               | Data manipulation & summarization                   |
+|               | Tidy data                                           |
 | **4**         | **Relational Data and More Tidyverse Packages**     |
 |               | Relational data                                     |
-|               | Leveraging the Tidyverse to simplify data wrangling |
+|               | Leveraging the Tidyverse to text & date-time data   |
 | **5**         | **Data Visualization & Exploration**                |
 |               | Data visualization                                  |
 |               | Exploratory data analysis                           |
@@ -44,8 +45,8 @@ Upon successfully completing this course, you will be able to:
 |               | Control statements & iteration                      |
 |               | Writing functions                                   |
 | **7**         | **Introduction to Applied Modeling**                |
-|               | Correlation & pattern discovery                     |
-|               | Introduction to machine learning                    |
+|               | Introduction to tidymodels                          |
+|               | Feature engineering & model evaluation/selection    |
 
 ## Getting Started
 
