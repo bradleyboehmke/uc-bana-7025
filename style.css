@@ -112,6 +112,21 @@ div.base::before,
   color: blue;
 }
 
+.video {
+  display: block;
+  border: 1px solid BurlyWood;
+  border-left-width: 5px;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+}
+
+.video::before {
+  content: "Video alert: ";
+  font-weight: bold;
+  color: BurlyWood;
+}
+
 /* Other gitbook tweaks -------------------------------------------------- */
 
 .book .book-body .page-wrapper .page-inner section.normal code {

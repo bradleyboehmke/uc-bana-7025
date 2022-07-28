@@ -860,14 +860,14 @@ div.csl-indent {
 <p>When we plot a factor variable ggplot will plot the values in the order of the factor:</p>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="lesson-5b-handling-factors.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions_sample, <span class="fu">aes</span>(display_location)) <span class="sc">+</span></span>
 <span id="cb310-2"><a href="lesson-5b-handling-factors.html#cb310-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-391-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-394-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>By default, ggplot2 will drop levels that don’t have any values…</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="lesson-5b-handling-factors.html#cb311-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb311-2"><a href="lesson-5b-handling-factors.html#cb311-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
 <span id="cb311-3"><a href="lesson-5b-handling-factors.html#cb311-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb311-4"><a href="lesson-5b-handling-factors.html#cb311-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb311-5"><a href="lesson-5b-handling-factors.html#cb311-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-392-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-395-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>… but you can force them to display with <code>scale_x_discrete(drop = FALSE)</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="lesson-5b-handling-factors.html#cb312-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb312-2"><a href="lesson-5b-handling-factors.html#cb312-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
@@ -875,26 +875,27 @@ div.csl-indent {
 <span id="cb312-4"><a href="lesson-5b-handling-factors.html#cb312-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb312-5"><a href="lesson-5b-handling-factors.html#cb312-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb312-6"><a href="lesson-5b-handling-factors.html#cb312-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-393-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-396-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ordinal-factors" class="section level3 hasAnchor" number="19.3.3">
 <h3><span class="header-section-number">19.3.3</span> Ordinal factors<a href="lesson-5b-handling-factors.html#ordinal-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes factors will be ordinal. You will notice this by the <code>&lt;ord&gt;</code> description in a tibble:</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="lesson-5b-handling-factors.html#cb313-1" aria-hidden="true" tabindex="-1"></a>demographics</span>
 <span id="cb313-2"><a href="lesson-5b-handling-factors.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 801 × 8</span></span>
-<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_ownership marital_status household_size household_comp  </span></span>
-<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;           </span></span>
-<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner      Married        2              2 Adults No Kids</span></span>
-<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner      Unmarried      1              1 Adult No Kids </span></span>
-<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;           Unmarried      1              1 Adult No Kids </span></span>
-<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;           Unmarried      1              1 Adult No Kids </span></span>
-<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner      Married        4              2 Adults Kids   </span></span>
-<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;           Married        5+             2 Adults Kids   </span></span>
-<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;           Married        4              2 Adults Kids   </span></span>
-<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner      Unmarried      1              1 Adult No Kids </span></span>
-<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner      Married        5+             2 Adults Kids   </span></span>
-<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner      Married        2              2 Adults No Kids</span></span>
-<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and 1 more variable: kids_count &lt;ord&gt;</span></span></code></pre></div>
+<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_ownership marital_status household_size househol…¹ kids_…²</span></span>
+<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;      &lt;ord&gt;  </span></span>
+<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner      Married        2              2 Adults … 0      </span></span>
+<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner      Unmarried      1              1 Adult N… 0      </span></span>
+<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;           Unmarried      1              1 Adult N… 0      </span></span>
+<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;           Unmarried      1              1 Adult N… 0      </span></span>
+<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner      Married        4              2 Adults … 2      </span></span>
+<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;           Married        5+             2 Adults … 3+     </span></span>
+<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;           Married        4              2 Adults … 2      </span></span>
+<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner      Unmarried      1              1 Adult N… 0      </span></span>
+<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner      Married        5+             2 Adults … 3+     </span></span>
+<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner      Married        2              2 Adults … 0      </span></span>
+<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and abbreviated variable names ¹​household_comp, ²​kids_count</span></span>
+<span id="cb313-16"><a href="lesson-5b-handling-factors.html#cb313-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>And we can verify with <code>class()</code>:</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="lesson-5b-handling-factors.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(demographics<span class="sc">$</span>age)</span>
 <span id="cb314-2"><a href="lesson-5b-handling-factors.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;ordered&quot; &quot;factor&quot;</span></span></code></pre></div>
@@ -968,7 +969,7 @@ in the plot.
 <span id="cb319-12"><a href="lesson-5b-handling-factors.html#cb319-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_flip</span>()</span>
 <span id="cb319-13"><a href="lesson-5b-handling-factors.html#cb319-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb319-14"><a href="lesson-5b-handling-factors.html#cb319-14" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-402-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-405-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>A similar function is <code>fct_reorder</code>. Consider the following chart which plots the top 20 levels of prod_desc with the largest average net_spend_amt.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="lesson-5b-handling-factors.html#cb320-1" aria-hidden="true" tabindex="-1"></a>spend_by_dept <span class="ot">&lt;-</span> transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb320-2"><a href="lesson-5b-handling-factors.html#cb320-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">inner_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -977,11 +978,11 @@ in the plot.
 <span id="cb320-5"><a href="lesson-5b-handling-factors.html#cb320-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb320-6"><a href="lesson-5b-handling-factors.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, department)) <span class="sc">+</span></span>
 <span id="cb320-7"><a href="lesson-5b-handling-factors.html#cb320-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-403-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-406-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>In the above chart, there is no natural order of the levels; rather, we wish to communicate those categories with the largest values in a rank-order fashion. To highlight the pattern in this chart we can improve it by reordering the levels of <code>department</code> based on the values of <code>total_spend</code> using <code>fct_reorder()</code>.</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="lesson-5b-handling-factors.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb321-2"><a href="lesson-5b-handling-factors.html#cb321-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-404-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-407-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="tip">
 <p>
 When reording factor levels for plots its best to do it within the
@@ -1024,7 +1025,8 @@ of observations and not the original factor level order.
 <span id="cb322-13"><a href="lesson-5b-handling-factors.html#cb322-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 FLORAL               1231. </span></span>
 <span id="cb322-14"><a href="lesson-5b-handling-factors.html#cb322-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 FROZEN GROCERY         14.8</span></span>
 <span id="cb322-15"><a href="lesson-5b-handling-factors.html#cb322-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 FUEL                16529. </span></span>
-<span id="cb322-16"><a href="lesson-5b-handling-factors.html#cb322-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span></code></pre></div>
+<span id="cb322-16"><a href="lesson-5b-handling-factors.html#cb322-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span>
+<span id="cb322-17"><a href="lesson-5b-handling-factors.html#cb322-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>If we wanted to rename categories we can use <code>fct_recode</code>. This allows us to rename one or more factor levels at a time.</p>
 <div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="lesson-5b-handling-factors.html#cb323-1" aria-hidden="true" tabindex="-1"></a>spend_by_dept <span class="sc">%&gt;%</span></span>
 <span id="cb323-2"><a href="lesson-5b-handling-factors.html#cb323-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">department =</span> <span class="fu">fct_recode</span>(</span>
@@ -1034,7 +1036,7 @@ of observations and not the original factor level order.
 <span id="cb323-6"><a href="lesson-5b-handling-factors.html#cb323-6" aria-hidden="true" tabindex="-1"></a>      )) <span class="sc">%&gt;%</span></span>
 <span id="cb323-7"><a href="lesson-5b-handling-factors.html#cb323-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb323-8"><a href="lesson-5b-handling-factors.html#cb323-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-408-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-411-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="note">
 <p>
 <code>fct_recode</code> will leave levels that aren’t explicitly
@@ -1062,7 +1064,8 @@ that doesn’t exist.
 <span id="cb324-17"><a href="lesson-5b-handling-factors.html#cb324-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 FLORAL               1231. </span></span>
 <span id="cb324-18"><a href="lesson-5b-handling-factors.html#cb324-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 FROZEN GROCERY         14.8</span></span>
 <span id="cb324-19"><a href="lesson-5b-handling-factors.html#cb324-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 FUEL                16529. </span></span>
-<span id="cb324-20"><a href="lesson-5b-handling-factors.html#cb324-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span></code></pre></div>
+<span id="cb324-20"><a href="lesson-5b-handling-factors.html#cb324-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span>
+<span id="cb324-21"><a href="lesson-5b-handling-factors.html#cb324-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>If you want to collapse a lot of levels, <code>fct_collapse</code> is a useful variant of <code>fct_recode</code>. For each new variable, you can provide a vector of old levels.</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="lesson-5b-handling-factors.html#cb325-1" aria-hidden="true" tabindex="-1"></a>spend_by_dept <span class="sc">%&gt;%</span></span>
 <span id="cb325-2"><a href="lesson-5b-handling-factors.html#cb325-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">department =</span> <span class="fu">fct_collapse</span>(</span>
@@ -1082,7 +1085,8 @@ that doesn’t exist.
 <span id="cb325-16"><a href="lesson-5b-handling-factors.html#cb325-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 FLORAL               1231. </span></span>
 <span id="cb325-17"><a href="lesson-5b-handling-factors.html#cb325-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 FROZEN GROCERY         14.8</span></span>
 <span id="cb325-18"><a href="lesson-5b-handling-factors.html#cb325-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 FUEL                16529. </span></span>
-<span id="cb325-19"><a href="lesson-5b-handling-factors.html#cb325-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span></code></pre></div>
+<span id="cb325-19"><a href="lesson-5b-handling-factors.html#cb325-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16 more rows</span></span>
+<span id="cb325-20"><a href="lesson-5b-handling-factors.html#cb325-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>Sometimes you just want to lump together all the small groups to make a plot or table simpler. That’s the job of <code>fct_lump()</code>, which progressively lumps together the smallest groups until it reaches the specified number of desired groups (n).</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="lesson-5b-handling-factors.html#cb326-1" aria-hidden="true" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb326-2"><a href="lesson-5b-handling-factors.html#cb326-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">inner_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -1091,7 +1095,7 @@ that doesn’t exist.
 <span id="cb326-5"><a href="lesson-5b-handling-factors.html#cb326-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_spend =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
 <span id="cb326-6"><a href="lesson-5b-handling-factors.html#cb326-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb326-7"><a href="lesson-5b-handling-factors.html#cb326-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-412-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-415-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div id="knowledge-check-47" class="section level3 hasAnchor" number="19.5.1">
 <h3><span class="header-section-number">19.5.1</span> Knowledge check<a href="lesson-5b-handling-factors.html#knowledge-check-47" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">

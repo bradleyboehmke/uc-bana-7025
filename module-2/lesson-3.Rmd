@@ -61,6 +61,11 @@ We will not cover the **vroom** package but it is good to know about as it can b
 
 The following will import a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010 ([source](http://jse.amstat.org/v19n3/decock.pdf)).
 
+```{block, type='note'}
+You can download this data from the supplemental files in Canvas.
+```
+
+
 ```{r ames-import}
 library(readr)
 
@@ -160,7 +165,7 @@ Project A
 
 I can do this by using dot-notation in my relative path specification - here I use ‘..’ to imply “go up one directory relative to my current location”: `read_csv('../data/my_data.csv')`.
 
-Note that the path specified in pd.read_csv() does not need to be a local path. For example, the ames_raw.csv data is located online at https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv. We can use `read_csv()` to import directly from this location:
+Note that the path specified in `read_csv()` does not need to be a local path. For example, the ames_raw.csv data is located online at https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv. We can use `read_csv()` to import directly from this location:
 
 ```{r}
 url <- 'https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv'

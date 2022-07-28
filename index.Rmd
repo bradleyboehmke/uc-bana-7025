@@ -24,6 +24,11 @@ Welcome to ___Data Wrangling with R___! This course provides an intensive, hands
 
 Data wrangling, which is also commonly referred to as data munging, transformation, manipulation, janitor work, etc. can be a painstakingly laborious process. In fact, it has been stated that up to 80% of data analysis is spent on the process of cleaning and preparing data [@tidy-data; @dasu2003exploratory]. However, being a prerequisite to the rest of the data analysis workflow (visualization, modeling, reporting), it's essential that you become fluent *and* efficient in data wrangling techniques.
 
+```{block, type='video'}
+Check out the video in the "Overview of Course" module on Canvas for a quick introduction to this course.
+```
+
+
 ## Learning Objectives {-}
 
 This course will guide you through the data wrangling process along with give you a solid foundation of the basics of working with data in R. My goal is to teach you how to easily wrangle your data so you can spend more time focused on understanding the content of your data via visualization, modeling, and reporting your results. Upon successfully completing this course, you will be able to:
@@ -59,7 +64,10 @@ __Quizzes__: There will be a short quiz associated with _each lesson_. These qui
 
 __Labs__: There will be a lab associated with _each module_. For these labs students will be guided through a case study step-by-step. The aim is to provide a detailed view on how to manage a variety of complex real-world data; how to convert real problems into data wrangling and analysis problems; and to apply R to address these problems and extract insights from the data. These labs will be provided via the course website on Canvas and the submission of these labs will also be done through the course website on Canvas. Please check Canvas for due dates for these labs.
 
-__Project__: TBD
+__Project__: The final project is designed for you to put to work the tools and knowledge that you gain throughout this course. This provides you with multiple benefits. 
+- It will provide you with more experience using data wrangling tools on real life data sets.
+- It helps you become a self-directed learner. As a data scientist, a large part of your job is to self-direct your learning and interests to find unique and creative ways to find insights in data.
+- It starts to build your data science portfolio. Establishing a data science portfolio is a great way to show potential employers your ability to work with data.
 
 
 ## Schedule {-}
@@ -81,7 +89,7 @@ See the [Canvas](https://uc.instructure.com/) course webpage for a detailed sche
 |               | Tidy data                                           |
 | **4**         | **Relational Data and More Tidyverse Packages**     |
 |               | Relational data                                     |
-|               | Leveraging the Tidyverse to text & date-time data   |
+|               | Leveraging the Tidyverse to analyze text & date-time data   |
 | **5**         | **Data Visualization & Exploration**                |
 |               | Data visualization                                  |
 |               | Exploratory data analysis                           |
@@ -106,6 +114,10 @@ The following typographical conventions are used in this book:
 ```
 
 In addition to the general text used throughout, you will notice the following cells that provide additional context for improved learning:
+
+```{block, type = "video"}
+A video demonstrating this topic is available in Canvas.
+```
 
 ```{block, type = "tip"}
 A tip or suggestion that will likely produce better results.

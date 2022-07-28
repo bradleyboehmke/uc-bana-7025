@@ -834,7 +834,7 @@ to mimick actual data.
 <p>For example, let’s say we have the given data frame.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lesson-3c-tidy-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a>(untidy1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy1.csv&quot;</span>))</span>
 <span id="cb187-2"><a href="lesson-3c-tidy-data.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3144 Columns: 5</span></span>
-<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb187-4"><a href="lesson-3c-tidy-data.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb187-5"><a href="lesson-3c-tidy-data.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (1): prod_desc</span></span>
 <span id="cb187-6"><a href="lesson-3c-tidy-data.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (4): hshd_id, Mar, Apr, May</span></span>
@@ -854,7 +854,8 @@ to mimick actual data.
 <span id="cb187-20"><a href="lesson-3c-tidy-data.html#cb187-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3377285583 HMK CARD MDAY ANYONE       0     3.99  0   </span></span>
 <span id="cb187-21"><a href="lesson-3c-tidy-data.html#cb187-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3377285583 HMK CARD MDAY MOTHER       0     2.99  7.99</span></span>
 <span id="cb187-22"><a href="lesson-3c-tidy-data.html#cb187-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377285583 SLV PLT TOMTO MARNARA SCE  8.97  0     0   </span></span>
-<span id="cb187-23"><a href="lesson-3c-tidy-data.html#cb187-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,134 more rows</span></span></code></pre></div>
+<span id="cb187-23"><a href="lesson-3c-tidy-data.html#cb187-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,134 more rows</span></span>
+<span id="cb187-24"><a href="lesson-3c-tidy-data.html#cb187-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This data is considered untidy in the <em>wide</em> sense since the <strong><em>month</em></strong> variable is structured such that each month represents a variable. If we wanted to compute the total amount each household spent by month, this data set does not provide a convenient shape to work with. To re-structure the month component as an individual variable, we can <em>pivot this data to be longer</em> such that each month is within one column variable and the values associated with each month in a second column variable.</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lesson-3c-tidy-data.html#cb188-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
 <span id="cb188-2"><a href="lesson-3c-tidy-data.html#cb188-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
@@ -871,7 +872,8 @@ to mimick actual data.
 <span id="cb188-13"><a href="lesson-3c-tidy-data.html#cb188-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3376542041 HMK CARD MDAY MOTHER      Apr            0   </span></span>
 <span id="cb188-14"><a href="lesson-3c-tidy-data.html#cb188-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3376542041 HMK CARD MDAY MOTHER      May            5.29</span></span>
 <span id="cb188-15"><a href="lesson-3c-tidy-data.html#cb188-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377032853 HMK CARD BRTHDAY CROWN    Mar            3.99</span></span>
-<span id="cb188-16"><a href="lesson-3c-tidy-data.html#cb188-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 9,422 more rows</span></span></code></pre></div>
+<span id="cb188-16"><a href="lesson-3c-tidy-data.html#cb188-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 9,422 more rows</span></span>
+<span id="cb188-17"><a href="lesson-3c-tidy-data.html#cb188-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This new structure allows us to perform follow-on analysis in a much easier fashion. For example, if we wanted to compute the total amount each household spent by month, we could simply do the following sequence:</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lesson-3c-tidy-data.html#cb189-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
 <span id="cb189-2"><a href="lesson-3c-tidy-data.html#cb189-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -891,7 +893,8 @@ to mimick actual data.
 <span id="cb189-16"><a href="lesson-3c-tidy-data.html#cb189-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3376542041 Mar            0   </span></span>
 <span id="cb189-17"><a href="lesson-3c-tidy-data.html#cb189-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3376542041 May            5.29</span></span>
 <span id="cb189-18"><a href="lesson-3c-tidy-data.html#cb189-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377032853 Apr            0   </span></span>
-<span id="cb189-19"><a href="lesson-3c-tidy-data.html#cb189-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,698 more rows</span></span></code></pre></div>
+<span id="cb189-19"><a href="lesson-3c-tidy-data.html#cb189-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,698 more rows</span></span>
+<span id="cb189-20"><a href="lesson-3c-tidy-data.html#cb189-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>It’s important to note that there is flexibility in how you specify the columns you would like to gather. In our example we used <code>cols = Mar:May</code> to imply we want to use all the columns including and between <code>Mar</code> and <code>May</code>. We could also have used the following to produce the same results:</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lesson-3c-tidy-data.html#cb190-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
 <span id="cb190-2"><a href="lesson-3c-tidy-data.html#cb190-2" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Mar, Apr, May), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
@@ -929,7 +932,7 @@ perform #3 and then compute the mean population for each country.
 <p>There are also times when we are required to turn long formatted data into wide formatted data – in other words, we want to <em>pivot data to be wider</em>. As a complement to <code>pivot_longer</code>, the <code>pivot_wider</code> function spreads a key-value pair across multiple columns. For example, the given data frame captures total household purchases for each product along with the household’s shopping habit (<em>Premium Loyal</em>, <em>Valuable</em>, etc.).</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lesson-3c-tidy-data.html#cb191-1" aria-hidden="true" tabindex="-1"></a>(untidy2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy2.csv&quot;</span>))</span>
 <span id="cb191-2"><a href="lesson-3c-tidy-data.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1536 Columns: 4</span></span>
-<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb191-4"><a href="lesson-3c-tidy-data.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb191-5"><a href="lesson-3c-tidy-data.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_merch_l20_desc</span></span>
 <span id="cb191-6"><a href="lesson-3c-tidy-data.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
@@ -949,7 +952,8 @@ perform #3 and then compute the mean population for each country.
 <span id="cb191-20"><a href="lesson-3c-tidy-data.html#cb191-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3377528247 Valuable      GREETING CARDS              11.0 </span></span>
 <span id="cb191-21"><a href="lesson-3c-tidy-data.html#cb191-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3378020265 Valuable      GREETING CARDS               6.99</span></span>
 <span id="cb191-22"><a href="lesson-3c-tidy-data.html#cb191-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3379767653 Uncommitted   GREETING CARDS               3.99</span></span>
-<span id="cb191-23"><a href="lesson-3c-tidy-data.html#cb191-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,526 more rows</span></span></code></pre></div>
+<span id="cb191-23"><a href="lesson-3c-tidy-data.html#cb191-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,526 more rows</span></span>
+<span id="cb191-24"><a href="lesson-3c-tidy-data.html#cb191-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>Currently, this data set is in a tidy format. But say we wanted to perform a classification model where we try to use the amount spent on each product to predict the shopping habit of each household, we would need to reorganize the data to make it compatible with future algorithms. To address this, we would need to pivot this data such that each product as its own variable with the total dollar amount spent on each product as the values. In essence, we are transposing the values in <code>prod_merch_l20_desc</code> to be the new variable names (aka <code>key</code>) and then adding the values in <code>net_spend_amt</code> to be the <code>value</code> under each variable name.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lesson-3c-tidy-data.html#cb192-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
 <span id="cb192-2"><a href="lesson-3c-tidy-data.html#cb192-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt)</span>
@@ -966,7 +970,8 @@ perform #3 and then compute the mean population for each country.
 <span id="cb192-13"><a href="lesson-3c-tidy-data.html#cb192-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99                      NA</span></span>
 <span id="cb192-14"><a href="lesson-3c-tidy-data.html#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49            NA                         NA</span></span>
 <span id="cb192-15"><a href="lesson-3c-tidy-data.html#cb192-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                   NA                7.99                      NA</span></span>
-<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span></code></pre></div>
+<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span>
+<span id="cb192-17"><a href="lesson-3c-tidy-data.html#cb192-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This results in each household (<code>hshd_id</code>) having its own observation. You probably notice that there are now a lot of missing values which causes <code>NA</code> to be populated. If you were to apply this data to one of the many machine learning algorithms, you would likely run into errors due to the <code>NA</code>s. In this example, we could replace those <code>NA</code>s with zeros using <code>values_fill = 0</code>, since the household did not purchase any of those products.</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lesson-3c-tidy-data.html#cb193-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
 <span id="cb193-2"><a href="lesson-3c-tidy-data.html#cb193-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
@@ -983,7 +988,8 @@ perform #3 and then compute the mean population for each country.
 <span id="cb193-13"><a href="lesson-3c-tidy-data.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99                       0</span></span>
 <span id="cb193-14"><a href="lesson-3c-tidy-data.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49             0                          0</span></span>
 <span id="cb193-15"><a href="lesson-3c-tidy-data.html#cb193-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                    0                7.99                       0</span></span>
-<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span></code></pre></div>
+<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span>
+<span id="cb193-17"><a href="lesson-3c-tidy-data.html#cb193-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <div id="knowledge-check-25" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Knowledge check<a href="lesson-3c-tidy-data.html#knowledge-check-25" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1016,7 +1022,7 @@ country by year.
 <p>Many times a single column variable will capture multiple variables, or even parts of a variable you just don’t care about. This is exemplified in the following <code>untidy3</code> data frame. Here, the <code>product</code> variable combines two variables, the product category (i.e. greeting cards, Pasta &amp; pizza sauce) along with the product description (i.e. graduation cards, birthday cards). For many reasons (summary statistics, visualization, modeling) we would likely want to <em>separate</em> these parts into their own variables.</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lesson-3c-tidy-data.html#cb194-1" aria-hidden="true" tabindex="-1"></a>(untidy3 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy3.csv&quot;</span>))</span>
 <span id="cb194-2"><a href="lesson-3c-tidy-data.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 4</span></span>
-<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb194-4"><a href="lesson-3c-tidy-data.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb194-5"><a href="lesson-3c-tidy-data.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, product</span></span>
 <span id="cb194-6"><a href="lesson-3c-tidy-data.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
@@ -1036,7 +1042,8 @@ country by year.
 <span id="cb194-20"><a href="lesson-3c-tidy-data.html#cb194-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
 <span id="cb194-21"><a href="lesson-3c-tidy-data.html#cb194-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
 <span id="cb194-22"><a href="lesson-3c-tidy-data.html#cb194-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 GREETING CARDS: BALLOONS</span></span>
-<span id="cb194-23"><a href="lesson-3c-tidy-data.html#cb194-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span></code></pre></div>
+<span id="cb194-23"><a href="lesson-3c-tidy-data.html#cb194-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
+<span id="cb194-24"><a href="lesson-3c-tidy-data.html#cb194-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This can be accomplished using the <code>separate</code> function which separates a single column into multiple columns based on a separator. Additional arguments provide some flexibility with separating columns.</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lesson-3c-tidy-data.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate product column into two variables named &quot;prod_category&quot; &amp; &quot;prod_desc&quot;</span></span>
 <span id="cb195-2"><a href="lesson-3c-tidy-data.html#cb195-2" aria-hidden="true" tabindex="-1"></a>untidy3 <span class="sc">%&gt;%</span> </span>
@@ -1054,7 +1061,8 @@ country by year.
 <span id="cb195-14"><a href="lesson-3c-tidy-data.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 GREETING CARDS CREPE    </span></span>
 <span id="cb195-15"><a href="lesson-3c-tidy-data.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 GREETING CARDS CREPE    </span></span>
 <span id="cb195-16"><a href="lesson-3c-tidy-data.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 GREETING CARDS BALLOONS </span></span>
-<span id="cb195-17"><a href="lesson-3c-tidy-data.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span></code></pre></div>
+<span id="cb195-17"><a href="lesson-3c-tidy-data.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
+<span id="cb195-18"><a href="lesson-3c-tidy-data.html#cb195-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <div class="note">
 <p>
 The default separator is any non alpha-numeric character. In this
@@ -1080,7 +1088,8 @@ column that you are separating by including
 <span id="cb196-13"><a href="lesson-3c-tidy-data.html#cb196-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651 017       Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
 <span id="cb196-14"><a href="lesson-3c-tidy-data.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651 017       Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
 <span id="cb196-15"><a href="lesson-3c-tidy-data.html#cb196-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328 969       Premium Loyal          1.49 GREETING CARDS: BALLOONS</span></span>
-<span id="cb196-16"><a href="lesson-3c-tidy-data.html#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span></code></pre></div>
+<span id="cb196-16"><a href="lesson-3c-tidy-data.html#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
+<span id="cb196-17"><a href="lesson-3c-tidy-data.html#cb196-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <div class="tip">
 <p>
 You can use positive and negative values to split the column.
@@ -1118,7 +1127,7 @@ country by year.
 <p>Similarly, there are times when we would like to combine the values of two variables. As a compliment to <code>separate</code>, the <code>unite</code> function is a convenient function to paste together multiple variable values into one. Consider the following data frame that has separate date variables. To perform time series analysis or for visualizations we may desire to have a single date column.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="lesson-3c-tidy-data.html#cb197-1" aria-hidden="true" tabindex="-1"></a>(untidy4 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy4.csv&quot;</span>))</span>
 <span id="cb197-2"><a href="lesson-3c-tidy-data.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 7</span></span>
-<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb197-4"><a href="lesson-3c-tidy-data.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb197-5"><a href="lesson-3c-tidy-data.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_desc</span></span>
 <span id="cb197-6"><a href="lesson-3c-tidy-data.html#cb197-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (5): hshd_id, net_spend_amt, year, month, day</span></span>
@@ -1138,7 +1147,8 @@ country by year.
 <span id="cb197-20"><a href="lesson-3c-tidy-data.html#cb197-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 CREPE      2017     3    28</span></span>
 <span id="cb197-21"><a href="lesson-3c-tidy-data.html#cb197-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 CREPE      2017     3    28</span></span>
 <span id="cb197-22"><a href="lesson-3c-tidy-data.html#cb197-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 BALLOONS   2017     5    30</span></span>
-<span id="cb197-23"><a href="lesson-3c-tidy-data.html#cb197-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span></code></pre></div>
+<span id="cb197-23"><a href="lesson-3c-tidy-data.html#cb197-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
+<span id="cb197-24"><a href="lesson-3c-tidy-data.html#cb197-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>We can accomplish this by <em>uniting</em> these columns into one variable with <code>unite</code>.</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lesson-3c-tidy-data.html#cb198-1" aria-hidden="true" tabindex="-1"></a>untidy4 <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;date&quot;</span>, year<span class="sc">:</span>day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
 <span id="cb198-2"><a href="lesson-3c-tidy-data.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
@@ -1154,7 +1164,8 @@ country by year.
 <span id="cb198-12"><a href="lesson-3c-tidy-data.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 CREPE     2017-3-28</span></span>
 <span id="cb198-13"><a href="lesson-3c-tidy-data.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 CREPE     2017-3-28</span></span>
 <span id="cb198-14"><a href="lesson-3c-tidy-data.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 BALLOONS  2017-5-30</span></span>
-<span id="cb198-15"><a href="lesson-3c-tidy-data.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span></code></pre></div>
+<span id="cb198-15"><a href="lesson-3c-tidy-data.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
+<span id="cb198-16"><a href="lesson-3c-tidy-data.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <div class="note">
 <p>
 Don’t worry, we’ll learn more appropriate ways to deal with dates in
@@ -1283,7 +1294,8 @@ country by year.
 <span id="cb204-16"><a href="lesson-3c-tidy-data.html#cb204-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 B     1      2006 Q4         23</span></span>
 <span id="cb204-17"><a href="lesson-3c-tidy-data.html#cb204-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 A     2      2006 Q1         22</span></span>
 <span id="cb204-18"><a href="lesson-3c-tidy-data.html#cb204-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 A     2      2006 Q2         22</span></span>
-<span id="cb204-19"><a href="lesson-3c-tidy-data.html#cb204-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 22 more rows</span></span></code></pre></div>
+<span id="cb204-19"><a href="lesson-3c-tidy-data.html#cb204-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 22 more rows</span></span>
+<span id="cb204-20"><a href="lesson-3c-tidy-data.html#cb204-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 </div>
 <div id="exercises-8" class="section level2 hasAnchor" number="12.9">
 <h2><span class="header-section-number">12.9</span> Exercises<a href="lesson-3c-tidy-data.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>

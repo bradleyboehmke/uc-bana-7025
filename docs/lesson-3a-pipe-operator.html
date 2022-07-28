@@ -844,7 +844,8 @@ lessons!
 <span id="cb148-25"><a href="lesson-3a-pipe-operator.html#cb148-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
 <span id="cb148-26"><a href="lesson-3a-pipe-operator.html#cb148-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
 <span id="cb148-27"><a href="lesson-3a-pipe-operator.html#cb148-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
-<span id="cb148-28"><a href="lesson-3a-pipe-operator.html#cb148-28" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<span id="cb148-28"><a href="lesson-3a-pipe-operator.html#cb148-28" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span>
+<span id="cb148-29"><a href="lesson-3a-pipe-operator.html#cb148-29" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This first option is considered a “nested” option such the functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more difficult. To make things more readable, people often move to the following approach…</p>
 <p><u>Multiple Object Option</u>:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-3a-pipe-operator.html#cb149-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
@@ -865,7 +866,8 @@ lessons!
 <span id="cb149-16"><a href="lesson-3a-pipe-operator.html#cb149-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
 <span id="cb149-17"><a href="lesson-3a-pipe-operator.html#cb149-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
 <span id="cb149-18"><a href="lesson-3a-pipe-operator.html#cb149-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
-<span id="cb149-19"><a href="lesson-3a-pipe-operator.html#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<span id="cb149-19"><a href="lesson-3a-pipe-operator.html#cb149-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span>
+<span id="cb149-20"><a href="lesson-3a-pipe-operator.html#cb149-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it results in a global environment charlie foxtrot! To provide the same readability (or even better), we can use <code>%&gt;%</code> to string these arguments together without unnecessary object creation…</p>
 <p><u>%&gt;% Option</u>:</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lesson-3a-pipe-operator.html#cb150-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
@@ -886,7 +888,8 @@ lessons!
 <span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
 <span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
 <span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
-<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span></code></pre></div>
+<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 178 more rows</span></span>
+<span id="cb150-20"><a href="lesson-3a-pipe-operator.html#cb150-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This final option which integrates <code>%&gt;%</code> operators makes for more efficient <em>and</em> legible code. Its efficient in that it doesn’t save unnecessary objects (as in option 2) and performs as effectively (as both option 1 &amp; 2) but makes your code more readable in the process. Its legible in that you can read this as you would read normal prose (we read the <code>%&gt;%</code> as <em>“and then”</em>): “take <code>df</code> <em>and then</em> <code>filter</code> <em>and then</em> <code>group by</code> <em>and then</em> <code>summarize</code> <em>and then</em> <code>arrange</code>.”</p>
 <div class="rmdnote">
 <p>
@@ -937,7 +940,7 @@ You will learn more about plotting techniques in week 5.
 <span id="cb152-6"><a href="lesson-3a-pipe-operator.html#cb152-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(week), <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
 <span id="cb152-7"><a href="lesson-3a-pipe-operator.html#cb152-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
 <span id="cb152-8"><a href="lesson-3a-pipe-operator.html#cb152-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-207-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-210-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="additional-pipe-operators-optional" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Additional pipe operators (optional)<a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -958,7 +961,7 @@ follows!
 <span id="cb153-5"><a href="lesson-3a-pipe-operator.html#cb153-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%&gt;%</span></span>
 <span id="cb153-6"><a href="lesson-3a-pipe-operator.html#cb153-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb153-7"><a href="lesson-3a-pipe-operator.html#cb153-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-209-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-212-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>## Length  Class   Mode 
 ##      0   NULL   NULL</code></pre>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-3a-pipe-operator.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load magrittr to use additional pipe operators</span></span>
@@ -971,7 +974,7 @@ follows!
 <span id="cb155-8"><a href="lesson-3a-pipe-operator.html#cb155-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%T&gt;%</span></span>
 <span id="cb155-9"><a href="lesson-3a-pipe-operator.html#cb155-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb155-10"><a href="lesson-3a-pipe-operator.html#cb155-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-210-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-213-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>##     quantity      sales_value   
 ##  Min.   :    0   Min.   : 0.00  
 ##  1st Qu.:    1   1st Qu.: 1.49  
