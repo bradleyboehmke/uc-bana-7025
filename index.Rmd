@@ -116,7 +116,7 @@ The following typographical conventions are used in this book:
 In addition to the general text used throughout, you will notice the following cells that provide additional context for improved learning:
 
 ```{block, type = "video"}
-A video demonstrating this topic is available in Canvas.
+A video that further discusses and demonstrates this topic is available.
 ```
 
 ```{block, type = "tip"}
