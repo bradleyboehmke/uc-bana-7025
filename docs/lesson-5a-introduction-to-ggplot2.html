@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -791,6 +792,10 @@ div.csl-indent {
 <li>Manipulate and control the aesthetics of your plots (i.e. colors, scales).</li>
 <li>Put together various ggplot parameters to produce a refined plot with a title, subtitle, proper axis titles, etc.</li>
 </ul>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=199&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 </div>
 <div id="prerequisites-5" class="section level2 hasAnchor" number="18.2">
 <h2><span class="header-section-number">18.2</span> Prerequisites<a href="lesson-5a-introduction-to-ggplot2.html#prerequisites-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -806,30 +811,30 @@ div.csl-indent {
 <span id="cb274-5"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span>
 <span id="cb274-6"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 42,058</span></span>
 <span id="cb274-7"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 24</span></span>
-<span id="cb274-8"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-8" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_id          &lt;chr&gt; &quot;400&quot;, &quot;718&quot;, &quot;868&quot;, &quot;1694&quot;, &quot;2154&quot;, &quot;1631&quot;, &quot;2194&quot;, &quot;432&quot;, &quot;55…</span></span>
-<span id="cb274-9"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $ store_id              &lt;chr&gt; &quot;388&quot;, &quot;324&quot;, &quot;323&quot;, &quot;446&quot;, &quot;343&quot;, &quot;293&quot;, &quot;32004&quot;, &quot;368&quot;, &quot;447&quot;…</span></span>
-<span id="cb274-10"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-10" aria-hidden="true" tabindex="-1"></a><span class="do">## $ basket_id             &lt;chr&gt; &quot;31932241118&quot;, &quot;32614612029&quot;, &quot;32074722463&quot;, &quot;40715237008&quot;, &quot;32…</span></span>
-<span id="cb274-11"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-11" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_id            &lt;chr&gt; &quot;13094913&quot;, &quot;883203&quot;, &quot;9884484&quot;, &quot;989069&quot;, &quot;1064213&quot;, &quot;1108168&quot;…</span></span>
-<span id="cb274-12"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $ quantity              &lt;dbl&gt; 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 2, 1, 1, 1, 1, 1, 1, …</span></span>
-<span id="cb274-13"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ sales_value           &lt;dbl&gt; 11.87, 2.50, 3.49, 2.50, 1.50, 1.88, 1.00, 1.00, 1.60, 1.20, 1.…</span></span>
-<span id="cb274-14"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ retail_disc           &lt;dbl&gt; 2.90, 0.49, 0.00, 0.49, 0.89, 0.12, 0.39, 0.00, 0.00, 0.38, 0.0…</span></span>
-<span id="cb274-15"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ coupon_disc           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
-<span id="cb274-16"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ coupon_match_disc     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
-<span id="cb274-17"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ week                  &lt;int&gt; 8, 15, 10, 47, 18, 37, 40, 33, 35, 43, 41, 27, 25, 3, 23, 2, 8,…</span></span>
-<span id="cb274-18"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ transaction_timestamp &lt;dttm&gt; 2017-02-18 13:13:10, 2017-04-05 18:14:17, 2017-03-02 17:45:37,…</span></span>
-<span id="cb274-19"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-19" aria-hidden="true" tabindex="-1"></a><span class="do">## $ manufacturer_id       &lt;chr&gt; &quot;4421&quot;, &quot;5072&quot;, &quot;1102&quot;, &quot;69&quot;, &quot;972&quot;, &quot;69&quot;, &quot;69&quot;, &quot;608&quot;, &quot;69&quot;, &quot;…</span></span>
-<span id="cb274-20"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $ department            &lt;chr&gt; &quot;MEAT&quot;, &quot;DRUG GM&quot;, &quot;GROCERY&quot;, &quot;MEAT-PCKGD&quot;, &quot;GROCERY&quot;, &quot;GROCERY…</span></span>
-<span id="cb274-21"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ brand                 &lt;fct&gt; National, National, National, Private, National, Private, Priva…</span></span>
-<span id="cb274-22"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_category      &lt;chr&gt; &quot;BEEF&quot;, &quot;FIRST AID PRODUCTS&quot;, &quot;BAKED SWEET GOODS&quot;, &quot;BREAKFAST S…</span></span>
-<span id="cb274-23"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_type          &lt;chr&gt; &quot;ANGUS BEEF&quot;, &quot;BANDAGE/TAPE&quot;, &quot;SNACK CAKE - MULTI PACK&quot;, &quot;LINKS…</span></span>
-<span id="cb274-24"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ package_size          &lt;chr&gt; NA, NA, &quot;8 OZ&quot;, &quot;12 OZ&quot;, &quot;10 OZ&quot;, &quot;12 PK&quot;, &quot;16 OZ&quot;, &quot;10.25 OZ&quot;,…</span></span>
-<span id="cb274-25"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ age                   &lt;ord&gt; 35-44, 45-54, 65+, 35-44, 45-54, 19-24, 55-64, 19-24, 45-54, 35…</span></span>
-<span id="cb274-26"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ income                &lt;ord&gt; 150-174K, 25-34K, 35-49K, 15-24K, 35-49K, Under 15K, 25-34K, 25…</span></span>
-<span id="cb274-27"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ home_ownership        &lt;ord&gt; Homeowner, Homeowner, Homeowner, Probable Renter, Homeowner, Re…</span></span>
-<span id="cb274-28"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-28" aria-hidden="true" tabindex="-1"></a><span class="do">## $ marital_status        &lt;ord&gt; Married, Married, Married, Unmarried, Married, Unmarried, Unmar…</span></span>
-<span id="cb274-29"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-29" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_size        &lt;ord&gt; 3, 5+, 2, 1, 2, 4, 1, 1, 2, 2, 1, 4, 2, 1, 4, 2, 1, 5+, 1, 2, 2…</span></span>
-<span id="cb274-30"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-30" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_comp        &lt;ord&gt; 2 Adults Kids, 2 Adults Kids, 2 Adults No Kids, 1 Adult No Kids…</span></span>
-<span id="cb274-31"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-31" aria-hidden="true" tabindex="-1"></a><span class="do">## $ kids_count            &lt;ord&gt; 1, 3+, 0, 0, 0, 3+, 0, 0, 0, 1, 0, 2, 1, 0, 2, 0, 0, 3+, 0, 0, …</span></span></code></pre></div>
+<span id="cb274-8"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-8" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_id          &lt;chr&gt; &quot;400&quot;, &quot;718&quot;, &quot;868&quot;, &quot;1694&quot;, &quot;2154&quot;, &quot;1631&quot;…</span></span>
+<span id="cb274-9"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $ store_id              &lt;chr&gt; &quot;388&quot;, &quot;324&quot;, &quot;323&quot;, &quot;446&quot;, &quot;343&quot;, &quot;293&quot;, &quot;…</span></span>
+<span id="cb274-10"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-10" aria-hidden="true" tabindex="-1"></a><span class="do">## $ basket_id             &lt;chr&gt; &quot;31932241118&quot;, &quot;32614612029&quot;, &quot;32074722463&quot;…</span></span>
+<span id="cb274-11"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-11" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_id            &lt;chr&gt; &quot;13094913&quot;, &quot;883203&quot;, &quot;9884484&quot;, &quot;989069&quot;, …</span></span>
+<span id="cb274-12"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $ quantity              &lt;dbl&gt; 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 2…</span></span>
+<span id="cb274-13"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ sales_value           &lt;dbl&gt; 11.87, 2.50, 3.49, 2.50, 1.50, 1.88, 1.00, …</span></span>
+<span id="cb274-14"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ retail_disc           &lt;dbl&gt; 2.90, 0.49, 0.00, 0.49, 0.89, 0.12, 0.39, 0…</span></span>
+<span id="cb274-15"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ coupon_disc           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span></span>
+<span id="cb274-16"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ coupon_match_disc     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span></span>
+<span id="cb274-17"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ week                  &lt;int&gt; 8, 15, 10, 47, 18, 37, 40, 33, 35, 43, 41, …</span></span>
+<span id="cb274-18"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ transaction_timestamp &lt;dttm&gt; 2017-02-18 13:13:10, 2017-04-05 18:14:17, …</span></span>
+<span id="cb274-19"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-19" aria-hidden="true" tabindex="-1"></a><span class="do">## $ manufacturer_id       &lt;chr&gt; &quot;4421&quot;, &quot;5072&quot;, &quot;1102&quot;, &quot;69&quot;, &quot;972&quot;, &quot;69&quot;, …</span></span>
+<span id="cb274-20"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $ department            &lt;chr&gt; &quot;MEAT&quot;, &quot;DRUG GM&quot;, &quot;GROCERY&quot;, &quot;MEAT-PCKGD&quot;,…</span></span>
+<span id="cb274-21"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ brand                 &lt;fct&gt; National, National, National, Private, Nati…</span></span>
+<span id="cb274-22"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_category      &lt;chr&gt; &quot;BEEF&quot;, &quot;FIRST AID PRODUCTS&quot;, &quot;BAKED SWEET …</span></span>
+<span id="cb274-23"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ product_type          &lt;chr&gt; &quot;ANGUS BEEF&quot;, &quot;BANDAGE/TAPE&quot;, &quot;SNACK CAKE -…</span></span>
+<span id="cb274-24"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ package_size          &lt;chr&gt; NA, NA, &quot;8 OZ&quot;, &quot;12 OZ&quot;, &quot;10 OZ&quot;, &quot;12 PK&quot;, …</span></span>
+<span id="cb274-25"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ age                   &lt;ord&gt; 35-44, 45-54, 65+, 35-44, 45-54, 19-24, 55-…</span></span>
+<span id="cb274-26"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ income                &lt;ord&gt; 150-174K, 25-34K, 35-49K, 15-24K, 35-49K, U…</span></span>
+<span id="cb274-27"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ home_ownership        &lt;ord&gt; Homeowner, Homeowner, Homeowner, Probable R…</span></span>
+<span id="cb274-28"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-28" aria-hidden="true" tabindex="-1"></a><span class="do">## $ marital_status        &lt;ord&gt; Married, Married, Married, Unmarried, Marri…</span></span>
+<span id="cb274-29"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-29" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_size        &lt;ord&gt; 3, 5+, 2, 1, 2, 4, 1, 1, 2, 2, 1, 4, 2, 1, …</span></span>
+<span id="cb274-30"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-30" aria-hidden="true" tabindex="-1"></a><span class="do">## $ household_comp        &lt;ord&gt; 2 Adults Kids, 2 Adults Kids, 2 Adults No K…</span></span>
+<span id="cb274-31"><a href="lesson-5a-introduction-to-ggplot2.html#cb274-31" aria-hidden="true" tabindex="-1"></a><span class="do">## $ kids_count            &lt;ord&gt; 1, 3+, 0, 0, 0, 3+, 0, 0, 0, 1, 0, 2, 1, 0,…</span></span></code></pre></div>
 </div>
 <div id="grammar-of-graphics" class="section level2 hasAnchor" number="18.3">
 <h2><span class="header-section-number">18.3</span> Grammar of Graphics<a href="lesson-5a-introduction-to-ggplot2.html#grammar-of-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -884,7 +889,11 @@ error!
 <span id="cb276-2"><a href="lesson-5a-introduction-to-ggplot2.html#cb276-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(quantity <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb276-3"><a href="lesson-5a-introduction-to-ggplot2.html#cb276-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> quantity, <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
 <span id="cb276-4"><a href="lesson-5a-introduction-to-ggplot2.html#cb276-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-371-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-452-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=199&amp;flashvars[mediaProxy.mediaPlayTo]=574&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 <div id="knowledge-check-36" class="section level3 hasAnchor" number="18.4.1">
 <h3><span class="header-section-number">18.4.1</span> Knowledge check<a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-36" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -909,6 +918,10 @@ What trends do you notice between the above departments?
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_pd6938jz&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_yderb66d" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.4.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="aesthetic-mappings" class="section level2 hasAnchor" number="18.5">
@@ -923,6 +936,10 @@ What trends do you notice between the above departments?
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="lesson-5a-introduction-to-ggplot2.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> quantity, <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
 <span id="cb278-2"><a href="lesson-5a-introduction-to-ggplot2.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/scatterplot-specifying-all-points-as-blue-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=702&amp;flashvars[mediaProxy.mediaPlayTo]=954&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 <div id="knowledge-check-37" class="section level3 hasAnchor" number="18.5.1">
 <h3><span class="header-section-number">18.5.1</span> Knowledge check<a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-37" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -943,6 +960,10 @@ map the <code>household_size</code> variable to size within
 <code>aes()</code>.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_cqjvydye&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_v5vgvj9r" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.5.1">
+</iframe>
 </div>
 </div>
 </div>
@@ -1019,6 +1040,10 @@ all transactions.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7lv9igce&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_xllx8sq6" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.6.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="statistical-transformations" class="section level2 hasAnchor" number="18.7">
@@ -1076,6 +1101,10 @@ What does this tell you about the relationship between
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_p5pw4u5f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_tjvpmg7t" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.7.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="position-adjustments" class="section level2 hasAnchor" number="18.8">
@@ -1112,6 +1141,10 @@ Now add a <code>fill</code> parameter to assess if the ratio of
 <code>brand</code> was consistent across these weeks.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_ylwyi82n&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_kf1ossic" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.8.1">
+</iframe>
 </div>
 </div>
 </div>
@@ -1177,6 +1210,10 @@ units?
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_wpsabgud&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_v9v8pxp0" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.9.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="coordinate-systems" class="section level2 hasAnchor" number="18.10">
@@ -1208,6 +1245,10 @@ variable. Now change this plot from a vertical bar plot to a horizontal
 bar plot using <code>coord_flip()</code>.
 </p>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_jjrn8km1&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_sb9uetlv" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.10.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="facets" class="section level2 hasAnchor" number="18.11">
@@ -1222,6 +1263,10 @@ bar plot using <code>coord_flip()</code>.
 <span id="cb296-2"><a href="lesson-5a-introduction-to-ggplot2.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb296-3"><a href="lesson-5a-introduction-to-ggplot2.html#cb296-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(household_size <span class="sc">~</span> marital_status)</span></code></pre></div>
 <p><img src="_main_files/figure-html/facet-grid-plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1038&amp;flashvars[mediaProxy.mediaPlayTo]=1215&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 <div id="knowledge-check-43" class="section level3 hasAnchor" number="18.11.1">
 <h3><span class="header-section-number">18.11.1</span> Knowledge check<a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-43" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1245,6 +1290,10 @@ tell you? What’s the difference between <code>facet_wrap</code> and
 <code>facet_grid</code>?
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_m4zt8jq0&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_ifbgl9np" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.11.1">
+</iframe>
 </div>
 </div>
 </div>
@@ -1280,6 +1329,10 @@ tell you? What’s the difference between <code>facet_wrap</code> and
 <span id="cb299-4"><a href="lesson-5a-introduction-to-ggplot2.html#cb299-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> household_size)) <span class="sc">+</span></span>
 <span id="cb299-5"><a href="lesson-5a-introduction-to-ggplot2.html#cb299-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label_repel</span>(<span class="at">data =</span> top_baskets, <span class="fu">aes</span>(<span class="at">label =</span> basket_id))</span></code></pre></div>
 <p><img src="_main_files/figure-html/label-ggplot-no-overlap-1.png" width="768" style="display: block; margin: auto;" /></p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1341&amp;flashvars[mediaProxy.mediaPlayTo]=1591&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 <div id="knowledge-check-44" class="section level3 hasAnchor" number="18.12.1">
 <h3><span class="header-section-number">18.12.1</span> Knowledge check<a href="lesson-5a-introduction-to-ggplot2.html#knowledge-check-44" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="lesson-5a-introduction-to-ggplot2.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exercise data</span></span>
@@ -1306,6 +1359,10 @@ Create a scatter plot that compares <code>total_quantity</code> to
 plot by adding a title and better x and y-axis names.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_ziarmjq8&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_g37ip1pl" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-18.12.1">
+</iframe>
 </div>
 </div>
 </div>
@@ -1343,6 +1400,10 @@ Do the results surprise you?
 <li><a href="http://vita.had.co.nz/papers/layered-grammar.pdf">A Layered Grammar of Graphics</a></li>
 <li><a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions</a> that will give you even more capabilities such as interactive plots, mapping, etc!</li>
 </ul>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bvhiua94&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1920&amp;flashvars[mediaProxy.mediaPlayTo]=1975&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_nvi370jf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5a">
+</iframe>
+</div>
 
 </div>
 </div>

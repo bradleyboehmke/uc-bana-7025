@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -814,6 +815,16 @@ class="uri">http://www.jstatsoft.org/v59/i10/paper</a>.
 <li>Separate and combine parts of columns.</li>
 <li>Impute missing values</li>
 </ul>
+<div class="video">
+<p>
+<strong>Note:</strong> Some of the data used in the recorded lectures
+are different then those used in this chapter. If you want to follow
+along with the recordings be sure to download the supplementary data
+files, which can be found in canvas.
+</p>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=421&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
+</iframe>
+</div>
 </div>
 <div id="prerequisites-1" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> Prerequisites<a href="lesson-3c-tidy-data.html#prerequisites-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -834,7 +845,7 @@ to mimick actual data.
 <p>For example, let’s say we have the given data frame.</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lesson-3c-tidy-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a>(untidy1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy1.csv&quot;</span>))</span>
 <span id="cb187-2"><a href="lesson-3c-tidy-data.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3144 Columns: 5</span></span>
-<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
 <span id="cb187-4"><a href="lesson-3c-tidy-data.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb187-5"><a href="lesson-3c-tidy-data.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (1): prod_desc</span></span>
 <span id="cb187-6"><a href="lesson-3c-tidy-data.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (4): hshd_id, Mar, Apr, May</span></span>
@@ -900,6 +911,10 @@ to mimick actual data.
 <span id="cb190-2"><a href="lesson-3c-tidy-data.html#cb190-2" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Mar, Apr, May), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
 <span id="cb190-3"><a href="lesson-3c-tidy-data.html#cb190-3" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
 <span id="cb190-4"><a href="lesson-3c-tidy-data.html#cb190-4" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(hshd_id, prod_desc), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=421&amp;flashvars[mediaProxy.mediaPlayTo]=679&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
+</iframe>
+</div>
 <div id="knowledge-check-24" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Knowledge check<a href="lesson-3c-tidy-data.html#knowledge-check-24" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -925,6 +940,10 @@ perform #3 and then compute the mean population for each country.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_74o5s8lk&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_6g867txj" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-12.3.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="making-long-data-wider" class="section level2 hasAnchor" number="12.4">
@@ -932,7 +951,7 @@ perform #3 and then compute the mean population for each country.
 <p>There are also times when we are required to turn long formatted data into wide formatted data – in other words, we want to <em>pivot data to be wider</em>. As a complement to <code>pivot_longer</code>, the <code>pivot_wider</code> function spreads a key-value pair across multiple columns. For example, the given data frame captures total household purchases for each product along with the household’s shopping habit (<em>Premium Loyal</em>, <em>Valuable</em>, etc.).</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lesson-3c-tidy-data.html#cb191-1" aria-hidden="true" tabindex="-1"></a>(untidy2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy2.csv&quot;</span>))</span>
 <span id="cb191-2"><a href="lesson-3c-tidy-data.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1536 Columns: 4</span></span>
-<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
 <span id="cb191-4"><a href="lesson-3c-tidy-data.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb191-5"><a href="lesson-3c-tidy-data.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_merch_l20_desc</span></span>
 <span id="cb191-6"><a href="lesson-3c-tidy-data.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
@@ -958,38 +977,44 @@ perform #3 and then compute the mean population for each country.
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lesson-3c-tidy-data.html#cb192-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
 <span id="cb192-2"><a href="lesson-3c-tidy-data.html#cb192-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt)</span>
 <span id="cb192-3"><a href="lesson-3c-tidy-data.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
-<span id="cb192-4"><a href="lesson-3c-tidy-data.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` `NF SHORTENING AND OIL`</span></span>
-<span id="cb192-5"><a href="lesson-3c-tidy-data.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;                   &lt;dbl&gt;</span></span>
-<span id="cb192-6"><a href="lesson-3c-tidy-data.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1               NA                         NA</span></span>
-<span id="cb192-7"><a href="lesson-3c-tidy-data.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89            NA                         NA</span></span>
-<span id="cb192-8"><a href="lesson-3c-tidy-data.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                     NA                5.29                      NA</span></span>
-<span id="cb192-9"><a href="lesson-3c-tidy-data.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99                      NA</span></span>
-<span id="cb192-10"><a href="lesson-3c-tidy-data.html#cb192-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0                       NA</span></span>
-<span id="cb192-11"><a href="lesson-3c-tidy-data.html#cb192-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                      NA               11.0                       NA</span></span>
-<span id="cb192-12"><a href="lesson-3c-tidy-data.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                      NA                6.99                      NA</span></span>
-<span id="cb192-13"><a href="lesson-3c-tidy-data.html#cb192-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99                      NA</span></span>
-<span id="cb192-14"><a href="lesson-3c-tidy-data.html#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49            NA                         NA</span></span>
-<span id="cb192-15"><a href="lesson-3c-tidy-data.html#cb192-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                   NA                7.99                      NA</span></span>
-<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span>
-<span id="cb192-17"><a href="lesson-3c-tidy-data.html#cb192-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<span id="cb192-4"><a href="lesson-3c-tidy-data.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` NF SHO…¹</span></span>
+<span id="cb192-5"><a href="lesson-3c-tidy-data.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb192-6"><a href="lesson-3c-tidy-data.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1               NA          NA</span></span>
+<span id="cb192-7"><a href="lesson-3c-tidy-data.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89            NA          NA</span></span>
+<span id="cb192-8"><a href="lesson-3c-tidy-data.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                     NA                5.29       NA</span></span>
+<span id="cb192-9"><a href="lesson-3c-tidy-data.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99       NA</span></span>
+<span id="cb192-10"><a href="lesson-3c-tidy-data.html#cb192-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0        NA</span></span>
+<span id="cb192-11"><a href="lesson-3c-tidy-data.html#cb192-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                      NA               11.0        NA</span></span>
+<span id="cb192-12"><a href="lesson-3c-tidy-data.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                      NA                6.99       NA</span></span>
+<span id="cb192-13"><a href="lesson-3c-tidy-data.html#cb192-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99       NA</span></span>
+<span id="cb192-14"><a href="lesson-3c-tidy-data.html#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49            NA          NA</span></span>
+<span id="cb192-15"><a href="lesson-3c-tidy-data.html#cb192-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                   NA                7.99       NA</span></span>
+<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows, and abbreviated variable name</span></span>
+<span id="cb192-17"><a href="lesson-3c-tidy-data.html#cb192-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​`NF SHORTENING AND OIL`</span></span>
+<span id="cb192-18"><a href="lesson-3c-tidy-data.html#cb192-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>This results in each household (<code>hshd_id</code>) having its own observation. You probably notice that there are now a lot of missing values which causes <code>NA</code> to be populated. If you were to apply this data to one of the many machine learning algorithms, you would likely run into errors due to the <code>NA</code>s. In this example, we could replace those <code>NA</code>s with zeros using <code>values_fill = 0</code>, since the household did not purchase any of those products.</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lesson-3c-tidy-data.html#cb193-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
 <span id="cb193-2"><a href="lesson-3c-tidy-data.html#cb193-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
 <span id="cb193-3"><a href="lesson-3c-tidy-data.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
-<span id="cb193-4"><a href="lesson-3c-tidy-data.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` `NF SHORTENING AND OIL`</span></span>
-<span id="cb193-5"><a href="lesson-3c-tidy-data.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;                   &lt;dbl&gt;</span></span>
-<span id="cb193-6"><a href="lesson-3c-tidy-data.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1                0                          0</span></span>
-<span id="cb193-7"><a href="lesson-3c-tidy-data.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89             0                          0</span></span>
-<span id="cb193-8"><a href="lesson-3c-tidy-data.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                      0                5.29                       0</span></span>
-<span id="cb193-9"><a href="lesson-3c-tidy-data.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99                       0</span></span>
-<span id="cb193-10"><a href="lesson-3c-tidy-data.html#cb193-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0                        0</span></span>
-<span id="cb193-11"><a href="lesson-3c-tidy-data.html#cb193-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                       0               11.0                        0</span></span>
-<span id="cb193-12"><a href="lesson-3c-tidy-data.html#cb193-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                       0                6.99                       0</span></span>
-<span id="cb193-13"><a href="lesson-3c-tidy-data.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99                       0</span></span>
-<span id="cb193-14"><a href="lesson-3c-tidy-data.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49             0                          0</span></span>
-<span id="cb193-15"><a href="lesson-3c-tidy-data.html#cb193-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                    0                7.99                       0</span></span>
-<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows</span></span>
-<span id="cb193-17"><a href="lesson-3c-tidy-data.html#cb193-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<span id="cb193-4"><a href="lesson-3c-tidy-data.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` NF SHO…¹</span></span>
+<span id="cb193-5"><a href="lesson-3c-tidy-data.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb193-6"><a href="lesson-3c-tidy-data.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1                0           0</span></span>
+<span id="cb193-7"><a href="lesson-3c-tidy-data.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89             0           0</span></span>
+<span id="cb193-8"><a href="lesson-3c-tidy-data.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                      0                5.29        0</span></span>
+<span id="cb193-9"><a href="lesson-3c-tidy-data.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99        0</span></span>
+<span id="cb193-10"><a href="lesson-3c-tidy-data.html#cb193-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0         0</span></span>
+<span id="cb193-11"><a href="lesson-3c-tidy-data.html#cb193-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                       0               11.0         0</span></span>
+<span id="cb193-12"><a href="lesson-3c-tidy-data.html#cb193-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                       0                6.99        0</span></span>
+<span id="cb193-13"><a href="lesson-3c-tidy-data.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99        0</span></span>
+<span id="cb193-14"><a href="lesson-3c-tidy-data.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49             0           0</span></span>
+<span id="cb193-15"><a href="lesson-3c-tidy-data.html#cb193-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                    0                7.99        0</span></span>
+<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows, and abbreviated variable name</span></span>
+<span id="cb193-17"><a href="lesson-3c-tidy-data.html#cb193-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​`NF SHORTENING AND OIL`</span></span>
+<span id="cb193-18"><a href="lesson-3c-tidy-data.html#cb193-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=679&amp;flashvars[mediaProxy.mediaPlayTo]=847&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
+</iframe>
+</div>
 <div id="knowledge-check-25" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Knowledge check<a href="lesson-3c-tidy-data.html#knowledge-check-25" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1015,6 +1040,10 @@ country by year.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_jvvbbsuu&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_xihmvjna" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-12.4.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="separate-one-variable-into-multiple" class="section level2 hasAnchor" number="12.5">
@@ -1022,7 +1051,7 @@ country by year.
 <p>Many times a single column variable will capture multiple variables, or even parts of a variable you just don’t care about. This is exemplified in the following <code>untidy3</code> data frame. Here, the <code>product</code> variable combines two variables, the product category (i.e. greeting cards, Pasta &amp; pizza sauce) along with the product description (i.e. graduation cards, birthday cards). For many reasons (summary statistics, visualization, modeling) we would likely want to <em>separate</em> these parts into their own variables.</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lesson-3c-tidy-data.html#cb194-1" aria-hidden="true" tabindex="-1"></a>(untidy3 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy3.csv&quot;</span>))</span>
 <span id="cb194-2"><a href="lesson-3c-tidy-data.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 4</span></span>
-<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
 <span id="cb194-4"><a href="lesson-3c-tidy-data.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb194-5"><a href="lesson-3c-tidy-data.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, product</span></span>
 <span id="cb194-6"><a href="lesson-3c-tidy-data.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
@@ -1097,6 +1126,10 @@ Positive values start at 1 on the far-left of the strings; negative
 value start at -1 on the far-right of the strings.
 </p>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1054&amp;flashvars[mediaProxy.mediaPlayTo]=1181&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
+</iframe>
+</div>
 <div id="knowledge-check-26" class="section level3 hasAnchor" number="12.5.1">
 <h3><span class="header-section-number">12.5.1</span> Knowledge check<a href="lesson-3c-tidy-data.html#knowledge-check-26" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1120,6 +1153,10 @@ country by year.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_e3r00sh5&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_a873ebij" width="768" height="738" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-12.5.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="combine-multiple-variables-into-one" class="section level2 hasAnchor" number="12.6">
@@ -1127,7 +1164,7 @@ country by year.
 <p>Similarly, there are times when we would like to combine the values of two variables. As a compliment to <code>separate</code>, the <code>unite</code> function is a convenient function to paste together multiple variable values into one. Consider the following data frame that has separate date variables. To perform time series analysis or for visualizations we may desire to have a single date column.</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="lesson-3c-tidy-data.html#cb197-1" aria-hidden="true" tabindex="-1"></a>(untidy4 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy4.csv&quot;</span>))</span>
 <span id="cb197-2"><a href="lesson-3c-tidy-data.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 7</span></span>
-<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
 <span id="cb197-4"><a href="lesson-3c-tidy-data.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
 <span id="cb197-5"><a href="lesson-3c-tidy-data.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_desc</span></span>
 <span id="cb197-6"><a href="lesson-3c-tidy-data.html#cb197-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (5): hshd_id, net_spend_amt, year, month, day</span></span>
@@ -1172,6 +1209,10 @@ Don’t worry, we’ll learn more appropriate ways to deal with dates in
 a later lesson.
 </p>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1181&amp;flashvars[mediaProxy.mediaPlayTo]=1310&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
+</iframe>
+</div>
 <div id="knowledge-check-27" class="section level3 hasAnchor" number="12.6.1">
 <h3><span class="header-section-number">12.6.1</span> Knowledge check<a href="lesson-3c-tidy-data.html#knowledge-check-27" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1193,6 +1234,10 @@ perform #2 and then compute the cases-to-population ratio for each
 country by year.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_im1kx66z&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_ew88kh39" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-12.6.1">
+</iframe>
 </div>
 </div>
 </div>

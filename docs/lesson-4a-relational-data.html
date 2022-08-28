@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -789,6 +790,10 @@ div.csl-indent {
 <li><strong>Filter joins</strong>: filter observations from one data frame based on whether or not they match an observation in the other table.</li>
 </ul>
 <p>In this lesson, we are going to look at different ways to apply mutating and filtering joins to relational data sets.</p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=270&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
+</iframe>
+</div>
 <div id="learning-objectives-14" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> Learning objectives<a href="lesson-4a-relational-data.html#learning-objectives-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By the end of this lesson you’ll be able to:</p>
@@ -802,7 +807,7 @@ div.csl-indent {
 <p>Load the <strong>dplyr</strong> package to provide you access to the join functions we’ll cover in this lesson.</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="lesson-4a-relational-data.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>To illustrate various joining tasks we will use two very simple data frames <code>x</code> &amp; <code>y</code>. The colored column represents the “key” variable: these are used to match the rows between the tables. We’ll talk more about keys in a second. The grey column represents the “value” column that is carried along for the ride.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-273"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-336"></span>
 <img src="images/original-dfs.png" alt="Two simple data frames." width="50%" height="50%" />
 <p class="caption">
 Figure 14.1: Two simple data frames.
@@ -862,6 +867,10 @@ both tables. For example, our household identifier could be named
 different but they represent the same information.
 </p>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=270&amp;flashvars[mediaProxy.mediaPlayTo]=396&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
+</iframe>
+</div>
 <div id="knowledge-check-28" class="section level3 hasAnchor" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> Knowledge check<a href="lesson-4a-relational-data.html#knowledge-check-28" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -888,6 +897,10 @@ these two data sets?
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_luwc376p&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_sn0cjsus" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.3.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="mutating-joins" class="section level2 hasAnchor" number="14.4">
@@ -901,6 +914,10 @@ these two data sets?
 <li><code>full_join()</code>: keeps all observations in both <code>x</code> and <code>y</code>.</li>
 </ul>
 <p>Let’s explore each of these a little more closely.</p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=396&amp;flashvars[mediaProxy.mediaPlayTo]=648&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
+</iframe>
+</div>
 <div id="inner-join" class="section level3 hasAnchor" number="14.4.1">
 <h3><span class="header-section-number">14.4.1</span> Inner join<a href="lesson-4a-relational-data.html#inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The simplest type of join is the <strong>inner join</strong>. An inner join matches pairs of observations whenever their keys are equal. Consequently, the output of an inner join is all rows from <code>x</code> where there are matching values in <code>y</code>, and all columns from <code>x</code> and <code>y</code>.</p>
@@ -911,7 +928,7 @@ rows with matches across both data frames.
 </p>
 </div>
 <p>The following provides a nice illustration:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-282"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-348"></span>
 <img src="images/inner-join.gif" alt="Inner join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -935,7 +952,7 @@ Figure 14.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">sour
 <div id="left-join" class="section level4 hasAnchor" number="14.4.2.1">
 <h4><span class="header-section-number">14.4.2.1</span> Left join<a href="lesson-4a-relational-data.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With a <strong>left join</strong> we retain all observations from <code>x</code>, and we add columns <code>y</code>. Rows in <code>x</code> where there is no matching key value in <code>y</code> will have <code>NA</code> values in the new columns.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-284"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-350"></span>
 <img src="images/left-join.gif" alt="Left join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.3: Left join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -961,7 +978,7 @@ first data frame written in the command, whereas a right join keeps all
 the rows in the second data frame.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-287"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-353"></span>
 <img src="images/right-join.gif" alt="Right join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.4: Right join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -984,7 +1001,7 @@ A full join is the most inclusive of the joins - it returns all rows
 from both data frames.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-290"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-356"></span>
 <img src="images/full-join.gif" alt="Full join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.5: Full join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -1055,23 +1072,25 @@ output to show the resulting table in a spreadsheet like view.
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="lesson-4a-relational-data.html#cb220-1" aria-hidden="true" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb220-2"><a href="lesson-4a-relational-data.html#cb220-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>)</span>
 <span id="cb220-3"><a href="lesson-4a-relational-data.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 17</span></span>
-<span id="cb220-4"><a href="lesson-4a-relational-data.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_…¹ retai…² coupo…³ coupo…⁴  week</span></span>
-<span id="cb220-5"><a href="lesson-4a-relational-data.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb220-6"><a href="lesson-4a-relational-data.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1     3.86    0.43       0       0     5</span></span>
-<span id="cb220-7"><a href="lesson-4a-relational-data.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902            1     1.59    0.9        0       0    10</span></span>
-<span id="cb220-8"><a href="lesson-4a-relational-data.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901            1     1       0.69       0       0    13</span></span>
-<span id="cb220-9"><a href="lesson-4a-relational-data.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913          2    11.9     2.9        0       0     8</span></span>
-<span id="cb220-10"><a href="lesson-4a-relational-data.html#cb220-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604           1     1.29    0          0       0    10</span></span>
-<span id="cb220-11"><a href="lesson-4a-relational-data.html#cb220-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203            1     2.5     0.49       0       0    15</span></span>
-<span id="cb220-12"><a href="lesson-4a-relational-data.html#cb220-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484           1     3.49    0          0       0    10</span></span>
-<span id="cb220-13"><a href="lesson-4a-relational-data.html#cb220-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715           1     2       1.79       0       0    33</span></span>
-<span id="cb220-14"><a href="lesson-4a-relational-data.html#cb220-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613            2     6.55    4.44       0       0     2</span></span>
-<span id="cb220-15"><a href="lesson-4a-relational-data.html#cb220-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497            1     3.99    0          0       0    16</span></span>
-<span id="cb220-16"><a href="lesson-4a-relational-data.html#cb220-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 74,990 more rows, 7 more variables: transaction_timestamp &lt;dttm&gt;,</span></span>
-<span id="cb220-17"><a href="lesson-4a-relational-data.html#cb220-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   manufacturer_id &lt;chr&gt;, department &lt;chr&gt;, brand &lt;fct&gt;, product_category &lt;chr&gt;,</span></span>
-<span id="cb220-18"><a href="lesson-4a-relational-data.html#cb220-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   product_type &lt;chr&gt;, package_size &lt;chr&gt;, and abbreviated variable names ¹​sales_value,</span></span>
-<span id="cb220-19"><a href="lesson-4a-relational-data.html#cb220-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ²​retail_disc, ³​coupon_disc, ⁴​coupon_match_disc</span></span>
-<span id="cb220-20"><a href="lesson-4a-relational-data.html#cb220-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
+<span id="cb220-4"><a href="lesson-4a-relational-data.html#cb220-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    househ…¹ store…² baske…³ produ…⁴ quant…⁵ sales…⁶ retai…⁷ coupo…⁸ coupo…⁹</span></span>
+<span id="cb220-5"><a href="lesson-4a-relational-data.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb220-6"><a href="lesson-4a-relational-data.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 2261     309     316252… 940996        1    3.86    0.43       0       0</span></span>
+<span id="cb220-7"><a href="lesson-4a-relational-data.html#cb220-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 2131     368     320531… 873902        1    1.59    0.9        0       0</span></span>
+<span id="cb220-8"><a href="lesson-4a-relational-data.html#cb220-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 511      316     324458… 847901        1    1       0.69       0       0</span></span>
+<span id="cb220-9"><a href="lesson-4a-relational-data.html#cb220-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 400      388     319322… 130949…       2   11.9     2.9        0       0</span></span>
+<span id="cb220-10"><a href="lesson-4a-relational-data.html#cb220-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 918      340     320746… 1085604       1    1.29    0          0       0</span></span>
+<span id="cb220-11"><a href="lesson-4a-relational-data.html#cb220-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 718      324     326146… 883203        1    2.5     0.49       0       0</span></span>
+<span id="cb220-12"><a href="lesson-4a-relational-data.html#cb220-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 868      323     320747… 9884484       1    3.49    0          0       0</span></span>
+<span id="cb220-13"><a href="lesson-4a-relational-data.html#cb220-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1688     450     348504… 1028715       1    2       1.79       0       0</span></span>
+<span id="cb220-14"><a href="lesson-4a-relational-data.html#cb220-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 467      31782   312807… 896613        2    6.55    4.44       0       0</span></span>
+<span id="cb220-15"><a href="lesson-4a-relational-data.html#cb220-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1947     32004   327441… 978497        1    3.99    0          0       0</span></span>
+<span id="cb220-16"><a href="lesson-4a-relational-data.html#cb220-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 74,990 more rows, 8 more variables: week &lt;int&gt;,</span></span>
+<span id="cb220-17"><a href="lesson-4a-relational-data.html#cb220-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;, manufacturer_id &lt;chr&gt;, department &lt;chr&gt;,</span></span>
+<span id="cb220-18"><a href="lesson-4a-relational-data.html#cb220-18" aria-hidden="true" tabindex="-1"></a><span class="do">## #   brand &lt;fct&gt;, product_category &lt;chr&gt;, product_type &lt;chr&gt;,</span></span>
+<span id="cb220-19"><a href="lesson-4a-relational-data.html#cb220-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   package_size &lt;chr&gt;, and abbreviated variable names ¹​household_id,</span></span>
+<span id="cb220-20"><a href="lesson-4a-relational-data.html#cb220-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ²​store_id, ³​basket_id, ⁴​product_id, ⁵​quantity, ⁶​sales_value,</span></span>
+<span id="cb220-21"><a href="lesson-4a-relational-data.html#cb220-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ⁷​retail_disc, ⁸​coupon_disc, ⁹​coupon_match_disc</span></span>
+<span id="cb220-22"><a href="lesson-4a-relational-data.html#cb220-22" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
 <p>This has now added product information to each transaction. Consequently, if we wanted to get the total sales across the meat <code>department</code> but summarized at the <code>product_category</code> level so that we can identify which products generate the greatest sales we could follow this joining procedure with additional skills we learned in previous lessons:</p>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="lesson-4a-relational-data.html#cb221-1" aria-hidden="true" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb221-2"><a href="lesson-4a-relational-data.html#cb221-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -1110,6 +1129,10 @@ coupon and coupon redemption data.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_orbtaglo&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_6eh404gy" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.4.5">
+</iframe>
+</div>
 </div>
 </div>
 <div id="filtering-joins" class="section level2 hasAnchor" number="14.5">
@@ -1120,10 +1143,14 @@ coupon and coupon redemption data.
 <li><code>semi_join()</code>: keeps all observations in <code>x</code> that have a match in <code>y</code>.</li>
 <li><code>anti_join()</code>: drops all observations in <code>x</code> that have a match in <code>y</code>.</li>
 </ul>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=857&amp;flashvars[mediaProxy.mediaPlayTo]=1042&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
+</iframe>
+</div>
 <div id="semi-join" class="section level3 hasAnchor" number="14.5.1">
 <h3><span class="header-section-number">14.5.1</span> Semi join<a href="lesson-4a-relational-data.html#semi-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A semi-join keeps all observations in the baseline data frame that have a match in the secondary data frame (but does not add new columns nor duplicate any rows for multiple matches).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-301"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-369"></span>
 <img src="images/semi-join.gif" alt="Semi join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.6: Semi join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -1147,7 +1174,7 @@ present in another data frame, troubleshooting spelling in a join
 were excluded after another join.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-304"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-372"></span>
 <img src="images/anti-join.gif" alt="Anti join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.7: Anti join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
@@ -1201,6 +1228,10 @@ Using the <code>demographics</code> and
 goods.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_9mh0mvvm&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_p6u2z234" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.5.4">
+</iframe>
 </div>
 </div>
 </div>

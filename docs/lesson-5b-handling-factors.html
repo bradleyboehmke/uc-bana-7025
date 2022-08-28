@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -800,6 +801,10 @@ div.csl-indent {
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="lesson-5b-handling-factors.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)          <span class="co"># for plotting capabilities</span></span>
 <span id="cb301-2"><a href="lesson-5b-handling-factors.html#cb301-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(completejourney)  <span class="co"># for data</span></span>
 <span id="cb301-3"><a href="lesson-5b-handling-factors.html#cb301-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)            <span class="co"># for additional data wrangling</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2javgxzn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=479&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_glg4jsyd" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5b">
+</iframe>
+</div>
 </div>
 <div id="creating-factors-inspecting-factors" class="section level2 hasAnchor" number="19.3">
 <h2><span class="header-section-number">19.3</span> Creating factors &amp; inspecting factors<a href="lesson-5b-handling-factors.html#creating-factors-inspecting-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -837,7 +842,8 @@ div.csl-indent {
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="lesson-5b-handling-factors.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(my_months)</span>
 <span id="cb308-2"><a href="lesson-5b-handling-factors.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;factor&quot;</span></span>
 <span id="cb308-3"><a href="lesson-5b-handling-factors.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(my_months)</span>
-<span id="cb308-4"><a href="lesson-5b-handling-factors.html#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot; &quot;Apr&quot; &quot;May&quot; &quot;Jun&quot; &quot;Jul&quot; &quot;Aug&quot; &quot;Sep&quot; &quot;Oct&quot; &quot;Nov&quot; &quot;Dec&quot;</span></span></code></pre></div>
+<span id="cb308-4"><a href="lesson-5b-handling-factors.html#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Jan&quot; &quot;Feb&quot; &quot;Mar&quot; &quot;Apr&quot; &quot;May&quot; &quot;Jun&quot; &quot;Jul&quot; &quot;Aug&quot; &quot;Sep&quot; &quot;Oct&quot; &quot;Nov&quot;</span></span>
+<span id="cb308-5"><a href="lesson-5b-handling-factors.html#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [12] &quot;Dec&quot;</span></span></code></pre></div>
 </div>
 <div id="factors-in-data-frames" class="section level3 hasAnchor" number="19.3.2">
 <h3><span class="header-section-number">19.3.2</span> Factors in data frames<a href="lesson-5b-handling-factors.html#factors-in-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -860,14 +866,14 @@ div.csl-indent {
 <p>When we plot a factor variable ggplot will plot the values in the order of the factor:</p>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="lesson-5b-handling-factors.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(promotions_sample, <span class="fu">aes</span>(display_location)) <span class="sc">+</span></span>
 <span id="cb310-2"><a href="lesson-5b-handling-factors.html#cb310-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-394-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-490-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>By default, ggplot2 will drop levels that don’t have any values…</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="lesson-5b-handling-factors.html#cb311-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb311-2"><a href="lesson-5b-handling-factors.html#cb311-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
 <span id="cb311-3"><a href="lesson-5b-handling-factors.html#cb311-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb311-4"><a href="lesson-5b-handling-factors.html#cb311-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb311-5"><a href="lesson-5b-handling-factors.html#cb311-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-395-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-491-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>… but you can force them to display with <code>scale_x_discrete(drop = FALSE)</code>:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="lesson-5b-handling-factors.html#cb312-1" aria-hidden="true" tabindex="-1"></a>promotions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb312-2"><a href="lesson-5b-handling-factors.html#cb312-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(display_location) <span class="sc">%&gt;%</span></span>
@@ -875,27 +881,28 @@ div.csl-indent {
 <span id="cb312-4"><a href="lesson-5b-handling-factors.html#cb312-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(display_location, n)) <span class="sc">+</span></span>
 <span id="cb312-5"><a href="lesson-5b-handling-factors.html#cb312-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb312-6"><a href="lesson-5b-handling-factors.html#cb312-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_discrete</span>(<span class="at">drop =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-396-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-492-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ordinal-factors" class="section level3 hasAnchor" number="19.3.3">
 <h3><span class="header-section-number">19.3.3</span> Ordinal factors<a href="lesson-5b-handling-factors.html#ordinal-factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes factors will be ordinal. You will notice this by the <code>&lt;ord&gt;</code> description in a tibble:</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="lesson-5b-handling-factors.html#cb313-1" aria-hidden="true" tabindex="-1"></a>demographics</span>
 <span id="cb313-2"><a href="lesson-5b-handling-factors.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 801 × 8</span></span>
-<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_ownership marital_status household_size househol…¹ kids_…²</span></span>
-<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;          &lt;ord&gt;      &lt;ord&gt;  </span></span>
-<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner      Married        2              2 Adults … 0      </span></span>
-<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner      Unmarried      1              1 Adult N… 0      </span></span>
-<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;           Unmarried      1              1 Adult N… 0      </span></span>
-<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;           Unmarried      1              1 Adult N… 0      </span></span>
-<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner      Married        4              2 Adults … 2      </span></span>
-<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;           Married        5+             2 Adults … 3+     </span></span>
-<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;           Married        4              2 Adults … 2      </span></span>
-<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner      Unmarried      1              1 Adult N… 0      </span></span>
-<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner      Married        5+             2 Adults … 3+     </span></span>
-<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner      Married        2              2 Adults … 0      </span></span>
-<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and abbreviated variable names ¹​household_comp, ²​kids_count</span></span>
-<span id="cb313-16"><a href="lesson-5b-handling-factors.html#cb313-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<span id="cb313-3"><a href="lesson-5b-handling-factors.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id age   income    home_owne…¹ marit…² house…³ house…⁴ kids_…⁵</span></span>
+<span id="cb313-4"><a href="lesson-5b-handling-factors.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;ord&gt; &lt;ord&gt;     &lt;ord&gt;       &lt;ord&gt;   &lt;ord&gt;   &lt;ord&gt;   &lt;ord&gt;  </span></span>
+<span id="cb313-5"><a href="lesson-5b-handling-factors.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 1            65+   35-49K    Homeowner   Married 2       2 Adul… 0      </span></span>
+<span id="cb313-6"><a href="lesson-5b-handling-factors.html#cb313-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 1001         45-54 50-74K    Homeowner   Unmarr… 1       1 Adul… 0      </span></span>
+<span id="cb313-7"><a href="lesson-5b-handling-factors.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 1003         35-44 25-34K    &lt;NA&gt;        Unmarr… 1       1 Adul… 0      </span></span>
+<span id="cb313-8"><a href="lesson-5b-handling-factors.html#cb313-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 1004         25-34 15-24K    &lt;NA&gt;        Unmarr… 1       1 Adul… 0      </span></span>
+<span id="cb313-9"><a href="lesson-5b-handling-factors.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 101          45-54 Under 15K Homeowner   Married 4       2 Adul… 2      </span></span>
+<span id="cb313-10"><a href="lesson-5b-handling-factors.html#cb313-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 1012         35-44 35-49K    &lt;NA&gt;        Married 5+      2 Adul… 3+     </span></span>
+<span id="cb313-11"><a href="lesson-5b-handling-factors.html#cb313-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 1014         45-54 15-24K    &lt;NA&gt;        Married 4       2 Adul… 2      </span></span>
+<span id="cb313-12"><a href="lesson-5b-handling-factors.html#cb313-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1015         45-54 50-74K    Homeowner   Unmarr… 1       1 Adul… 0      </span></span>
+<span id="cb313-13"><a href="lesson-5b-handling-factors.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 1018         45-54 35-49K    Homeowner   Married 5+      2 Adul… 3+     </span></span>
+<span id="cb313-14"><a href="lesson-5b-handling-factors.html#cb313-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1020         45-54 25-34K    Homeowner   Married 2       2 Adul… 0      </span></span>
+<span id="cb313-15"><a href="lesson-5b-handling-factors.html#cb313-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 791 more rows, and abbreviated variable names ¹​home_ownership,</span></span>
+<span id="cb313-16"><a href="lesson-5b-handling-factors.html#cb313-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ²​marital_status, ³​household_size, ⁴​household_comp, ⁵​kids_count</span></span>
+<span id="cb313-17"><a href="lesson-5b-handling-factors.html#cb313-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>And we can verify with <code>class()</code>:</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="lesson-5b-handling-factors.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(demographics<span class="sc">$</span>age)</span>
 <span id="cb314-2"><a href="lesson-5b-handling-factors.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;ordered&quot; &quot;factor&quot;</span></span></code></pre></div>
@@ -949,6 +956,10 @@ in the plot.
 </li>
 </ol>
 </div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7eqfbdrs&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_3q88p0km" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-19.3.4">
+</iframe>
+</div>
 </div>
 </div>
 <div id="modifying-factor-order" class="section level2 hasAnchor" number="19.4">
@@ -969,7 +980,7 @@ in the plot.
 <span id="cb319-12"><a href="lesson-5b-handling-factors.html#cb319-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">coord_flip</span>()</span>
 <span id="cb319-13"><a href="lesson-5b-handling-factors.html#cb319-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb319-14"><a href="lesson-5b-handling-factors.html#cb319-14" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-405-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-502-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>A similar function is <code>fct_reorder</code>. Consider the following chart which plots the top 20 levels of prod_desc with the largest average net_spend_amt.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="lesson-5b-handling-factors.html#cb320-1" aria-hidden="true" tabindex="-1"></a>spend_by_dept <span class="ot">&lt;-</span> transactions_sample <span class="sc">%&gt;%</span></span>
 <span id="cb320-2"><a href="lesson-5b-handling-factors.html#cb320-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">inner_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
@@ -978,17 +989,21 @@ in the plot.
 <span id="cb320-5"><a href="lesson-5b-handling-factors.html#cb320-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb320-6"><a href="lesson-5b-handling-factors.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, department)) <span class="sc">+</span></span>
 <span id="cb320-7"><a href="lesson-5b-handling-factors.html#cb320-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-406-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-503-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>In the above chart, there is no natural order of the levels; rather, we wish to communicate those categories with the largest values in a rank-order fashion. To highlight the pattern in this chart we can improve it by reordering the levels of <code>department</code> based on the values of <code>total_spend</code> using <code>fct_reorder()</code>.</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="lesson-5b-handling-factors.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spend_by_dept, <span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb321-2"><a href="lesson-5b-handling-factors.html#cb321-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-407-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-504-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="tip">
 <p>
 When reording factor levels for plots its best to do it within the
 <code>ggplot</code> call. When you want to reorder factor levels more
 permanently it is best to do it within <code>mutate</code>.
 </p>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2javgxzn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=479&amp;flashvars[mediaProxy.mediaPlayTo]=599&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_glg4jsyd" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5b">
+</iframe>
 </div>
 <div id="knowledge-check-46" class="section level3 hasAnchor" number="19.4.1">
 <h3><span class="header-section-number">19.4.1</span> Knowledge check<a href="lesson-5b-handling-factors.html#knowledge-check-46" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1003,6 +1018,10 @@ Now create a bar plot where the bars are ordered based on the count
 of observations and not the original factor level order.
 </li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_lazn18nk&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_0lre3h6f" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-19.4.1">
+</iframe>
 </div>
 </div>
 </div>
@@ -1036,7 +1055,7 @@ of observations and not the original factor level order.
 <span id="cb323-6"><a href="lesson-5b-handling-factors.html#cb323-6" aria-hidden="true" tabindex="-1"></a>      )) <span class="sc">%&gt;%</span></span>
 <span id="cb323-7"><a href="lesson-5b-handling-factors.html#cb323-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb323-8"><a href="lesson-5b-handling-factors.html#cb323-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-411-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-510-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div class="note">
 <p>
 <code>fct_recode</code> will leave levels that aren’t explicitly
@@ -1095,7 +1114,11 @@ that doesn’t exist.
 <span id="cb326-5"><a href="lesson-5b-handling-factors.html#cb326-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_spend =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
 <span id="cb326-6"><a href="lesson-5b-handling-factors.html#cb326-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(total_spend, <span class="fu">fct_reorder</span>(department, total_spend))) <span class="sc">+</span></span>
 <span id="cb326-7"><a href="lesson-5b-handling-factors.html#cb326-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-415-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-514-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2javgxzn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=599&amp;flashvars[mediaProxy.mediaPlayTo]=1041&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_glg4jsyd" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-5b">
+</iframe>
+</div>
 <div id="knowledge-check-47" class="section level3 hasAnchor" number="19.5.1">
 <h3><span class="header-section-number">19.5.1</span> Knowledge check<a href="lesson-5b-handling-factors.html#knowledge-check-47" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1119,9 +1142,11 @@ Upper income = &gt; $125K
 </li>
 </ul>
 </li>
-<li>
-</li>
 </ol>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_aa7qeja6&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_abef2di6" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-19.5.1">
+</iframe>
 </div>
 </div>
 </div>

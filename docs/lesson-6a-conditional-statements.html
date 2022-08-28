@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -783,6 +784,10 @@ div.csl-indent {
 <div id="lesson-6a-conditional-statements" class="section level1 hasAnchor" number="22">
 <h1><span class="header-section-number">22</span> Lesson 6a: Conditional statements<a href="lesson-6a-conditional-statements.html#lesson-6a-conditional-statements" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Conditional statements are a key part of any programming language. Their purpose is to evaluate if some condition holds and then execute a particular task depending on the result. In this lesson we’ll perform some basic if and if-else conditional assessments and then build on those by adding multiple conditional assessments and also look at vectorized approaches.</p>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=89&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
+</div>
 <div id="learning-objectives-22" class="section level2 hasAnchor" number="22.1">
 <h2><span class="header-section-number">22.1</span> Learning objectives<a href="lesson-6a-conditional-statements.html#learning-objectives-22" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By the end of this lesson you will be able to:</p>
@@ -862,6 +867,10 @@ later you will not run into issues with unexpected code procedures.
 <span id="cb383-7"><a href="lesson-6a-conditional-statements.html#cb383-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
 <span id="cb383-8"><a href="lesson-6a-conditional-statements.html#cb383-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb383-9"><a href="lesson-6a-conditional-statements.html#cb383-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=89&amp;flashvars[mediaProxy.mediaPlayTo]=424&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
+</div>
 <div id="knowledge-check-51" class="section level3 hasAnchor" number="22.3.1">
 <h3><span class="header-section-number">22.3.1</span> Knowledge check<a href="lesson-6a-conditional-statements.html#knowledge-check-51" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -883,6 +892,10 @@ What happens if the month value is 10-12?
 <span id="cb384-3"><a href="lesson-6a-conditional-statements.html#cb384-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
 <span id="cb384-4"><a href="lesson-6a-conditional-statements.html#cb384-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
 <span id="cb384-5"><a href="lesson-6a-conditional-statements.html#cb384-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4uap9tpr&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_zifyrh5y" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.3.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="ifelse-statement" class="section level2 hasAnchor" number="22.4">
@@ -914,6 +927,10 @@ What happens if the month value is 10-12?
 <span id="cb386-17"><a href="lesson-6a-conditional-statements.html#cb386-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;y contains all positive numbers&quot;</span>)</span>
 <span id="cb386-18"><a href="lesson-6a-conditional-statements.html#cb386-18" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb386-19"><a href="lesson-6a-conditional-statements.html#cb386-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;y contains all positive numbers&quot;</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=424&amp;flashvars[mediaProxy.mediaPlayTo]=548&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
+</div>
 <div id="knowledge-check-52" class="section level3 hasAnchor" number="22.4.1">
 <h3><span class="header-section-number">22.4.1</span> Knowledge check<a href="lesson-6a-conditional-statements.html#knowledge-check-52" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -941,6 +958,10 @@ test it out for when month equals 4, 6, 10, &amp; 12
 <span id="cb387-5"><a href="lesson-6a-conditional-statements.html#cb387-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb387-6"><a href="lesson-6a-conditional-statements.html#cb387-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
 <span id="cb387-7"><a href="lesson-6a-conditional-statements.html#cb387-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_wgau3w0a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_7mhmwyyd" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.4.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="multiple-conditions" class="section level2 hasAnchor" number="22.5">
@@ -962,6 +983,10 @@ Note how we extend by following <code>else</code> with
 <code>if()</code>. But we should always end with an
 <code>else</code>.
 </p>
+</div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=548&amp;flashvars[mediaProxy.mediaPlayTo]=634&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
 </div>
 <div id="knowledge-check-53" class="section level3 hasAnchor" number="22.5.1">
 <h3><span class="header-section-number">22.5.1</span> Knowledge check<a href="lesson-6a-conditional-statements.html#knowledge-check-53" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -996,6 +1021,10 @@ test it out for when month equals 6, 10, &amp; 13
 <span id="cb389-7"><a href="lesson-6a-conditional-statements.html#cb389-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb389-8"><a href="lesson-6a-conditional-statements.html#cb389-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;_____&quot;</span>)</span>
 <span id="cb389-9"><a href="lesson-6a-conditional-statements.html#cb389-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4zvzao7m&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_9l6z6h0l" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.5.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="vectorized-approaches" class="section level2 hasAnchor" number="22.6">
@@ -1019,11 +1048,12 @@ Figure 22.2: Illustration of vectorized conditional statements.
 <span id="cb390-2"><a href="lesson-6a-conditional-statements.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.306769 0.426908 0.693102 0.085136 0.225437       NA</span></span>
 <span id="cb390-3"><a href="lesson-6a-conditional-statements.html#cb390-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb390-4"><a href="lesson-6a-conditional-statements.html#cb390-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>)</span>
-<span id="cb390-5"><a href="lesson-6a-conditional-statements.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;    &quot;greater than&quot; &quot;less than&quot;    &quot;less than&quot;    NA</span></span></code></pre></div>
+<span id="cb390-5"><a href="lesson-6a-conditional-statements.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;    &quot;greater than&quot; &quot;less than&quot;   </span></span>
+<span id="cb390-6"><a href="lesson-6a-conditional-statements.html#cb390-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;    NA</span></span></code></pre></div>
 <p>Second, we can use <code>dplyr::if_else()</code>, which provides a little more stability in output type and flexibility in what to do with missing values:</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="lesson-6a-conditional-statements.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>, <span class="at">missing =</span> <span class="st">&quot;something else&quot;</span>)</span>
-<span id="cb391-2"><a href="lesson-6a-conditional-statements.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;      &quot;greater than&quot;   &quot;less than&quot;      &quot;less than&quot;     </span></span>
-<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [6] &quot;something else&quot;</span></span></code></pre></div>
+<span id="cb391-2"><a href="lesson-6a-conditional-statements.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;      &quot;greater than&quot;   &quot;less than&quot;     </span></span>
+<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;      &quot;something else&quot;</span></span></code></pre></div>
 <p>However, in both cases, they can only assess binary conditional statements. If we want to vectorize multiple conditions (i.e. <code>if...else...if...else</code>) then the best approach is to use <code>dplyr::case_when()</code>.</p>
 <p>The syntax for <code>case_when()</code> can be a little confusing at first. Basically, a conditional expression looks like <code>condition ~ code to execute</code>. Consequently:</p>
 <ul>
@@ -1033,8 +1063,8 @@ Figure 22.2: Illustration of vectorized conditional statements.
 </ul>
 <div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="lesson-6a-conditional-statements.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb392-2"><a href="lesson-6a-conditional-statements.html#cb392-2" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">10</span>), <span class="cn">NA</span>, <span class="cn">Inf</span>, <span class="fl">1.25</span>))</span>
-<span id="cb392-3"><a href="lesson-6a-conditional-statements.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017 0.940467 0.045556 0.528105 0.892419 0.551435 0.456615</span></span>
-<span id="cb392-4"><a href="lesson-6a-conditional-statements.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [11]       NA      Inf 1.250000</span></span>
+<span id="cb392-3"><a href="lesson-6a-conditional-statements.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017 0.940467 0.045556 0.528105</span></span>
+<span id="cb392-4"><a href="lesson-6a-conditional-statements.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [8] 0.892419 0.551435 0.456615       NA      Inf 1.250000</span></span>
 <span id="cb392-5"><a href="lesson-6a-conditional-statements.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb392-6"><a href="lesson-6a-conditional-statements.html#cb392-6" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
 <span id="cb392-7"><a href="lesson-6a-conditional-statements.html#cb392-7" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">3</span>   <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
@@ -1044,9 +1074,14 @@ Figure 22.2: Illustration of vectorized conditional statements.
 <span id="cb392-11"><a href="lesson-6a-conditional-statements.html#cb392-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;missing&quot;</span>,</span>
 <span id="cb392-12"><a href="lesson-6a-conditional-statements.html#cb392-12" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span>     <span class="sc">~</span> <span class="st">&quot;out of bounds&quot;</span></span>
 <span id="cb392-13"><a href="lesson-6a-conditional-statements.html#cb392-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb392-14"><a href="lesson-6a-conditional-statements.html#cb392-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;   &quot;medium&quot;        &quot;medium high&quot;   &quot;high&quot;         </span></span>
-<span id="cb392-15"><a href="lesson-6a-conditional-statements.html#cb392-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  [6] &quot;low&quot;           &quot;medium&quot;        &quot;medium high&quot;   &quot;medium&quot;        &quot;medium&quot;       </span></span>
-<span id="cb392-16"><a href="lesson-6a-conditional-statements.html#cb392-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [11] &quot;missing&quot;       &quot;out of bounds&quot; &quot;out of bounds&quot;</span></span></code></pre></div>
+<span id="cb392-14"><a href="lesson-6a-conditional-statements.html#cb392-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;   &quot;medium&quot;        &quot;medium high&quot;  </span></span>
+<span id="cb392-15"><a href="lesson-6a-conditional-statements.html#cb392-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;high&quot;          &quot;low&quot;           &quot;medium&quot;        &quot;medium high&quot;  </span></span>
+<span id="cb392-16"><a href="lesson-6a-conditional-statements.html#cb392-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;medium&quot;        &quot;medium&quot;        &quot;missing&quot;       &quot;out of bounds&quot;</span></span>
+<span id="cb392-17"><a href="lesson-6a-conditional-statements.html#cb392-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;out of bounds&quot;</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=823&amp;flashvars[mediaProxy.mediaPlayTo]=1214&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
+</div>
 <div id="knowledge-check-54" class="section level3 hasAnchor" number="22.6.1">
 <h3><span class="header-section-number">22.6.1</span> Knowledge check<a href="lesson-6a-conditional-statements.html#knowledge-check-54" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1064,6 +1099,10 @@ with <code>month &lt;- 1:13</code>.
 <span id="cb393-7"><a href="lesson-6a-conditional-statements.html#cb393-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb393-8"><a href="lesson-6a-conditional-statements.html#cb393-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;Invalid month&quot;</span>)</span>
 <span id="cb393-9"><a href="lesson-6a-conditional-statements.html#cb393-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_hlsedxim&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_hskspgfb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.6.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="with-data-frames" class="section level2 hasAnchor" number="22.7">
@@ -1132,6 +1171,10 @@ values more conveniently.
 <span id="cb395-25"><a href="lesson-6a-conditional-statements.html#cb395-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1947         32744181707        1        3.99 Small purchase </span></span>
 <span id="cb395-26"><a href="lesson-6a-conditional-statements.html#cb395-26" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 74,990 more rows</span></span>
 <span id="cb395-27"><a href="lesson-6a-conditional-statements.html#cb395-27" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1359&amp;flashvars[mediaProxy.mediaPlayTo]=1456&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
+</iframe>
+</div>
 <div id="knowledge-check-55" class="section level3 hasAnchor" number="22.7.1">
 <h3><span class="header-section-number">22.7.1</span> Knowledge check<a href="lesson-6a-conditional-statements.html#knowledge-check-55" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1171,6 +1214,10 @@ percentile
 <span id="cb396-8"><a href="lesson-6a-conditional-statements.html#cb396-8" aria-hidden="true" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">4</span></span>
 <span id="cb396-9"><a href="lesson-6a-conditional-statements.html#cb396-9" aria-hidden="true" tabindex="-1"></a>     )</span>
 <span id="cb396-10"><a href="lesson-6a-conditional-statements.html#cb396-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+<div class="video">
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_rlk72jef&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_16joo9nb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.7.1">
+</iframe>
+</div>
 </div>
 </div>
 <div id="exercises-14" class="section level2 hasAnchor" number="22.8">

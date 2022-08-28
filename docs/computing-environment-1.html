@@ -302,8 +302,9 @@ div.csl-indent {
 <li class="chapter" data-level="6.4.4" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#additional-resources-1"><i class="fa fa-check"></i><b>6.4.4</b> Additional Resources</a></li>
 <li class="chapter" data-level="6.4.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#knowledge-check-14"><i class="fa fa-check"></i><b>6.4.5</b> Knowledge check</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.5</b> Exercises</a></li>
-<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.6</b> Computing environment</a></li>
+<li class="chapter" data-level="6.5" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#example-implementation"><i class="fa fa-check"></i><b>6.5</b> Example implementation</a></li>
+<li class="chapter" data-level="6.6" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#exercises-3"><i class="fa fa-check"></i><b>6.6</b> Exercises</a></li>
+<li class="chapter" data-level="6.7" data-path="lesson-2a-workflow.html"><a href="lesson-2a-workflow.html#computing-environment"><i class="fa fa-check"></i><b>6.7</b> Computing environment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="lesson-2b-data-types-structures.html"><a href="lesson-2b-data-types-structures.html"><i class="fa fa-check"></i><b>7</b> Lesson 2b: Data types &amp; structures</a>
 <ul>
@@ -784,7 +785,7 @@ div.csl-indent {
 <h1>Computing Environment<a href="computing-environment-1.html#computing-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This book was built with the following computing environment and packages:</p>
 <div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="computing-environment-1.html#cb494-1" aria-hidden="true" tabindex="-1"></a>sessioninfo<span class="sc">::</span><span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">&#39;attached&#39;</span>)</span>
-<span id="cb494-2"><a href="computing-environment-1.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Session info ──────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb494-2"><a href="computing-environment-1.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Session info ──────────────────────────────────────────────────────────</span></span>
 <span id="cb494-3"><a href="computing-environment-1.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  setting  value</span></span>
 <span id="cb494-4"><a href="computing-environment-1.html#cb494-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  version  R version 4.2.0 (2022-04-22)</span></span>
 <span id="cb494-5"><a href="computing-environment-1.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  os       macOS Monterey 12.4</span></span>
@@ -794,11 +795,11 @@ div.csl-indent {
 <span id="cb494-9"><a href="computing-environment-1.html#cb494-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  collate  en_US.UTF-8</span></span>
 <span id="cb494-10"><a href="computing-environment-1.html#cb494-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  ctype    en_US.UTF-8</span></span>
 <span id="cb494-11"><a href="computing-environment-1.html#cb494-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  tz       America/New_York</span></span>
-<span id="cb494-12"><a href="computing-environment-1.html#cb494-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2022-07-28</span></span>
+<span id="cb494-12"><a href="computing-environment-1.html#cb494-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  date     2022-08-28</span></span>
 <span id="cb494-13"><a href="computing-environment-1.html#cb494-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  rstudio  2022.07.1+554 Spotted Wakerobin (desktop)</span></span>
 <span id="cb494-14"><a href="computing-environment-1.html#cb494-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)</span></span>
 <span id="cb494-15"><a href="computing-environment-1.html#cb494-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb494-16"><a href="computing-environment-1.html#cb494-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Packages ──────────────────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb494-16"><a href="computing-environment-1.html#cb494-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Packages ──────────────────────────────────────────────────────────────</span></span>
 <span id="cb494-17"><a href="computing-environment-1.html#cb494-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  package         * version date (UTC) lib source</span></span>
 <span id="cb494-18"><a href="computing-environment-1.html#cb494-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  broom           * 1.0.0   2022-07-01 [1] CRAN (R 4.2.0)</span></span>
 <span id="cb494-19"><a href="computing-environment-1.html#cb494-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  caret           * 6.0-92  2022-04-19 [1] CRAN (R 4.2.0)</span></span>
@@ -843,7 +844,7 @@ div.csl-indent {
 <span id="cb494-58"><a href="computing-environment-1.html#cb494-58" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb494-59"><a href="computing-environment-1.html#cb494-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] /Library/Frameworks/R.framework/Versions/4.2/Resources/library</span></span>
 <span id="cb494-60"><a href="computing-environment-1.html#cb494-60" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb494-61"><a href="computing-environment-1.html#cb494-61" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Python configuration ──────────────────────────────────────────────────────────────────────</span></span>
+<span id="cb494-61"><a href="computing-environment-1.html#cb494-61" aria-hidden="true" tabindex="-1"></a><span class="do">## ─ Python configuration ──────────────────────────────────────────────────</span></span>
 <span id="cb494-62"><a href="computing-environment-1.html#cb494-62" aria-hidden="true" tabindex="-1"></a><span class="do">##  python:         /Users/b294776/Library/r-miniconda/envs/r-reticulate/bin/python</span></span>
 <span id="cb494-63"><a href="computing-environment-1.html#cb494-63" aria-hidden="true" tabindex="-1"></a><span class="do">##  libpython:      /Users/b294776/Library/r-miniconda/envs/r-reticulate/lib/libpython3.8.dylib</span></span>
 <span id="cb494-64"><a href="computing-environment-1.html#cb494-64" aria-hidden="true" tabindex="-1"></a><span class="do">##  pythonhome:     /Users/b294776/Library/r-miniconda/envs/r-reticulate:/Users/b294776/Library/r-miniconda/envs/r-reticulate</span></span>
@@ -851,7 +852,7 @@ div.csl-indent {
 <span id="cb494-66"><a href="computing-environment-1.html#cb494-66" aria-hidden="true" tabindex="-1"></a><span class="do">##  numpy:          /Users/b294776/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/numpy</span></span>
 <span id="cb494-67"><a href="computing-environment-1.html#cb494-67" aria-hidden="true" tabindex="-1"></a><span class="do">##  numpy_version:  1.22.4</span></span>
 <span id="cb494-68"><a href="computing-environment-1.html#cb494-68" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb494-69"><a href="computing-environment-1.html#cb494-69" aria-hidden="true" tabindex="-1"></a><span class="do">## ─────────────────────────────────────────────────────────────────────────────────────────────</span></span></code></pre></div>
+<span id="cb494-69"><a href="computing-environment-1.html#cb494-69" aria-hidden="true" tabindex="-1"></a><span class="do">## ─────────────────────────────────────────────────────────────────────────</span></span></code></pre></div>
 
 </div>
             </section>
