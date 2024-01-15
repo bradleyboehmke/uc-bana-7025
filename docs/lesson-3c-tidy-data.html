@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 Lesson 3c: Tidy data | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 Lesson 3c: Tidy data | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -803,8 +807,7 @@ Figure 12.1: Tidy data.
 <p>
 If you’d like to learn more about the underlying theory, you might
 enjoy the <em>Tidy Data</em> paper published in the Journal of
-Statistical Software, <a href="http://www.jstatsoft.org/v59/i10/paper"
-class="uri">http://www.jstatsoft.org/v59/i10/paper</a>.
+Statistical Software, <a href="http://www.jstatsoft.org/v59/i10/paper" class="uri">http://www.jstatsoft.org/v59/i10/paper</a>.
 </p>
 </div>
 <div id="learning-objectives-12" class="section level2 hasAnchor" number="12.1">
@@ -829,8 +832,8 @@ files, which can be found in canvas.
 <div id="prerequisites-1" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> Prerequisites<a href="lesson-3c-tidy-data.html#prerequisites-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Load the <code>tidyr</code> package to provide you access to the functions we’ll cover in this lesson. We’ll also use <code>dplyr</code> for a few examples.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="lesson-3c-tidy-data.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb186-2"><a href="lesson-3c-tidy-data.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="lesson-3c-tidy-data.html#cb186-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb186-2"><a href="lesson-3c-tidy-data.html#cb186-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>To illustrate various tidying tasks we will use several untidy datasets provided in the data directory (or via Canvas material download).</p>
 <div class="note">
 <p>
@@ -843,74 +846,71 @@ to mimick actual data.
 <h2><span class="header-section-number">12.3</span> Making wide data longer<a href="lesson-3c-tidy-data.html#making-wide-data-longer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are times when our data is considered “wide” or “unstacked” and a common attribute/variable of concern is spread out across columns. To reformat the data such that these common attributes are <em>gathered</em> together as a single variable, the <code>pivot_longer()</code> function will take multiple columns and collapse them into key-value pairs, duplicating all other columns as needed.</p>
 <p>For example, let’s say we have the given data frame.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lesson-3c-tidy-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a>(untidy1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy1.csv&quot;</span>))</span>
-<span id="cb187-2"><a href="lesson-3c-tidy-data.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3144 Columns: 5</span></span>
-<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
-<span id="cb187-4"><a href="lesson-3c-tidy-data.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb187-5"><a href="lesson-3c-tidy-data.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (1): prod_desc</span></span>
-<span id="cb187-6"><a href="lesson-3c-tidy-data.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (4): hshd_id, Mar, Apr, May</span></span>
-<span id="cb187-7"><a href="lesson-3c-tidy-data.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb187-8"><a href="lesson-3c-tidy-data.html#cb187-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span id="cb187-9"><a href="lesson-3c-tidy-data.html#cb187-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span id="cb187-10"><a href="lesson-3c-tidy-data.html#cb187-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,144 × 5</span></span>
-<span id="cb187-11"><a href="lesson-3c-tidy-data.html#cb187-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id prod_desc                   Mar   Apr   May</span></span>
-<span id="cb187-12"><a href="lesson-3c-tidy-data.html#cb187-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb187-13"><a href="lesson-3c-tidy-data.html#cb187-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 HNTS MEAT FLV PASTA SAUCE  1     0     0   </span></span>
-<span id="cb187-14"><a href="lesson-3c-tidy-data.html#cb187-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 RAGU SPICY ITL STYL SAUCE  1.89  0     0   </span></span>
-<span id="cb187-15"><a href="lesson-3c-tidy-data.html#cb187-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 HMK CARD MDAY MOTHER       0     0     5.29</span></span>
-<span id="cb187-16"><a href="lesson-3c-tidy-data.html#cb187-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 HMK CARD BRTHDAY CROWN     3.99  0     0   </span></span>
-<span id="cb187-17"><a href="lesson-3c-tidy-data.html#cb187-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377032853 MZTA MARINARA PASTA SAUCE  8.78  0     0   </span></span>
-<span id="cb187-18"><a href="lesson-3c-tidy-data.html#cb187-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377285583 HMK CARD ADMIN ANYONE      0     2     0   </span></span>
-<span id="cb187-19"><a href="lesson-3c-tidy-data.html#cb187-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3377285583 HMK CARD MDAY              0     0     4.99</span></span>
-<span id="cb187-20"><a href="lesson-3c-tidy-data.html#cb187-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3377285583 HMK CARD MDAY ANYONE       0     3.99  0   </span></span>
-<span id="cb187-21"><a href="lesson-3c-tidy-data.html#cb187-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3377285583 HMK CARD MDAY MOTHER       0     2.99  7.99</span></span>
-<span id="cb187-22"><a href="lesson-3c-tidy-data.html#cb187-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377285583 SLV PLT TOMTO MARNARA SCE  8.97  0     0   </span></span>
-<span id="cb187-23"><a href="lesson-3c-tidy-data.html#cb187-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,134 more rows</span></span>
-<span id="cb187-24"><a href="lesson-3c-tidy-data.html#cb187-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lesson-3c-tidy-data.html#cb187-1" tabindex="-1"></a>(untidy1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy1.csv&quot;</span>))</span>
+<span id="cb187-2"><a href="lesson-3c-tidy-data.html#cb187-2" tabindex="-1"></a><span class="do">## Rows: 3144 Columns: 5</span></span>
+<span id="cb187-3"><a href="lesson-3c-tidy-data.html#cb187-3" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────</span></span>
+<span id="cb187-4"><a href="lesson-3c-tidy-data.html#cb187-4" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb187-5"><a href="lesson-3c-tidy-data.html#cb187-5" tabindex="-1"></a><span class="do">## chr (1): prod_desc</span></span>
+<span id="cb187-6"><a href="lesson-3c-tidy-data.html#cb187-6" tabindex="-1"></a><span class="do">## dbl (4): hshd_id, Mar, Apr, May</span></span>
+<span id="cb187-7"><a href="lesson-3c-tidy-data.html#cb187-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb187-8"><a href="lesson-3c-tidy-data.html#cb187-8" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb187-9"><a href="lesson-3c-tidy-data.html#cb187-9" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb187-10"><a href="lesson-3c-tidy-data.html#cb187-10" tabindex="-1"></a><span class="do">## # A tibble: 3,144 × 5</span></span>
+<span id="cb187-11"><a href="lesson-3c-tidy-data.html#cb187-11" tabindex="-1"></a><span class="do">##       hshd_id prod_desc                  Mar   Apr   May</span></span>
+<span id="cb187-12"><a href="lesson-3c-tidy-data.html#cb187-12" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb187-13"><a href="lesson-3c-tidy-data.html#cb187-13" tabindex="-1"></a><span class="do">##  1 3376002291 HNTS MEAT FLV PASTA SAU…  1     0     0   </span></span>
+<span id="cb187-14"><a href="lesson-3c-tidy-data.html#cb187-14" tabindex="-1"></a><span class="do">##  2 3376163223 RAGU SPICY ITL STYL SAU…  1.89  0     0   </span></span>
+<span id="cb187-15"><a href="lesson-3c-tidy-data.html#cb187-15" tabindex="-1"></a><span class="do">##  3 3376542041 HMK CARD MDAY MOTHER      0     0     5.29</span></span>
+<span id="cb187-16"><a href="lesson-3c-tidy-data.html#cb187-16" tabindex="-1"></a><span class="do">##  4 3377032853 HMK CARD BRTHDAY CROWN    3.99  0     0   </span></span>
+<span id="cb187-17"><a href="lesson-3c-tidy-data.html#cb187-17" tabindex="-1"></a><span class="do">##  5 3377032853 MZTA MARINARA PASTA SAU…  8.78  0     0   </span></span>
+<span id="cb187-18"><a href="lesson-3c-tidy-data.html#cb187-18" tabindex="-1"></a><span class="do">##  6 3377285583 HMK CARD ADMIN ANYONE     0     2     0   </span></span>
+<span id="cb187-19"><a href="lesson-3c-tidy-data.html#cb187-19" tabindex="-1"></a><span class="do">##  7 3377285583 HMK CARD MDAY             0     0     4.99</span></span>
+<span id="cb187-20"><a href="lesson-3c-tidy-data.html#cb187-20" tabindex="-1"></a><span class="do">##  8 3377285583 HMK CARD MDAY ANYONE      0     3.99  0   </span></span>
+<span id="cb187-21"><a href="lesson-3c-tidy-data.html#cb187-21" tabindex="-1"></a><span class="do">##  9 3377285583 HMK CARD MDAY MOTHER      0     2.99  7.99</span></span>
+<span id="cb187-22"><a href="lesson-3c-tidy-data.html#cb187-22" tabindex="-1"></a><span class="do">## 10 3377285583 SLV PLT TOMTO MARNARA S…  8.97  0     0   </span></span>
+<span id="cb187-23"><a href="lesson-3c-tidy-data.html#cb187-23" tabindex="-1"></a><span class="do">## # ℹ 3,134 more rows</span></span></code></pre></div>
 <p>This data is considered untidy in the <em>wide</em> sense since the <strong><em>month</em></strong> variable is structured such that each month represents a variable. If we wanted to compute the total amount each household spent by month, this data set does not provide a convenient shape to work with. To re-structure the month component as an individual variable, we can <em>pivot this data to be longer</em> such that each month is within one column variable and the values associated with each month in a second column variable.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lesson-3c-tidy-data.html#cb188-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
-<span id="cb188-2"><a href="lesson-3c-tidy-data.html#cb188-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
-<span id="cb188-3"><a href="lesson-3c-tidy-data.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 9,432 × 4</span></span>
-<span id="cb188-4"><a href="lesson-3c-tidy-data.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id prod_desc                 month net_spend_amt</span></span>
-<span id="cb188-5"><a href="lesson-3c-tidy-data.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt;         &lt;dbl&gt;</span></span>
-<span id="cb188-6"><a href="lesson-3c-tidy-data.html#cb188-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 HNTS MEAT FLV PASTA SAUCE Mar            1   </span></span>
-<span id="cb188-7"><a href="lesson-3c-tidy-data.html#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376002291 HNTS MEAT FLV PASTA SAUCE Apr            0   </span></span>
-<span id="cb188-8"><a href="lesson-3c-tidy-data.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376002291 HNTS MEAT FLV PASTA SAUCE May            0   </span></span>
-<span id="cb188-9"><a href="lesson-3c-tidy-data.html#cb188-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3376163223 RAGU SPICY ITL STYL SAUCE Mar            1.89</span></span>
-<span id="cb188-10"><a href="lesson-3c-tidy-data.html#cb188-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3376163223 RAGU SPICY ITL STYL SAUCE Apr            0   </span></span>
-<span id="cb188-11"><a href="lesson-3c-tidy-data.html#cb188-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3376163223 RAGU SPICY ITL STYL SAUCE May            0   </span></span>
-<span id="cb188-12"><a href="lesson-3c-tidy-data.html#cb188-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3376542041 HMK CARD MDAY MOTHER      Mar            0   </span></span>
-<span id="cb188-13"><a href="lesson-3c-tidy-data.html#cb188-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3376542041 HMK CARD MDAY MOTHER      Apr            0   </span></span>
-<span id="cb188-14"><a href="lesson-3c-tidy-data.html#cb188-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3376542041 HMK CARD MDAY MOTHER      May            5.29</span></span>
-<span id="cb188-15"><a href="lesson-3c-tidy-data.html#cb188-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377032853 HMK CARD BRTHDAY CROWN    Mar            3.99</span></span>
-<span id="cb188-16"><a href="lesson-3c-tidy-data.html#cb188-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 9,422 more rows</span></span>
-<span id="cb188-17"><a href="lesson-3c-tidy-data.html#cb188-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lesson-3c-tidy-data.html#cb188-1" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
+<span id="cb188-2"><a href="lesson-3c-tidy-data.html#cb188-2" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
+<span id="cb188-3"><a href="lesson-3c-tidy-data.html#cb188-3" tabindex="-1"></a><span class="do">## # A tibble: 9,432 × 4</span></span>
+<span id="cb188-4"><a href="lesson-3c-tidy-data.html#cb188-4" tabindex="-1"></a><span class="do">##       hshd_id prod_desc              month net_spend_amt</span></span>
+<span id="cb188-5"><a href="lesson-3c-tidy-data.html#cb188-5" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;         &lt;dbl&gt;</span></span>
+<span id="cb188-6"><a href="lesson-3c-tidy-data.html#cb188-6" tabindex="-1"></a><span class="do">##  1 3376002291 HNTS MEAT FLV PASTA S… Mar            1   </span></span>
+<span id="cb188-7"><a href="lesson-3c-tidy-data.html#cb188-7" tabindex="-1"></a><span class="do">##  2 3376002291 HNTS MEAT FLV PASTA S… Apr            0   </span></span>
+<span id="cb188-8"><a href="lesson-3c-tidy-data.html#cb188-8" tabindex="-1"></a><span class="do">##  3 3376002291 HNTS MEAT FLV PASTA S… May            0   </span></span>
+<span id="cb188-9"><a href="lesson-3c-tidy-data.html#cb188-9" tabindex="-1"></a><span class="do">##  4 3376163223 RAGU SPICY ITL STYL S… Mar            1.89</span></span>
+<span id="cb188-10"><a href="lesson-3c-tidy-data.html#cb188-10" tabindex="-1"></a><span class="do">##  5 3376163223 RAGU SPICY ITL STYL S… Apr            0   </span></span>
+<span id="cb188-11"><a href="lesson-3c-tidy-data.html#cb188-11" tabindex="-1"></a><span class="do">##  6 3376163223 RAGU SPICY ITL STYL S… May            0   </span></span>
+<span id="cb188-12"><a href="lesson-3c-tidy-data.html#cb188-12" tabindex="-1"></a><span class="do">##  7 3376542041 HMK CARD MDAY MOTHER   Mar            0   </span></span>
+<span id="cb188-13"><a href="lesson-3c-tidy-data.html#cb188-13" tabindex="-1"></a><span class="do">##  8 3376542041 HMK CARD MDAY MOTHER   Apr            0   </span></span>
+<span id="cb188-14"><a href="lesson-3c-tidy-data.html#cb188-14" tabindex="-1"></a><span class="do">##  9 3376542041 HMK CARD MDAY MOTHER   May            5.29</span></span>
+<span id="cb188-15"><a href="lesson-3c-tidy-data.html#cb188-15" tabindex="-1"></a><span class="do">## 10 3377032853 HMK CARD BRTHDAY CROWN Mar            3.99</span></span>
+<span id="cb188-16"><a href="lesson-3c-tidy-data.html#cb188-16" tabindex="-1"></a><span class="do">## # ℹ 9,422 more rows</span></span></code></pre></div>
 <p>This new structure allows us to perform follow-on analysis in a much easier fashion. For example, if we wanted to compute the total amount each household spent by month, we could simply do the following sequence:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lesson-3c-tidy-data.html#cb189-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
-<span id="cb189-2"><a href="lesson-3c-tidy-data.html#cb189-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb189-3"><a href="lesson-3c-tidy-data.html#cb189-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(hshd_id, month) <span class="sc">%&gt;%</span></span>
-<span id="cb189-4"><a href="lesson-3c-tidy-data.html#cb189-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">monthly_spend =</span> <span class="fu">sum</span>(net_spend_amt))</span>
-<span id="cb189-5"><a href="lesson-3c-tidy-data.html#cb189-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,708 × 3</span></span>
-<span id="cb189-6"><a href="lesson-3c-tidy-data.html#cb189-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   hshd_id [1,236]</span></span>
-<span id="cb189-7"><a href="lesson-3c-tidy-data.html#cb189-7" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id month monthly_spend</span></span>
-<span id="cb189-8"><a href="lesson-3c-tidy-data.html#cb189-8" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></span>
-<span id="cb189-9"><a href="lesson-3c-tidy-data.html#cb189-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Apr            0   </span></span>
-<span id="cb189-10"><a href="lesson-3c-tidy-data.html#cb189-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376002291 Mar            1   </span></span>
-<span id="cb189-11"><a href="lesson-3c-tidy-data.html#cb189-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376002291 May            0   </span></span>
-<span id="cb189-12"><a href="lesson-3c-tidy-data.html#cb189-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3376163223 Apr            0   </span></span>
-<span id="cb189-13"><a href="lesson-3c-tidy-data.html#cb189-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3376163223 Mar            1.89</span></span>
-<span id="cb189-14"><a href="lesson-3c-tidy-data.html#cb189-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3376163223 May            0   </span></span>
-<span id="cb189-15"><a href="lesson-3c-tidy-data.html#cb189-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3376542041 Apr            0   </span></span>
-<span id="cb189-16"><a href="lesson-3c-tidy-data.html#cb189-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3376542041 Mar            0   </span></span>
-<span id="cb189-17"><a href="lesson-3c-tidy-data.html#cb189-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3376542041 May            5.29</span></span>
-<span id="cb189-18"><a href="lesson-3c-tidy-data.html#cb189-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3377032853 Apr            0   </span></span>
-<span id="cb189-19"><a href="lesson-3c-tidy-data.html#cb189-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,698 more rows</span></span>
-<span id="cb189-20"><a href="lesson-3c-tidy-data.html#cb189-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lesson-3c-tidy-data.html#cb189-1" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span></span>
+<span id="cb189-2"><a href="lesson-3c-tidy-data.html#cb189-2" tabindex="-1"></a>   <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb189-3"><a href="lesson-3c-tidy-data.html#cb189-3" tabindex="-1"></a>   <span class="fu">group_by</span>(hshd_id, month) <span class="sc">%&gt;%</span></span>
+<span id="cb189-4"><a href="lesson-3c-tidy-data.html#cb189-4" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">monthly_spend =</span> <span class="fu">sum</span>(net_spend_amt))</span>
+<span id="cb189-5"><a href="lesson-3c-tidy-data.html#cb189-5" tabindex="-1"></a><span class="do">## # A tibble: 3,708 × 3</span></span>
+<span id="cb189-6"><a href="lesson-3c-tidy-data.html#cb189-6" tabindex="-1"></a><span class="do">## # Groups:   hshd_id [1,236]</span></span>
+<span id="cb189-7"><a href="lesson-3c-tidy-data.html#cb189-7" tabindex="-1"></a><span class="do">##       hshd_id month monthly_spend</span></span>
+<span id="cb189-8"><a href="lesson-3c-tidy-data.html#cb189-8" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;</span></span>
+<span id="cb189-9"><a href="lesson-3c-tidy-data.html#cb189-9" tabindex="-1"></a><span class="do">##  1 3376002291 Apr            0   </span></span>
+<span id="cb189-10"><a href="lesson-3c-tidy-data.html#cb189-10" tabindex="-1"></a><span class="do">##  2 3376002291 Mar            1   </span></span>
+<span id="cb189-11"><a href="lesson-3c-tidy-data.html#cb189-11" tabindex="-1"></a><span class="do">##  3 3376002291 May            0   </span></span>
+<span id="cb189-12"><a href="lesson-3c-tidy-data.html#cb189-12" tabindex="-1"></a><span class="do">##  4 3376163223 Apr            0   </span></span>
+<span id="cb189-13"><a href="lesson-3c-tidy-data.html#cb189-13" tabindex="-1"></a><span class="do">##  5 3376163223 Mar            1.89</span></span>
+<span id="cb189-14"><a href="lesson-3c-tidy-data.html#cb189-14" tabindex="-1"></a><span class="do">##  6 3376163223 May            0   </span></span>
+<span id="cb189-15"><a href="lesson-3c-tidy-data.html#cb189-15" tabindex="-1"></a><span class="do">##  7 3376542041 Apr            0   </span></span>
+<span id="cb189-16"><a href="lesson-3c-tidy-data.html#cb189-16" tabindex="-1"></a><span class="do">##  8 3376542041 Mar            0   </span></span>
+<span id="cb189-17"><a href="lesson-3c-tidy-data.html#cb189-17" tabindex="-1"></a><span class="do">##  9 3376542041 May            5.29</span></span>
+<span id="cb189-18"><a href="lesson-3c-tidy-data.html#cb189-18" tabindex="-1"></a><span class="do">## 10 3377032853 Apr            0   </span></span>
+<span id="cb189-19"><a href="lesson-3c-tidy-data.html#cb189-19" tabindex="-1"></a><span class="do">## # ℹ 3,698 more rows</span></span></code></pre></div>
 <p>It’s important to note that there is flexibility in how you specify the columns you would like to gather. In our example we used <code>cols = Mar:May</code> to imply we want to use all the columns including and between <code>Mar</code> and <code>May</code>. We could also have used the following to produce the same results:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lesson-3c-tidy-data.html#cb190-1" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
-<span id="cb190-2"><a href="lesson-3c-tidy-data.html#cb190-2" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Mar, Apr, May), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
-<span id="cb190-3"><a href="lesson-3c-tidy-data.html#cb190-3" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
-<span id="cb190-4"><a href="lesson-3c-tidy-data.html#cb190-4" aria-hidden="true" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(hshd_id, prod_desc), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lesson-3c-tidy-data.html#cb190-1" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Mar<span class="sc">:</span>May, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
+<span id="cb190-2"><a href="lesson-3c-tidy-data.html#cb190-2" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Mar, Apr, May), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
+<span id="cb190-3"><a href="lesson-3c-tidy-data.html#cb190-3" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span>
+<span id="cb190-4"><a href="lesson-3c-tidy-data.html#cb190-4" tabindex="-1"></a>untidy1 <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(hshd_id, prod_desc), <span class="at">names_to =</span> <span class="st">&quot;month&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;net_spend_amt&quot;</span>)</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=421&amp;flashvars[mediaProxy.mediaPlayTo]=679&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
 </iframe>
@@ -949,68 +949,65 @@ perform #3 and then compute the mean population for each country.
 <div id="making-long-data-wider" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Making long data wider<a href="lesson-3c-tidy-data.html#making-long-data-wider" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are also times when we are required to turn long formatted data into wide formatted data – in other words, we want to <em>pivot data to be wider</em>. As a complement to <code>pivot_longer</code>, the <code>pivot_wider</code> function spreads a key-value pair across multiple columns. For example, the given data frame captures total household purchases for each product along with the household’s shopping habit (<em>Premium Loyal</em>, <em>Valuable</em>, etc.).</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lesson-3c-tidy-data.html#cb191-1" aria-hidden="true" tabindex="-1"></a>(untidy2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy2.csv&quot;</span>))</span>
-<span id="cb191-2"><a href="lesson-3c-tidy-data.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1536 Columns: 4</span></span>
-<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
-<span id="cb191-4"><a href="lesson-3c-tidy-data.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb191-5"><a href="lesson-3c-tidy-data.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_merch_l20_desc</span></span>
-<span id="cb191-6"><a href="lesson-3c-tidy-data.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
-<span id="cb191-7"><a href="lesson-3c-tidy-data.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb191-8"><a href="lesson-3c-tidy-data.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span id="cb191-9"><a href="lesson-3c-tidy-data.html#cb191-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span id="cb191-10"><a href="lesson-3c-tidy-data.html#cb191-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,536 × 4</span></span>
-<span id="cb191-11"><a href="lesson-3c-tidy-data.html#cb191-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        prod_merch_l20_desc net_spend_amt</span></span>
-<span id="cb191-12"><a href="lesson-3c-tidy-data.html#cb191-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;                       &lt;dbl&gt;</span></span>
-<span id="cb191-13"><a href="lesson-3c-tidy-data.html#cb191-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable      PASTA &amp; PIZZA SAUCE          1   </span></span>
-<span id="cb191-14"><a href="lesson-3c-tidy-data.html#cb191-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal PASTA &amp; PIZZA SAUCE          1.89</span></span>
-<span id="cb191-15"><a href="lesson-3c-tidy-data.html#cb191-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential     GREETING CARDS               5.29</span></span>
-<span id="cb191-16"><a href="lesson-3c-tidy-data.html#cb191-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted   GREETING CARDS               3.99</span></span>
-<span id="cb191-17"><a href="lesson-3c-tidy-data.html#cb191-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377032853 Uncommitted   PASTA &amp; PIZZA SAUCE          8.78</span></span>
-<span id="cb191-18"><a href="lesson-3c-tidy-data.html#cb191-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377285583 Premium Loyal GREETING CARDS              22.0 </span></span>
-<span id="cb191-19"><a href="lesson-3c-tidy-data.html#cb191-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3377285583 Premium Loyal PASTA &amp; PIZZA SAUCE         11.4 </span></span>
-<span id="cb191-20"><a href="lesson-3c-tidy-data.html#cb191-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3377528247 Valuable      GREETING CARDS              11.0 </span></span>
-<span id="cb191-21"><a href="lesson-3c-tidy-data.html#cb191-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3378020265 Valuable      GREETING CARDS               6.99</span></span>
-<span id="cb191-22"><a href="lesson-3c-tidy-data.html#cb191-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3379767653 Uncommitted   GREETING CARDS               3.99</span></span>
-<span id="cb191-23"><a href="lesson-3c-tidy-data.html#cb191-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,526 more rows</span></span>
-<span id="cb191-24"><a href="lesson-3c-tidy-data.html#cb191-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lesson-3c-tidy-data.html#cb191-1" tabindex="-1"></a>(untidy2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy2.csv&quot;</span>))</span>
+<span id="cb191-2"><a href="lesson-3c-tidy-data.html#cb191-2" tabindex="-1"></a><span class="do">## Rows: 1536 Columns: 4</span></span>
+<span id="cb191-3"><a href="lesson-3c-tidy-data.html#cb191-3" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────</span></span>
+<span id="cb191-4"><a href="lesson-3c-tidy-data.html#cb191-4" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb191-5"><a href="lesson-3c-tidy-data.html#cb191-5" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_merch_l20_desc</span></span>
+<span id="cb191-6"><a href="lesson-3c-tidy-data.html#cb191-6" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
+<span id="cb191-7"><a href="lesson-3c-tidy-data.html#cb191-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb191-8"><a href="lesson-3c-tidy-data.html#cb191-8" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb191-9"><a href="lesson-3c-tidy-data.html#cb191-9" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb191-10"><a href="lesson-3c-tidy-data.html#cb191-10" tabindex="-1"></a><span class="do">## # A tibble: 1,536 × 4</span></span>
+<span id="cb191-11"><a href="lesson-3c-tidy-data.html#cb191-11" tabindex="-1"></a><span class="do">##       hshd_id shabit   prod_merch_l20_desc net_spend_amt</span></span>
+<span id="cb191-12"><a href="lesson-3c-tidy-data.html#cb191-12" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;                       &lt;dbl&gt;</span></span>
+<span id="cb191-13"><a href="lesson-3c-tidy-data.html#cb191-13" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable PASTA &amp; PIZZA SAUCE          1   </span></span>
+<span id="cb191-14"><a href="lesson-3c-tidy-data.html#cb191-14" tabindex="-1"></a><span class="do">##  2 3376163223 Premium… PASTA &amp; PIZZA SAUCE          1.89</span></span>
+<span id="cb191-15"><a href="lesson-3c-tidy-data.html#cb191-15" tabindex="-1"></a><span class="do">##  3 3376542041 Potenti… GREETING CARDS               5.29</span></span>
+<span id="cb191-16"><a href="lesson-3c-tidy-data.html#cb191-16" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommi… GREETING CARDS               3.99</span></span>
+<span id="cb191-17"><a href="lesson-3c-tidy-data.html#cb191-17" tabindex="-1"></a><span class="do">##  5 3377032853 Uncommi… PASTA &amp; PIZZA SAUCE          8.78</span></span>
+<span id="cb191-18"><a href="lesson-3c-tidy-data.html#cb191-18" tabindex="-1"></a><span class="do">##  6 3377285583 Premium… GREETING CARDS              22.0 </span></span>
+<span id="cb191-19"><a href="lesson-3c-tidy-data.html#cb191-19" tabindex="-1"></a><span class="do">##  7 3377285583 Premium… PASTA &amp; PIZZA SAUCE         11.4 </span></span>
+<span id="cb191-20"><a href="lesson-3c-tidy-data.html#cb191-20" tabindex="-1"></a><span class="do">##  8 3377528247 Valuable GREETING CARDS              11.0 </span></span>
+<span id="cb191-21"><a href="lesson-3c-tidy-data.html#cb191-21" tabindex="-1"></a><span class="do">##  9 3378020265 Valuable GREETING CARDS               6.99</span></span>
+<span id="cb191-22"><a href="lesson-3c-tidy-data.html#cb191-22" tabindex="-1"></a><span class="do">## 10 3379767653 Uncommi… GREETING CARDS               3.99</span></span>
+<span id="cb191-23"><a href="lesson-3c-tidy-data.html#cb191-23" tabindex="-1"></a><span class="do">## # ℹ 1,526 more rows</span></span></code></pre></div>
 <p>Currently, this data set is in a tidy format. But say we wanted to perform a classification model where we try to use the amount spent on each product to predict the shopping habit of each household, we would need to reorganize the data to make it compatible with future algorithms. To address this, we would need to pivot this data such that each product as its own variable with the total dollar amount spent on each product as the values. In essence, we are transposing the values in <code>prod_merch_l20_desc</code> to be the new variable names (aka <code>key</code>) and then adding the values in <code>net_spend_amt</code> to be the <code>value</code> under each variable name.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lesson-3c-tidy-data.html#cb192-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
-<span id="cb192-2"><a href="lesson-3c-tidy-data.html#cb192-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt)</span>
-<span id="cb192-3"><a href="lesson-3c-tidy-data.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
-<span id="cb192-4"><a href="lesson-3c-tidy-data.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` NF SHO…¹</span></span>
-<span id="cb192-5"><a href="lesson-3c-tidy-data.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb192-6"><a href="lesson-3c-tidy-data.html#cb192-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1               NA          NA</span></span>
-<span id="cb192-7"><a href="lesson-3c-tidy-data.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89            NA          NA</span></span>
-<span id="cb192-8"><a href="lesson-3c-tidy-data.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                     NA                5.29       NA</span></span>
-<span id="cb192-9"><a href="lesson-3c-tidy-data.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99       NA</span></span>
-<span id="cb192-10"><a href="lesson-3c-tidy-data.html#cb192-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0        NA</span></span>
-<span id="cb192-11"><a href="lesson-3c-tidy-data.html#cb192-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                      NA               11.0        NA</span></span>
-<span id="cb192-12"><a href="lesson-3c-tidy-data.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                      NA                6.99       NA</span></span>
-<span id="cb192-13"><a href="lesson-3c-tidy-data.html#cb192-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99       NA</span></span>
-<span id="cb192-14"><a href="lesson-3c-tidy-data.html#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49            NA          NA</span></span>
-<span id="cb192-15"><a href="lesson-3c-tidy-data.html#cb192-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                   NA                7.99       NA</span></span>
-<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows, and abbreviated variable name</span></span>
-<span id="cb192-17"><a href="lesson-3c-tidy-data.html#cb192-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​`NF SHORTENING AND OIL`</span></span>
-<span id="cb192-18"><a href="lesson-3c-tidy-data.html#cb192-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lesson-3c-tidy-data.html#cb192-1" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
+<span id="cb192-2"><a href="lesson-3c-tidy-data.html#cb192-2" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt)</span>
+<span id="cb192-3"><a href="lesson-3c-tidy-data.html#cb192-3" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
+<span id="cb192-4"><a href="lesson-3c-tidy-data.html#cb192-4" tabindex="-1"></a><span class="do">##    hshd_id shabit `PASTA &amp; PIZZA SAUCE` `GREETING CARDS`</span></span>
+<span id="cb192-5"><a href="lesson-3c-tidy-data.html#cb192-5" tabindex="-1"></a><span class="do">##      &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt;            &lt;dbl&gt;</span></span>
+<span id="cb192-6"><a href="lesson-3c-tidy-data.html#cb192-6" tabindex="-1"></a><span class="do">##  1  3.38e9 Valua…                  1               NA   </span></span>
+<span id="cb192-7"><a href="lesson-3c-tidy-data.html#cb192-7" tabindex="-1"></a><span class="do">##  2  3.38e9 Premi…                  1.89            NA   </span></span>
+<span id="cb192-8"><a href="lesson-3c-tidy-data.html#cb192-8" tabindex="-1"></a><span class="do">##  3  3.38e9 Poten…                 NA                5.29</span></span>
+<span id="cb192-9"><a href="lesson-3c-tidy-data.html#cb192-9" tabindex="-1"></a><span class="do">##  4  3.38e9 Uncom…                  8.78             3.99</span></span>
+<span id="cb192-10"><a href="lesson-3c-tidy-data.html#cb192-10" tabindex="-1"></a><span class="do">##  5  3.38e9 Premi…                 11.4             22.0 </span></span>
+<span id="cb192-11"><a href="lesson-3c-tidy-data.html#cb192-11" tabindex="-1"></a><span class="do">##  6  3.38e9 Valua…                 NA               11.0 </span></span>
+<span id="cb192-12"><a href="lesson-3c-tidy-data.html#cb192-12" tabindex="-1"></a><span class="do">##  7  3.38e9 Valua…                 NA                6.99</span></span>
+<span id="cb192-13"><a href="lesson-3c-tidy-data.html#cb192-13" tabindex="-1"></a><span class="do">##  8  3.38e9 Uncom…                  2.19             3.99</span></span>
+<span id="cb192-14"><a href="lesson-3c-tidy-data.html#cb192-14" tabindex="-1"></a><span class="do">##  9  3.38e9 Premi…                  1.49            NA   </span></span>
+<span id="cb192-15"><a href="lesson-3c-tidy-data.html#cb192-15" tabindex="-1"></a><span class="do">## 10  3.38e9 Uncom…                 NA                7.99</span></span>
+<span id="cb192-16"><a href="lesson-3c-tidy-data.html#cb192-16" tabindex="-1"></a><span class="do">## # ℹ 1,226 more rows</span></span>
+<span id="cb192-17"><a href="lesson-3c-tidy-data.html#cb192-17" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: `NF SHORTENING AND OIL` &lt;dbl&gt;</span></span></code></pre></div>
 <p>This results in each household (<code>hshd_id</code>) having its own observation. You probably notice that there are now a lot of missing values which causes <code>NA</code> to be populated. If you were to apply this data to one of the many machine learning algorithms, you would likely run into errors due to the <code>NA</code>s. In this example, we could replace those <code>NA</code>s with zeros using <code>values_fill = 0</code>, since the household did not purchase any of those products.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lesson-3c-tidy-data.html#cb193-1" aria-hidden="true" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
-<span id="cb193-2"><a href="lesson-3c-tidy-data.html#cb193-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
-<span id="cb193-3"><a href="lesson-3c-tidy-data.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
-<span id="cb193-4"><a href="lesson-3c-tidy-data.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        `PASTA &amp; PIZZA SAUCE` `GREETING CARDS` NF SHO…¹</span></span>
-<span id="cb193-5"><a href="lesson-3c-tidy-data.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;            &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb193-6"><a href="lesson-3c-tidy-data.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 3376002291 Valuable                       1                0           0</span></span>
-<span id="cb193-7"><a href="lesson-3c-tidy-data.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 3376163223 Premium Loyal                  1.89             0           0</span></span>
-<span id="cb193-8"><a href="lesson-3c-tidy-data.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3376542041 Potential                      0                5.29        0</span></span>
-<span id="cb193-9"><a href="lesson-3c-tidy-data.html#cb193-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3377032853 Uncommitted                    8.78             3.99        0</span></span>
-<span id="cb193-10"><a href="lesson-3c-tidy-data.html#cb193-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3377285583 Premium Loyal                 11.4             22.0         0</span></span>
-<span id="cb193-11"><a href="lesson-3c-tidy-data.html#cb193-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3377528247 Valuable                       0               11.0         0</span></span>
-<span id="cb193-12"><a href="lesson-3c-tidy-data.html#cb193-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 3378020265 Valuable                       0                6.99        0</span></span>
-<span id="cb193-13"><a href="lesson-3c-tidy-data.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 3379767653 Uncommitted                    2.19             3.99        0</span></span>
-<span id="cb193-14"><a href="lesson-3c-tidy-data.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 3379815863 Premium Loyal                  1.49             0           0</span></span>
-<span id="cb193-15"><a href="lesson-3c-tidy-data.html#cb193-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 3380253171 Uncommitted                    0                7.99        0</span></span>
-<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,226 more rows, and abbreviated variable name</span></span>
-<span id="cb193-17"><a href="lesson-3c-tidy-data.html#cb193-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   ¹​`NF SHORTENING AND OIL`</span></span>
-<span id="cb193-18"><a href="lesson-3c-tidy-data.html#cb193-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lesson-3c-tidy-data.html#cb193-1" tabindex="-1"></a>untidy2 <span class="sc">%&gt;%</span></span>
+<span id="cb193-2"><a href="lesson-3c-tidy-data.html#cb193-2" tabindex="-1"></a>   <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> prod_merch_l20_desc, <span class="at">values_from =</span> net_spend_amt, <span class="at">values_fill =</span> <span class="dv">0</span>)</span>
+<span id="cb193-3"><a href="lesson-3c-tidy-data.html#cb193-3" tabindex="-1"></a><span class="do">## # A tibble: 1,236 × 5</span></span>
+<span id="cb193-4"><a href="lesson-3c-tidy-data.html#cb193-4" tabindex="-1"></a><span class="do">##    hshd_id shabit `PASTA &amp; PIZZA SAUCE` `GREETING CARDS`</span></span>
+<span id="cb193-5"><a href="lesson-3c-tidy-data.html#cb193-5" tabindex="-1"></a><span class="do">##      &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt;            &lt;dbl&gt;</span></span>
+<span id="cb193-6"><a href="lesson-3c-tidy-data.html#cb193-6" tabindex="-1"></a><span class="do">##  1  3.38e9 Valua…                  1                0   </span></span>
+<span id="cb193-7"><a href="lesson-3c-tidy-data.html#cb193-7" tabindex="-1"></a><span class="do">##  2  3.38e9 Premi…                  1.89             0   </span></span>
+<span id="cb193-8"><a href="lesson-3c-tidy-data.html#cb193-8" tabindex="-1"></a><span class="do">##  3  3.38e9 Poten…                  0                5.29</span></span>
+<span id="cb193-9"><a href="lesson-3c-tidy-data.html#cb193-9" tabindex="-1"></a><span class="do">##  4  3.38e9 Uncom…                  8.78             3.99</span></span>
+<span id="cb193-10"><a href="lesson-3c-tidy-data.html#cb193-10" tabindex="-1"></a><span class="do">##  5  3.38e9 Premi…                 11.4             22.0 </span></span>
+<span id="cb193-11"><a href="lesson-3c-tidy-data.html#cb193-11" tabindex="-1"></a><span class="do">##  6  3.38e9 Valua…                  0               11.0 </span></span>
+<span id="cb193-12"><a href="lesson-3c-tidy-data.html#cb193-12" tabindex="-1"></a><span class="do">##  7  3.38e9 Valua…                  0                6.99</span></span>
+<span id="cb193-13"><a href="lesson-3c-tidy-data.html#cb193-13" tabindex="-1"></a><span class="do">##  8  3.38e9 Uncom…                  2.19             3.99</span></span>
+<span id="cb193-14"><a href="lesson-3c-tidy-data.html#cb193-14" tabindex="-1"></a><span class="do">##  9  3.38e9 Premi…                  1.49             0   </span></span>
+<span id="cb193-15"><a href="lesson-3c-tidy-data.html#cb193-15" tabindex="-1"></a><span class="do">## 10  3.38e9 Uncom…                  0                7.99</span></span>
+<span id="cb193-16"><a href="lesson-3c-tidy-data.html#cb193-16" tabindex="-1"></a><span class="do">## # ℹ 1,226 more rows</span></span>
+<span id="cb193-17"><a href="lesson-3c-tidy-data.html#cb193-17" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: `NF SHORTENING AND OIL` &lt;dbl&gt;</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2pmwfrow&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=679&amp;flashvars[mediaProxy.mediaPlayTo]=847&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_82077ngb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-3c">
 </iframe>
@@ -1049,49 +1046,47 @@ country by year.
 <div id="separate-one-variable-into-multiple" class="section level2 hasAnchor" number="12.5">
 <h2><span class="header-section-number">12.5</span> Separate one variable into multiple<a href="lesson-3c-tidy-data.html#separate-one-variable-into-multiple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many times a single column variable will capture multiple variables, or even parts of a variable you just don’t care about. This is exemplified in the following <code>untidy3</code> data frame. Here, the <code>product</code> variable combines two variables, the product category (i.e. greeting cards, Pasta &amp; pizza sauce) along with the product description (i.e. graduation cards, birthday cards). For many reasons (summary statistics, visualization, modeling) we would likely want to <em>separate</em> these parts into their own variables.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lesson-3c-tidy-data.html#cb194-1" aria-hidden="true" tabindex="-1"></a>(untidy3 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy3.csv&quot;</span>))</span>
-<span id="cb194-2"><a href="lesson-3c-tidy-data.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 4</span></span>
-<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
-<span id="cb194-4"><a href="lesson-3c-tidy-data.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb194-5"><a href="lesson-3c-tidy-data.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, product</span></span>
-<span id="cb194-6"><a href="lesson-3c-tidy-data.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
-<span id="cb194-7"><a href="lesson-3c-tidy-data.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb194-8"><a href="lesson-3c-tidy-data.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span id="cb194-9"><a href="lesson-3c-tidy-data.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span id="cb194-10"><a href="lesson-3c-tidy-data.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 4</span></span>
-<span id="cb194-11"><a href="lesson-3c-tidy-data.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        net_spend_amt product                 </span></span>
-<span id="cb194-12"><a href="lesson-3c-tidy-data.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;                   </span></span>
-<span id="cb194-13"><a href="lesson-3c-tidy-data.html#cb194-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loyal          0.99 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-14"><a href="lesson-3c-tidy-data.html#cb194-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loyal          0.99 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-15"><a href="lesson-3c-tidy-data.html#cb194-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-16"><a href="lesson-3c-tidy-data.html#cb194-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-17"><a href="lesson-3c-tidy-data.html#cb194-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-18"><a href="lesson-3c-tidy-data.html#cb194-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-19"><a href="lesson-3c-tidy-data.html#cb194-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-20"><a href="lesson-3c-tidy-data.html#cb194-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-21"><a href="lesson-3c-tidy-data.html#cb194-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb194-22"><a href="lesson-3c-tidy-data.html#cb194-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 GREETING CARDS: BALLOONS</span></span>
-<span id="cb194-23"><a href="lesson-3c-tidy-data.html#cb194-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
-<span id="cb194-24"><a href="lesson-3c-tidy-data.html#cb194-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lesson-3c-tidy-data.html#cb194-1" tabindex="-1"></a>(untidy3 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy3.csv&quot;</span>))</span>
+<span id="cb194-2"><a href="lesson-3c-tidy-data.html#cb194-2" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 4</span></span>
+<span id="cb194-3"><a href="lesson-3c-tidy-data.html#cb194-3" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────</span></span>
+<span id="cb194-4"><a href="lesson-3c-tidy-data.html#cb194-4" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb194-5"><a href="lesson-3c-tidy-data.html#cb194-5" tabindex="-1"></a><span class="do">## chr (2): shabit, product</span></span>
+<span id="cb194-6"><a href="lesson-3c-tidy-data.html#cb194-6" tabindex="-1"></a><span class="do">## dbl (2): hshd_id, net_spend_amt</span></span>
+<span id="cb194-7"><a href="lesson-3c-tidy-data.html#cb194-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb194-8"><a href="lesson-3c-tidy-data.html#cb194-8" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb194-9"><a href="lesson-3c-tidy-data.html#cb194-9" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb194-10"><a href="lesson-3c-tidy-data.html#cb194-10" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 4</span></span>
+<span id="cb194-11"><a href="lesson-3c-tidy-data.html#cb194-11" tabindex="-1"></a><span class="do">##       hshd_id shabit        net_spend_amt product       </span></span>
+<span id="cb194-12"><a href="lesson-3c-tidy-data.html#cb194-12" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;         </span></span>
+<span id="cb194-13"><a href="lesson-3c-tidy-data.html#cb194-13" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loyal          0.99 GREETING CARD…</span></span>
+<span id="cb194-14"><a href="lesson-3c-tidy-data.html#cb194-14" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loyal          0.99 GREETING CARD…</span></span>
+<span id="cb194-15"><a href="lesson-3c-tidy-data.html#cb194-15" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loyal          1.89 GREETING CARD…</span></span>
+<span id="cb194-16"><a href="lesson-3c-tidy-data.html#cb194-16" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loyal          1.89 GREETING CARD…</span></span>
+<span id="cb194-17"><a href="lesson-3c-tidy-data.html#cb194-17" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loyal          1.89 GREETING CARD…</span></span>
+<span id="cb194-18"><a href="lesson-3c-tidy-data.html#cb194-18" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loyal          1.89 GREETING CARD…</span></span>
+<span id="cb194-19"><a href="lesson-3c-tidy-data.html#cb194-19" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted            1.89 GREETING CARD…</span></span>
+<span id="cb194-20"><a href="lesson-3c-tidy-data.html#cb194-20" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 GREETING CARD…</span></span>
+<span id="cb194-21"><a href="lesson-3c-tidy-data.html#cb194-21" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 GREETING CARD…</span></span>
+<span id="cb194-22"><a href="lesson-3c-tidy-data.html#cb194-22" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 GREETING CARD…</span></span>
+<span id="cb194-23"><a href="lesson-3c-tidy-data.html#cb194-23" tabindex="-1"></a><span class="do">## # ℹ 3,874 more rows</span></span></code></pre></div>
 <p>This can be accomplished using the <code>separate</code> function which separates a single column into multiple columns based on a separator. Additional arguments provide some flexibility with separating columns.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lesson-3c-tidy-data.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate product column into two variables named &quot;prod_category&quot; &amp; &quot;prod_desc&quot;</span></span>
-<span id="cb195-2"><a href="lesson-3c-tidy-data.html#cb195-2" aria-hidden="true" tabindex="-1"></a>untidy3 <span class="sc">%&gt;%</span> </span>
-<span id="cb195-3"><a href="lesson-3c-tidy-data.html#cb195-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">separate</span>(<span class="at">col =</span> product, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;prod_category&quot;</span>, <span class="st">&quot;prod_desc&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)</span>
-<span id="cb195-4"><a href="lesson-3c-tidy-data.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
-<span id="cb195-5"><a href="lesson-3c-tidy-data.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        net_spend_amt prod_category  prod_desc</span></span>
-<span id="cb195-6"><a href="lesson-3c-tidy-data.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;    </span></span>
-<span id="cb195-7"><a href="lesson-3c-tidy-data.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loyal          0.99 GREETING CARDS CREPE    </span></span>
-<span id="cb195-8"><a href="lesson-3c-tidy-data.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loyal          0.99 GREETING CARDS CREPE    </span></span>
-<span id="cb195-9"><a href="lesson-3c-tidy-data.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loyal          1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-10"><a href="lesson-3c-tidy-data.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loyal          1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-11"><a href="lesson-3c-tidy-data.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loyal          1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-12"><a href="lesson-3c-tidy-data.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loyal          1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-13"><a href="lesson-3c-tidy-data.html#cb195-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted            1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-14"><a href="lesson-3c-tidy-data.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-15"><a href="lesson-3c-tidy-data.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 GREETING CARDS CREPE    </span></span>
-<span id="cb195-16"><a href="lesson-3c-tidy-data.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 GREETING CARDS BALLOONS </span></span>
-<span id="cb195-17"><a href="lesson-3c-tidy-data.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
-<span id="cb195-18"><a href="lesson-3c-tidy-data.html#cb195-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lesson-3c-tidy-data.html#cb195-1" tabindex="-1"></a><span class="co"># separate product column into two variables named &quot;prod_category&quot; &amp; &quot;prod_desc&quot;</span></span>
+<span id="cb195-2"><a href="lesson-3c-tidy-data.html#cb195-2" tabindex="-1"></a>untidy3 <span class="sc">%&gt;%</span> </span>
+<span id="cb195-3"><a href="lesson-3c-tidy-data.html#cb195-3" tabindex="-1"></a>   <span class="fu">separate</span>(<span class="at">col =</span> product, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;prod_category&quot;</span>, <span class="st">&quot;prod_desc&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)</span>
+<span id="cb195-4"><a href="lesson-3c-tidy-data.html#cb195-4" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
+<span id="cb195-5"><a href="lesson-3c-tidy-data.html#cb195-5" tabindex="-1"></a><span class="do">##     hshd_id shabit net_spend_amt prod_category prod_desc</span></span>
+<span id="cb195-6"><a href="lesson-3c-tidy-data.html#cb195-6" tabindex="-1"></a><span class="do">##       &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;    </span></span>
+<span id="cb195-7"><a href="lesson-3c-tidy-data.html#cb195-7" tabindex="-1"></a><span class="do">##  1   8.61e9 Premi…          0.99 GREETING CAR… CREPE    </span></span>
+<span id="cb195-8"><a href="lesson-3c-tidy-data.html#cb195-8" tabindex="-1"></a><span class="do">##  2   8.61e9 Premi…          0.99 GREETING CAR… CREPE    </span></span>
+<span id="cb195-9"><a href="lesson-3c-tidy-data.html#cb195-9" tabindex="-1"></a><span class="do">##  3   3.48e9 Premi…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-10"><a href="lesson-3c-tidy-data.html#cb195-10" tabindex="-1"></a><span class="do">##  4   3.48e9 Premi…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-11"><a href="lesson-3c-tidy-data.html#cb195-11" tabindex="-1"></a><span class="do">##  5   3.48e9 Premi…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-12"><a href="lesson-3c-tidy-data.html#cb195-12" tabindex="-1"></a><span class="do">##  6   3.48e9 Premi…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-13"><a href="lesson-3c-tidy-data.html#cb195-13" tabindex="-1"></a><span class="do">##  7   5.00e9 Uncom…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-14"><a href="lesson-3c-tidy-data.html#cb195-14" tabindex="-1"></a><span class="do">##  8   5.00e9 Uncom…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-15"><a href="lesson-3c-tidy-data.html#cb195-15" tabindex="-1"></a><span class="do">##  9   5.00e9 Uncom…          1.89 GREETING CAR… CREPE    </span></span>
+<span id="cb195-16"><a href="lesson-3c-tidy-data.html#cb195-16" tabindex="-1"></a><span class="do">## 10   8.61e9 Premi…          1.49 GREETING CAR… BALLOONS </span></span>
+<span id="cb195-17"><a href="lesson-3c-tidy-data.html#cb195-17" tabindex="-1"></a><span class="do">## # ℹ 3,874 more rows</span></span></code></pre></div>
 <div class="note">
 <p>
 The default separator is any non alpha-numeric character. In this
@@ -1102,23 +1097,22 @@ column that you are separating by including
 </p>
 </div>
 <p>You can also pass a vector of integers to <code>sep</code> and <code>separate()</code> will interpret the integers as positions to split at. For example, say our household ID (<code>hshd_id</code>) value actually represents the the household <strong><em>and</em></strong> user. So, let’s say the first 7 digits is the household identifier and the last 3 digits is the user identifier. We can split this into two new variables with the following:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lesson-3c-tidy-data.html#cb196-1" aria-hidden="true" tabindex="-1"></a>untidy3 <span class="sc">%&gt;%</span> </span>
-<span id="cb196-2"><a href="lesson-3c-tidy-data.html#cb196-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">separate</span>(hshd_id, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;hshd_id&quot;</span>, <span class="st">&quot;member_id&quot;</span>), <span class="at">sep =</span> <span class="dv">7</span>)</span>
-<span id="cb196-3"><a href="lesson-3c-tidy-data.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
-<span id="cb196-4"><a href="lesson-3c-tidy-data.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    hshd_id member_id shabit        net_spend_amt product                 </span></span>
-<span id="cb196-5"><a href="lesson-3c-tidy-data.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;                   </span></span>
-<span id="cb196-6"><a href="lesson-3c-tidy-data.html#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 8614328 969       Premium Loyal          0.99 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-7"><a href="lesson-3c-tidy-data.html#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 8614328 969       Premium Loyal          0.99 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-8"><a href="lesson-3c-tidy-data.html#cb196-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3479082 131       Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-9"><a href="lesson-3c-tidy-data.html#cb196-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3479082 131       Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-10"><a href="lesson-3c-tidy-data.html#cb196-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3479082 131       Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-11"><a href="lesson-3c-tidy-data.html#cb196-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3479082 131       Premium Loyal          1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-12"><a href="lesson-3c-tidy-data.html#cb196-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 5003651 017       Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-13"><a href="lesson-3c-tidy-data.html#cb196-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651 017       Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-14"><a href="lesson-3c-tidy-data.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651 017       Uncommitted            1.89 GREETING CARDS: CREPE   </span></span>
-<span id="cb196-15"><a href="lesson-3c-tidy-data.html#cb196-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328 969       Premium Loyal          1.49 GREETING CARDS: BALLOONS</span></span>
-<span id="cb196-16"><a href="lesson-3c-tidy-data.html#cb196-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
-<span id="cb196-17"><a href="lesson-3c-tidy-data.html#cb196-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lesson-3c-tidy-data.html#cb196-1" tabindex="-1"></a>untidy3 <span class="sc">%&gt;%</span> </span>
+<span id="cb196-2"><a href="lesson-3c-tidy-data.html#cb196-2" tabindex="-1"></a>   <span class="fu">separate</span>(hshd_id, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;hshd_id&quot;</span>, <span class="st">&quot;member_id&quot;</span>), <span class="at">sep =</span> <span class="dv">7</span>)</span>
+<span id="cb196-3"><a href="lesson-3c-tidy-data.html#cb196-3" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
+<span id="cb196-4"><a href="lesson-3c-tidy-data.html#cb196-4" tabindex="-1"></a><span class="do">##    hshd_id member_id shabit        net_spend_amt product</span></span>
+<span id="cb196-5"><a href="lesson-3c-tidy-data.html#cb196-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb196-6"><a href="lesson-3c-tidy-data.html#cb196-6" tabindex="-1"></a><span class="do">##  1 8614328 969       Premium Loyal          0.99 GREETI…</span></span>
+<span id="cb196-7"><a href="lesson-3c-tidy-data.html#cb196-7" tabindex="-1"></a><span class="do">##  2 8614328 969       Premium Loyal          0.99 GREETI…</span></span>
+<span id="cb196-8"><a href="lesson-3c-tidy-data.html#cb196-8" tabindex="-1"></a><span class="do">##  3 3479082 131       Premium Loyal          1.89 GREETI…</span></span>
+<span id="cb196-9"><a href="lesson-3c-tidy-data.html#cb196-9" tabindex="-1"></a><span class="do">##  4 3479082 131       Premium Loyal          1.89 GREETI…</span></span>
+<span id="cb196-10"><a href="lesson-3c-tidy-data.html#cb196-10" tabindex="-1"></a><span class="do">##  5 3479082 131       Premium Loyal          1.89 GREETI…</span></span>
+<span id="cb196-11"><a href="lesson-3c-tidy-data.html#cb196-11" tabindex="-1"></a><span class="do">##  6 3479082 131       Premium Loyal          1.89 GREETI…</span></span>
+<span id="cb196-12"><a href="lesson-3c-tidy-data.html#cb196-12" tabindex="-1"></a><span class="do">##  7 5003651 017       Uncommitted            1.89 GREETI…</span></span>
+<span id="cb196-13"><a href="lesson-3c-tidy-data.html#cb196-13" tabindex="-1"></a><span class="do">##  8 5003651 017       Uncommitted            1.89 GREETI…</span></span>
+<span id="cb196-14"><a href="lesson-3c-tidy-data.html#cb196-14" tabindex="-1"></a><span class="do">##  9 5003651 017       Uncommitted            1.89 GREETI…</span></span>
+<span id="cb196-15"><a href="lesson-3c-tidy-data.html#cb196-15" tabindex="-1"></a><span class="do">## 10 8614328 969       Premium Loyal          1.49 GREETI…</span></span>
+<span id="cb196-16"><a href="lesson-3c-tidy-data.html#cb196-16" tabindex="-1"></a><span class="do">## # ℹ 3,874 more rows</span></span></code></pre></div>
 <div class="tip">
 <p>
 You can use positive and negative values to split the column.
@@ -1162,47 +1156,46 @@ country by year.
 <div id="combine-multiple-variables-into-one" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Combine multiple variables into one<a href="lesson-3c-tidy-data.html#combine-multiple-variables-into-one" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Similarly, there are times when we would like to combine the values of two variables. As a compliment to <code>separate</code>, the <code>unite</code> function is a convenient function to paste together multiple variable values into one. Consider the following data frame that has separate date variables. To perform time series analysis or for visualizations we may desire to have a single date column.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="lesson-3c-tidy-data.html#cb197-1" aria-hidden="true" tabindex="-1"></a>(untidy4 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy4.csv&quot;</span>))</span>
-<span id="cb197-2"><a href="lesson-3c-tidy-data.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 7</span></span>
-<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────────</span></span>
-<span id="cb197-4"><a href="lesson-3c-tidy-data.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb197-5"><a href="lesson-3c-tidy-data.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_desc</span></span>
-<span id="cb197-6"><a href="lesson-3c-tidy-data.html#cb197-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (5): hshd_id, net_spend_amt, year, month, day</span></span>
-<span id="cb197-7"><a href="lesson-3c-tidy-data.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb197-8"><a href="lesson-3c-tidy-data.html#cb197-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span id="cb197-9"><a href="lesson-3c-tidy-data.html#cb197-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span id="cb197-10"><a href="lesson-3c-tidy-data.html#cb197-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 7</span></span>
-<span id="cb197-11"><a href="lesson-3c-tidy-data.html#cb197-11" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        net_spend_amt prod_desc  year month   day</span></span>
-<span id="cb197-12"><a href="lesson-3c-tidy-data.html#cb197-12" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb197-13"><a href="lesson-3c-tidy-data.html#cb197-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loyal          0.99 CREPE      2017     5    30</span></span>
-<span id="cb197-14"><a href="lesson-3c-tidy-data.html#cb197-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loyal          0.99 CREPE      2017     5    30</span></span>
-<span id="cb197-15"><a href="lesson-3c-tidy-data.html#cb197-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loyal          1.89 CREPE      2017     3     6</span></span>
-<span id="cb197-16"><a href="lesson-3c-tidy-data.html#cb197-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loyal          1.89 CREPE      2017     3     6</span></span>
-<span id="cb197-17"><a href="lesson-3c-tidy-data.html#cb197-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loyal          1.89 CREPE      2017     3     6</span></span>
-<span id="cb197-18"><a href="lesson-3c-tidy-data.html#cb197-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loyal          1.89 CREPE      2017     3     6</span></span>
-<span id="cb197-19"><a href="lesson-3c-tidy-data.html#cb197-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted            1.89 CREPE      2017     3    28</span></span>
-<span id="cb197-20"><a href="lesson-3c-tidy-data.html#cb197-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 CREPE      2017     3    28</span></span>
-<span id="cb197-21"><a href="lesson-3c-tidy-data.html#cb197-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 CREPE      2017     3    28</span></span>
-<span id="cb197-22"><a href="lesson-3c-tidy-data.html#cb197-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 BALLOONS   2017     5    30</span></span>
-<span id="cb197-23"><a href="lesson-3c-tidy-data.html#cb197-23" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
-<span id="cb197-24"><a href="lesson-3c-tidy-data.html#cb197-24" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="lesson-3c-tidy-data.html#cb197-1" tabindex="-1"></a>(untidy4 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/untidy4.csv&quot;</span>))</span>
+<span id="cb197-2"><a href="lesson-3c-tidy-data.html#cb197-2" tabindex="-1"></a><span class="do">## Rows: 3884 Columns: 7</span></span>
+<span id="cb197-3"><a href="lesson-3c-tidy-data.html#cb197-3" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────</span></span>
+<span id="cb197-4"><a href="lesson-3c-tidy-data.html#cb197-4" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
+<span id="cb197-5"><a href="lesson-3c-tidy-data.html#cb197-5" tabindex="-1"></a><span class="do">## chr (2): shabit, prod_desc</span></span>
+<span id="cb197-6"><a href="lesson-3c-tidy-data.html#cb197-6" tabindex="-1"></a><span class="do">## dbl (5): hshd_id, net_spend_amt, year, month, day</span></span>
+<span id="cb197-7"><a href="lesson-3c-tidy-data.html#cb197-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb197-8"><a href="lesson-3c-tidy-data.html#cb197-8" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb197-9"><a href="lesson-3c-tidy-data.html#cb197-9" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb197-10"><a href="lesson-3c-tidy-data.html#cb197-10" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 7</span></span>
+<span id="cb197-11"><a href="lesson-3c-tidy-data.html#cb197-11" tabindex="-1"></a><span class="do">##       hshd_id shabit net_spend_amt prod_desc  year month</span></span>
+<span id="cb197-12"><a href="lesson-3c-tidy-data.html#cb197-12" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb197-13"><a href="lesson-3c-tidy-data.html#cb197-13" tabindex="-1"></a><span class="do">##  1 8614328969 Premi…          0.99 CREPE      2017     5</span></span>
+<span id="cb197-14"><a href="lesson-3c-tidy-data.html#cb197-14" tabindex="-1"></a><span class="do">##  2 8614328969 Premi…          0.99 CREPE      2017     5</span></span>
+<span id="cb197-15"><a href="lesson-3c-tidy-data.html#cb197-15" tabindex="-1"></a><span class="do">##  3 3479082131 Premi…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-16"><a href="lesson-3c-tidy-data.html#cb197-16" tabindex="-1"></a><span class="do">##  4 3479082131 Premi…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-17"><a href="lesson-3c-tidy-data.html#cb197-17" tabindex="-1"></a><span class="do">##  5 3479082131 Premi…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-18"><a href="lesson-3c-tidy-data.html#cb197-18" tabindex="-1"></a><span class="do">##  6 3479082131 Premi…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-19"><a href="lesson-3c-tidy-data.html#cb197-19" tabindex="-1"></a><span class="do">##  7 5003651017 Uncom…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-20"><a href="lesson-3c-tidy-data.html#cb197-20" tabindex="-1"></a><span class="do">##  8 5003651017 Uncom…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-21"><a href="lesson-3c-tidy-data.html#cb197-21" tabindex="-1"></a><span class="do">##  9 5003651017 Uncom…          1.89 CREPE      2017     3</span></span>
+<span id="cb197-22"><a href="lesson-3c-tidy-data.html#cb197-22" tabindex="-1"></a><span class="do">## 10 8614328969 Premi…          1.49 BALLOONS   2017     5</span></span>
+<span id="cb197-23"><a href="lesson-3c-tidy-data.html#cb197-23" tabindex="-1"></a><span class="do">## # ℹ 3,874 more rows</span></span>
+<span id="cb197-24"><a href="lesson-3c-tidy-data.html#cb197-24" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: day &lt;dbl&gt;</span></span></code></pre></div>
 <p>We can accomplish this by <em>uniting</em> these columns into one variable with <code>unite</code>.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lesson-3c-tidy-data.html#cb198-1" aria-hidden="true" tabindex="-1"></a>untidy4 <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;date&quot;</span>, year<span class="sc">:</span>day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb198-2"><a href="lesson-3c-tidy-data.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
-<span id="cb198-3"><a href="lesson-3c-tidy-data.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="do">##       hshd_id shabit        net_spend_amt prod_desc date     </span></span>
-<span id="cb198-4"><a href="lesson-3c-tidy-data.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    </span></span>
-<span id="cb198-5"><a href="lesson-3c-tidy-data.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loyal          0.99 CREPE     2017-5-30</span></span>
-<span id="cb198-6"><a href="lesson-3c-tidy-data.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loyal          0.99 CREPE     2017-5-30</span></span>
-<span id="cb198-7"><a href="lesson-3c-tidy-data.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loyal          1.89 CREPE     2017-3-6 </span></span>
-<span id="cb198-8"><a href="lesson-3c-tidy-data.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loyal          1.89 CREPE     2017-3-6 </span></span>
-<span id="cb198-9"><a href="lesson-3c-tidy-data.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loyal          1.89 CREPE     2017-3-6 </span></span>
-<span id="cb198-10"><a href="lesson-3c-tidy-data.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loyal          1.89 CREPE     2017-3-6 </span></span>
-<span id="cb198-11"><a href="lesson-3c-tidy-data.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted            1.89 CREPE     2017-3-28</span></span>
-<span id="cb198-12"><a href="lesson-3c-tidy-data.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted            1.89 CREPE     2017-3-28</span></span>
-<span id="cb198-13"><a href="lesson-3c-tidy-data.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted            1.89 CREPE     2017-3-28</span></span>
-<span id="cb198-14"><a href="lesson-3c-tidy-data.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loyal          1.49 BALLOONS  2017-5-30</span></span>
-<span id="cb198-15"><a href="lesson-3c-tidy-data.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 3,874 more rows</span></span>
-<span id="cb198-16"><a href="lesson-3c-tidy-data.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lesson-3c-tidy-data.html#cb198-1" tabindex="-1"></a>untidy4 <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;date&quot;</span>, year<span class="sc">:</span>day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb198-2"><a href="lesson-3c-tidy-data.html#cb198-2" tabindex="-1"></a><span class="do">## # A tibble: 3,884 × 5</span></span>
+<span id="cb198-3"><a href="lesson-3c-tidy-data.html#cb198-3" tabindex="-1"></a><span class="do">##       hshd_id shabit       net_spend_amt prod_desc date </span></span>
+<span id="cb198-4"><a href="lesson-3c-tidy-data.html#cb198-4" tabindex="-1"></a><span class="do">##         &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;</span></span>
+<span id="cb198-5"><a href="lesson-3c-tidy-data.html#cb198-5" tabindex="-1"></a><span class="do">##  1 8614328969 Premium Loy…          0.99 CREPE     2017…</span></span>
+<span id="cb198-6"><a href="lesson-3c-tidy-data.html#cb198-6" tabindex="-1"></a><span class="do">##  2 8614328969 Premium Loy…          0.99 CREPE     2017…</span></span>
+<span id="cb198-7"><a href="lesson-3c-tidy-data.html#cb198-7" tabindex="-1"></a><span class="do">##  3 3479082131 Premium Loy…          1.89 CREPE     2017…</span></span>
+<span id="cb198-8"><a href="lesson-3c-tidy-data.html#cb198-8" tabindex="-1"></a><span class="do">##  4 3479082131 Premium Loy…          1.89 CREPE     2017…</span></span>
+<span id="cb198-9"><a href="lesson-3c-tidy-data.html#cb198-9" tabindex="-1"></a><span class="do">##  5 3479082131 Premium Loy…          1.89 CREPE     2017…</span></span>
+<span id="cb198-10"><a href="lesson-3c-tidy-data.html#cb198-10" tabindex="-1"></a><span class="do">##  6 3479082131 Premium Loy…          1.89 CREPE     2017…</span></span>
+<span id="cb198-11"><a href="lesson-3c-tidy-data.html#cb198-11" tabindex="-1"></a><span class="do">##  7 5003651017 Uncommitted           1.89 CREPE     2017…</span></span>
+<span id="cb198-12"><a href="lesson-3c-tidy-data.html#cb198-12" tabindex="-1"></a><span class="do">##  8 5003651017 Uncommitted           1.89 CREPE     2017…</span></span>
+<span id="cb198-13"><a href="lesson-3c-tidy-data.html#cb198-13" tabindex="-1"></a><span class="do">##  9 5003651017 Uncommitted           1.89 CREPE     2017…</span></span>
+<span id="cb198-14"><a href="lesson-3c-tidy-data.html#cb198-14" tabindex="-1"></a><span class="do">## 10 8614328969 Premium Loy…          1.49 BALLOONS  2017…</span></span>
+<span id="cb198-15"><a href="lesson-3c-tidy-data.html#cb198-15" tabindex="-1"></a><span class="do">## # ℹ 3,874 more rows</span></span></code></pre></div>
 <div class="note">
 <p>
 Don’t worry, we’ll learn more appropriate ways to deal with dates in
@@ -1244,118 +1237,117 @@ country by year.
 <div id="additional-tidying-functions" class="section level2 hasAnchor" number="12.7">
 <h2><span class="header-section-number">12.7</span> Additional tidying functions<a href="lesson-3c-tidy-data.html#additional-tidying-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The previous four functions (<code>pivot_longer</code>, <code>pivot_wider</code>, <code>separate</code> and <code>unite</code>) are the primary functions you will find yourself using on a continuous basis; however, there are some handy functions that are lesser known with the <code>tidyr</code> package. Consider this untidy data frame.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="lesson-3c-tidy-data.html#cb199-1" aria-hidden="true" tabindex="-1"></a>expenses <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(<span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">text =</span> <span class="st">&quot;</span></span>
-<span id="cb199-2"><a href="lesson-3c-tidy-data.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="st">        Dept    Year   Month   Day         Cost</span></span>
-<span id="cb199-3"><a href="lesson-3c-tidy-data.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="st">           A    2015      01    01      $500.00</span></span>
-<span id="cb199-4"><a href="lesson-3c-tidy-data.html#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="st">          NA      NA      02    05       $90.00</span></span>
-<span id="cb199-5"><a href="lesson-3c-tidy-data.html#cb199-5" aria-hidden="true" tabindex="-1"></a><span class="st">          NA      NA      02    22    $1,250.45</span></span>
-<span id="cb199-6"><a href="lesson-3c-tidy-data.html#cb199-6" aria-hidden="true" tabindex="-1"></a><span class="st">          NA      NA      03    NA      $325.10</span></span>
-<span id="cb199-7"><a href="lesson-3c-tidy-data.html#cb199-7" aria-hidden="true" tabindex="-1"></a><span class="st">           B      NA      01    02      $260.00</span></span>
-<span id="cb199-8"><a href="lesson-3c-tidy-data.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="st">          NA      NA      02    05       $90.00</span></span>
-<span id="cb199-9"><a href="lesson-3c-tidy-data.html#cb199-9" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="lesson-3c-tidy-data.html#cb199-1" tabindex="-1"></a>expenses <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(<span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">text =</span> <span class="st">&quot;</span></span>
+<span id="cb199-2"><a href="lesson-3c-tidy-data.html#cb199-2" tabindex="-1"></a><span class="st">        Dept    Year   Month   Day         Cost</span></span>
+<span id="cb199-3"><a href="lesson-3c-tidy-data.html#cb199-3" tabindex="-1"></a><span class="st">           A    2015      01    01      $500.00</span></span>
+<span id="cb199-4"><a href="lesson-3c-tidy-data.html#cb199-4" tabindex="-1"></a><span class="st">          NA      NA      02    05       $90.00</span></span>
+<span id="cb199-5"><a href="lesson-3c-tidy-data.html#cb199-5" tabindex="-1"></a><span class="st">          NA      NA      02    22    $1,250.45</span></span>
+<span id="cb199-6"><a href="lesson-3c-tidy-data.html#cb199-6" tabindex="-1"></a><span class="st">          NA      NA      03    NA      $325.10</span></span>
+<span id="cb199-7"><a href="lesson-3c-tidy-data.html#cb199-7" tabindex="-1"></a><span class="st">           B      NA      01    02      $260.00</span></span>
+<span id="cb199-8"><a href="lesson-3c-tidy-data.html#cb199-8" tabindex="-1"></a><span class="st">          NA      NA      02    05       $90.00</span></span>
+<span id="cb199-9"><a href="lesson-3c-tidy-data.html#cb199-9" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
 <p>Often Excel reports will not repeat certain variables. When we read these reports in, the empty cells are typically filled in with <code>NA</code> such as in the <code>Dept</code> and <code>Year</code> columns of our <code>expense</code> data frame. We can fill these values in with the previous entry using <code>fill()</code>:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lesson-3c-tidy-data.html#cb200-1" aria-hidden="true" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">fill</span>(Dept, Year)</span>
-<span id="cb200-2"><a href="lesson-3c-tidy-data.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb200-3"><a href="lesson-3c-tidy-data.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
-<span id="cb200-4"><a href="lesson-3c-tidy-data.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
-<span id="cb200-5"><a href="lesson-3c-tidy-data.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
-<span id="cb200-6"><a href="lesson-3c-tidy-data.html#cb200-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 A      2015     2     5 $90.00   </span></span>
-<span id="cb200-7"><a href="lesson-3c-tidy-data.html#cb200-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 A      2015     2    22 $1,250.45</span></span>
-<span id="cb200-8"><a href="lesson-3c-tidy-data.html#cb200-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 A      2015     3    NA $325.10  </span></span>
-<span id="cb200-9"><a href="lesson-3c-tidy-data.html#cb200-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 B      2015     1     2 $260.00  </span></span>
-<span id="cb200-10"><a href="lesson-3c-tidy-data.html#cb200-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 B      2015     2     5 $90.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lesson-3c-tidy-data.html#cb200-1" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">fill</span>(Dept, Year)</span>
+<span id="cb200-2"><a href="lesson-3c-tidy-data.html#cb200-2" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb200-3"><a href="lesson-3c-tidy-data.html#cb200-3" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
+<span id="cb200-4"><a href="lesson-3c-tidy-data.html#cb200-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
+<span id="cb200-5"><a href="lesson-3c-tidy-data.html#cb200-5" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
+<span id="cb200-6"><a href="lesson-3c-tidy-data.html#cb200-6" tabindex="-1"></a><span class="do">## 2 A      2015     2     5 $90.00   </span></span>
+<span id="cb200-7"><a href="lesson-3c-tidy-data.html#cb200-7" tabindex="-1"></a><span class="do">## 3 A      2015     2    22 $1,250.45</span></span>
+<span id="cb200-8"><a href="lesson-3c-tidy-data.html#cb200-8" tabindex="-1"></a><span class="do">## 4 A      2015     3    NA $325.10  </span></span>
+<span id="cb200-9"><a href="lesson-3c-tidy-data.html#cb200-9" tabindex="-1"></a><span class="do">## 5 B      2015     1     2 $260.00  </span></span>
+<span id="cb200-10"><a href="lesson-3c-tidy-data.html#cb200-10" tabindex="-1"></a><span class="do">## 6 B      2015     2     5 $90.00</span></span></code></pre></div>
 <p>Also, sometimes accounting values in Excel spreadsheets get read in as a character value, which is the case for the <code>Cost</code> variable. We may wish to extract only the numeric part of this regular expression, which can be done with <code>readr::parse_number</code>. Note that <code>parse_number</code> works on a single variable so when you pipe the <code>expense</code> data frame into the function you need to use <code>%$%</code> operator as discussed in the Pipe Operator lesson.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="lesson-3c-tidy-data.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb201-2"><a href="lesson-3c-tidy-data.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-3"><a href="lesson-3c-tidy-data.html#cb201-3" aria-hidden="true" tabindex="-1"></a>expenses <span class="sc">%$%</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(Cost)</span>
-<span id="cb201-4"><a href="lesson-3c-tidy-data.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  500.0   90.0 1250.5  325.1  260.0   90.0</span></span>
-<span id="cb201-5"><a href="lesson-3c-tidy-data.html#cb201-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-6"><a href="lesson-3c-tidy-data.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="co"># you can use this to convert and save the Cost column to a numeric variable</span></span>
-<span id="cb201-7"><a href="lesson-3c-tidy-data.html#cb201-7" aria-hidden="true" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Cost =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(Cost))</span>
-<span id="cb201-8"><a href="lesson-3c-tidy-data.html#cb201-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb201-9"><a href="lesson-3c-tidy-data.html#cb201-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day  Cost</span></span>
-<span id="cb201-10"><a href="lesson-3c-tidy-data.html#cb201-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
-<span id="cb201-11"><a href="lesson-3c-tidy-data.html#cb201-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 A      2015     1     1  500 </span></span>
-<span id="cb201-12"><a href="lesson-3c-tidy-data.html#cb201-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;     NA     2     5   90 </span></span>
-<span id="cb201-13"><a href="lesson-3c-tidy-data.html#cb201-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;     NA     2    22 1250.</span></span>
-<span id="cb201-14"><a href="lesson-3c-tidy-data.html#cb201-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;     NA     3    NA  325.</span></span>
-<span id="cb201-15"><a href="lesson-3c-tidy-data.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 B        NA     1     2  260 </span></span>
-<span id="cb201-16"><a href="lesson-3c-tidy-data.html#cb201-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;     NA     2     5   90</span></span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="lesson-3c-tidy-data.html#cb201-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb201-2"><a href="lesson-3c-tidy-data.html#cb201-2" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="lesson-3c-tidy-data.html#cb201-3" tabindex="-1"></a>expenses <span class="sc">%$%</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(Cost)</span>
+<span id="cb201-4"><a href="lesson-3c-tidy-data.html#cb201-4" tabindex="-1"></a><span class="do">## [1]  500.0   90.0 1250.5  325.1  260.0   90.0</span></span>
+<span id="cb201-5"><a href="lesson-3c-tidy-data.html#cb201-5" tabindex="-1"></a></span>
+<span id="cb201-6"><a href="lesson-3c-tidy-data.html#cb201-6" tabindex="-1"></a><span class="co"># you can use this to convert and save the Cost column to a numeric variable</span></span>
+<span id="cb201-7"><a href="lesson-3c-tidy-data.html#cb201-7" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Cost =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(Cost))</span>
+<span id="cb201-8"><a href="lesson-3c-tidy-data.html#cb201-8" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb201-9"><a href="lesson-3c-tidy-data.html#cb201-9" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day  Cost</span></span>
+<span id="cb201-10"><a href="lesson-3c-tidy-data.html#cb201-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;</span></span>
+<span id="cb201-11"><a href="lesson-3c-tidy-data.html#cb201-11" tabindex="-1"></a><span class="do">## 1 A      2015     1     1  500 </span></span>
+<span id="cb201-12"><a href="lesson-3c-tidy-data.html#cb201-12" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;     NA     2     5   90 </span></span>
+<span id="cb201-13"><a href="lesson-3c-tidy-data.html#cb201-13" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;     NA     2    22 1250.</span></span>
+<span id="cb201-14"><a href="lesson-3c-tidy-data.html#cb201-14" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;     NA     3    NA  325.</span></span>
+<span id="cb201-15"><a href="lesson-3c-tidy-data.html#cb201-15" tabindex="-1"></a><span class="do">## 5 B        NA     1     2  260 </span></span>
+<span id="cb201-16"><a href="lesson-3c-tidy-data.html#cb201-16" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;     NA     2     5   90</span></span></code></pre></div>
 <p>You can also easily replace missing (or <code>NA</code>) values with a specified value:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lesson-3c-tidy-data.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the missing Day value</span></span>
-<span id="cb202-2"><a href="lesson-3c-tidy-data.html#cb202-2" aria-hidden="true" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Day =</span> <span class="dv">31</span>))</span>
-<span id="cb202-3"><a href="lesson-3c-tidy-data.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb202-4"><a href="lesson-3c-tidy-data.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
-<span id="cb202-5"><a href="lesson-3c-tidy-data.html#cb202-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
-<span id="cb202-6"><a href="lesson-3c-tidy-data.html#cb202-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
-<span id="cb202-7"><a href="lesson-3c-tidy-data.html#cb202-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;     NA     2     5 $90.00   </span></span>
-<span id="cb202-8"><a href="lesson-3c-tidy-data.html#cb202-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;     NA     2    22 $1,250.45</span></span>
-<span id="cb202-9"><a href="lesson-3c-tidy-data.html#cb202-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;     NA     3    31 $325.10  </span></span>
-<span id="cb202-10"><a href="lesson-3c-tidy-data.html#cb202-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 B        NA     1     2 $260.00  </span></span>
-<span id="cb202-11"><a href="lesson-3c-tidy-data.html#cb202-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;     NA     2     5 $90.00</span></span>
-<span id="cb202-12"><a href="lesson-3c-tidy-data.html#cb202-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-13"><a href="lesson-3c-tidy-data.html#cb202-13" aria-hidden="true" tabindex="-1"></a><span class="co"># replace both the missing Day and Year values</span></span>
-<span id="cb202-14"><a href="lesson-3c-tidy-data.html#cb202-14" aria-hidden="true" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Year =</span> <span class="dv">2015</span>, <span class="at">Day =</span> <span class="dv">31</span>))</span>
-<span id="cb202-15"><a href="lesson-3c-tidy-data.html#cb202-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb202-16"><a href="lesson-3c-tidy-data.html#cb202-16" aria-hidden="true" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
-<span id="cb202-17"><a href="lesson-3c-tidy-data.html#cb202-17" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
-<span id="cb202-18"><a href="lesson-3c-tidy-data.html#cb202-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
-<span id="cb202-19"><a href="lesson-3c-tidy-data.html#cb202-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;   2015     2     5 $90.00   </span></span>
-<span id="cb202-20"><a href="lesson-3c-tidy-data.html#cb202-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;   2015     2    22 $1,250.45</span></span>
-<span id="cb202-21"><a href="lesson-3c-tidy-data.html#cb202-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;   2015     3    31 $325.10  </span></span>
-<span id="cb202-22"><a href="lesson-3c-tidy-data.html#cb202-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 B      2015     1     2 $260.00  </span></span>
-<span id="cb202-23"><a href="lesson-3c-tidy-data.html#cb202-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;   2015     2     5 $90.00</span></span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lesson-3c-tidy-data.html#cb202-1" tabindex="-1"></a><span class="co"># replace the missing Day value</span></span>
+<span id="cb202-2"><a href="lesson-3c-tidy-data.html#cb202-2" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Day =</span> <span class="dv">31</span>))</span>
+<span id="cb202-3"><a href="lesson-3c-tidy-data.html#cb202-3" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb202-4"><a href="lesson-3c-tidy-data.html#cb202-4" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
+<span id="cb202-5"><a href="lesson-3c-tidy-data.html#cb202-5" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
+<span id="cb202-6"><a href="lesson-3c-tidy-data.html#cb202-6" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
+<span id="cb202-7"><a href="lesson-3c-tidy-data.html#cb202-7" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;     NA     2     5 $90.00   </span></span>
+<span id="cb202-8"><a href="lesson-3c-tidy-data.html#cb202-8" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;     NA     2    22 $1,250.45</span></span>
+<span id="cb202-9"><a href="lesson-3c-tidy-data.html#cb202-9" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;     NA     3    31 $325.10  </span></span>
+<span id="cb202-10"><a href="lesson-3c-tidy-data.html#cb202-10" tabindex="-1"></a><span class="do">## 5 B        NA     1     2 $260.00  </span></span>
+<span id="cb202-11"><a href="lesson-3c-tidy-data.html#cb202-11" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;     NA     2     5 $90.00</span></span>
+<span id="cb202-12"><a href="lesson-3c-tidy-data.html#cb202-12" tabindex="-1"></a></span>
+<span id="cb202-13"><a href="lesson-3c-tidy-data.html#cb202-13" tabindex="-1"></a><span class="co"># replace both the missing Day and Year values</span></span>
+<span id="cb202-14"><a href="lesson-3c-tidy-data.html#cb202-14" tabindex="-1"></a>expenses <span class="sc">%&gt;%</span> <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Year =</span> <span class="dv">2015</span>, <span class="at">Day =</span> <span class="dv">31</span>))</span>
+<span id="cb202-15"><a href="lesson-3c-tidy-data.html#cb202-15" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb202-16"><a href="lesson-3c-tidy-data.html#cb202-16" tabindex="-1"></a><span class="do">##   Dept   Year Month   Day Cost     </span></span>
+<span id="cb202-17"><a href="lesson-3c-tidy-data.html#cb202-17" tabindex="-1"></a><span class="do">##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;    </span></span>
+<span id="cb202-18"><a href="lesson-3c-tidy-data.html#cb202-18" tabindex="-1"></a><span class="do">## 1 A      2015     1     1 $500.00  </span></span>
+<span id="cb202-19"><a href="lesson-3c-tidy-data.html#cb202-19" tabindex="-1"></a><span class="do">## 2 &lt;NA&gt;   2015     2     5 $90.00   </span></span>
+<span id="cb202-20"><a href="lesson-3c-tidy-data.html#cb202-20" tabindex="-1"></a><span class="do">## 3 &lt;NA&gt;   2015     2    22 $1,250.45</span></span>
+<span id="cb202-21"><a href="lesson-3c-tidy-data.html#cb202-21" tabindex="-1"></a><span class="do">## 4 &lt;NA&gt;   2015     3    31 $325.10  </span></span>
+<span id="cb202-22"><a href="lesson-3c-tidy-data.html#cb202-22" tabindex="-1"></a><span class="do">## 5 B      2015     1     2 $260.00  </span></span>
+<span id="cb202-23"><a href="lesson-3c-tidy-data.html#cb202-23" tabindex="-1"></a><span class="do">## 6 &lt;NA&gt;   2015     2     5 $90.00</span></span></code></pre></div>
 </div>
 <div id="putting-it-altogether-1" class="section level2 hasAnchor" number="12.8">
 <h2><span class="header-section-number">12.8</span> Putting it altogether<a href="lesson-3c-tidy-data.html#putting-it-altogether-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Since the <code>%&gt;%</code> operator is embedded in <code>tidyr</code>, we can string multiple operations together to efficiently tidy data <em>and</em> make the process easy to read and follow. To illustrate, let’s use the following data, which has multiple <em>messy</em> attributes.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="lesson-3c-tidy-data.html#cb203-1" aria-hidden="true" tabindex="-1"></a>a_mess <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(<span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">text =</span> <span class="st">&quot;</span></span>
-<span id="cb203-2"><a href="lesson-3c-tidy-data.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="st">   Dep_Unt   Year     Q1     Q2     Q3     Q4</span></span>
-<span id="cb203-3"><a href="lesson-3c-tidy-data.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="st">    A.1      2006     15     NA     19     17</span></span>
-<span id="cb203-4"><a href="lesson-3c-tidy-data.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B.1        NA     12     13     27     23</span></span>
-<span id="cb203-5"><a href="lesson-3c-tidy-data.html#cb203-5" aria-hidden="true" tabindex="-1"></a><span class="st">    A.2        NA     22     22     24     20</span></span>
-<span id="cb203-6"><a href="lesson-3c-tidy-data.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="st">    B.2        NA     12     13     25     18</span></span>
-<span id="cb203-7"><a href="lesson-3c-tidy-data.html#cb203-7" aria-hidden="true" tabindex="-1"></a><span class="st">    A.1      2007     16     14     21     19</span></span>
-<span id="cb203-8"><a href="lesson-3c-tidy-data.html#cb203-8" aria-hidden="true" tabindex="-1"></a><span class="st">    B.2        NA     13     11     16     15</span></span>
-<span id="cb203-9"><a href="lesson-3c-tidy-data.html#cb203-9" aria-hidden="true" tabindex="-1"></a><span class="st">    A.2        NA     23     20     26     20</span></span>
-<span id="cb203-10"><a href="lesson-3c-tidy-data.html#cb203-10" aria-hidden="true" tabindex="-1"></a><span class="st">    B.2        NA     11     12     22     16</span></span>
-<span id="cb203-11"><a href="lesson-3c-tidy-data.html#cb203-11" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="lesson-3c-tidy-data.html#cb203-1" tabindex="-1"></a>a_mess <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">as_tibble</span>(<span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">text =</span> <span class="st">&quot;</span></span>
+<span id="cb203-2"><a href="lesson-3c-tidy-data.html#cb203-2" tabindex="-1"></a><span class="st">   Dep_Unt   Year     Q1     Q2     Q3     Q4</span></span>
+<span id="cb203-3"><a href="lesson-3c-tidy-data.html#cb203-3" tabindex="-1"></a><span class="st">    A.1      2006     15     NA     19     17</span></span>
+<span id="cb203-4"><a href="lesson-3c-tidy-data.html#cb203-4" tabindex="-1"></a><span class="st">    B.1        NA     12     13     27     23</span></span>
+<span id="cb203-5"><a href="lesson-3c-tidy-data.html#cb203-5" tabindex="-1"></a><span class="st">    A.2        NA     22     22     24     20</span></span>
+<span id="cb203-6"><a href="lesson-3c-tidy-data.html#cb203-6" tabindex="-1"></a><span class="st">    B.2        NA     12     13     25     18</span></span>
+<span id="cb203-7"><a href="lesson-3c-tidy-data.html#cb203-7" tabindex="-1"></a><span class="st">    A.1      2007     16     14     21     19</span></span>
+<span id="cb203-8"><a href="lesson-3c-tidy-data.html#cb203-8" tabindex="-1"></a><span class="st">    B.2        NA     13     11     16     15</span></span>
+<span id="cb203-9"><a href="lesson-3c-tidy-data.html#cb203-9" tabindex="-1"></a><span class="st">    A.2        NA     23     20     26     20</span></span>
+<span id="cb203-10"><a href="lesson-3c-tidy-data.html#cb203-10" tabindex="-1"></a><span class="st">    B.2        NA     11     12     22     16</span></span>
+<span id="cb203-11"><a href="lesson-3c-tidy-data.html#cb203-11" tabindex="-1"></a><span class="st">&quot;</span>))</span></code></pre></div>
 <p>In this case, a tidy data set should result in columns of Dept, Unit, Year, Quarter, and Cost. Furthermore, we want to fill in the year column where <code>NA</code>s currently exist. And we’ll assume that we know the missing value that exists in the Q2 column, and we’d like to update it.</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="lesson-3c-tidy-data.html#cb204-1" aria-hidden="true" tabindex="-1"></a>a_mess <span class="sc">%&gt;%</span></span>
-<span id="cb204-2"><a href="lesson-3c-tidy-data.html#cb204-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(Year) <span class="sc">%&gt;%</span></span>
-<span id="cb204-3"><a href="lesson-3c-tidy-data.html#cb204-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Q1<span class="sc">:</span>Q4, <span class="at">names_to =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Cost&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb204-4"><a href="lesson-3c-tidy-data.html#cb204-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Dep_Unt, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Dept&quot;</span>, <span class="st">&quot;Unit&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb204-5"><a href="lesson-3c-tidy-data.html#cb204-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Cost =</span> <span class="dv">17</span>))</span>
-<span id="cb204-6"><a href="lesson-3c-tidy-data.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 32 × 5</span></span>
-<span id="cb204-7"><a href="lesson-3c-tidy-data.html#cb204-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    Dept  Unit   Year Quarter  Cost</span></span>
-<span id="cb204-8"><a href="lesson-3c-tidy-data.html#cb204-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;   &lt;int&gt;</span></span>
-<span id="cb204-9"><a href="lesson-3c-tidy-data.html#cb204-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 A     1      2006 Q1         15</span></span>
-<span id="cb204-10"><a href="lesson-3c-tidy-data.html#cb204-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 A     1      2006 Q2         17</span></span>
-<span id="cb204-11"><a href="lesson-3c-tidy-data.html#cb204-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 A     1      2006 Q3         19</span></span>
-<span id="cb204-12"><a href="lesson-3c-tidy-data.html#cb204-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 A     1      2006 Q4         17</span></span>
-<span id="cb204-13"><a href="lesson-3c-tidy-data.html#cb204-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 B     1      2006 Q1         12</span></span>
-<span id="cb204-14"><a href="lesson-3c-tidy-data.html#cb204-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 B     1      2006 Q2         13</span></span>
-<span id="cb204-15"><a href="lesson-3c-tidy-data.html#cb204-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 B     1      2006 Q3         27</span></span>
-<span id="cb204-16"><a href="lesson-3c-tidy-data.html#cb204-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 B     1      2006 Q4         23</span></span>
-<span id="cb204-17"><a href="lesson-3c-tidy-data.html#cb204-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 A     2      2006 Q1         22</span></span>
-<span id="cb204-18"><a href="lesson-3c-tidy-data.html#cb204-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 A     2      2006 Q2         22</span></span>
-<span id="cb204-19"><a href="lesson-3c-tidy-data.html#cb204-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 22 more rows</span></span>
-<span id="cb204-20"><a href="lesson-3c-tidy-data.html#cb204-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="lesson-3c-tidy-data.html#cb204-1" tabindex="-1"></a>a_mess <span class="sc">%&gt;%</span></span>
+<span id="cb204-2"><a href="lesson-3c-tidy-data.html#cb204-2" tabindex="-1"></a>  <span class="fu">fill</span>(Year) <span class="sc">%&gt;%</span></span>
+<span id="cb204-3"><a href="lesson-3c-tidy-data.html#cb204-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> Q1<span class="sc">:</span>Q4, <span class="at">names_to =</span> <span class="st">&quot;Quarter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Cost&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb204-4"><a href="lesson-3c-tidy-data.html#cb204-4" tabindex="-1"></a>  <span class="fu">separate</span>(Dep_Unt, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Dept&quot;</span>, <span class="st">&quot;Unit&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb204-5"><a href="lesson-3c-tidy-data.html#cb204-5" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">Cost =</span> <span class="dv">17</span>))</span>
+<span id="cb204-6"><a href="lesson-3c-tidy-data.html#cb204-6" tabindex="-1"></a><span class="do">## # A tibble: 32 × 5</span></span>
+<span id="cb204-7"><a href="lesson-3c-tidy-data.html#cb204-7" tabindex="-1"></a><span class="do">##    Dept  Unit   Year Quarter  Cost</span></span>
+<span id="cb204-8"><a href="lesson-3c-tidy-data.html#cb204-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;chr&gt;   &lt;int&gt;</span></span>
+<span id="cb204-9"><a href="lesson-3c-tidy-data.html#cb204-9" tabindex="-1"></a><span class="do">##  1 A     1      2006 Q1         15</span></span>
+<span id="cb204-10"><a href="lesson-3c-tidy-data.html#cb204-10" tabindex="-1"></a><span class="do">##  2 A     1      2006 Q2         17</span></span>
+<span id="cb204-11"><a href="lesson-3c-tidy-data.html#cb204-11" tabindex="-1"></a><span class="do">##  3 A     1      2006 Q3         19</span></span>
+<span id="cb204-12"><a href="lesson-3c-tidy-data.html#cb204-12" tabindex="-1"></a><span class="do">##  4 A     1      2006 Q4         17</span></span>
+<span id="cb204-13"><a href="lesson-3c-tidy-data.html#cb204-13" tabindex="-1"></a><span class="do">##  5 B     1      2006 Q1         12</span></span>
+<span id="cb204-14"><a href="lesson-3c-tidy-data.html#cb204-14" tabindex="-1"></a><span class="do">##  6 B     1      2006 Q2         13</span></span>
+<span id="cb204-15"><a href="lesson-3c-tidy-data.html#cb204-15" tabindex="-1"></a><span class="do">##  7 B     1      2006 Q3         27</span></span>
+<span id="cb204-16"><a href="lesson-3c-tidy-data.html#cb204-16" tabindex="-1"></a><span class="do">##  8 B     1      2006 Q4         23</span></span>
+<span id="cb204-17"><a href="lesson-3c-tidy-data.html#cb204-17" tabindex="-1"></a><span class="do">##  9 A     2      2006 Q1         22</span></span>
+<span id="cb204-18"><a href="lesson-3c-tidy-data.html#cb204-18" tabindex="-1"></a><span class="do">## 10 A     2      2006 Q2         22</span></span>
+<span id="cb204-19"><a href="lesson-3c-tidy-data.html#cb204-19" tabindex="-1"></a><span class="do">## # ℹ 22 more rows</span></span></code></pre></div>
 </div>
 <div id="exercises-8" class="section level2 hasAnchor" number="12.9">
 <h2><span class="header-section-number">12.9</span> Exercises<a href="lesson-3c-tidy-data.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Is the following data set “tidy”? Why or why not?</li>
 </ol>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="lesson-3c-tidy-data.html#cb205-1" aria-hidden="true" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb205-2"><a href="lesson-3c-tidy-data.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>name,             <span class="sc">~</span>names,  <span class="sc">~</span>values,</span>
-<span id="cb205-3"><a href="lesson-3c-tidy-data.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#-----------------|--------|------</span></span>
-<span id="cb205-4"><a href="lesson-3c-tidy-data.html#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;age&quot;</span>,       <span class="dv">45</span>,</span>
-<span id="cb205-5"><a href="lesson-3c-tidy-data.html#cb205-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;height&quot;</span>,   <span class="dv">186</span>,</span>
-<span id="cb205-6"><a href="lesson-3c-tidy-data.html#cb205-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;age&quot;</span>,       <span class="dv">50</span>,</span>
-<span id="cb205-7"><a href="lesson-3c-tidy-data.html#cb205-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;age&quot;</span>,       <span class="dv">37</span>,</span>
-<span id="cb205-8"><a href="lesson-3c-tidy-data.html#cb205-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;height&quot;</span>,   <span class="dv">156</span></span>
-<span id="cb205-9"><a href="lesson-3c-tidy-data.html#cb205-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="lesson-3c-tidy-data.html#cb205-1" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb205-2"><a href="lesson-3c-tidy-data.html#cb205-2" tabindex="-1"></a>  <span class="sc">~</span>name,             <span class="sc">~</span>names,  <span class="sc">~</span>values,</span>
+<span id="cb205-3"><a href="lesson-3c-tidy-data.html#cb205-3" tabindex="-1"></a>  <span class="co">#-----------------|--------|------</span></span>
+<span id="cb205-4"><a href="lesson-3c-tidy-data.html#cb205-4" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;age&quot;</span>,       <span class="dv">45</span>,</span>
+<span id="cb205-5"><a href="lesson-3c-tidy-data.html#cb205-5" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;height&quot;</span>,   <span class="dv">186</span>,</span>
+<span id="cb205-6"><a href="lesson-3c-tidy-data.html#cb205-6" tabindex="-1"></a>  <span class="st">&quot;Phillip Woods&quot;</span>,   <span class="st">&quot;age&quot;</span>,       <span class="dv">50</span>,</span>
+<span id="cb205-7"><a href="lesson-3c-tidy-data.html#cb205-7" tabindex="-1"></a>  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;age&quot;</span>,       <span class="dv">37</span>,</span>
+<span id="cb205-8"><a href="lesson-3c-tidy-data.html#cb205-8" tabindex="-1"></a>  <span class="st">&quot;Jessica Cordero&quot;</span>, <span class="st">&quot;height&quot;</span>,   <span class="dv">156</span></span>
+<span id="cb205-9"><a href="lesson-3c-tidy-data.html#cb205-9" tabindex="-1"></a>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Using the data set above, convert the “name” column into “first_name” and “last_name” columns.</li>
 <li>Now pivot this data set such that the “names” and “values” columns are converted into “age” and “height” columns.</li>
@@ -1440,7 +1432,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Lesson 1c: Vectors | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Lesson 1c: Vectors | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -798,58 +802,60 @@ div.csl-indent {
 <div id="creating-vectors" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Creating vectors<a href="lesson-1c-vectors.html#creating-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are multiple ways to create vectors but the first one you’ll be introduced to is by using <code>c()</code>. The <code>c()</code> function is short for concatenate and we use it to join together a series of values and store them in a vector.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="lesson-1c-vectors.html#cb39-1" aria-hidden="true" tabindex="-1"></a>my_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="lesson-1c-vectors.html#cb39-1" tabindex="-1"></a>my_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span></code></pre></div>
 <p>To examine the value of our new object we can simply type out the name of the object as we did before:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lesson-1c-vectors.html#cb40-1" aria-hidden="true" tabindex="-1"></a>my_vec</span>
-<span id="cb40-2"><a href="lesson-1c-vectors.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 4 3 3 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lesson-1c-vectors.html#cb40-1" tabindex="-1"></a>my_vec</span>
+<span id="cb40-2"><a href="lesson-1c-vectors.html#cb40-2" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 4 3 3 7</span></span></code></pre></div>
 <div id="creating-sequences" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Creating sequences<a href="lesson-1c-vectors.html#creating-sequences" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes it can be useful to create a vector that contains a regular sequence of values in steps of one. Here we can make use of a shortcut using the <code>:</code> symbol.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="lesson-1c-vectors.html#cb41-1" aria-hidden="true" tabindex="-1"></a>my_seq <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>     <span class="co"># create regular sequence</span></span>
-<span id="cb41-2"><a href="lesson-1c-vectors.html#cb41-2" aria-hidden="true" tabindex="-1"></a>my_seq</span>
-<span id="cb41-3"><a href="lesson-1c-vectors.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
-<span id="cb41-4"><a href="lesson-1c-vectors.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="lesson-1c-vectors.html#cb41-5" aria-hidden="true" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>    <span class="co"># in decending order</span></span>
-<span id="cb41-6"><a href="lesson-1c-vectors.html#cb41-6" aria-hidden="true" tabindex="-1"></a>my_seq2</span>
-<span id="cb41-7"><a href="lesson-1c-vectors.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 10  9  8  7  6  5  4  3  2  1</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="lesson-1c-vectors.html#cb41-1" tabindex="-1"></a>my_seq <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>     <span class="co"># create regular sequence</span></span>
+<span id="cb41-2"><a href="lesson-1c-vectors.html#cb41-2" tabindex="-1"></a>my_seq</span>
+<span id="cb41-3"><a href="lesson-1c-vectors.html#cb41-3" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb41-4"><a href="lesson-1c-vectors.html#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="lesson-1c-vectors.html#cb41-5" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>    <span class="co"># in decending order</span></span>
+<span id="cb41-6"><a href="lesson-1c-vectors.html#cb41-6" tabindex="-1"></a>my_seq2</span>
+<span id="cb41-7"><a href="lesson-1c-vectors.html#cb41-7" tabindex="-1"></a><span class="do">##  [1] 10  9  8  7  6  5  4  3  2  1</span></span></code></pre></div>
 <p>Other useful functions for generating vectors of sequences include the <code>seq()</code> and <code>rep()</code> functions. For example, to generate a sequence from 1 to 5 in steps of 0.5</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lesson-1c-vectors.html#cb42-1" aria-hidden="true" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.5</span>)</span>
-<span id="cb42-2"><a href="lesson-1c-vectors.html#cb42-2" aria-hidden="true" tabindex="-1"></a>my_seq2</span>
-<span id="cb42-3"><a href="lesson-1c-vectors.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lesson-1c-vectors.html#cb42-1" tabindex="-1"></a>my_seq2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.5</span>)</span>
+<span id="cb42-2"><a href="lesson-1c-vectors.html#cb42-2" tabindex="-1"></a>my_seq2</span>
+<span id="cb42-3"><a href="lesson-1c-vectors.html#cb42-3" tabindex="-1"></a><span class="do">## [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0</span></span></code></pre></div>
 <p>Here we’ve used the arguments <code>from =</code> and <code>to =</code> to define the limits of the sequence and the <code>by =</code> argument to specify the increment of the sequence. Play around with other values for these arguments to see their effect.</p>
 <p>The <code>rep()</code> function allows you to replicate (repeat) values a specified number of times. To repeat the value 2, 10 times</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="lesson-1c-vectors.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats 2, 10 times</span></span>
-<span id="cb43-2"><a href="lesson-1c-vectors.html#cb43-2" aria-hidden="true" tabindex="-1"></a>my_seq3 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
-<span id="cb43-3"><a href="lesson-1c-vectors.html#cb43-3" aria-hidden="true" tabindex="-1"></a>my_seq3</span>
-<span id="cb43-4"><a href="lesson-1c-vectors.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 2 2 2 2 2 2 2 2 2 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="lesson-1c-vectors.html#cb43-1" tabindex="-1"></a><span class="co"># repeats 2, 10 times</span></span>
+<span id="cb43-2"><a href="lesson-1c-vectors.html#cb43-2" tabindex="-1"></a>my_seq3 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb43-3"><a href="lesson-1c-vectors.html#cb43-3" tabindex="-1"></a>my_seq3</span>
+<span id="cb43-4"><a href="lesson-1c-vectors.html#cb43-4" tabindex="-1"></a><span class="do">##  [1] 2 2 2 2 2 2 2 2 2 2</span></span></code></pre></div>
 <p>You can also repeat non-numeric values</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="lesson-1c-vectors.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats ‘abc’ 3 times</span></span>
-<span id="cb44-2"><a href="lesson-1c-vectors.html#cb44-2" aria-hidden="true" tabindex="-1"></a>my_seq4 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;abc&quot;</span>, <span class="at">times =</span> <span class="dv">3</span>)     </span>
-<span id="cb44-3"><a href="lesson-1c-vectors.html#cb44-3" aria-hidden="true" tabindex="-1"></a>my_seq4</span>
-<span id="cb44-4"><a href="lesson-1c-vectors.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="lesson-1c-vectors.html#cb44-1" tabindex="-1"></a><span class="co"># repeats ‘abc’ 3 times</span></span>
+<span id="cb44-2"><a href="lesson-1c-vectors.html#cb44-2" tabindex="-1"></a>my_seq4 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;abc&quot;</span>, <span class="at">times =</span> <span class="dv">3</span>)     </span>
+<span id="cb44-3"><a href="lesson-1c-vectors.html#cb44-3" tabindex="-1"></a>my_seq4</span>
+<span id="cb44-4"><a href="lesson-1c-vectors.html#cb44-4" tabindex="-1"></a><span class="do">## [1] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;</span></span></code></pre></div>
 <p>or each element of a series</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="lesson-1c-vectors.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats the series 1 to 5, 3 times</span></span>
-<span id="cb45-2"><a href="lesson-1c-vectors.html#cb45-2" aria-hidden="true" tabindex="-1"></a>my_seq5 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">3</span>) </span>
-<span id="cb45-3"><a href="lesson-1c-vectors.html#cb45-3" aria-hidden="true" tabindex="-1"></a>my_seq5</span>
-<span id="cb45-4"><a href="lesson-1c-vectors.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="lesson-1c-vectors.html#cb45-1" tabindex="-1"></a><span class="co"># repeats the series 1 to 5, 3 times</span></span>
+<span id="cb45-2"><a href="lesson-1c-vectors.html#cb45-2" tabindex="-1"></a>my_seq5 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">3</span>) </span>
+<span id="cb45-3"><a href="lesson-1c-vectors.html#cb45-3" tabindex="-1"></a>my_seq5</span>
+<span id="cb45-4"><a href="lesson-1c-vectors.html#cb45-4" tabindex="-1"></a><span class="do">##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</span></span></code></pre></div>
 <p>or elements of a series</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lesson-1c-vectors.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
-<span id="cb46-2"><a href="lesson-1c-vectors.html#cb46-2" aria-hidden="true" tabindex="-1"></a>my_seq6 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
-<span id="cb46-3"><a href="lesson-1c-vectors.html#cb46-3" aria-hidden="true" tabindex="-1"></a>my_seq6</span>
-<span id="cb46-4"><a href="lesson-1c-vectors.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lesson-1c-vectors.html#cb46-1" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
+<span id="cb46-2"><a href="lesson-1c-vectors.html#cb46-2" tabindex="-1"></a>my_seq6 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb46-3"><a href="lesson-1c-vectors.html#cb46-3" tabindex="-1"></a>my_seq6</span>
+<span id="cb46-4"><a href="lesson-1c-vectors.html#cb46-4" tabindex="-1"></a><span class="do">##  [1] 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5</span></span></code></pre></div>
 <p>We can also repeat a non-sequential series</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="lesson-1c-vectors.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
-<span id="cb47-2"><a href="lesson-1c-vectors.html#cb47-2" aria-hidden="true" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
-<span id="cb47-3"><a href="lesson-1c-vectors.html#cb47-3" aria-hidden="true" tabindex="-1"></a>my_seq7</span>
-<span id="cb47-4"><a href="lesson-1c-vectors.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="lesson-1c-vectors.html#cb47-1" tabindex="-1"></a><span class="co"># repeats each element of the series 3 times</span></span>
+<span id="cb47-2"><a href="lesson-1c-vectors.html#cb47-2" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>), <span class="at">each =</span> <span class="dv">3</span>)</span>
+<span id="cb47-3"><a href="lesson-1c-vectors.html#cb47-3" tabindex="-1"></a>my_seq7</span>
+<span id="cb47-4"><a href="lesson-1c-vectors.html#cb47-4" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
 <p>Note in the code above how we’ve used the <code>c()</code> function inside the <code>seq()</code> function. Nesting functions allows us to build quite complex commands within a single line of code and is a very common practice when using R. However, care needs to be taken as too many nested functions can make your code quite difficult for others to understand (or yourself some time in the future!). We could rewrite the code above to explicitly separate the two different steps to generate our vector. Either approach will give the same result, you just need to use your own judgement as to which is more readable.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lesson-1c-vectors.html#cb48-1" aria-hidden="true" tabindex="-1"></a>in_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>)</span>
-<span id="cb48-2"><a href="lesson-1c-vectors.html#cb48-2" aria-hidden="true" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(in_vec, <span class="at">each =</span> <span class="dv">3</span>) </span>
-<span id="cb48-3"><a href="lesson-1c-vectors.html#cb48-3" aria-hidden="true" tabindex="-1"></a>my_seq7</span>
-<span id="cb48-4"><a href="lesson-1c-vectors.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lesson-1c-vectors.html#cb48-1" tabindex="-1"></a>in_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">7</span>)</span>
+<span id="cb48-2"><a href="lesson-1c-vectors.html#cb48-2" tabindex="-1"></a>my_seq7 <span class="ot">&lt;-</span> <span class="fu">rep</span>(in_vec, <span class="at">each =</span> <span class="dv">3</span>) </span>
+<span id="cb48-3"><a href="lesson-1c-vectors.html#cb48-3" tabindex="-1"></a>my_seq7</span>
+<span id="cb48-4"><a href="lesson-1c-vectors.html#cb48-4" tabindex="-1"></a><span class="do">##  [1]  3  3  3  1  1  1 10 10 10  7  7  7</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayTo]=221&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Introduction to vectors">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?si=Dlb2XaEQhDHa8c6I&start=1&end=217" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-6" class="section level3 hasAnchor" number="4.2.2">
@@ -890,8 +896,10 @@ sequences:
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_jmas1c5q&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_o18rx87o" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.2.2">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/waZlhsGX3u4?si=66rF0JT8oDHGBJdV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -905,14 +913,14 @@ This index can be a position or the result of a logical test.
 </div>
 <div id="positional-indexing" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Positional indexing<a href="lesson-1c-vectors.html#positional-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="lesson-1c-vectors.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the 3rd value</span></span>
-<span id="cb49-2"><a href="lesson-1c-vectors.html#cb49-2" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">3</span>]</span>
-<span id="cb49-3"><a href="lesson-1c-vectors.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span>
-<span id="cb49-4"><a href="lesson-1c-vectors.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="lesson-1c-vectors.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if you want to assign this value in another object</span></span>
-<span id="cb49-6"><a href="lesson-1c-vectors.html#cb49-6" aria-hidden="true" tabindex="-1"></a>val_3 <span class="ot">&lt;-</span> my_vec[<span class="dv">3</span>]</span>
-<span id="cb49-7"><a href="lesson-1c-vectors.html#cb49-7" aria-hidden="true" tabindex="-1"></a>val_3</span>
-<span id="cb49-8"><a href="lesson-1c-vectors.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="lesson-1c-vectors.html#cb49-1" tabindex="-1"></a><span class="co"># extract the 3rd value</span></span>
+<span id="cb49-2"><a href="lesson-1c-vectors.html#cb49-2" tabindex="-1"></a>my_vec[<span class="dv">3</span>]</span>
+<span id="cb49-3"><a href="lesson-1c-vectors.html#cb49-3" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb49-4"><a href="lesson-1c-vectors.html#cb49-4" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="lesson-1c-vectors.html#cb49-5" tabindex="-1"></a><span class="co"># if you want to assign this value in another object</span></span>
+<span id="cb49-6"><a href="lesson-1c-vectors.html#cb49-6" tabindex="-1"></a>val_3 <span class="ot">&lt;-</span> my_vec[<span class="dv">3</span>]</span>
+<span id="cb49-7"><a href="lesson-1c-vectors.html#cb49-7" tabindex="-1"></a>val_3</span>
+<span id="cb49-8"><a href="lesson-1c-vectors.html#cb49-8" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
 <div class="note">
 <p>
 Note that the positional index starts at 1 rather than 0 like some
@@ -920,46 +928,48 @@ other other programming languages (i.e. Python).
 </p>
 </div>
 <p>We can also extract more than one value by using the <code>c()</code> function inside the square brackets. Here we extract the 1<sup>st</sup>, 5<sup>th</sup>, 6<sup>th</sup> and 8<sup>th</sup> element from the <code>my_vec</code> object</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lesson-1c-vectors.html#cb50-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>)]</span>
-<span id="cb50-2"><a href="lesson-1c-vectors.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 4 3 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lesson-1c-vectors.html#cb50-1" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>)]</span>
+<span id="cb50-2"><a href="lesson-1c-vectors.html#cb50-2" tabindex="-1"></a><span class="do">## [1] 2 4 3 7</span></span></code></pre></div>
 <p>Or we can extract a range of values using the <code>:</code> notation. To extract the values from the 3<sup>rd</sup> to the 8<sup>th</sup> elements</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-1c-vectors.html#cb51-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span>
-<span id="cb51-2"><a href="lesson-1c-vectors.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 6 4 3 3 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="lesson-1c-vectors.html#cb51-1" tabindex="-1"></a>my_vec[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb51-2"><a href="lesson-1c-vectors.html#cb51-2" tabindex="-1"></a><span class="do">## [1] 1 6 4 3 3 7</span></span></code></pre></div>
 </div>
 <div id="logical-indexing" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Logical indexing<a href="lesson-1c-vectors.html#logical-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Another really useful way to extract data from a vector is to use a <strong>logical expression</strong> as an index. For example, to extract all elements with a <em>value greater than 4</em> in the vector <code>my_vec</code></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-1c-vectors.html#cb52-1" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">4</span>]</span>
-<span id="cb52-2"><a href="lesson-1c-vectors.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lesson-1c-vectors.html#cb52-1" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">4</span>]</span>
+<span id="cb52-2"><a href="lesson-1c-vectors.html#cb52-2" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
 <p>Here, the logical expression is <code>my_vec &gt; 4</code> and R will only extract those elements that satisfy this logical condition. So how does this actually work? If we look at the output of just the logical expression without the square brackets you can see that R returns a vector containing either <code>TRUE</code> or <code>FALSE</code> which correspond to whether the logical condition is satisfied for each element. In this case only the 4<sup>th</sup> and 8<sup>th</sup> elements return a <code>TRUE</code> as their value is greater than 4.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="lesson-1c-vectors.html#cb53-1" aria-hidden="true" tabindex="-1"></a>my_vec <span class="sc">&gt;</span> <span class="dv">4</span></span>
-<span id="cb53-2"><a href="lesson-1c-vectors.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="lesson-1c-vectors.html#cb53-1" tabindex="-1"></a>my_vec <span class="sc">&gt;</span> <span class="dv">4</span></span>
+<span id="cb53-2"><a href="lesson-1c-vectors.html#cb53-2" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</span></span></code></pre></div>
 <p>So what R is actually doing under the hood is equivalent to</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-1c-vectors.html#cb54-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span>
-<span id="cb54-2"><a href="lesson-1c-vectors.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-1c-vectors.html#cb54-1" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span>
+<span id="cb54-2"><a href="lesson-1c-vectors.html#cb54-2" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
 <p>and only those element that are <code>TRUE</code> will be extracted.</p>
 <p>In addition to the <code>&lt;</code> and <code>&gt;</code> operators you can also use composite operators to increase the complexity of your expressions. For example the expression for ‘greater or equal to’ is <code>&gt;=</code>. To test whether a value is equal to a value we need to use a double equals symbol <code>==</code> and for ‘not equal to’ we use <code>!=</code> (the <code>!</code> symbol means ‘not’).</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="lesson-1c-vectors.html#cb55-1" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;=</span> <span class="dv">4</span>]        <span class="co"># values greater or equal to 4</span></span>
-<span id="cb55-2"><a href="lesson-1c-vectors.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6 4 7</span></span>
-<span id="cb55-3"><a href="lesson-1c-vectors.html#cb55-3" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">4</span>]         <span class="co"># values less than 4</span></span>
-<span id="cb55-4"><a href="lesson-1c-vectors.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 3 3</span></span>
-<span id="cb55-5"><a href="lesson-1c-vectors.html#cb55-5" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>]        <span class="co"># values less than or equal to 4</span></span>
-<span id="cb55-6"><a href="lesson-1c-vectors.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 4 3 3</span></span>
-<span id="cb55-7"><a href="lesson-1c-vectors.html#cb55-7" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">==</span> <span class="dv">4</span>]        <span class="co"># values equal to 4</span></span>
-<span id="cb55-8"><a href="lesson-1c-vectors.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
-<span id="cb55-9"><a href="lesson-1c-vectors.html#cb55-9" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">!=</span> <span class="dv">4</span>]        <span class="co"># values not equal to 4</span></span>
-<span id="cb55-10"><a href="lesson-1c-vectors.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 3 3 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="lesson-1c-vectors.html#cb55-1" tabindex="-1"></a>my_vec[my_vec <span class="sc">&gt;=</span> <span class="dv">4</span>]        <span class="co"># values greater or equal to 4</span></span>
+<span id="cb55-2"><a href="lesson-1c-vectors.html#cb55-2" tabindex="-1"></a><span class="do">## [1] 6 4 7</span></span>
+<span id="cb55-3"><a href="lesson-1c-vectors.html#cb55-3" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">4</span>]         <span class="co"># values less than 4</span></span>
+<span id="cb55-4"><a href="lesson-1c-vectors.html#cb55-4" tabindex="-1"></a><span class="do">## [1] 2 3 1 3 3</span></span>
+<span id="cb55-5"><a href="lesson-1c-vectors.html#cb55-5" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>]        <span class="co"># values less than or equal to 4</span></span>
+<span id="cb55-6"><a href="lesson-1c-vectors.html#cb55-6" tabindex="-1"></a><span class="do">## [1] 2 3 1 4 3 3</span></span>
+<span id="cb55-7"><a href="lesson-1c-vectors.html#cb55-7" tabindex="-1"></a>my_vec[my_vec <span class="sc">==</span> <span class="dv">4</span>]        <span class="co"># values equal to 4</span></span>
+<span id="cb55-8"><a href="lesson-1c-vectors.html#cb55-8" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb55-9"><a href="lesson-1c-vectors.html#cb55-9" tabindex="-1"></a>my_vec[my_vec <span class="sc">!=</span> <span class="dv">4</span>]        <span class="co"># values not equal to 4</span></span>
+<span id="cb55-10"><a href="lesson-1c-vectors.html#cb55-10" tabindex="-1"></a><span class="do">## [1] 2 3 1 6 3 3 7</span></span></code></pre></div>
 <p>We can also combine multiple logical expressions using <strong>Boolean expressions</strong>. In R the <code>&amp;</code> symbol means AND and the <code>|</code> symbol means OR. For example, to extract values in <code>my_vec</code> which are less than 6 AND greater than 2</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="lesson-1c-vectors.html#cb56-1" aria-hidden="true" tabindex="-1"></a>val26 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">&amp;</span> my_vec <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
-<span id="cb56-2"><a href="lesson-1c-vectors.html#cb56-2" aria-hidden="true" tabindex="-1"></a>val26</span>
-<span id="cb56-3"><a href="lesson-1c-vectors.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3 4 3 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="lesson-1c-vectors.html#cb56-1" tabindex="-1"></a>val26 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&lt;</span> <span class="dv">6</span> <span class="sc">&amp;</span> my_vec <span class="sc">&gt;</span> <span class="dv">2</span>]</span>
+<span id="cb56-2"><a href="lesson-1c-vectors.html#cb56-2" tabindex="-1"></a>val26</span>
+<span id="cb56-3"><a href="lesson-1c-vectors.html#cb56-3" tabindex="-1"></a><span class="do">## [1] 3 4 3 3</span></span></code></pre></div>
 <p>or extract values in <code>my_vec</code> that are greater than 6 OR less than 3</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="lesson-1c-vectors.html#cb57-1" aria-hidden="true" tabindex="-1"></a>val63 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">6</span> <span class="sc">|</span> my_vec <span class="sc">&lt;</span> <span class="dv">3</span>]</span>
-<span id="cb57-2"><a href="lesson-1c-vectors.html#cb57-2" aria-hidden="true" tabindex="-1"></a>val63</span>
-<span id="cb57-3"><a href="lesson-1c-vectors.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 1 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="lesson-1c-vectors.html#cb57-1" tabindex="-1"></a>val63 <span class="ot">&lt;-</span> my_vec[my_vec <span class="sc">&gt;</span> <span class="dv">6</span> <span class="sc">|</span> my_vec <span class="sc">&lt;</span> <span class="dv">3</span>]</span>
+<span id="cb57-2"><a href="lesson-1c-vectors.html#cb57-2" tabindex="-1"></a>val63</span>
+<span id="cb57-3"><a href="lesson-1c-vectors.html#cb57-3" tabindex="-1"></a><span class="do">## [1] 2 1 7</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=221&amp;flashvars[mediaProxy.mediaPlayTo]=442&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Indexing vectors">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?start=219&end=440" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-7" class="section level3 hasAnchor" number="4.3.3">
@@ -983,30 +993,34 @@ Extract the weights for those children that weigh over 90lbs.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7zlgvs1y&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_k8j7rp75" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.3.3">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Iq7MuV7Oxxk?si=c1ctEXsGSLBqQzDV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
 <div id="replacing-elements" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Replacing elements<a href="lesson-1c-vectors.html#replacing-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can change the values of some elements in a vector using our <code>[ ]</code> notation in combination with the assignment operator <code>&lt;-</code>. For example, to replace the 4<sup>th</sup> value of our <code>my_vec</code> object from <code>6</code> to <code>500</code></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="lesson-1c-vectors.html#cb58-1" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb58-2"><a href="lesson-1c-vectors.html#cb58-2" aria-hidden="true" tabindex="-1"></a>my_vec</span>
-<span id="cb58-3"><a href="lesson-1c-vectors.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4   3   3   7</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="lesson-1c-vectors.html#cb58-1" tabindex="-1"></a>my_vec[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb58-2"><a href="lesson-1c-vectors.html#cb58-2" tabindex="-1"></a>my_vec</span>
+<span id="cb58-3"><a href="lesson-1c-vectors.html#cb58-3" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4   3   3   7</span></span></code></pre></div>
 <p>We can also replace more than one value or even replace values based on a logical expression</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="lesson-1c-vectors.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace the 6th and 7th element with 100</span></span>
-<span id="cb59-2"><a href="lesson-1c-vectors.html#cb59-2" aria-hidden="true" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)] <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb59-3"><a href="lesson-1c-vectors.html#cb59-3" aria-hidden="true" tabindex="-1"></a>my_vec</span>
-<span id="cb59-4"><a href="lesson-1c-vectors.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4 100 100   7</span></span>
-<span id="cb59-5"><a href="lesson-1c-vectors.html#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-6"><a href="lesson-1c-vectors.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># replace element that are less than or equal to 4 with 1000</span></span>
-<span id="cb59-7"><a href="lesson-1c-vectors.html#cb59-7" aria-hidden="true" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb59-8"><a href="lesson-1c-vectors.html#cb59-8" aria-hidden="true" tabindex="-1"></a>my_vec</span>
-<span id="cb59-9"><a href="lesson-1c-vectors.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000  500 1000  100  100    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="lesson-1c-vectors.html#cb59-1" tabindex="-1"></a><span class="co"># replace the 6th and 7th element with 100</span></span>
+<span id="cb59-2"><a href="lesson-1c-vectors.html#cb59-2" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)] <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb59-3"><a href="lesson-1c-vectors.html#cb59-3" tabindex="-1"></a>my_vec</span>
+<span id="cb59-4"><a href="lesson-1c-vectors.html#cb59-4" tabindex="-1"></a><span class="do">## [1]   2   3   1 500   4 100 100   7</span></span>
+<span id="cb59-5"><a href="lesson-1c-vectors.html#cb59-5" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="lesson-1c-vectors.html#cb59-6" tabindex="-1"></a><span class="co"># replace element that are less than or equal to 4 with 1000</span></span>
+<span id="cb59-7"><a href="lesson-1c-vectors.html#cb59-7" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb59-8"><a href="lesson-1c-vectors.html#cb59-8" tabindex="-1"></a>my_vec</span>
+<span id="cb59-9"><a href="lesson-1c-vectors.html#cb59-9" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000  500 1000  100  100    7</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=537&amp;flashvars[mediaProxy.mediaPlayTo]=632&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Replacing element values">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?start=534&end=630" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="knowledge-check-8" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1028,34 +1042,36 @@ value for all elements that are less than 80 to be equal to 80.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7zlgvs1y&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_380f1bxx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.3.3">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c8VcslLiW5Y?si=IiGeSrQbTuHhHQ60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
 <div id="operations" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Operations<a href="lesson-1c-vectors.html#operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use other functions to perform useful operations on vectors. For example, we can calculate the mean, variance, standard deviation and number of elements in our vector by using the <code>mean()</code>, <code>var()</code>, <code>sd()</code> and <code>length()</code> functions</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="lesson-1c-vectors.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_vec)    <span class="co"># returns the mean of my_vec</span></span>
-<span id="cb60-2"><a href="lesson-1c-vectors.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 588.38</span></span>
-<span id="cb60-3"><a href="lesson-1c-vectors.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(my_vec)     <span class="co"># returns the variance of my_vec</span></span>
-<span id="cb60-4"><a href="lesson-1c-vectors.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 214367</span></span>
-<span id="cb60-5"><a href="lesson-1c-vectors.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(my_vec)      <span class="co"># returns the standard deviation of my_vec</span></span>
-<span id="cb60-6"><a href="lesson-1c-vectors.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 463</span></span>
-<span id="cb60-7"><a href="lesson-1c-vectors.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(my_vec)  <span class="co"># returns the number of elements in my_vec</span></span>
-<span id="cb60-8"><a href="lesson-1c-vectors.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="lesson-1c-vectors.html#cb60-1" tabindex="-1"></a><span class="fu">mean</span>(my_vec)    <span class="co"># returns the mean of my_vec</span></span>
+<span id="cb60-2"><a href="lesson-1c-vectors.html#cb60-2" tabindex="-1"></a><span class="do">## [1] 588.38</span></span>
+<span id="cb60-3"><a href="lesson-1c-vectors.html#cb60-3" tabindex="-1"></a><span class="fu">var</span>(my_vec)     <span class="co"># returns the variance of my_vec</span></span>
+<span id="cb60-4"><a href="lesson-1c-vectors.html#cb60-4" tabindex="-1"></a><span class="do">## [1] 214367</span></span>
+<span id="cb60-5"><a href="lesson-1c-vectors.html#cb60-5" tabindex="-1"></a><span class="fu">sd</span>(my_vec)      <span class="co"># returns the standard deviation of my_vec</span></span>
+<span id="cb60-6"><a href="lesson-1c-vectors.html#cb60-6" tabindex="-1"></a><span class="do">## [1] 463</span></span>
+<span id="cb60-7"><a href="lesson-1c-vectors.html#cb60-7" tabindex="-1"></a><span class="fu">length</span>(my_vec)  <span class="co"># returns the number of elements in my_vec</span></span>
+<span id="cb60-8"><a href="lesson-1c-vectors.html#cb60-8" tabindex="-1"></a><span class="do">## [1] 8</span></span></code></pre></div>
 <p>If we wanted to use any of these values later on in our analysis we can just assign the resulting value to another object</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="lesson-1c-vectors.html#cb61-1" aria-hidden="true" tabindex="-1"></a>vec_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_vec)</span>
-<span id="cb61-2"><a href="lesson-1c-vectors.html#cb61-2" aria-hidden="true" tabindex="-1"></a>vec_mean</span>
-<span id="cb61-3"><a href="lesson-1c-vectors.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 588.38</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="lesson-1c-vectors.html#cb61-1" tabindex="-1"></a>vec_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(my_vec)</span>
+<span id="cb61-2"><a href="lesson-1c-vectors.html#cb61-2" tabindex="-1"></a>vec_mean</span>
+<span id="cb61-3"><a href="lesson-1c-vectors.html#cb61-3" tabindex="-1"></a><span class="do">## [1] 588.38</span></span></code></pre></div>
 <p>We can also sort values in our element:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lesson-1c-vectors.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ascending order</span></span>
-<span id="cb62-2"><a href="lesson-1c-vectors.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(my_vec)</span>
-<span id="cb62-3"><a href="lesson-1c-vectors.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]    7  100  100  500 1000 1000 1000 1000</span></span>
-<span id="cb62-4"><a href="lesson-1c-vectors.html#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="lesson-1c-vectors.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># decending order</span></span>
-<span id="cb62-6"><a href="lesson-1c-vectors.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(my_vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb62-7"><a href="lesson-1c-vectors.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000 1000  500  100  100    7</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lesson-1c-vectors.html#cb62-1" tabindex="-1"></a><span class="co"># ascending order</span></span>
+<span id="cb62-2"><a href="lesson-1c-vectors.html#cb62-2" tabindex="-1"></a><span class="fu">sort</span>(my_vec)</span>
+<span id="cb62-3"><a href="lesson-1c-vectors.html#cb62-3" tabindex="-1"></a><span class="do">## [1]    7  100  100  500 1000 1000 1000 1000</span></span>
+<span id="cb62-4"><a href="lesson-1c-vectors.html#cb62-4" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="lesson-1c-vectors.html#cb62-5" tabindex="-1"></a><span class="co"># decending order</span></span>
+<span id="cb62-6"><a href="lesson-1c-vectors.html#cb62-6" tabindex="-1"></a><span class="fu">sort</span>(my_vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-7"><a href="lesson-1c-vectors.html#cb62-7" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000 1000  500  100  100    7</span></span></code></pre></div>
 <div class="note">
 <p>
 There are a lot operations that we can perform on vectors. As we
@@ -1063,8 +1079,10 @@ progress through this course we’ll see many of these in action.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=632&amp;flashvars[mediaProxy.mediaPlayTo]=712&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Vector operations">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?start=630&end=710" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="knowledge-check-9" class="section level3 hasAnchor" number="4.5.1">
 <h3><span class="header-section-number">4.5.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1090,21 +1108,23 @@ this return?
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_sgifm5o7&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_cnfbtkxo" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.5.1">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qUTmedRp7us?si=FhuqFosc-gF8TQVv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
 <div id="missing-data" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Missing data<a href="lesson-1c-vectors.html#missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In R, missing data is usually represented by an <code>NA</code> symbol meaning ‘Not Available’. Data may be missing for a whole bunch of reasons, maybe your machine broke down, maybe the weather was too bad to collect data on a particular day, etc. Missing data can be a pain in the proverbial both from an R perspective and also a statistical perspective. From an R perspective missing data can be problematic as different functions deal with missing data in different ways. For example, let’s say we collected air temperature readings over 10 days, but our thermometer broke on day 2 and again on day 9 so we have no data for those days</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-1c-vectors.html#cb63-1" aria-hidden="true" tabindex="-1"></a>temp  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="cn">NA</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">6.5</span>, <span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">5.5</span>)</span>
-<span id="cb63-2"><a href="lesson-1c-vectors.html#cb63-2" aria-hidden="true" tabindex="-1"></a>temp</span>
-<span id="cb63-3"><a href="lesson-1c-vectors.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA 5.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-1c-vectors.html#cb63-1" tabindex="-1"></a>temp  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="cn">NA</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">6.5</span>, <span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">5.5</span>)</span>
+<span id="cb63-2"><a href="lesson-1c-vectors.html#cb63-2" tabindex="-1"></a>temp</span>
+<span id="cb63-3"><a href="lesson-1c-vectors.html#cb63-3" tabindex="-1"></a><span class="do">##  [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA 5.5</span></span></code></pre></div>
 <p>We now want to calculate the mean temperature over these days using the <code>mean()</code> function</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lesson-1c-vectors.html#cb64-1" aria-hidden="true" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
-<span id="cb64-2"><a href="lesson-1c-vectors.html#cb64-2" aria-hidden="true" tabindex="-1"></a>mean_temp</span>
-<span id="cb64-3"><a href="lesson-1c-vectors.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lesson-1c-vectors.html#cb64-1" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
+<span id="cb64-2"><a href="lesson-1c-vectors.html#cb64-2" tabindex="-1"></a>mean_temp</span>
+<span id="cb64-3"><a href="lesson-1c-vectors.html#cb64-3" tabindex="-1"></a><span class="do">## [1] NA</span></span></code></pre></div>
 <p>Flippin heck, what’s happened here? Why does the <code>mean()</code> function return an <code>NA</code>? Actually, R is doing something very sensible (at least in our opinion!). If a vector has a missing value then the only possible value to return when calculating a mean is <code>NA</code>. R doesn’t know that you perhaps want to ignore the <code>NA</code> values. Happily, if we look at the help file via <code>help("mean")</code> we can see there is an argument <code>na.rm =</code> which is set to <code>FALSE</code> by default.</p>
 <div class="tip">
 <p>
@@ -1115,13 +1135,15 @@ proceeds.
 </p>
 </div>
 <p>If we change this argument to <code>na.rm = TRUE</code> when we use the <code>mean()</code> function this will allow us to ignore the <code>NA</code> values when calculating the mean</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-1c-vectors.html#cb65-1" aria-hidden="true" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb65-2"><a href="lesson-1c-vectors.html#cb65-2" aria-hidden="true" tabindex="-1"></a>mean_temp</span>
-<span id="cb65-3"><a href="lesson-1c-vectors.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6.2875</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="lesson-1c-vectors.html#cb65-1" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb65-2"><a href="lesson-1c-vectors.html#cb65-2" tabindex="-1"></a>mean_temp</span>
+<span id="cb65-3"><a href="lesson-1c-vectors.html#cb65-3" tabindex="-1"></a><span class="do">## [1] 6.2875</span></span></code></pre></div>
 <p>It’s important to note that the <code>NA</code> values have not been removed from our <code>temp</code> object (that would be bad practice), rather the <code>mean()</code> function has just ignored them. The point of the above is to highlight how we can change the default behaviour of a function using an appropriate argument.</p>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=712&amp;flashvars[mediaProxy.mediaPlayTo]=790&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-1c">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?start=711&stop=790" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="knowledge-check-10" class="section level3 hasAnchor" number="4.6.1">
 <h3><span class="header-section-number">4.6.1</span> Knowledge check<a href="lesson-1c-vectors.html#knowledge-check-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1143,8 +1165,10 @@ this differ from before?
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_u9k97zug&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_seyjlq6a" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.6.1">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/duu7xetkHdI?si=W4-0gnjAXfD_MVOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1153,13 +1177,13 @@ this differ from before?
 <div id="looping-versus-vectorization" class="section level3 hasAnchor" number="4.7.1">
 <h3><span class="header-section-number">4.7.1</span> Looping versus Vectorization<a href="lesson-1c-vectors.html#looping-versus-vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A key difference between R and many other languages is a topic known as vectorization. What does this mean? It means that many functions that are to be applied individually to each element in a vector of numbers require a loop assessment to evaluate; however, in R many of these functions have been coded in C to perform much faster than a for loop would perform. For example, let’s say you want to add the elements of two separate vectors of numbers (<code>x</code> and <code>y</code>).</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lesson-1c-vectors.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb66-2"><a href="lesson-1c-vectors.html#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb66-3"><a href="lesson-1c-vectors.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="lesson-1c-vectors.html#cb66-4" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb66-5"><a href="lesson-1c-vectors.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 3 4</span></span>
-<span id="cb66-6"><a href="lesson-1c-vectors.html#cb66-6" aria-hidden="true" tabindex="-1"></a>y</span>
-<span id="cb66-7"><a href="lesson-1c-vectors.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lesson-1c-vectors.html#cb66-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb66-2"><a href="lesson-1c-vectors.html#cb66-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb66-3"><a href="lesson-1c-vectors.html#cb66-3" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="lesson-1c-vectors.html#cb66-4" tabindex="-1"></a>x</span>
+<span id="cb66-5"><a href="lesson-1c-vectors.html#cb66-5" tabindex="-1"></a><span class="do">## [1] 1 3 4</span></span>
+<span id="cb66-6"><a href="lesson-1c-vectors.html#cb66-6" tabindex="-1"></a>y</span>
+<span id="cb66-7"><a href="lesson-1c-vectors.html#cb66-7" tabindex="-1"></a><span class="do">## [1] 1 2 4</span></span></code></pre></div>
 <p>In other languages you might have to run a loop to add two vectors together. In this <code>for</code> loop I print each iteration to show that the loop calculates the sum for the first elements in each vector, then performs the sum for the second elements, etc.</p>
 <div class="note">
 <p>
@@ -1168,51 +1192,51 @@ just for illustration purposes! You will learn about looping procedures
 in a later module.
 </p>
 </div>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lesson-1c-vectors.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># empty vector to store results</span></span>
-<span id="cb67-2"><a href="lesson-1c-vectors.html#cb67-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="cn">NULL</span>)</span>
-<span id="cb67-3"><a href="lesson-1c-vectors.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-4"><a href="lesson-1c-vectors.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># `for` loop to add corresponding elements in each vector</span></span>
-<span id="cb67-5"><a href="lesson-1c-vectors.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<span id="cb67-6"><a href="lesson-1c-vectors.html#cb67-6" aria-hidden="true" tabindex="-1"></a>        z[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i]</span>
-<span id="cb67-7"><a href="lesson-1c-vectors.html#cb67-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(z)</span>
-<span id="cb67-8"><a href="lesson-1c-vectors.html#cb67-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb67-9"><a href="lesson-1c-vectors.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span>
-<span id="cb67-10"><a href="lesson-1c-vectors.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5</span></span>
-<span id="cb67-11"><a href="lesson-1c-vectors.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="lesson-1c-vectors.html#cb67-1" tabindex="-1"></a><span class="co"># empty vector to store results</span></span>
+<span id="cb67-2"><a href="lesson-1c-vectors.html#cb67-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="cn">NULL</span>)</span>
+<span id="cb67-3"><a href="lesson-1c-vectors.html#cb67-3" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="lesson-1c-vectors.html#cb67-4" tabindex="-1"></a><span class="co"># `for` loop to add corresponding elements in each vector</span></span>
+<span id="cb67-5"><a href="lesson-1c-vectors.html#cb67-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb67-6"><a href="lesson-1c-vectors.html#cb67-6" tabindex="-1"></a>        z[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i]</span>
+<span id="cb67-7"><a href="lesson-1c-vectors.html#cb67-7" tabindex="-1"></a>        <span class="fu">print</span>(z)</span>
+<span id="cb67-8"><a href="lesson-1c-vectors.html#cb67-8" tabindex="-1"></a>}</span>
+<span id="cb67-9"><a href="lesson-1c-vectors.html#cb67-9" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb67-10"><a href="lesson-1c-vectors.html#cb67-10" tabindex="-1"></a><span class="do">## [1] 2 5</span></span>
+<span id="cb67-11"><a href="lesson-1c-vectors.html#cb67-11" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span></code></pre></div>
 <p>Instead, in R, <code>+</code> is a <strong><em>vectorized</em></strong> function which can operate on entire vectors at once. So rather than creating <code>for</code> loops for many functions, you can just use simple syntax to perform element-wise operations with both vectors:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lesson-1c-vectors.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add each element in x and y</span></span>
-<span id="cb68-2"><a href="lesson-1c-vectors.html#cb68-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb68-3"><a href="lesson-1c-vectors.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span>
-<span id="cb68-4"><a href="lesson-1c-vectors.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="lesson-1c-vectors.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply each element in x and y</span></span>
-<span id="cb68-6"><a href="lesson-1c-vectors.html#cb68-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span>
-<span id="cb68-7"><a href="lesson-1c-vectors.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1  6 16</span></span>
-<span id="cb68-8"><a href="lesson-1c-vectors.html#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="lesson-1c-vectors.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compare each element in x to y</span></span>
-<span id="cb68-10"><a href="lesson-1c-vectors.html#cb68-10" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span>
-<span id="cb68-11"><a href="lesson-1c-vectors.html#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE  TRUE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lesson-1c-vectors.html#cb68-1" tabindex="-1"></a><span class="co"># add each element in x and y</span></span>
+<span id="cb68-2"><a href="lesson-1c-vectors.html#cb68-2" tabindex="-1"></a>x <span class="sc">+</span> y</span>
+<span id="cb68-3"><a href="lesson-1c-vectors.html#cb68-3" tabindex="-1"></a><span class="do">## [1] 2 5 8</span></span>
+<span id="cb68-4"><a href="lesson-1c-vectors.html#cb68-4" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="lesson-1c-vectors.html#cb68-5" tabindex="-1"></a><span class="co"># multiply each element in x and y</span></span>
+<span id="cb68-6"><a href="lesson-1c-vectors.html#cb68-6" tabindex="-1"></a>x <span class="sc">*</span> y</span>
+<span id="cb68-7"><a href="lesson-1c-vectors.html#cb68-7" tabindex="-1"></a><span class="do">## [1]  1  6 16</span></span>
+<span id="cb68-8"><a href="lesson-1c-vectors.html#cb68-8" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="lesson-1c-vectors.html#cb68-9" tabindex="-1"></a><span class="co"># compare each element in x to y</span></span>
+<span id="cb68-10"><a href="lesson-1c-vectors.html#cb68-10" tabindex="-1"></a>x <span class="sc">&gt;</span> y</span>
+<span id="cb68-11"><a href="lesson-1c-vectors.html#cb68-11" tabindex="-1"></a><span class="do">## [1] FALSE  TRUE FALSE</span></span></code></pre></div>
 </div>
 <div id="recycling" class="section level3 hasAnchor" number="4.7.2">
 <h3><span class="header-section-number">4.7.2</span> Recycling<a href="lesson-1c-vectors.html#recycling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When performing vector operations in R, it is important to know about <em>recycling</em>. When performing an operation on two or more vectors of unequal length, R will recycle elements of the shorter vector(s) to match the longest vector. For example:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-1c-vectors.html#cb69-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb69-2"><a href="lesson-1c-vectors.html#cb69-2" aria-hidden="true" tabindex="-1"></a>short <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb69-3"><a href="lesson-1c-vectors.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-4"><a href="lesson-1c-vectors.html#cb69-4" aria-hidden="true" tabindex="-1"></a>long</span>
-<span id="cb69-5"><a href="lesson-1c-vectors.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
-<span id="cb69-6"><a href="lesson-1c-vectors.html#cb69-6" aria-hidden="true" tabindex="-1"></a>short</span>
-<span id="cb69-7"><a href="lesson-1c-vectors.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span>
-<span id="cb69-8"><a href="lesson-1c-vectors.html#cb69-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-9"><a href="lesson-1c-vectors.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="co"># R will recycle (reuse) the short vector until it reaches </span></span>
-<span id="cb69-10"><a href="lesson-1c-vectors.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the end of the long vector</span></span>
-<span id="cb69-11"><a href="lesson-1c-vectors.html#cb69-11" aria-hidden="true" tabindex="-1"></a>long <span class="sc">+</span> short</span>
-<span id="cb69-12"><a href="lesson-1c-vectors.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  2  4  6  8 10  7  9 11 13 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="lesson-1c-vectors.html#cb69-1" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb69-2"><a href="lesson-1c-vectors.html#cb69-2" tabindex="-1"></a>short <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb69-3"><a href="lesson-1c-vectors.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="lesson-1c-vectors.html#cb69-4" tabindex="-1"></a>long</span>
+<span id="cb69-5"><a href="lesson-1c-vectors.html#cb69-5" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span>
+<span id="cb69-6"><a href="lesson-1c-vectors.html#cb69-6" tabindex="-1"></a>short</span>
+<span id="cb69-7"><a href="lesson-1c-vectors.html#cb69-7" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span>
+<span id="cb69-8"><a href="lesson-1c-vectors.html#cb69-8" tabindex="-1"></a></span>
+<span id="cb69-9"><a href="lesson-1c-vectors.html#cb69-9" tabindex="-1"></a><span class="co"># R will recycle (reuse) the short vector until it reaches </span></span>
+<span id="cb69-10"><a href="lesson-1c-vectors.html#cb69-10" tabindex="-1"></a><span class="co"># the end of the long vector</span></span>
+<span id="cb69-11"><a href="lesson-1c-vectors.html#cb69-11" tabindex="-1"></a>long <span class="sc">+</span> short</span>
+<span id="cb69-12"><a href="lesson-1c-vectors.html#cb69-12" tabindex="-1"></a><span class="do">##  [1]  2  4  6  8 10  7  9 11 13 15</span></span></code></pre></div>
 <p>The elements of <code>long</code> and <code>short</code> are added together starting from the first element of both vectors. When R reaches the end of the short vector, it starts again at the first element of <code>short</code> and continues until it reaches the last element of the <code>long</code> vector. This functionality is very useful when you want to perform the same operation on every element of a vector. For example, say we want to multiply every element of our vector long by 3:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lesson-1c-vectors.html#cb70-1" aria-hidden="true" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb70-2"><a href="lesson-1c-vectors.html#cb70-2" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb70-3"><a href="lesson-1c-vectors.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-4"><a href="lesson-1c-vectors.html#cb70-4" aria-hidden="true" tabindex="-1"></a>long <span class="sc">*</span> c</span>
-<span id="cb70-5"><a href="lesson-1c-vectors.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  3  6  9 12 15 18 21 24 27 30</span></span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lesson-1c-vectors.html#cb70-1" tabindex="-1"></a>long <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb70-2"><a href="lesson-1c-vectors.html#cb70-2" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb70-3"><a href="lesson-1c-vectors.html#cb70-3" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="lesson-1c-vectors.html#cb70-4" tabindex="-1"></a>long <span class="sc">*</span> c</span>
+<span id="cb70-5"><a href="lesson-1c-vectors.html#cb70-5" tabindex="-1"></a><span class="do">##  [1]  3  6  9 12 15 18 21 24 27 30</span></span></code></pre></div>
 <p>There are no <a href="https://softwareengineering.stackexchange.com/questions/238033/what-does-it-mean-when-data-is-scalar">scalars</a> in R, so <code>c</code> is actually a vector of length 1; in order to add its value to every element of <code>long</code>, it is recycled to match the length of <code>long</code>.</p>
 <div class="note">
 <p>
@@ -1221,16 +1245,18 @@ vs. scalars), we will cover what this means in later a module.
 </p>
 </div>
 <p>When the length of the longer object is a multiple of the shorter object length, the recycling occurs silently. When the longer object length is not a multiple of the shorter object length, a warning is given:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lesson-1c-vectors.html#cb71-1" aria-hidden="true" tabindex="-1"></a>even_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb71-2"><a href="lesson-1c-vectors.html#cb71-2" aria-hidden="true" tabindex="-1"></a>odd_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb71-3"><a href="lesson-1c-vectors.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-4"><a href="lesson-1c-vectors.html#cb71-4" aria-hidden="true" tabindex="-1"></a>even_length <span class="sc">+</span> odd_length</span>
-<span id="cb71-5"><a href="lesson-1c-vectors.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object length is not a multiple</span></span>
-<span id="cb71-6"><a href="lesson-1c-vectors.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">## of shorter object length</span></span>
-<span id="cb71-7"><a href="lesson-1c-vectors.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="lesson-1c-vectors.html#cb71-1" tabindex="-1"></a>even_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb71-2"><a href="lesson-1c-vectors.html#cb71-2" tabindex="-1"></a>odd_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb71-3"><a href="lesson-1c-vectors.html#cb71-3" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="lesson-1c-vectors.html#cb71-4" tabindex="-1"></a>even_length <span class="sc">+</span> odd_length</span>
+<span id="cb71-5"><a href="lesson-1c-vectors.html#cb71-5" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object</span></span>
+<span id="cb71-6"><a href="lesson-1c-vectors.html#cb71-6" tabindex="-1"></a><span class="do">## length is not a multiple of shorter object length</span></span>
+<span id="cb71-7"><a href="lesson-1c-vectors.html#cb71-7" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_r8cubj37&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=890&amp;flashvars[mediaProxy.mediaPlayTo]=1167&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_93b2xwa2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Vectorization">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2FjOYnJ480?start=888" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-11" class="section level3 hasAnchor" number="4.7.3">
@@ -1253,8 +1279,10 @@ Create a second vector <code>my_vec2 &lt;- 10:18</code> and add
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_up2p4109&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_uvmsgnz7" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 4.7.3">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A7ggQOtb5Mk?si=KizpF9IMKr_Zzhjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1354,7 +1382,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

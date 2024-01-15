@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Lesson 2b: Data types &amp; structures | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Lesson 2b: Data types &amp; structures | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -805,50 +809,50 @@ div.csl-indent {
 <div id="determining-the-type" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Determining the type<a href="lesson-2b-data-types-structures.html#determining-the-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R is (usually) able to automatically distinguish between different classes of data by their nature and the context in which they’re used although you should bear in mind that R can’t actually read your mind and you may have to explicitly tell R how you want to treat a data type. You can find out the type (or class) of any object using the <code>class()</code> function.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="lesson-2b-data-types-structures.html#cb90-1" aria-hidden="true" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fl">2.2</span></span>
-<span id="cb90-2"><a href="lesson-2b-data-types-structures.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(num)</span>
-<span id="cb90-3"><a href="lesson-2b-data-types-structures.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;numeric&quot;</span></span>
-<span id="cb90-4"><a href="lesson-2b-data-types-structures.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-5"><a href="lesson-2b-data-types-structures.html#cb90-5" aria-hidden="true" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;hello world&quot;</span></span>
-<span id="cb90-6"><a href="lesson-2b-data-types-structures.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(char)</span>
-<span id="cb90-7"><a href="lesson-2b-data-types-structures.html#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
-<span id="cb90-8"><a href="lesson-2b-data-types-structures.html#cb90-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-9"><a href="lesson-2b-data-types-structures.html#cb90-9" aria-hidden="true" tabindex="-1"></a>logi <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb90-10"><a href="lesson-2b-data-types-structures.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(logi)</span>
-<span id="cb90-11"><a href="lesson-2b-data-types-structures.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;logical&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="lesson-2b-data-types-structures.html#cb90-1" tabindex="-1"></a>num <span class="ot">&lt;-</span> <span class="fl">2.2</span></span>
+<span id="cb90-2"><a href="lesson-2b-data-types-structures.html#cb90-2" tabindex="-1"></a><span class="fu">class</span>(num)</span>
+<span id="cb90-3"><a href="lesson-2b-data-types-structures.html#cb90-3" tabindex="-1"></a><span class="do">## [1] &quot;numeric&quot;</span></span>
+<span id="cb90-4"><a href="lesson-2b-data-types-structures.html#cb90-4" tabindex="-1"></a></span>
+<span id="cb90-5"><a href="lesson-2b-data-types-structures.html#cb90-5" tabindex="-1"></a>char <span class="ot">&lt;-</span> <span class="st">&quot;hello world&quot;</span></span>
+<span id="cb90-6"><a href="lesson-2b-data-types-structures.html#cb90-6" tabindex="-1"></a><span class="fu">class</span>(char)</span>
+<span id="cb90-7"><a href="lesson-2b-data-types-structures.html#cb90-7" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb90-8"><a href="lesson-2b-data-types-structures.html#cb90-8" tabindex="-1"></a></span>
+<span id="cb90-9"><a href="lesson-2b-data-types-structures.html#cb90-9" tabindex="-1"></a>logi <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb90-10"><a href="lesson-2b-data-types-structures.html#cb90-10" tabindex="-1"></a><span class="fu">class</span>(logi)</span>
+<span id="cb90-11"><a href="lesson-2b-data-types-structures.html#cb90-11" tabindex="-1"></a><span class="do">## [1] &quot;logical&quot;</span></span></code></pre></div>
 <p>Alternatively, you can ask if an object <em>is</em> a specific class using a logical test. The <code>is.xxxx()</code> family of functions will return either a <code>TRUE</code> or a <code>FALSE</code>.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lesson-2b-data-types-structures.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(num)</span>
-<span id="cb91-2"><a href="lesson-2b-data-types-structures.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
-<span id="cb91-3"><a href="lesson-2b-data-types-structures.html#cb91-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-4"><a href="lesson-2b-data-types-structures.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(num)</span>
-<span id="cb91-5"><a href="lesson-2b-data-types-structures.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
-<span id="cb91-6"><a href="lesson-2b-data-types-structures.html#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-7"><a href="lesson-2b-data-types-structures.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(char)</span>
-<span id="cb91-8"><a href="lesson-2b-data-types-structures.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
-<span id="cb91-9"><a href="lesson-2b-data-types-structures.html#cb91-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-10"><a href="lesson-2b-data-types-structures.html#cb91-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(logi)</span>
-<span id="cb91-11"><a href="lesson-2b-data-types-structures.html#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="lesson-2b-data-types-structures.html#cb91-1" tabindex="-1"></a><span class="fu">is.numeric</span>(num)</span>
+<span id="cb91-2"><a href="lesson-2b-data-types-structures.html#cb91-2" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb91-3"><a href="lesson-2b-data-types-structures.html#cb91-3" tabindex="-1"></a></span>
+<span id="cb91-4"><a href="lesson-2b-data-types-structures.html#cb91-4" tabindex="-1"></a><span class="fu">is.character</span>(num)</span>
+<span id="cb91-5"><a href="lesson-2b-data-types-structures.html#cb91-5" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb91-6"><a href="lesson-2b-data-types-structures.html#cb91-6" tabindex="-1"></a></span>
+<span id="cb91-7"><a href="lesson-2b-data-types-structures.html#cb91-7" tabindex="-1"></a><span class="fu">is.character</span>(char)</span>
+<span id="cb91-8"><a href="lesson-2b-data-types-structures.html#cb91-8" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb91-9"><a href="lesson-2b-data-types-structures.html#cb91-9" tabindex="-1"></a></span>
+<span id="cb91-10"><a href="lesson-2b-data-types-structures.html#cb91-10" tabindex="-1"></a><span class="fu">is.logical</span>(logi)</span>
+<span id="cb91-11"><a href="lesson-2b-data-types-structures.html#cb91-11" tabindex="-1"></a><span class="do">## [1] TRUE</span></span></code></pre></div>
 </div>
 <div id="type-conversion" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Type conversion<a href="lesson-2b-data-types-structures.html#type-conversion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It can sometimes be useful to be able to change the class of a variable using the <code>as.xxxx()</code> family of coercion functions, although you need to be careful when doing this as you might receive some unexpected results (see what happens below when we try to convert a character string to a numeric).</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lesson-2b-data-types-structures.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># coerce numeric to character</span></span>
-<span id="cb92-2"><a href="lesson-2b-data-types-structures.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(num)</span>
-<span id="cb92-3"><a href="lesson-2b-data-types-structures.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;numeric&quot;</span></span>
-<span id="cb92-4"><a href="lesson-2b-data-types-structures.html#cb92-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-5"><a href="lesson-2b-data-types-structures.html#cb92-5" aria-hidden="true" tabindex="-1"></a>num_char <span class="ot">&lt;-</span>  <span class="fu">as.character</span>(num)</span>
-<span id="cb92-6"><a href="lesson-2b-data-types-structures.html#cb92-6" aria-hidden="true" tabindex="-1"></a>num_char</span>
-<span id="cb92-7"><a href="lesson-2b-data-types-structures.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;2.2&quot;</span></span>
-<span id="cb92-8"><a href="lesson-2b-data-types-structures.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-9"><a href="lesson-2b-data-types-structures.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(num_char)</span>
-<span id="cb92-10"><a href="lesson-2b-data-types-structures.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
-<span id="cb92-11"><a href="lesson-2b-data-types-structures.html#cb92-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-12"><a href="lesson-2b-data-types-structures.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="co"># coerce character to numeric!</span></span>
-<span id="cb92-13"><a href="lesson-2b-data-types-structures.html#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(char)</span>
-<span id="cb92-14"><a href="lesson-2b-data-types-structures.html#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
-<span id="cb92-15"><a href="lesson-2b-data-types-structures.html#cb92-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-16"><a href="lesson-2b-data-types-structures.html#cb92-16" aria-hidden="true" tabindex="-1"></a>char_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(char)</span>
-<span id="cb92-17"><a href="lesson-2b-data-types-structures.html#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: NAs introduced by coercion</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lesson-2b-data-types-structures.html#cb92-1" tabindex="-1"></a><span class="co"># coerce numeric to character</span></span>
+<span id="cb92-2"><a href="lesson-2b-data-types-structures.html#cb92-2" tabindex="-1"></a><span class="fu">class</span>(num)</span>
+<span id="cb92-3"><a href="lesson-2b-data-types-structures.html#cb92-3" tabindex="-1"></a><span class="do">## [1] &quot;numeric&quot;</span></span>
+<span id="cb92-4"><a href="lesson-2b-data-types-structures.html#cb92-4" tabindex="-1"></a></span>
+<span id="cb92-5"><a href="lesson-2b-data-types-structures.html#cb92-5" tabindex="-1"></a>num_char <span class="ot">&lt;-</span>  <span class="fu">as.character</span>(num)</span>
+<span id="cb92-6"><a href="lesson-2b-data-types-structures.html#cb92-6" tabindex="-1"></a>num_char</span>
+<span id="cb92-7"><a href="lesson-2b-data-types-structures.html#cb92-7" tabindex="-1"></a><span class="do">## [1] &quot;2.2&quot;</span></span>
+<span id="cb92-8"><a href="lesson-2b-data-types-structures.html#cb92-8" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="lesson-2b-data-types-structures.html#cb92-9" tabindex="-1"></a><span class="fu">class</span>(num_char)</span>
+<span id="cb92-10"><a href="lesson-2b-data-types-structures.html#cb92-10" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb92-11"><a href="lesson-2b-data-types-structures.html#cb92-11" tabindex="-1"></a></span>
+<span id="cb92-12"><a href="lesson-2b-data-types-structures.html#cb92-12" tabindex="-1"></a><span class="co"># coerce character to numeric!</span></span>
+<span id="cb92-13"><a href="lesson-2b-data-types-structures.html#cb92-13" tabindex="-1"></a><span class="fu">class</span>(char)</span>
+<span id="cb92-14"><a href="lesson-2b-data-types-structures.html#cb92-14" tabindex="-1"></a><span class="do">## [1] &quot;character&quot;</span></span>
+<span id="cb92-15"><a href="lesson-2b-data-types-structures.html#cb92-15" tabindex="-1"></a></span>
+<span id="cb92-16"><a href="lesson-2b-data-types-structures.html#cb92-16" tabindex="-1"></a>char_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(char)</span>
+<span id="cb92-17"><a href="lesson-2b-data-types-structures.html#cb92-17" tabindex="-1"></a><span class="do">## Warning: NAs introduced by coercion</span></span></code></pre></div>
 <table>
 <caption>Functions to test and and coerce data types.</caption>
 <thead>
@@ -895,8 +899,10 @@ you to understand the foundational data types built into R.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b4hzx896&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayTo]=405&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_n1k8xqi4" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-2b">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/38WnW5ozTmc?si=kbnqHFCCkg3DfgmP&amp;start=0&end=404" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-15" class="section level3 hasAnchor" number="7.2.3">
@@ -920,8 +926,10 @@ What happens when you do this?
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2a9gfyfb&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_anrf6bfn" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-7.2.3">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1E0Pdr2Fz9w?si=p264FfsYNv8SE3zf&amp;start=2264" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -929,8 +937,10 @@ What happens when you do this?
 <h2><span class="header-section-number">7.3</span> Data structures<a href="lesson-2b-data-types-structures.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that you’ve been introduced to some of the most important classes of data in R, let’s have a look at some of main <strong>structures</strong> that we have for storing these data.</p>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b4hzx896&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=532&amp;flashvars[mediaProxy.mediaPlayTo]=564&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_n1k8xqi4" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-2b">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/38WnW5ozTmc?si=W_lq8DZHxYq6JjcE&amp;start=532&end=563" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="scalars-and-vectors" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Scalars and vectors<a href="lesson-2b-data-types-structures.html#scalars-and-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -959,108 +969,110 @@ Figure 7.2: Matrices versus arrays.
 <div id="creating" class="section level4 hasAnchor" number="7.3.2.1">
 <h4><span class="header-section-number">7.3.2.1</span> Creating<a href="lesson-2b-data-types-structures.html#creating" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A convenient way to create a matrix or an array is to use the <code>matrix()</code> and <code>array()</code> functions respectively. Below, we will create a matrix from a sequence 1 to 16 in four rows (<code>nrow = 4</code>) and fill the matrix row-wise (<code>byrow = TRUE</code>) rather than the default column-wise. When using the <code>array()</code> function we define the dimensions using the <code>dim =</code> argument, in our case 2 rows, 4 columns in 2 different matrices.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="lesson-2b-data-types-structures.html#cb93-1" aria-hidden="true" tabindex="-1"></a>my_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb93-2"><a href="lesson-2b-data-types-structures.html#cb93-2" aria-hidden="true" tabindex="-1"></a>my_mat</span>
-<span id="cb93-3"><a href="lesson-2b-data-types-structures.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb93-4"><a href="lesson-2b-data-types-structures.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    2    3    4</span></span>
-<span id="cb93-5"><a href="lesson-2b-data-types-structures.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    5    6    7    8</span></span>
-<span id="cb93-6"><a href="lesson-2b-data-types-structures.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    9   10   11   12</span></span>
-<span id="cb93-7"><a href="lesson-2b-data-types-structures.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]   13   14   15   16</span></span>
-<span id="cb93-8"><a href="lesson-2b-data-types-structures.html#cb93-8" aria-hidden="true" tabindex="-1"></a>my_array <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
-<span id="cb93-9"><a href="lesson-2b-data-types-structures.html#cb93-9" aria-hidden="true" tabindex="-1"></a>my_array</span>
-<span id="cb93-10"><a href="lesson-2b-data-types-structures.html#cb93-10" aria-hidden="true" tabindex="-1"></a><span class="do">## , , 1</span></span>
-<span id="cb93-11"><a href="lesson-2b-data-types-structures.html#cb93-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb93-12"><a href="lesson-2b-data-types-structures.html#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb93-13"><a href="lesson-2b-data-types-structures.html#cb93-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    3    5    7</span></span>
-<span id="cb93-14"><a href="lesson-2b-data-types-structures.html#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2    4    6    8</span></span>
-<span id="cb93-15"><a href="lesson-2b-data-types-structures.html#cb93-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb93-16"><a href="lesson-2b-data-types-structures.html#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="do">## , , 2</span></span>
-<span id="cb93-17"><a href="lesson-2b-data-types-structures.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb93-18"><a href="lesson-2b-data-types-structures.html#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb93-19"><a href="lesson-2b-data-types-structures.html#cb93-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    9   11   13   15</span></span>
-<span id="cb93-20"><a href="lesson-2b-data-types-structures.html#cb93-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]   10   12   14   16</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="lesson-2b-data-types-structures.html#cb93-1" tabindex="-1"></a>my_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb93-2"><a href="lesson-2b-data-types-structures.html#cb93-2" tabindex="-1"></a>my_mat</span>
+<span id="cb93-3"><a href="lesson-2b-data-types-structures.html#cb93-3" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb93-4"><a href="lesson-2b-data-types-structures.html#cb93-4" tabindex="-1"></a><span class="do">## [1,]    1    2    3    4</span></span>
+<span id="cb93-5"><a href="lesson-2b-data-types-structures.html#cb93-5" tabindex="-1"></a><span class="do">## [2,]    5    6    7    8</span></span>
+<span id="cb93-6"><a href="lesson-2b-data-types-structures.html#cb93-6" tabindex="-1"></a><span class="do">## [3,]    9   10   11   12</span></span>
+<span id="cb93-7"><a href="lesson-2b-data-types-structures.html#cb93-7" tabindex="-1"></a><span class="do">## [4,]   13   14   15   16</span></span>
+<span id="cb93-8"><a href="lesson-2b-data-types-structures.html#cb93-8" tabindex="-1"></a>my_array <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb93-9"><a href="lesson-2b-data-types-structures.html#cb93-9" tabindex="-1"></a>my_array</span>
+<span id="cb93-10"><a href="lesson-2b-data-types-structures.html#cb93-10" tabindex="-1"></a><span class="do">## , , 1</span></span>
+<span id="cb93-11"><a href="lesson-2b-data-types-structures.html#cb93-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb93-12"><a href="lesson-2b-data-types-structures.html#cb93-12" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb93-13"><a href="lesson-2b-data-types-structures.html#cb93-13" tabindex="-1"></a><span class="do">## [1,]    1    3    5    7</span></span>
+<span id="cb93-14"><a href="lesson-2b-data-types-structures.html#cb93-14" tabindex="-1"></a><span class="do">## [2,]    2    4    6    8</span></span>
+<span id="cb93-15"><a href="lesson-2b-data-types-structures.html#cb93-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb93-16"><a href="lesson-2b-data-types-structures.html#cb93-16" tabindex="-1"></a><span class="do">## , , 2</span></span>
+<span id="cb93-17"><a href="lesson-2b-data-types-structures.html#cb93-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb93-18"><a href="lesson-2b-data-types-structures.html#cb93-18" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb93-19"><a href="lesson-2b-data-types-structures.html#cb93-19" tabindex="-1"></a><span class="do">## [1,]    9   11   13   15</span></span>
+<span id="cb93-20"><a href="lesson-2b-data-types-structures.html#cb93-20" tabindex="-1"></a><span class="do">## [2,]   10   12   14   16</span></span></code></pre></div>
 <p>Sometimes it’s also useful to define row and column names for your matrix but this is not a requirement. To do this use the <code>rownames()</code> and <code>colnames()</code> functions.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lesson-2b-data-types-structures.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(my_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
-<span id="cb94-2"><a href="lesson-2b-data-types-structures.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(my_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
-<span id="cb94-3"><a href="lesson-2b-data-types-structures.html#cb94-3" aria-hidden="true" tabindex="-1"></a>my_mat</span>
-<span id="cb94-4"><a href="lesson-2b-data-types-structures.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    a  b  c  d</span></span>
-<span id="cb94-5"><a href="lesson-2b-data-types-structures.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="do">## A  1  2  3  4</span></span>
-<span id="cb94-6"><a href="lesson-2b-data-types-structures.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="do">## B  5  6  7  8</span></span>
-<span id="cb94-7"><a href="lesson-2b-data-types-structures.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="do">## C  9 10 11 12</span></span>
-<span id="cb94-8"><a href="lesson-2b-data-types-structures.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="do">## D 13 14 15 16</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lesson-2b-data-types-structures.html#cb94-1" tabindex="-1"></a><span class="fu">rownames</span>(my_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</span>
+<span id="cb94-2"><a href="lesson-2b-data-types-structures.html#cb94-2" tabindex="-1"></a><span class="fu">colnames</span>(my_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
+<span id="cb94-3"><a href="lesson-2b-data-types-structures.html#cb94-3" tabindex="-1"></a>my_mat</span>
+<span id="cb94-4"><a href="lesson-2b-data-types-structures.html#cb94-4" tabindex="-1"></a><span class="do">##    a  b  c  d</span></span>
+<span id="cb94-5"><a href="lesson-2b-data-types-structures.html#cb94-5" tabindex="-1"></a><span class="do">## A  1  2  3  4</span></span>
+<span id="cb94-6"><a href="lesson-2b-data-types-structures.html#cb94-6" tabindex="-1"></a><span class="do">## B  5  6  7  8</span></span>
+<span id="cb94-7"><a href="lesson-2b-data-types-structures.html#cb94-7" tabindex="-1"></a><span class="do">## C  9 10 11 12</span></span>
+<span id="cb94-8"><a href="lesson-2b-data-types-structures.html#cb94-8" tabindex="-1"></a><span class="do">## D 13 14 15 16</span></span></code></pre></div>
 </div>
 <div id="indexing" class="section level4 hasAnchor" number="7.3.2.2">
 <h4><span class="header-section-number">7.3.2.2</span> Indexing<a href="lesson-2b-data-types-structures.html#indexing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Similar to vectors, we can extract elements from our matrix using <code>[]</code> notation. The main difference is we now have to specify two dimensions in our indexing <code>matrix[row, col]</code>:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lesson-2b-data-types-structures.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># element located at the intersection of the </span></span>
-<span id="cb95-2"><a href="lesson-2b-data-types-structures.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="co"># third row and second column</span></span>
-<span id="cb95-3"><a href="lesson-2b-data-types-structures.html#cb95-3" aria-hidden="true" tabindex="-1"></a>my_mat[<span class="dv">3</span>, <span class="dv">2</span>]</span>
-<span id="cb95-4"><a href="lesson-2b-data-types-structures.html#cb95-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="lesson-2b-data-types-structures.html#cb95-1" tabindex="-1"></a><span class="co"># element located at the intersection of the </span></span>
+<span id="cb95-2"><a href="lesson-2b-data-types-structures.html#cb95-2" tabindex="-1"></a><span class="co"># third row and second column</span></span>
+<span id="cb95-3"><a href="lesson-2b-data-types-structures.html#cb95-3" tabindex="-1"></a>my_mat[<span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb95-4"><a href="lesson-2b-data-types-structures.html#cb95-4" tabindex="-1"></a><span class="do">## [1] 10</span></span></code></pre></div>
 <p>We can also leave one dimension empty if we want to retrieve all elements for that particular dimension.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lesson-2b-data-types-structures.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all elements in the second row</span></span>
-<span id="cb96-2"><a href="lesson-2b-data-types-structures.html#cb96-2" aria-hidden="true" tabindex="-1"></a>my_mat[<span class="dv">2</span>, ]</span>
-<span id="cb96-3"><a href="lesson-2b-data-types-structures.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="do">## a b c d </span></span>
-<span id="cb96-4"><a href="lesson-2b-data-types-structures.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 6 7 8</span></span>
-<span id="cb96-5"><a href="lesson-2b-data-types-structures.html#cb96-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-6"><a href="lesson-2b-data-types-structures.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="co"># all elements in the third column</span></span>
-<span id="cb96-7"><a href="lesson-2b-data-types-structures.html#cb96-7" aria-hidden="true" tabindex="-1"></a>my_mat[, <span class="dv">3</span>]</span>
-<span id="cb96-8"><a href="lesson-2b-data-types-structures.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  A  B  C  D </span></span>
-<span id="cb96-9"><a href="lesson-2b-data-types-structures.html#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  7 11 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lesson-2b-data-types-structures.html#cb96-1" tabindex="-1"></a><span class="co"># all elements in the second row</span></span>
+<span id="cb96-2"><a href="lesson-2b-data-types-structures.html#cb96-2" tabindex="-1"></a>my_mat[<span class="dv">2</span>, ]</span>
+<span id="cb96-3"><a href="lesson-2b-data-types-structures.html#cb96-3" tabindex="-1"></a><span class="do">## a b c d </span></span>
+<span id="cb96-4"><a href="lesson-2b-data-types-structures.html#cb96-4" tabindex="-1"></a><span class="do">## 5 6 7 8</span></span>
+<span id="cb96-5"><a href="lesson-2b-data-types-structures.html#cb96-5" tabindex="-1"></a></span>
+<span id="cb96-6"><a href="lesson-2b-data-types-structures.html#cb96-6" tabindex="-1"></a><span class="co"># all elements in the third column</span></span>
+<span id="cb96-7"><a href="lesson-2b-data-types-structures.html#cb96-7" tabindex="-1"></a>my_mat[, <span class="dv">3</span>]</span>
+<span id="cb96-8"><a href="lesson-2b-data-types-structures.html#cb96-8" tabindex="-1"></a><span class="do">##  A  B  C  D </span></span>
+<span id="cb96-9"><a href="lesson-2b-data-types-structures.html#cb96-9" tabindex="-1"></a><span class="do">##  3  7 11 15</span></span></code></pre></div>
 <p>And when rows and columns are named we can also index based on those names:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lesson-2b-data-types-structures.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element located in row &#39;A&#39; and column &#39;b&#39;</span></span>
-<span id="cb97-2"><a href="lesson-2b-data-types-structures.html#cb97-2" aria-hidden="true" tabindex="-1"></a>my_mat[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;b&#39;</span>]</span>
-<span id="cb97-3"><a href="lesson-2b-data-types-structures.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="lesson-2b-data-types-structures.html#cb97-1" tabindex="-1"></a><span class="co"># Element located in row &#39;A&#39; and column &#39;b&#39;</span></span>
+<span id="cb97-2"><a href="lesson-2b-data-types-structures.html#cb97-2" tabindex="-1"></a>my_mat[<span class="st">&#39;A&#39;</span>, <span class="st">&#39;b&#39;</span>]</span>
+<span id="cb97-3"><a href="lesson-2b-data-types-structures.html#cb97-3" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
 </div>
 <div id="operators" class="section level4 hasAnchor" number="7.3.2.3">
 <h4><span class="header-section-number">7.3.2.3</span> Operators<a href="lesson-2b-data-types-structures.html#operators" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Once you’ve created your matrices you can do useful stuff with them and as you’d expect. Many of the functions we used in the vector lesson can be applied across an entire matrix:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lesson-2b-data-types-structures.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of all elements</span></span>
-<span id="cb98-2"><a href="lesson-2b-data-types-structures.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_mat)</span>
-<span id="cb98-3"><a href="lesson-2b-data-types-structures.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lesson-2b-data-types-structures.html#cb98-1" tabindex="-1"></a><span class="co"># mean of all elements</span></span>
+<span id="cb98-2"><a href="lesson-2b-data-types-structures.html#cb98-2" tabindex="-1"></a><span class="fu">mean</span>(my_mat)</span>
+<span id="cb98-3"><a href="lesson-2b-data-types-structures.html#cb98-3" tabindex="-1"></a><span class="do">## [1] 8.5</span></span></code></pre></div>
 <p>However, there are also unique functions that work on matrices but not vectors. For example, we can compute the mean of each column in a matrix:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lesson-2b-data-types-structures.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(my_mat)</span>
-<span id="cb99-2"><a href="lesson-2b-data-types-structures.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  a  b  c  d </span></span>
-<span id="cb99-3"><a href="lesson-2b-data-types-structures.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  8  9 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="lesson-2b-data-types-structures.html#cb99-1" tabindex="-1"></a><span class="fu">colMeans</span>(my_mat)</span>
+<span id="cb99-2"><a href="lesson-2b-data-types-structures.html#cb99-2" tabindex="-1"></a><span class="do">##  a  b  c  d </span></span>
+<span id="cb99-3"><a href="lesson-2b-data-types-structures.html#cb99-3" tabindex="-1"></a><span class="do">##  7  8  9 10</span></span></code></pre></div>
 <p>R has numerous built in functions to perform matrix operations. Some of the most common are given below. For example, to transpose a matrix we use the transposition function <code>t()</code>:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lesson-2b-data-types-structures.html#cb100-1" aria-hidden="true" tabindex="-1"></a>my_mat_t <span class="ot">&lt;-</span> <span class="fu">t</span>(my_mat)</span>
-<span id="cb100-2"><a href="lesson-2b-data-types-structures.html#cb100-2" aria-hidden="true" tabindex="-1"></a>my_mat_t</span>
-<span id="cb100-3"><a href="lesson-2b-data-types-structures.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   A B  C  D</span></span>
-<span id="cb100-4"><a href="lesson-2b-data-types-structures.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="do">## a 1 5  9 13</span></span>
-<span id="cb100-5"><a href="lesson-2b-data-types-structures.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="do">## b 2 6 10 14</span></span>
-<span id="cb100-6"><a href="lesson-2b-data-types-structures.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="do">## c 3 7 11 15</span></span>
-<span id="cb100-7"><a href="lesson-2b-data-types-structures.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="do">## d 4 8 12 16</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lesson-2b-data-types-structures.html#cb100-1" tabindex="-1"></a>my_mat_t <span class="ot">&lt;-</span> <span class="fu">t</span>(my_mat)</span>
+<span id="cb100-2"><a href="lesson-2b-data-types-structures.html#cb100-2" tabindex="-1"></a>my_mat_t</span>
+<span id="cb100-3"><a href="lesson-2b-data-types-structures.html#cb100-3" tabindex="-1"></a><span class="do">##   A B  C  D</span></span>
+<span id="cb100-4"><a href="lesson-2b-data-types-structures.html#cb100-4" tabindex="-1"></a><span class="do">## a 1 5  9 13</span></span>
+<span id="cb100-5"><a href="lesson-2b-data-types-structures.html#cb100-5" tabindex="-1"></a><span class="do">## b 2 6 10 14</span></span>
+<span id="cb100-6"><a href="lesson-2b-data-types-structures.html#cb100-6" tabindex="-1"></a><span class="do">## c 3 7 11 15</span></span>
+<span id="cb100-7"><a href="lesson-2b-data-types-structures.html#cb100-7" tabindex="-1"></a><span class="do">## d 4 8 12 16</span></span></code></pre></div>
 <p>To extract the diagonal elements of a matrix and store them as a vector we can use the <code>diag()</code> function:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lesson-2b-data-types-structures.html#cb101-1" aria-hidden="true" tabindex="-1"></a>my_mat_diag <span class="ot">&lt;-</span> <span class="fu">diag</span>(my_mat)</span>
-<span id="cb101-2"><a href="lesson-2b-data-types-structures.html#cb101-2" aria-hidden="true" tabindex="-1"></a>my_mat_diag</span>
-<span id="cb101-3"><a href="lesson-2b-data-types-structures.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  1  6 11 16</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="lesson-2b-data-types-structures.html#cb101-1" tabindex="-1"></a>my_mat_diag <span class="ot">&lt;-</span> <span class="fu">diag</span>(my_mat)</span>
+<span id="cb101-2"><a href="lesson-2b-data-types-structures.html#cb101-2" tabindex="-1"></a>my_mat_diag</span>
+<span id="cb101-3"><a href="lesson-2b-data-types-structures.html#cb101-3" tabindex="-1"></a><span class="do">## [1]  1  6 11 16</span></span></code></pre></div>
 <p>The usual matrix addition, multiplication etc can be performed. Note the use of the <code>%*%</code> operator to perform matrix multiplication.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lesson-2b-data-types-structures.html#cb102-1" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>)    </span>
-<span id="cb102-2"><a href="lesson-2b-data-types-structures.html#cb102-2" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.1</span></span>
-<span id="cb102-3"><a href="lesson-2b-data-types-structures.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb102-4"><a href="lesson-2b-data-types-structures.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    2    1</span></span>
-<span id="cb102-5"><a href="lesson-2b-data-types-structures.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    0    1</span></span>
-<span id="cb102-6"><a href="lesson-2b-data-types-structures.html#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-7"><a href="lesson-2b-data-types-structures.html#cb102-7" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb102-8"><a href="lesson-2b-data-types-structures.html#cb102-8" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.2</span></span>
-<span id="cb102-9"><a href="lesson-2b-data-types-structures.html#cb102-9" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb102-10"><a href="lesson-2b-data-types-structures.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    0</span></span>
-<span id="cb102-11"><a href="lesson-2b-data-types-structures.html#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    1    2</span></span>
-<span id="cb102-12"><a href="lesson-2b-data-types-structures.html#cb102-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-13"><a href="lesson-2b-data-types-structures.html#cb102-13" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">+</span> mat<span class="fl">.2</span>           <span class="co"># matrix addition</span></span>
-<span id="cb102-14"><a href="lesson-2b-data-types-structures.html#cb102-14" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb102-15"><a href="lesson-2b-data-types-structures.html#cb102-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    3    1</span></span>
-<span id="cb102-16"><a href="lesson-2b-data-types-structures.html#cb102-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    1    3</span></span>
-<span id="cb102-17"><a href="lesson-2b-data-types-structures.html#cb102-17" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">*</span> mat<span class="fl">.2</span>           <span class="co"># element by element products</span></span>
-<span id="cb102-18"><a href="lesson-2b-data-types-structures.html#cb102-18" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb102-19"><a href="lesson-2b-data-types-structures.html#cb102-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    2    0</span></span>
-<span id="cb102-20"><a href="lesson-2b-data-types-structures.html#cb102-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    0    2</span></span>
-<span id="cb102-21"><a href="lesson-2b-data-types-structures.html#cb102-21" aria-hidden="true" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">%*%</span> mat<span class="fl">.2</span>     <span class="co"># matrix multiplication</span></span>
-<span id="cb102-22"><a href="lesson-2b-data-types-structures.html#cb102-22" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb102-23"><a href="lesson-2b-data-types-structures.html#cb102-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    3    2</span></span>
-<span id="cb102-24"><a href="lesson-2b-data-types-structures.html#cb102-24" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    1    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lesson-2b-data-types-structures.html#cb102-1" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>)    </span>
+<span id="cb102-2"><a href="lesson-2b-data-types-structures.html#cb102-2" tabindex="-1"></a>mat<span class="fl">.1</span></span>
+<span id="cb102-3"><a href="lesson-2b-data-types-structures.html#cb102-3" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb102-4"><a href="lesson-2b-data-types-structures.html#cb102-4" tabindex="-1"></a><span class="do">## [1,]    2    1</span></span>
+<span id="cb102-5"><a href="lesson-2b-data-types-structures.html#cb102-5" tabindex="-1"></a><span class="do">## [2,]    0    1</span></span>
+<span id="cb102-6"><a href="lesson-2b-data-types-structures.html#cb102-6" tabindex="-1"></a></span>
+<span id="cb102-7"><a href="lesson-2b-data-types-structures.html#cb102-7" tabindex="-1"></a>mat<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb102-8"><a href="lesson-2b-data-types-structures.html#cb102-8" tabindex="-1"></a>mat<span class="fl">.2</span></span>
+<span id="cb102-9"><a href="lesson-2b-data-types-structures.html#cb102-9" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb102-10"><a href="lesson-2b-data-types-structures.html#cb102-10" tabindex="-1"></a><span class="do">## [1,]    1    0</span></span>
+<span id="cb102-11"><a href="lesson-2b-data-types-structures.html#cb102-11" tabindex="-1"></a><span class="do">## [2,]    1    2</span></span>
+<span id="cb102-12"><a href="lesson-2b-data-types-structures.html#cb102-12" tabindex="-1"></a></span>
+<span id="cb102-13"><a href="lesson-2b-data-types-structures.html#cb102-13" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">+</span> mat<span class="fl">.2</span>           <span class="co"># matrix addition</span></span>
+<span id="cb102-14"><a href="lesson-2b-data-types-structures.html#cb102-14" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb102-15"><a href="lesson-2b-data-types-structures.html#cb102-15" tabindex="-1"></a><span class="do">## [1,]    3    1</span></span>
+<span id="cb102-16"><a href="lesson-2b-data-types-structures.html#cb102-16" tabindex="-1"></a><span class="do">## [2,]    1    3</span></span>
+<span id="cb102-17"><a href="lesson-2b-data-types-structures.html#cb102-17" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">*</span> mat<span class="fl">.2</span>           <span class="co"># element by element products</span></span>
+<span id="cb102-18"><a href="lesson-2b-data-types-structures.html#cb102-18" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb102-19"><a href="lesson-2b-data-types-structures.html#cb102-19" tabindex="-1"></a><span class="do">## [1,]    2    0</span></span>
+<span id="cb102-20"><a href="lesson-2b-data-types-structures.html#cb102-20" tabindex="-1"></a><span class="do">## [2,]    0    2</span></span>
+<span id="cb102-21"><a href="lesson-2b-data-types-structures.html#cb102-21" tabindex="-1"></a>mat<span class="fl">.1</span> <span class="sc">%*%</span> mat<span class="fl">.2</span>     <span class="co"># matrix multiplication</span></span>
+<span id="cb102-22"><a href="lesson-2b-data-types-structures.html#cb102-22" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb102-23"><a href="lesson-2b-data-types-structures.html#cb102-23" tabindex="-1"></a><span class="do">## [1,]    3    2</span></span>
+<span id="cb102-24"><a href="lesson-2b-data-types-structures.html#cb102-24" tabindex="-1"></a><span class="do">## [2,]    1    2</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b4hzx896&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=564&amp;flashvars[mediaProxy.mediaPlayTo]=894&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_n1k8xqi4" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-2b">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/38WnW5ozTmc?si=eXGV8puYkXXRkco_&amp;start=563&end=891" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-16" class="section level4 hasAnchor" number="7.3.2.4">
@@ -1082,7 +1094,7 @@ Calculate averages for each column and row.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_odpx130y&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_z1pv3ca2" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-7.3.2.4">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zCuATEddqsc?si=04uN3dDsEdmGIuyj&amp;start=2264" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 </div>
 </div>
@@ -1101,57 +1113,57 @@ with lists.
 <div id="creating-1" class="section level4 hasAnchor" number="7.3.3.1">
 <h4><span class="header-section-number">7.3.3.1</span> Creating<a href="lesson-2b-data-types-structures.html#creating-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To create a list we can use the <code>list()</code> function. Note how each of the three list elements are of different classes (character, logical, and numeric) and are of different lengths.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lesson-2b-data-types-structures.html#cb103-1" aria-hidden="true" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>),</span>
-<span id="cb103-2"><a href="lesson-2b-data-types-structures.html#cb103-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb103-3"><a href="lesson-2b-data-types-structures.html#cb103-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>))</span>
-<span id="cb103-4"><a href="lesson-2b-data-types-structures.html#cb103-4" aria-hidden="true" tabindex="-1"></a>list_1</span>
-<span id="cb103-5"><a href="lesson-2b-data-types-structures.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [[1]]</span></span>
-<span id="cb103-6"><a href="lesson-2b-data-types-structures.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb103-7"><a href="lesson-2b-data-types-structures.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb103-8"><a href="lesson-2b-data-types-structures.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [[2]]</span></span>
-<span id="cb103-9"><a href="lesson-2b-data-types-structures.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
-<span id="cb103-10"><a href="lesson-2b-data-types-structures.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb103-11"><a href="lesson-2b-data-types-structures.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [[3]]</span></span>
-<span id="cb103-12"><a href="lesson-2b-data-types-structures.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb103-13"><a href="lesson-2b-data-types-structures.html#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
-<span id="cb103-14"><a href="lesson-2b-data-types-structures.html#cb103-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
-<span id="cb103-15"><a href="lesson-2b-data-types-structures.html#cb103-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="lesson-2b-data-types-structures.html#cb103-1" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>),</span>
+<span id="cb103-2"><a href="lesson-2b-data-types-structures.html#cb103-2" tabindex="-1"></a>               <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb103-3"><a href="lesson-2b-data-types-structures.html#cb103-3" tabindex="-1"></a>               <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>))</span>
+<span id="cb103-4"><a href="lesson-2b-data-types-structures.html#cb103-4" tabindex="-1"></a>list_1</span>
+<span id="cb103-5"><a href="lesson-2b-data-types-structures.html#cb103-5" tabindex="-1"></a><span class="do">## [[1]]</span></span>
+<span id="cb103-6"><a href="lesson-2b-data-types-structures.html#cb103-6" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb103-7"><a href="lesson-2b-data-types-structures.html#cb103-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb103-8"><a href="lesson-2b-data-types-structures.html#cb103-8" tabindex="-1"></a><span class="do">## [[2]]</span></span>
+<span id="cb103-9"><a href="lesson-2b-data-types-structures.html#cb103-9" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb103-10"><a href="lesson-2b-data-types-structures.html#cb103-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb103-11"><a href="lesson-2b-data-types-structures.html#cb103-11" tabindex="-1"></a><span class="do">## [[3]]</span></span>
+<span id="cb103-12"><a href="lesson-2b-data-types-structures.html#cb103-12" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb103-13"><a href="lesson-2b-data-types-structures.html#cb103-13" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
+<span id="cb103-14"><a href="lesson-2b-data-types-structures.html#cb103-14" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
+<span id="cb103-15"><a href="lesson-2b-data-types-structures.html#cb103-15" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
 <p>Elements of the list can be named during the construction of the list</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lesson-2b-data-types-structures.html#cb104-1" aria-hidden="true" tabindex="-1"></a>list_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">colours =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>), </span>
-<span id="cb104-2"><a href="lesson-2b-data-types-structures.html#cb104-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">evaluation =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>), </span>
-<span id="cb104-3"><a href="lesson-2b-data-types-structures.html#cb104-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">time =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>))</span>
-<span id="cb104-4"><a href="lesson-2b-data-types-structures.html#cb104-4" aria-hidden="true" tabindex="-1"></a>list_2</span>
-<span id="cb104-5"><a href="lesson-2b-data-types-structures.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="do">## $colours</span></span>
-<span id="cb104-6"><a href="lesson-2b-data-types-structures.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb104-7"><a href="lesson-2b-data-types-structures.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb104-8"><a href="lesson-2b-data-types-structures.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="do">## $evaluation</span></span>
-<span id="cb104-9"><a href="lesson-2b-data-types-structures.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
-<span id="cb104-10"><a href="lesson-2b-data-types-structures.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb104-11"><a href="lesson-2b-data-types-structures.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="do">## $time</span></span>
-<span id="cb104-12"><a href="lesson-2b-data-types-structures.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb104-13"><a href="lesson-2b-data-types-structures.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
-<span id="cb104-14"><a href="lesson-2b-data-types-structures.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
-<span id="cb104-15"><a href="lesson-2b-data-types-structures.html#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lesson-2b-data-types-structures.html#cb104-1" tabindex="-1"></a>list_2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">colours =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>), </span>
+<span id="cb104-2"><a href="lesson-2b-data-types-structures.html#cb104-2" tabindex="-1"></a>               <span class="at">evaluation =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>), </span>
+<span id="cb104-3"><a href="lesson-2b-data-types-structures.html#cb104-3" tabindex="-1"></a>               <span class="at">time =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>))</span>
+<span id="cb104-4"><a href="lesson-2b-data-types-structures.html#cb104-4" tabindex="-1"></a>list_2</span>
+<span id="cb104-5"><a href="lesson-2b-data-types-structures.html#cb104-5" tabindex="-1"></a><span class="do">## $colours</span></span>
+<span id="cb104-6"><a href="lesson-2b-data-types-structures.html#cb104-6" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb104-7"><a href="lesson-2b-data-types-structures.html#cb104-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb104-8"><a href="lesson-2b-data-types-structures.html#cb104-8" tabindex="-1"></a><span class="do">## $evaluation</span></span>
+<span id="cb104-9"><a href="lesson-2b-data-types-structures.html#cb104-9" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb104-10"><a href="lesson-2b-data-types-structures.html#cb104-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb104-11"><a href="lesson-2b-data-types-structures.html#cb104-11" tabindex="-1"></a><span class="do">## $time</span></span>
+<span id="cb104-12"><a href="lesson-2b-data-types-structures.html#cb104-12" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb104-13"><a href="lesson-2b-data-types-structures.html#cb104-13" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
+<span id="cb104-14"><a href="lesson-2b-data-types-structures.html#cb104-14" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
+<span id="cb104-15"><a href="lesson-2b-data-types-structures.html#cb104-15" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
 <p>or after the list has been created using the <code>names()</code> function</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lesson-2b-data-types-structures.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(list_1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;colors&quot;</span>, <span class="st">&quot;evaluation&quot;</span>, <span class="st">&quot;time&quot;</span>)</span>
-<span id="cb105-2"><a href="lesson-2b-data-types-structures.html#cb105-2" aria-hidden="true" tabindex="-1"></a>list_1</span>
-<span id="cb105-3"><a href="lesson-2b-data-types-structures.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">## $colors</span></span>
-<span id="cb105-4"><a href="lesson-2b-data-types-structures.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb105-5"><a href="lesson-2b-data-types-structures.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb105-6"><a href="lesson-2b-data-types-structures.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $evaluation</span></span>
-<span id="cb105-7"><a href="lesson-2b-data-types-structures.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
-<span id="cb105-8"><a href="lesson-2b-data-types-structures.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb105-9"><a href="lesson-2b-data-types-structures.html#cb105-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $time</span></span>
-<span id="cb105-10"><a href="lesson-2b-data-types-structures.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb105-11"><a href="lesson-2b-data-types-structures.html#cb105-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
-<span id="cb105-12"><a href="lesson-2b-data-types-structures.html#cb105-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
-<span id="cb105-13"><a href="lesson-2b-data-types-structures.html#cb105-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="lesson-2b-data-types-structures.html#cb105-1" tabindex="-1"></a><span class="fu">names</span>(list_1) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;colors&quot;</span>, <span class="st">&quot;evaluation&quot;</span>, <span class="st">&quot;time&quot;</span>)</span>
+<span id="cb105-2"><a href="lesson-2b-data-types-structures.html#cb105-2" tabindex="-1"></a>list_1</span>
+<span id="cb105-3"><a href="lesson-2b-data-types-structures.html#cb105-3" tabindex="-1"></a><span class="do">## $colors</span></span>
+<span id="cb105-4"><a href="lesson-2b-data-types-structures.html#cb105-4" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb105-5"><a href="lesson-2b-data-types-structures.html#cb105-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb105-6"><a href="lesson-2b-data-types-structures.html#cb105-6" tabindex="-1"></a><span class="do">## $evaluation</span></span>
+<span id="cb105-7"><a href="lesson-2b-data-types-structures.html#cb105-7" tabindex="-1"></a><span class="do">## [1]  TRUE  TRUE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb105-8"><a href="lesson-2b-data-types-structures.html#cb105-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb105-9"><a href="lesson-2b-data-types-structures.html#cb105-9" tabindex="-1"></a><span class="do">## $time</span></span>
+<span id="cb105-10"><a href="lesson-2b-data-types-structures.html#cb105-10" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb105-11"><a href="lesson-2b-data-types-structures.html#cb105-11" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
+<span id="cb105-12"><a href="lesson-2b-data-types-structures.html#cb105-12" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
+<span id="cb105-13"><a href="lesson-2b-data-types-structures.html#cb105-13" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
 <p>We can always get a quick glimpse of the <strong>str</strong>ucture of a list using <code>str()</code>:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lesson-2b-data-types-structures.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list_1)</span>
-<span id="cb106-2"><a href="lesson-2b-data-types-structures.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 3</span></span>
-<span id="cb106-3"><a href="lesson-2b-data-types-structures.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ colors    : chr [1:3] &quot;black&quot; &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb106-4"><a href="lesson-2b-data-types-structures.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ evaluation: logi [1:6] TRUE TRUE FALSE TRUE FALSE FALSE</span></span>
-<span id="cb106-5"><a href="lesson-2b-data-types-structures.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ time      : int [1:3, 1:2] 1 2 3 4 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lesson-2b-data-types-structures.html#cb106-1" tabindex="-1"></a><span class="fu">str</span>(list_1)</span>
+<span id="cb106-2"><a href="lesson-2b-data-types-structures.html#cb106-2" tabindex="-1"></a><span class="do">## List of 3</span></span>
+<span id="cb106-3"><a href="lesson-2b-data-types-structures.html#cb106-3" tabindex="-1"></a><span class="do">##  $ colors    : chr [1:3] &quot;black&quot; &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb106-4"><a href="lesson-2b-data-types-structures.html#cb106-4" tabindex="-1"></a><span class="do">##  $ evaluation: logi [1:6] TRUE TRUE FALSE TRUE FALSE FALSE</span></span>
+<span id="cb106-5"><a href="lesson-2b-data-types-structures.html#cb106-5" tabindex="-1"></a><span class="do">##  $ time      : int [1:3, 1:2] 1 2 3 4 5 6</span></span></code></pre></div>
 </div>
 <div id="indexing-1" class="section level4 hasAnchor" number="7.3.3.2">
 <h4><span class="header-section-number">7.3.3.2</span> Indexing<a href="lesson-2b-data-types-structures.html#indexing-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1173,38 +1185,38 @@ href="http://adv-r.had.co.nz/Subsetting.html#subsetting-operators">Simplifying
 vs. Preserving Subsetting</a> to learn more.
 </p>
 </div>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lesson-2b-data-types-structures.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract first list item</span></span>
-<span id="cb107-2"><a href="lesson-2b-data-types-structures.html#cb107-2" aria-hidden="true" tabindex="-1"></a>list_1[<span class="dv">1</span>]</span>
-<span id="cb107-3"><a href="lesson-2b-data-types-structures.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="do">## $colors</span></span>
-<span id="cb107-4"><a href="lesson-2b-data-types-structures.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb107-5"><a href="lesson-2b-data-types-structures.html#cb107-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-6"><a href="lesson-2b-data-types-structures.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="co"># same as above but using the item&#39;s name</span></span>
-<span id="cb107-7"><a href="lesson-2b-data-types-structures.html#cb107-7" aria-hidden="true" tabindex="-1"></a>list_1[<span class="st">&#39;colors&#39;</span>]</span>
-<span id="cb107-8"><a href="lesson-2b-data-types-structures.html#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="do">## $colors</span></span>
-<span id="cb107-9"><a href="lesson-2b-data-types-structures.html#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb107-10"><a href="lesson-2b-data-types-structures.html#cb107-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-11"><a href="lesson-2b-data-types-structures.html#cb107-11" aria-hidden="true" tabindex="-1"></a><span class="co"># extract multiple list items</span></span>
-<span id="cb107-12"><a href="lesson-2b-data-types-structures.html#cb107-12" aria-hidden="true" tabindex="-1"></a>list_1[<span class="fu">c</span>(<span class="st">&#39;colors&#39;</span>, <span class="st">&#39;time&#39;</span>)]</span>
-<span id="cb107-13"><a href="lesson-2b-data-types-structures.html#cb107-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $colors</span></span>
-<span id="cb107-14"><a href="lesson-2b-data-types-structures.html#cb107-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb107-15"><a href="lesson-2b-data-types-structures.html#cb107-15" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb107-16"><a href="lesson-2b-data-types-structures.html#cb107-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $time</span></span>
-<span id="cb107-17"><a href="lesson-2b-data-types-structures.html#cb107-17" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb107-18"><a href="lesson-2b-data-types-structures.html#cb107-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
-<span id="cb107-19"><a href="lesson-2b-data-types-structures.html#cb107-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
-<span id="cb107-20"><a href="lesson-2b-data-types-structures.html#cb107-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="lesson-2b-data-types-structures.html#cb107-1" tabindex="-1"></a><span class="co"># extract first list item</span></span>
+<span id="cb107-2"><a href="lesson-2b-data-types-structures.html#cb107-2" tabindex="-1"></a>list_1[<span class="dv">1</span>]</span>
+<span id="cb107-3"><a href="lesson-2b-data-types-structures.html#cb107-3" tabindex="-1"></a><span class="do">## $colors</span></span>
+<span id="cb107-4"><a href="lesson-2b-data-types-structures.html#cb107-4" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb107-5"><a href="lesson-2b-data-types-structures.html#cb107-5" tabindex="-1"></a></span>
+<span id="cb107-6"><a href="lesson-2b-data-types-structures.html#cb107-6" tabindex="-1"></a><span class="co"># same as above but using the item&#39;s name</span></span>
+<span id="cb107-7"><a href="lesson-2b-data-types-structures.html#cb107-7" tabindex="-1"></a>list_1[<span class="st">&#39;colors&#39;</span>]</span>
+<span id="cb107-8"><a href="lesson-2b-data-types-structures.html#cb107-8" tabindex="-1"></a><span class="do">## $colors</span></span>
+<span id="cb107-9"><a href="lesson-2b-data-types-structures.html#cb107-9" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb107-10"><a href="lesson-2b-data-types-structures.html#cb107-10" tabindex="-1"></a></span>
+<span id="cb107-11"><a href="lesson-2b-data-types-structures.html#cb107-11" tabindex="-1"></a><span class="co"># extract multiple list items</span></span>
+<span id="cb107-12"><a href="lesson-2b-data-types-structures.html#cb107-12" tabindex="-1"></a>list_1[<span class="fu">c</span>(<span class="st">&#39;colors&#39;</span>, <span class="st">&#39;time&#39;</span>)]</span>
+<span id="cb107-13"><a href="lesson-2b-data-types-structures.html#cb107-13" tabindex="-1"></a><span class="do">## $colors</span></span>
+<span id="cb107-14"><a href="lesson-2b-data-types-structures.html#cb107-14" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb107-15"><a href="lesson-2b-data-types-structures.html#cb107-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb107-16"><a href="lesson-2b-data-types-structures.html#cb107-16" tabindex="-1"></a><span class="do">## $time</span></span>
+<span id="cb107-17"><a href="lesson-2b-data-types-structures.html#cb107-17" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb107-18"><a href="lesson-2b-data-types-structures.html#cb107-18" tabindex="-1"></a><span class="do">## [1,]    1    4</span></span>
+<span id="cb107-19"><a href="lesson-2b-data-types-structures.html#cb107-19" tabindex="-1"></a><span class="do">## [2,]    2    5</span></span>
+<span id="cb107-20"><a href="lesson-2b-data-types-structures.html#cb107-20" tabindex="-1"></a><span class="do">## [3,]    3    6</span></span></code></pre></div>
 <p>To extract one or more list items while <strong><em>simplifying</em></strong> the output use the <code>[[ ]]</code> or <code>$</code> operator:</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lesson-2b-data-types-structures.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract first list item</span></span>
-<span id="cb108-2"><a href="lesson-2b-data-types-structures.html#cb108-2" aria-hidden="true" tabindex="-1"></a>list_1[[<span class="dv">1</span>]]</span>
-<span id="cb108-3"><a href="lesson-2b-data-types-structures.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb108-4"><a href="lesson-2b-data-types-structures.html#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-5"><a href="lesson-2b-data-types-structures.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="co"># same as above but using the item&#39;s name</span></span>
-<span id="cb108-6"><a href="lesson-2b-data-types-structures.html#cb108-6" aria-hidden="true" tabindex="-1"></a>list_1[[<span class="st">&#39;colors&#39;</span>]]</span>
-<span id="cb108-7"><a href="lesson-2b-data-types-structures.html#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb108-8"><a href="lesson-2b-data-types-structures.html#cb108-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-9"><a href="lesson-2b-data-types-structures.html#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="co"># same as above but using $</span></span>
-<span id="cb108-10"><a href="lesson-2b-data-types-structures.html#cb108-10" aria-hidden="true" tabindex="-1"></a>list_1<span class="sc">$</span>colors</span>
-<span id="cb108-11"><a href="lesson-2b-data-types-structures.html#cb108-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lesson-2b-data-types-structures.html#cb108-1" tabindex="-1"></a><span class="co"># extract first list item</span></span>
+<span id="cb108-2"><a href="lesson-2b-data-types-structures.html#cb108-2" tabindex="-1"></a>list_1[[<span class="dv">1</span>]]</span>
+<span id="cb108-3"><a href="lesson-2b-data-types-structures.html#cb108-3" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb108-4"><a href="lesson-2b-data-types-structures.html#cb108-4" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="lesson-2b-data-types-structures.html#cb108-5" tabindex="-1"></a><span class="co"># same as above but using the item&#39;s name</span></span>
+<span id="cb108-6"><a href="lesson-2b-data-types-structures.html#cb108-6" tabindex="-1"></a>list_1[[<span class="st">&#39;colors&#39;</span>]]</span>
+<span id="cb108-7"><a href="lesson-2b-data-types-structures.html#cb108-7" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb108-8"><a href="lesson-2b-data-types-structures.html#cb108-8" tabindex="-1"></a></span>
+<span id="cb108-9"><a href="lesson-2b-data-types-structures.html#cb108-9" tabindex="-1"></a><span class="co"># same as above but using $</span></span>
+<span id="cb108-10"><a href="lesson-2b-data-types-structures.html#cb108-10" tabindex="-1"></a>list_1<span class="sc">$</span>colors</span>
+<span id="cb108-11"><a href="lesson-2b-data-types-structures.html#cb108-11" tabindex="-1"></a><span class="do">## [1] &quot;black&quot;  &quot;yellow&quot; &quot;orange&quot;</span></span></code></pre></div>
 <div class="tip">
 <p>
 One thing that differentiates the <code>[[</code> operator from the
@@ -1213,36 +1225,38 @@ literal names.
 </p>
 </div>
 <p>To extract individual elements out of a specific list item combine the <code>[[</code> (or <code>$</code>) operator with the <code>[</code> operator:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="lesson-2b-data-types-structures.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the third element of the first list item</span></span>
-<span id="cb109-2"><a href="lesson-2b-data-types-structures.html#cb109-2" aria-hidden="true" tabindex="-1"></a>list_1[[<span class="st">&#39;colors&#39;</span>]][<span class="dv">3</span>]</span>
-<span id="cb109-3"><a href="lesson-2b-data-types-structures.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;orange&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="lesson-2b-data-types-structures.html#cb109-1" tabindex="-1"></a><span class="co"># extract the third element of the first list item</span></span>
+<span id="cb109-2"><a href="lesson-2b-data-types-structures.html#cb109-2" tabindex="-1"></a>list_1[[<span class="st">&#39;colors&#39;</span>]][<span class="dv">3</span>]</span>
+<span id="cb109-3"><a href="lesson-2b-data-types-structures.html#cb109-3" tabindex="-1"></a><span class="do">## [1] &quot;orange&quot;</span></span></code></pre></div>
 </div>
 <div id="operators-1" class="section level4 hasAnchor" number="7.3.3.3">
 <h4><span class="header-section-number">7.3.3.3</span> Operators<a href="lesson-2b-data-types-structures.html#operators-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are less operators that you typically use directly on a list. Most of the time you are trying to extract items out of a list. However, a few useful functions that are applied to a list include:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lesson-2b-data-types-structures.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many items are in a list</span></span>
-<span id="cb110-2"><a href="lesson-2b-data-types-structures.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(list_1)</span>
-<span id="cb110-3"><a href="lesson-2b-data-types-structures.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
-<span id="cb110-4"><a href="lesson-2b-data-types-structures.html#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-5"><a href="lesson-2b-data-types-structures.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the name of the list items</span></span>
-<span id="cb110-6"><a href="lesson-2b-data-types-structures.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(list_1)</span>
-<span id="cb110-7"><a href="lesson-2b-data-types-structures.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;colors&quot;     &quot;evaluation&quot; &quot;time&quot;</span></span>
-<span id="cb110-8"><a href="lesson-2b-data-types-structures.html#cb110-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-9"><a href="lesson-2b-data-types-structures.html#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the overall structure of a list</span></span>
-<span id="cb110-10"><a href="lesson-2b-data-types-structures.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list_1)</span>
-<span id="cb110-11"><a href="lesson-2b-data-types-structures.html#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 3</span></span>
-<span id="cb110-12"><a href="lesson-2b-data-types-structures.html#cb110-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ colors    : chr [1:3] &quot;black&quot; &quot;yellow&quot; &quot;orange&quot;</span></span>
-<span id="cb110-13"><a href="lesson-2b-data-types-structures.html#cb110-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ evaluation: logi [1:6] TRUE TRUE FALSE TRUE FALSE FALSE</span></span>
-<span id="cb110-14"><a href="lesson-2b-data-types-structures.html#cb110-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ time      : int [1:3, 1:2] 1 2 3 4 5 6</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lesson-2b-data-types-structures.html#cb110-1" tabindex="-1"></a><span class="co"># how many items are in a list</span></span>
+<span id="cb110-2"><a href="lesson-2b-data-types-structures.html#cb110-2" tabindex="-1"></a><span class="fu">length</span>(list_1)</span>
+<span id="cb110-3"><a href="lesson-2b-data-types-structures.html#cb110-3" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb110-4"><a href="lesson-2b-data-types-structures.html#cb110-4" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="lesson-2b-data-types-structures.html#cb110-5" tabindex="-1"></a><span class="co"># the name of the list items</span></span>
+<span id="cb110-6"><a href="lesson-2b-data-types-structures.html#cb110-6" tabindex="-1"></a><span class="fu">names</span>(list_1)</span>
+<span id="cb110-7"><a href="lesson-2b-data-types-structures.html#cb110-7" tabindex="-1"></a><span class="do">## [1] &quot;colors&quot;     &quot;evaluation&quot; &quot;time&quot;</span></span>
+<span id="cb110-8"><a href="lesson-2b-data-types-structures.html#cb110-8" tabindex="-1"></a></span>
+<span id="cb110-9"><a href="lesson-2b-data-types-structures.html#cb110-9" tabindex="-1"></a><span class="co"># the overall structure of a list</span></span>
+<span id="cb110-10"><a href="lesson-2b-data-types-structures.html#cb110-10" tabindex="-1"></a><span class="fu">str</span>(list_1)</span>
+<span id="cb110-11"><a href="lesson-2b-data-types-structures.html#cb110-11" tabindex="-1"></a><span class="do">## List of 3</span></span>
+<span id="cb110-12"><a href="lesson-2b-data-types-structures.html#cb110-12" tabindex="-1"></a><span class="do">##  $ colors    : chr [1:3] &quot;black&quot; &quot;yellow&quot; &quot;orange&quot;</span></span>
+<span id="cb110-13"><a href="lesson-2b-data-types-structures.html#cb110-13" tabindex="-1"></a><span class="do">##  $ evaluation: logi [1:6] TRUE TRUE FALSE TRUE FALSE FALSE</span></span>
+<span id="cb110-14"><a href="lesson-2b-data-types-structures.html#cb110-14" tabindex="-1"></a><span class="do">##  $ time      : int [1:3, 1:2] 1 2 3 4 5 6</span></span></code></pre></div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b4hzx896&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1450&amp;flashvars[mediaProxy.mediaPlayTo]=1722&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_n1k8xqi4" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-2b">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/38WnW5ozTmc?si=VYqeqai2wC_9rNqR&amp;start=1450&end=1721" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-17" class="section level4 hasAnchor" number="7.3.3.4">
 <h4><span class="header-section-number">7.3.3.4</span> Knowledge check<a href="lesson-2b-data-types-structures.html#knowledge-check-17" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Install and load the <strong>nycflights13</strong> package:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="lesson-2b-data-types-structures.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;nycflights13&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="lesson-2b-data-types-structures.html#cb111-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;nycflights13&#39;</span>)</span></code></pre></div>
 <p>Using the flights data provided by this package create the following regression model:</p>
 <div class="note">
 <p>
@@ -1251,7 +1265,7 @@ the results in a list called <code>flight_lm</code>. We’ll discuss
 linear regression and modeling in later modules.
 </p>
 </div>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="lesson-2b-data-types-structures.html#cb112-1" aria-hidden="true" tabindex="-1"></a>flight_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(arr_delay <span class="sc">~</span> dep_delay <span class="sc">+</span> month <span class="sc">+</span> carrier, <span class="at">data =</span> flights)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="lesson-2b-data-types-structures.html#cb112-1" tabindex="-1"></a>flight_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(arr_delay <span class="sc">~</span> dep_delay <span class="sc">+</span> month <span class="sc">+</span> carrier, <span class="at">data =</span> flights)</span></code></pre></div>
 <div class="todo">
 <ol style="list-style-type: decimal">
 <li>
@@ -1270,8 +1284,10 @@ coefficient.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_n5t8dx1o&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_rzyntpvu" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-7.3.3.4">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pi83qBTtKUQ?si=Y6WWC68nNKrPOQEC&amp;start=2264" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1374,105 +1390,127 @@ coefficient.
 <div id="creating-2" class="section level4 hasAnchor" number="7.3.4.1">
 <h4><span class="header-section-number">7.3.4.1</span> Creating<a href="lesson-2b-data-types-structures.html#creating-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Data frames are usually created by reading in a data set, which we’ll cover in a later lesson. However, data frames can also be created explicitly with the <code>data.frame()</code> function or they can be coerced from other types of objects like lists. In this case I’ll create a simple data frame <code>df</code> and assess its basic structure:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="lesson-2b-data-types-structures.html#cb113-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb113-2"><a href="lesson-2b-data-types-structures.html#cb113-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>), </span>
-<span id="cb113-3"><a href="lesson-2b-data-types-structures.html#cb113-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col3 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb113-4"><a href="lesson-2b-data-types-structures.html#cb113-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col4 =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.2</span>, pi))</span>
-<span id="cb113-5"><a href="lesson-2b-data-types-structures.html#cb113-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-6"><a href="lesson-2b-data-types-structures.html#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="co"># assess the structure of a data frame</span></span>
-<span id="cb113-7"><a href="lesson-2b-data-types-structures.html#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
-<span id="cb113-8"><a href="lesson-2b-data-types-structures.html#cb113-8" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    3 obs. of  4 variables:</span></span>
-<span id="cb113-9"><a href="lesson-2b-data-types-structures.html#cb113-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col1: int  1 2 3</span></span>
-<span id="cb113-10"><a href="lesson-2b-data-types-structures.html#cb113-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col2: chr  &quot;this&quot; &quot;is&quot; &quot;text&quot;</span></span>
-<span id="cb113-11"><a href="lesson-2b-data-types-structures.html#cb113-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col3: logi  TRUE FALSE TRUE</span></span>
-<span id="cb113-12"><a href="lesson-2b-data-types-structures.html#cb113-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col4: num  2.5 4.2 3.14</span></span>
-<span id="cb113-13"><a href="lesson-2b-data-types-structures.html#cb113-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-14"><a href="lesson-2b-data-types-structures.html#cb113-14" aria-hidden="true" tabindex="-1"></a><span class="co"># number of rows</span></span>
-<span id="cb113-15"><a href="lesson-2b-data-types-structures.html#cb113-15" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
-<span id="cb113-16"><a href="lesson-2b-data-types-structures.html#cb113-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
-<span id="cb113-17"><a href="lesson-2b-data-types-structures.html#cb113-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-18"><a href="lesson-2b-data-types-structures.html#cb113-18" aria-hidden="true" tabindex="-1"></a><span class="co"># number of columns</span></span>
-<span id="cb113-19"><a href="lesson-2b-data-types-structures.html#cb113-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(df)</span>
-<span id="cb113-20"><a href="lesson-2b-data-types-structures.html#cb113-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="lesson-2b-data-types-structures.html#cb113-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb113-2"><a href="lesson-2b-data-types-structures.html#cb113-2" tabindex="-1"></a>                 <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>), </span>
+<span id="cb113-3"><a href="lesson-2b-data-types-structures.html#cb113-3" tabindex="-1"></a>                 <span class="at">col3 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb113-4"><a href="lesson-2b-data-types-structures.html#cb113-4" tabindex="-1"></a>                 <span class="at">col4 =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.2</span>, pi))</span>
+<span id="cb113-5"><a href="lesson-2b-data-types-structures.html#cb113-5" tabindex="-1"></a></span>
+<span id="cb113-6"><a href="lesson-2b-data-types-structures.html#cb113-6" tabindex="-1"></a><span class="co"># assess the structure of a data frame</span></span>
+<span id="cb113-7"><a href="lesson-2b-data-types-structures.html#cb113-7" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb113-8"><a href="lesson-2b-data-types-structures.html#cb113-8" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    3 obs. of  4 variables:</span></span>
+<span id="cb113-9"><a href="lesson-2b-data-types-structures.html#cb113-9" tabindex="-1"></a><span class="do">##  $ col1: int  1 2 3</span></span>
+<span id="cb113-10"><a href="lesson-2b-data-types-structures.html#cb113-10" tabindex="-1"></a><span class="do">##  $ col2: chr  &quot;this&quot; &quot;is&quot; &quot;text&quot;</span></span>
+<span id="cb113-11"><a href="lesson-2b-data-types-structures.html#cb113-11" tabindex="-1"></a><span class="do">##  $ col3: logi  TRUE FALSE TRUE</span></span>
+<span id="cb113-12"><a href="lesson-2b-data-types-structures.html#cb113-12" tabindex="-1"></a><span class="do">##  $ col4: num  2.5 4.2 3.14</span></span>
+<span id="cb113-13"><a href="lesson-2b-data-types-structures.html#cb113-13" tabindex="-1"></a></span>
+<span id="cb113-14"><a href="lesson-2b-data-types-structures.html#cb113-14" tabindex="-1"></a><span class="co"># number of rows</span></span>
+<span id="cb113-15"><a href="lesson-2b-data-types-structures.html#cb113-15" tabindex="-1"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb113-16"><a href="lesson-2b-data-types-structures.html#cb113-16" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb113-17"><a href="lesson-2b-data-types-structures.html#cb113-17" tabindex="-1"></a></span>
+<span id="cb113-18"><a href="lesson-2b-data-types-structures.html#cb113-18" tabindex="-1"></a><span class="co"># number of columns</span></span>
+<span id="cb113-19"><a href="lesson-2b-data-types-structures.html#cb113-19" tabindex="-1"></a><span class="fu">ncol</span>(df)</span>
+<span id="cb113-20"><a href="lesson-2b-data-types-structures.html#cb113-20" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
 <p>Note how <code>col2</code> in <code>df</code> was converted to a column of factors. This is because there is a default setting in <code>data.frame()</code> that converts character columns to factors. We can turn this off by setting the <code>stringsAsFactors = FALSE</code> argument:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="lesson-2b-data-types-structures.html#cb114-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb114-2"><a href="lesson-2b-data-types-structures.html#cb114-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>), </span>
-<span id="cb114-3"><a href="lesson-2b-data-types-structures.html#cb114-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col3 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb114-4"><a href="lesson-2b-data-types-structures.html#cb114-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col4 =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.2</span>, pi), </span>
-<span id="cb114-5"><a href="lesson-2b-data-types-structures.html#cb114-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb114-6"><a href="lesson-2b-data-types-structures.html#cb114-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-7"><a href="lesson-2b-data-types-structures.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co"># note how col2 now is of a character class</span></span>
-<span id="cb114-8"><a href="lesson-2b-data-types-structures.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span>
-<span id="cb114-9"><a href="lesson-2b-data-types-structures.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    3 obs. of  4 variables:</span></span>
-<span id="cb114-10"><a href="lesson-2b-data-types-structures.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col1: int  1 2 3</span></span>
-<span id="cb114-11"><a href="lesson-2b-data-types-structures.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col2: chr  &quot;this&quot; &quot;is&quot; &quot;text&quot;</span></span>
-<span id="cb114-12"><a href="lesson-2b-data-types-structures.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col3: logi  TRUE FALSE TRUE</span></span>
-<span id="cb114-13"><a href="lesson-2b-data-types-structures.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ col4: num  2.5 4.2 3.14</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="lesson-2b-data-types-structures.html#cb114-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb114-2"><a href="lesson-2b-data-types-structures.html#cb114-2" tabindex="-1"></a>                 <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>), </span>
+<span id="cb114-3"><a href="lesson-2b-data-types-structures.html#cb114-3" tabindex="-1"></a>                 <span class="at">col3 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb114-4"><a href="lesson-2b-data-types-structures.html#cb114-4" tabindex="-1"></a>                 <span class="at">col4 =</span> <span class="fu">c</span>(<span class="fl">2.5</span>, <span class="fl">4.2</span>, pi), </span>
+<span id="cb114-5"><a href="lesson-2b-data-types-structures.html#cb114-5" tabindex="-1"></a>                 <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb114-6"><a href="lesson-2b-data-types-structures.html#cb114-6" tabindex="-1"></a></span>
+<span id="cb114-7"><a href="lesson-2b-data-types-structures.html#cb114-7" tabindex="-1"></a><span class="co"># note how col2 now is of a character class</span></span>
+<span id="cb114-8"><a href="lesson-2b-data-types-structures.html#cb114-8" tabindex="-1"></a><span class="fu">str</span>(df)</span>
+<span id="cb114-9"><a href="lesson-2b-data-types-structures.html#cb114-9" tabindex="-1"></a><span class="do">## &#39;data.frame&#39;:    3 obs. of  4 variables:</span></span>
+<span id="cb114-10"><a href="lesson-2b-data-types-structures.html#cb114-10" tabindex="-1"></a><span class="do">##  $ col1: int  1 2 3</span></span>
+<span id="cb114-11"><a href="lesson-2b-data-types-structures.html#cb114-11" tabindex="-1"></a><span class="do">##  $ col2: chr  &quot;this&quot; &quot;is&quot; &quot;text&quot;</span></span>
+<span id="cb114-12"><a href="lesson-2b-data-types-structures.html#cb114-12" tabindex="-1"></a><span class="do">##  $ col3: logi  TRUE FALSE TRUE</span></span>
+<span id="cb114-13"><a href="lesson-2b-data-types-structures.html#cb114-13" tabindex="-1"></a><span class="do">##  $ col4: num  2.5 4.2 3.14</span></span></code></pre></div>
 <p>We can also convert pre-existing structures to a data frame. The following illustrates how we can turn multiple vectors into a data frame:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="lesson-2b-data-types-structures.html#cb115-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb115-2"><a href="lesson-2b-data-types-structures.html#cb115-2" aria-hidden="true" tabindex="-1"></a>v2 <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>)</span>
-<span id="cb115-3"><a href="lesson-2b-data-types-structures.html#cb115-3" aria-hidden="true" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb115-4"><a href="lesson-2b-data-types-structures.html#cb115-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-5"><a href="lesson-2b-data-types-structures.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="co"># convert same length vectors to a data frame using data.frame()</span></span>
-<span id="cb115-6"><a href="lesson-2b-data-types-structures.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">col1 =</span> v1, <span class="at">col2 =</span> v2, <span class="at">col3 =</span> v3)</span>
-<span id="cb115-7"><a href="lesson-2b-data-types-structures.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   col1 col2  col3</span></span>
-<span id="cb115-8"><a href="lesson-2b-data-types-structures.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    1 this  TRUE</span></span>
-<span id="cb115-9"><a href="lesson-2b-data-types-structures.html#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    2   is FALSE</span></span>
-<span id="cb115-10"><a href="lesson-2b-data-types-structures.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    3 text  TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="lesson-2b-data-types-structures.html#cb115-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb115-2"><a href="lesson-2b-data-types-structures.html#cb115-2" tabindex="-1"></a>v2 <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;this&quot;</span>, <span class="st">&quot;is&quot;</span>, <span class="st">&quot;text&quot;</span>)</span>
+<span id="cb115-3"><a href="lesson-2b-data-types-structures.html#cb115-3" tabindex="-1"></a>v3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb115-4"><a href="lesson-2b-data-types-structures.html#cb115-4" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="lesson-2b-data-types-structures.html#cb115-5" tabindex="-1"></a><span class="co"># convert same length vectors to a data frame using data.frame()</span></span>
+<span id="cb115-6"><a href="lesson-2b-data-types-structures.html#cb115-6" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">col1 =</span> v1, <span class="at">col2 =</span> v2, <span class="at">col3 =</span> v3)</span>
+<span id="cb115-7"><a href="lesson-2b-data-types-structures.html#cb115-7" tabindex="-1"></a><span class="do">##   col1 col2  col3</span></span>
+<span id="cb115-8"><a href="lesson-2b-data-types-structures.html#cb115-8" tabindex="-1"></a><span class="do">## 1    1 this  TRUE</span></span>
+<span id="cb115-9"><a href="lesson-2b-data-types-structures.html#cb115-9" tabindex="-1"></a><span class="do">## 2    2   is FALSE</span></span>
+<span id="cb115-10"><a href="lesson-2b-data-types-structures.html#cb115-10" tabindex="-1"></a><span class="do">## 3    3 text  TRUE</span></span></code></pre></div>
 </div>
 <div id="indexing-2" class="section level4 hasAnchor" number="7.3.4.2">
 <h4><span class="header-section-number">7.3.4.2</span> Indexing<a href="lesson-2b-data-types-structures.html#indexing-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Data frames possess the characteristics of both lists and matrices: if you index with a single vector, they behave like lists and will return the selected columns with all rows; if you subset with two vectors, they behave like matrices and can be subset by row and column:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="lesson-2b-data-types-structures.html#cb116-1" aria-hidden="true" tabindex="-1"></a>df</span>
-<span id="cb116-2"><a href="lesson-2b-data-types-structures.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="do">##   col1 col2  col3   col4</span></span>
-<span id="cb116-3"><a href="lesson-2b-data-types-structures.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    1 this  TRUE 2.5000</span></span>
-<span id="cb116-4"><a href="lesson-2b-data-types-structures.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    2   is FALSE 4.2000</span></span>
-<span id="cb116-5"><a href="lesson-2b-data-types-structures.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    3 text  TRUE 3.1416</span></span>
-<span id="cb116-6"><a href="lesson-2b-data-types-structures.html#cb116-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-7"><a href="lesson-2b-data-types-structures.html#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="co"># subsetting by row numbers</span></span>
-<span id="cb116-8"><a href="lesson-2b-data-types-structures.html#cb116-8" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
-<span id="cb116-9"><a href="lesson-2b-data-types-structures.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   col1 col2  col3   col4</span></span>
-<span id="cb116-10"><a href="lesson-2b-data-types-structures.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    2   is FALSE 4.2000</span></span>
-<span id="cb116-11"><a href="lesson-2b-data-types-structures.html#cb116-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3    3 text  TRUE 3.1416</span></span>
-<span id="cb116-12"><a href="lesson-2b-data-types-structures.html#cb116-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-13"><a href="lesson-2b-data-types-structures.html#cb116-13" aria-hidden="true" tabindex="-1"></a><span class="co"># subsetting by row names</span></span>
-<span id="cb116-14"><a href="lesson-2b-data-types-structures.html#cb116-14" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">c</span>(<span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>), ]</span>
-<span id="cb116-15"><a href="lesson-2b-data-types-structures.html#cb116-15" aria-hidden="true" tabindex="-1"></a><span class="do">##      col1 col2 col3 col4</span></span>
-<span id="cb116-16"><a href="lesson-2b-data-types-structures.html#cb116-16" aria-hidden="true" tabindex="-1"></a><span class="do">## NA     NA &lt;NA&gt;   NA   NA</span></span>
-<span id="cb116-17"><a href="lesson-2b-data-types-structures.html#cb116-17" aria-hidden="true" tabindex="-1"></a><span class="do">## NA.1   NA &lt;NA&gt;   NA   NA</span></span>
-<span id="cb116-18"><a href="lesson-2b-data-types-structures.html#cb116-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-19"><a href="lesson-2b-data-types-structures.html#cb116-19" aria-hidden="true" tabindex="-1"></a><span class="co"># subset for both rows and columns</span></span>
-<span id="cb116-20"><a href="lesson-2b-data-types-structures.html#cb116-20" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
-<span id="cb116-21"><a href="lesson-2b-data-types-structures.html#cb116-21" aria-hidden="true" tabindex="-1"></a><span class="do">##   col1  col3</span></span>
-<span id="cb116-22"><a href="lesson-2b-data-types-structures.html#cb116-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 1    1  TRUE</span></span>
-<span id="cb116-23"><a href="lesson-2b-data-types-structures.html#cb116-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 2    2 FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="lesson-2b-data-types-structures.html#cb116-1" tabindex="-1"></a>df</span>
+<span id="cb116-2"><a href="lesson-2b-data-types-structures.html#cb116-2" tabindex="-1"></a><span class="do">##   col1 col2  col3   col4</span></span>
+<span id="cb116-3"><a href="lesson-2b-data-types-structures.html#cb116-3" tabindex="-1"></a><span class="do">## 1    1 this  TRUE 2.5000</span></span>
+<span id="cb116-4"><a href="lesson-2b-data-types-structures.html#cb116-4" tabindex="-1"></a><span class="do">## 2    2   is FALSE 4.2000</span></span>
+<span id="cb116-5"><a href="lesson-2b-data-types-structures.html#cb116-5" tabindex="-1"></a><span class="do">## 3    3 text  TRUE 3.1416</span></span>
+<span id="cb116-6"><a href="lesson-2b-data-types-structures.html#cb116-6" tabindex="-1"></a></span>
+<span id="cb116-7"><a href="lesson-2b-data-types-structures.html#cb116-7" tabindex="-1"></a><span class="co"># subsetting by row numbers</span></span>
+<span id="cb116-8"><a href="lesson-2b-data-types-structures.html#cb116-8" tabindex="-1"></a>df[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
+<span id="cb116-9"><a href="lesson-2b-data-types-structures.html#cb116-9" tabindex="-1"></a><span class="do">##   col1 col2  col3   col4</span></span>
+<span id="cb116-10"><a href="lesson-2b-data-types-structures.html#cb116-10" tabindex="-1"></a><span class="do">## 2    2   is FALSE 4.2000</span></span>
+<span id="cb116-11"><a href="lesson-2b-data-types-structures.html#cb116-11" tabindex="-1"></a><span class="do">## 3    3 text  TRUE 3.1416</span></span>
+<span id="cb116-12"><a href="lesson-2b-data-types-structures.html#cb116-12" tabindex="-1"></a></span>
+<span id="cb116-13"><a href="lesson-2b-data-types-structures.html#cb116-13" tabindex="-1"></a><span class="co"># subsetting by row names</span></span>
+<span id="cb116-14"><a href="lesson-2b-data-types-structures.html#cb116-14" tabindex="-1"></a>df[<span class="fu">c</span>(<span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>), ]</span>
+<span id="cb116-15"><a href="lesson-2b-data-types-structures.html#cb116-15" tabindex="-1"></a><span class="do">##      col1 col2 col3 col4</span></span>
+<span id="cb116-16"><a href="lesson-2b-data-types-structures.html#cb116-16" tabindex="-1"></a><span class="do">## NA     NA &lt;NA&gt;   NA   NA</span></span>
+<span id="cb116-17"><a href="lesson-2b-data-types-structures.html#cb116-17" tabindex="-1"></a><span class="do">## NA.1   NA &lt;NA&gt;   NA   NA</span></span>
+<span id="cb116-18"><a href="lesson-2b-data-types-structures.html#cb116-18" tabindex="-1"></a></span>
+<span id="cb116-19"><a href="lesson-2b-data-types-structures.html#cb116-19" tabindex="-1"></a><span class="co"># subset for both rows and columns</span></span>
+<span id="cb116-20"><a href="lesson-2b-data-types-structures.html#cb116-20" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span>
+<span id="cb116-21"><a href="lesson-2b-data-types-structures.html#cb116-21" tabindex="-1"></a><span class="do">##   col1  col3</span></span>
+<span id="cb116-22"><a href="lesson-2b-data-types-structures.html#cb116-22" tabindex="-1"></a><span class="do">## 1    1  TRUE</span></span>
+<span id="cb116-23"><a href="lesson-2b-data-types-structures.html#cb116-23" tabindex="-1"></a><span class="do">## 2    2 FALSE</span></span></code></pre></div>
 <p>You can also subset data frames based on conditional statements. To illustrate we’ll use the built-in <code>mtcars</code> data frame:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="lesson-2b-data-types-structures.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
-<span id="cb117-2"><a href="lesson-2b-data-types-structures.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="do">##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb117-3"><a href="lesson-2b-data-types-structures.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb117-4"><a href="lesson-2b-data-types-structures.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb117-5"><a href="lesson-2b-data-types-structures.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span></span>
-<span id="cb117-6"><a href="lesson-2b-data-types-structures.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb117-7"><a href="lesson-2b-data-types-structures.html#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span></span>
-<span id="cb117-8"><a href="lesson-2b-data-types-structures.html#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span></span>
-<span id="cb117-9"><a href="lesson-2b-data-types-structures.html#cb117-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-10"><a href="lesson-2b-data-types-structures.html#cb117-10" aria-hidden="true" tabindex="-1"></a><span class="co"># all rows where mpg is greater than 20</span></span>
-<span id="cb117-11"><a href="lesson-2b-data-types-structures.html#cb117-11" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
-<span id="cb117-12"><a href="lesson-2b-data-types-structures.html#cb117-12" aria-hidden="true" tabindex="-1"></a><span class="do">##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span></span>
-<span id="cb117-13"><a href="lesson-2b-data-types-structures.html#cb117-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span></span>
-<span id="cb117-14"><a href="lesson-2b-data-types-structures.html#cb117-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span></span>
-<span id="cb117-15"><a href="lesson-2b-data-types-structures.html#cb117-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span></span>
-<span id="cb117-16"><a href="lesson-2b-data-types-structures.html#cb117-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span></span>
-<span id="cb117-17"><a href="lesson-2b-data-types-structures.html#cb117-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span></span>
-<span id="cb117-18"><a href="lesson-2b-data-types-structures.html#cb117-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span></span>
-<span id="cb117-19"><a href="lesson-2b-data-types-structures.html#cb117-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span></span>
-<span id="cb117-20"><a href="lesson-2b-data-types-structures.html#cb117-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span></span>
-<span id="cb117-21"><a href="lesson-2b-data-types-structures.html#cb117-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span></span>
-<span id="cb117-22"><a href="lesson-2b-data-types-structures.html#cb117-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span></span>
-<span id="cb117-23"><a href="lesson-2b-data-types-structures.html#cb117-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span></span>
-<span id="cb117-24"><a href="lesson-2b-data-types-structures.html#cb117-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span></span>
-<span id="cb117-25"><a href="lesson-2b-data-types-structures.html#cb117-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span></span>
-<span id="cb117-26"><a href="lesson-2b-data-types-structures.html#cb117-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="lesson-2b-data-types-structures.html#cb117-1" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span>
+<span id="cb117-2"><a href="lesson-2b-data-types-structures.html#cb117-2" tabindex="-1"></a><span class="do">##                    mpg cyl disp  hp drat    wt  qsec vs</span></span>
+<span id="cb117-3"><a href="lesson-2b-data-types-structures.html#cb117-3" tabindex="-1"></a><span class="do">## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0</span></span>
+<span id="cb117-4"><a href="lesson-2b-data-types-structures.html#cb117-4" tabindex="-1"></a><span class="do">## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0</span></span>
+<span id="cb117-5"><a href="lesson-2b-data-types-structures.html#cb117-5" tabindex="-1"></a><span class="do">## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1</span></span>
+<span id="cb117-6"><a href="lesson-2b-data-types-structures.html#cb117-6" tabindex="-1"></a><span class="do">## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1</span></span>
+<span id="cb117-7"><a href="lesson-2b-data-types-structures.html#cb117-7" tabindex="-1"></a><span class="do">## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0</span></span>
+<span id="cb117-8"><a href="lesson-2b-data-types-structures.html#cb117-8" tabindex="-1"></a><span class="do">## Valiant           18.1   6  225 105 2.76 3.460 20.22  1</span></span>
+<span id="cb117-9"><a href="lesson-2b-data-types-structures.html#cb117-9" tabindex="-1"></a><span class="do">##                   am gear carb</span></span>
+<span id="cb117-10"><a href="lesson-2b-data-types-structures.html#cb117-10" tabindex="-1"></a><span class="do">## Mazda RX4          1    4    4</span></span>
+<span id="cb117-11"><a href="lesson-2b-data-types-structures.html#cb117-11" tabindex="-1"></a><span class="do">## Mazda RX4 Wag      1    4    4</span></span>
+<span id="cb117-12"><a href="lesson-2b-data-types-structures.html#cb117-12" tabindex="-1"></a><span class="do">## Datsun 710         1    4    1</span></span>
+<span id="cb117-13"><a href="lesson-2b-data-types-structures.html#cb117-13" tabindex="-1"></a><span class="do">## Hornet 4 Drive     0    3    1</span></span>
+<span id="cb117-14"><a href="lesson-2b-data-types-structures.html#cb117-14" tabindex="-1"></a><span class="do">## Hornet Sportabout  0    3    2</span></span>
+<span id="cb117-15"><a href="lesson-2b-data-types-structures.html#cb117-15" tabindex="-1"></a><span class="do">## Valiant            0    3    1</span></span>
+<span id="cb117-16"><a href="lesson-2b-data-types-structures.html#cb117-16" tabindex="-1"></a></span>
+<span id="cb117-17"><a href="lesson-2b-data-types-structures.html#cb117-17" tabindex="-1"></a><span class="co"># all rows where mpg is greater than 20</span></span>
+<span id="cb117-18"><a href="lesson-2b-data-types-structures.html#cb117-18" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
+<span id="cb117-19"><a href="lesson-2b-data-types-structures.html#cb117-19" tabindex="-1"></a><span class="do">##                 mpg cyl  disp  hp drat    wt  qsec vs</span></span>
+<span id="cb117-20"><a href="lesson-2b-data-types-structures.html#cb117-20" tabindex="-1"></a><span class="do">## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0</span></span>
+<span id="cb117-21"><a href="lesson-2b-data-types-structures.html#cb117-21" tabindex="-1"></a><span class="do">## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0</span></span>
+<span id="cb117-22"><a href="lesson-2b-data-types-structures.html#cb117-22" tabindex="-1"></a><span class="do">## Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1</span></span>
+<span id="cb117-23"><a href="lesson-2b-data-types-structures.html#cb117-23" tabindex="-1"></a><span class="do">## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1</span></span>
+<span id="cb117-24"><a href="lesson-2b-data-types-structures.html#cb117-24" tabindex="-1"></a><span class="do">## Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1</span></span>
+<span id="cb117-25"><a href="lesson-2b-data-types-structures.html#cb117-25" tabindex="-1"></a><span class="do">## Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1</span></span>
+<span id="cb117-26"><a href="lesson-2b-data-types-structures.html#cb117-26" tabindex="-1"></a><span class="do">## Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1</span></span>
+<span id="cb117-27"><a href="lesson-2b-data-types-structures.html#cb117-27" tabindex="-1"></a><span class="do">## Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1</span></span>
+<span id="cb117-28"><a href="lesson-2b-data-types-structures.html#cb117-28" tabindex="-1"></a><span class="do">## Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1</span></span>
+<span id="cb117-29"><a href="lesson-2b-data-types-structures.html#cb117-29" tabindex="-1"></a><span class="do">## Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1</span></span>
+<span id="cb117-30"><a href="lesson-2b-data-types-structures.html#cb117-30" tabindex="-1"></a><span class="do">## Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1</span></span>
+<span id="cb117-31"><a href="lesson-2b-data-types-structures.html#cb117-31" tabindex="-1"></a><span class="do">## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0</span></span>
+<span id="cb117-32"><a href="lesson-2b-data-types-structures.html#cb117-32" tabindex="-1"></a><span class="do">## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1</span></span>
+<span id="cb117-33"><a href="lesson-2b-data-types-structures.html#cb117-33" tabindex="-1"></a><span class="do">## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1</span></span>
+<span id="cb117-34"><a href="lesson-2b-data-types-structures.html#cb117-34" tabindex="-1"></a><span class="do">##                am gear carb</span></span>
+<span id="cb117-35"><a href="lesson-2b-data-types-structures.html#cb117-35" tabindex="-1"></a><span class="do">## Mazda RX4       1    4    4</span></span>
+<span id="cb117-36"><a href="lesson-2b-data-types-structures.html#cb117-36" tabindex="-1"></a><span class="do">## Mazda RX4 Wag   1    4    4</span></span>
+<span id="cb117-37"><a href="lesson-2b-data-types-structures.html#cb117-37" tabindex="-1"></a><span class="do">## Datsun 710      1    4    1</span></span>
+<span id="cb117-38"><a href="lesson-2b-data-types-structures.html#cb117-38" tabindex="-1"></a><span class="do">## Hornet 4 Drive  0    3    1</span></span>
+<span id="cb117-39"><a href="lesson-2b-data-types-structures.html#cb117-39" tabindex="-1"></a><span class="do">## Merc 240D       0    4    2</span></span>
+<span id="cb117-40"><a href="lesson-2b-data-types-structures.html#cb117-40" tabindex="-1"></a><span class="do">## Merc 230        0    4    2</span></span>
+<span id="cb117-41"><a href="lesson-2b-data-types-structures.html#cb117-41" tabindex="-1"></a><span class="do">## Fiat 128        1    4    1</span></span>
+<span id="cb117-42"><a href="lesson-2b-data-types-structures.html#cb117-42" tabindex="-1"></a><span class="do">## Honda Civic     1    4    2</span></span>
+<span id="cb117-43"><a href="lesson-2b-data-types-structures.html#cb117-43" tabindex="-1"></a><span class="do">## Toyota Corolla  1    4    1</span></span>
+<span id="cb117-44"><a href="lesson-2b-data-types-structures.html#cb117-44" tabindex="-1"></a><span class="do">## Toyota Corona   0    3    1</span></span>
+<span id="cb117-45"><a href="lesson-2b-data-types-structures.html#cb117-45" tabindex="-1"></a><span class="do">## Fiat X1-9       1    4    1</span></span>
+<span id="cb117-46"><a href="lesson-2b-data-types-structures.html#cb117-46" tabindex="-1"></a><span class="do">## Porsche 914-2   1    5    2</span></span>
+<span id="cb117-47"><a href="lesson-2b-data-types-structures.html#cb117-47" tabindex="-1"></a><span class="do">## Lotus Europa    1    5    2</span></span>
+<span id="cb117-48"><a href="lesson-2b-data-types-structures.html#cb117-48" tabindex="-1"></a><span class="do">## Volvo 142E      1    4    2</span></span></code></pre></div>
 <div class="note">
 <p>
 Its good to know that we can index and filter data frames in this
@@ -1482,8 +1520,10 @@ that follow are all focused on working with data frames!
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b4hzx896&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1050&amp;flashvars[mediaProxy.mediaPlayTo]=1297&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_n1k8xqi4" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-2b">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/38WnW5ozTmc?si=C0tljdCoUe369Ioo&amp;start=1050&end=1296" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1571,7 +1611,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

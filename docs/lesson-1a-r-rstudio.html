@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Lesson 1a: R &amp; RStudio | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Lesson 1a: R &amp; RStudio | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -798,11 +802,11 @@ div.csl-indent {
 </div>
 <div id="r-vs.-rstudio" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> R vs. RStudio<a href="lesson-1a-r-rstudio.html#r-vs.-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When students first learn about <a href="https://cran.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a>, they are often confused on how the two differentiate. R is a programming language that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. An analogy used by <span class="citation">Ismay and Kim (<a href="#ref-ismay2019statistical" role="doc-biblioref">2019</a>)</span> helps put this into perspective. <em>“R is like a car’s engine while RStudio is like a car’s dashboard…just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.”</em></p>
+<p>When students first learn about <a href="https://cran.r-project.org/">R</a> and <a href="https://www.rstudio.com/">RStudio</a>, they are often confused on how the two differentiate. R is a programming language that runs computations, while RStudio is an <em>integrated development environment (IDE)</em> that provides an interface by adding many convenient features and tools. An analogy used by <span class="citation">Ismay and Kim (<a href="#ref-ismay2019statistical">2019</a>)</span> helps put this into perspective. <em>“R is like a car’s engine while RStudio is like a car’s dashboard…just as the way of having access to a speedometer, rearview mirrors, and a navigation system makes driving much easier, using RStudio’s interface makes using R much easier as well.”</em></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:r-vs-rstuio"></span>
 <img src="images/R_vs_RStudio_1.png" alt="Analogy of difference between R and RStudio [@ismay2019statistical]" width="758" />
 <p class="caption">
-Figure 2.1: Analogy of difference between R and RStudio <span class="citation">(<a href="#ref-ismay2019statistical" role="doc-biblioref">Ismay and Kim 2019</a>)</span>
+Figure 2.1: Analogy of difference between R and RStudio <span class="citation">(<a href="#ref-ismay2019statistical">Ismay and Kim 2019</a>)</span>
 </p>
 </div>
 <p>It is important to note that one can write R and do nearly everything you are going to do in this course without using RStudio. However, RStudio has lots of features that make writing, executing, and organizing your R code so much easier. Moreover, realize that there are other IDEs and platforms that you can use (i.e. <a href="https://code.visualstudio.com/">VS code</a>, <a href="https://radiant-rstats.github.io/docs/">Radiant</a>, <a href="https://jupyter.org/">jupyter</a>) to write and execute R code; however, RStudio has become the defacto IDE for R and is heavily used throughout the R community.</p>
@@ -815,8 +819,10 @@ Essentials</a> collection of videos.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7xf9u48f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s2boeasx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | R vs. RStudio">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s_dbh3F9-JQ?si=PdcQswq3ULxHd98A?start=0&end=54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="installing-r-and-rstudio" class="section level2 hasAnchor" number="2.3">
@@ -845,14 +851,14 @@ Installing R and RStudio should be fairly straightforward. However, a
 great set of detailed <a
 href="https://rafalab.github.io/dsbook/installing-r-rstudio.html">step-by-step
 instructions</a> is in Rafael Irizarry’s Introduction to Data Science
-book <span class="citation"><span class="citation">(<a href="#ref-irizarry2019introduction" role="doc-biblioref">Irizarry 2019</a>)</span></span>.
+book <span class="citation"><span class="citation">(<a href="#ref-irizarry2019introduction">Irizarry 2019</a>)</span></span>.
 </p>
 </div>
 <p>After you install R and RStudio on your computer, you’ll have two new programs (also called applications) you can open. The R application icon looks like the left image below while the RStudio icon looks like the right image. We’ll always work in RStudio and not in the R application so be sure to select the correct icon.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:r-vs-rstudio-icons"></span>
 <img src="images/R_vs_RStudio_icons.png" alt="Use the RStudio icon (right) and not the R icon (left) to launch your R project. [@ismay2019statistical]" width="821" />
 <p class="caption">
-Figure 2.2: Use the RStudio icon (right) and not the R icon (left) to launch your R project. <span class="citation">(<a href="#ref-ismay2019statistical" role="doc-biblioref">Ismay and Kim 2019</a>)</span>
+Figure 2.2: Use the RStudio icon (right) and not the R icon (left) to launch your R project. <span class="citation">(<a href="#ref-ismay2019statistical">Ismay and Kim 2019</a>)</span>
 </p>
 </div>
 <div class="tip">
@@ -872,8 +878,10 @@ Figure 2.3: RStudio interface to R.
 </div>
 <p>You are now ready to start programming!</p>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7xf9u48f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=58&amp;flashvars[mediaProxy.mediaPlayTo]=210&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s2boeasx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Installing and opening R &amp; RStudio">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s_dbh3F9-JQ?si=H5HepisqmfWmqdMp&amp;start=54&end=220" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="understanding-the-rstudio-ide" class="section level2 hasAnchor" number="2.4">
@@ -904,30 +912,30 @@ Figure 2.5: Execute lines of code in your script with Cmd/Ctrl + Enter or using 
 <div id="workspace-environment" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Workspace Environment<a href="lesson-1a-r-rstudio.html#workspace-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The top right window is the workspace environment which captures much of your your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-1a-r-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># returns path for the current working directory</span></span>
-<span id="cb2-2"><a href="lesson-1a-r-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()                  </span>
-<span id="cb2-3"><a href="lesson-1a-r-rstudio.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="lesson-1a-r-rstudio.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set the working directory to a specified directory</span></span>
-<span id="cb2-5"><a href="lesson-1a-r-rstudio.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;path/of/directory&quot;</span>)   </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-1a-r-rstudio.html#cb2-1" tabindex="-1"></a><span class="co"># returns path for the current working directory</span></span>
+<span id="cb2-2"><a href="lesson-1a-r-rstudio.html#cb2-2" tabindex="-1"></a><span class="fu">getwd</span>()                  </span>
+<span id="cb2-3"><a href="lesson-1a-r-rstudio.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="lesson-1a-r-rstudio.html#cb2-4" tabindex="-1"></a><span class="co"># set the working directory to a specified directory</span></span>
+<span id="cb2-5"><a href="lesson-1a-r-rstudio.html#cb2-5" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;path/of/directory&quot;</span>)   </span></code></pre></div>
 <p>For example, if I call <code>getwd()</code> the file path “/Users/b294776/Desktop” is returned. If I want to set the working directory to the “Workspace” folder within the “Desktop” directory I would use <code>setwd("/Users/b294776/Desktop/Workspace")</code>. Now if I call <code>getwd()</code> again it returns “/Users/b294776/Desktop/Workspace”. An alternative solution is to go to the following location in your toolbar <strong>Session » Set Working Directory » Choose Directory</strong> and select the directory of choice (much easier!).</p>
 <p>The workspace environment will also list your user defined objects such as vectors, matrices, data frames, lists, and functions. For example, if you type the following in your console:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-1a-r-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb3-2"><a href="lesson-1a-r-rstudio.html#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lesson-1a-r-rstudio.html#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href="lesson-1a-r-rstudio.html#cb3-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
 <p>You will now see <code>x</code> and <code>y</code> listed in your workspace environment. To identify or remove the objects (i.e. vectors, data frames, user defined functions, etc.) in your current R environment:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="lesson-1a-r-rstudio.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list all objects</span></span>
-<span id="cb4-2"><a href="lesson-1a-r-rstudio.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()              </span>
-<span id="cb4-3"><a href="lesson-1a-r-rstudio.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="lesson-1a-r-rstudio.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># identify if an R object with a given name is present</span></span>
-<span id="cb4-5"><a href="lesson-1a-r-rstudio.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;x&quot;</span>)        </span>
-<span id="cb4-6"><a href="lesson-1a-r-rstudio.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="lesson-1a-r-rstudio.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove defined object from the environment</span></span>
-<span id="cb4-8"><a href="lesson-1a-r-rstudio.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)            </span>
-<span id="cb4-9"><a href="lesson-1a-r-rstudio.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="lesson-1a-r-rstudio.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># you can remove multiple objects</span></span>
-<span id="cb4-11"><a href="lesson-1a-r-rstudio.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x, y)  </span>
-<span id="cb4-12"><a href="lesson-1a-r-rstudio.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="lesson-1a-r-rstudio.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># basically removes everything in the working environment -- use with caution!</span></span>
-<span id="cb4-14"><a href="lesson-1a-r-rstudio.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())    </span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="lesson-1a-r-rstudio.html#cb4-1" tabindex="-1"></a><span class="co"># list all objects</span></span>
+<span id="cb4-2"><a href="lesson-1a-r-rstudio.html#cb4-2" tabindex="-1"></a><span class="fu">ls</span>()              </span>
+<span id="cb4-3"><a href="lesson-1a-r-rstudio.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="lesson-1a-r-rstudio.html#cb4-4" tabindex="-1"></a><span class="co"># identify if an R object with a given name is present</span></span>
+<span id="cb4-5"><a href="lesson-1a-r-rstudio.html#cb4-5" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">&quot;x&quot;</span>)        </span>
+<span id="cb4-6"><a href="lesson-1a-r-rstudio.html#cb4-6" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="lesson-1a-r-rstudio.html#cb4-7" tabindex="-1"></a><span class="co"># remove defined object from the environment</span></span>
+<span id="cb4-8"><a href="lesson-1a-r-rstudio.html#cb4-8" tabindex="-1"></a><span class="fu">rm</span>(x)            </span>
+<span id="cb4-9"><a href="lesson-1a-r-rstudio.html#cb4-9" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="lesson-1a-r-rstudio.html#cb4-10" tabindex="-1"></a><span class="co"># you can remove multiple objects</span></span>
+<span id="cb4-11"><a href="lesson-1a-r-rstudio.html#cb4-11" tabindex="-1"></a><span class="fu">rm</span>(x, y)  </span>
+<span id="cb4-12"><a href="lesson-1a-r-rstudio.html#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="lesson-1a-r-rstudio.html#cb4-13" tabindex="-1"></a><span class="co"># basically removes everything in the working environment -- use with caution!</span></span>
+<span id="cb4-14"><a href="lesson-1a-r-rstudio.html#cb4-14" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())    </span></code></pre></div>
 <div class="tip">
 <p>
 If you have a lot of objects in your workspace environment you can
@@ -936,19 +944,19 @@ everything.
 </p>
 </div>
 <p>You can also view previous commands in the workspace environment by clicking the <strong>History</strong> tab, by simply pressing the up arrow on your keyboard, or by typing into the console:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="lesson-1a-r-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># default shows 25 most recent commands</span></span>
-<span id="cb5-2"><a href="lesson-1a-r-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>()        </span>
-<span id="cb5-3"><a href="lesson-1a-r-rstudio.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="lesson-1a-r-rstudio.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># show 100 most recent commands</span></span>
-<span id="cb5-5"><a href="lesson-1a-r-rstudio.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>(<span class="dv">100</span>)     </span>
-<span id="cb5-6"><a href="lesson-1a-r-rstudio.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="lesson-1a-r-rstudio.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># show entire saved history</span></span>
-<span id="cb5-8"><a href="lesson-1a-r-rstudio.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">history</span>(<span class="cn">Inf</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="lesson-1a-r-rstudio.html#cb5-1" tabindex="-1"></a><span class="co"># default shows 25 most recent commands</span></span>
+<span id="cb5-2"><a href="lesson-1a-r-rstudio.html#cb5-2" tabindex="-1"></a><span class="fu">history</span>()        </span>
+<span id="cb5-3"><a href="lesson-1a-r-rstudio.html#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="lesson-1a-r-rstudio.html#cb5-4" tabindex="-1"></a><span class="co"># show 100 most recent commands</span></span>
+<span id="cb5-5"><a href="lesson-1a-r-rstudio.html#cb5-5" tabindex="-1"></a><span class="fu">history</span>(<span class="dv">100</span>)     </span>
+<span id="cb5-6"><a href="lesson-1a-r-rstudio.html#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="lesson-1a-r-rstudio.html#cb5-7" tabindex="-1"></a><span class="co"># show entire saved history</span></span>
+<span id="cb5-8"><a href="lesson-1a-r-rstudio.html#cb5-8" tabindex="-1"></a><span class="fu">history</span>(<span class="cn">Inf</span>)  </span></code></pre></div>
 </div>
 <div id="console" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Console<a href="lesson-1a-r-rstudio.html#console" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The bottom left window contains the console. You can code directly in this window but it will not save your code. It is best to use this window when you are simply wanting to perform calculator type functions. This is also where your outputs will be presented when you run code in your script. Go ahead and type the following in your console:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="lesson-1a-r-rstudio.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="lesson-1a-r-rstudio.html#cb6-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">8</span> <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div>
 </div>
 <div id="misc.-displays" class="section level3 hasAnchor" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> Misc. Displays<a href="lesson-1a-r-rstudio.html#misc.-displays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -957,14 +965,14 @@ everything.
 <div id="workspace-options-shortcuts" class="section level3 hasAnchor" number="2.4.5">
 <h3><span class="header-section-number">2.4.5</span> Workspace Options &amp; Shortcuts<a href="lesson-1a-r-rstudio.html#workspace-options-shortcuts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are multiple options available for you to set and customize both R and your RStudio console. For R, you can read about, and set, available options for the current R session with the following code. For now you don’t need to worry about making any adjustments, just know that many options do exist.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="lesson-1a-r-rstudio.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># learn about available options</span></span>
-<span id="cb7-2"><a href="lesson-1a-r-rstudio.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(options)</span>
-<span id="cb7-3"><a href="lesson-1a-r-rstudio.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="lesson-1a-r-rstudio.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view current option settings</span></span>
-<span id="cb7-5"><a href="lesson-1a-r-rstudio.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>()            </span>
-<span id="cb7-6"><a href="lesson-1a-r-rstudio.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="lesson-1a-r-rstudio.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># change a specific option (i.e. number of digits to print on output)</span></span>
-<span id="cb7-8"><a href="lesson-1a-r-rstudio.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">3</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="lesson-1a-r-rstudio.html#cb7-1" tabindex="-1"></a><span class="co"># learn about available options</span></span>
+<span id="cb7-2"><a href="lesson-1a-r-rstudio.html#cb7-2" tabindex="-1"></a><span class="fu">help</span>(options)</span>
+<span id="cb7-3"><a href="lesson-1a-r-rstudio.html#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="lesson-1a-r-rstudio.html#cb7-4" tabindex="-1"></a><span class="co"># view current option settings</span></span>
+<span id="cb7-5"><a href="lesson-1a-r-rstudio.html#cb7-5" tabindex="-1"></a><span class="fu">options</span>()            </span>
+<span id="cb7-6"><a href="lesson-1a-r-rstudio.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="lesson-1a-r-rstudio.html#cb7-7" tabindex="-1"></a><span class="co"># change a specific option (i.e. number of digits to print on output)</span></span>
+<span id="cb7-8"><a href="lesson-1a-r-rstudio.html#cb7-8" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits=</span><span class="dv">3</span>)  </span></code></pre></div>
 <p>For a thorough tutorial regarding the RStudio console and how to customize different components check out this <a href="http://dss.princeton.edu/training/RStudio101.pdf">tutorial</a>. You can also find the RStudio console cheatsheet shown below by going to <strong>Help menu » Cheatsheets</strong>. As with most computer programs, there are numerous keyboard shortcuts for working with the console. To access a menu displaying all the shortcuts in RStudio you can use option + shift + k. Within RStudio you can also access them in the <strong>Help menu » Keyboard Shortcuts Help</strong>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-cheat-sheet"></span>
 <img src="images/rstudio-cheatsheet.png" alt="RStudio IDE cheat sheet." width="558" />
@@ -973,8 +981,10 @@ Figure 2.6: RStudio IDE cheat sheet.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7xf9u48f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=211&amp;flashvars[mediaProxy.mediaPlayTo]=378&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s2boeasx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Understanding RStudio">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s_dbh3F9-JQ?si=H5HepisqmfWmqdMp&amp;start=211&end=376" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check" class="section level3 hasAnchor" number="2.4.6">
@@ -1010,8 +1020,10 @@ lines at once.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_zj39epqu&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_e3bgvj4t" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 2.4.6">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P8h1I5dEIYU?si=iVZHk6uIDpMkBs5N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1021,16 +1033,16 @@ lines at once.
 <div id="general-help" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> General Help<a href="lesson-1a-r-rstudio.html#general-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To leverage general help resources you can use:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="lesson-1a-r-rstudio.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># provides general help links</span></span>
-<span id="cb8-2"><a href="lesson-1a-r-rstudio.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help.start</span>()   </span>
-<span id="cb8-3"><a href="lesson-1a-r-rstudio.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="lesson-1a-r-rstudio.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># searches the help system for documentation matching a given character string</span></span>
-<span id="cb8-5"><a href="lesson-1a-r-rstudio.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;linear regression&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="lesson-1a-r-rstudio.html#cb8-1" tabindex="-1"></a><span class="co"># provides general help links</span></span>
+<span id="cb8-2"><a href="lesson-1a-r-rstudio.html#cb8-2" tabindex="-1"></a><span class="fu">help.start</span>()   </span>
+<span id="cb8-3"><a href="lesson-1a-r-rstudio.html#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="lesson-1a-r-rstudio.html#cb8-4" tabindex="-1"></a><span class="co"># searches the help system for documentation matching a given character string</span></span>
+<span id="cb8-5"><a href="lesson-1a-r-rstudio.html#cb8-5" tabindex="-1"></a><span class="fu">help.search</span>(<span class="st">&quot;linear regression&quot;</span>) </span></code></pre></div>
 <p>Note that the <code>help.search("some text here")</code> function requires a character string enclosed in quotation marks. So if you are in search of time series functions in R, using <code>help.search("time series")</code> will pull up a healthy list of vignettes and code demonstrations that illustrate packages and functions that work with time series data.</p>
 <p>For more direct help on functions that are installed on your computer you can use the following. Test these out in your console:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="lesson-1a-r-rstudio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)      <span class="co"># provides details for specific function </span></span>
-<span id="cb9-2"><a href="lesson-1a-r-rstudio.html#cb9-2" aria-hidden="true" tabindex="-1"></a>?mean           <span class="co"># provides same information as help(functionname) </span></span>
-<span id="cb9-3"><a href="lesson-1a-r-rstudio.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(mean)   <span class="co"># provides examples for said function</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="lesson-1a-r-rstudio.html#cb9-1" tabindex="-1"></a><span class="fu">help</span>(mean)      <span class="co"># provides details for specific function </span></span>
+<span id="cb9-2"><a href="lesson-1a-r-rstudio.html#cb9-2" tabindex="-1"></a>?mean           <span class="co"># provides same information as help(functionname) </span></span>
+<span id="cb9-3"><a href="lesson-1a-r-rstudio.html#cb9-3" tabindex="-1"></a><span class="fu">example</span>(mean)   <span class="co"># provides examples for said function</span></span></code></pre></div>
 <p>Note that the <code>help()</code> and <code>?</code> function calls only work for functions within loaded packages. You’ll understand what this means shortly.</p>
 </div>
 <div id="getting-help-from-the-web" class="section level3 hasAnchor" number="2.5.2">
@@ -1053,8 +1065,10 @@ for help on specific code functionality.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7xf9u48f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=378&amp;flashvars[mediaProxy.mediaPlayTo]=628&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s2boeasx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Getting help">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s_dbh3F9-JQ?si=H5HepisqmfWmqdMp&amp;start=402&end=626" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="knowledge-check-1" class="section level3 hasAnchor" number="2.5.3">
@@ -1077,8 +1091,10 @@ questions about R</a>.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_qi94woqk&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_0b3w1897" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Knowledge check 2.5.3">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fZKB3Pm6H-g?si=sdlJjmbQ23xPi8tI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1097,27 +1113,29 @@ Smith</a>, and <a
  href="https://rbasics.netlify.app/6-errors.html">Chester Ismay</a>.
 </p>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="lesson-1a-r-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of an error</span></span>
-<span id="cb10-2"><a href="lesson-1a-r-rstudio.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">&#39;a&#39;</span></span>
-<span id="cb10-3"><a href="lesson-1a-r-rstudio.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in 1 + &quot;a&quot;: non-numeric argument to binary operator</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="lesson-1a-r-rstudio.html#cb10-1" tabindex="-1"></a><span class="co"># Example of an error</span></span>
+<span id="cb10-2"><a href="lesson-1a-r-rstudio.html#cb10-2" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="st">&#39;a&#39;</span></span>
+<span id="cb10-3"><a href="lesson-1a-r-rstudio.html#cb10-3" tabindex="-1"></a><span class="do">## Error in 1 + &quot;a&quot;: non-numeric argument to binary operator</span></span></code></pre></div></li>
 <li><p><strong>Warnings</strong>: Warning messages will be prefaced with “Warning:” and R will try to explain why there’s a warning. Generally your code will still work, but with some caveats. Think of warnings as a yellow traffic light: everything is working, but watch out/pay attention. Typically when you get a warning you want to figure out what is throwing the warning because the end result may not be what you had intended!</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="lesson-1a-r-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb11-2"><a href="lesson-1a-r-rstudio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb11-3"><a href="lesson-1a-r-rstudio.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="lesson-1a-r-rstudio.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a warning</span></span>
-<span id="cb11-5"><a href="lesson-1a-r-rstudio.html#cb11-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb11-6"><a href="lesson-1a-r-rstudio.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning in x + y: longer object length is not a multiple of shorter object</span></span>
-<span id="cb11-7"><a href="lesson-1a-r-rstudio.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## length</span></span>
-<span id="cb11-8"><a href="lesson-1a-r-rstudio.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2 4 4</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="lesson-1a-r-rstudio.html#cb11-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb11-2"><a href="lesson-1a-r-rstudio.html#cb11-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb11-3"><a href="lesson-1a-r-rstudio.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="lesson-1a-r-rstudio.html#cb11-4" tabindex="-1"></a><span class="co"># Example of a warning</span></span>
+<span id="cb11-5"><a href="lesson-1a-r-rstudio.html#cb11-5" tabindex="-1"></a>x <span class="sc">+</span> y</span>
+<span id="cb11-6"><a href="lesson-1a-r-rstudio.html#cb11-6" tabindex="-1"></a><span class="do">## Warning in x + y: longer object length is not a</span></span>
+<span id="cb11-7"><a href="lesson-1a-r-rstudio.html#cb11-7" tabindex="-1"></a><span class="do">## multiple of shorter object length</span></span>
+<span id="cb11-8"><a href="lesson-1a-r-rstudio.html#cb11-8" tabindex="-1"></a><span class="do">## [1] 2 4 4</span></span></code></pre></div></li>
 <li><p><strong>Messages</strong>: When the text doesn’t start with either “Error” or “Warning”, it’s just a friendly message. You’ll often see these messages when you load R packages or make certain function calls. Think of messages as a green traffic light: everything is working fine and keep on going!</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="lesson-1a-r-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of a message</span></span>
-<span id="cb12-2"><a href="lesson-1a-r-rstudio.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span>
-<span id="cb12-3"><a href="lesson-1a-r-rstudio.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Welcome to the completejourney package! Learn more about these data</span></span>
-<span id="cb12-4"><a href="lesson-1a-r-rstudio.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="do">## sets at http://bit.ly/completejourney.</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="lesson-1a-r-rstudio.html#cb12-1" tabindex="-1"></a><span class="co"># Example of a message</span></span>
+<span id="cb12-2"><a href="lesson-1a-r-rstudio.html#cb12-2" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span>
+<span id="cb12-3"><a href="lesson-1a-r-rstudio.html#cb12-3" tabindex="-1"></a><span class="do">## Welcome to the completejourney package! Learn more about these data</span></span>
+<span id="cb12-4"><a href="lesson-1a-r-rstudio.html#cb12-4" tabindex="-1"></a><span class="do">## sets at http://bit.ly/completejourney.</span></span></code></pre></div></li>
 </ul>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_7xf9u48f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=797&amp;flashvars[mediaProxy.mediaPlayTo]=855&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_s2boeasx" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | Errors, warnings, &amp; messages">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s_dbh3F9-JQ?si=H5HepisqmfWmqdMp&amp;start=770" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 <div id="exercises" class="section level2 hasAnchor" number="2.7">
@@ -1217,7 +1235,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

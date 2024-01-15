@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>23 Lesson 6b: Iteration statements | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="23 Lesson 6b: Iteration statements | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -800,10 +804,10 @@ div.csl-indent {
 <div id="for-loops" class="section level2 hasAnchor" number="23.2">
 <h2><span class="header-section-number">23.2</span> <code>for</code> loops<a href="lesson-6b-iteration-statements.html#for-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>for</code> loop is used to execute repetitive code statements for a particular number of times. The general syntax is provided below where <code>i</code> is the counter and as <code>i</code> assumes each sequential value the code in the body will be performed for that ith value.</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="lesson-6b-iteration-statements.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of for loop</span></span>
-<span id="cb397-2"><a href="lesson-6b-iteration-statements.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> sequence) {</span>
-<span id="cb397-3"><a href="lesson-6b-iteration-statements.html#cb397-3" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>do stuff here with i<span class="sc">&gt;</span></span>
-<span id="cb397-4"><a href="lesson-6b-iteration-statements.html#cb397-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="lesson-6b-iteration-statements.html#cb397-1" tabindex="-1"></a><span class="co"># syntax of for loop</span></span>
+<span id="cb397-2"><a href="lesson-6b-iteration-statements.html#cb397-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> sequence) {</span>
+<span id="cb397-3"><a href="lesson-6b-iteration-statements.html#cb397-3" tabindex="-1"></a>   <span class="sc">&lt;</span>do stuff here with i<span class="sc">&gt;</span></span>
+<span id="cb397-4"><a href="lesson-6b-iteration-statements.html#cb397-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>There are three main components of a <code>for</code> loop to consider:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Sequence</strong>: the sequence of values to iterate over.</li>
@@ -818,30 +822,30 @@ always good to be more descriptive with your iteration terms so its
 clearer to others what you are referring to.
 </p>
 </div>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="lesson-6b-iteration-statements.html#cb398-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2018</span><span class="sc">:</span><span class="dv">2022</span>)</span>
-<span id="cb398-2"><a href="lesson-6b-iteration-statements.html#cb398-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb398-3"><a href="lesson-6b-iteration-statements.html#cb398-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
-<span id="cb398-4"><a href="lesson-6b-iteration-statements.html#cb398-4" aria-hidden="true" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;The year is&quot;</span>, year)</span>
-<span id="cb398-5"><a href="lesson-6b-iteration-statements.html#cb398-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
-<span id="cb398-6"><a href="lesson-6b-iteration-statements.html#cb398-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb398-7"><a href="lesson-6b-iteration-statements.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2018&quot;</span></span>
-<span id="cb398-8"><a href="lesson-6b-iteration-statements.html#cb398-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2019&quot;</span></span>
-<span id="cb398-9"><a href="lesson-6b-iteration-statements.html#cb398-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2020&quot;</span></span>
-<span id="cb398-10"><a href="lesson-6b-iteration-statements.html#cb398-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2021&quot;</span></span>
-<span id="cb398-11"><a href="lesson-6b-iteration-statements.html#cb398-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2022&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="lesson-6b-iteration-statements.html#cb398-1" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2018</span><span class="sc">:</span><span class="dv">2022</span>)</span>
+<span id="cb398-2"><a href="lesson-6b-iteration-statements.html#cb398-2" tabindex="-1"></a></span>
+<span id="cb398-3"><a href="lesson-6b-iteration-statements.html#cb398-3" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb398-4"><a href="lesson-6b-iteration-statements.html#cb398-4" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;The year is&quot;</span>, year)</span>
+<span id="cb398-5"><a href="lesson-6b-iteration-statements.html#cb398-5" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
+<span id="cb398-6"><a href="lesson-6b-iteration-statements.html#cb398-6" tabindex="-1"></a>}</span>
+<span id="cb398-7"><a href="lesson-6b-iteration-statements.html#cb398-7" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2018&quot;</span></span>
+<span id="cb398-8"><a href="lesson-6b-iteration-statements.html#cb398-8" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2019&quot;</span></span>
+<span id="cb398-9"><a href="lesson-6b-iteration-statements.html#cb398-9" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2020&quot;</span></span>
+<span id="cb398-10"><a href="lesson-6b-iteration-statements.html#cb398-10" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2021&quot;</span></span>
+<span id="cb398-11"><a href="lesson-6b-iteration-statements.html#cb398-11" tabindex="-1"></a><span class="do">## [1] &quot;The year is 2022&quot;</span></span></code></pre></div>
 <p>In the above example, <code>year</code> refers directly to the value of the element in <code>years</code>. However, sometimes we want to refer to the index value rather than the value. To do this, we primarily use <code>seq_along</code>. <code>seq_along()</code> is a function that creates a vector that contains a sequence of numbers from 1 to the length of the object:</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="lesson-6b-iteration-statements.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq_along</span>(years)</span>
-<span id="cb399-2"><a href="lesson-6b-iteration-statements.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="lesson-6b-iteration-statements.html#cb399-1" tabindex="-1"></a><span class="fu">seq_along</span>(years)</span>
+<span id="cb399-2"><a href="lesson-6b-iteration-statements.html#cb399-2" tabindex="-1"></a><span class="do">## [1] 1 2 3 4 5</span></span></code></pre></div>
 <p>To use <code>seq_along</code> with a <code>for</code> loop we just specify it in the sequence portion of the <code>for</code> loop:</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="lesson-6b-iteration-statements.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (index <span class="cf">in</span> <span class="fu">seq_along</span>(years)) {</span>
-<span id="cb400-2"><a href="lesson-6b-iteration-statements.html#cb400-2" aria-hidden="true" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Element &quot;</span>, index, <span class="st">&quot;: &quot;</span>, years[index])</span>
-<span id="cb400-3"><a href="lesson-6b-iteration-statements.html#cb400-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
-<span id="cb400-4"><a href="lesson-6b-iteration-statements.html#cb400-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb400-5"><a href="lesson-6b-iteration-statements.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 1: 2018&quot;</span></span>
-<span id="cb400-6"><a href="lesson-6b-iteration-statements.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 2: 2019&quot;</span></span>
-<span id="cb400-7"><a href="lesson-6b-iteration-statements.html#cb400-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 3: 2020&quot;</span></span>
-<span id="cb400-8"><a href="lesson-6b-iteration-statements.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 4: 2021&quot;</span></span>
-<span id="cb400-9"><a href="lesson-6b-iteration-statements.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Element 5: 2022&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="lesson-6b-iteration-statements.html#cb400-1" tabindex="-1"></a><span class="cf">for</span> (index <span class="cf">in</span> <span class="fu">seq_along</span>(years)) {</span>
+<span id="cb400-2"><a href="lesson-6b-iteration-statements.html#cb400-2" tabindex="-1"></a>   output <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Element &quot;</span>, index, <span class="st">&quot;: &quot;</span>, years[index])</span>
+<span id="cb400-3"><a href="lesson-6b-iteration-statements.html#cb400-3" tabindex="-1"></a>   <span class="fu">print</span>(output)</span>
+<span id="cb400-4"><a href="lesson-6b-iteration-statements.html#cb400-4" tabindex="-1"></a>}</span>
+<span id="cb400-5"><a href="lesson-6b-iteration-statements.html#cb400-5" tabindex="-1"></a><span class="do">## [1] &quot;Element 1: 2018&quot;</span></span>
+<span id="cb400-6"><a href="lesson-6b-iteration-statements.html#cb400-6" tabindex="-1"></a><span class="do">## [1] &quot;Element 2: 2019&quot;</span></span>
+<span id="cb400-7"><a href="lesson-6b-iteration-statements.html#cb400-7" tabindex="-1"></a><span class="do">## [1] &quot;Element 3: 2020&quot;</span></span>
+<span id="cb400-8"><a href="lesson-6b-iteration-statements.html#cb400-8" tabindex="-1"></a><span class="do">## [1] &quot;Element 4: 2021&quot;</span></span>
+<span id="cb400-9"><a href="lesson-6b-iteration-statements.html#cb400-9" tabindex="-1"></a><span class="do">## [1] &quot;Element 5: 2022&quot;</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b5i6ion8&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=222&amp;flashvars[mediaProxy.mediaPlayTo]=789&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_88pu1ls0" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6b">
 </iframe>
@@ -855,43 +859,44 @@ lesson from the supplementary files provided via Canvas.
 </p>
 </div>
 <p>We can see all data sets that we have in the “data” folder with <code>list.files()</code>:</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="lesson-6b-iteration-statements.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb401-2"><a href="lesson-6b-iteration-statements.html#cb401-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb401-3"><a href="lesson-6b-iteration-statements.html#cb401-3" aria-hidden="true" tabindex="-1"></a>monthly_data_files <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data/monthly_data&quot;</span>)</span>
-<span id="cb401-4"><a href="lesson-6b-iteration-statements.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(monthly_data_files)</span>
-<span id="cb401-5"><a href="lesson-6b-iteration-statements.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
-<span id="cb401-6"><a href="lesson-6b-iteration-statements.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot; &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
-<span id="cb401-7"><a href="lesson-6b-iteration-statements.html#cb401-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="lesson-6b-iteration-statements.html#cb401-1" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb401-2"><a href="lesson-6b-iteration-statements.html#cb401-2" tabindex="-1"></a></span>
+<span id="cb401-3"><a href="lesson-6b-iteration-statements.html#cb401-3" tabindex="-1"></a>monthly_data_files <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data/monthly_data&quot;</span>)</span>
+<span id="cb401-4"><a href="lesson-6b-iteration-statements.html#cb401-4" tabindex="-1"></a><span class="fu">list.files</span>(monthly_data_files)</span>
+<span id="cb401-5"><a href="lesson-6b-iteration-statements.html#cb401-5" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot;</span></span>
+<span id="cb401-6"><a href="lesson-6b-iteration-statements.html#cb401-6" tabindex="-1"></a><span class="do">##  [4] &quot;Month-04.csv&quot; &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
+<span id="cb401-7"><a href="lesson-6b-iteration-statements.html#cb401-7" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot; &quot;Month-09.csv&quot;</span></span>
+<span id="cb401-8"><a href="lesson-6b-iteration-statements.html#cb401-8" tabindex="-1"></a><span class="do">## [10] &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span></code></pre></div>
 <p>Say we wanted to import one of these files into R:</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="lesson-6b-iteration-statements.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># here&#39;s a single file</span></span>
-<span id="cb402-2"><a href="lesson-6b-iteration-statements.html#cb402-2" aria-hidden="true" tabindex="-1"></a>(first_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)[<span class="dv">1</span>])</span>
-<span id="cb402-3"><a href="lesson-6b-iteration-statements.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Month-01.csv&quot;</span></span>
-<span id="cb402-4"><a href="lesson-6b-iteration-statements.html#cb402-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-5"><a href="lesson-6b-iteration-statements.html#cb402-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create path and import this single file</span></span>
-<span id="cb402-6"><a href="lesson-6b-iteration-statements.html#cb402-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(monthly_data_files, first_df))</span>
-<span id="cb402-7"><a href="lesson-6b-iteration-statements.html#cb402-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-8"><a href="lesson-6b-iteration-statements.html#cb402-8" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new name for file</span></span>
-<span id="cb402-9"><a href="lesson-6b-iteration-statements.html#cb402-9" aria-hidden="true" tabindex="-1"></a>(new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(first_df, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>))</span>
-<span id="cb402-10"><a href="lesson-6b-iteration-statements.html#cb402-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;Month-01&quot;</span></span>
-<span id="cb402-11"><a href="lesson-6b-iteration-statements.html#cb402-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb402-12"><a href="lesson-6b-iteration-statements.html#cb402-12" aria-hidden="true" tabindex="-1"></a><span class="co"># dynamically rename file</span></span>
-<span id="cb402-13"><a href="lesson-6b-iteration-statements.html#cb402-13" aria-hidden="true" tabindex="-1"></a><span class="fu">assign</span>(new_name, df)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="lesson-6b-iteration-statements.html#cb402-1" tabindex="-1"></a><span class="co"># here&#39;s a single file</span></span>
+<span id="cb402-2"><a href="lesson-6b-iteration-statements.html#cb402-2" tabindex="-1"></a>(first_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)[<span class="dv">1</span>])</span>
+<span id="cb402-3"><a href="lesson-6b-iteration-statements.html#cb402-3" tabindex="-1"></a><span class="do">## [1] &quot;Month-01.csv&quot;</span></span>
+<span id="cb402-4"><a href="lesson-6b-iteration-statements.html#cb402-4" tabindex="-1"></a></span>
+<span id="cb402-5"><a href="lesson-6b-iteration-statements.html#cb402-5" tabindex="-1"></a><span class="co"># create path and import this single file</span></span>
+<span id="cb402-6"><a href="lesson-6b-iteration-statements.html#cb402-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">here</span>(monthly_data_files, first_df))</span>
+<span id="cb402-7"><a href="lesson-6b-iteration-statements.html#cb402-7" tabindex="-1"></a></span>
+<span id="cb402-8"><a href="lesson-6b-iteration-statements.html#cb402-8" tabindex="-1"></a><span class="co"># create a new name for file</span></span>
+<span id="cb402-9"><a href="lesson-6b-iteration-statements.html#cb402-9" tabindex="-1"></a>(new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(first_df, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>))</span>
+<span id="cb402-10"><a href="lesson-6b-iteration-statements.html#cb402-10" tabindex="-1"></a><span class="do">## [1] &quot;Month-01&quot;</span></span>
+<span id="cb402-11"><a href="lesson-6b-iteration-statements.html#cb402-11" tabindex="-1"></a></span>
+<span id="cb402-12"><a href="lesson-6b-iteration-statements.html#cb402-12" tabindex="-1"></a><span class="co"># dynamically rename file</span></span>
+<span id="cb402-13"><a href="lesson-6b-iteration-statements.html#cb402-13" tabindex="-1"></a><span class="fu">assign</span>(new_name, df)</span></code></pre></div>
 <div class="todo">
 <p>
 Can you incorporate these procedures into a for loop to import all
 the data files?
 </p>
 </div>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="lesson-6b-iteration-statements.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> _____) {</span>
-<span id="cb403-2"><a href="lesson-6b-iteration-statements.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1: import data</span></span>
-<span id="cb403-3"><a href="lesson-6b-iteration-statements.html#cb403-3" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(_____)</span>
-<span id="cb403-4"><a href="lesson-6b-iteration-statements.html#cb403-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-5"><a href="lesson-6b-iteration-statements.html#cb403-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2: remove &quot;.csv&quot; from file name</span></span>
-<span id="cb403-6"><a href="lesson-6b-iteration-statements.html#cb403-6" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> _____</span>
-<span id="cb403-7"><a href="lesson-6b-iteration-statements.html#cb403-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb403-8"><a href="lesson-6b-iteration-statements.html#cb403-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3: dynamically rename file</span></span>
-<span id="cb403-9"><a href="lesson-6b-iteration-statements.html#cb403-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(_____, _____)</span>
-<span id="cb403-10"><a href="lesson-6b-iteration-statements.html#cb403-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="lesson-6b-iteration-statements.html#cb403-1" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> _____) {</span>
+<span id="cb403-2"><a href="lesson-6b-iteration-statements.html#cb403-2" tabindex="-1"></a>  <span class="co"># 1: import data</span></span>
+<span id="cb403-3"><a href="lesson-6b-iteration-statements.html#cb403-3" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(_____)</span>
+<span id="cb403-4"><a href="lesson-6b-iteration-statements.html#cb403-4" tabindex="-1"></a>  </span>
+<span id="cb403-5"><a href="lesson-6b-iteration-statements.html#cb403-5" tabindex="-1"></a>  <span class="co"># 2: remove &quot;.csv&quot; from file name</span></span>
+<span id="cb403-6"><a href="lesson-6b-iteration-statements.html#cb403-6" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> _____</span>
+<span id="cb403-7"><a href="lesson-6b-iteration-statements.html#cb403-7" tabindex="-1"></a>  </span>
+<span id="cb403-8"><a href="lesson-6b-iteration-statements.html#cb403-8" tabindex="-1"></a>  <span class="co"># 3: dynamically rename file</span></span>
+<span id="cb403-9"><a href="lesson-6b-iteration-statements.html#cb403-9" tabindex="-1"></a>  <span class="fu">assign</span>(_____, _____)</span>
+<span id="cb403-10"><a href="lesson-6b-iteration-statements.html#cb403-10" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_ca4i84ki&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_hubq5x1m" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-23.2.1">
 </iframe>
@@ -906,25 +911,25 @@ the data files?
 <li><code>break</code>: exits the entire for loop.</li>
 </ul>
 <p>Both are used in conjunction with <code>if</code> statements. For example, this <code>for</code> loop will iterate for each element in <code>year</code>; however, when it gets to the element that equals the year of <code>covid</code> (2020) it will break out and end the for loop process.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="lesson-6b-iteration-statements.html#cb404-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
-<span id="cb404-2"><a href="lesson-6b-iteration-statements.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-3"><a href="lesson-6b-iteration-statements.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
-<span id="cb404-4"><a href="lesson-6b-iteration-statements.html#cb404-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">break</span></span>
-<span id="cb404-5"><a href="lesson-6b-iteration-statements.html#cb404-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
-<span id="cb404-6"><a href="lesson-6b-iteration-statements.html#cb404-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb404-7"><a href="lesson-6b-iteration-statements.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
-<span id="cb404-8"><a href="lesson-6b-iteration-statements.html#cb404-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2019</span></span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="lesson-6b-iteration-statements.html#cb404-1" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
+<span id="cb404-2"><a href="lesson-6b-iteration-statements.html#cb404-2" tabindex="-1"></a></span>
+<span id="cb404-3"><a href="lesson-6b-iteration-statements.html#cb404-3" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb404-4"><a href="lesson-6b-iteration-statements.html#cb404-4" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">break</span></span>
+<span id="cb404-5"><a href="lesson-6b-iteration-statements.html#cb404-5" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
+<span id="cb404-6"><a href="lesson-6b-iteration-statements.html#cb404-6" tabindex="-1"></a>}</span>
+<span id="cb404-7"><a href="lesson-6b-iteration-statements.html#cb404-7" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
+<span id="cb404-8"><a href="lesson-6b-iteration-statements.html#cb404-8" tabindex="-1"></a><span class="do">## [1] 2019</span></span></code></pre></div>
 <p>The <code>next</code> argument is useful when we want to skip the current iteration of a loop without terminating it. On encountering <code>next</code>, the R parser skips further evaluation and starts the next iteration of the loop. In this example, the for loop will iterate for each element in <code>year</code>; however, when it gets to the element that equals <code>covid</code> it will skip the rest of the code execution simply jump to the next iteration.</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="lesson-6b-iteration-statements.html#cb405-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
-<span id="cb405-2"><a href="lesson-6b-iteration-statements.html#cb405-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb405-3"><a href="lesson-6b-iteration-statements.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
-<span id="cb405-4"><a href="lesson-6b-iteration-statements.html#cb405-4" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">next</span></span>
-<span id="cb405-5"><a href="lesson-6b-iteration-statements.html#cb405-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
-<span id="cb405-6"><a href="lesson-6b-iteration-statements.html#cb405-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb405-7"><a href="lesson-6b-iteration-statements.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
-<span id="cb405-8"><a href="lesson-6b-iteration-statements.html#cb405-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2019</span></span>
-<span id="cb405-9"><a href="lesson-6b-iteration-statements.html#cb405-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2021</span></span>
-<span id="cb405-10"><a href="lesson-6b-iteration-statements.html#cb405-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2022</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="lesson-6b-iteration-statements.html#cb405-1" tabindex="-1"></a>covid <span class="ot">=</span> <span class="dv">2020</span></span>
+<span id="cb405-2"><a href="lesson-6b-iteration-statements.html#cb405-2" tabindex="-1"></a></span>
+<span id="cb405-3"><a href="lesson-6b-iteration-statements.html#cb405-3" tabindex="-1"></a><span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb405-4"><a href="lesson-6b-iteration-statements.html#cb405-4" tabindex="-1"></a>   <span class="cf">if</span> (year <span class="sc">==</span> covid) <span class="cf">next</span></span>
+<span id="cb405-5"><a href="lesson-6b-iteration-statements.html#cb405-5" tabindex="-1"></a>   <span class="fu">print</span>(year)</span>
+<span id="cb405-6"><a href="lesson-6b-iteration-statements.html#cb405-6" tabindex="-1"></a>}</span>
+<span id="cb405-7"><a href="lesson-6b-iteration-statements.html#cb405-7" tabindex="-1"></a><span class="do">## [1] 2018</span></span>
+<span id="cb405-8"><a href="lesson-6b-iteration-statements.html#cb405-8" tabindex="-1"></a><span class="do">## [1] 2019</span></span>
+<span id="cb405-9"><a href="lesson-6b-iteration-statements.html#cb405-9" tabindex="-1"></a><span class="do">## [1] 2021</span></span>
+<span id="cb405-10"><a href="lesson-6b-iteration-statements.html#cb405-10" tabindex="-1"></a><span class="do">## [1] 2022</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_b5i6ion8&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1006&amp;flashvars[mediaProxy.mediaPlayTo]=1365&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_88pu1ls0" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6b">
 </iframe>
@@ -932,15 +937,16 @@ the data files?
 <div id="knowledge-check-57" class="section level3 hasAnchor" number="23.3.1">
 <h3><span class="header-section-number">23.3.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-57" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following code identifies the month of the data set from our monthly data files in the last knowledge check:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="lesson-6b-iteration-statements.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data files</span></span>
-<span id="cb406-2"><a href="lesson-6b-iteration-statements.html#cb406-2" aria-hidden="true" tabindex="-1"></a>(data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files))</span>
-<span id="cb406-3"><a href="lesson-6b-iteration-statements.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
-<span id="cb406-4"><a href="lesson-6b-iteration-statements.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot; &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
-<span id="cb406-5"><a href="lesson-6b-iteration-statements.html#cb406-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span>
-<span id="cb406-6"><a href="lesson-6b-iteration-statements.html#cb406-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb406-7"><a href="lesson-6b-iteration-statements.html#cb406-7" aria-hidden="true" tabindex="-1"></a><span class="co"># extract month number</span></span>
-<span id="cb406-8"><a href="lesson-6b-iteration-statements.html#cb406-8" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(data_files, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>))</span>
-<span id="cb406-9"><a href="lesson-6b-iteration-statements.html#cb406-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="lesson-6b-iteration-statements.html#cb406-1" tabindex="-1"></a><span class="co"># data files</span></span>
+<span id="cb406-2"><a href="lesson-6b-iteration-statements.html#cb406-2" tabindex="-1"></a>(data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files))</span>
+<span id="cb406-3"><a href="lesson-6b-iteration-statements.html#cb406-3" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot;</span></span>
+<span id="cb406-4"><a href="lesson-6b-iteration-statements.html#cb406-4" tabindex="-1"></a><span class="do">##  [4] &quot;Month-04.csv&quot; &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
+<span id="cb406-5"><a href="lesson-6b-iteration-statements.html#cb406-5" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot; &quot;Month-09.csv&quot;</span></span>
+<span id="cb406-6"><a href="lesson-6b-iteration-statements.html#cb406-6" tabindex="-1"></a><span class="do">## [10] &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span>
+<span id="cb406-7"><a href="lesson-6b-iteration-statements.html#cb406-7" tabindex="-1"></a></span>
+<span id="cb406-8"><a href="lesson-6b-iteration-statements.html#cb406-8" tabindex="-1"></a><span class="co"># extract month number</span></span>
+<span id="cb406-9"><a href="lesson-6b-iteration-statements.html#cb406-9" tabindex="-1"></a><span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(data_files, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>))</span>
+<span id="cb406-10"><a href="lesson-6b-iteration-statements.html#cb406-10" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
 <div class="todo">
 <p>
 Modify the following <code>for</code> loop with a <code>next</code>
@@ -955,14 +961,14 @@ only import Month-08 through Month-10
 </li>
 </ol>
 </div>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="lesson-6b-iteration-statements.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify this code chunk with you next/break statement</span></span>
-<span id="cb407-2"><a href="lesson-6b-iteration-statements.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
-<span id="cb407-3"><a href="lesson-6b-iteration-statements.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
-<span id="cb407-4"><a href="lesson-6b-iteration-statements.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
-<span id="cb407-5"><a href="lesson-6b-iteration-statements.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
-<span id="cb407-6"><a href="lesson-6b-iteration-statements.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
-<span id="cb407-7"><a href="lesson-6b-iteration-statements.html#cb407-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
-<span id="cb407-8"><a href="lesson-6b-iteration-statements.html#cb407-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="lesson-6b-iteration-statements.html#cb407-1" tabindex="-1"></a><span class="co"># Modify this code chunk with you next/break statement</span></span>
+<span id="cb407-2"><a href="lesson-6b-iteration-statements.html#cb407-2" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
+<span id="cb407-3"><a href="lesson-6b-iteration-statements.html#cb407-3" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
+<span id="cb407-4"><a href="lesson-6b-iteration-statements.html#cb407-4" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
+<span id="cb407-5"><a href="lesson-6b-iteration-statements.html#cb407-5" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
+<span id="cb407-6"><a href="lesson-6b-iteration-statements.html#cb407-6" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
+<span id="cb407-7"><a href="lesson-6b-iteration-statements.html#cb407-7" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
+<span id="cb407-8"><a href="lesson-6b-iteration-statements.html#cb407-8" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_2yndh7n2&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_8fc7sc26" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-23.3.1">
 </iframe>
@@ -988,30 +994,30 @@ only import Month-08 through Month-10
 <li>Test condition first</li>
 <li>Then execute code</li>
 </ol>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="lesson-6b-iteration-statements.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (condition) {</span>
-<span id="cb408-2"><a href="lesson-6b-iteration-statements.html#cb408-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
-<span id="cb408-3"><a href="lesson-6b-iteration-statements.html#cb408-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="lesson-6b-iteration-statements.html#cb408-1" tabindex="-1"></a><span class="cf">while</span> (condition) {</span>
+<span id="cb408-2"><a href="lesson-6b-iteration-statements.html#cb408-2" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
+<span id="cb408-3"><a href="lesson-6b-iteration-statements.html#cb408-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>For example, the probability of flipping 10 coins and getting all heads or tails is <span class="math inline">\((\frac{1}{2})^{10} = 0.0009765625\)</span> (1 in 1024 tries). Let’s implement this and see how many times it’ll take to accomplish this feat.</p>
 <p>The following <code>while</code> statement will check if the number of unique values in <code>flip</code> are 1, which implies that we flipped all heads or tails. If it is not equal to 1 then we repeat the process of flipping 10 coins and incrementing the number of tries. When our condition statement <code>length(unique(flip)) != 1</code> is <code>FALSE</code> then we exit the <code>while</code> loop.</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="lesson-6b-iteration-statements.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a coin</span></span>
-<span id="cb409-2"><a href="lesson-6b-iteration-statements.html#cb409-2" aria-hidden="true" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
-<span id="cb409-3"><a href="lesson-6b-iteration-statements.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-4"><a href="lesson-6b-iteration-statements.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="co"># set number of tries to zero</span></span>
-<span id="cb409-5"><a href="lesson-6b-iteration-statements.html#cb409-5" aria-hidden="true" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb409-6"><a href="lesson-6b-iteration-statements.html#cb409-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-7"><a href="lesson-6b-iteration-statements.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="co"># this will be used to imitate a flip of 10 coins</span></span>
-<span id="cb409-8"><a href="lesson-6b-iteration-statements.html#cb409-8" aria-hidden="true" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb409-9"><a href="lesson-6b-iteration-statements.html#cb409-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-10"><a href="lesson-6b-iteration-statements.html#cb409-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">!=</span> <span class="dv">1</span>) {</span>
-<span id="cb409-11"><a href="lesson-6b-iteration-statements.html#cb409-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
-<span id="cb409-12"><a href="lesson-6b-iteration-statements.html#cb409-12" aria-hidden="true" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb409-13"><a href="lesson-6b-iteration-statements.html#cb409-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb409-14"><a href="lesson-6b-iteration-statements.html#cb409-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
-<span id="cb409-15"><a href="lesson-6b-iteration-statements.html#cb409-15" aria-hidden="true" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb409-16"><a href="lesson-6b-iteration-statements.html#cb409-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb409-17"><a href="lesson-6b-iteration-statements.html#cb409-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-18"><a href="lesson-6b-iteration-statements.html#cb409-18" aria-hidden="true" tabindex="-1"></a>n_tries</span>
-<span id="cb409-19"><a href="lesson-6b-iteration-statements.html#cb409-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 553</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="lesson-6b-iteration-statements.html#cb409-1" tabindex="-1"></a><span class="co"># create a coin</span></span>
+<span id="cb409-2"><a href="lesson-6b-iteration-statements.html#cb409-2" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
+<span id="cb409-3"><a href="lesson-6b-iteration-statements.html#cb409-3" tabindex="-1"></a></span>
+<span id="cb409-4"><a href="lesson-6b-iteration-statements.html#cb409-4" tabindex="-1"></a><span class="co"># set number of tries to zero</span></span>
+<span id="cb409-5"><a href="lesson-6b-iteration-statements.html#cb409-5" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb409-6"><a href="lesson-6b-iteration-statements.html#cb409-6" tabindex="-1"></a></span>
+<span id="cb409-7"><a href="lesson-6b-iteration-statements.html#cb409-7" tabindex="-1"></a><span class="co"># this will be used to imitate a flip of 10 coins</span></span>
+<span id="cb409-8"><a href="lesson-6b-iteration-statements.html#cb409-8" tabindex="-1"></a>flip <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb409-9"><a href="lesson-6b-iteration-statements.html#cb409-9" tabindex="-1"></a></span>
+<span id="cb409-10"><a href="lesson-6b-iteration-statements.html#cb409-10" tabindex="-1"></a><span class="cf">while</span>(<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">!=</span> <span class="dv">1</span>) {</span>
+<span id="cb409-11"><a href="lesson-6b-iteration-statements.html#cb409-11" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
+<span id="cb409-12"><a href="lesson-6b-iteration-statements.html#cb409-12" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb409-13"><a href="lesson-6b-iteration-statements.html#cb409-13" tabindex="-1"></a>  </span>
+<span id="cb409-14"><a href="lesson-6b-iteration-statements.html#cb409-14" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
+<span id="cb409-15"><a href="lesson-6b-iteration-statements.html#cb409-15" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb409-16"><a href="lesson-6b-iteration-statements.html#cb409-16" tabindex="-1"></a>}</span>
+<span id="cb409-17"><a href="lesson-6b-iteration-statements.html#cb409-17" tabindex="-1"></a></span>
+<span id="cb409-18"><a href="lesson-6b-iteration-statements.html#cb409-18" tabindex="-1"></a>n_tries</span>
+<span id="cb409-19"><a href="lesson-6b-iteration-statements.html#cb409-19" tabindex="-1"></a><span class="do">## [1] 553</span></span></code></pre></div>
 </div>
 <div id="repeat-loop" class="section level3 hasAnchor" number="23.4.2">
 <h3><span class="header-section-number">23.4.2</span> <code>repeat</code> loop<a href="lesson-6b-iteration-statements.html#repeat-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1020,10 +1026,10 @@ only import Month-08 through Month-10
 <li>Execute code first</li>
 <li>Then test condition</li>
 </ol>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="lesson-6b-iteration-statements.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
-<span id="cb410-2"><a href="lesson-6b-iteration-statements.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
-<span id="cb410-3"><a href="lesson-6b-iteration-statements.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(condition) <span class="cf">break</span>  </span>
-<span id="cb410-4"><a href="lesson-6b-iteration-statements.html#cb410-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="lesson-6b-iteration-statements.html#cb410-1" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb410-2"><a href="lesson-6b-iteration-statements.html#cb410-2" tabindex="-1"></a>  <span class="sc">&lt;</span>do stuff<span class="sc">&gt;</span></span>
+<span id="cb410-3"><a href="lesson-6b-iteration-statements.html#cb410-3" tabindex="-1"></a>  <span class="cf">if</span>(condition) <span class="cf">break</span>  </span>
+<span id="cb410-4"><a href="lesson-6b-iteration-statements.html#cb410-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>We can perform the same exercise as above to assess how many times it takes to flip 10 coins and get all heads or tails. The main difference here is <code>repeat</code> performs the action and then we incorporate a conditional statement to see if the flip is all heads or tails (<code>length(unique(flip)) == 1</code>) and if so we break out of the loop.</p>
 <div class="warning">
 <p>
@@ -1032,22 +1038,22 @@ Notice that you need to incorporate the conditional statement in
 indefinitely!
 </p>
 </div>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="lesson-6b-iteration-statements.html#cb411-1" aria-hidden="true" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
-<span id="cb411-2"><a href="lesson-6b-iteration-statements.html#cb411-2" aria-hidden="true" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb411-3"><a href="lesson-6b-iteration-statements.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
-<span id="cb411-4"><a href="lesson-6b-iteration-statements.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
-<span id="cb411-5"><a href="lesson-6b-iteration-statements.html#cb411-5" aria-hidden="true" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb411-6"><a href="lesson-6b-iteration-statements.html#cb411-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb411-7"><a href="lesson-6b-iteration-statements.html#cb411-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
-<span id="cb411-8"><a href="lesson-6b-iteration-statements.html#cb411-8" aria-hidden="true" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb411-9"><a href="lesson-6b-iteration-statements.html#cb411-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb411-10"><a href="lesson-6b-iteration-statements.html#cb411-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if current flip contains all heads or tails break</span></span>
-<span id="cb411-11"><a href="lesson-6b-iteration-statements.html#cb411-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb411-12"><a href="lesson-6b-iteration-statements.html#cb411-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(n_tries)</span>
-<span id="cb411-13"><a href="lesson-6b-iteration-statements.html#cb411-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb411-14"><a href="lesson-6b-iteration-statements.html#cb411-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb411-15"><a href="lesson-6b-iteration-statements.html#cb411-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb411-16"><a href="lesson-6b-iteration-statements.html#cb411-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 63</span></span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="lesson-6b-iteration-statements.html#cb411-1" tabindex="-1"></a>coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
+<span id="cb411-2"><a href="lesson-6b-iteration-statements.html#cb411-2" tabindex="-1"></a>n_tries <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb411-3"><a href="lesson-6b-iteration-statements.html#cb411-3" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb411-4"><a href="lesson-6b-iteration-statements.html#cb411-4" tabindex="-1"></a>  <span class="co"># flip coin 10x</span></span>
+<span id="cb411-5"><a href="lesson-6b-iteration-statements.html#cb411-5" tabindex="-1"></a>  flip <span class="ot">&lt;-</span> <span class="fu">sample</span>(coin, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb411-6"><a href="lesson-6b-iteration-statements.html#cb411-6" tabindex="-1"></a>  </span>
+<span id="cb411-7"><a href="lesson-6b-iteration-statements.html#cb411-7" tabindex="-1"></a>  <span class="co"># add to the number of tries</span></span>
+<span id="cb411-8"><a href="lesson-6b-iteration-statements.html#cb411-8" tabindex="-1"></a>  n_tries <span class="ot">&lt;-</span> n_tries <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb411-9"><a href="lesson-6b-iteration-statements.html#cb411-9" tabindex="-1"></a>  </span>
+<span id="cb411-10"><a href="lesson-6b-iteration-statements.html#cb411-10" tabindex="-1"></a>  <span class="co"># if current flip contains all heads or tails break</span></span>
+<span id="cb411-11"><a href="lesson-6b-iteration-statements.html#cb411-11" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(<span class="fu">unique</span>(flip)) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb411-12"><a href="lesson-6b-iteration-statements.html#cb411-12" tabindex="-1"></a>    <span class="fu">print</span>(n_tries)</span>
+<span id="cb411-13"><a href="lesson-6b-iteration-statements.html#cb411-13" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb411-14"><a href="lesson-6b-iteration-statements.html#cb411-14" tabindex="-1"></a>  }</span>
+<span id="cb411-15"><a href="lesson-6b-iteration-statements.html#cb411-15" tabindex="-1"></a>}</span>
+<span id="cb411-16"><a href="lesson-6b-iteration-statements.html#cb411-16" tabindex="-1"></a><span class="do">## [1] 63</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-58" class="section level3 hasAnchor" number="23.4.3">
 <h3><span class="header-section-number">23.4.3</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-58" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1065,23 +1071,23 @@ your random walk stop if the value it exceeds 100 or if the number of
 steps taken exceeds 10,000.
 </p>
 </div>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="lesson-6b-iteration-statements.html#cb412-1" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb412-2"><a href="lesson-6b-iteration-statements.html#cb412-2" aria-hidden="true" tabindex="-1"></a>step <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb412-3"><a href="lesson-6b-iteration-statements.html#cb412-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-4"><a href="lesson-6b-iteration-statements.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
-<span id="cb412-5"><a href="lesson-6b-iteration-statements.html#cb412-5" aria-hidden="true" tabindex="-1"></a>   <span class="co"># randomly add or subtract 1</span></span>
-<span id="cb412-6"><a href="lesson-6b-iteration-statements.html#cb412-6" aria-hidden="true" tabindex="-1"></a>   random_step <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">1</span>)</span>
-<span id="cb412-7"><a href="lesson-6b-iteration-statements.html#cb412-7" aria-hidden="true" tabindex="-1"></a>   value <span class="ot">&lt;-</span> value <span class="sc">+</span> _______</span>
-<span id="cb412-8"><a href="lesson-6b-iteration-statements.html#cb412-8" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb412-9"><a href="lesson-6b-iteration-statements.html#cb412-9" aria-hidden="true" tabindex="-1"></a>   <span class="co"># count step</span></span>
-<span id="cb412-10"><a href="lesson-6b-iteration-statements.html#cb412-10" aria-hidden="true" tabindex="-1"></a>   step <span class="ot">&lt;-</span> step <span class="sc">+</span> __</span>
-<span id="cb412-11"><a href="lesson-6b-iteration-statements.html#cb412-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb412-12"><a href="lesson-6b-iteration-statements.html#cb412-12" aria-hidden="true" tabindex="-1"></a>   <span class="co"># break once our walk exceeds 100</span></span>
-<span id="cb412-13"><a href="lesson-6b-iteration-statements.html#cb412-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> (______ <span class="sc">==</span> <span class="dv">100</span> <span class="sc">|</span> _____ <span class="sc">&gt;</span> <span class="dv">10000</span>) {</span>
-<span id="cb412-14"><a href="lesson-6b-iteration-statements.html#cb412-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">print</span>(step)</span>
-<span id="cb412-15"><a href="lesson-6b-iteration-statements.html#cb412-15" aria-hidden="true" tabindex="-1"></a>     <span class="cf">break</span></span>
-<span id="cb412-16"><a href="lesson-6b-iteration-statements.html#cb412-16" aria-hidden="true" tabindex="-1"></a>   }</span>
-<span id="cb412-17"><a href="lesson-6b-iteration-statements.html#cb412-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="lesson-6b-iteration-statements.html#cb412-1" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb412-2"><a href="lesson-6b-iteration-statements.html#cb412-2" tabindex="-1"></a>step <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb412-3"><a href="lesson-6b-iteration-statements.html#cb412-3" tabindex="-1"></a></span>
+<span id="cb412-4"><a href="lesson-6b-iteration-statements.html#cb412-4" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb412-5"><a href="lesson-6b-iteration-statements.html#cb412-5" tabindex="-1"></a>   <span class="co"># randomly add or subtract 1</span></span>
+<span id="cb412-6"><a href="lesson-6b-iteration-statements.html#cb412-6" tabindex="-1"></a>   random_step <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">1</span>)</span>
+<span id="cb412-7"><a href="lesson-6b-iteration-statements.html#cb412-7" tabindex="-1"></a>   value <span class="ot">&lt;-</span> value <span class="sc">+</span> _______</span>
+<span id="cb412-8"><a href="lesson-6b-iteration-statements.html#cb412-8" tabindex="-1"></a>   </span>
+<span id="cb412-9"><a href="lesson-6b-iteration-statements.html#cb412-9" tabindex="-1"></a>   <span class="co"># count step</span></span>
+<span id="cb412-10"><a href="lesson-6b-iteration-statements.html#cb412-10" tabindex="-1"></a>   step <span class="ot">&lt;-</span> step <span class="sc">+</span> __</span>
+<span id="cb412-11"><a href="lesson-6b-iteration-statements.html#cb412-11" tabindex="-1"></a>    </span>
+<span id="cb412-12"><a href="lesson-6b-iteration-statements.html#cb412-12" tabindex="-1"></a>   <span class="co"># break once our walk exceeds 100</span></span>
+<span id="cb412-13"><a href="lesson-6b-iteration-statements.html#cb412-13" tabindex="-1"></a>   <span class="cf">if</span> (______ <span class="sc">==</span> <span class="dv">100</span> <span class="sc">|</span> _____ <span class="sc">&gt;</span> <span class="dv">10000</span>) {</span>
+<span id="cb412-14"><a href="lesson-6b-iteration-statements.html#cb412-14" tabindex="-1"></a>     <span class="fu">print</span>(step)</span>
+<span id="cb412-15"><a href="lesson-6b-iteration-statements.html#cb412-15" tabindex="-1"></a>     <span class="cf">break</span></span>
+<span id="cb412-16"><a href="lesson-6b-iteration-statements.html#cb412-16" tabindex="-1"></a>   }</span>
+<span id="cb412-17"><a href="lesson-6b-iteration-statements.html#cb412-17" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_931ngp6a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_vayuirxh" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-23.4.3">
 </iframe>
@@ -1091,15 +1097,15 @@ steps taken exceeds 10,000.
 <div id="iteration-with-functional-programming" class="section level2 hasAnchor" number="23.5">
 <h2><span class="header-section-number">23.5</span> Iteration with functional programming<a href="lesson-6b-iteration-statements.html#iteration-with-functional-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Iteration can be summed up as <strong>FOR EACH ____ DO ____</strong>. For example, in the previous knowledge checks we saw this code:</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="lesson-6b-iteration-statements.html#cb413-1" aria-hidden="true" tabindex="-1"></a>data_files <span class="ot">&lt;-</span> data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)</span>
-<span id="cb413-2"><a href="lesson-6b-iteration-statements.html#cb413-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb413-3"><a href="lesson-6b-iteration-statements.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
-<span id="cb413-4"><a href="lesson-6b-iteration-statements.html#cb413-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
-<span id="cb413-5"><a href="lesson-6b-iteration-statements.html#cb413-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
-<span id="cb413-6"><a href="lesson-6b-iteration-statements.html#cb413-6" aria-hidden="true" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
-<span id="cb413-7"><a href="lesson-6b-iteration-statements.html#cb413-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
-<span id="cb413-8"><a href="lesson-6b-iteration-statements.html#cb413-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
-<span id="cb413-9"><a href="lesson-6b-iteration-statements.html#cb413-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="lesson-6b-iteration-statements.html#cb413-1" tabindex="-1"></a>data_files <span class="ot">&lt;-</span> data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)</span>
+<span id="cb413-2"><a href="lesson-6b-iteration-statements.html#cb413-2" tabindex="-1"></a></span>
+<span id="cb413-3"><a href="lesson-6b-iteration-statements.html#cb413-3" tabindex="-1"></a><span class="cf">for</span>(data_file <span class="cf">in</span> data_files) {</span>
+<span id="cb413-4"><a href="lesson-6b-iteration-statements.html#cb413-4" tabindex="-1"></a>  <span class="co"># steps to import each data set</span></span>
+<span id="cb413-5"><a href="lesson-6b-iteration-statements.html#cb413-5" tabindex="-1"></a>  df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, data_file))</span>
+<span id="cb413-6"><a href="lesson-6b-iteration-statements.html#cb413-6" tabindex="-1"></a>  new_name <span class="ot">&lt;-</span> stringr<span class="sc">::</span><span class="fu">str_sub</span>(data_file, <span class="at">end =</span> <span class="sc">-</span><span class="dv">5</span>)</span>
+<span id="cb413-7"><a href="lesson-6b-iteration-statements.html#cb413-7" tabindex="-1"></a>  <span class="fu">assign</span>(new_name, df)</span>
+<span id="cb413-8"><a href="lesson-6b-iteration-statements.html#cb413-8" tabindex="-1"></a>  <span class="fu">rm</span>(df)</span>
+<span id="cb413-9"><a href="lesson-6b-iteration-statements.html#cb413-9" tabindex="-1"></a>}</span></code></pre></div>
 <p>The intent of this approach is <strong>FOR EACH file DO importing procedure</strong>. However, sometimes when reading <code>for</code> loops it’s tough to focus on the primary intent.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:for-each"></span>
 <img src="images/for-each.png" alt="Intent of iteration statements." width="560" />
@@ -1131,80 +1137,90 @@ Figure 23.2: Functional programming view of iteration statements.
 </ul>
 <p>These functions all behave in a similar manner - they each take a vector as input, applies a function to each piece, and then returns a new vector that’s the same length as the input. The primary difference is in the object they return.</p>
 <p>For example, say we wanted to iterate over the Complete Journey <code>demographics</code> data frame and compute the number of unique values for each column. We could do this with a <code>for</code> loop, which would look like this:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="lesson-6b-iteration-statements.html#cb414-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">colnames</span>(completejourney<span class="sc">::</span>demographics)</span>
-<span id="cb414-2"><a href="lesson-6b-iteration-statements.html#cb414-2" aria-hidden="true" tabindex="-1"></a>distinct_values <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&#39;integer&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(cols))</span>
-<span id="cb414-3"><a href="lesson-6b-iteration-statements.html#cb414-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb414-4"><a href="lesson-6b-iteration-statements.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="fu">seq_along</span>(cols)) {</span>
-<span id="cb414-5"><a href="lesson-6b-iteration-statements.html#cb414-5" aria-hidden="true" tabindex="-1"></a>   n_dist <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(completejourney<span class="sc">::</span>demographics[column])</span>
-<span id="cb414-6"><a href="lesson-6b-iteration-statements.html#cb414-6" aria-hidden="true" tabindex="-1"></a>   distinct_values[column] <span class="ot">&lt;-</span> n_dist</span>
-<span id="cb414-7"><a href="lesson-6b-iteration-statements.html#cb414-7" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb414-8"><a href="lesson-6b-iteration-statements.html#cb414-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb414-9"><a href="lesson-6b-iteration-statements.html#cb414-9" aria-hidden="true" tabindex="-1"></a>distinct_values</span>
-<span id="cb414-10"><a href="lesson-6b-iteration-statements.html#cb414-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 801   6  12   5   3   5   4   4</span></span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="lesson-6b-iteration-statements.html#cb414-1" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">colnames</span>(completejourney<span class="sc">::</span>demographics)</span>
+<span id="cb414-2"><a href="lesson-6b-iteration-statements.html#cb414-2" tabindex="-1"></a>distinct_values <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">&#39;integer&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(cols))</span>
+<span id="cb414-3"><a href="lesson-6b-iteration-statements.html#cb414-3" tabindex="-1"></a></span>
+<span id="cb414-4"><a href="lesson-6b-iteration-statements.html#cb414-4" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="fu">seq_along</span>(cols)) {</span>
+<span id="cb414-5"><a href="lesson-6b-iteration-statements.html#cb414-5" tabindex="-1"></a>   n_dist <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(completejourney<span class="sc">::</span>demographics[column])</span>
+<span id="cb414-6"><a href="lesson-6b-iteration-statements.html#cb414-6" tabindex="-1"></a>   distinct_values[column] <span class="ot">&lt;-</span> n_dist</span>
+<span id="cb414-7"><a href="lesson-6b-iteration-statements.html#cb414-7" tabindex="-1"></a>} </span>
+<span id="cb414-8"><a href="lesson-6b-iteration-statements.html#cb414-8" tabindex="-1"></a></span>
+<span id="cb414-9"><a href="lesson-6b-iteration-statements.html#cb414-9" tabindex="-1"></a>distinct_values</span>
+<span id="cb414-10"><a href="lesson-6b-iteration-statements.html#cb414-10" tabindex="-1"></a><span class="do">## [1] 801   6  12   5   3   5   4   4</span></span></code></pre></div>
 <p>However, admittedly, this is a bit busy and its tough to see what the primary intent of this code is. Alternatively, we could apply <code>purrr::map</code>, which in this example will iterate over each column of <code>completejourney::demographics</code> and apply the <code>n_distinct</code> function.</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="lesson-6b-iteration-statements.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse automatically loads purrr</span></span>
-<span id="cb415-2"><a href="lesson-6b-iteration-statements.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb415-3"><a href="lesson-6b-iteration-statements.html#cb415-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb415-4"><a href="lesson-6b-iteration-statements.html#cb415-4" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
-<span id="cb415-5"><a href="lesson-6b-iteration-statements.html#cb415-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(n_distinct)</span>
-<span id="cb415-6"><a href="lesson-6b-iteration-statements.html#cb415-6" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_id</span></span>
-<span id="cb415-7"><a href="lesson-6b-iteration-statements.html#cb415-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 801</span></span>
-<span id="cb415-8"><a href="lesson-6b-iteration-statements.html#cb415-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-9"><a href="lesson-6b-iteration-statements.html#cb415-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $age</span></span>
-<span id="cb415-10"><a href="lesson-6b-iteration-statements.html#cb415-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
-<span id="cb415-11"><a href="lesson-6b-iteration-statements.html#cb415-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-12"><a href="lesson-6b-iteration-statements.html#cb415-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $income</span></span>
-<span id="cb415-13"><a href="lesson-6b-iteration-statements.html#cb415-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span>
-<span id="cb415-14"><a href="lesson-6b-iteration-statements.html#cb415-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-15"><a href="lesson-6b-iteration-statements.html#cb415-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $home_ownership</span></span>
-<span id="cb415-16"><a href="lesson-6b-iteration-statements.html#cb415-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
-<span id="cb415-17"><a href="lesson-6b-iteration-statements.html#cb415-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-18"><a href="lesson-6b-iteration-statements.html#cb415-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $marital_status</span></span>
-<span id="cb415-19"><a href="lesson-6b-iteration-statements.html#cb415-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
-<span id="cb415-20"><a href="lesson-6b-iteration-statements.html#cb415-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-21"><a href="lesson-6b-iteration-statements.html#cb415-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_size</span></span>
-<span id="cb415-22"><a href="lesson-6b-iteration-statements.html#cb415-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span>
-<span id="cb415-23"><a href="lesson-6b-iteration-statements.html#cb415-23" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-24"><a href="lesson-6b-iteration-statements.html#cb415-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $household_comp</span></span>
-<span id="cb415-25"><a href="lesson-6b-iteration-statements.html#cb415-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span>
-<span id="cb415-26"><a href="lesson-6b-iteration-statements.html#cb415-26" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb415-27"><a href="lesson-6b-iteration-statements.html#cb415-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $kids_count</span></span>
-<span id="cb415-28"><a href="lesson-6b-iteration-statements.html#cb415-28" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="lesson-6b-iteration-statements.html#cb415-1" tabindex="-1"></a><span class="co"># tidyverse automatically loads purrr</span></span>
+<span id="cb415-2"><a href="lesson-6b-iteration-statements.html#cb415-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb415-3"><a href="lesson-6b-iteration-statements.html#cb415-3" tabindex="-1"></a></span>
+<span id="cb415-4"><a href="lesson-6b-iteration-statements.html#cb415-4" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
+<span id="cb415-5"><a href="lesson-6b-iteration-statements.html#cb415-5" tabindex="-1"></a>   <span class="fu">map</span>(n_distinct)</span>
+<span id="cb415-6"><a href="lesson-6b-iteration-statements.html#cb415-6" tabindex="-1"></a><span class="do">## $household_id</span></span>
+<span id="cb415-7"><a href="lesson-6b-iteration-statements.html#cb415-7" tabindex="-1"></a><span class="do">## [1] 801</span></span>
+<span id="cb415-8"><a href="lesson-6b-iteration-statements.html#cb415-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-9"><a href="lesson-6b-iteration-statements.html#cb415-9" tabindex="-1"></a><span class="do">## $age</span></span>
+<span id="cb415-10"><a href="lesson-6b-iteration-statements.html#cb415-10" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb415-11"><a href="lesson-6b-iteration-statements.html#cb415-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-12"><a href="lesson-6b-iteration-statements.html#cb415-12" tabindex="-1"></a><span class="do">## $income</span></span>
+<span id="cb415-13"><a href="lesson-6b-iteration-statements.html#cb415-13" tabindex="-1"></a><span class="do">## [1] 12</span></span>
+<span id="cb415-14"><a href="lesson-6b-iteration-statements.html#cb415-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-15"><a href="lesson-6b-iteration-statements.html#cb415-15" tabindex="-1"></a><span class="do">## $home_ownership</span></span>
+<span id="cb415-16"><a href="lesson-6b-iteration-statements.html#cb415-16" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb415-17"><a href="lesson-6b-iteration-statements.html#cb415-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-18"><a href="lesson-6b-iteration-statements.html#cb415-18" tabindex="-1"></a><span class="do">## $marital_status</span></span>
+<span id="cb415-19"><a href="lesson-6b-iteration-statements.html#cb415-19" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb415-20"><a href="lesson-6b-iteration-statements.html#cb415-20" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-21"><a href="lesson-6b-iteration-statements.html#cb415-21" tabindex="-1"></a><span class="do">## $household_size</span></span>
+<span id="cb415-22"><a href="lesson-6b-iteration-statements.html#cb415-22" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb415-23"><a href="lesson-6b-iteration-statements.html#cb415-23" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-24"><a href="lesson-6b-iteration-statements.html#cb415-24" tabindex="-1"></a><span class="do">## $household_comp</span></span>
+<span id="cb415-25"><a href="lesson-6b-iteration-statements.html#cb415-25" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb415-26"><a href="lesson-6b-iteration-statements.html#cb415-26" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb415-27"><a href="lesson-6b-iteration-statements.html#cb415-27" tabindex="-1"></a><span class="do">## $kids_count</span></span>
+<span id="cb415-28"><a href="lesson-6b-iteration-statements.html#cb415-28" tabindex="-1"></a><span class="do">## [1] 4</span></span></code></pre></div>
 <p>Notice how the above results in a named list. If instead we wanted a vector to be returned we can us <code>map_int</code>:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lesson-6b-iteration-statements.html#cb416-1" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
-<span id="cb416-2"><a href="lesson-6b-iteration-statements.html#cb416-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_int</span>(n_distinct)</span>
-<span id="cb416-3"><a href="lesson-6b-iteration-statements.html#cb416-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status </span></span>
-<span id="cb416-4"><a href="lesson-6b-iteration-statements.html#cb416-4" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3 </span></span>
-<span id="cb416-5"><a href="lesson-6b-iteration-statements.html#cb416-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_size household_comp     kids_count </span></span>
-<span id="cb416-6"><a href="lesson-6b-iteration-statements.html#cb416-6" aria-hidden="true" tabindex="-1"></a><span class="do">##              5              4              4</span></span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lesson-6b-iteration-statements.html#cb416-1" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
+<span id="cb416-2"><a href="lesson-6b-iteration-statements.html#cb416-2" tabindex="-1"></a>   <span class="fu">map_int</span>(n_distinct)</span>
+<span id="cb416-3"><a href="lesson-6b-iteration-statements.html#cb416-3" tabindex="-1"></a><span class="do">##   household_id            age         income </span></span>
+<span id="cb416-4"><a href="lesson-6b-iteration-statements.html#cb416-4" tabindex="-1"></a><span class="do">##            801              6             12 </span></span>
+<span id="cb416-5"><a href="lesson-6b-iteration-statements.html#cb416-5" tabindex="-1"></a><span class="do">## home_ownership marital_status household_size </span></span>
+<span id="cb416-6"><a href="lesson-6b-iteration-statements.html#cb416-6" tabindex="-1"></a><span class="do">##              5              3              5 </span></span>
+<span id="cb416-7"><a href="lesson-6b-iteration-statements.html#cb416-7" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb416-8"><a href="lesson-6b-iteration-statements.html#cb416-8" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
 <p>We can apply other <code>map</code> functions to our input as well; we simply need to think about what we expect the output to be and that directs us to use the relevant <code>map</code> function:</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="lesson-6b-iteration-statements.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="co"># logical output</span></span>
-<span id="cb417-2"><a href="lesson-6b-iteration-statements.html#cb417-2" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_lgl</span>(is.factor)</span>
-<span id="cb417-3"><a href="lesson-6b-iteration-statements.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status </span></span>
-<span id="cb417-4"><a href="lesson-6b-iteration-statements.html#cb417-4" aria-hidden="true" tabindex="-1"></a><span class="do">##          FALSE           TRUE           TRUE           TRUE           TRUE </span></span>
-<span id="cb417-5"><a href="lesson-6b-iteration-statements.html#cb417-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_size household_comp     kids_count </span></span>
-<span id="cb417-6"><a href="lesson-6b-iteration-statements.html#cb417-6" aria-hidden="true" tabindex="-1"></a><span class="do">##           TRUE           TRUE           TRUE</span></span>
-<span id="cb417-7"><a href="lesson-6b-iteration-statements.html#cb417-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb417-8"><a href="lesson-6b-iteration-statements.html#cb417-8" aria-hidden="true" tabindex="-1"></a><span class="co"># integer output</span></span>
-<span id="cb417-9"><a href="lesson-6b-iteration-statements.html#cb417-9" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
-<span id="cb417-10"><a href="lesson-6b-iteration-statements.html#cb417-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status </span></span>
-<span id="cb417-11"><a href="lesson-6b-iteration-statements.html#cb417-11" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3 </span></span>
-<span id="cb417-12"><a href="lesson-6b-iteration-statements.html#cb417-12" aria-hidden="true" tabindex="-1"></a><span class="do">## household_size household_comp     kids_count </span></span>
-<span id="cb417-13"><a href="lesson-6b-iteration-statements.html#cb417-13" aria-hidden="true" tabindex="-1"></a><span class="do">##              5              4              4</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="lesson-6b-iteration-statements.html#cb417-1" tabindex="-1"></a><span class="co"># logical output</span></span>
+<span id="cb417-2"><a href="lesson-6b-iteration-statements.html#cb417-2" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_lgl</span>(is.factor)</span>
+<span id="cb417-3"><a href="lesson-6b-iteration-statements.html#cb417-3" tabindex="-1"></a><span class="do">##   household_id            age         income </span></span>
+<span id="cb417-4"><a href="lesson-6b-iteration-statements.html#cb417-4" tabindex="-1"></a><span class="do">##          FALSE           TRUE           TRUE </span></span>
+<span id="cb417-5"><a href="lesson-6b-iteration-statements.html#cb417-5" tabindex="-1"></a><span class="do">## home_ownership marital_status household_size </span></span>
+<span id="cb417-6"><a href="lesson-6b-iteration-statements.html#cb417-6" tabindex="-1"></a><span class="do">##           TRUE           TRUE           TRUE </span></span>
+<span id="cb417-7"><a href="lesson-6b-iteration-statements.html#cb417-7" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb417-8"><a href="lesson-6b-iteration-statements.html#cb417-8" tabindex="-1"></a><span class="do">##           TRUE           TRUE</span></span>
+<span id="cb417-9"><a href="lesson-6b-iteration-statements.html#cb417-9" tabindex="-1"></a></span>
+<span id="cb417-10"><a href="lesson-6b-iteration-statements.html#cb417-10" tabindex="-1"></a><span class="co"># integer output</span></span>
+<span id="cb417-11"><a href="lesson-6b-iteration-statements.html#cb417-11" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb417-12"><a href="lesson-6b-iteration-statements.html#cb417-12" tabindex="-1"></a><span class="do">##   household_id            age         income </span></span>
+<span id="cb417-13"><a href="lesson-6b-iteration-statements.html#cb417-13" tabindex="-1"></a><span class="do">##            801              6             12 </span></span>
+<span id="cb417-14"><a href="lesson-6b-iteration-statements.html#cb417-14" tabindex="-1"></a><span class="do">## home_ownership marital_status household_size </span></span>
+<span id="cb417-15"><a href="lesson-6b-iteration-statements.html#cb417-15" tabindex="-1"></a><span class="do">##              5              3              5 </span></span>
+<span id="cb417-16"><a href="lesson-6b-iteration-statements.html#cb417-16" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb417-17"><a href="lesson-6b-iteration-statements.html#cb417-17" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
 <p>Notice the last function applied looks different. The map functions provide a few shortcuts that you can use with the <code>.f</code> argument in order to save a little typing. The syntax for creating an anonymous function in R is quite verbose so <strong>purrr</strong> provides a convenient shortcut: a one-sided formula where <code>.</code> inside of <code>unique</code> points where the data should be evaluated.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="lesson-6b-iteration-statements.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># traditional anonymous function approach</span></span>
-<span id="cb418-2"><a href="lesson-6b-iteration-statements.html#cb418-2" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="cf">function</span>(x) <span class="fu">length</span>(<span class="fu">unique</span>(x)))</span>
-<span id="cb418-3"><a href="lesson-6b-iteration-statements.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status </span></span>
-<span id="cb418-4"><a href="lesson-6b-iteration-statements.html#cb418-4" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3 </span></span>
-<span id="cb418-5"><a href="lesson-6b-iteration-statements.html#cb418-5" aria-hidden="true" tabindex="-1"></a><span class="do">## household_size household_comp     kids_count </span></span>
-<span id="cb418-6"><a href="lesson-6b-iteration-statements.html#cb418-6" aria-hidden="true" tabindex="-1"></a><span class="do">##              5              4              4</span></span>
-<span id="cb418-7"><a href="lesson-6b-iteration-statements.html#cb418-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-8"><a href="lesson-6b-iteration-statements.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="co"># one-sided formula approach</span></span>
-<span id="cb418-9"><a href="lesson-6b-iteration-statements.html#cb418-9" aria-hidden="true" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
-<span id="cb418-10"><a href="lesson-6b-iteration-statements.html#cb418-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership marital_status </span></span>
-<span id="cb418-11"><a href="lesson-6b-iteration-statements.html#cb418-11" aria-hidden="true" tabindex="-1"></a><span class="do">##            801              6             12              5              3 </span></span>
-<span id="cb418-12"><a href="lesson-6b-iteration-statements.html#cb418-12" aria-hidden="true" tabindex="-1"></a><span class="do">## household_size household_comp     kids_count </span></span>
-<span id="cb418-13"><a href="lesson-6b-iteration-statements.html#cb418-13" aria-hidden="true" tabindex="-1"></a><span class="do">##              5              4              4</span></span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="lesson-6b-iteration-statements.html#cb418-1" tabindex="-1"></a><span class="co"># traditional anonymous function approach</span></span>
+<span id="cb418-2"><a href="lesson-6b-iteration-statements.html#cb418-2" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="cf">function</span>(x) <span class="fu">length</span>(<span class="fu">unique</span>(x)))</span>
+<span id="cb418-3"><a href="lesson-6b-iteration-statements.html#cb418-3" tabindex="-1"></a><span class="do">##   household_id            age         income </span></span>
+<span id="cb418-4"><a href="lesson-6b-iteration-statements.html#cb418-4" tabindex="-1"></a><span class="do">##            801              6             12 </span></span>
+<span id="cb418-5"><a href="lesson-6b-iteration-statements.html#cb418-5" tabindex="-1"></a><span class="do">## home_ownership marital_status household_size </span></span>
+<span id="cb418-6"><a href="lesson-6b-iteration-statements.html#cb418-6" tabindex="-1"></a><span class="do">##              5              3              5 </span></span>
+<span id="cb418-7"><a href="lesson-6b-iteration-statements.html#cb418-7" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb418-8"><a href="lesson-6b-iteration-statements.html#cb418-8" tabindex="-1"></a><span class="do">##              4              4</span></span>
+<span id="cb418-9"><a href="lesson-6b-iteration-statements.html#cb418-9" tabindex="-1"></a></span>
+<span id="cb418-10"><a href="lesson-6b-iteration-statements.html#cb418-10" tabindex="-1"></a><span class="co"># one-sided formula approach</span></span>
+<span id="cb418-11"><a href="lesson-6b-iteration-statements.html#cb418-11" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb418-12"><a href="lesson-6b-iteration-statements.html#cb418-12" tabindex="-1"></a><span class="do">##   household_id            age         income </span></span>
+<span id="cb418-13"><a href="lesson-6b-iteration-statements.html#cb418-13" tabindex="-1"></a><span class="do">##            801              6             12 </span></span>
+<span id="cb418-14"><a href="lesson-6b-iteration-statements.html#cb418-14" tabindex="-1"></a><span class="do">## home_ownership marital_status household_size </span></span>
+<span id="cb418-15"><a href="lesson-6b-iteration-statements.html#cb418-15" tabindex="-1"></a><span class="do">##              5              3              5 </span></span>
+<span id="cb418-16"><a href="lesson-6b-iteration-statements.html#cb418-16" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
+<span id="cb418-17"><a href="lesson-6b-iteration-statements.html#cb418-17" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
 <p>This, along with chaining multiple map functions together, can make for very efficient data mining. To provide a toy example, the following uses the <code>diamonds</code> data set provided by <strong>ggplot2</strong> and:</p>
 <ol style="list-style-type: decimal">
 <li>breaks the data set into separate data frames based on the <code>cut</code> variable,</li>
@@ -1220,13 +1236,13 @@ code to get insight into the input and output of each <code>map</code>
 step.
 </p>
 </div>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="lesson-6b-iteration-statements.html#cb419-1" aria-hidden="true" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
-<span id="cb419-2"><a href="lesson-6b-iteration-statements.html#cb419-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">split</span>(.<span class="sc">$</span>cut) <span class="sc">%&gt;%</span> </span>
-<span id="cb419-3"><a href="lesson-6b-iteration-statements.html#cb419-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(<span class="sc">~</span><span class="fu">lm</span>(price <span class="sc">~</span> carat, <span class="at">data =</span> .)) <span class="sc">%&gt;%</span></span>
-<span id="cb419-4"><a href="lesson-6b-iteration-statements.html#cb419-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map</span>(summary) <span class="sc">%&gt;%</span> </span>
-<span id="cb419-5"><a href="lesson-6b-iteration-statements.html#cb419-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_dbl</span>(<span class="sc">~</span>.<span class="sc">$</span>r.squared)</span>
-<span id="cb419-6"><a href="lesson-6b-iteration-statements.html#cb419-6" aria-hidden="true" tabindex="-1"></a><span class="do">##      Fair      Good Very Good   Premium     Ideal </span></span>
-<span id="cb419-7"><a href="lesson-6b-iteration-statements.html#cb419-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   0.73839   0.85095   0.85816   0.85563   0.86709</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="lesson-6b-iteration-statements.html#cb419-1" tabindex="-1"></a>diamonds <span class="sc">%&gt;%</span> </span>
+<span id="cb419-2"><a href="lesson-6b-iteration-statements.html#cb419-2" tabindex="-1"></a>   <span class="fu">split</span>(.<span class="sc">$</span>cut) <span class="sc">%&gt;%</span> </span>
+<span id="cb419-3"><a href="lesson-6b-iteration-statements.html#cb419-3" tabindex="-1"></a>   <span class="fu">map</span>(<span class="sc">~</span><span class="fu">lm</span>(price <span class="sc">~</span> carat, <span class="at">data =</span> .)) <span class="sc">%&gt;%</span></span>
+<span id="cb419-4"><a href="lesson-6b-iteration-statements.html#cb419-4" tabindex="-1"></a>   <span class="fu">map</span>(summary) <span class="sc">%&gt;%</span> </span>
+<span id="cb419-5"><a href="lesson-6b-iteration-statements.html#cb419-5" tabindex="-1"></a>   <span class="fu">map_dbl</span>(<span class="sc">~</span>.<span class="sc">$</span>r.squared)</span>
+<span id="cb419-6"><a href="lesson-6b-iteration-statements.html#cb419-6" tabindex="-1"></a><span class="do">##      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb419-7"><a href="lesson-6b-iteration-statements.html#cb419-7" tabindex="-1"></a><span class="do">##   0.73839   0.85095   0.85816   0.85563   0.86709</span></span></code></pre></div>
 <div id="knowledge-check-59" class="section level3 hasAnchor" number="23.5.1">
 <h3><span class="header-section-number">23.5.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-59" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1338,7 +1354,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>22 Lesson 6a: Conditional statements | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="22 Lesson 6a: Conditional statements | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -95,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -108,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -122,6 +122,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -801,53 +805,53 @@ div.csl-indent {
 <div id="prerequisites-8" class="section level2 hasAnchor" number="22.2">
 <h2><span class="header-section-number">22.2</span> Prerequisites<a href="lesson-6a-conditional-statements.html#prerequisites-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many base R functions exist to perform control statements; however, we can also perform extensions of control statements using functions in the tidyverse package.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="lesson-6a-conditional-statements.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="lesson-6a-conditional-statements.html#cb374-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>To illustrate various control tasks we will use the Complete Journey customer transaction data.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="lesson-6a-conditional-statements.html#cb375-1" aria-hidden="true" tabindex="-1"></a>transactions <span class="ot">&lt;-</span> completejourney<span class="sc">::</span>transactions_sample</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="lesson-6a-conditional-statements.html#cb375-1" tabindex="-1"></a>transactions <span class="ot">&lt;-</span> completejourney<span class="sc">::</span>transactions_sample</span></code></pre></div>
 </div>
 <div id="if-statement" class="section level2 hasAnchor" number="22.3">
 <h2><span class="header-section-number">22.3</span> <code>if</code> statement<a href="lesson-6a-conditional-statements.html#if-statement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The conditional <code>if</code> statement is used to test an expression. If the <code>test_expression</code> is <code>TRUE</code>, the statement gets executed. But if it’s <code>FALSE</code>, nothing happens.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="lesson-6a-conditional-statements.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of if statement</span></span>
-<span id="cb376-2"><a href="lesson-6a-conditional-statements.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (test_expression) {</span>
-<span id="cb376-3"><a href="lesson-6a-conditional-statements.html#cb376-3" aria-hidden="true" tabindex="-1"></a>   statement</span>
-<span id="cb376-4"><a href="lesson-6a-conditional-statements.html#cb376-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="lesson-6a-conditional-statements.html#cb376-1" tabindex="-1"></a><span class="co"># syntax of if statement</span></span>
+<span id="cb376-2"><a href="lesson-6a-conditional-statements.html#cb376-2" tabindex="-1"></a><span class="cf">if</span> (test_expression) {</span>
+<span id="cb376-3"><a href="lesson-6a-conditional-statements.html#cb376-3" tabindex="-1"></a>   statement</span>
+<span id="cb376-4"><a href="lesson-6a-conditional-statements.html#cb376-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Say, for example, that we want R to print a message depending on the value of <code>x</code>:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="lesson-6a-conditional-statements.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb377-2"><a href="lesson-6a-conditional-statements.html#cb377-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="lesson-6a-conditional-statements.html#cb377-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb377-2"><a href="lesson-6a-conditional-statements.html#cb377-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p>If the condition is <code>TRUE</code> then the statement within the brackets is executed:</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="lesson-6a-conditional-statements.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> .<span class="dv">5</span>) {</span>
-<span id="cb378-2"><a href="lesson-6a-conditional-statements.html#cb378-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;x equals&quot;</span>, <span class="fu">round</span>(x, <span class="dv">2</span>), <span class="st">&quot;which is greater than 0.5&quot;</span>)</span>
-<span id="cb378-3"><a href="lesson-6a-conditional-statements.html#cb378-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb378-4"><a href="lesson-6a-conditional-statements.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x equals 0.51 which is greater than 0.5&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="lesson-6a-conditional-statements.html#cb378-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> .<span class="dv">5</span>) {</span>
+<span id="cb378-2"><a href="lesson-6a-conditional-statements.html#cb378-2" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;x equals&quot;</span>, <span class="fu">round</span>(x, <span class="dv">2</span>), <span class="st">&quot;which is greater than 0.5&quot;</span>)</span>
+<span id="cb378-3"><a href="lesson-6a-conditional-statements.html#cb378-3" tabindex="-1"></a>}</span>
+<span id="cb378-4"><a href="lesson-6a-conditional-statements.html#cb378-4" tabindex="-1"></a><span class="do">## [1] &quot;x equals 0.51 which is greater than 0.5&quot;</span></span></code></pre></div>
 <p>However, if the condition is <code>FALSE</code> then the statement is not executed:</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="lesson-6a-conditional-statements.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> .<span class="dv">7</span>) {</span>
-<span id="cb379-2"><a href="lesson-6a-conditional-statements.html#cb379-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;x equals&quot;</span>, <span class="fu">round</span>(x, <span class="dv">2</span>), <span class="st">&quot;which is greater than 0.7&quot;</span>)</span>
-<span id="cb379-3"><a href="lesson-6a-conditional-statements.html#cb379-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="lesson-6a-conditional-statements.html#cb379-1" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> .<span class="dv">7</span>) {</span>
+<span id="cb379-2"><a href="lesson-6a-conditional-statements.html#cb379-2" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;x equals&quot;</span>, <span class="fu">round</span>(x, <span class="dv">2</span>), <span class="st">&quot;which is greater than 0.7&quot;</span>)</span>
+<span id="cb379-3"><a href="lesson-6a-conditional-statements.html#cb379-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now say you have a vector of values that you would like to test. One would think you would just perform the following; however, you can see that you will get an error:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="lesson-6a-conditional-statements.html#cb380-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb380-2"><a href="lesson-6a-conditional-statements.html#cb380-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb380-3"><a href="lesson-6a-conditional-statements.html#cb380-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb380-4"><a href="lesson-6a-conditional-statements.html#cb380-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
-<span id="cb380-5"><a href="lesson-6a-conditional-statements.html#cb380-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb380-6"><a href="lesson-6a-conditional-statements.html#cb380-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in if (x &lt; 0) {: the condition has length &gt; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="lesson-6a-conditional-statements.html#cb380-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb380-2"><a href="lesson-6a-conditional-statements.html#cb380-2" tabindex="-1"></a></span>
+<span id="cb380-3"><a href="lesson-6a-conditional-statements.html#cb380-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb380-4"><a href="lesson-6a-conditional-statements.html#cb380-4" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
+<span id="cb380-5"><a href="lesson-6a-conditional-statements.html#cb380-5" tabindex="-1"></a>}</span>
+<span id="cb380-6"><a href="lesson-6a-conditional-statements.html#cb380-6" tabindex="-1"></a><span class="do">## Error in if (x &lt; 0) {: the condition has length &gt; 1</span></span></code></pre></div>
 <p>This is because <code>if()</code> is not vectorized and it seeks to assess a single logical condition.
 To assess if a condition holds among multiple inputs, use <code>any()</code> or <code>all()</code>.</p>
 <p><code>any()</code> looks to see if <em>at least one</em> value in the vector meets the condition:</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="lesson-6a-conditional-statements.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb381-2"><a href="lesson-6a-conditional-statements.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
-<span id="cb381-3"><a href="lesson-6a-conditional-statements.html#cb381-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-4"><a href="lesson-6a-conditional-statements.html#cb381-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
-<span id="cb381-5"><a href="lesson-6a-conditional-statements.html#cb381-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
-<span id="cb381-6"><a href="lesson-6a-conditional-statements.html#cb381-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb381-7"><a href="lesson-6a-conditional-statements.html#cb381-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x contains a negative number&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="lesson-6a-conditional-statements.html#cb381-1" tabindex="-1"></a><span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb381-2"><a href="lesson-6a-conditional-statements.html#cb381-2" tabindex="-1"></a><span class="do">## [1] TRUE</span></span>
+<span id="cb381-3"><a href="lesson-6a-conditional-statements.html#cb381-3" tabindex="-1"></a></span>
+<span id="cb381-4"><a href="lesson-6a-conditional-statements.html#cb381-4" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
+<span id="cb381-5"><a href="lesson-6a-conditional-statements.html#cb381-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
+<span id="cb381-6"><a href="lesson-6a-conditional-statements.html#cb381-6" tabindex="-1"></a>}</span>
+<span id="cb381-7"><a href="lesson-6a-conditional-statements.html#cb381-7" tabindex="-1"></a><span class="do">## [1] &quot;x contains a negative number&quot;</span></span></code></pre></div>
 <p>While <code>all()</code> looks to see if <em>all</em> values in the vector meets the condition:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="lesson-6a-conditional-statements.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb382-2"><a href="lesson-6a-conditional-statements.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
-<span id="cb382-3"><a href="lesson-6a-conditional-statements.html#cb382-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb382-4"><a href="lesson-6a-conditional-statements.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">all</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
-<span id="cb382-5"><a href="lesson-6a-conditional-statements.html#cb382-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
-<span id="cb382-6"><a href="lesson-6a-conditional-statements.html#cb382-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="lesson-6a-conditional-statements.html#cb382-1" tabindex="-1"></a><span class="fu">all</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb382-2"><a href="lesson-6a-conditional-statements.html#cb382-2" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb382-3"><a href="lesson-6a-conditional-statements.html#cb382-3" tabindex="-1"></a></span>
+<span id="cb382-4"><a href="lesson-6a-conditional-statements.html#cb382-4" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">all</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
+<span id="cb382-5"><a href="lesson-6a-conditional-statements.html#cb382-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x contains a negative number&quot;</span>)</span>
+<span id="cb382-6"><a href="lesson-6a-conditional-statements.html#cb382-6" tabindex="-1"></a>}</span></code></pre></div>
 <div class="note">
 <p>
 There are actually two ways to write this <code>if</code> statement;
@@ -858,15 +862,15 @@ additional functions in the body or add an <code>else</code> statement
 later you will not run into issues with unexpected code procedures.
 </p>
 </div>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="lesson-6a-conditional-statements.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="co"># without curly braces</span></span>
-<span id="cb383-2"><a href="lesson-6a-conditional-statements.html#cb383-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
-<span id="cb383-3"><a href="lesson-6a-conditional-statements.html#cb383-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span>
-<span id="cb383-4"><a href="lesson-6a-conditional-statements.html#cb383-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb383-5"><a href="lesson-6a-conditional-statements.html#cb383-5" aria-hidden="true" tabindex="-1"></a><span class="co"># with curly braces produces same result</span></span>
-<span id="cb383-6"><a href="lesson-6a-conditional-statements.html#cb383-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
-<span id="cb383-7"><a href="lesson-6a-conditional-statements.html#cb383-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
-<span id="cb383-8"><a href="lesson-6a-conditional-statements.html#cb383-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb383-9"><a href="lesson-6a-conditional-statements.html#cb383-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="lesson-6a-conditional-statements.html#cb383-1" tabindex="-1"></a><span class="co"># without curly braces</span></span>
+<span id="cb383-2"><a href="lesson-6a-conditional-statements.html#cb383-2" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
+<span id="cb383-3"><a href="lesson-6a-conditional-statements.html#cb383-3" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span>
+<span id="cb383-4"><a href="lesson-6a-conditional-statements.html#cb383-4" tabindex="-1"></a></span>
+<span id="cb383-5"><a href="lesson-6a-conditional-statements.html#cb383-5" tabindex="-1"></a><span class="co"># with curly braces produces same result</span></span>
+<span id="cb383-6"><a href="lesson-6a-conditional-statements.html#cb383-6" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
+<span id="cb383-7"><a href="lesson-6a-conditional-statements.html#cb383-7" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
+<span id="cb383-8"><a href="lesson-6a-conditional-statements.html#cb383-8" tabindex="-1"></a>}</span>
+<span id="cb383-9"><a href="lesson-6a-conditional-statements.html#cb383-9" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=89&amp;flashvars[mediaProxy.mediaPlayTo]=424&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
 </iframe>
@@ -887,11 +891,11 @@ What happens if the month value is 10-12?
 </li>
 </ul>
 </div>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="lesson-6a-conditional-statements.html#cb384-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb384-2"><a href="lesson-6a-conditional-statements.html#cb384-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-3"><a href="lesson-6a-conditional-statements.html#cb384-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
-<span id="cb384-4"><a href="lesson-6a-conditional-statements.html#cb384-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb384-5"><a href="lesson-6a-conditional-statements.html#cb384-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="lesson-6a-conditional-statements.html#cb384-1" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb384-2"><a href="lesson-6a-conditional-statements.html#cb384-2" tabindex="-1"></a></span>
+<span id="cb384-3"><a href="lesson-6a-conditional-statements.html#cb384-3" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
+<span id="cb384-4"><a href="lesson-6a-conditional-statements.html#cb384-4" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb384-5"><a href="lesson-6a-conditional-statements.html#cb384-5" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4uap9tpr&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_zifyrh5y" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.3.1">
 </iframe>
@@ -901,32 +905,32 @@ What happens if the month value is 10-12?
 <div id="ifelse-statement" class="section level2 hasAnchor" number="22.4">
 <h2><span class="header-section-number">22.4</span> <code>ifelse</code> statement<a href="lesson-6a-conditional-statements.html#ifelse-statement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The conditional <code>if...else</code> statement is used to test an expression similar to the <code>if</code> statement. However, rather than nothing happening if the <code>test_expression</code> is <code>FALSE</code>, the <code>else</code> part of the function will be evaluated.</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="lesson-6a-conditional-statements.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># syntax of if...else statement</span></span>
-<span id="cb385-2"><a href="lesson-6a-conditional-statements.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (test_expression) {</span>
-<span id="cb385-3"><a href="lesson-6a-conditional-statements.html#cb385-3" aria-hidden="true" tabindex="-1"></a>   statement <span class="dv">1</span></span>
-<span id="cb385-4"><a href="lesson-6a-conditional-statements.html#cb385-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb385-5"><a href="lesson-6a-conditional-statements.html#cb385-5" aria-hidden="true" tabindex="-1"></a>   statement <span class="dv">2</span></span>
-<span id="cb385-6"><a href="lesson-6a-conditional-statements.html#cb385-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="lesson-6a-conditional-statements.html#cb385-1" tabindex="-1"></a><span class="co"># syntax of if...else statement</span></span>
+<span id="cb385-2"><a href="lesson-6a-conditional-statements.html#cb385-2" tabindex="-1"></a><span class="cf">if</span> (test_expression) {</span>
+<span id="cb385-3"><a href="lesson-6a-conditional-statements.html#cb385-3" tabindex="-1"></a>   statement <span class="dv">1</span></span>
+<span id="cb385-4"><a href="lesson-6a-conditional-statements.html#cb385-4" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb385-5"><a href="lesson-6a-conditional-statements.html#cb385-5" tabindex="-1"></a>   statement <span class="dv">2</span></span>
+<span id="cb385-6"><a href="lesson-6a-conditional-statements.html#cb385-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>The following extends the <code>if</code> example illustrated in the previous section. Here, the <code>if...else</code> statement tests if any values in a vector are negative; if <code>TRUE</code> it produces one output and if <code>FALSE</code> it produces the else output.</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="lesson-6a-conditional-statements.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this test results in statement 1 being executed</span></span>
-<span id="cb386-2"><a href="lesson-6a-conditional-statements.html#cb386-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb386-3"><a href="lesson-6a-conditional-statements.html#cb386-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-4"><a href="lesson-6a-conditional-statements.html#cb386-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
-<span id="cb386-5"><a href="lesson-6a-conditional-statements.html#cb386-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
-<span id="cb386-6"><a href="lesson-6a-conditional-statements.html#cb386-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb386-7"><a href="lesson-6a-conditional-statements.html#cb386-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains all positive numbers&quot;</span>)</span>
-<span id="cb386-8"><a href="lesson-6a-conditional-statements.html#cb386-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb386-9"><a href="lesson-6a-conditional-statements.html#cb386-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span>
-<span id="cb386-10"><a href="lesson-6a-conditional-statements.html#cb386-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-11"><a href="lesson-6a-conditional-statements.html#cb386-11" aria-hidden="true" tabindex="-1"></a><span class="co"># this test results in statement 2 (or the else statement) being executed</span></span>
-<span id="cb386-12"><a href="lesson-6a-conditional-statements.html#cb386-12" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb386-13"><a href="lesson-6a-conditional-statements.html#cb386-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-14"><a href="lesson-6a-conditional-statements.html#cb386-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(y <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
-<span id="cb386-15"><a href="lesson-6a-conditional-statements.html#cb386-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;y contains negative numbers&quot;</span>)</span>
-<span id="cb386-16"><a href="lesson-6a-conditional-statements.html#cb386-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb386-17"><a href="lesson-6a-conditional-statements.html#cb386-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;y contains all positive numbers&quot;</span>)</span>
-<span id="cb386-18"><a href="lesson-6a-conditional-statements.html#cb386-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb386-19"><a href="lesson-6a-conditional-statements.html#cb386-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;y contains all positive numbers&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="lesson-6a-conditional-statements.html#cb386-1" tabindex="-1"></a><span class="co"># this test results in statement 1 being executed</span></span>
+<span id="cb386-2"><a href="lesson-6a-conditional-statements.html#cb386-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb386-3"><a href="lesson-6a-conditional-statements.html#cb386-3" tabindex="-1"></a></span>
+<span id="cb386-4"><a href="lesson-6a-conditional-statements.html#cb386-4" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
+<span id="cb386-5"><a href="lesson-6a-conditional-statements.html#cb386-5" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains negative numbers&quot;</span>)</span>
+<span id="cb386-6"><a href="lesson-6a-conditional-statements.html#cb386-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb386-7"><a href="lesson-6a-conditional-statements.html#cb386-7" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x contains all positive numbers&quot;</span>)</span>
+<span id="cb386-8"><a href="lesson-6a-conditional-statements.html#cb386-8" tabindex="-1"></a>}</span>
+<span id="cb386-9"><a href="lesson-6a-conditional-statements.html#cb386-9" tabindex="-1"></a><span class="do">## [1] &quot;x contains negative numbers&quot;</span></span>
+<span id="cb386-10"><a href="lesson-6a-conditional-statements.html#cb386-10" tabindex="-1"></a></span>
+<span id="cb386-11"><a href="lesson-6a-conditional-statements.html#cb386-11" tabindex="-1"></a><span class="co"># this test results in statement 2 (or the else statement) being executed</span></span>
+<span id="cb386-12"><a href="lesson-6a-conditional-statements.html#cb386-12" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb386-13"><a href="lesson-6a-conditional-statements.html#cb386-13" tabindex="-1"></a></span>
+<span id="cb386-14"><a href="lesson-6a-conditional-statements.html#cb386-14" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">any</span>(y <span class="sc">&lt;</span> <span class="dv">0</span>)) {</span>
+<span id="cb386-15"><a href="lesson-6a-conditional-statements.html#cb386-15" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;y contains negative numbers&quot;</span>)</span>
+<span id="cb386-16"><a href="lesson-6a-conditional-statements.html#cb386-16" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb386-17"><a href="lesson-6a-conditional-statements.html#cb386-17" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;y contains all positive numbers&quot;</span>)</span>
+<span id="cb386-18"><a href="lesson-6a-conditional-statements.html#cb386-18" tabindex="-1"></a>}</span>
+<span id="cb386-19"><a href="lesson-6a-conditional-statements.html#cb386-19" tabindex="-1"></a><span class="do">## [1] &quot;y contains all positive numbers&quot;</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=424&amp;flashvars[mediaProxy.mediaPlayTo]=548&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
 </iframe>
@@ -951,13 +955,13 @@ test it out for when month equals 4, 6, 10, &amp; 12
 </li>
 </ul>
 </div>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="lesson-6a-conditional-statements.html#cb387-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb387-2"><a href="lesson-6a-conditional-statements.html#cb387-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-3"><a href="lesson-6a-conditional-statements.html#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
-<span id="cb387-4"><a href="lesson-6a-conditional-statements.html#cb387-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb387-5"><a href="lesson-6a-conditional-statements.html#cb387-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb387-6"><a href="lesson-6a-conditional-statements.html#cb387-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb387-7"><a href="lesson-6a-conditional-statements.html#cb387-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="lesson-6a-conditional-statements.html#cb387-1" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb387-2"><a href="lesson-6a-conditional-statements.html#cb387-2" tabindex="-1"></a></span>
+<span id="cb387-3"><a href="lesson-6a-conditional-statements.html#cb387-3" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
+<span id="cb387-4"><a href="lesson-6a-conditional-statements.html#cb387-4" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb387-5"><a href="lesson-6a-conditional-statements.html#cb387-5" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb387-6"><a href="lesson-6a-conditional-statements.html#cb387-6" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb387-7"><a href="lesson-6a-conditional-statements.html#cb387-7" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_wgau3w0a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_7mhmwyyd" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.4.1">
 </iframe>
@@ -967,16 +971,16 @@ test it out for when month equals 4, 6, 10, &amp; 12
 <div id="multiple-conditions" class="section level2 hasAnchor" number="22.5">
 <h2><span class="header-section-number">22.5</span> Multiple conditions<a href="lesson-6a-conditional-statements.html#multiple-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can continue to expand an <code>if...else</code> statement to assess more than just binary conditions by incorporating <code>else if</code> steps:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="lesson-6a-conditional-statements.html#cb388-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb388-2"><a href="lesson-6a-conditional-statements.html#cb388-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb388-3"><a href="lesson-6a-conditional-statements.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb388-4"><a href="lesson-6a-conditional-statements.html#cb388-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is a negative number&quot;</span>)</span>
-<span id="cb388-5"><a href="lesson-6a-conditional-statements.html#cb388-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb388-6"><a href="lesson-6a-conditional-statements.html#cb388-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is a positive number&quot;</span>)</span>
-<span id="cb388-7"><a href="lesson-6a-conditional-statements.html#cb388-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb388-8"><a href="lesson-6a-conditional-statements.html#cb388-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
-<span id="cb388-9"><a href="lesson-6a-conditional-statements.html#cb388-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb388-10"><a href="lesson-6a-conditional-statements.html#cb388-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;x is zero&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="lesson-6a-conditional-statements.html#cb388-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb388-2"><a href="lesson-6a-conditional-statements.html#cb388-2" tabindex="-1"></a></span>
+<span id="cb388-3"><a href="lesson-6a-conditional-statements.html#cb388-3" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb388-4"><a href="lesson-6a-conditional-statements.html#cb388-4" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is a negative number&quot;</span>)</span>
+<span id="cb388-5"><a href="lesson-6a-conditional-statements.html#cb388-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb388-6"><a href="lesson-6a-conditional-statements.html#cb388-6" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is a positive number&quot;</span>)</span>
+<span id="cb388-7"><a href="lesson-6a-conditional-statements.html#cb388-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb388-8"><a href="lesson-6a-conditional-statements.html#cb388-8" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb388-9"><a href="lesson-6a-conditional-statements.html#cb388-9" tabindex="-1"></a>}</span>
+<span id="cb388-10"><a href="lesson-6a-conditional-statements.html#cb388-10" tabindex="-1"></a><span class="do">## [1] &quot;x is zero&quot;</span></span></code></pre></div>
 <div class="note">
 <p>
 Note how we extend by following <code>else</code> with
@@ -1012,15 +1016,15 @@ test it out for when month equals 6, 10, &amp; 13
 </li>
 </ul>
 </div>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="lesson-6a-conditional-statements.html#cb389-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb389-2"><a href="lesson-6a-conditional-statements.html#cb389-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb389-3"><a href="lesson-6a-conditional-statements.html#cb389-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
-<span id="cb389-4"><a href="lesson-6a-conditional-statements.html#cb389-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb389-5"><a href="lesson-6a-conditional-statements.html#cb389-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (month _____) {</span>
-<span id="cb389-6"><a href="lesson-6a-conditional-statements.html#cb389-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb389-7"><a href="lesson-6a-conditional-statements.html#cb389-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb389-8"><a href="lesson-6a-conditional-statements.html#cb389-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;_____&quot;</span>)</span>
-<span id="cb389-9"><a href="lesson-6a-conditional-statements.html#cb389-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="lesson-6a-conditional-statements.html#cb389-1" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb389-2"><a href="lesson-6a-conditional-statements.html#cb389-2" tabindex="-1"></a></span>
+<span id="cb389-3"><a href="lesson-6a-conditional-statements.html#cb389-3" tabindex="-1"></a><span class="cf">if</span> (month _____) {</span>
+<span id="cb389-4"><a href="lesson-6a-conditional-statements.html#cb389-4" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb389-5"><a href="lesson-6a-conditional-statements.html#cb389-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (month _____) {</span>
+<span id="cb389-6"><a href="lesson-6a-conditional-statements.html#cb389-6" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb389-7"><a href="lesson-6a-conditional-statements.html#cb389-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb389-8"><a href="lesson-6a-conditional-statements.html#cb389-8" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;_____&quot;</span>)</span>
+<span id="cb389-9"><a href="lesson-6a-conditional-statements.html#cb389-9" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4zvzao7m&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_9l6z6h0l" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.5.1">
 </iframe>
@@ -1044,16 +1048,17 @@ Figure 22.2: Illustration of vectorized conditional statements.
 </p>
 </div>
 <p>We can vectorize an <code>if...else</code> statement a couple of ways. One option is to use the <code>ifelse()</code> function built in base R:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="lesson-6a-conditional-statements.html#cb390-1" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">5</span>), <span class="cn">NA</span>))</span>
-<span id="cb390-2"><a href="lesson-6a-conditional-statements.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.306769 0.426908 0.693102 0.085136 0.225437       NA</span></span>
-<span id="cb390-3"><a href="lesson-6a-conditional-statements.html#cb390-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb390-4"><a href="lesson-6a-conditional-statements.html#cb390-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>)</span>
-<span id="cb390-5"><a href="lesson-6a-conditional-statements.html#cb390-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;    &quot;greater than&quot; &quot;less than&quot;   </span></span>
-<span id="cb390-6"><a href="lesson-6a-conditional-statements.html#cb390-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;    NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="lesson-6a-conditional-statements.html#cb390-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">5</span>), <span class="cn">NA</span>))</span>
+<span id="cb390-2"><a href="lesson-6a-conditional-statements.html#cb390-2" tabindex="-1"></a><span class="do">## [1] 0.306769 0.426908 0.693102 0.085136 0.225437</span></span>
+<span id="cb390-3"><a href="lesson-6a-conditional-statements.html#cb390-3" tabindex="-1"></a><span class="do">## [6]       NA</span></span>
+<span id="cb390-4"><a href="lesson-6a-conditional-statements.html#cb390-4" tabindex="-1"></a></span>
+<span id="cb390-5"><a href="lesson-6a-conditional-statements.html#cb390-5" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>)</span>
+<span id="cb390-6"><a href="lesson-6a-conditional-statements.html#cb390-6" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;    &quot;greater than&quot;</span></span>
+<span id="cb390-7"><a href="lesson-6a-conditional-statements.html#cb390-7" tabindex="-1"></a><span class="do">## [4] &quot;less than&quot;    &quot;less than&quot;    NA</span></span></code></pre></div>
 <p>Second, we can use <code>dplyr::if_else()</code>, which provides a little more stability in output type and flexibility in what to do with missing values:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="lesson-6a-conditional-statements.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>, <span class="at">missing =</span> <span class="st">&quot;something else&quot;</span>)</span>
-<span id="cb391-2"><a href="lesson-6a-conditional-statements.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;      &quot;greater than&quot;   &quot;less than&quot;     </span></span>
-<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;      &quot;something else&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="lesson-6a-conditional-statements.html#cb391-1" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>, <span class="at">missing =</span> <span class="st">&quot;something else&quot;</span>)</span>
+<span id="cb391-2"><a href="lesson-6a-conditional-statements.html#cb391-2" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;      &quot;greater than&quot;  </span></span>
+<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" tabindex="-1"></a><span class="do">## [4] &quot;less than&quot;      &quot;less than&quot;      &quot;something else&quot;</span></span></code></pre></div>
 <p>However, in both cases, they can only assess binary conditional statements. If we want to vectorize multiple conditions (i.e. <code>if...else...if...else</code>) then the best approach is to use <code>dplyr::case_when()</code>.</p>
 <p>The syntax for <code>case_when()</code> can be a little confusing at first. Basically, a conditional expression looks like <code>condition ~ code to execute</code>. Consequently:</p>
 <ul>
@@ -1061,23 +1066,25 @@ Figure 22.2: Illustration of vectorized conditional statements.
 <li>If the first condition is not met, then <code>case_when</code> will evaluate the second, third, etc. until it finds a condition that is true.</li>
 <li>If you include <code>TRUE ~ some_expression</code> at the end then any element that does not meet a prior condition will be considered <code>TRUE</code> and the expression will be evaluated. So in the below code, any element that doesn’t meet the prior conditions will be lumped into an “out of bounds” category.</li>
 </ul>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="lesson-6a-conditional-statements.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb392-2"><a href="lesson-6a-conditional-statements.html#cb392-2" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">10</span>), <span class="cn">NA</span>, <span class="cn">Inf</span>, <span class="fl">1.25</span>))</span>
-<span id="cb392-3"><a href="lesson-6a-conditional-statements.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017 0.940467 0.045556 0.528105</span></span>
-<span id="cb392-4"><a href="lesson-6a-conditional-statements.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [8] 0.892419 0.551435 0.456615       NA      Inf 1.250000</span></span>
-<span id="cb392-5"><a href="lesson-6a-conditional-statements.html#cb392-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb392-6"><a href="lesson-6a-conditional-statements.html#cb392-6" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb392-7"><a href="lesson-6a-conditional-statements.html#cb392-7" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">3</span>   <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
-<span id="cb392-8"><a href="lesson-6a-conditional-statements.html#cb392-8" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">7</span>   <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
-<span id="cb392-9"><a href="lesson-6a-conditional-statements.html#cb392-9" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">9</span>   <span class="sc">~</span> <span class="st">&quot;medium high&quot;</span>,</span>
-<span id="cb392-10"><a href="lesson-6a-conditional-statements.html#cb392-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">&lt;=</span><span class="fl">1.0</span>  <span class="sc">~</span> <span class="st">&quot;high&quot;</span>,</span>
-<span id="cb392-11"><a href="lesson-6a-conditional-statements.html#cb392-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;missing&quot;</span>,</span>
-<span id="cb392-12"><a href="lesson-6a-conditional-statements.html#cb392-12" aria-hidden="true" tabindex="-1"></a>  <span class="cn">TRUE</span>     <span class="sc">~</span> <span class="st">&quot;out of bounds&quot;</span></span>
-<span id="cb392-13"><a href="lesson-6a-conditional-statements.html#cb392-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb392-14"><a href="lesson-6a-conditional-statements.html#cb392-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;   &quot;medium&quot;        &quot;medium high&quot;  </span></span>
-<span id="cb392-15"><a href="lesson-6a-conditional-statements.html#cb392-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] &quot;high&quot;          &quot;low&quot;           &quot;medium&quot;        &quot;medium high&quot;  </span></span>
-<span id="cb392-16"><a href="lesson-6a-conditional-statements.html#cb392-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] &quot;medium&quot;        &quot;medium&quot;        &quot;missing&quot;       &quot;out of bounds&quot;</span></span>
-<span id="cb392-17"><a href="lesson-6a-conditional-statements.html#cb392-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] &quot;out of bounds&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="lesson-6a-conditional-statements.html#cb392-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb392-2"><a href="lesson-6a-conditional-statements.html#cb392-2" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">10</span>), <span class="cn">NA</span>, <span class="cn">Inf</span>, <span class="fl">1.25</span>))</span>
+<span id="cb392-3"><a href="lesson-6a-conditional-statements.html#cb392-3" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017 0.940467</span></span>
+<span id="cb392-4"><a href="lesson-6a-conditional-statements.html#cb392-4" tabindex="-1"></a><span class="do">##  [6] 0.045556 0.528105 0.892419 0.551435 0.456615</span></span>
+<span id="cb392-5"><a href="lesson-6a-conditional-statements.html#cb392-5" tabindex="-1"></a><span class="do">## [11]       NA      Inf 1.250000</span></span>
+<span id="cb392-6"><a href="lesson-6a-conditional-statements.html#cb392-6" tabindex="-1"></a></span>
+<span id="cb392-7"><a href="lesson-6a-conditional-statements.html#cb392-7" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb392-8"><a href="lesson-6a-conditional-statements.html#cb392-8" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">3</span>   <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
+<span id="cb392-9"><a href="lesson-6a-conditional-statements.html#cb392-9" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">7</span>   <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb392-10"><a href="lesson-6a-conditional-statements.html#cb392-10" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">9</span>   <span class="sc">~</span> <span class="st">&quot;medium high&quot;</span>,</span>
+<span id="cb392-11"><a href="lesson-6a-conditional-statements.html#cb392-11" tabindex="-1"></a>  x <span class="sc">&lt;=</span><span class="fl">1.0</span>  <span class="sc">~</span> <span class="st">&quot;high&quot;</span>,</span>
+<span id="cb392-12"><a href="lesson-6a-conditional-statements.html#cb392-12" tabindex="-1"></a>  <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;missing&quot;</span>,</span>
+<span id="cb392-13"><a href="lesson-6a-conditional-statements.html#cb392-13" tabindex="-1"></a>  <span class="cn">TRUE</span>     <span class="sc">~</span> <span class="st">&quot;out of bounds&quot;</span></span>
+<span id="cb392-14"><a href="lesson-6a-conditional-statements.html#cb392-14" tabindex="-1"></a>)</span>
+<span id="cb392-15"><a href="lesson-6a-conditional-statements.html#cb392-15" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;   &quot;medium&quot;       </span></span>
+<span id="cb392-16"><a href="lesson-6a-conditional-statements.html#cb392-16" tabindex="-1"></a><span class="do">##  [4] &quot;medium high&quot;   &quot;high&quot;          &quot;low&quot;          </span></span>
+<span id="cb392-17"><a href="lesson-6a-conditional-statements.html#cb392-17" tabindex="-1"></a><span class="do">##  [7] &quot;medium&quot;        &quot;medium high&quot;   &quot;medium&quot;       </span></span>
+<span id="cb392-18"><a href="lesson-6a-conditional-statements.html#cb392-18" tabindex="-1"></a><span class="do">## [10] &quot;medium&quot;        &quot;missing&quot;       &quot;out of bounds&quot;</span></span>
+<span id="cb392-19"><a href="lesson-6a-conditional-statements.html#cb392-19" tabindex="-1"></a><span class="do">## [13] &quot;out of bounds&quot;</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=823&amp;flashvars[mediaProxy.mediaPlayTo]=1214&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
 </iframe>
@@ -1090,15 +1097,15 @@ Re-write the below code using a vectorized approach. Test the results
 with <code>month &lt;- 1:13</code>.
 </p>
 </div>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="lesson-6a-conditional-statements.html#cb393-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span></span>
-<span id="cb393-2"><a href="lesson-6a-conditional-statements.html#cb393-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-3"><a href="lesson-6a-conditional-statements.html#cb393-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (month <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb393-4"><a href="lesson-6a-conditional-statements.html#cb393-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb393-5"><a href="lesson-6a-conditional-statements.html#cb393-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (month <span class="sc">%in%</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>) {</span>
-<span id="cb393-6"><a href="lesson-6a-conditional-statements.html#cb393-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
-<span id="cb393-7"><a href="lesson-6a-conditional-statements.html#cb393-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb393-8"><a href="lesson-6a-conditional-statements.html#cb393-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;Invalid month&quot;</span>)</span>
-<span id="cb393-9"><a href="lesson-6a-conditional-statements.html#cb393-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="lesson-6a-conditional-statements.html#cb393-1" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span></span>
+<span id="cb393-2"><a href="lesson-6a-conditional-statements.html#cb393-2" tabindex="-1"></a></span>
+<span id="cb393-3"><a href="lesson-6a-conditional-statements.html#cb393-3" tabindex="-1"></a><span class="cf">if</span> (month <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb393-4"><a href="lesson-6a-conditional-statements.html#cb393-4" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-0&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb393-5"><a href="lesson-6a-conditional-statements.html#cb393-5" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (month <span class="sc">%in%</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>) {</span>
+<span id="cb393-6"><a href="lesson-6a-conditional-statements.html#cb393-6" tabindex="-1"></a>   <span class="fu">paste0</span>(<span class="st">&quot;data/&quot;</span>, <span class="st">&quot;Month-&quot;</span>, month, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb393-7"><a href="lesson-6a-conditional-statements.html#cb393-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb393-8"><a href="lesson-6a-conditional-statements.html#cb393-8" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;Invalid month&quot;</span>)</span>
+<span id="cb393-9"><a href="lesson-6a-conditional-statements.html#cb393-9" tabindex="-1"></a>}</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_hlsedxim&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_hskspgfb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.6.1">
 </iframe>
@@ -1109,26 +1116,25 @@ with <code>month &lt;- 1:13</code>.
 <h2><span class="header-section-number">22.7</span> With data frames<a href="lesson-6a-conditional-statements.html#with-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So how can we leverage these skills when performing exploratory data analysis? Most common is to use use <code>ifelse()</code>, <code>if_else()</code>, and <code>case_when()</code> within <code>dplyr::mutate()</code>.</p>
 <p>For example, say we want to create a new variable that classifies transactions above $10 as “high value” otherwise they are “low value”. We can use the <code>dplyr::if_else</code> function within <code>mutate</code> to perform this.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="lesson-6a-conditional-statements.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I use select simply to reduce the size of the data set so you can easily</span></span>
-<span id="cb394-2"><a href="lesson-6a-conditional-statements.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see results</span></span>
-<span id="cb394-3"><a href="lesson-6a-conditional-statements.html#cb394-3" aria-hidden="true" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
-<span id="cb394-4"><a href="lesson-6a-conditional-statements.html#cb394-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, sales_value) <span class="sc">%&gt;%</span></span>
-<span id="cb394-5"><a href="lesson-6a-conditional-statements.html#cb394-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">if_else</span>(sales_value <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">&#39;high value&#39;</span>, <span class="st">&#39;low value&#39;</span>))</span>
-<span id="cb394-6"><a href="lesson-6a-conditional-statements.html#cb394-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 4</span></span>
-<span id="cb394-7"><a href="lesson-6a-conditional-statements.html#cb394-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id basket_id   sales_value value     </span></span>
-<span id="cb394-8"><a href="lesson-6a-conditional-statements.html#cb394-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;     </span></span>
-<span id="cb394-9"><a href="lesson-6a-conditional-statements.html#cb394-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 2261         31625220889        3.86 low value </span></span>
-<span id="cb394-10"><a href="lesson-6a-conditional-statements.html#cb394-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1.59 low value </span></span>
-<span id="cb394-11"><a href="lesson-6a-conditional-statements.html#cb394-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 511          32445856036        1    low value </span></span>
-<span id="cb394-12"><a href="lesson-6a-conditional-statements.html#cb394-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 400          31932241118       11.9  high value</span></span>
-<span id="cb394-13"><a href="lesson-6a-conditional-statements.html#cb394-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 918          32074655895        1.29 low value </span></span>
-<span id="cb394-14"><a href="lesson-6a-conditional-statements.html#cb394-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 718          32614612029        2.5  low value </span></span>
-<span id="cb394-15"><a href="lesson-6a-conditional-statements.html#cb394-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 868          32074722463        3.49 low value </span></span>
-<span id="cb394-16"><a href="lesson-6a-conditional-statements.html#cb394-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1688         34850403304        2    low value </span></span>
-<span id="cb394-17"><a href="lesson-6a-conditional-statements.html#cb394-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 467          31280745102        6.55 low value </span></span>
-<span id="cb394-18"><a href="lesson-6a-conditional-statements.html#cb394-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1947         32744181707        3.99 low value </span></span>
-<span id="cb394-19"><a href="lesson-6a-conditional-statements.html#cb394-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 74,990 more rows</span></span>
-<span id="cb394-20"><a href="lesson-6a-conditional-statements.html#cb394-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="lesson-6a-conditional-statements.html#cb394-1" tabindex="-1"></a><span class="co"># I use select simply to reduce the size of the data set so you can easily</span></span>
+<span id="cb394-2"><a href="lesson-6a-conditional-statements.html#cb394-2" tabindex="-1"></a><span class="co"># see results</span></span>
+<span id="cb394-3"><a href="lesson-6a-conditional-statements.html#cb394-3" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
+<span id="cb394-4"><a href="lesson-6a-conditional-statements.html#cb394-4" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, sales_value) <span class="sc">%&gt;%</span></span>
+<span id="cb394-5"><a href="lesson-6a-conditional-statements.html#cb394-5" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">if_else</span>(sales_value <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">&#39;high value&#39;</span>, <span class="st">&#39;low value&#39;</span>))</span>
+<span id="cb394-6"><a href="lesson-6a-conditional-statements.html#cb394-6" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 4</span></span>
+<span id="cb394-7"><a href="lesson-6a-conditional-statements.html#cb394-7" tabindex="-1"></a><span class="do">##    household_id basket_id   sales_value value     </span></span>
+<span id="cb394-8"><a href="lesson-6a-conditional-statements.html#cb394-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;     </span></span>
+<span id="cb394-9"><a href="lesson-6a-conditional-statements.html#cb394-9" tabindex="-1"></a><span class="do">##  1 2261         31625220889        3.86 low value </span></span>
+<span id="cb394-10"><a href="lesson-6a-conditional-statements.html#cb394-10" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1.59 low value </span></span>
+<span id="cb394-11"><a href="lesson-6a-conditional-statements.html#cb394-11" tabindex="-1"></a><span class="do">##  3 511          32445856036        1    low value </span></span>
+<span id="cb394-12"><a href="lesson-6a-conditional-statements.html#cb394-12" tabindex="-1"></a><span class="do">##  4 400          31932241118       11.9  high value</span></span>
+<span id="cb394-13"><a href="lesson-6a-conditional-statements.html#cb394-13" tabindex="-1"></a><span class="do">##  5 918          32074655895        1.29 low value </span></span>
+<span id="cb394-14"><a href="lesson-6a-conditional-statements.html#cb394-14" tabindex="-1"></a><span class="do">##  6 718          32614612029        2.5  low value </span></span>
+<span id="cb394-15"><a href="lesson-6a-conditional-statements.html#cb394-15" tabindex="-1"></a><span class="do">##  7 868          32074722463        3.49 low value </span></span>
+<span id="cb394-16"><a href="lesson-6a-conditional-statements.html#cb394-16" tabindex="-1"></a><span class="do">##  8 1688         34850403304        2    low value </span></span>
+<span id="cb394-17"><a href="lesson-6a-conditional-statements.html#cb394-17" tabindex="-1"></a><span class="do">##  9 467          31280745102        6.55 low value </span></span>
+<span id="cb394-18"><a href="lesson-6a-conditional-statements.html#cb394-18" tabindex="-1"></a><span class="do">## 10 1947         32744181707        3.99 low value </span></span>
+<span id="cb394-19"><a href="lesson-6a-conditional-statements.html#cb394-19" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span></code></pre></div>
 <div class="tip">
 <p>
 <code>dplyr::if_else</code> is preferred to the base R
@@ -1144,33 +1150,32 @@ values more conveniently.
 <li>small purchase: <code>quantity &gt; 0</code> or <code>sales_value &gt; 0</code></li>
 <li>Alternative transaction: all other transactions</li>
 </ul>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="lesson-6a-conditional-statements.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I use select simply to reduce the size of the data set so you can easily</span></span>
-<span id="cb395-2"><a href="lesson-6a-conditional-statements.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see results</span></span>
-<span id="cb395-3"><a href="lesson-6a-conditional-statements.html#cb395-3" aria-hidden="true" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
-<span id="cb395-4"><a href="lesson-6a-conditional-statements.html#cb395-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, quantity, sales_value) <span class="sc">%&gt;%</span></span>
-<span id="cb395-5"><a href="lesson-6a-conditional-statements.html#cb395-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
-<span id="cb395-6"><a href="lesson-6a-conditional-statements.html#cb395-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">value =</span> <span class="fu">case_when</span>(</span>
-<span id="cb395-7"><a href="lesson-6a-conditional-statements.html#cb395-7" aria-hidden="true" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">&quot;Large purchase&quot;</span>,</span>
-<span id="cb395-8"><a href="lesson-6a-conditional-statements.html#cb395-8" aria-hidden="true" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">5</span>  <span class="sc">~</span> <span class="st">&quot;Medium purchase&quot;</span>,</span>
-<span id="cb395-9"><a href="lesson-6a-conditional-statements.html#cb395-9" aria-hidden="true" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">0</span>  <span class="sc">~</span> <span class="st">&quot;Small purchase&quot;</span>,</span>
-<span id="cb395-10"><a href="lesson-6a-conditional-statements.html#cb395-10" aria-hidden="true" tabindex="-1"></a>       <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Alternative transaction&quot;</span></span>
-<span id="cb395-11"><a href="lesson-6a-conditional-statements.html#cb395-11" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb395-12"><a href="lesson-6a-conditional-statements.html#cb395-12" aria-hidden="true" tabindex="-1"></a>   )</span>
-<span id="cb395-13"><a href="lesson-6a-conditional-statements.html#cb395-13" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb395-14"><a href="lesson-6a-conditional-statements.html#cb395-14" aria-hidden="true" tabindex="-1"></a><span class="do">##    household_id basket_id   quantity sales_value value          </span></span>
-<span id="cb395-15"><a href="lesson-6a-conditional-statements.html#cb395-15" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;          </span></span>
-<span id="cb395-16"><a href="lesson-6a-conditional-statements.html#cb395-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 2261         31625220889        1        3.86 Small purchase </span></span>
-<span id="cb395-17"><a href="lesson-6a-conditional-statements.html#cb395-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1        1.59 Small purchase </span></span>
-<span id="cb395-18"><a href="lesson-6a-conditional-statements.html#cb395-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 511          32445856036        1        1    Small purchase </span></span>
-<span id="cb395-19"><a href="lesson-6a-conditional-statements.html#cb395-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 400          31932241118        2       11.9  Large purchase </span></span>
-<span id="cb395-20"><a href="lesson-6a-conditional-statements.html#cb395-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 918          32074655895        1        1.29 Small purchase </span></span>
-<span id="cb395-21"><a href="lesson-6a-conditional-statements.html#cb395-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 718          32614612029        1        2.5  Small purchase </span></span>
-<span id="cb395-22"><a href="lesson-6a-conditional-statements.html#cb395-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 868          32074722463        1        3.49 Small purchase </span></span>
-<span id="cb395-23"><a href="lesson-6a-conditional-statements.html#cb395-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 1688         34850403304        1        2    Small purchase </span></span>
-<span id="cb395-24"><a href="lesson-6a-conditional-statements.html#cb395-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 467          31280745102        2        6.55 Medium purchase</span></span>
-<span id="cb395-25"><a href="lesson-6a-conditional-statements.html#cb395-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 1947         32744181707        1        3.99 Small purchase </span></span>
-<span id="cb395-26"><a href="lesson-6a-conditional-statements.html#cb395-26" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 74,990 more rows</span></span>
-<span id="cb395-27"><a href="lesson-6a-conditional-statements.html#cb395-27" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="lesson-6a-conditional-statements.html#cb395-1" tabindex="-1"></a><span class="co"># I use select simply to reduce the size of the data set so you can easily</span></span>
+<span id="cb395-2"><a href="lesson-6a-conditional-statements.html#cb395-2" tabindex="-1"></a><span class="co"># see results</span></span>
+<span id="cb395-3"><a href="lesson-6a-conditional-statements.html#cb395-3" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
+<span id="cb395-4"><a href="lesson-6a-conditional-statements.html#cb395-4" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, quantity, sales_value) <span class="sc">%&gt;%</span></span>
+<span id="cb395-5"><a href="lesson-6a-conditional-statements.html#cb395-5" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
+<span id="cb395-6"><a href="lesson-6a-conditional-statements.html#cb395-6" tabindex="-1"></a>     <span class="at">value =</span> <span class="fu">case_when</span>(</span>
+<span id="cb395-7"><a href="lesson-6a-conditional-statements.html#cb395-7" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">&quot;Large purchase&quot;</span>,</span>
+<span id="cb395-8"><a href="lesson-6a-conditional-statements.html#cb395-8" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">5</span>  <span class="sc">~</span> <span class="st">&quot;Medium purchase&quot;</span>,</span>
+<span id="cb395-9"><a href="lesson-6a-conditional-statements.html#cb395-9" tabindex="-1"></a>       quantity <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">0</span>  <span class="sc">~</span> <span class="st">&quot;Small purchase&quot;</span>,</span>
+<span id="cb395-10"><a href="lesson-6a-conditional-statements.html#cb395-10" tabindex="-1"></a>       <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Alternative transaction&quot;</span></span>
+<span id="cb395-11"><a href="lesson-6a-conditional-statements.html#cb395-11" tabindex="-1"></a>     )</span>
+<span id="cb395-12"><a href="lesson-6a-conditional-statements.html#cb395-12" tabindex="-1"></a>   )</span>
+<span id="cb395-13"><a href="lesson-6a-conditional-statements.html#cb395-13" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
+<span id="cb395-14"><a href="lesson-6a-conditional-statements.html#cb395-14" tabindex="-1"></a><span class="do">##    household_id basket_id   quantity sales_value value  </span></span>
+<span id="cb395-15"><a href="lesson-6a-conditional-statements.html#cb395-15" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span></span>
+<span id="cb395-16"><a href="lesson-6a-conditional-statements.html#cb395-16" tabindex="-1"></a><span class="do">##  1 2261         31625220889        1        3.86 Small …</span></span>
+<span id="cb395-17"><a href="lesson-6a-conditional-statements.html#cb395-17" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1        1.59 Small …</span></span>
+<span id="cb395-18"><a href="lesson-6a-conditional-statements.html#cb395-18" tabindex="-1"></a><span class="do">##  3 511          32445856036        1        1    Small …</span></span>
+<span id="cb395-19"><a href="lesson-6a-conditional-statements.html#cb395-19" tabindex="-1"></a><span class="do">##  4 400          31932241118        2       11.9  Large …</span></span>
+<span id="cb395-20"><a href="lesson-6a-conditional-statements.html#cb395-20" tabindex="-1"></a><span class="do">##  5 918          32074655895        1        1.29 Small …</span></span>
+<span id="cb395-21"><a href="lesson-6a-conditional-statements.html#cb395-21" tabindex="-1"></a><span class="do">##  6 718          32614612029        1        2.5  Small …</span></span>
+<span id="cb395-22"><a href="lesson-6a-conditional-statements.html#cb395-22" tabindex="-1"></a><span class="do">##  7 868          32074722463        1        3.49 Small …</span></span>
+<span id="cb395-23"><a href="lesson-6a-conditional-statements.html#cb395-23" tabindex="-1"></a><span class="do">##  8 1688         34850403304        1        2    Small …</span></span>
+<span id="cb395-24"><a href="lesson-6a-conditional-statements.html#cb395-24" tabindex="-1"></a><span class="do">##  9 467          31280745102        2        6.55 Medium…</span></span>
+<span id="cb395-25"><a href="lesson-6a-conditional-statements.html#cb395-25" tabindex="-1"></a><span class="do">## 10 1947         32744181707        1        3.99 Small …</span></span>
+<span id="cb395-26"><a href="lesson-6a-conditional-statements.html#cb395-26" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_3zp92n4a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=1359&amp;flashvars[mediaProxy.mediaPlayTo]=1456&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_khzluscp" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-6a">
 </iframe>
@@ -1204,16 +1209,16 @@ percentile
 <strong>Hint:</strong> use <code>quantile(x, perc_value)</code>
 </p>
 </div>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="lesson-6a-conditional-statements.html#cb396-1" aria-hidden="true" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
-<span id="cb396-2"><a href="lesson-6a-conditional-statements.html#cb396-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, quantity, sales_value) <span class="sc">%&gt;%</span></span>
-<span id="cb396-3"><a href="lesson-6a-conditional-statements.html#cb396-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
-<span id="cb396-4"><a href="lesson-6a-conditional-statements.html#cb396-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">power_rating =</span> <span class="fu">case_when</span>(</span>
-<span id="cb396-5"><a href="lesson-6a-conditional-statements.html#cb396-5" aria-hidden="true" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb396-6"><a href="lesson-6a-conditional-statements.html#cb396-6" aria-hidden="true" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb396-7"><a href="lesson-6a-conditional-statements.html#cb396-7" aria-hidden="true" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb396-8"><a href="lesson-6a-conditional-statements.html#cb396-8" aria-hidden="true" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">4</span></span>
-<span id="cb396-9"><a href="lesson-6a-conditional-statements.html#cb396-9" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb396-10"><a href="lesson-6a-conditional-statements.html#cb396-10" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="lesson-6a-conditional-statements.html#cb396-1" tabindex="-1"></a>transactions <span class="sc">%&gt;%</span></span>
+<span id="cb396-2"><a href="lesson-6a-conditional-statements.html#cb396-2" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, quantity, sales_value) <span class="sc">%&gt;%</span></span>
+<span id="cb396-3"><a href="lesson-6a-conditional-statements.html#cb396-3" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
+<span id="cb396-4"><a href="lesson-6a-conditional-statements.html#cb396-4" tabindex="-1"></a>     <span class="at">power_rating =</span> <span class="fu">case_when</span>(</span>
+<span id="cb396-5"><a href="lesson-6a-conditional-statements.html#cb396-5" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb396-6"><a href="lesson-6a-conditional-statements.html#cb396-6" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb396-7"><a href="lesson-6a-conditional-statements.html#cb396-7" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb396-8"><a href="lesson-6a-conditional-statements.html#cb396-8" tabindex="-1"></a>       ______ <span class="sc">~</span> <span class="dv">4</span></span>
+<span id="cb396-9"><a href="lesson-6a-conditional-statements.html#cb396-9" tabindex="-1"></a>     )</span>
+<span id="cb396-10"><a href="lesson-6a-conditional-statements.html#cb396-10" tabindex="-1"></a>   )</span></code></pre></div>
 <div class="video">
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_rlk72jef&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_16joo9nb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-22.7.1">
 </iframe>
@@ -1318,7 +1323,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
