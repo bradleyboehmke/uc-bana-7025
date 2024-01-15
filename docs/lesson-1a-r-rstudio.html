@@ -911,7 +911,7 @@ Figure 2.5: Execute lines of code in your script with Cmd/Ctrl + Enter or using 
 </div>
 <div id="workspace-environment" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Workspace Environment<a href="lesson-1a-r-rstudio.html#workspace-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The top right window is the workspace environment which captures much of your your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:</p>
+<p>The top right window is the workspace environment which captures much of your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="lesson-1a-r-rstudio.html#cb2-1" tabindex="-1"></a><span class="co"># returns path for the current working directory</span></span>
 <span id="cb2-2"><a href="lesson-1a-r-rstudio.html#cb2-2" tabindex="-1"></a><span class="fu">getwd</span>()                  </span>
 <span id="cb2-3"><a href="lesson-1a-r-rstudio.html#cb2-3" tabindex="-1"></a></span>
@@ -1013,7 +1013,7 @@ Now check out your code History tab.
 Create a new .R file and save this as <em>my-first-script</em> (note
 how this now appears in your <em>Learning R</em> folder). Type
 <code>pi</code> in line 1 of this script,
-<code>option(digits = 8)</code> in line 2, and <code>pi</code> again in
+<code>options(digits = 8)</code> in line 2, and <code>pi</code> again in
 line three. Execute this code one line at a time and then re-execute all
 lines at once.
 </li>
@@ -1122,9 +1122,10 @@ Smith</a>, and <a
 <span id="cb11-3"><a href="lesson-1a-r-rstudio.html#cb11-3" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="lesson-1a-r-rstudio.html#cb11-4" tabindex="-1"></a><span class="co"># Example of a warning</span></span>
 <span id="cb11-5"><a href="lesson-1a-r-rstudio.html#cb11-5" tabindex="-1"></a>x <span class="sc">+</span> y</span>
-<span id="cb11-6"><a href="lesson-1a-r-rstudio.html#cb11-6" tabindex="-1"></a><span class="do">## Warning in x + y: longer object length is not a</span></span>
-<span id="cb11-7"><a href="lesson-1a-r-rstudio.html#cb11-7" tabindex="-1"></a><span class="do">## multiple of shorter object length</span></span>
-<span id="cb11-8"><a href="lesson-1a-r-rstudio.html#cb11-8" tabindex="-1"></a><span class="do">## [1] 2 4 4</span></span></code></pre></div></li>
+<span id="cb11-6"><a href="lesson-1a-r-rstudio.html#cb11-6" tabindex="-1"></a><span class="do">## Warning in x + y: longer object length</span></span>
+<span id="cb11-7"><a href="lesson-1a-r-rstudio.html#cb11-7" tabindex="-1"></a><span class="do">## is not a multiple of shorter object</span></span>
+<span id="cb11-8"><a href="lesson-1a-r-rstudio.html#cb11-8" tabindex="-1"></a><span class="do">## length</span></span>
+<span id="cb11-9"><a href="lesson-1a-r-rstudio.html#cb11-9" tabindex="-1"></a><span class="do">## [1] 2 4 4</span></span></code></pre></div></li>
 <li><p><strong>Messages</strong>: When the text doesn’t start with either “Error” or “Warning”, it’s just a friendly message. You’ll often see these messages when you load R packages or make certain function calls. Think of messages as a green traffic light: everything is working fine and keep on going!</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="lesson-1a-r-rstudio.html#cb12-1" tabindex="-1"></a><span class="co"># Example of a message</span></span>
 <span id="cb12-2"><a href="lesson-1a-r-rstudio.html#cb12-2" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span>

@@ -805,10 +805,10 @@ machine learning using tidyverse principles.
 <div id="prerequisites-9" class="section level2 hasAnchor" number="26.2">
 <h2><span class="header-section-number">26.2</span> Prerequisites<a href="lesson-7a-first-model-with-tidymodels.html#prerequisites-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this lesson we’ll use the <strong>tidymodels</strong> package and we’ll use data from the <strong>modeldata</strong> package.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb445-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb445-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb445-2" tabindex="-1"></a><span class="fu">library</span>(modeldata)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb444-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb444-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb444-2" tabindex="-1"></a><span class="fu">library</span>(modeldata)</span></code></pre></div>
 <p>The two data sets we’ll use are <code>ames</code> and <code>attrition</code>. You’ve seen the <code>ames</code> data plenty of times up to this point but the <code>attrition</code> data is new. You can read about the <code>attrition</code> data at <code>?attrition</code>. Long story short, it is a data set that contains employee attrition information and allows us to illustrate classification modeling techniques (whereas <code>ames</code> is a regression problem).</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-1" tabindex="-1"></a><span class="fu">data</span>(ames, attrition)</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb445-1" tabindex="-1"></a><span class="fu">data</span>(ames, attrition)</span></code></pre></div>
 </div>
 <div id="data-splitting" class="section level2 hasAnchor" number="26.3">
 <h2><span class="header-section-number">26.3</span> Data splitting<a href="lesson-7a-first-model-with-tidymodels.html#data-splitting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -842,49 +842,49 @@ course we’ll often use the seed <code>123</code> for reproducibility but
 the number itself has no special meaning.
 </p>
 </div>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-1" tabindex="-1"></a><span class="co"># create train/test split</span></span>
-<span id="cb447-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># for reproducibility</span></span>
-<span id="cb447-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-3" tabindex="-1"></a>split  <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.7</span>)</span>
-<span id="cb447-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-4" tabindex="-1"></a>train  <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
-<span id="cb447-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-5" tabindex="-1"></a>test   <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
-<span id="cb447-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-6" tabindex="-1"></a></span>
-<span id="cb447-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-7" tabindex="-1"></a><span class="co"># dimensions of training data</span></span>
-<span id="cb447-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-8" tabindex="-1"></a><span class="fu">dim</span>(train)</span>
-<span id="cb447-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-9" tabindex="-1"></a><span class="do">## [1] 2051   74</span></span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-1" tabindex="-1"></a><span class="co"># create train/test split</span></span>
+<span id="cb446-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># for reproducibility</span></span>
+<span id="cb446-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-3" tabindex="-1"></a>split  <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.7</span>)</span>
+<span id="cb446-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-4" tabindex="-1"></a>train  <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb446-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-5" tabindex="-1"></a>test   <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span>
+<span id="cb446-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-6" tabindex="-1"></a></span>
+<span id="cb446-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-7" tabindex="-1"></a><span class="co"># dimensions of training data</span></span>
+<span id="cb446-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-8" tabindex="-1"></a><span class="fu">dim</span>(train)</span>
+<span id="cb446-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb446-9" tabindex="-1"></a><span class="do">## [1] 2051   74</span></span></code></pre></div>
 <p>With sufficient sample size, this sampling approach will typically result in a similar distribution of <span class="math inline">\(Y\)</span> (e.g., <code>Sale_Price</code> in the <code>ames</code> data) between your <font color="blue">training</font> and <font color="red">test</font> sets, as illustrated below.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-1" tabindex="-1"></a>train <span class="sc">%&gt;%</span> </span>
-<span id="cb448-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="st">&#39;train&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb448-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-3" tabindex="-1"></a>  <span class="fu">bind_rows</span>(test <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id =</span> <span class="st">&#39;test&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb448-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Sale_Price, <span class="at">color =</span> id)) <span class="sc">+</span></span>
-<span id="cb448-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-5" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-1" tabindex="-1"></a>train <span class="sc">%&gt;%</span> </span>
+<span id="cb447-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="st">&#39;train&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb447-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-3" tabindex="-1"></a>  <span class="fu">bind_rows</span>(test <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">id =</span> <span class="st">&#39;test&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb447-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Sale_Price, <span class="at">color =</span> id)) <span class="sc">+</span></span>
+<span id="cb447-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb447-5" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/r-random-sampling-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="stratified-sampling" class="section level3 hasAnchor" number="26.3.2">
 <h3><span class="header-section-number">26.3.2</span> Stratified sampling<a href="lesson-7a-first-model-with-tidymodels.html#stratified-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we want to explicitly control the sampling so that our training and test sets have similar <span class="math inline">\(Y\)</span> distributions, we can use stratified sampling. This is more common with classification problems where the response variable may be severely imbalanced (e.g., 90% of observations with response “Yes” and 10% with response “No”). However, we can also apply stratified sampling to regression problems for data sets that have a small sample size and where the response variable deviates strongly from normality. With a continuous response variable, stratified sampling will segment <span class="math inline">\(Y\)</span> into quantiles and randomly sample from each.</p>
 <p>To perform stratified sampling we simply apply the <code>strata</code> argument in <code>initial_split</code>.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb449-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-2" tabindex="-1"></a>split_strat <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(attrition, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> <span class="st">&quot;Attrition&quot;</span>)</span>
-<span id="cb449-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-3" tabindex="-1"></a>train_strat <span class="ot">&lt;-</span> <span class="fu">training</span>(split_strat)</span>
-<span id="cb449-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-4" tabindex="-1"></a>test_strat  <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_strat)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb448-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-2" tabindex="-1"></a>split_strat <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(attrition, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> <span class="st">&quot;Attrition&quot;</span>)</span>
+<span id="cb448-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-3" tabindex="-1"></a>train_strat <span class="ot">&lt;-</span> <span class="fu">training</span>(split_strat)</span>
+<span id="cb448-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb448-4" tabindex="-1"></a>test_strat  <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_strat)</span></code></pre></div>
 <p>The following illustrates that in our original employee attrition data we have an imbalanced response (No: 84%, Yes: 16%). By enforcing stratified sampling, both our training and testing sets have approximately equal response distributions.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-1" tabindex="-1"></a><span class="co"># original response distribution</span></span>
-<span id="cb450-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-2" tabindex="-1"></a><span class="fu">table</span>(attrition<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
-<span id="cb450-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb450-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-4" tabindex="-1"></a><span class="do">##      No     Yes </span></span>
-<span id="cb450-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-5" tabindex="-1"></a><span class="do">## 0.83878 0.16122</span></span>
-<span id="cb450-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-6" tabindex="-1"></a></span>
-<span id="cb450-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-7" tabindex="-1"></a><span class="co"># response distribution for training data</span></span>
-<span id="cb450-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-8" tabindex="-1"></a><span class="fu">table</span>(train_strat<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
-<span id="cb450-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb450-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-10" tabindex="-1"></a><span class="do">##      No     Yes </span></span>
-<span id="cb450-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-11" tabindex="-1"></a><span class="do">## 0.83949 0.16051</span></span>
-<span id="cb450-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-12" tabindex="-1"></a></span>
-<span id="cb450-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-13" tabindex="-1"></a><span class="co"># response distribution for test data</span></span>
-<span id="cb450-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-14" tabindex="-1"></a><span class="fu">table</span>(test_strat<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
-<span id="cb450-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-15" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb450-16"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-16" tabindex="-1"></a><span class="do">##     No    Yes </span></span>
-<span id="cb450-17"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-17" tabindex="-1"></a><span class="do">## 0.8371 0.1629</span></span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-1" tabindex="-1"></a><span class="co"># original response distribution</span></span>
+<span id="cb449-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-2" tabindex="-1"></a><span class="fu">table</span>(attrition<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
+<span id="cb449-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb449-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-4" tabindex="-1"></a><span class="do">##      No     Yes </span></span>
+<span id="cb449-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-5" tabindex="-1"></a><span class="do">## 0.83878 0.16122</span></span>
+<span id="cb449-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-6" tabindex="-1"></a></span>
+<span id="cb449-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-7" tabindex="-1"></a><span class="co"># response distribution for training data</span></span>
+<span id="cb449-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-8" tabindex="-1"></a><span class="fu">table</span>(train_strat<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
+<span id="cb449-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb449-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-10" tabindex="-1"></a><span class="do">##      No     Yes </span></span>
+<span id="cb449-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-11" tabindex="-1"></a><span class="do">## 0.83949 0.16051</span></span>
+<span id="cb449-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-12" tabindex="-1"></a></span>
+<span id="cb449-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-13" tabindex="-1"></a><span class="co"># response distribution for test data</span></span>
+<span id="cb449-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-14" tabindex="-1"></a><span class="fu">table</span>(test_strat<span class="sc">$</span>Attrition) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>()</span>
+<span id="cb449-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb449-16"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-16" tabindex="-1"></a><span class="do">##     No    Yes </span></span>
+<span id="cb449-17"><a href="lesson-7a-first-model-with-tidymodels.html#cb449-17" tabindex="-1"></a><span class="do">## 0.8371 0.1629</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-63" class="section level3 hasAnchor" number="26.3.3">
 <h3><span class="header-section-number">26.3.3</span> Knowledge check<a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-63" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -928,16 +928,17 @@ predictable and useful format (e.g. a data frame with standard column
 names)
 </p>
 </div>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-1" tabindex="-1"></a>lm_ols <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb451-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-2" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span>
-<span id="cb451-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-3" tabindex="-1"></a></span>
-<span id="cb451-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-4" tabindex="-1"></a><span class="fu">tidy</span>(lm_ols)</span>
-<span id="cb451-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-5" tabindex="-1"></a><span class="do">## # A tibble: 3 × 5</span></span>
-<span id="cb451-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-6" tabindex="-1"></a><span class="do">##   term          estimate std.error statistic   p.value</span></span>
-<span id="cb451-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb451-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-8" tabindex="-1"></a><span class="do">## 1 (Intercept) -2157423.   69234.       -31.2 8.09e-175</span></span>
-<span id="cb451-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-9" tabindex="-1"></a><span class="do">## 2 Gr_Liv_Area       94.4      2.12      44.4 2.54e-302</span></span>
-<span id="cb451-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-10" tabindex="-1"></a><span class="do">## 3 Year_Built      1114.      35.5       31.4 5.30e-177</span></span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-1" tabindex="-1"></a>lm_ols <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb450-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-2" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span>
+<span id="cb450-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-3" tabindex="-1"></a></span>
+<span id="cb450-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-4" tabindex="-1"></a><span class="fu">tidy</span>(lm_ols)</span>
+<span id="cb450-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-5" tabindex="-1"></a><span class="do">## # A tibble: 3 × 5</span></span>
+<span id="cb450-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-6" tabindex="-1"></a><span class="do">##   term       estimate std.error statistic</span></span>
+<span id="cb450-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb450-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-8" tabindex="-1"></a><span class="do">## 1 (Intercep…  -2.16e6  69234.       -31.2</span></span>
+<span id="cb450-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-9" tabindex="-1"></a><span class="do">## 2 Gr_Liv_Ar…   9.44e1      2.12      44.4</span></span>
+<span id="cb450-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-10" tabindex="-1"></a><span class="do">## 3 Year_Built   1.11e3     35.5       31.4</span></span>
+<span id="cb450-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-11" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: p.value &lt;dbl&gt;</span></span></code></pre></div>
 <p>Now, you may have noticed that I only applied two of the three steps I mentioned previously:</p>
 <ol style="list-style-type: decimal">
 <li>Create a model type</li>
@@ -955,9 +956,9 @@ don’t fret, this is primarily just to illustrate how we can change
 engines.
 </p>
 </div>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-1" tabindex="-1"></a>lm_sgd <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb452-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-2" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">&#39;keras&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb452-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-3" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-1" tabindex="-1"></a>lm_sgd <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb451-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-2" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">&#39;keras&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb451-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-3" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span></code></pre></div>
 <div class="tip">
 <p>
 When we talk about ‘engines’ we’re really just referring to packages
@@ -978,10 +979,10 @@ just means you need to <code>install.packages(‘kknn’)</code> and then
 you should be able to successfully run this code.
 </p>
 </div>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-1" tabindex="-1"></a>knn <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb453-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-2" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb453-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-3" tabindex="-1"></a>   <span class="fu">set_mode</span>(<span class="st">&quot;regression&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb453-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-4" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-1" tabindex="-1"></a>knn <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb452-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-2" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb452-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-3" tabindex="-1"></a>   <span class="fu">set_mode</span>(<span class="st">&quot;regression&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb452-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb452-4" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span></code></pre></div>
 <div class="tip">
 <p>
 You can see all the different model objects available at
@@ -1013,37 +1014,37 @@ sure to set the mode to be a classification model.
 <div id="making-predictions" class="section level2 hasAnchor" number="26.5">
 <h2><span class="header-section-number">26.5</span> Making predictions<a href="lesson-7a-first-model-with-tidymodels.html#making-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have fit a few different models. Now, if we want to see our predictions we can simply apply <code>predict()</code> and feed it the data set we want to make predictions on. Here, we can see the predictions made on our training data for our ordinary least square linear regression model.</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-1" tabindex="-1"></a>lm_ols <span class="sc">%&gt;%</span> <span class="fu">predict</span>(train)</span>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-1" tabindex="-1"></a>lm_ols <span class="sc">%&gt;%</span> <span class="fu">predict</span>(train)</span>
+<span id="cb453-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-2" tabindex="-1"></a><span class="do">## # A tibble: 2,051 × 1</span></span>
+<span id="cb453-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-3" tabindex="-1"></a><span class="do">##      .pred</span></span>
+<span id="cb453-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-4" tabindex="-1"></a><span class="do">##      &lt;dbl&gt;</span></span>
+<span id="cb453-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-5" tabindex="-1"></a><span class="do">##  1 217657.</span></span>
+<span id="cb453-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-6" tabindex="-1"></a><span class="do">##  2 214276.</span></span>
+<span id="cb453-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-7" tabindex="-1"></a><span class="do">##  3 223425.</span></span>
+<span id="cb453-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-8" tabindex="-1"></a><span class="do">##  4 260324.</span></span>
+<span id="cb453-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-9" tabindex="-1"></a><span class="do">##  5 109338.</span></span>
+<span id="cb453-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-10" tabindex="-1"></a><span class="do">##  6 195106.</span></span>
+<span id="cb453-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-11" tabindex="-1"></a><span class="do">##  7 222217.</span></span>
+<span id="cb453-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-12" tabindex="-1"></a><span class="do">##  8 126175.</span></span>
+<span id="cb453-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-13" tabindex="-1"></a><span class="do">##  9  98550.</span></span>
+<span id="cb453-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-14" tabindex="-1"></a><span class="do">## 10 120811.</span></span>
+<span id="cb453-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb453-15" tabindex="-1"></a><span class="do">## # ℹ 2,041 more rows</span></span></code></pre></div>
+<p>And here we get the predicted values for our KNN model.</p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-1" tabindex="-1"></a>knn <span class="sc">%&gt;%</span> <span class="fu">predict</span>(train)</span>
 <span id="cb454-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-2" tabindex="-1"></a><span class="do">## # A tibble: 2,051 × 1</span></span>
 <span id="cb454-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-3" tabindex="-1"></a><span class="do">##      .pred</span></span>
 <span id="cb454-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-4" tabindex="-1"></a><span class="do">##      &lt;dbl&gt;</span></span>
-<span id="cb454-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-5" tabindex="-1"></a><span class="do">##  1 217657.</span></span>
-<span id="cb454-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-6" tabindex="-1"></a><span class="do">##  2 214276.</span></span>
-<span id="cb454-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-7" tabindex="-1"></a><span class="do">##  3 223425.</span></span>
-<span id="cb454-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-8" tabindex="-1"></a><span class="do">##  4 260324.</span></span>
-<span id="cb454-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-9" tabindex="-1"></a><span class="do">##  5 109338.</span></span>
-<span id="cb454-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-10" tabindex="-1"></a><span class="do">##  6 195106.</span></span>
-<span id="cb454-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-11" tabindex="-1"></a><span class="do">##  7 222217.</span></span>
-<span id="cb454-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-12" tabindex="-1"></a><span class="do">##  8 126175.</span></span>
-<span id="cb454-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-13" tabindex="-1"></a><span class="do">##  9  98550.</span></span>
-<span id="cb454-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-14" tabindex="-1"></a><span class="do">## 10 120811.</span></span>
+<span id="cb454-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-5" tabindex="-1"></a><span class="do">##  1 194967.</span></span>
+<span id="cb454-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-6" tabindex="-1"></a><span class="do">##  2 192240 </span></span>
+<span id="cb454-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-7" tabindex="-1"></a><span class="do">##  3 174220 </span></span>
+<span id="cb454-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-8" tabindex="-1"></a><span class="do">##  4 269760 </span></span>
+<span id="cb454-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-9" tabindex="-1"></a><span class="do">##  5 113617.</span></span>
+<span id="cb454-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-10" tabindex="-1"></a><span class="do">##  6 173672 </span></span>
+<span id="cb454-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-11" tabindex="-1"></a><span class="do">##  7 174820 </span></span>
+<span id="cb454-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-12" tabindex="-1"></a><span class="do">##  8 120796 </span></span>
+<span id="cb454-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-13" tabindex="-1"></a><span class="do">##  9 114560 </span></span>
+<span id="cb454-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-14" tabindex="-1"></a><span class="do">## 10 121346 </span></span>
 <span id="cb454-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb454-15" tabindex="-1"></a><span class="do">## # ℹ 2,041 more rows</span></span></code></pre></div>
-<p>And here we get the predicted values for our KNN model.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-1" tabindex="-1"></a>knn <span class="sc">%&gt;%</span> <span class="fu">predict</span>(train)</span>
-<span id="cb455-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-2" tabindex="-1"></a><span class="do">## # A tibble: 2,051 × 1</span></span>
-<span id="cb455-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-3" tabindex="-1"></a><span class="do">##      .pred</span></span>
-<span id="cb455-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-4" tabindex="-1"></a><span class="do">##      &lt;dbl&gt;</span></span>
-<span id="cb455-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-5" tabindex="-1"></a><span class="do">##  1 194967.</span></span>
-<span id="cb455-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-6" tabindex="-1"></a><span class="do">##  2 192240 </span></span>
-<span id="cb455-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-7" tabindex="-1"></a><span class="do">##  3 174220 </span></span>
-<span id="cb455-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-8" tabindex="-1"></a><span class="do">##  4 269760 </span></span>
-<span id="cb455-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-9" tabindex="-1"></a><span class="do">##  5 113617.</span></span>
-<span id="cb455-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-10" tabindex="-1"></a><span class="do">##  6 173672 </span></span>
-<span id="cb455-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-11" tabindex="-1"></a><span class="do">##  7 174820 </span></span>
-<span id="cb455-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-12" tabindex="-1"></a><span class="do">##  8 120796 </span></span>
-<span id="cb455-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-13" tabindex="-1"></a><span class="do">##  9 114560 </span></span>
-<span id="cb455-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-14" tabindex="-1"></a><span class="do">## 10 121346 </span></span>
-<span id="cb455-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-15" tabindex="-1"></a><span class="do">## # ℹ 2,041 more rows</span></span></code></pre></div>
 <div id="knowledge-check-65" class="section level3 hasAnchor" number="26.5.1">
 <h3><span class="header-section-number">26.5.1</span> Knowledge check<a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-65" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">
@@ -1077,14 +1078,14 @@ Now make predictions using the K-nearest neighbor model.
 <li>Adds the actual <code>Sale_Price</code> values from our test data,</li>
 <li>Computes the RMSE.</li>
 </ol>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-1" tabindex="-1"></a>lm_ols <span class="sc">%&gt;%</span> </span>
-<span id="cb456-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-2" tabindex="-1"></a>   <span class="fu">predict</span>(test) <span class="sc">%&gt;%</span></span>
-<span id="cb456-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-3" tabindex="-1"></a>   <span class="fu">bind_cols</span>(test <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price)) <span class="sc">%&gt;%</span></span>
-<span id="cb456-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-4" tabindex="-1"></a>   <span class="fu">rmse</span>(<span class="at">truth =</span> Sale_Price, <span class="at">estimate =</span> .pred)</span>
-<span id="cb456-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-5" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb456-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-6" tabindex="-1"></a><span class="do">##   .metric .estimator .estimate</span></span>
-<span id="cb456-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb456-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-8" tabindex="-1"></a><span class="do">## 1 rmse    standard      45445.</span></span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-1" tabindex="-1"></a>lm_ols <span class="sc">%&gt;%</span> </span>
+<span id="cb455-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-2" tabindex="-1"></a>   <span class="fu">predict</span>(test) <span class="sc">%&gt;%</span></span>
+<span id="cb455-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-3" tabindex="-1"></a>   <span class="fu">bind_cols</span>(test <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price)) <span class="sc">%&gt;%</span></span>
+<span id="cb455-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-4" tabindex="-1"></a>   <span class="fu">rmse</span>(<span class="at">truth =</span> Sale_Price, <span class="at">estimate =</span> .pred)</span>
+<span id="cb455-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-5" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb455-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-6" tabindex="-1"></a><span class="do">##   .metric .estimator .estimate</span></span>
+<span id="cb455-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb455-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb455-8" tabindex="-1"></a><span class="do">## 1 rmse    standard      45445.</span></span></code></pre></div>
 <p>The RMSE value suggests that, on average, our model mispredicts the expected sale price of a home by about $45K.</p>
 </div>
 <div id="classification-models" class="section level3 hasAnchor" number="26.6.2">
@@ -1097,17 +1098,17 @@ saying use all available features to predict <code>Attrition</code>.
 </p>
 </div>
 <p>We then follow the same process as above to make predictions on the test data, add the actual test values for <code>Attrition</code>, and then compute the accuracy rate.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-1" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb457-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-2" tabindex="-1"></a>   <span class="fu">fit</span>(Attrition <span class="sc">~</span> ., <span class="at">data =</span> train_strat)</span>
-<span id="cb457-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-3" tabindex="-1"></a></span>
-<span id="cb457-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-4" tabindex="-1"></a>logit <span class="sc">%&gt;%</span> </span>
-<span id="cb457-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-5" tabindex="-1"></a>   <span class="fu">predict</span>(test_strat) <span class="sc">%&gt;%</span></span>
-<span id="cb457-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-6" tabindex="-1"></a>   <span class="fu">bind_cols</span>(test_strat <span class="sc">%&gt;%</span> <span class="fu">select</span>(Attrition)) <span class="sc">%&gt;%</span></span>
-<span id="cb457-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-7" tabindex="-1"></a>   <span class="fu">accuracy</span>(<span class="at">truth =</span> Attrition, <span class="at">estimate =</span> .pred_class)</span>
-<span id="cb457-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-8" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb457-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-9" tabindex="-1"></a><span class="do">##   .metric  .estimator .estimate</span></span>
-<span id="cb457-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb457-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb457-11" tabindex="-1"></a><span class="do">## 1 accuracy binary         0.876</span></span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-1" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb456-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-2" tabindex="-1"></a>   <span class="fu">fit</span>(Attrition <span class="sc">~</span> ., <span class="at">data =</span> train_strat)</span>
+<span id="cb456-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-3" tabindex="-1"></a></span>
+<span id="cb456-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-4" tabindex="-1"></a>logit <span class="sc">%&gt;%</span> </span>
+<span id="cb456-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-5" tabindex="-1"></a>   <span class="fu">predict</span>(test_strat) <span class="sc">%&gt;%</span></span>
+<span id="cb456-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-6" tabindex="-1"></a>   <span class="fu">bind_cols</span>(test_strat <span class="sc">%&gt;%</span> <span class="fu">select</span>(Attrition)) <span class="sc">%&gt;%</span></span>
+<span id="cb456-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-7" tabindex="-1"></a>   <span class="fu">accuracy</span>(<span class="at">truth =</span> Attrition, <span class="at">estimate =</span> .pred_class)</span>
+<span id="cb456-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-8" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb456-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-9" tabindex="-1"></a><span class="do">##   .metric  .estimator .estimate</span></span>
+<span id="cb456-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-10" tabindex="-1"></a><span class="do">##   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb456-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb456-11" tabindex="-1"></a><span class="do">## 1 accuracy binary         0.876</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-66" class="section level3 hasAnchor" number="26.6.3">
 <h3><span class="header-section-number">26.6.3</span> Knowledge check<a href="lesson-7a-first-model-with-tidymodels.html#knowledge-check-66" class="anchor-section" aria-label="Anchor link to header"></a></h3>

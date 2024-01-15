@@ -822,41 +822,62 @@ lessons!
 </p>
 </div>
 <p><u>Nested Option</u>:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lesson-3a-pipe-operator.html#cb148-1" tabindex="-1"></a><span class="co"># provides the various arrange, summarize, etc functions</span></span>
-<span id="cb148-2"><a href="lesson-3a-pipe-operator.html#cb148-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb148-3"><a href="lesson-3a-pipe-operator.html#cb148-3" tabindex="-1"></a></span>
-<span id="cb148-4"><a href="lesson-3a-pipe-operator.html#cb148-4" tabindex="-1"></a><span class="co"># perform nested functions</span></span>
-<span id="cb148-5"><a href="lesson-3a-pipe-operator.html#cb148-5" tabindex="-1"></a><span class="fu">arrange</span>(</span>
-<span id="cb148-6"><a href="lesson-3a-pipe-operator.html#cb148-6" tabindex="-1"></a>   <span class="fu">summarize</span>(</span>
-<span id="cb148-7"><a href="lesson-3a-pipe-operator.html#cb148-7" tabindex="-1"></a>       <span class="fu">group_by</span>(</span>
-<span id="cb148-8"><a href="lesson-3a-pipe-operator.html#cb148-8" tabindex="-1"></a>           <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>),</span>
-<span id="cb148-9"><a href="lesson-3a-pipe-operator.html#cb148-9" tabindex="-1"></a>           store_id</span>
-<span id="cb148-10"><a href="lesson-3a-pipe-operator.html#cb148-10" tabindex="-1"></a>          ),</span>
-<span id="cb148-11"><a href="lesson-3a-pipe-operator.html#cb148-11" tabindex="-1"></a>       <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)</span>
-<span id="cb148-12"><a href="lesson-3a-pipe-operator.html#cb148-12" tabindex="-1"></a>      ),</span>
-<span id="cb148-13"><a href="lesson-3a-pipe-operator.html#cb148-13" tabindex="-1"></a>   <span class="fu">desc</span>(avg_sales)</span>
-<span id="cb148-14"><a href="lesson-3a-pipe-operator.html#cb148-14" tabindex="-1"></a> )</span>
-<span id="cb148-15"><a href="lesson-3a-pipe-operator.html#cb148-15" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
-<span id="cb148-16"><a href="lesson-3a-pipe-operator.html#cb148-16" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
-<span id="cb148-17"><a href="lesson-3a-pipe-operator.html#cb148-17" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
-<span id="cb148-18"><a href="lesson-3a-pipe-operator.html#cb148-18" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
-<span id="cb148-19"><a href="lesson-3a-pipe-operator.html#cb148-19" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
-<span id="cb148-20"><a href="lesson-3a-pipe-operator.html#cb148-20" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
-<span id="cb148-21"><a href="lesson-3a-pipe-operator.html#cb148-21" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
-<span id="cb148-22"><a href="lesson-3a-pipe-operator.html#cb148-22" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
-<span id="cb148-23"><a href="lesson-3a-pipe-operator.html#cb148-23" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
-<span id="cb148-24"><a href="lesson-3a-pipe-operator.html#cb148-24" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
-<span id="cb148-25"><a href="lesson-3a-pipe-operator.html#cb148-25" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
-<span id="cb148-26"><a href="lesson-3a-pipe-operator.html#cb148-26" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
-<span id="cb148-27"><a href="lesson-3a-pipe-operator.html#cb148-27" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
-<span id="cb148-28"><a href="lesson-3a-pipe-operator.html#cb148-28" tabindex="-1"></a><span class="do">## # ℹ 178 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="lesson-3a-pipe-operator.html#cb147-1" tabindex="-1"></a><span class="co"># provides the various arrange, summarize, etc functions</span></span>
+<span id="cb147-2"><a href="lesson-3a-pipe-operator.html#cb147-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb147-3"><a href="lesson-3a-pipe-operator.html#cb147-3" tabindex="-1"></a></span>
+<span id="cb147-4"><a href="lesson-3a-pipe-operator.html#cb147-4" tabindex="-1"></a><span class="co"># perform nested functions</span></span>
+<span id="cb147-5"><a href="lesson-3a-pipe-operator.html#cb147-5" tabindex="-1"></a><span class="fu">arrange</span>(</span>
+<span id="cb147-6"><a href="lesson-3a-pipe-operator.html#cb147-6" tabindex="-1"></a>   <span class="fu">summarize</span>(</span>
+<span id="cb147-7"><a href="lesson-3a-pipe-operator.html#cb147-7" tabindex="-1"></a>       <span class="fu">group_by</span>(</span>
+<span id="cb147-8"><a href="lesson-3a-pipe-operator.html#cb147-8" tabindex="-1"></a>           <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>),</span>
+<span id="cb147-9"><a href="lesson-3a-pipe-operator.html#cb147-9" tabindex="-1"></a>           store_id</span>
+<span id="cb147-10"><a href="lesson-3a-pipe-operator.html#cb147-10" tabindex="-1"></a>          ),</span>
+<span id="cb147-11"><a href="lesson-3a-pipe-operator.html#cb147-11" tabindex="-1"></a>       <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)</span>
+<span id="cb147-12"><a href="lesson-3a-pipe-operator.html#cb147-12" tabindex="-1"></a>      ),</span>
+<span id="cb147-13"><a href="lesson-3a-pipe-operator.html#cb147-13" tabindex="-1"></a>   <span class="fu">desc</span>(avg_sales)</span>
+<span id="cb147-14"><a href="lesson-3a-pipe-operator.html#cb147-14" tabindex="-1"></a> )</span>
+<span id="cb147-15"><a href="lesson-3a-pipe-operator.html#cb147-15" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
+<span id="cb147-16"><a href="lesson-3a-pipe-operator.html#cb147-16" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
+<span id="cb147-17"><a href="lesson-3a-pipe-operator.html#cb147-17" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb147-18"><a href="lesson-3a-pipe-operator.html#cb147-18" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
+<span id="cb147-19"><a href="lesson-3a-pipe-operator.html#cb147-19" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
+<span id="cb147-20"><a href="lesson-3a-pipe-operator.html#cb147-20" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
+<span id="cb147-21"><a href="lesson-3a-pipe-operator.html#cb147-21" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
+<span id="cb147-22"><a href="lesson-3a-pipe-operator.html#cb147-22" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
+<span id="cb147-23"><a href="lesson-3a-pipe-operator.html#cb147-23" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
+<span id="cb147-24"><a href="lesson-3a-pipe-operator.html#cb147-24" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
+<span id="cb147-25"><a href="lesson-3a-pipe-operator.html#cb147-25" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
+<span id="cb147-26"><a href="lesson-3a-pipe-operator.html#cb147-26" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
+<span id="cb147-27"><a href="lesson-3a-pipe-operator.html#cb147-27" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
+<span id="cb147-28"><a href="lesson-3a-pipe-operator.html#cb147-28" tabindex="-1"></a><span class="do">## # ℹ 178 more rows</span></span></code></pre></div>
 <p>This first option is considered a “nested” option such the functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more difficult. To make things more readable, people often move to the following approach…</p>
 <p><u>Multiple Object Option</u>:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-3a-pipe-operator.html#cb149-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb149-2"><a href="lesson-3a-pipe-operator.html#cb149-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">group_by</span>(a, store_id)</span>
-<span id="cb149-3"><a href="lesson-3a-pipe-operator.html#cb149-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">summarise</span>(b, <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value))</span>
-<span id="cb149-4"><a href="lesson-3a-pipe-operator.html#cb149-4" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">arrange</span>(c, <span class="fu">desc</span>(avg_sales))</span>
-<span id="cb149-5"><a href="lesson-3a-pipe-operator.html#cb149-5" tabindex="-1"></a><span class="fu">print</span>(d)</span>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lesson-3a-pipe-operator.html#cb148-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, quantity <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb148-2"><a href="lesson-3a-pipe-operator.html#cb148-2" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">group_by</span>(a, store_id)</span>
+<span id="cb148-3"><a href="lesson-3a-pipe-operator.html#cb148-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">summarise</span>(b, <span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value))</span>
+<span id="cb148-4"><a href="lesson-3a-pipe-operator.html#cb148-4" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">arrange</span>(c, <span class="fu">desc</span>(avg_sales))</span>
+<span id="cb148-5"><a href="lesson-3a-pipe-operator.html#cb148-5" tabindex="-1"></a><span class="fu">print</span>(d)</span>
+<span id="cb148-6"><a href="lesson-3a-pipe-operator.html#cb148-6" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
+<span id="cb148-7"><a href="lesson-3a-pipe-operator.html#cb148-7" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
+<span id="cb148-8"><a href="lesson-3a-pipe-operator.html#cb148-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb148-9"><a href="lesson-3a-pipe-operator.html#cb148-9" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
+<span id="cb148-10"><a href="lesson-3a-pipe-operator.html#cb148-10" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
+<span id="cb148-11"><a href="lesson-3a-pipe-operator.html#cb148-11" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
+<span id="cb148-12"><a href="lesson-3a-pipe-operator.html#cb148-12" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
+<span id="cb148-13"><a href="lesson-3a-pipe-operator.html#cb148-13" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
+<span id="cb148-14"><a href="lesson-3a-pipe-operator.html#cb148-14" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
+<span id="cb148-15"><a href="lesson-3a-pipe-operator.html#cb148-15" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
+<span id="cb148-16"><a href="lesson-3a-pipe-operator.html#cb148-16" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
+<span id="cb148-17"><a href="lesson-3a-pipe-operator.html#cb148-17" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
+<span id="cb148-18"><a href="lesson-3a-pipe-operator.html#cb148-18" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
+<span id="cb148-19"><a href="lesson-3a-pipe-operator.html#cb148-19" tabindex="-1"></a><span class="do">## # ℹ 178 more rows</span></span></code></pre></div>
+<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it results in a global environment charlie foxtrot! To provide the same readability (or even better), we can use <code>%&gt;%</code> to string these arguments together without unnecessary object creation…</p>
+<p><u>%&gt;% Option</u>:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="lesson-3a-pipe-operator.html#cb149-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb149-2"><a href="lesson-3a-pipe-operator.html#cb149-2" tabindex="-1"></a>  <span class="fu">filter</span>(quantity <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb149-3"><a href="lesson-3a-pipe-operator.html#cb149-3" tabindex="-1"></a>  <span class="fu">group_by</span>(store_id) <span class="sc">%&gt;%</span></span>
+<span id="cb149-4"><a href="lesson-3a-pipe-operator.html#cb149-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-5"><a href="lesson-3a-pipe-operator.html#cb149-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sales))</span>
 <span id="cb149-6"><a href="lesson-3a-pipe-operator.html#cb149-6" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
 <span id="cb149-7"><a href="lesson-3a-pipe-operator.html#cb149-7" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
 <span id="cb149-8"><a href="lesson-3a-pipe-operator.html#cb149-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
@@ -871,27 +892,6 @@ lessons!
 <span id="cb149-17"><a href="lesson-3a-pipe-operator.html#cb149-17" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
 <span id="cb149-18"><a href="lesson-3a-pipe-operator.html#cb149-18" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
 <span id="cb149-19"><a href="lesson-3a-pipe-operator.html#cb149-19" tabindex="-1"></a><span class="do">## # ℹ 178 more rows</span></span></code></pre></div>
-<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it results in a global environment charlie foxtrot! To provide the same readability (or even better), we can use <code>%&gt;%</code> to string these arguments together without unnecessary object creation…</p>
-<p><u>%&gt;% Option</u>:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lesson-3a-pipe-operator.html#cb150-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="lesson-3a-pipe-operator.html#cb150-2" tabindex="-1"></a>  <span class="fu">filter</span>(quantity <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href="lesson-3a-pipe-operator.html#cb150-3" tabindex="-1"></a>  <span class="fu">group_by</span>(store_id) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="lesson-3a-pipe-operator.html#cb150-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_sales =</span> <span class="fu">mean</span>(sales_value)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-5"><a href="lesson-3a-pipe-operator.html#cb150-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sales))</span>
-<span id="cb150-6"><a href="lesson-3a-pipe-operator.html#cb150-6" tabindex="-1"></a><span class="do">## # A tibble: 188 × 2</span></span>
-<span id="cb150-7"><a href="lesson-3a-pipe-operator.html#cb150-7" tabindex="-1"></a><span class="do">##    store_id avg_sales</span></span>
-<span id="cb150-8"><a href="lesson-3a-pipe-operator.html#cb150-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;dbl&gt;</span></span>
-<span id="cb150-9"><a href="lesson-3a-pipe-operator.html#cb150-9" tabindex="-1"></a><span class="do">##  1 736           86.0</span></span>
-<span id="cb150-10"><a href="lesson-3a-pipe-operator.html#cb150-10" tabindex="-1"></a><span class="do">##  2 197           43.5</span></span>
-<span id="cb150-11"><a href="lesson-3a-pipe-operator.html#cb150-11" tabindex="-1"></a><span class="do">##  3 901           43.5</span></span>
-<span id="cb150-12"><a href="lesson-3a-pipe-operator.html#cb150-12" tabindex="-1"></a><span class="do">##  4 2903          43  </span></span>
-<span id="cb150-13"><a href="lesson-3a-pipe-operator.html#cb150-13" tabindex="-1"></a><span class="do">##  5 476           32.8</span></span>
-<span id="cb150-14"><a href="lesson-3a-pipe-operator.html#cb150-14" tabindex="-1"></a><span class="do">##  6 634           25.7</span></span>
-<span id="cb150-15"><a href="lesson-3a-pipe-operator.html#cb150-15" tabindex="-1"></a><span class="do">##  7 3149          24.9</span></span>
-<span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" tabindex="-1"></a><span class="do">##  8 3479          19.6</span></span>
-<span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" tabindex="-1"></a><span class="do">##  9 656           19.1</span></span>
-<span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" tabindex="-1"></a><span class="do">## 10 3131          15  </span></span>
-<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" tabindex="-1"></a><span class="do">## # ℹ 178 more rows</span></span></code></pre></div>
 <p>This final option which integrates <code>%&gt;%</code> operators makes for more efficient <em>and</em> legible code. Its efficient in that it doesn’t save unnecessary objects (as in option 2) and performs as effectively (as both option 1 &amp; 2) but makes your code more readable in the process. Its legible in that you can read this as you would read normal prose (we read the <code>%&gt;%</code> as <em>“and then”</em>): “take <code>df</code> <em>and then</em> <code>filter</code> <em>and then</em> <code>group by</code> <em>and then</em> <code>summarize</code> <em>and then</em> <code>arrange</code>.”</p>
 <div class="rmdnote">
 <p>
@@ -905,45 +905,50 @@ incorporated the pipe operator.
 </p>
 </div>
 <p>And since R is a functional programming language, meaning that everything you do is basically built on functions, you can use the pipe operator to feed into just about any argument call. For example, we can pipe into a linear regression function and then get the summary of the regression parameters. Note in this case I insert “<code>data = .</code>” into the <code>lm()</code> function. When using the <code>%&gt;%</code> operator the default is the argument that you are forwarding will go in as the <strong>first</strong> argument of the function that follows the <code>%&gt;%</code>. However, in some functions the argument you are forwarding does not go into the default first position. In these cases, you place “.” to signal which argument you want the forwarded expression to go to.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-3a-pipe-operator.html#cb151-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb151-2"><a href="lesson-3a-pipe-operator.html#cb151-2" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb151-3"><a href="lesson-3a-pipe-operator.html#cb151-3" tabindex="-1"></a>  <span class="fu">lm</span>(sales_value <span class="sc">~</span> week <span class="sc">+</span> retail_disc, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb151-4"><a href="lesson-3a-pipe-operator.html#cb151-4" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb151-5"><a href="lesson-3a-pipe-operator.html#cb151-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb151-6"><a href="lesson-3a-pipe-operator.html#cb151-6" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb151-7"><a href="lesson-3a-pipe-operator.html#cb151-7" tabindex="-1"></a><span class="do">## lm(formula = sales_value ~ week + retail_disc, data = .)</span></span>
-<span id="cb151-8"><a href="lesson-3a-pipe-operator.html#cb151-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb151-9"><a href="lesson-3a-pipe-operator.html#cb151-9" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb151-10"><a href="lesson-3a-pipe-operator.html#cb151-10" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
-<span id="cb151-11"><a href="lesson-3a-pipe-operator.html#cb151-11" tabindex="-1"></a><span class="do">##  -8.62  -2.19  -1.16   0.34  47.42 </span></span>
-<span id="cb151-12"><a href="lesson-3a-pipe-operator.html#cb151-12" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb151-13"><a href="lesson-3a-pipe-operator.html#cb151-13" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb151-14"><a href="lesson-3a-pipe-operator.html#cb151-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb151-15"><a href="lesson-3a-pipe-operator.html#cb151-15" tabindex="-1"></a><span class="do">## (Intercept)  3.10845    0.20549   15.13   &lt;2e-16 ***</span></span>
-<span id="cb151-16"><a href="lesson-3a-pipe-operator.html#cb151-16" tabindex="-1"></a><span class="do">## week         0.00185    0.00641    0.29     0.77    </span></span>
-<span id="cb151-17"><a href="lesson-3a-pipe-operator.html#cb151-17" tabindex="-1"></a><span class="do">## retail_disc  1.09089    0.10396   10.49   &lt;2e-16 ***</span></span>
-<span id="cb151-18"><a href="lesson-3a-pipe-operator.html#cb151-18" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb151-19"><a href="lesson-3a-pipe-operator.html#cb151-19" tabindex="-1"></a><span class="do">## Signif. codes:  </span></span>
-<span id="cb151-20"><a href="lesson-3a-pipe-operator.html#cb151-20" tabindex="-1"></a><span class="do">## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb151-21"><a href="lesson-3a-pipe-operator.html#cb151-21" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb151-22"><a href="lesson-3a-pipe-operator.html#cb151-22" tabindex="-1"></a><span class="do">## Residual standard error: 4.5 on 2126 degrees of freedom</span></span>
-<span id="cb151-23"><a href="lesson-3a-pipe-operator.html#cb151-23" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0493, Adjusted R-squared:  0.0484 </span></span>
-<span id="cb151-24"><a href="lesson-3a-pipe-operator.html#cb151-24" tabindex="-1"></a><span class="do">## F-statistic: 55.1 on 2 and 2126 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lesson-3a-pipe-operator.html#cb150-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="lesson-3a-pipe-operator.html#cb150-2" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="lesson-3a-pipe-operator.html#cb150-3" tabindex="-1"></a>  <span class="fu">lm</span>(sales_value <span class="sc">~</span> week <span class="sc">+</span> retail_disc, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb150-4"><a href="lesson-3a-pipe-operator.html#cb150-4" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb150-5"><a href="lesson-3a-pipe-operator.html#cb150-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb150-6"><a href="lesson-3a-pipe-operator.html#cb150-6" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb150-7"><a href="lesson-3a-pipe-operator.html#cb150-7" tabindex="-1"></a><span class="do">## lm(formula = sales_value ~ week + retail_disc, data = .)</span></span>
+<span id="cb150-8"><a href="lesson-3a-pipe-operator.html#cb150-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb150-9"><a href="lesson-3a-pipe-operator.html#cb150-9" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb150-10"><a href="lesson-3a-pipe-operator.html#cb150-10" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
+<span id="cb150-11"><a href="lesson-3a-pipe-operator.html#cb150-11" tabindex="-1"></a><span class="do">##  -8.62  -2.19  -1.16   0.34  47.42 </span></span>
+<span id="cb150-12"><a href="lesson-3a-pipe-operator.html#cb150-12" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb150-13"><a href="lesson-3a-pipe-operator.html#cb150-13" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb150-14"><a href="lesson-3a-pipe-operator.html#cb150-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value</span></span>
+<span id="cb150-15"><a href="lesson-3a-pipe-operator.html#cb150-15" tabindex="-1"></a><span class="do">## (Intercept)  3.10845    0.20549   15.13</span></span>
+<span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" tabindex="-1"></a><span class="do">## week         0.00185    0.00641    0.29</span></span>
+<span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" tabindex="-1"></a><span class="do">## retail_disc  1.09089    0.10396   10.49</span></span>
+<span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" tabindex="-1"></a><span class="do">##             Pr(&gt;|t|)    </span></span>
+<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" tabindex="-1"></a><span class="do">## (Intercept)   &lt;2e-16 ***</span></span>
+<span id="cb150-20"><a href="lesson-3a-pipe-operator.html#cb150-20" tabindex="-1"></a><span class="do">## week            0.77    </span></span>
+<span id="cb150-21"><a href="lesson-3a-pipe-operator.html#cb150-21" tabindex="-1"></a><span class="do">## retail_disc   &lt;2e-16 ***</span></span>
+<span id="cb150-22"><a href="lesson-3a-pipe-operator.html#cb150-22" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb150-23"><a href="lesson-3a-pipe-operator.html#cb150-23" tabindex="-1"></a><span class="do">## Signif. codes:  </span></span>
+<span id="cb150-24"><a href="lesson-3a-pipe-operator.html#cb150-24" tabindex="-1"></a><span class="do">##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
+<span id="cb150-25"><a href="lesson-3a-pipe-operator.html#cb150-25" tabindex="-1"></a><span class="do">##   0.1 &#39; &#39; 1</span></span>
+<span id="cb150-26"><a href="lesson-3a-pipe-operator.html#cb150-26" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb150-27"><a href="lesson-3a-pipe-operator.html#cb150-27" tabindex="-1"></a><span class="do">## Residual standard error: 4.5 on 2126 degrees of freedom</span></span>
+<span id="cb150-28"><a href="lesson-3a-pipe-operator.html#cb150-28" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0493, Adjusted R-squared:  0.0484 </span></span>
+<span id="cb150-29"><a href="lesson-3a-pipe-operator.html#cb150-29" tabindex="-1"></a><span class="do">## F-statistic: 55.1 on 2 and 2126 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
 <p>You can also use <code>%&gt;%</code> to feed into plots:</p>
 <div class="note">
 <p>
 You will learn more about plotting techniques in week 5.
 </p>
 </div>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lesson-3a-pipe-operator.html#cb152-1" tabindex="-1"></a><span class="co"># visualization package</span></span>
-<span id="cb152-2"><a href="lesson-3a-pipe-operator.html#cb152-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb152-3"><a href="lesson-3a-pipe-operator.html#cb152-3" tabindex="-1"></a></span>
-<span id="cb152-4"><a href="lesson-3a-pipe-operator.html#cb152-4" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb152-5"><a href="lesson-3a-pipe-operator.html#cb152-5" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>, week <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb152-6"><a href="lesson-3a-pipe-operator.html#cb152-6" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(week), <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
-<span id="cb152-7"><a href="lesson-3a-pipe-operator.html#cb152-7" tabindex="-1"></a>   <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb152-8"><a href="lesson-3a-pipe-operator.html#cb152-8" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-251-1.png" width="768" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="lesson-3a-pipe-operator.html#cb151-1" tabindex="-1"></a><span class="co"># visualization package</span></span>
+<span id="cb151-2"><a href="lesson-3a-pipe-operator.html#cb151-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb151-3"><a href="lesson-3a-pipe-operator.html#cb151-3" tabindex="-1"></a></span>
+<span id="cb151-4"><a href="lesson-3a-pipe-operator.html#cb151-4" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb151-5"><a href="lesson-3a-pipe-operator.html#cb151-5" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>, week <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb151-6"><a href="lesson-3a-pipe-operator.html#cb151-6" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(week), <span class="at">y =</span> sales_value)) <span class="sc">+</span></span>
+<span id="cb151-7"><a href="lesson-3a-pipe-operator.html#cb151-7" tabindex="-1"></a>   <span class="fu">geom_jitter</span>(<span class="at">width =</span> .<span class="dv">05</span>, <span class="at">alpha =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb151-8"><a href="lesson-3a-pipe-operator.html#cb151-8" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-250-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <div id="additional-pipe-operators-optional" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Additional pipe operators (optional)<a href="lesson-3a-pipe-operator.html#additional-pipe-operators-optional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -957,27 +962,27 @@ follows!
 </p>
 </div>
 <p><strong>magrittr</strong> also offers some alternative pipe operators. Some functions, such as plotting functions, will cause the string of piped arguments to terminate. The tee (<code>%T&gt;%</code>) operator allows you to continue piping functions that normally cause termination.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="lesson-3a-pipe-operator.html#cb153-1" tabindex="-1"></a><span class="co"># normal piping terminates with the plot() function resulting in</span></span>
-<span id="cb153-2"><a href="lesson-3a-pipe-operator.html#cb153-2" tabindex="-1"></a><span class="co"># NULL results for the summary() function</span></span>
-<span id="cb153-3"><a href="lesson-3a-pipe-operator.html#cb153-3" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb153-4"><a href="lesson-3a-pipe-operator.html#cb153-4" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb153-5"><a href="lesson-3a-pipe-operator.html#cb153-5" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%&gt;%</span></span>
-<span id="cb153-6"><a href="lesson-3a-pipe-operator.html#cb153-6" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb153-7"><a href="lesson-3a-pipe-operator.html#cb153-7" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-253-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lesson-3a-pipe-operator.html#cb152-1" tabindex="-1"></a><span class="co"># normal piping terminates with the plot() function resulting in</span></span>
+<span id="cb152-2"><a href="lesson-3a-pipe-operator.html#cb152-2" tabindex="-1"></a><span class="co"># NULL results for the summary() function</span></span>
+<span id="cb152-3"><a href="lesson-3a-pipe-operator.html#cb152-3" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb152-4"><a href="lesson-3a-pipe-operator.html#cb152-4" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb152-5"><a href="lesson-3a-pipe-operator.html#cb152-5" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%&gt;%</span></span>
+<span id="cb152-6"><a href="lesson-3a-pipe-operator.html#cb152-6" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb152-7"><a href="lesson-3a-pipe-operator.html#cb152-7" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-252-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>## Length  Class   Mode 
 ##      0   NULL   NULL</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="lesson-3a-pipe-operator.html#cb155-1" tabindex="-1"></a><span class="co"># load magrittr to use additional pipe operators</span></span>
-<span id="cb155-2"><a href="lesson-3a-pipe-operator.html#cb155-2" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb155-3"><a href="lesson-3a-pipe-operator.html#cb155-3" tabindex="-1"></a></span>
-<span id="cb155-4"><a href="lesson-3a-pipe-operator.html#cb155-4" tabindex="-1"></a><span class="co"># inserting %T&gt;% allows you to plot and perform the functions that </span></span>
-<span id="cb155-5"><a href="lesson-3a-pipe-operator.html#cb155-5" tabindex="-1"></a><span class="co"># follow the plotting function</span></span>
-<span id="cb155-6"><a href="lesson-3a-pipe-operator.html#cb155-6" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb155-7"><a href="lesson-3a-pipe-operator.html#cb155-7" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb155-8"><a href="lesson-3a-pipe-operator.html#cb155-8" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%T&gt;%</span></span>
-<span id="cb155-9"><a href="lesson-3a-pipe-operator.html#cb155-9" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb155-10"><a href="lesson-3a-pipe-operator.html#cb155-10" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-254-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="lesson-3a-pipe-operator.html#cb154-1" tabindex="-1"></a><span class="co"># load magrittr to use additional pipe operators</span></span>
+<span id="cb154-2"><a href="lesson-3a-pipe-operator.html#cb154-2" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb154-3"><a href="lesson-3a-pipe-operator.html#cb154-3" tabindex="-1"></a></span>
+<span id="cb154-4"><a href="lesson-3a-pipe-operator.html#cb154-4" tabindex="-1"></a><span class="co"># inserting %T&gt;% allows you to plot and perform the functions that </span></span>
+<span id="cb154-5"><a href="lesson-3a-pipe-operator.html#cb154-5" tabindex="-1"></a><span class="co"># follow the plotting function</span></span>
+<span id="cb154-6"><a href="lesson-3a-pipe-operator.html#cb154-6" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb154-7"><a href="lesson-3a-pipe-operator.html#cb154-7" tabindex="-1"></a>   <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb154-8"><a href="lesson-3a-pipe-operator.html#cb154-8" tabindex="-1"></a>   <span class="fu">select</span>(quantity, sales_value) <span class="sc">%T&gt;%</span></span>
+<span id="cb154-9"><a href="lesson-3a-pipe-operator.html#cb154-9" tabindex="-1"></a>   <span class="fu">plot</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb154-10"><a href="lesson-3a-pipe-operator.html#cb154-10" tabindex="-1"></a>   <span class="fu">summary</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-253-1.png" width="384" style="display: block; margin: auto;" /></p>
 <pre><code>##     quantity      sales_value   
 ##  Min.   :    0   Min.   : 0.00  
 ##  1st Qu.:    1   1st Qu.: 1.49  
@@ -986,15 +991,16 @@ follows!
 ##  3rd Qu.:    1   3rd Qu.: 3.99  
 ##  Max.   :23735   Max.   :53.14</code></pre>
 <p>The compound assignment <code>%&lt;&gt;%</code> operator is used to update a value by first piping it into one or more expressions, and then assigning the result. For instance, let’s say you want to transform the <code>sales_value</code> variable to a logarithmic measurement. Using <code>%&lt;&gt;%</code> will perform the functions to the right of <code>%&lt;&gt;%</code> and save the changes these functions perform to the variable or data frame called to the left of <code>%&lt;&gt;%</code>.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lesson-3a-pipe-operator.html#cb157-1" tabindex="-1"></a><span class="co"># note that sales_value is in its typical measurement</span></span>
-<span id="cb157-2"><a href="lesson-3a-pipe-operator.html#cb157-2" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
-<span id="cb157-3"><a href="lesson-3a-pipe-operator.html#cb157-3" tabindex="-1"></a><span class="do">## [1]  3.86  1.59  1.00 11.87  1.29  2.50</span></span>
-<span id="cb157-4"><a href="lesson-3a-pipe-operator.html#cb157-4" tabindex="-1"></a></span>
-<span id="cb157-5"><a href="lesson-3a-pipe-operator.html#cb157-5" tabindex="-1"></a><span class="co"># we can log transform sales_value and save this change using %&lt;&gt;%</span></span>
-<span id="cb157-6"><a href="lesson-3a-pipe-operator.html#cb157-6" tabindex="-1"></a>df<span class="sc">$</span>sales_value <span class="sc">%&lt;&gt;%</span> log</span>
-<span id="cb157-7"><a href="lesson-3a-pipe-operator.html#cb157-7" tabindex="-1"></a></span>
-<span id="cb157-8"><a href="lesson-3a-pipe-operator.html#cb157-8" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
-<span id="cb157-9"><a href="lesson-3a-pipe-operator.html#cb157-9" tabindex="-1"></a><span class="do">## [1] 1.35067 0.46373 0.00000 2.47401 0.25464 0.91629</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lesson-3a-pipe-operator.html#cb156-1" tabindex="-1"></a><span class="co"># note that sales_value is in its typical measurement</span></span>
+<span id="cb156-2"><a href="lesson-3a-pipe-operator.html#cb156-2" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
+<span id="cb156-3"><a href="lesson-3a-pipe-operator.html#cb156-3" tabindex="-1"></a><span class="do">## [1]  3.86  1.59  1.00 11.87  1.29  2.50</span></span>
+<span id="cb156-4"><a href="lesson-3a-pipe-operator.html#cb156-4" tabindex="-1"></a></span>
+<span id="cb156-5"><a href="lesson-3a-pipe-operator.html#cb156-5" tabindex="-1"></a><span class="co"># we can log transform sales_value and save this change using %&lt;&gt;%</span></span>
+<span id="cb156-6"><a href="lesson-3a-pipe-operator.html#cb156-6" tabindex="-1"></a>df<span class="sc">$</span>sales_value <span class="sc">%&lt;&gt;%</span> log</span>
+<span id="cb156-7"><a href="lesson-3a-pipe-operator.html#cb156-7" tabindex="-1"></a></span>
+<span id="cb156-8"><a href="lesson-3a-pipe-operator.html#cb156-8" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
+<span id="cb156-9"><a href="lesson-3a-pipe-operator.html#cb156-9" tabindex="-1"></a><span class="do">## [1] 1.35067 0.46373 0.00000 2.47401</span></span>
+<span id="cb156-10"><a href="lesson-3a-pipe-operator.html#cb156-10" tabindex="-1"></a><span class="do">## [5] 0.25464 0.91629</span></span></code></pre></div>
 <div class="warning">
 <p>
 You should be cautious in your use of <code>%&lt;&gt;%</code> since
@@ -1004,17 +1010,17 @@ variable’s values.
 </p>
 </div>
 <p>Some functions (e.g. lm, aggregate, cor) have a data argument, which allows the direct use of names inside the data as part of the call. The exposition (<code>%$%</code>) operator is useful when you want to pipe a data frame, which may contain many columns, into a function that is only applied to some of the columns. For example, the correlation (<code>cor</code>) function only requires an <code>x</code> and <code>y</code> argument so if you pipe the customer transaction data into the <code>cor</code> function using <code>%&gt;%</code> you will get an error because <code>cor</code> doesn’t know how to handle <code>df</code>. However, using <code>%$%</code> allows you to say “take this data frame and then perform <code>cor()</code> on these specified columns within <code>df</code>.”</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lesson-3a-pipe-operator.html#cb158-1" tabindex="-1"></a><span class="co"># regular piping results in an error</span></span>
-<span id="cb158-2"><a href="lesson-3a-pipe-operator.html#cb158-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb158-3"><a href="lesson-3a-pipe-operator.html#cb158-3" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb158-4"><a href="lesson-3a-pipe-operator.html#cb158-4" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
-<span id="cb158-5"><a href="lesson-3a-pipe-operator.html#cb158-5" tabindex="-1"></a><span class="do">## Error: object &#39;quantity&#39; not found</span></span>
-<span id="cb158-6"><a href="lesson-3a-pipe-operator.html#cb158-6" tabindex="-1"></a></span>
-<span id="cb158-7"><a href="lesson-3a-pipe-operator.html#cb158-7" tabindex="-1"></a><span class="co"># using %$% allows you to specify variables of interest</span></span>
-<span id="cb158-8"><a href="lesson-3a-pipe-operator.html#cb158-8" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb158-9"><a href="lesson-3a-pipe-operator.html#cb158-9" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%$%</span></span>
-<span id="cb158-10"><a href="lesson-3a-pipe-operator.html#cb158-10" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
-<span id="cb158-11"><a href="lesson-3a-pipe-operator.html#cb158-11" tabindex="-1"></a><span class="do">## [1] 0.10263</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lesson-3a-pipe-operator.html#cb157-1" tabindex="-1"></a><span class="co"># regular piping results in an error</span></span>
+<span id="cb157-2"><a href="lesson-3a-pipe-operator.html#cb157-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb157-3"><a href="lesson-3a-pipe-operator.html#cb157-3" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb157-4"><a href="lesson-3a-pipe-operator.html#cb157-4" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
+<span id="cb157-5"><a href="lesson-3a-pipe-operator.html#cb157-5" tabindex="-1"></a><span class="do">## Error: object &#39;quantity&#39; not found</span></span>
+<span id="cb157-6"><a href="lesson-3a-pipe-operator.html#cb157-6" tabindex="-1"></a></span>
+<span id="cb157-7"><a href="lesson-3a-pipe-operator.html#cb157-7" tabindex="-1"></a><span class="co"># using %$% allows you to specify variables of interest</span></span>
+<span id="cb157-8"><a href="lesson-3a-pipe-operator.html#cb157-8" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb157-9"><a href="lesson-3a-pipe-operator.html#cb157-9" tabindex="-1"></a>  <span class="fu">filter</span>(store_id <span class="sc">==</span> <span class="st">&quot;367&quot;</span>) <span class="sc">%$%</span></span>
+<span id="cb157-10"><a href="lesson-3a-pipe-operator.html#cb157-10" tabindex="-1"></a>  <span class="fu">cor</span>(retail_disc, quantity)</span>
+<span id="cb157-11"><a href="lesson-3a-pipe-operator.html#cb157-11" tabindex="-1"></a><span class="do">## [1] 0.10263</span></span></code></pre></div>
 </div>
 <div id="additional-resources-2" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Additional resources<a href="lesson-3a-pipe-operator.html#additional-resources-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1035,9 +1041,9 @@ Look at the code that follows. How would you rewrite this code using
 the pipe operator?
 </p>
 </div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="lesson-3a-pipe-operator.html#cb159-1" tabindex="-1"></a>foo_foo_1 <span class="ot">&lt;-</span> <span class="fu">hop</span>(foo_foo, <span class="at">through =</span> forest)</span>
-<span id="cb159-2"><a href="lesson-3a-pipe-operator.html#cb159-2" tabindex="-1"></a>foo_foo_2 <span class="ot">&lt;-</span> <span class="fu">scoop</span>(foo_foo_1, <span class="at">up =</span> field_mice)</span>
-<span id="cb159-3"><a href="lesson-3a-pipe-operator.html#cb159-3" tabindex="-1"></a>foo_foo_3 <span class="ot">&lt;-</span> <span class="fu">bop</span>(foo_foo_2, <span class="at">on =</span> head)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lesson-3a-pipe-operator.html#cb158-1" tabindex="-1"></a>foo_foo_1 <span class="ot">&lt;-</span> <span class="fu">hop</span>(foo_foo, <span class="at">through =</span> forest)</span>
+<span id="cb158-2"><a href="lesson-3a-pipe-operator.html#cb158-2" tabindex="-1"></a>foo_foo_2 <span class="ot">&lt;-</span> <span class="fu">scoop</span>(foo_foo_1, <span class="at">up =</span> field_mice)</span>
+<span id="cb158-3"><a href="lesson-3a-pipe-operator.html#cb158-3" tabindex="-1"></a>foo_foo_3 <span class="ot">&lt;-</span> <span class="fu">bop</span>(foo_foo_2, <span class="at">on =</span> head)</span></code></pre></div>
 
 </div>
 </div>

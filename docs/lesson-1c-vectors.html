@@ -941,7 +941,8 @@ other other programming languages (i.e. Python).
 <span id="cb52-2"><a href="lesson-1c-vectors.html#cb52-2" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
 <p>Here, the logical expression is <code>my_vec &gt; 4</code> and R will only extract those elements that satisfy this logical condition. So how does this actually work? If we look at the output of just the logical expression without the square brackets you can see that R returns a vector containing either <code>TRUE</code> or <code>FALSE</code> which correspond to whether the logical condition is satisfied for each element. In this case only the 4<sup>th</sup> and 8<sup>th</sup> elements return a <code>TRUE</code> as their value is greater than 4.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="lesson-1c-vectors.html#cb53-1" tabindex="-1"></a>my_vec <span class="sc">&gt;</span> <span class="dv">4</span></span>
-<span id="cb53-2"><a href="lesson-1c-vectors.html#cb53-2" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</span></span></code></pre></div>
+<span id="cb53-2"><a href="lesson-1c-vectors.html#cb53-2" tabindex="-1"></a><span class="do">## [1] FALSE FALSE FALSE  TRUE FALSE FALSE</span></span>
+<span id="cb53-3"><a href="lesson-1c-vectors.html#cb53-3" tabindex="-1"></a><span class="do">## [7] FALSE  TRUE</span></span></code></pre></div>
 <p>So what R is actually doing under the hood is equivalent to</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lesson-1c-vectors.html#cb54-1" tabindex="-1"></a>my_vec[<span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span>
 <span id="cb54-2"><a href="lesson-1c-vectors.html#cb54-2" tabindex="-1"></a><span class="do">## [1] 6 7</span></span></code></pre></div>
@@ -1015,7 +1016,8 @@ Extract the weights for those children that weigh over 90lbs.
 <span id="cb59-6"><a href="lesson-1c-vectors.html#cb59-6" tabindex="-1"></a><span class="co"># replace element that are less than or equal to 4 with 1000</span></span>
 <span id="cb59-7"><a href="lesson-1c-vectors.html#cb59-7" tabindex="-1"></a>my_vec[my_vec <span class="sc">&lt;=</span> <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb59-8"><a href="lesson-1c-vectors.html#cb59-8" tabindex="-1"></a>my_vec</span>
-<span id="cb59-9"><a href="lesson-1c-vectors.html#cb59-9" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000  500 1000  100  100    7</span></span></code></pre></div>
+<span id="cb59-9"><a href="lesson-1c-vectors.html#cb59-9" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000  500 1000  100  100</span></span>
+<span id="cb59-10"><a href="lesson-1c-vectors.html#cb59-10" tabindex="-1"></a><span class="do">## [8]    7</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -1067,11 +1069,13 @@ value for all elements that are less than 80 to be equal to 80.
 <p>We can also sort values in our element:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lesson-1c-vectors.html#cb62-1" tabindex="-1"></a><span class="co"># ascending order</span></span>
 <span id="cb62-2"><a href="lesson-1c-vectors.html#cb62-2" tabindex="-1"></a><span class="fu">sort</span>(my_vec)</span>
-<span id="cb62-3"><a href="lesson-1c-vectors.html#cb62-3" tabindex="-1"></a><span class="do">## [1]    7  100  100  500 1000 1000 1000 1000</span></span>
-<span id="cb62-4"><a href="lesson-1c-vectors.html#cb62-4" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="lesson-1c-vectors.html#cb62-5" tabindex="-1"></a><span class="co"># decending order</span></span>
-<span id="cb62-6"><a href="lesson-1c-vectors.html#cb62-6" tabindex="-1"></a><span class="fu">sort</span>(my_vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb62-7"><a href="lesson-1c-vectors.html#cb62-7" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000 1000  500  100  100    7</span></span></code></pre></div>
+<span id="cb62-3"><a href="lesson-1c-vectors.html#cb62-3" tabindex="-1"></a><span class="do">## [1]    7  100  100  500 1000 1000 1000</span></span>
+<span id="cb62-4"><a href="lesson-1c-vectors.html#cb62-4" tabindex="-1"></a><span class="do">## [8] 1000</span></span>
+<span id="cb62-5"><a href="lesson-1c-vectors.html#cb62-5" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="lesson-1c-vectors.html#cb62-6" tabindex="-1"></a><span class="co"># decending order</span></span>
+<span id="cb62-7"><a href="lesson-1c-vectors.html#cb62-7" tabindex="-1"></a><span class="fu">sort</span>(my_vec, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-8"><a href="lesson-1c-vectors.html#cb62-8" tabindex="-1"></a><span class="do">## [1] 1000 1000 1000 1000  500  100  100</span></span>
+<span id="cb62-9"><a href="lesson-1c-vectors.html#cb62-9" tabindex="-1"></a><span class="do">## [8]    7</span></span></code></pre></div>
 <div class="note">
 <p>
 There are a lot operations that we can perform on vectors. As we
@@ -1120,7 +1124,8 @@ this return?
 <p>In R, missing data is usually represented by an <code>NA</code> symbol meaning ‘Not Available’. Data may be missing for a whole bunch of reasons, maybe your machine broke down, maybe the weather was too bad to collect data on a particular day, etc. Missing data can be a pain in the proverbial both from an R perspective and also a statistical perspective. From an R perspective missing data can be problematic as different functions deal with missing data in different ways. For example, let’s say we collected air temperature readings over 10 days, but our thermometer broke on day 2 and again on day 9 so we have no data for those days</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="lesson-1c-vectors.html#cb63-1" tabindex="-1"></a>temp  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.2</span>, <span class="cn">NA</span>, <span class="fl">7.1</span>, <span class="fl">6.9</span>, <span class="fl">6.5</span>, <span class="fl">5.8</span>, <span class="fl">5.8</span>, <span class="fl">5.5</span>, <span class="cn">NA</span>, <span class="fl">5.5</span>)</span>
 <span id="cb63-2"><a href="lesson-1c-vectors.html#cb63-2" tabindex="-1"></a>temp</span>
-<span id="cb63-3"><a href="lesson-1c-vectors.html#cb63-3" tabindex="-1"></a><span class="do">##  [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA 5.5</span></span></code></pre></div>
+<span id="cb63-3"><a href="lesson-1c-vectors.html#cb63-3" tabindex="-1"></a><span class="do">##  [1] 7.2  NA 7.1 6.9 6.5 5.8 5.8 5.5  NA</span></span>
+<span id="cb63-4"><a href="lesson-1c-vectors.html#cb63-4" tabindex="-1"></a><span class="do">## [10] 5.5</span></span></code></pre></div>
 <p>We now want to calculate the mean temperature over these days using the <code>mean()</code> function</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lesson-1c-vectors.html#cb64-1" tabindex="-1"></a>mean_temp <span class="ot">&lt;-</span> <span class="fu">mean</span>(temp)</span>
 <span id="cb64-2"><a href="lesson-1c-vectors.html#cb64-2" tabindex="-1"></a>mean_temp</span>
@@ -1249,9 +1254,10 @@ vs. scalars), we will cover what this means in later a module.
 <span id="cb71-2"><a href="lesson-1c-vectors.html#cb71-2" tabindex="-1"></a>odd_length <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
 <span id="cb71-3"><a href="lesson-1c-vectors.html#cb71-3" tabindex="-1"></a></span>
 <span id="cb71-4"><a href="lesson-1c-vectors.html#cb71-4" tabindex="-1"></a>even_length <span class="sc">+</span> odd_length</span>
-<span id="cb71-5"><a href="lesson-1c-vectors.html#cb71-5" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length: longer object</span></span>
-<span id="cb71-6"><a href="lesson-1c-vectors.html#cb71-6" tabindex="-1"></a><span class="do">## length is not a multiple of shorter object length</span></span>
-<span id="cb71-7"><a href="lesson-1c-vectors.html#cb71-7" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
+<span id="cb71-5"><a href="lesson-1c-vectors.html#cb71-5" tabindex="-1"></a><span class="do">## Warning in even_length + odd_length:</span></span>
+<span id="cb71-6"><a href="lesson-1c-vectors.html#cb71-6" tabindex="-1"></a><span class="do">## longer object length is not a multiple</span></span>
+<span id="cb71-7"><a href="lesson-1c-vectors.html#cb71-7" tabindex="-1"></a><span class="do">## of shorter object length</span></span>
+<span id="cb71-8"><a href="lesson-1c-vectors.html#cb71-8" tabindex="-1"></a><span class="do">##  [1]  2  4  6  5  7  9  8 10 12 11</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>

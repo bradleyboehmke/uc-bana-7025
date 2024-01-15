@@ -795,8 +795,10 @@ div.csl-indent {
 </ul>
 <p>In this lesson, we are going to look at different ways to apply mutating and filtering joins to relational data sets.</p>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=0&amp;flashvars[mediaProxy.mediaPlayTo]=270&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oIStojdJIYg?si=XWVB56JTtZF6IUQG&amp;start=0&end=268" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="learning-objectives-14" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> Learning objectives<a href="lesson-4a-relational-data.html#learning-objectives-14" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -809,28 +811,28 @@ div.csl-indent {
 <div id="prerequisites-2" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> Prerequisites<a href="lesson-4a-relational-data.html#prerequisites-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Load the <strong>dplyr</strong> package to provide you access to the join functions we’ll cover in this lesson.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="lesson-4a-relational-data.html#cb206-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="lesson-4a-relational-data.html#cb205-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>To illustrate various joining tasks we will use two very simple data frames <code>x</code> &amp; <code>y</code>. The colored column represents the “key” variable: these are used to match the rows between the tables. We’ll talk more about keys in a second. The grey column represents the “value” column that is carried along for the ride.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-336"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-335"></span>
 <img src="images/original-dfs.png" alt="Two simple data frames." width="50%" height="50%" />
 <p class="caption">
 Figure 14.1: Two simple data frames.
 </p>
 </div>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="lesson-4a-relational-data.html#cb207-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb207-2"><a href="lesson-4a-relational-data.html#cb207-2" tabindex="-1"></a>  <span class="sc">~</span>id, <span class="sc">~</span>val_x,</span>
-<span id="cb207-3"><a href="lesson-4a-relational-data.html#cb207-3" tabindex="-1"></a>     <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</span>
-<span id="cb207-4"><a href="lesson-4a-relational-data.html#cb207-4" tabindex="-1"></a>     <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</span>
-<span id="cb207-5"><a href="lesson-4a-relational-data.html#cb207-5" tabindex="-1"></a>     <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></span>
-<span id="cb207-6"><a href="lesson-4a-relational-data.html#cb207-6" tabindex="-1"></a>)</span>
-<span id="cb207-7"><a href="lesson-4a-relational-data.html#cb207-7" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb207-8"><a href="lesson-4a-relational-data.html#cb207-8" tabindex="-1"></a>  <span class="sc">~</span>id, <span class="sc">~</span>val_y,</span>
-<span id="cb207-9"><a href="lesson-4a-relational-data.html#cb207-9" tabindex="-1"></a>     <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</span>
-<span id="cb207-10"><a href="lesson-4a-relational-data.html#cb207-10" tabindex="-1"></a>     <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</span>
-<span id="cb207-11"><a href="lesson-4a-relational-data.html#cb207-11" tabindex="-1"></a>     <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></span>
-<span id="cb207-12"><a href="lesson-4a-relational-data.html#cb207-12" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="lesson-4a-relational-data.html#cb206-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb206-2"><a href="lesson-4a-relational-data.html#cb206-2" tabindex="-1"></a>  <span class="sc">~</span>id, <span class="sc">~</span>val_x,</span>
+<span id="cb206-3"><a href="lesson-4a-relational-data.html#cb206-3" tabindex="-1"></a>     <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</span>
+<span id="cb206-4"><a href="lesson-4a-relational-data.html#cb206-4" tabindex="-1"></a>     <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</span>
+<span id="cb206-5"><a href="lesson-4a-relational-data.html#cb206-5" tabindex="-1"></a>     <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></span>
+<span id="cb206-6"><a href="lesson-4a-relational-data.html#cb206-6" tabindex="-1"></a>)</span>
+<span id="cb206-7"><a href="lesson-4a-relational-data.html#cb206-7" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb206-8"><a href="lesson-4a-relational-data.html#cb206-8" tabindex="-1"></a>  <span class="sc">~</span>id, <span class="sc">~</span>val_y,</span>
+<span id="cb206-9"><a href="lesson-4a-relational-data.html#cb206-9" tabindex="-1"></a>     <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</span>
+<span id="cb206-10"><a href="lesson-4a-relational-data.html#cb206-10" tabindex="-1"></a>     <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</span>
+<span id="cb206-11"><a href="lesson-4a-relational-data.html#cb206-11" tabindex="-1"></a>     <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></span>
+<span id="cb206-12"><a href="lesson-4a-relational-data.html#cb206-12" tabindex="-1"></a>)</span></code></pre></div>
 <p>However, we will also build upon the simple examples by using various data sets from the <strong>completejourney</strong> library:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="lesson-4a-relational-data.html#cb208-1" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="lesson-4a-relational-data.html#cb207-1" tabindex="-1"></a><span class="fu">library</span>(completejourney)</span></code></pre></div>
 <div class="todo">
 <p>
 Take some time to read about the various data sets available via
@@ -857,11 +859,11 @@ What are the common variables between each table?
 <p>Variables can be both a primary key and a foreign key. For example, within the transactions data <code>household_id</code> is a primary key to represent a household identifier for each transaction. <code>household_id</code> is also a foreign key in the demographics data set where it can be used to align household demographics to each transaction.</p>
 <p>A primary key and the corresponding foreign key in another table form a relation. Relations are typically one-to-many. For example, each transaction has one household, but each household has many transactions. In other data, you’ll occasionally see a 1-to-1 relationship.</p>
 <p>When data is cleaned appropriately the keys used to match two tables will be commonly named. For example, the variable that can link our <code>x</code> and <code>y</code> data sets is named <code>id</code>:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="lesson-4a-relational-data.html#cb209-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(x), <span class="fu">colnames</span>(y))</span>
-<span id="cb209-2"><a href="lesson-4a-relational-data.html#cb209-2" tabindex="-1"></a><span class="do">## [1] &quot;id&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="lesson-4a-relational-data.html#cb208-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(x), <span class="fu">colnames</span>(y))</span>
+<span id="cb208-2"><a href="lesson-4a-relational-data.html#cb208-2" tabindex="-1"></a><span class="do">## [1] &quot;id&quot;</span></span></code></pre></div>
 <p>We can easily see this by looking at the data but when working with larger data sets this becomes more appropriate than just viewing the data.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="lesson-4a-relational-data.html#cb210-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(transactions_sample), <span class="fu">colnames</span>(demographics))</span>
-<span id="cb210-2"><a href="lesson-4a-relational-data.html#cb210-2" tabindex="-1"></a><span class="do">## [1] &quot;household_id&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="lesson-4a-relational-data.html#cb209-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(transactions_sample), <span class="fu">colnames</span>(demographics))</span>
+<span id="cb209-2"><a href="lesson-4a-relational-data.html#cb209-2" tabindex="-1"></a><span class="do">## [1] &quot;household_id&quot;</span></span></code></pre></div>
 <div class="note">
 <p>
 Although it is preferred, keys do not need to have the same name in
@@ -872,8 +874,10 @@ different but they represent the same information.
 </p>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=270&amp;flashvars[mediaProxy.mediaPlayTo]=396&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oIStojdJIYg?si=J_R5lUhuWuj2z5bI&amp;start=268&end=395" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="knowledge-check-28" class="section level3 hasAnchor" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> Knowledge check<a href="lesson-4a-relational-data.html#knowledge-check-28" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -902,8 +906,10 @@ these two data sets?
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_luwc376p&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_sn0cjsus" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.3.1">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/34RnkXbPx6k?si=fEh5G9l7oRuet_ZR&amp;start=1176" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -919,8 +925,10 @@ these two data sets?
 </ul>
 <p>Let’s explore each of these a little more closely.</p>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=396&amp;flashvars[mediaProxy.mediaPlayTo]=648&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oIStojdJIYg?si=jirW8QWwvRW09aY1&amp;start=396&end=647" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="inner-join" class="section level3 hasAnchor" number="14.4.1">
 <h3><span class="header-section-number">14.4.1</span> Inner join<a href="lesson-4a-relational-data.html#inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -932,18 +940,18 @@ rows with matches across both data frames.
 </p>
 </div>
 <p>The following provides a nice illustration:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-348"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-347"></span>
 <img src="images/inner-join.gif" alt="Inner join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="lesson-4a-relational-data.html#cb211-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb211-2"><a href="lesson-4a-relational-data.html#cb211-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
-<span id="cb211-3"><a href="lesson-4a-relational-data.html#cb211-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
-<span id="cb211-4"><a href="lesson-4a-relational-data.html#cb211-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb211-5"><a href="lesson-4a-relational-data.html#cb211-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb211-6"><a href="lesson-4a-relational-data.html#cb211-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="lesson-4a-relational-data.html#cb210-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb210-2"><a href="lesson-4a-relational-data.html#cb210-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb210-3"><a href="lesson-4a-relational-data.html#cb210-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
+<span id="cb210-4"><a href="lesson-4a-relational-data.html#cb210-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb210-5"><a href="lesson-4a-relational-data.html#cb210-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb210-6"><a href="lesson-4a-relational-data.html#cb210-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
 </div>
 <div id="outer-joins" class="section level3 hasAnchor" number="14.4.2">
 <h3><span class="header-section-number">14.4.2</span> Outer joins<a href="lesson-4a-relational-data.html#outer-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -956,19 +964,19 @@ Figure 14.2: Inner join (<a href="https://github.com/gadenbuie/tidyexplain">sour
 <div id="left-join" class="section level4 hasAnchor" number="14.4.2.1">
 <h4><span class="header-section-number">14.4.2.1</span> Left join<a href="lesson-4a-relational-data.html#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With a <strong>left join</strong> we retain all observations from <code>x</code>, and we add columns <code>y</code>. Rows in <code>x</code> where there is no matching key value in <code>y</code> will have <code>NA</code> values in the new columns.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-350"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-349"></span>
 <img src="images/left-join.gif" alt="Left join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.3: Left join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="lesson-4a-relational-data.html#cb212-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb212-2"><a href="lesson-4a-relational-data.html#cb212-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
-<span id="cb212-3"><a href="lesson-4a-relational-data.html#cb212-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
-<span id="cb212-4"><a href="lesson-4a-relational-data.html#cb212-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb212-5"><a href="lesson-4a-relational-data.html#cb212-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb212-6"><a href="lesson-4a-relational-data.html#cb212-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
-<span id="cb212-7"><a href="lesson-4a-relational-data.html#cb212-7" tabindex="-1"></a><span class="do">## 3     3 x3    &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="lesson-4a-relational-data.html#cb211-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb211-2"><a href="lesson-4a-relational-data.html#cb211-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
+<span id="cb211-3"><a href="lesson-4a-relational-data.html#cb211-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
+<span id="cb211-4"><a href="lesson-4a-relational-data.html#cb211-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb211-5"><a href="lesson-4a-relational-data.html#cb211-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb211-6"><a href="lesson-4a-relational-data.html#cb211-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
+<span id="cb211-7"><a href="lesson-4a-relational-data.html#cb211-7" tabindex="-1"></a><span class="do">## 3     3 x3    &lt;NA&gt;</span></span></code></pre></div>
 </div>
 <div id="right-join" class="section level4 hasAnchor" number="14.4.2.2">
 <h4><span class="header-section-number">14.4.2.2</span> Right join<a href="lesson-4a-relational-data.html#right-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -982,19 +990,19 @@ first data frame written in the command, whereas a right join keeps all
 the rows in the second data frame.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-353"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-352"></span>
 <img src="images/right-join.gif" alt="Right join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.4: Right join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="lesson-4a-relational-data.html#cb213-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb213-2"><a href="lesson-4a-relational-data.html#cb213-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
-<span id="cb213-3"><a href="lesson-4a-relational-data.html#cb213-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
-<span id="cb213-4"><a href="lesson-4a-relational-data.html#cb213-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb213-5"><a href="lesson-4a-relational-data.html#cb213-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb213-6"><a href="lesson-4a-relational-data.html#cb213-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
-<span id="cb213-7"><a href="lesson-4a-relational-data.html#cb213-7" tabindex="-1"></a><span class="do">## 3     4 &lt;NA&gt;  y3</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="lesson-4a-relational-data.html#cb212-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb212-2"><a href="lesson-4a-relational-data.html#cb212-2" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
+<span id="cb212-3"><a href="lesson-4a-relational-data.html#cb212-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
+<span id="cb212-4"><a href="lesson-4a-relational-data.html#cb212-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb212-5"><a href="lesson-4a-relational-data.html#cb212-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb212-6"><a href="lesson-4a-relational-data.html#cb212-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
+<span id="cb212-7"><a href="lesson-4a-relational-data.html#cb212-7" tabindex="-1"></a><span class="do">## 3     4 &lt;NA&gt;  y3</span></span></code></pre></div>
 </div>
 <div id="full-join" class="section level4 hasAnchor" number="14.4.2.3">
 <h4><span class="header-section-number">14.4.2.3</span> Full join<a href="lesson-4a-relational-data.html#full-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1005,66 +1013,67 @@ A full join is the most inclusive of the joins - it returns all rows
 from both data frames.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-356"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-355"></span>
 <img src="images/full-join.gif" alt="Full join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.5: Full join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="lesson-4a-relational-data.html#cb214-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb214-2"><a href="lesson-4a-relational-data.html#cb214-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
-<span id="cb214-3"><a href="lesson-4a-relational-data.html#cb214-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
-<span id="cb214-4"><a href="lesson-4a-relational-data.html#cb214-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb214-5"><a href="lesson-4a-relational-data.html#cb214-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb214-6"><a href="lesson-4a-relational-data.html#cb214-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
-<span id="cb214-7"><a href="lesson-4a-relational-data.html#cb214-7" tabindex="-1"></a><span class="do">## 3     3 x3    &lt;NA&gt; </span></span>
-<span id="cb214-8"><a href="lesson-4a-relational-data.html#cb214-8" tabindex="-1"></a><span class="do">## 4     4 &lt;NA&gt;  y3</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="lesson-4a-relational-data.html#cb213-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb213-2"><a href="lesson-4a-relational-data.html#cb213-2" tabindex="-1"></a><span class="do">## # A tibble: 4 × 3</span></span>
+<span id="cb213-3"><a href="lesson-4a-relational-data.html#cb213-3" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
+<span id="cb213-4"><a href="lesson-4a-relational-data.html#cb213-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb213-5"><a href="lesson-4a-relational-data.html#cb213-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb213-6"><a href="lesson-4a-relational-data.html#cb213-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2   </span></span>
+<span id="cb213-7"><a href="lesson-4a-relational-data.html#cb213-7" tabindex="-1"></a><span class="do">## 3     3 x3    &lt;NA&gt; </span></span>
+<span id="cb213-8"><a href="lesson-4a-relational-data.html#cb213-8" tabindex="-1"></a><span class="do">## 4     4 &lt;NA&gt;  y3</span></span></code></pre></div>
 </div>
 </div>
 <div id="differing-keys" class="section level3 hasAnchor" number="14.4.3">
 <h3><span class="header-section-number">14.4.3</span> Differing keys<a href="lesson-4a-relational-data.html#differing-keys" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So far, the keys we’ve used to join two data frames have had the same name. This was encoded by using <code>by = "id"</code>. However, this is not a requirement. In fact, if we exclude the <code>by</code> argument then our <code>xxx_join()</code> functions will identify all common variable names in both tables and join by those. When this happens we get a message:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="lesson-4a-relational-data.html#cb215-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(y)</span>
-<span id="cb215-2"><a href="lesson-4a-relational-data.html#cb215-2" tabindex="-1"></a><span class="do">## Joining with `by = join_by(id)`</span></span>
-<span id="cb215-3"><a href="lesson-4a-relational-data.html#cb215-3" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
-<span id="cb215-4"><a href="lesson-4a-relational-data.html#cb215-4" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
-<span id="cb215-5"><a href="lesson-4a-relational-data.html#cb215-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb215-6"><a href="lesson-4a-relational-data.html#cb215-6" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb215-7"><a href="lesson-4a-relational-data.html#cb215-7" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="lesson-4a-relational-data.html#cb214-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(y)</span>
+<span id="cb214-2"><a href="lesson-4a-relational-data.html#cb214-2" tabindex="-1"></a><span class="do">## Joining with `by = join_by(id)`</span></span>
+<span id="cb214-3"><a href="lesson-4a-relational-data.html#cb214-3" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb214-4"><a href="lesson-4a-relational-data.html#cb214-4" tabindex="-1"></a><span class="do">##      id val_x val_y</span></span>
+<span id="cb214-5"><a href="lesson-4a-relational-data.html#cb214-5" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb214-6"><a href="lesson-4a-relational-data.html#cb214-6" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb214-7"><a href="lesson-4a-relational-data.html#cb214-7" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
 <p>But what happens we our common key variable is named differently in each data frame?</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="lesson-4a-relational-data.html#cb216-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb216-2"><a href="lesson-4a-relational-data.html#cb216-2" tabindex="-1"></a>  <span class="sc">~</span>id_1, <span class="sc">~</span>val_a,</span>
-<span id="cb216-3"><a href="lesson-4a-relational-data.html#cb216-3" tabindex="-1"></a>      <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</span>
-<span id="cb216-4"><a href="lesson-4a-relational-data.html#cb216-4" tabindex="-1"></a>      <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</span>
-<span id="cb216-5"><a href="lesson-4a-relational-data.html#cb216-5" tabindex="-1"></a>      <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></span>
-<span id="cb216-6"><a href="lesson-4a-relational-data.html#cb216-6" tabindex="-1"></a>)</span>
-<span id="cb216-7"><a href="lesson-4a-relational-data.html#cb216-7" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb216-8"><a href="lesson-4a-relational-data.html#cb216-8" tabindex="-1"></a>  <span class="sc">~</span>id_2, <span class="sc">~</span>val_b,</span>
-<span id="cb216-9"><a href="lesson-4a-relational-data.html#cb216-9" tabindex="-1"></a>      <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</span>
-<span id="cb216-10"><a href="lesson-4a-relational-data.html#cb216-10" tabindex="-1"></a>      <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</span>
-<span id="cb216-11"><a href="lesson-4a-relational-data.html#cb216-11" tabindex="-1"></a>      <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></span>
-<span id="cb216-12"><a href="lesson-4a-relational-data.html#cb216-12" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="lesson-4a-relational-data.html#cb215-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb215-2"><a href="lesson-4a-relational-data.html#cb215-2" tabindex="-1"></a>  <span class="sc">~</span>id_1, <span class="sc">~</span>val_a,</span>
+<span id="cb215-3"><a href="lesson-4a-relational-data.html#cb215-3" tabindex="-1"></a>      <span class="dv">1</span>, <span class="st">&quot;x1&quot;</span>,</span>
+<span id="cb215-4"><a href="lesson-4a-relational-data.html#cb215-4" tabindex="-1"></a>      <span class="dv">2</span>, <span class="st">&quot;x2&quot;</span>,</span>
+<span id="cb215-5"><a href="lesson-4a-relational-data.html#cb215-5" tabindex="-1"></a>      <span class="dv">3</span>, <span class="st">&quot;x3&quot;</span></span>
+<span id="cb215-6"><a href="lesson-4a-relational-data.html#cb215-6" tabindex="-1"></a>)</span>
+<span id="cb215-7"><a href="lesson-4a-relational-data.html#cb215-7" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb215-8"><a href="lesson-4a-relational-data.html#cb215-8" tabindex="-1"></a>  <span class="sc">~</span>id_2, <span class="sc">~</span>val_b,</span>
+<span id="cb215-9"><a href="lesson-4a-relational-data.html#cb215-9" tabindex="-1"></a>      <span class="dv">1</span>, <span class="st">&quot;y1&quot;</span>,</span>
+<span id="cb215-10"><a href="lesson-4a-relational-data.html#cb215-10" tabindex="-1"></a>      <span class="dv">2</span>, <span class="st">&quot;y2&quot;</span>,</span>
+<span id="cb215-11"><a href="lesson-4a-relational-data.html#cb215-11" tabindex="-1"></a>      <span class="dv">4</span>, <span class="st">&quot;y3&quot;</span></span>
+<span id="cb215-12"><a href="lesson-4a-relational-data.html#cb215-12" tabindex="-1"></a>)</span></code></pre></div>
 <p>In this case, since our common key variable has different names in each table (<code>id_1</code> in <code>a</code> and <code>id_2</code> in <code>b</code>), our inner join function doesn’t know how to join these two data frames.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="lesson-4a-relational-data.html#cb217-1" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(b)</span>
-<span id="cb217-2"><a href="lesson-4a-relational-data.html#cb217-2" tabindex="-1"></a><span class="do">## Error in `inner_join()`:</span></span>
-<span id="cb217-3"><a href="lesson-4a-relational-data.html#cb217-3" tabindex="-1"></a><span class="do">## ! `by` must be supplied when `x` and `y` have no</span></span>
-<span id="cb217-4"><a href="lesson-4a-relational-data.html#cb217-4" tabindex="-1"></a><span class="do">##   common variables.</span></span>
-<span id="cb217-5"><a href="lesson-4a-relational-data.html#cb217-5" tabindex="-1"></a><span class="do">## ℹ Use `cross_join()` to perform a cross-join.</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="lesson-4a-relational-data.html#cb216-1" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(b)</span>
+<span id="cb216-2"><a href="lesson-4a-relational-data.html#cb216-2" tabindex="-1"></a><span class="do">## Error in `inner_join()`:</span></span>
+<span id="cb216-3"><a href="lesson-4a-relational-data.html#cb216-3" tabindex="-1"></a><span class="do">## ! `by` must be supplied when `x`</span></span>
+<span id="cb216-4"><a href="lesson-4a-relational-data.html#cb216-4" tabindex="-1"></a><span class="do">##   and `y` have no common variables.</span></span>
+<span id="cb216-5"><a href="lesson-4a-relational-data.html#cb216-5" tabindex="-1"></a><span class="do">## ℹ Use `cross_join()` to perform a</span></span>
+<span id="cb216-6"><a href="lesson-4a-relational-data.html#cb216-6" tabindex="-1"></a><span class="do">##   cross-join.</span></span></code></pre></div>
 <p>When this happens, we can explicitly tell our join function to use two unique key names as a common key:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="lesson-4a-relational-data.html#cb218-1" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(b, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;id_1&quot;</span> <span class="ot">=</span> <span class="st">&quot;id_2&quot;</span>))</span>
-<span id="cb218-2"><a href="lesson-4a-relational-data.html#cb218-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
-<span id="cb218-3"><a href="lesson-4a-relational-data.html#cb218-3" tabindex="-1"></a><span class="do">##    id_1 val_a val_b</span></span>
-<span id="cb218-4"><a href="lesson-4a-relational-data.html#cb218-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
-<span id="cb218-5"><a href="lesson-4a-relational-data.html#cb218-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
-<span id="cb218-6"><a href="lesson-4a-relational-data.html#cb218-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="lesson-4a-relational-data.html#cb217-1" tabindex="-1"></a>a <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(b, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;id_1&quot;</span> <span class="ot">=</span> <span class="st">&quot;id_2&quot;</span>))</span>
+<span id="cb217-2"><a href="lesson-4a-relational-data.html#cb217-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb217-3"><a href="lesson-4a-relational-data.html#cb217-3" tabindex="-1"></a><span class="do">##    id_1 val_a val_b</span></span>
+<span id="cb217-4"><a href="lesson-4a-relational-data.html#cb217-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb217-5"><a href="lesson-4a-relational-data.html#cb217-5" tabindex="-1"></a><span class="do">## 1     1 x1    y1   </span></span>
+<span id="cb217-6"><a href="lesson-4a-relational-data.html#cb217-6" tabindex="-1"></a><span class="do">## 2     2 x2    y2</span></span></code></pre></div>
 </div>
 <div id="bigger-example" class="section level3 hasAnchor" number="14.4.4">
 <h3><span class="header-section-number">14.4.4</span> Bigger example<a href="lesson-4a-relational-data.html#bigger-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So far we’ve used small simple examples to illustrate the differences between joins. Now let’s use our <strong>completejourney</strong> data to look at some larger examples.<br />
 Say we wanted to add product information (via <code>products</code>) to each transaction (<code>transaction_sample</code>); however, we want to <em>retain all transactions</em>. This would suggest a left join so we can keep all transaction observations but simply add product information where possible to each transaction.</p>
 <p>First, let’s get the common key:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="lesson-4a-relational-data.html#cb219-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(transactions_sample), <span class="fu">colnames</span>(products))</span>
-<span id="cb219-2"><a href="lesson-4a-relational-data.html#cb219-2" tabindex="-1"></a><span class="do">## [1] &quot;product_id&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="lesson-4a-relational-data.html#cb218-1" tabindex="-1"></a><span class="fu">intersect</span>(<span class="fu">colnames</span>(transactions_sample), <span class="fu">colnames</span>(products))</span>
+<span id="cb218-2"><a href="lesson-4a-relational-data.html#cb218-2" tabindex="-1"></a><span class="do">## [1] &quot;product_id&quot;</span></span></code></pre></div>
 <p>This aligns to the <a href="https://bradleyboehmke.github.io/completejourney/articles/completejourney.html#dataset-details">data dictionary</a> so we can trust this is the accurate common key. We can now perform a left join using <code>product_id</code> as the common key:</p>
 <div class="tip">
 <p>
@@ -1074,47 +1083,47 @@ won’t get printed out. You can also use <code>View()</code> on the
 output to show the resulting table in a spreadsheet like view.
 </p>
 </div>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="lesson-4a-relational-data.html#cb220-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
-<span id="cb220-2"><a href="lesson-4a-relational-data.html#cb220-2" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>)</span>
-<span id="cb220-3"><a href="lesson-4a-relational-data.html#cb220-3" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 17</span></span>
-<span id="cb220-4"><a href="lesson-4a-relational-data.html#cb220-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity</span></span>
-<span id="cb220-5"><a href="lesson-4a-relational-data.html#cb220-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;</span></span>
-<span id="cb220-6"><a href="lesson-4a-relational-data.html#cb220-6" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1</span></span>
-<span id="cb220-7"><a href="lesson-4a-relational-data.html#cb220-7" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902            1</span></span>
-<span id="cb220-8"><a href="lesson-4a-relational-data.html#cb220-8" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901            1</span></span>
-<span id="cb220-9"><a href="lesson-4a-relational-data.html#cb220-9" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913          2</span></span>
-<span id="cb220-10"><a href="lesson-4a-relational-data.html#cb220-10" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604           1</span></span>
-<span id="cb220-11"><a href="lesson-4a-relational-data.html#cb220-11" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203            1</span></span>
-<span id="cb220-12"><a href="lesson-4a-relational-data.html#cb220-12" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484           1</span></span>
-<span id="cb220-13"><a href="lesson-4a-relational-data.html#cb220-13" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715           1</span></span>
-<span id="cb220-14"><a href="lesson-4a-relational-data.html#cb220-14" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613            2</span></span>
-<span id="cb220-15"><a href="lesson-4a-relational-data.html#cb220-15" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497            1</span></span>
-<span id="cb220-16"><a href="lesson-4a-relational-data.html#cb220-16" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb220-17"><a href="lesson-4a-relational-data.html#cb220-17" tabindex="-1"></a><span class="do">## # ℹ 12 more variables: sales_value &lt;dbl&gt;,</span></span>
-<span id="cb220-18"><a href="lesson-4a-relational-data.html#cb220-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb220-19"><a href="lesson-4a-relational-data.html#cb220-19" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb220-20"><a href="lesson-4a-relational-data.html#cb220-20" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;,</span></span>
-<span id="cb220-21"><a href="lesson-4a-relational-data.html#cb220-21" tabindex="-1"></a><span class="do">## #   manufacturer_id &lt;chr&gt;, department &lt;chr&gt;,</span></span>
-<span id="cb220-22"><a href="lesson-4a-relational-data.html#cb220-22" tabindex="-1"></a><span class="do">## #   brand &lt;fct&gt;, product_category &lt;chr&gt;, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="lesson-4a-relational-data.html#cb219-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
+<span id="cb219-2"><a href="lesson-4a-relational-data.html#cb219-2" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>)</span>
+<span id="cb219-3"><a href="lesson-4a-relational-data.html#cb219-3" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 17</span></span>
+<span id="cb219-4"><a href="lesson-4a-relational-data.html#cb219-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
+<span id="cb219-5"><a href="lesson-4a-relational-data.html#cb219-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
+<span id="cb219-6"><a href="lesson-4a-relational-data.html#cb219-6" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
+<span id="cb219-7"><a href="lesson-4a-relational-data.html#cb219-7" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496</span></span>
+<span id="cb219-8"><a href="lesson-4a-relational-data.html#cb219-8" tabindex="-1"></a><span class="do">##  3 511          316      32445856036</span></span>
+<span id="cb219-9"><a href="lesson-4a-relational-data.html#cb219-9" tabindex="-1"></a><span class="do">##  4 400          388      31932241118</span></span>
+<span id="cb219-10"><a href="lesson-4a-relational-data.html#cb219-10" tabindex="-1"></a><span class="do">##  5 918          340      32074655895</span></span>
+<span id="cb219-11"><a href="lesson-4a-relational-data.html#cb219-11" tabindex="-1"></a><span class="do">##  6 718          324      32614612029</span></span>
+<span id="cb219-12"><a href="lesson-4a-relational-data.html#cb219-12" tabindex="-1"></a><span class="do">##  7 868          323      32074722463</span></span>
+<span id="cb219-13"><a href="lesson-4a-relational-data.html#cb219-13" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304</span></span>
+<span id="cb219-14"><a href="lesson-4a-relational-data.html#cb219-14" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102</span></span>
+<span id="cb219-15"><a href="lesson-4a-relational-data.html#cb219-15" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707</span></span>
+<span id="cb219-16"><a href="lesson-4a-relational-data.html#cb219-16" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
+<span id="cb219-17"><a href="lesson-4a-relational-data.html#cb219-17" tabindex="-1"></a><span class="do">## # ℹ 14 more variables: product_id &lt;chr&gt;,</span></span>
+<span id="cb219-18"><a href="lesson-4a-relational-data.html#cb219-18" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
+<span id="cb219-19"><a href="lesson-4a-relational-data.html#cb219-19" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
+<span id="cb219-20"><a href="lesson-4a-relational-data.html#cb219-20" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb219-21"><a href="lesson-4a-relational-data.html#cb219-21" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
+<span id="cb219-22"><a href="lesson-4a-relational-data.html#cb219-22" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;, …</span></span></code></pre></div>
 <p>This has now added product information to each transaction. Consequently, if we wanted to get the total sales across the meat <code>department</code> but summarized at the <code>product_category</code> level so that we can identify which products generate the greatest sales we could follow this joining procedure with additional skills we learned in previous lessons:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="lesson-4a-relational-data.html#cb221-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
-<span id="cb221-2"><a href="lesson-4a-relational-data.html#cb221-2" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb221-3"><a href="lesson-4a-relational-data.html#cb221-3" tabindex="-1"></a>   <span class="fu">filter</span>(department <span class="sc">==</span> <span class="st">&#39;MEAT&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb221-4"><a href="lesson-4a-relational-data.html#cb221-4" tabindex="-1"></a>   <span class="fu">group_by</span>(product_category) <span class="sc">%&gt;%</span></span>
-<span id="cb221-5"><a href="lesson-4a-relational-data.html#cb221-5" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_spend =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">sales_value</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb221-6"><a href="lesson-4a-relational-data.html#cb221-6" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(total_spend))</span>
-<span id="cb221-7"><a href="lesson-4a-relational-data.html#cb221-7" tabindex="-1"></a><span class="do">## # A tibble: 9 × 2</span></span>
-<span id="cb221-8"><a href="lesson-4a-relational-data.html#cb221-8" tabindex="-1"></a><span class="do">##   product_category        total_spend</span></span>
-<span id="cb221-9"><a href="lesson-4a-relational-data.html#cb221-9" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
-<span id="cb221-10"><a href="lesson-4a-relational-data.html#cb221-10" tabindex="-1"></a><span class="do">## 1 BEEF                        8800.  </span></span>
-<span id="cb221-11"><a href="lesson-4a-relational-data.html#cb221-11" tabindex="-1"></a><span class="do">## 2 CHICKEN                     2540.  </span></span>
-<span id="cb221-12"><a href="lesson-4a-relational-data.html#cb221-12" tabindex="-1"></a><span class="do">## 3 PORK                        2527.  </span></span>
-<span id="cb221-13"><a href="lesson-4a-relational-data.html#cb221-13" tabindex="-1"></a><span class="do">## 4 SMOKED MEATS                 784.  </span></span>
-<span id="cb221-14"><a href="lesson-4a-relational-data.html#cb221-14" tabindex="-1"></a><span class="do">## 5 TURKEY                       625.  </span></span>
-<span id="cb221-15"><a href="lesson-4a-relational-data.html#cb221-15" tabindex="-1"></a><span class="do">## 6 EXOTIC GAME/FOWL              61   </span></span>
-<span id="cb221-16"><a href="lesson-4a-relational-data.html#cb221-16" tabindex="-1"></a><span class="do">## 7 LAMB                          34.7 </span></span>
-<span id="cb221-17"><a href="lesson-4a-relational-data.html#cb221-17" tabindex="-1"></a><span class="do">## 8 MEAT - MISC                    4.63</span></span>
-<span id="cb221-18"><a href="lesson-4a-relational-data.html#cb221-18" tabindex="-1"></a><span class="do">## 9 RW FRESH PROCESSED MEAT        1.69</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="lesson-4a-relational-data.html#cb220-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="lesson-4a-relational-data.html#cb220-2" tabindex="-1"></a>   <span class="fu">left_join</span>(products, <span class="at">by =</span> <span class="st">&quot;product_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb220-3"><a href="lesson-4a-relational-data.html#cb220-3" tabindex="-1"></a>   <span class="fu">filter</span>(department <span class="sc">==</span> <span class="st">&#39;MEAT&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb220-4"><a href="lesson-4a-relational-data.html#cb220-4" tabindex="-1"></a>   <span class="fu">group_by</span>(product_category) <span class="sc">%&gt;%</span></span>
+<span id="cb220-5"><a href="lesson-4a-relational-data.html#cb220-5" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">total_spend =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">sales_value</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb220-6"><a href="lesson-4a-relational-data.html#cb220-6" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(total_spend))</span>
+<span id="cb220-7"><a href="lesson-4a-relational-data.html#cb220-7" tabindex="-1"></a><span class="do">## # A tibble: 9 × 2</span></span>
+<span id="cb220-8"><a href="lesson-4a-relational-data.html#cb220-8" tabindex="-1"></a><span class="do">##   product_category        total_spend</span></span>
+<span id="cb220-9"><a href="lesson-4a-relational-data.html#cb220-9" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                         &lt;dbl&gt;</span></span>
+<span id="cb220-10"><a href="lesson-4a-relational-data.html#cb220-10" tabindex="-1"></a><span class="do">## 1 BEEF                        8800.  </span></span>
+<span id="cb220-11"><a href="lesson-4a-relational-data.html#cb220-11" tabindex="-1"></a><span class="do">## 2 CHICKEN                     2540.  </span></span>
+<span id="cb220-12"><a href="lesson-4a-relational-data.html#cb220-12" tabindex="-1"></a><span class="do">## 3 PORK                        2527.  </span></span>
+<span id="cb220-13"><a href="lesson-4a-relational-data.html#cb220-13" tabindex="-1"></a><span class="do">## 4 SMOKED MEATS                 784.  </span></span>
+<span id="cb220-14"><a href="lesson-4a-relational-data.html#cb220-14" tabindex="-1"></a><span class="do">## 5 TURKEY                       625.  </span></span>
+<span id="cb220-15"><a href="lesson-4a-relational-data.html#cb220-15" tabindex="-1"></a><span class="do">## 6 EXOTIC GAME/FOWL              61   </span></span>
+<span id="cb220-16"><a href="lesson-4a-relational-data.html#cb220-16" tabindex="-1"></a><span class="do">## 7 LAMB                          34.7 </span></span>
+<span id="cb220-17"><a href="lesson-4a-relational-data.html#cb220-17" tabindex="-1"></a><span class="do">## 8 MEAT - MISC                    4.63</span></span>
+<span id="cb220-18"><a href="lesson-4a-relational-data.html#cb220-18" tabindex="-1"></a><span class="do">## 9 RW FRESH PROCESSED MEAT        1.69</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-29" class="section level3 hasAnchor" number="14.4.5">
 <h3><span class="header-section-number">14.4.5</span> Knowledge check<a href="lesson-4a-relational-data.html#knowledge-check-29" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1135,8 +1144,10 @@ coupon and coupon redemption data.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_orbtaglo&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_6eh404gy" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.4.5">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K7GDbohnmHY?si=3CI9Ql4Znn_SVS86&amp;start=1176" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
@@ -1149,24 +1160,26 @@ coupon and coupon redemption data.
 <li><code>anti_join()</code>: drops all observations in <code>x</code> that have a match in <code>y</code>.</li>
 </ul>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_51rmk8td&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[mediaProxy.mediaPlayFrom]=857&amp;flashvars[mediaProxy.mediaPlayTo]=1042&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_jxp49zca" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | lesson-4a">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oIStojdJIYg?si=t89rYs-aS11jgsOk&amp;start=857&end=1040" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 <div id="semi-join" class="section level3 hasAnchor" number="14.5.1">
 <h3><span class="header-section-number">14.5.1</span> Semi join<a href="lesson-4a-relational-data.html#semi-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A semi-join keeps all observations in the baseline data frame that have a match in the secondary data frame (but does not add new columns nor duplicate any rows for multiple matches).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-369"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-368"></span>
 <img src="images/semi-join.gif" alt="Semi join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.6: Semi join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="lesson-4a-relational-data.html#cb222-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb222-2"><a href="lesson-4a-relational-data.html#cb222-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
-<span id="cb222-3"><a href="lesson-4a-relational-data.html#cb222-3" tabindex="-1"></a><span class="do">##      id val_x</span></span>
-<span id="cb222-4"><a href="lesson-4a-relational-data.html#cb222-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb222-5"><a href="lesson-4a-relational-data.html#cb222-5" tabindex="-1"></a><span class="do">## 1     1 x1   </span></span>
-<span id="cb222-6"><a href="lesson-4a-relational-data.html#cb222-6" tabindex="-1"></a><span class="do">## 2     2 x2</span></span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="lesson-4a-relational-data.html#cb221-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb221-2"><a href="lesson-4a-relational-data.html#cb221-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 2</span></span>
+<span id="cb221-3"><a href="lesson-4a-relational-data.html#cb221-3" tabindex="-1"></a><span class="do">##      id val_x</span></span>
+<span id="cb221-4"><a href="lesson-4a-relational-data.html#cb221-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb221-5"><a href="lesson-4a-relational-data.html#cb221-5" tabindex="-1"></a><span class="do">## 1     1 x1   </span></span>
+<span id="cb221-6"><a href="lesson-4a-relational-data.html#cb221-6" tabindex="-1"></a><span class="do">## 2     2 x2</span></span></code></pre></div>
 </div>
 <div id="anti-join" class="section level3 hasAnchor" number="14.5.2">
 <h3><span class="header-section-number">14.5.2</span> Anti join<a href="lesson-4a-relational-data.html#anti-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1179,42 +1192,42 @@ present in another data frame, troubleshooting spelling in a join
 were excluded after another join.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-372"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-371"></span>
 <img src="images/anti-join.gif" alt="Anti join ([source](https://github.com/gadenbuie/tidyexplain))." width="50%" height="50%" />
 <p class="caption">
 Figure 14.7: Anti join (<a href="https://github.com/gadenbuie/tidyexplain">source</a>).
 </p>
 </div>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="lesson-4a-relational-data.html#cb223-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb223-2"><a href="lesson-4a-relational-data.html#cb223-2" tabindex="-1"></a><span class="do">## # A tibble: 1 × 2</span></span>
-<span id="cb223-3"><a href="lesson-4a-relational-data.html#cb223-3" tabindex="-1"></a><span class="do">##      id val_x</span></span>
-<span id="cb223-4"><a href="lesson-4a-relational-data.html#cb223-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;</span></span>
-<span id="cb223-5"><a href="lesson-4a-relational-data.html#cb223-5" tabindex="-1"></a><span class="do">## 1     3 x3</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="lesson-4a-relational-data.html#cb222-1" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(y, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
+<span id="cb222-2"><a href="lesson-4a-relational-data.html#cb222-2" tabindex="-1"></a><span class="do">## # A tibble: 1 × 2</span></span>
+<span id="cb222-3"><a href="lesson-4a-relational-data.html#cb222-3" tabindex="-1"></a><span class="do">##      id val_x</span></span>
+<span id="cb222-4"><a href="lesson-4a-relational-data.html#cb222-4" tabindex="-1"></a><span class="do">##   &lt;dbl&gt; &lt;chr&gt;</span></span>
+<span id="cb222-5"><a href="lesson-4a-relational-data.html#cb222-5" tabindex="-1"></a><span class="do">## 1     3 x3</span></span></code></pre></div>
 </div>
 <div id="bigger-example-1" class="section level3 hasAnchor" number="14.5.3">
 <h3><span class="header-section-number">14.5.3</span> Bigger example<a href="lesson-4a-relational-data.html#bigger-example-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use the <strong>completejourney</strong> data to highlight the purpose behind filtering joins. In our <code>transactions_sample</code> we have a total of 75,000 transactions.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="lesson-4a-relational-data.html#cb224-1" tabindex="-1"></a><span class="fu">tally</span>(transactions_sample)</span>
-<span id="cb224-2"><a href="lesson-4a-relational-data.html#cb224-2" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
-<span id="cb224-3"><a href="lesson-4a-relational-data.html#cb224-3" tabindex="-1"></a><span class="do">##       n</span></span>
-<span id="cb224-4"><a href="lesson-4a-relational-data.html#cb224-4" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
-<span id="cb224-5"><a href="lesson-4a-relational-data.html#cb224-5" tabindex="-1"></a><span class="do">## 1 75000</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="lesson-4a-relational-data.html#cb223-1" tabindex="-1"></a><span class="fu">tally</span>(transactions_sample)</span>
+<span id="cb223-2"><a href="lesson-4a-relational-data.html#cb223-2" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
+<span id="cb223-3"><a href="lesson-4a-relational-data.html#cb223-3" tabindex="-1"></a><span class="do">##       n</span></span>
+<span id="cb223-4"><a href="lesson-4a-relational-data.html#cb223-4" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
+<span id="cb223-5"><a href="lesson-4a-relational-data.html#cb223-5" tabindex="-1"></a><span class="do">## 1 75000</span></span></code></pre></div>
 <p>Now say our manager came to us and asked – <em>“of all our transactions, how many of them are related to households that we have demographic information on?”</em> To answer this question we would use a semi-join, which shows that 42,199 (56%) of our transactions are for customers that we have demographics on.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="lesson-4a-relational-data.html#cb224-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
+<span id="cb224-2"><a href="lesson-4a-relational-data.html#cb224-2" tabindex="-1"></a>   <span class="fu">semi_join</span>(demographics, <span class="at">by =</span> <span class="st">&quot;household_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb224-3"><a href="lesson-4a-relational-data.html#cb224-3" tabindex="-1"></a>   <span class="fu">tally</span>()</span>
+<span id="cb224-4"><a href="lesson-4a-relational-data.html#cb224-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
+<span id="cb224-5"><a href="lesson-4a-relational-data.html#cb224-5" tabindex="-1"></a><span class="do">##       n</span></span>
+<span id="cb224-6"><a href="lesson-4a-relational-data.html#cb224-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
+<span id="cb224-7"><a href="lesson-4a-relational-data.html#cb224-7" tabindex="-1"></a><span class="do">## 1 42199</span></span></code></pre></div>
+<p>Now, what if our manager asked us the same question but with a slightly different angle – <em>“of all our transactions, how many of them are by customers that we <strong>don’t</strong> have demographic information on?”</em> To answer this question we would use an anti-join, which shows that 32,801 (44%) of our transactions are for customers that we do not have demographics on.</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="lesson-4a-relational-data.html#cb225-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
-<span id="cb225-2"><a href="lesson-4a-relational-data.html#cb225-2" tabindex="-1"></a>   <span class="fu">semi_join</span>(demographics, <span class="at">by =</span> <span class="st">&quot;household_id&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb225-2"><a href="lesson-4a-relational-data.html#cb225-2" tabindex="-1"></a>   <span class="fu">anti_join</span>(demographics, <span class="at">by =</span> <span class="st">&quot;household_id&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb225-3"><a href="lesson-4a-relational-data.html#cb225-3" tabindex="-1"></a>   <span class="fu">tally</span>()</span>
 <span id="cb225-4"><a href="lesson-4a-relational-data.html#cb225-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
 <span id="cb225-5"><a href="lesson-4a-relational-data.html#cb225-5" tabindex="-1"></a><span class="do">##       n</span></span>
 <span id="cb225-6"><a href="lesson-4a-relational-data.html#cb225-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
-<span id="cb225-7"><a href="lesson-4a-relational-data.html#cb225-7" tabindex="-1"></a><span class="do">## 1 42199</span></span></code></pre></div>
-<p>Now, what if our manager asked us the same question but with a slightly different angle – <em>“of all our transactions, how many of them are by customers that we <strong>don’t</strong> have demographic information on?”</em> To answer this question we would use an anti-join, which shows that 32,801 (44%) of our transactions are for customers that we do not have demographics on.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="lesson-4a-relational-data.html#cb226-1" tabindex="-1"></a>transactions_sample <span class="sc">%&gt;%</span></span>
-<span id="cb226-2"><a href="lesson-4a-relational-data.html#cb226-2" tabindex="-1"></a>   <span class="fu">anti_join</span>(demographics, <span class="at">by =</span> <span class="st">&quot;household_id&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb226-3"><a href="lesson-4a-relational-data.html#cb226-3" tabindex="-1"></a>   <span class="fu">tally</span>()</span>
-<span id="cb226-4"><a href="lesson-4a-relational-data.html#cb226-4" tabindex="-1"></a><span class="do">## # A tibble: 1 × 1</span></span>
-<span id="cb226-5"><a href="lesson-4a-relational-data.html#cb226-5" tabindex="-1"></a><span class="do">##       n</span></span>
-<span id="cb226-6"><a href="lesson-4a-relational-data.html#cb226-6" tabindex="-1"></a><span class="do">##   &lt;int&gt;</span></span>
-<span id="cb226-7"><a href="lesson-4a-relational-data.html#cb226-7" tabindex="-1"></a><span class="do">## 1 32801</span></span></code></pre></div>
+<span id="cb225-7"><a href="lesson-4a-relational-data.html#cb225-7" tabindex="-1"></a><span class="do">## 1 32801</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-30" class="section level3 hasAnchor" number="14.5.4">
 <h3><span class="header-section-number">14.5.4</span> Knowledge check<a href="lesson-4a-relational-data.html#knowledge-check-30" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1235,8 +1248,10 @@ goods.
 </ol>
 </div>
 <div class="video">
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_9mh0mvvm&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&amp;wid=1_p6u2z234" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 7025 | knowledge-check-14.5.4">
-</iframe>
+<p>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0Juyd6IRTmo?si=eBv9cb-FqTYxkF3_&amp;start=1176" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 </div>
 </div>
 </div>
