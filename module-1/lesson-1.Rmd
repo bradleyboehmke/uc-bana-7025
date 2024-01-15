@@ -112,7 +112,7 @@ knitr::include_graphics("images/run-code.png")
 
 ### Workspace Environment
 
-The top right window is the workspace environment which captures much of your your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:
+The top right window is the workspace environment which captures much of your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). When saving your R working session, these are the components along with the script files that will be saved in your working directory, which is the default location for all file inputs and outputs. To get or set your working directory so you can direct where your files are saved:
 
 ```{r, eval=FALSE}
 # returns path for the current working directory
@@ -214,7 +214,7 @@ knitr::include_graphics("images/rstudio-cheatsheet.png")
 3. Type `pi` in the console. Set the option to show 8 digits. Re-type `pi` in the console.
 4. Type `?pi` in the console. Note that documentation on this object pops up in the Help tab in the Misc. Display.
 5. Now check out your code History tab.
-6. Create a new .R file and save this as _my-first-script_ (note how this now appears in your _Learning R_ folder). Type `pi` in line 1 of this script, `option(digits = 8)` in line 2, and `pi` again in line three. Execute this code one line at a time and then re-execute all lines at once.
+6. Create a new .R file and save this as _my-first-script_ (note how this now appears in your _Learning R_ folder). Type `pi` in line 1 of this script, `options(digits = 8)` in line 2, and `pi` again in line three. Execute this code one line at a time and then re-execute all lines at once.
 ```
 
 ```{block, type="video"}
