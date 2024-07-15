@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>23 Lesson 6b: Iteration statements | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="23 Lesson 6b: Iteration statements | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -867,12 +868,9 @@ lesson from the supplementary files provided via Canvas.
 <span id="cb400-2"><a href="lesson-6b-iteration-statements.html#cb400-2" tabindex="-1"></a></span>
 <span id="cb400-3"><a href="lesson-6b-iteration-statements.html#cb400-3" tabindex="-1"></a>monthly_data_files <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data/monthly_data&quot;</span>)</span>
 <span id="cb400-4"><a href="lesson-6b-iteration-statements.html#cb400-4" tabindex="-1"></a><span class="fu">list.files</span>(monthly_data_files)</span>
-<span id="cb400-5"><a href="lesson-6b-iteration-statements.html#cb400-5" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot;</span></span>
-<span id="cb400-6"><a href="lesson-6b-iteration-statements.html#cb400-6" tabindex="-1"></a><span class="do">##  [3] &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
-<span id="cb400-7"><a href="lesson-6b-iteration-statements.html#cb400-7" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
-<span id="cb400-8"><a href="lesson-6b-iteration-statements.html#cb400-8" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
-<span id="cb400-9"><a href="lesson-6b-iteration-statements.html#cb400-9" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot;</span></span>
-<span id="cb400-10"><a href="lesson-6b-iteration-statements.html#cb400-10" tabindex="-1"></a><span class="do">## [11] &quot;Month-11.csv&quot;</span></span></code></pre></div>
+<span id="cb400-5"><a href="lesson-6b-iteration-statements.html#cb400-5" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
+<span id="cb400-6"><a href="lesson-6b-iteration-statements.html#cb400-6" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot; &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
+<span id="cb400-7"><a href="lesson-6b-iteration-statements.html#cb400-7" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span></code></pre></div>
 <p>Say we wanted to import one of these files into R:</p>
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="lesson-6b-iteration-statements.html#cb401-1" tabindex="-1"></a><span class="co"># here&#39;s a single file</span></span>
 <span id="cb401-2"><a href="lesson-6b-iteration-statements.html#cb401-2" tabindex="-1"></a>(first_df <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files)[<span class="dv">1</span>])</span>
@@ -949,16 +947,13 @@ the data files?
 <p>The following code identifies the month of the data set from our monthly data files in the last knowledge check:</p>
 <div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="lesson-6b-iteration-statements.html#cb405-1" tabindex="-1"></a><span class="co"># data files</span></span>
 <span id="cb405-2"><a href="lesson-6b-iteration-statements.html#cb405-2" tabindex="-1"></a>(data_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(monthly_data_files))</span>
-<span id="cb405-3"><a href="lesson-6b-iteration-statements.html#cb405-3" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot;</span></span>
-<span id="cb405-4"><a href="lesson-6b-iteration-statements.html#cb405-4" tabindex="-1"></a><span class="do">##  [3] &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
-<span id="cb405-5"><a href="lesson-6b-iteration-statements.html#cb405-5" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot;</span></span>
-<span id="cb405-6"><a href="lesson-6b-iteration-statements.html#cb405-6" tabindex="-1"></a><span class="do">##  [7] &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
-<span id="cb405-7"><a href="lesson-6b-iteration-statements.html#cb405-7" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot;</span></span>
-<span id="cb405-8"><a href="lesson-6b-iteration-statements.html#cb405-8" tabindex="-1"></a><span class="do">## [11] &quot;Month-11.csv&quot;</span></span>
-<span id="cb405-9"><a href="lesson-6b-iteration-statements.html#cb405-9" tabindex="-1"></a></span>
-<span id="cb405-10"><a href="lesson-6b-iteration-statements.html#cb405-10" tabindex="-1"></a><span class="co"># extract month number</span></span>
-<span id="cb405-11"><a href="lesson-6b-iteration-statements.html#cb405-11" tabindex="-1"></a><span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(data_files, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>))</span>
-<span id="cb405-12"><a href="lesson-6b-iteration-statements.html#cb405-12" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
+<span id="cb405-3"><a href="lesson-6b-iteration-statements.html#cb405-3" tabindex="-1"></a><span class="do">##  [1] &quot;Month-01.csv&quot; &quot;Month-02.csv&quot; &quot;Month-03.csv&quot; &quot;Month-04.csv&quot;</span></span>
+<span id="cb405-4"><a href="lesson-6b-iteration-statements.html#cb405-4" tabindex="-1"></a><span class="do">##  [5] &quot;Month-05.csv&quot; &quot;Month-06.csv&quot; &quot;Month-07.csv&quot; &quot;Month-08.csv&quot;</span></span>
+<span id="cb405-5"><a href="lesson-6b-iteration-statements.html#cb405-5" tabindex="-1"></a><span class="do">##  [9] &quot;Month-09.csv&quot; &quot;Month-10.csv&quot; &quot;Month-11.csv&quot;</span></span>
+<span id="cb405-6"><a href="lesson-6b-iteration-statements.html#cb405-6" tabindex="-1"></a></span>
+<span id="cb405-7"><a href="lesson-6b-iteration-statements.html#cb405-7" tabindex="-1"></a><span class="co"># extract month number</span></span>
+<span id="cb405-8"><a href="lesson-6b-iteration-statements.html#cb405-8" tabindex="-1"></a><span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_extract</span>(data_files, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">d+&quot;</span>))</span>
+<span id="cb405-9"><a href="lesson-6b-iteration-statements.html#cb405-9" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10 11</span></span></code></pre></div>
 <div class="todo">
 <p>
 Modify the following <code>for</code> loop with a <code>next</code>
@@ -1197,58 +1192,38 @@ Figure 23.2: Functional programming view of iteration statements.
 <p>Notice how the above results in a named list. If instead we wanted a vector to be returned we can us <code>map_int</code>:</p>
 <div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="lesson-6b-iteration-statements.html#cb415-1" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span></span>
 <span id="cb415-2"><a href="lesson-6b-iteration-statements.html#cb415-2" tabindex="-1"></a>   <span class="fu">map_int</span>(n_distinct)</span>
-<span id="cb415-3"><a href="lesson-6b-iteration-statements.html#cb415-3" tabindex="-1"></a><span class="do">##   household_id            age </span></span>
-<span id="cb415-4"><a href="lesson-6b-iteration-statements.html#cb415-4" tabindex="-1"></a><span class="do">##            801              6 </span></span>
-<span id="cb415-5"><a href="lesson-6b-iteration-statements.html#cb415-5" tabindex="-1"></a><span class="do">##         income home_ownership </span></span>
-<span id="cb415-6"><a href="lesson-6b-iteration-statements.html#cb415-6" tabindex="-1"></a><span class="do">##             12              5 </span></span>
-<span id="cb415-7"><a href="lesson-6b-iteration-statements.html#cb415-7" tabindex="-1"></a><span class="do">## marital_status household_size </span></span>
-<span id="cb415-8"><a href="lesson-6b-iteration-statements.html#cb415-8" tabindex="-1"></a><span class="do">##              3              5 </span></span>
-<span id="cb415-9"><a href="lesson-6b-iteration-statements.html#cb415-9" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
-<span id="cb415-10"><a href="lesson-6b-iteration-statements.html#cb415-10" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<span id="cb415-3"><a href="lesson-6b-iteration-statements.html#cb415-3" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership </span></span>
+<span id="cb415-4"><a href="lesson-6b-iteration-statements.html#cb415-4" tabindex="-1"></a><span class="do">##            801              6             12              5 </span></span>
+<span id="cb415-5"><a href="lesson-6b-iteration-statements.html#cb415-5" tabindex="-1"></a><span class="do">## marital_status household_size household_comp     kids_count </span></span>
+<span id="cb415-6"><a href="lesson-6b-iteration-statements.html#cb415-6" tabindex="-1"></a><span class="do">##              3              5              4              4</span></span></code></pre></div>
 <p>We can apply other <code>map</code> functions to our input as well; we simply need to think about what we expect the output to be and that directs us to use the relevant <code>map</code> function:</p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lesson-6b-iteration-statements.html#cb416-1" tabindex="-1"></a><span class="co"># logical output</span></span>
 <span id="cb416-2"><a href="lesson-6b-iteration-statements.html#cb416-2" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_lgl</span>(is.factor)</span>
-<span id="cb416-3"><a href="lesson-6b-iteration-statements.html#cb416-3" tabindex="-1"></a><span class="do">##   household_id            age </span></span>
-<span id="cb416-4"><a href="lesson-6b-iteration-statements.html#cb416-4" tabindex="-1"></a><span class="do">##          FALSE           TRUE </span></span>
-<span id="cb416-5"><a href="lesson-6b-iteration-statements.html#cb416-5" tabindex="-1"></a><span class="do">##         income home_ownership </span></span>
-<span id="cb416-6"><a href="lesson-6b-iteration-statements.html#cb416-6" tabindex="-1"></a><span class="do">##           TRUE           TRUE </span></span>
-<span id="cb416-7"><a href="lesson-6b-iteration-statements.html#cb416-7" tabindex="-1"></a><span class="do">## marital_status household_size </span></span>
-<span id="cb416-8"><a href="lesson-6b-iteration-statements.html#cb416-8" tabindex="-1"></a><span class="do">##           TRUE           TRUE </span></span>
-<span id="cb416-9"><a href="lesson-6b-iteration-statements.html#cb416-9" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
-<span id="cb416-10"><a href="lesson-6b-iteration-statements.html#cb416-10" tabindex="-1"></a><span class="do">##           TRUE           TRUE</span></span>
-<span id="cb416-11"><a href="lesson-6b-iteration-statements.html#cb416-11" tabindex="-1"></a></span>
-<span id="cb416-12"><a href="lesson-6b-iteration-statements.html#cb416-12" tabindex="-1"></a><span class="co"># integer output</span></span>
-<span id="cb416-13"><a href="lesson-6b-iteration-statements.html#cb416-13" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
-<span id="cb416-14"><a href="lesson-6b-iteration-statements.html#cb416-14" tabindex="-1"></a><span class="do">##   household_id            age </span></span>
-<span id="cb416-15"><a href="lesson-6b-iteration-statements.html#cb416-15" tabindex="-1"></a><span class="do">##            801              6 </span></span>
-<span id="cb416-16"><a href="lesson-6b-iteration-statements.html#cb416-16" tabindex="-1"></a><span class="do">##         income home_ownership </span></span>
-<span id="cb416-17"><a href="lesson-6b-iteration-statements.html#cb416-17" tabindex="-1"></a><span class="do">##             12              5 </span></span>
-<span id="cb416-18"><a href="lesson-6b-iteration-statements.html#cb416-18" tabindex="-1"></a><span class="do">## marital_status household_size </span></span>
-<span id="cb416-19"><a href="lesson-6b-iteration-statements.html#cb416-19" tabindex="-1"></a><span class="do">##              3              5 </span></span>
-<span id="cb416-20"><a href="lesson-6b-iteration-statements.html#cb416-20" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
-<span id="cb416-21"><a href="lesson-6b-iteration-statements.html#cb416-21" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<span id="cb416-3"><a href="lesson-6b-iteration-statements.html#cb416-3" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership </span></span>
+<span id="cb416-4"><a href="lesson-6b-iteration-statements.html#cb416-4" tabindex="-1"></a><span class="do">##          FALSE           TRUE           TRUE           TRUE </span></span>
+<span id="cb416-5"><a href="lesson-6b-iteration-statements.html#cb416-5" tabindex="-1"></a><span class="do">## marital_status household_size household_comp     kids_count </span></span>
+<span id="cb416-6"><a href="lesson-6b-iteration-statements.html#cb416-6" tabindex="-1"></a><span class="do">##           TRUE           TRUE           TRUE           TRUE</span></span>
+<span id="cb416-7"><a href="lesson-6b-iteration-statements.html#cb416-7" tabindex="-1"></a></span>
+<span id="cb416-8"><a href="lesson-6b-iteration-statements.html#cb416-8" tabindex="-1"></a><span class="co"># integer output</span></span>
+<span id="cb416-9"><a href="lesson-6b-iteration-statements.html#cb416-9" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb416-10"><a href="lesson-6b-iteration-statements.html#cb416-10" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership </span></span>
+<span id="cb416-11"><a href="lesson-6b-iteration-statements.html#cb416-11" tabindex="-1"></a><span class="do">##            801              6             12              5 </span></span>
+<span id="cb416-12"><a href="lesson-6b-iteration-statements.html#cb416-12" tabindex="-1"></a><span class="do">## marital_status household_size household_comp     kids_count </span></span>
+<span id="cb416-13"><a href="lesson-6b-iteration-statements.html#cb416-13" tabindex="-1"></a><span class="do">##              3              5              4              4</span></span></code></pre></div>
 <p>Notice the last function applied looks different. The map functions provide a few shortcuts that you can use with the <code>.f</code> argument in order to save a little typing. The syntax for creating an anonymous function in R is quite verbose so <strong>purrr</strong> provides a convenient shortcut: a one-sided formula where <code>.</code> inside of <code>unique</code> points where the data should be evaluated.</p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="lesson-6b-iteration-statements.html#cb417-1" tabindex="-1"></a><span class="co"># traditional anonymous function approach</span></span>
 <span id="cb417-2"><a href="lesson-6b-iteration-statements.html#cb417-2" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="cf">function</span>(x) <span class="fu">length</span>(<span class="fu">unique</span>(x)))</span>
-<span id="cb417-3"><a href="lesson-6b-iteration-statements.html#cb417-3" tabindex="-1"></a><span class="do">##   household_id            age </span></span>
-<span id="cb417-4"><a href="lesson-6b-iteration-statements.html#cb417-4" tabindex="-1"></a><span class="do">##            801              6 </span></span>
-<span id="cb417-5"><a href="lesson-6b-iteration-statements.html#cb417-5" tabindex="-1"></a><span class="do">##         income home_ownership </span></span>
-<span id="cb417-6"><a href="lesson-6b-iteration-statements.html#cb417-6" tabindex="-1"></a><span class="do">##             12              5 </span></span>
-<span id="cb417-7"><a href="lesson-6b-iteration-statements.html#cb417-7" tabindex="-1"></a><span class="do">## marital_status household_size </span></span>
-<span id="cb417-8"><a href="lesson-6b-iteration-statements.html#cb417-8" tabindex="-1"></a><span class="do">##              3              5 </span></span>
-<span id="cb417-9"><a href="lesson-6b-iteration-statements.html#cb417-9" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
-<span id="cb417-10"><a href="lesson-6b-iteration-statements.html#cb417-10" tabindex="-1"></a><span class="do">##              4              4</span></span>
-<span id="cb417-11"><a href="lesson-6b-iteration-statements.html#cb417-11" tabindex="-1"></a></span>
-<span id="cb417-12"><a href="lesson-6b-iteration-statements.html#cb417-12" tabindex="-1"></a><span class="co"># one-sided formula approach</span></span>
-<span id="cb417-13"><a href="lesson-6b-iteration-statements.html#cb417-13" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
-<span id="cb417-14"><a href="lesson-6b-iteration-statements.html#cb417-14" tabindex="-1"></a><span class="do">##   household_id            age </span></span>
-<span id="cb417-15"><a href="lesson-6b-iteration-statements.html#cb417-15" tabindex="-1"></a><span class="do">##            801              6 </span></span>
-<span id="cb417-16"><a href="lesson-6b-iteration-statements.html#cb417-16" tabindex="-1"></a><span class="do">##         income home_ownership </span></span>
-<span id="cb417-17"><a href="lesson-6b-iteration-statements.html#cb417-17" tabindex="-1"></a><span class="do">##             12              5 </span></span>
-<span id="cb417-18"><a href="lesson-6b-iteration-statements.html#cb417-18" tabindex="-1"></a><span class="do">## marital_status household_size </span></span>
-<span id="cb417-19"><a href="lesson-6b-iteration-statements.html#cb417-19" tabindex="-1"></a><span class="do">##              3              5 </span></span>
-<span id="cb417-20"><a href="lesson-6b-iteration-statements.html#cb417-20" tabindex="-1"></a><span class="do">## household_comp     kids_count </span></span>
-<span id="cb417-21"><a href="lesson-6b-iteration-statements.html#cb417-21" tabindex="-1"></a><span class="do">##              4              4</span></span></code></pre></div>
+<span id="cb417-3"><a href="lesson-6b-iteration-statements.html#cb417-3" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership </span></span>
+<span id="cb417-4"><a href="lesson-6b-iteration-statements.html#cb417-4" tabindex="-1"></a><span class="do">##            801              6             12              5 </span></span>
+<span id="cb417-5"><a href="lesson-6b-iteration-statements.html#cb417-5" tabindex="-1"></a><span class="do">## marital_status household_size household_comp     kids_count </span></span>
+<span id="cb417-6"><a href="lesson-6b-iteration-statements.html#cb417-6" tabindex="-1"></a><span class="do">##              3              5              4              4</span></span>
+<span id="cb417-7"><a href="lesson-6b-iteration-statements.html#cb417-7" tabindex="-1"></a></span>
+<span id="cb417-8"><a href="lesson-6b-iteration-statements.html#cb417-8" tabindex="-1"></a><span class="co"># one-sided formula approach</span></span>
+<span id="cb417-9"><a href="lesson-6b-iteration-statements.html#cb417-9" tabindex="-1"></a>completejourney<span class="sc">::</span>demographics <span class="sc">%&gt;%</span> <span class="fu">map_int</span>(<span class="sc">~</span> <span class="fu">length</span>(<span class="fu">unique</span>(.)))</span>
+<span id="cb417-10"><a href="lesson-6b-iteration-statements.html#cb417-10" tabindex="-1"></a><span class="do">##   household_id            age         income home_ownership </span></span>
+<span id="cb417-11"><a href="lesson-6b-iteration-statements.html#cb417-11" tabindex="-1"></a><span class="do">##            801              6             12              5 </span></span>
+<span id="cb417-12"><a href="lesson-6b-iteration-statements.html#cb417-12" tabindex="-1"></a><span class="do">## marital_status household_size household_comp     kids_count </span></span>
+<span id="cb417-13"><a href="lesson-6b-iteration-statements.html#cb417-13" tabindex="-1"></a><span class="do">##              3              5              4              4</span></span></code></pre></div>
 <p>This, along with chaining multiple map functions together, can make for very efficient data mining. To provide a toy example, the following uses the <code>diamonds</code> data set provided by <strong>ggplot2</strong> and:</p>
 <ol style="list-style-type: decimal">
 <li>breaks the data set into separate data frames based on the <code>cut</code> variable,</li>
@@ -1269,10 +1244,8 @@ step.
 <span id="cb418-3"><a href="lesson-6b-iteration-statements.html#cb418-3" tabindex="-1"></a>   <span class="fu">map</span>(<span class="sc">~</span><span class="fu">lm</span>(price <span class="sc">~</span> carat, <span class="at">data =</span> .)) <span class="sc">%&gt;%</span></span>
 <span id="cb418-4"><a href="lesson-6b-iteration-statements.html#cb418-4" tabindex="-1"></a>   <span class="fu">map</span>(summary) <span class="sc">%&gt;%</span> </span>
 <span id="cb418-5"><a href="lesson-6b-iteration-statements.html#cb418-5" tabindex="-1"></a>   <span class="fu">map_dbl</span>(<span class="sc">~</span>.<span class="sc">$</span>r.squared)</span>
-<span id="cb418-6"><a href="lesson-6b-iteration-statements.html#cb418-6" tabindex="-1"></a><span class="do">##      Fair      Good Very Good   Premium </span></span>
-<span id="cb418-7"><a href="lesson-6b-iteration-statements.html#cb418-7" tabindex="-1"></a><span class="do">##   0.73839   0.85095   0.85816   0.85563 </span></span>
-<span id="cb418-8"><a href="lesson-6b-iteration-statements.html#cb418-8" tabindex="-1"></a><span class="do">##     Ideal </span></span>
-<span id="cb418-9"><a href="lesson-6b-iteration-statements.html#cb418-9" tabindex="-1"></a><span class="do">##   0.86709</span></span></code></pre></div>
+<span id="cb418-6"><a href="lesson-6b-iteration-statements.html#cb418-6" tabindex="-1"></a><span class="do">##      Fair      Good Very Good   Premium     Ideal </span></span>
+<span id="cb418-7"><a href="lesson-6b-iteration-statements.html#cb418-7" tabindex="-1"></a><span class="do">##   0.73839   0.85095   0.85816   0.85563   0.86709</span></span></code></pre></div>
 <div id="knowledge-check-59" class="section level3 hasAnchor" number="23.5.1">
 <h3><span class="header-section-number">23.5.1</span> Knowledge check<a href="lesson-6b-iteration-statements.html#knowledge-check-59" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="todo">

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>28 Lesson 7c: Model evaluation &amp; selection | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="28 Lesson 7c: Model evaluation &amp; selection | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -876,12 +877,10 @@ test set will decrease.
 <p>We can then get our average 10-fold cross validation error with <code>collect_metrics()</code>:</p>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="lesson-7c-model-evaluation-selection.html#cb482-1" tabindex="-1"></a><span class="fu">collect_metrics</span>(rf_fit_cv)</span>
 <span id="cb482-2"><a href="lesson-7c-model-evaluation-selection.html#cb482-2" tabindex="-1"></a><span class="do">## # A tibble: 2 × 6</span></span>
-<span id="cb482-3"><a href="lesson-7c-model-evaluation-selection.html#cb482-3" tabindex="-1"></a><span class="do">##   .metric .estimator      mean     n</span></span>
-<span id="cb482-4"><a href="lesson-7c-model-evaluation-selection.html#cb482-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb482-5"><a href="lesson-7c-model-evaluation-selection.html#cb482-5" tabindex="-1"></a><span class="do">## 1 rmse    standard   25978.       10</span></span>
-<span id="cb482-6"><a href="lesson-7c-model-evaluation-selection.html#cb482-6" tabindex="-1"></a><span class="do">## 2 rsq     standard       0.902    10</span></span>
-<span id="cb482-7"><a href="lesson-7c-model-evaluation-selection.html#cb482-7" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: std_err &lt;dbl&gt;,</span></span>
-<span id="cb482-8"><a href="lesson-7c-model-evaluation-selection.html#cb482-8" tabindex="-1"></a><span class="do">## #   .config &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb482-3"><a href="lesson-7c-model-evaluation-selection.html#cb482-3" tabindex="-1"></a><span class="do">##   .metric .estimator      mean     n   std_err .config             </span></span>
+<span id="cb482-4"><a href="lesson-7c-model-evaluation-selection.html#cb482-4" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;               </span></span>
+<span id="cb482-5"><a href="lesson-7c-model-evaluation-selection.html#cb482-5" tabindex="-1"></a><span class="do">## 1 rmse    standard   25978.       10 898.      Preprocessor1_Model1</span></span>
+<span id="cb482-6"><a href="lesson-7c-model-evaluation-selection.html#cb482-6" tabindex="-1"></a><span class="do">## 2 rsq     standard       0.902    10   0.00787 Preprocessor1_Model1</span></span></code></pre></div>
 <p>If we want to see the model evaluation metric (i.e. RMSE) for each fold we just need to unnest the <code>rf_fit_cv</code> object.</p>
 <div class="tip">
 <p>
@@ -893,21 +892,19 @@ We have not discussed nested data frames but you can read about them
 <span id="cb483-2"><a href="lesson-7c-model-evaluation-selection.html#cb483-2" tabindex="-1"></a>   <span class="fu">unnest</span>(.metrics) <span class="sc">%&gt;%</span></span>
 <span id="cb483-3"><a href="lesson-7c-model-evaluation-selection.html#cb483-3" tabindex="-1"></a>   <span class="fu">filter</span>(.metric <span class="sc">==</span> <span class="st">&#39;rmse&#39;</span>)</span>
 <span id="cb483-4"><a href="lesson-7c-model-evaluation-selection.html#cb483-4" tabindex="-1"></a><span class="do">## # A tibble: 10 × 7</span></span>
-<span id="cb483-5"><a href="lesson-7c-model-evaluation-selection.html#cb483-5" tabindex="-1"></a><span class="do">##    splits             id     .metric</span></span>
-<span id="cb483-6"><a href="lesson-7c-model-evaluation-selection.html#cb483-6" tabindex="-1"></a><span class="do">##    &lt;list&gt;             &lt;chr&gt;  &lt;chr&gt;  </span></span>
-<span id="cb483-7"><a href="lesson-7c-model-evaluation-selection.html#cb483-7" tabindex="-1"></a><span class="do">##  1 &lt;split [1845/206]&gt; Fold01 rmse   </span></span>
-<span id="cb483-8"><a href="lesson-7c-model-evaluation-selection.html#cb483-8" tabindex="-1"></a><span class="do">##  2 &lt;split [1846/205]&gt; Fold02 rmse   </span></span>
-<span id="cb483-9"><a href="lesson-7c-model-evaluation-selection.html#cb483-9" tabindex="-1"></a><span class="do">##  3 &lt;split [1846/205]&gt; Fold03 rmse   </span></span>
-<span id="cb483-10"><a href="lesson-7c-model-evaluation-selection.html#cb483-10" tabindex="-1"></a><span class="do">##  4 &lt;split [1846/205]&gt; Fold04 rmse   </span></span>
-<span id="cb483-11"><a href="lesson-7c-model-evaluation-selection.html#cb483-11" tabindex="-1"></a><span class="do">##  5 &lt;split [1846/205]&gt; Fold05 rmse   </span></span>
-<span id="cb483-12"><a href="lesson-7c-model-evaluation-selection.html#cb483-12" tabindex="-1"></a><span class="do">##  6 &lt;split [1846/205]&gt; Fold06 rmse   </span></span>
-<span id="cb483-13"><a href="lesson-7c-model-evaluation-selection.html#cb483-13" tabindex="-1"></a><span class="do">##  7 &lt;split [1846/205]&gt; Fold07 rmse   </span></span>
-<span id="cb483-14"><a href="lesson-7c-model-evaluation-selection.html#cb483-14" tabindex="-1"></a><span class="do">##  8 &lt;split [1846/205]&gt; Fold08 rmse   </span></span>
-<span id="cb483-15"><a href="lesson-7c-model-evaluation-selection.html#cb483-15" tabindex="-1"></a><span class="do">##  9 &lt;split [1846/205]&gt; Fold09 rmse   </span></span>
-<span id="cb483-16"><a href="lesson-7c-model-evaluation-selection.html#cb483-16" tabindex="-1"></a><span class="do">## 10 &lt;split [1846/205]&gt; Fold10 rmse   </span></span>
-<span id="cb483-17"><a href="lesson-7c-model-evaluation-selection.html#cb483-17" tabindex="-1"></a><span class="do">## # ℹ 4 more variables: .estimator &lt;chr&gt;,</span></span>
-<span id="cb483-18"><a href="lesson-7c-model-evaluation-selection.html#cb483-18" tabindex="-1"></a><span class="do">## #   .estimate &lt;dbl&gt;, .config &lt;chr&gt;,</span></span>
-<span id="cb483-19"><a href="lesson-7c-model-evaluation-selection.html#cb483-19" tabindex="-1"></a><span class="do">## #   .notes &lt;list&gt;</span></span></code></pre></div>
+<span id="cb483-5"><a href="lesson-7c-model-evaluation-selection.html#cb483-5" tabindex="-1"></a><span class="do">##    splits             id     .metric .estimator .estimate .config      </span></span>
+<span id="cb483-6"><a href="lesson-7c-model-evaluation-selection.html#cb483-6" tabindex="-1"></a><span class="do">##    &lt;list&gt;             &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;        </span></span>
+<span id="cb483-7"><a href="lesson-7c-model-evaluation-selection.html#cb483-7" tabindex="-1"></a><span class="do">##  1 &lt;split [1845/206]&gt; Fold01 rmse    standard      26210. Preprocessor…</span></span>
+<span id="cb483-8"><a href="lesson-7c-model-evaluation-selection.html#cb483-8" tabindex="-1"></a><span class="do">##  2 &lt;split [1846/205]&gt; Fold02 rmse    standard      22089. Preprocessor…</span></span>
+<span id="cb483-9"><a href="lesson-7c-model-evaluation-selection.html#cb483-9" tabindex="-1"></a><span class="do">##  3 &lt;split [1846/205]&gt; Fold03 rmse    standard      30512. Preprocessor…</span></span>
+<span id="cb483-10"><a href="lesson-7c-model-evaluation-selection.html#cb483-10" tabindex="-1"></a><span class="do">##  4 &lt;split [1846/205]&gt; Fold04 rmse    standard      26106. Preprocessor…</span></span>
+<span id="cb483-11"><a href="lesson-7c-model-evaluation-selection.html#cb483-11" tabindex="-1"></a><span class="do">##  5 &lt;split [1846/205]&gt; Fold05 rmse    standard      25095. Preprocessor…</span></span>
+<span id="cb483-12"><a href="lesson-7c-model-evaluation-selection.html#cb483-12" tabindex="-1"></a><span class="do">##  6 &lt;split [1846/205]&gt; Fold06 rmse    standard      24337. Preprocessor…</span></span>
+<span id="cb483-13"><a href="lesson-7c-model-evaluation-selection.html#cb483-13" tabindex="-1"></a><span class="do">##  7 &lt;split [1846/205]&gt; Fold07 rmse    standard      23586. Preprocessor…</span></span>
+<span id="cb483-14"><a href="lesson-7c-model-evaluation-selection.html#cb483-14" tabindex="-1"></a><span class="do">##  8 &lt;split [1846/205]&gt; Fold08 rmse    standard      30650. Preprocessor…</span></span>
+<span id="cb483-15"><a href="lesson-7c-model-evaluation-selection.html#cb483-15" tabindex="-1"></a><span class="do">##  9 &lt;split [1846/205]&gt; Fold09 rmse    standard      27256. Preprocessor…</span></span>
+<span id="cb483-16"><a href="lesson-7c-model-evaluation-selection.html#cb483-16" tabindex="-1"></a><span class="do">## 10 &lt;split [1846/205]&gt; Fold10 rmse    standard      23935. Preprocessor…</span></span>
+<span id="cb483-17"><a href="lesson-7c-model-evaluation-selection.html#cb483-17" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: .notes &lt;list&gt;</span></span></code></pre></div>
 </div>
 <div id="hyperparameter-tuning" class="section level2 hasAnchor" number="28.5">
 <h2><span class="header-section-number">28.5</span> Hyperparameter tuning<a href="lesson-7c-model-evaluation-selection.html#hyperparameter-tuning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -994,12 +991,10 @@ href="https://bradleyboehmke.github.io/HOML/DT.html#how-deep">here</a>
 <span id="cb484-14"><a href="lesson-7c-model-evaluation-selection.html#cb484-14" tabindex="-1"></a><span class="co"># assess results</span></span>
 <span id="cb484-15"><a href="lesson-7c-model-evaluation-selection.html#cb484-15" tabindex="-1"></a><span class="fu">collect_metrics</span>(dt_fit_cv)</span>
 <span id="cb484-16"><a href="lesson-7c-model-evaluation-selection.html#cb484-16" tabindex="-1"></a><span class="do">## # A tibble: 2 × 6</span></span>
-<span id="cb484-17"><a href="lesson-7c-model-evaluation-selection.html#cb484-17" tabindex="-1"></a><span class="do">##   .metric .estimator      mean     n</span></span>
-<span id="cb484-18"><a href="lesson-7c-model-evaluation-selection.html#cb484-18" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb484-19"><a href="lesson-7c-model-evaluation-selection.html#cb484-19" tabindex="-1"></a><span class="do">## 1 rmse    standard   39175.       10</span></span>
-<span id="cb484-20"><a href="lesson-7c-model-evaluation-selection.html#cb484-20" tabindex="-1"></a><span class="do">## 2 rsq     standard       0.758    10</span></span>
-<span id="cb484-21"><a href="lesson-7c-model-evaluation-selection.html#cb484-21" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: std_err &lt;dbl&gt;,</span></span>
-<span id="cb484-22"><a href="lesson-7c-model-evaluation-selection.html#cb484-22" tabindex="-1"></a><span class="do">## #   .config &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb484-17"><a href="lesson-7c-model-evaluation-selection.html#cb484-17" tabindex="-1"></a><span class="do">##   .metric .estimator      mean     n   std_err .config             </span></span>
+<span id="cb484-18"><a href="lesson-7c-model-evaluation-selection.html#cb484-18" tabindex="-1"></a><span class="do">##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;               </span></span>
+<span id="cb484-19"><a href="lesson-7c-model-evaluation-selection.html#cb484-19" tabindex="-1"></a><span class="do">## 1 rmse    standard   39175.       10 1382.     Preprocessor1_Model1</span></span>
+<span id="cb484-20"><a href="lesson-7c-model-evaluation-selection.html#cb484-20" tabindex="-1"></a><span class="do">## 2 rsq     standard       0.758    10    0.0156 Preprocessor1_Model1</span></span></code></pre></div>
 <p>But what if we wanted to assess and compare different <code>tree_depth</code> values. Moreover, decision trees have another key hyperparameter <code>cost_complexity</code>. So what if we wanted to assess a few values of that hyperaparameter in combination with <code>tree_depth</code>? Adjusting these values manually would be painstakingly burdensome.</p>
 <div class="note">
 <p>
@@ -1080,16 +1075,14 @@ computation time.
 <div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="lesson-7c-model-evaluation-selection.html#cb488-1" tabindex="-1"></a>dt_grid_search <span class="sc">%&gt;%</span></span>
 <span id="cb488-2"><a href="lesson-7c-model-evaluation-selection.html#cb488-2" tabindex="-1"></a>   <span class="fu">show_best</span>(<span class="at">metric =</span> <span class="st">&#39;rmse&#39;</span>)</span>
 <span id="cb488-3"><a href="lesson-7c-model-evaluation-selection.html#cb488-3" tabindex="-1"></a><span class="do">## # A tibble: 5 × 8</span></span>
-<span id="cb488-4"><a href="lesson-7c-model-evaluation-selection.html#cb488-4" tabindex="-1"></a><span class="do">##   cost_complexity tree_depth .metric</span></span>
-<span id="cb488-5"><a href="lesson-7c-model-evaluation-selection.html#cb488-5" tabindex="-1"></a><span class="do">##             &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;  </span></span>
-<span id="cb488-6"><a href="lesson-7c-model-evaluation-selection.html#cb488-6" tabindex="-1"></a><span class="do">## 1    0.0000000001          8 rmse   </span></span>
-<span id="cb488-7"><a href="lesson-7c-model-evaluation-selection.html#cb488-7" tabindex="-1"></a><span class="do">## 2    0.00000316            8 rmse   </span></span>
-<span id="cb488-8"><a href="lesson-7c-model-evaluation-selection.html#cb488-8" tabindex="-1"></a><span class="do">## 3    0.0000000001         15 rmse   </span></span>
-<span id="cb488-9"><a href="lesson-7c-model-evaluation-selection.html#cb488-9" tabindex="-1"></a><span class="do">## 4    0.00000316           15 rmse   </span></span>
-<span id="cb488-10"><a href="lesson-7c-model-evaluation-selection.html#cb488-10" tabindex="-1"></a><span class="do">## 5    0.1                   8 rmse   </span></span>
-<span id="cb488-11"><a href="lesson-7c-model-evaluation-selection.html#cb488-11" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: .estimator &lt;chr&gt;,</span></span>
-<span id="cb488-12"><a href="lesson-7c-model-evaluation-selection.html#cb488-12" tabindex="-1"></a><span class="do">## #   mean &lt;dbl&gt;, n &lt;int&gt;, std_err &lt;dbl&gt;,</span></span>
-<span id="cb488-13"><a href="lesson-7c-model-evaluation-selection.html#cb488-13" tabindex="-1"></a><span class="do">## #   .config &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb488-4"><a href="lesson-7c-model-evaluation-selection.html#cb488-4" tabindex="-1"></a><span class="do">##   cost_complexity tree_depth .metric .estimator   mean     n std_err</span></span>
+<span id="cb488-5"><a href="lesson-7c-model-evaluation-selection.html#cb488-5" tabindex="-1"></a><span class="do">##             &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb488-6"><a href="lesson-7c-model-evaluation-selection.html#cb488-6" tabindex="-1"></a><span class="do">## 1    0.0000000001          8 rmse    standard   36638.     5   1515.</span></span>
+<span id="cb488-7"><a href="lesson-7c-model-evaluation-selection.html#cb488-7" tabindex="-1"></a><span class="do">## 2    0.00000316            8 rmse    standard   36638.     5   1515.</span></span>
+<span id="cb488-8"><a href="lesson-7c-model-evaluation-selection.html#cb488-8" tabindex="-1"></a><span class="do">## 3    0.0000000001         15 rmse    standard   36703.     5   1587.</span></span>
+<span id="cb488-9"><a href="lesson-7c-model-evaluation-selection.html#cb488-9" tabindex="-1"></a><span class="do">## 4    0.00000316           15 rmse    standard   36703.     5   1587.</span></span>
+<span id="cb488-10"><a href="lesson-7c-model-evaluation-selection.html#cb488-10" tabindex="-1"></a><span class="do">## 5    0.1                   8 rmse    standard   51944.     5   1834.</span></span>
+<span id="cb488-11"><a href="lesson-7c-model-evaluation-selection.html#cb488-11" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: .config &lt;chr&gt;</span></span></code></pre></div>
 </div>
 </div>
 <div id="finalizing-our-model" class="section level2 hasAnchor" number="28.6">
@@ -1101,9 +1094,9 @@ computation time.
 <span id="cb489-4"><a href="lesson-7c-model-evaluation-selection.html#cb489-4" tabindex="-1"></a></span>
 <span id="cb489-5"><a href="lesson-7c-model-evaluation-selection.html#cb489-5" tabindex="-1"></a>best_tree</span>
 <span id="cb489-6"><a href="lesson-7c-model-evaluation-selection.html#cb489-6" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb489-7"><a href="lesson-7c-model-evaluation-selection.html#cb489-7" tabindex="-1"></a><span class="do">##   cost_complexity tree_depth .config     </span></span>
-<span id="cb489-8"><a href="lesson-7c-model-evaluation-selection.html#cb489-8" tabindex="-1"></a><span class="do">##             &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;       </span></span>
-<span id="cb489-9"><a href="lesson-7c-model-evaluation-selection.html#cb489-9" tabindex="-1"></a><span class="do">## 1    0.0000000001          8 Preprocesso…</span></span></code></pre></div>
+<span id="cb489-7"><a href="lesson-7c-model-evaluation-selection.html#cb489-7" tabindex="-1"></a><span class="do">##   cost_complexity tree_depth .config             </span></span>
+<span id="cb489-8"><a href="lesson-7c-model-evaluation-selection.html#cb489-8" tabindex="-1"></a><span class="do">##             &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;               </span></span>
+<span id="cb489-9"><a href="lesson-7c-model-evaluation-selection.html#cb489-9" tabindex="-1"></a><span class="do">## 1    0.0000000001          8 Preprocessor1_Model4</span></span></code></pre></div>
 <p>We can then update (or “finalize”) our workflow object <code>dt_wflow</code> with the values from <code>select_best()</code>.</p>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="lesson-7c-model-evaluation-selection.html#cb490-1" tabindex="-1"></a>final_wflow <span class="ot">&lt;-</span> dt_wflow <span class="sc">%&gt;%</span></span>
 <span id="cb490-2"><a href="lesson-7c-model-evaluation-selection.html#cb490-2" tabindex="-1"></a>   <span class="fu">finalize_workflow</span>(best_tree)</span></code></pre></div>

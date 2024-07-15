@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Lesson 3b: Data transformation | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Lesson 3b: Data transformation | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -824,50 +825,42 @@ which automatically loads the <strong>dplyr</strong> package.
 <span id="cb160-2"><a href="lesson-3b-data-transformation.html#cb160-2" tabindex="-1"></a></span>
 <span id="cb160-3"><a href="lesson-3b-data-transformation.html#cb160-3" tabindex="-1"></a>(df <span class="ot">&lt;-</span> transactions_sample)</span>
 <span id="cb160-4"><a href="lesson-3b-data-transformation.html#cb160-4" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
-<span id="cb160-5"><a href="lesson-3b-data-transformation.html#cb160-5" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb160-6"><a href="lesson-3b-data-transformation.html#cb160-6" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb160-7"><a href="lesson-3b-data-transformation.html#cb160-7" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb160-8"><a href="lesson-3b-data-transformation.html#cb160-8" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496</span></span>
-<span id="cb160-9"><a href="lesson-3b-data-transformation.html#cb160-9" tabindex="-1"></a><span class="do">##  3 511          316      32445856036</span></span>
-<span id="cb160-10"><a href="lesson-3b-data-transformation.html#cb160-10" tabindex="-1"></a><span class="do">##  4 400          388      31932241118</span></span>
-<span id="cb160-11"><a href="lesson-3b-data-transformation.html#cb160-11" tabindex="-1"></a><span class="do">##  5 918          340      32074655895</span></span>
-<span id="cb160-12"><a href="lesson-3b-data-transformation.html#cb160-12" tabindex="-1"></a><span class="do">##  6 718          324      32614612029</span></span>
-<span id="cb160-13"><a href="lesson-3b-data-transformation.html#cb160-13" tabindex="-1"></a><span class="do">##  7 868          323      32074722463</span></span>
-<span id="cb160-14"><a href="lesson-3b-data-transformation.html#cb160-14" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304</span></span>
-<span id="cb160-15"><a href="lesson-3b-data-transformation.html#cb160-15" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102</span></span>
-<span id="cb160-16"><a href="lesson-3b-data-transformation.html#cb160-16" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707</span></span>
+<span id="cb160-5"><a href="lesson-3b-data-transformation.html#cb160-5" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb160-6"><a href="lesson-3b-data-transformation.html#cb160-6" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb160-7"><a href="lesson-3b-data-transformation.html#cb160-7" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb160-8"><a href="lesson-3b-data-transformation.html#cb160-8" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902            1        1.59</span></span>
+<span id="cb160-9"><a href="lesson-3b-data-transformation.html#cb160-9" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901            1        1   </span></span>
+<span id="cb160-10"><a href="lesson-3b-data-transformation.html#cb160-10" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913          2       11.9 </span></span>
+<span id="cb160-11"><a href="lesson-3b-data-transformation.html#cb160-11" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604           1        1.29</span></span>
+<span id="cb160-12"><a href="lesson-3b-data-transformation.html#cb160-12" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203            1        2.5 </span></span>
+<span id="cb160-13"><a href="lesson-3b-data-transformation.html#cb160-13" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484           1        3.49</span></span>
+<span id="cb160-14"><a href="lesson-3b-data-transformation.html#cb160-14" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715           1        2   </span></span>
+<span id="cb160-15"><a href="lesson-3b-data-transformation.html#cb160-15" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613            2        6.55</span></span>
+<span id="cb160-16"><a href="lesson-3b-data-transformation.html#cb160-16" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497            1        3.99</span></span>
 <span id="cb160-17"><a href="lesson-3b-data-transformation.html#cb160-17" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb160-18"><a href="lesson-3b-data-transformation.html#cb160-18" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb160-19"><a href="lesson-3b-data-transformation.html#cb160-19" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb160-20"><a href="lesson-3b-data-transformation.html#cb160-20" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb160-21"><a href="lesson-3b-data-transformation.html#cb160-21" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb160-22"><a href="lesson-3b-data-transformation.html#cb160-22" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb160-23"><a href="lesson-3b-data-transformation.html#cb160-23" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb160-18"><a href="lesson-3b-data-transformation.html#cb160-18" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb160-19"><a href="lesson-3b-data-transformation.html#cb160-19" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 </div>
 <div id="filter" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Filtering observations<a href="lesson-3b-data-transformation.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Filtering data is a common task to identify and select observations in which a particular variable matches a specific value or condition. The <code>filter()</code> function provides this capability. The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame. For example, if we want to filter for only transactions at the store with ID 309:</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="lesson-3b-data-transformation.html#cb161-1" tabindex="-1"></a><span class="fu">filter</span>(df, store_id <span class="sc">==</span> <span class="st">&quot;309&quot;</span>)</span>
 <span id="cb161-2"><a href="lesson-3b-data-transformation.html#cb161-2" tabindex="-1"></a><span class="do">## # A tibble: 426 × 11</span></span>
-<span id="cb161-3"><a href="lesson-3b-data-transformation.html#cb161-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb161-4"><a href="lesson-3b-data-transformation.html#cb161-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb161-5"><a href="lesson-3b-data-transformation.html#cb161-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb161-6"><a href="lesson-3b-data-transformation.html#cb161-6" tabindex="-1"></a><span class="do">##  2 519          309      32931585175</span></span>
-<span id="cb161-7"><a href="lesson-3b-data-transformation.html#cb161-7" tabindex="-1"></a><span class="do">##  3 1073         309      40532931248</span></span>
-<span id="cb161-8"><a href="lesson-3b-data-transformation.html#cb161-8" tabindex="-1"></a><span class="do">##  4 517          309      32989806742</span></span>
-<span id="cb161-9"><a href="lesson-3b-data-transformation.html#cb161-9" tabindex="-1"></a><span class="do">##  5 1023         309      35713891195</span></span>
-<span id="cb161-10"><a href="lesson-3b-data-transformation.html#cb161-10" tabindex="-1"></a><span class="do">##  6 1770         309      32505226867</span></span>
-<span id="cb161-11"><a href="lesson-3b-data-transformation.html#cb161-11" tabindex="-1"></a><span class="do">##  7 1257         309      33983222000</span></span>
-<span id="cb161-12"><a href="lesson-3b-data-transformation.html#cb161-12" tabindex="-1"></a><span class="do">##  8 1509         309      32090471323</span></span>
-<span id="cb161-13"><a href="lesson-3b-data-transformation.html#cb161-13" tabindex="-1"></a><span class="do">##  9 1167         309      34103947117</span></span>
-<span id="cb161-14"><a href="lesson-3b-data-transformation.html#cb161-14" tabindex="-1"></a><span class="do">## 10 1836         309      40532932017</span></span>
+<span id="cb161-3"><a href="lesson-3b-data-transformation.html#cb161-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb161-4"><a href="lesson-3b-data-transformation.html#cb161-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb161-5"><a href="lesson-3b-data-transformation.html#cb161-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb161-6"><a href="lesson-3b-data-transformation.html#cb161-6" tabindex="-1"></a><span class="do">##  2 519          309      32931585175 1029743           1        2.69</span></span>
+<span id="cb161-7"><a href="lesson-3b-data-transformation.html#cb161-7" tabindex="-1"></a><span class="do">##  3 1073         309      40532931248 1058997           1        1.89</span></span>
+<span id="cb161-8"><a href="lesson-3b-data-transformation.html#cb161-8" tabindex="-1"></a><span class="do">##  4 517          309      32989806742 5590158           1        1   </span></span>
+<span id="cb161-9"><a href="lesson-3b-data-transformation.html#cb161-9" tabindex="-1"></a><span class="do">##  5 1023         309      35713891195 15596520          1        4.59</span></span>
+<span id="cb161-10"><a href="lesson-3b-data-transformation.html#cb161-10" tabindex="-1"></a><span class="do">##  6 1770         309      32505226867 12263600          1        1.5 </span></span>
+<span id="cb161-11"><a href="lesson-3b-data-transformation.html#cb161-11" tabindex="-1"></a><span class="do">##  7 1257         309      33983222000 999090            1        3.49</span></span>
+<span id="cb161-12"><a href="lesson-3b-data-transformation.html#cb161-12" tabindex="-1"></a><span class="do">##  8 1509         309      32090471323 1016800           2        6.67</span></span>
+<span id="cb161-13"><a href="lesson-3b-data-transformation.html#cb161-13" tabindex="-1"></a><span class="do">##  9 1167         309      34103947117 1037417           1        3.65</span></span>
+<span id="cb161-14"><a href="lesson-3b-data-transformation.html#cb161-14" tabindex="-1"></a><span class="do">## 10 1836         309      40532932017 879008            1        6.99</span></span>
 <span id="cb161-15"><a href="lesson-3b-data-transformation.html#cb161-15" tabindex="-1"></a><span class="do">## # ℹ 416 more rows</span></span>
-<span id="cb161-16"><a href="lesson-3b-data-transformation.html#cb161-16" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb161-17"><a href="lesson-3b-data-transformation.html#cb161-17" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb161-18"><a href="lesson-3b-data-transformation.html#cb161-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb161-19"><a href="lesson-3b-data-transformation.html#cb161-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb161-20"><a href="lesson-3b-data-transformation.html#cb161-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb161-21"><a href="lesson-3b-data-transformation.html#cb161-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb161-16"><a href="lesson-3b-data-transformation.html#cb161-16" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb161-17"><a href="lesson-3b-data-transformation.html#cb161-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <div class="tip">
 <p>
 You can pipe data into the filter function using the following
@@ -878,25 +871,21 @@ syntax: <code>df %&gt;% filter(store_id == “309”)</code>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lesson-3b-data-transformation.html#cb162-1" tabindex="-1"></a>store_309 <span class="ot">&lt;-</span> <span class="fu">filter</span>(df, store_id <span class="sc">==</span> <span class="st">&quot;309&quot;</span>)</span>
 <span id="cb162-2"><a href="lesson-3b-data-transformation.html#cb162-2" tabindex="-1"></a>store_309</span>
 <span id="cb162-3"><a href="lesson-3b-data-transformation.html#cb162-3" tabindex="-1"></a><span class="do">## # A tibble: 426 × 11</span></span>
-<span id="cb162-4"><a href="lesson-3b-data-transformation.html#cb162-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb162-5"><a href="lesson-3b-data-transformation.html#cb162-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb162-6"><a href="lesson-3b-data-transformation.html#cb162-6" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb162-7"><a href="lesson-3b-data-transformation.html#cb162-7" tabindex="-1"></a><span class="do">##  2 519          309      32931585175</span></span>
-<span id="cb162-8"><a href="lesson-3b-data-transformation.html#cb162-8" tabindex="-1"></a><span class="do">##  3 1073         309      40532931248</span></span>
-<span id="cb162-9"><a href="lesson-3b-data-transformation.html#cb162-9" tabindex="-1"></a><span class="do">##  4 517          309      32989806742</span></span>
-<span id="cb162-10"><a href="lesson-3b-data-transformation.html#cb162-10" tabindex="-1"></a><span class="do">##  5 1023         309      35713891195</span></span>
-<span id="cb162-11"><a href="lesson-3b-data-transformation.html#cb162-11" tabindex="-1"></a><span class="do">##  6 1770         309      32505226867</span></span>
-<span id="cb162-12"><a href="lesson-3b-data-transformation.html#cb162-12" tabindex="-1"></a><span class="do">##  7 1257         309      33983222000</span></span>
-<span id="cb162-13"><a href="lesson-3b-data-transformation.html#cb162-13" tabindex="-1"></a><span class="do">##  8 1509         309      32090471323</span></span>
-<span id="cb162-14"><a href="lesson-3b-data-transformation.html#cb162-14" tabindex="-1"></a><span class="do">##  9 1167         309      34103947117</span></span>
-<span id="cb162-15"><a href="lesson-3b-data-transformation.html#cb162-15" tabindex="-1"></a><span class="do">## 10 1836         309      40532932017</span></span>
+<span id="cb162-4"><a href="lesson-3b-data-transformation.html#cb162-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb162-5"><a href="lesson-3b-data-transformation.html#cb162-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb162-6"><a href="lesson-3b-data-transformation.html#cb162-6" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb162-7"><a href="lesson-3b-data-transformation.html#cb162-7" tabindex="-1"></a><span class="do">##  2 519          309      32931585175 1029743           1        2.69</span></span>
+<span id="cb162-8"><a href="lesson-3b-data-transformation.html#cb162-8" tabindex="-1"></a><span class="do">##  3 1073         309      40532931248 1058997           1        1.89</span></span>
+<span id="cb162-9"><a href="lesson-3b-data-transformation.html#cb162-9" tabindex="-1"></a><span class="do">##  4 517          309      32989806742 5590158           1        1   </span></span>
+<span id="cb162-10"><a href="lesson-3b-data-transformation.html#cb162-10" tabindex="-1"></a><span class="do">##  5 1023         309      35713891195 15596520          1        4.59</span></span>
+<span id="cb162-11"><a href="lesson-3b-data-transformation.html#cb162-11" tabindex="-1"></a><span class="do">##  6 1770         309      32505226867 12263600          1        1.5 </span></span>
+<span id="cb162-12"><a href="lesson-3b-data-transformation.html#cb162-12" tabindex="-1"></a><span class="do">##  7 1257         309      33983222000 999090            1        3.49</span></span>
+<span id="cb162-13"><a href="lesson-3b-data-transformation.html#cb162-13" tabindex="-1"></a><span class="do">##  8 1509         309      32090471323 1016800           2        6.67</span></span>
+<span id="cb162-14"><a href="lesson-3b-data-transformation.html#cb162-14" tabindex="-1"></a><span class="do">##  9 1167         309      34103947117 1037417           1        3.65</span></span>
+<span id="cb162-15"><a href="lesson-3b-data-transformation.html#cb162-15" tabindex="-1"></a><span class="do">## 10 1836         309      40532932017 879008            1        6.99</span></span>
 <span id="cb162-16"><a href="lesson-3b-data-transformation.html#cb162-16" tabindex="-1"></a><span class="do">## # ℹ 416 more rows</span></span>
-<span id="cb162-17"><a href="lesson-3b-data-transformation.html#cb162-17" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb162-18"><a href="lesson-3b-data-transformation.html#cb162-18" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb162-19"><a href="lesson-3b-data-transformation.html#cb162-19" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb162-20"><a href="lesson-3b-data-transformation.html#cb162-20" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb162-21"><a href="lesson-3b-data-transformation.html#cb162-21" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb162-22"><a href="lesson-3b-data-transformation.html#cb162-22" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb162-17"><a href="lesson-3b-data-transformation.html#cb162-17" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb162-18"><a href="lesson-3b-data-transformation.html#cb162-18" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>To use filtering effectively, you have to know how to select the observations that you want using <strong>comparison operators</strong>. R provides the standard suite of comparison operators to include:</p>
 <table>
 <caption>Comparison operators.</caption>
@@ -1015,61 +1004,49 @@ the same as
 <span id="cb165-4"><a href="lesson-3b-data-transformation.html#cb165-4" tabindex="-1"></a>  quantity <span class="sc">&gt;</span> <span class="dv">4</span> <span class="sc">|</span> sales_value <span class="sc">&gt;</span> <span class="dv">10</span></span>
 <span id="cb165-5"><a href="lesson-3b-data-transformation.html#cb165-5" tabindex="-1"></a>  )</span>
 <span id="cb165-6"><a href="lesson-3b-data-transformation.html#cb165-6" tabindex="-1"></a><span class="do">## # A tibble: 3 × 11</span></span>
-<span id="cb165-7"><a href="lesson-3b-data-transformation.html#cb165-7" tabindex="-1"></a><span class="do">##   household_id store_id basket_id  </span></span>
-<span id="cb165-8"><a href="lesson-3b-data-transformation.html#cb165-8" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb165-9"><a href="lesson-3b-data-transformation.html#cb165-9" tabindex="-1"></a><span class="do">## 1 1167         309      34642351799</span></span>
-<span id="cb165-10"><a href="lesson-3b-data-transformation.html#cb165-10" tabindex="-1"></a><span class="do">## 2 1167         309      31993100768</span></span>
-<span id="cb165-11"><a href="lesson-3b-data-transformation.html#cb165-11" tabindex="-1"></a><span class="do">## 3 1167         309      40341135791</span></span>
-<span id="cb165-12"><a href="lesson-3b-data-transformation.html#cb165-12" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb165-13"><a href="lesson-3b-data-transformation.html#cb165-13" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb165-14"><a href="lesson-3b-data-transformation.html#cb165-14" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb165-15"><a href="lesson-3b-data-transformation.html#cb165-15" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb165-16"><a href="lesson-3b-data-transformation.html#cb165-16" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb165-17"><a href="lesson-3b-data-transformation.html#cb165-17" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb165-7"><a href="lesson-3b-data-transformation.html#cb165-7" tabindex="-1"></a><span class="do">##   household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb165-8"><a href="lesson-3b-data-transformation.html#cb165-8" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb165-9"><a href="lesson-3b-data-transformation.html#cb165-9" tabindex="-1"></a><span class="do">## 1 1167         309      34642351799 8249262           1        15.0</span></span>
+<span id="cb165-10"><a href="lesson-3b-data-transformation.html#cb165-10" tabindex="-1"></a><span class="do">## 2 1167         309      31993100768 941036            1        14.9</span></span>
+<span id="cb165-11"><a href="lesson-3b-data-transformation.html#cb165-11" tabindex="-1"></a><span class="do">## 3 1167         309      40341135791 1051093           6         3  </span></span>
+<span id="cb165-12"><a href="lesson-3b-data-transformation.html#cb165-12" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb165-13"><a href="lesson-3b-data-transformation.html#cb165-13" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>A useful shortcut for writing multiple or statements is to use <code>%in%</code>. For example, the following code finds all transactions made at store 309 <strong><em>or</em></strong> 400.</p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lesson-3b-data-transformation.html#cb166-1" tabindex="-1"></a><span class="fu">filter</span>(df, store_id <span class="sc">==</span> <span class="st">&quot;309&quot;</span> <span class="sc">|</span> store_id <span class="sc">==</span> <span class="st">&quot;400&quot;</span>)</span>
 <span id="cb166-2"><a href="lesson-3b-data-transformation.html#cb166-2" tabindex="-1"></a><span class="do">## # A tibble: 1,203 × 11</span></span>
-<span id="cb166-3"><a href="lesson-3b-data-transformation.html#cb166-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb166-4"><a href="lesson-3b-data-transformation.html#cb166-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb166-5"><a href="lesson-3b-data-transformation.html#cb166-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb166-6"><a href="lesson-3b-data-transformation.html#cb166-6" tabindex="-1"></a><span class="do">##  2 1113         400      34204801923</span></span>
-<span id="cb166-7"><a href="lesson-3b-data-transformation.html#cb166-7" tabindex="-1"></a><span class="do">##  3 519          309      32931585175</span></span>
-<span id="cb166-8"><a href="lesson-3b-data-transformation.html#cb166-8" tabindex="-1"></a><span class="do">##  4 1946         400      41352204380</span></span>
-<span id="cb166-9"><a href="lesson-3b-data-transformation.html#cb166-9" tabindex="-1"></a><span class="do">##  5 709          400      40911786843</span></span>
-<span id="cb166-10"><a href="lesson-3b-data-transformation.html#cb166-10" tabindex="-1"></a><span class="do">##  6 725          400      33106940650</span></span>
-<span id="cb166-11"><a href="lesson-3b-data-transformation.html#cb166-11" tabindex="-1"></a><span class="do">##  7 1662         400      34258865155</span></span>
-<span id="cb166-12"><a href="lesson-3b-data-transformation.html#cb166-12" tabindex="-1"></a><span class="do">##  8 1662         400      32065200596</span></span>
-<span id="cb166-13"><a href="lesson-3b-data-transformation.html#cb166-13" tabindex="-1"></a><span class="do">##  9 1957         400      34338650191</span></span>
-<span id="cb166-14"><a href="lesson-3b-data-transformation.html#cb166-14" tabindex="-1"></a><span class="do">## 10 1925         400      34133653463</span></span>
+<span id="cb166-3"><a href="lesson-3b-data-transformation.html#cb166-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb166-4"><a href="lesson-3b-data-transformation.html#cb166-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb166-5"><a href="lesson-3b-data-transformation.html#cb166-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb166-6"><a href="lesson-3b-data-transformation.html#cb166-6" tabindex="-1"></a><span class="do">##  2 1113         400      34204801923 998119            1        3.19</span></span>
+<span id="cb166-7"><a href="lesson-3b-data-transformation.html#cb166-7" tabindex="-1"></a><span class="do">##  3 519          309      32931585175 1029743           1        2.69</span></span>
+<span id="cb166-8"><a href="lesson-3b-data-transformation.html#cb166-8" tabindex="-1"></a><span class="do">##  4 1946         400      41352204380 1120213           3        5   </span></span>
+<span id="cb166-9"><a href="lesson-3b-data-transformation.html#cb166-9" tabindex="-1"></a><span class="do">##  5 709          400      40911786843 923559            1        1   </span></span>
+<span id="cb166-10"><a href="lesson-3b-data-transformation.html#cb166-10" tabindex="-1"></a><span class="do">##  6 725          400      33106940650 1000664           1        0.34</span></span>
+<span id="cb166-11"><a href="lesson-3b-data-transformation.html#cb166-11" tabindex="-1"></a><span class="do">##  7 1662         400      34258865155 1114465           2        2.08</span></span>
+<span id="cb166-12"><a href="lesson-3b-data-transformation.html#cb166-12" tabindex="-1"></a><span class="do">##  8 1662         400      32065200596 1085939           1        2.19</span></span>
+<span id="cb166-13"><a href="lesson-3b-data-transformation.html#cb166-13" tabindex="-1"></a><span class="do">##  9 1957         400      34338650191 933835            1        0.6 </span></span>
+<span id="cb166-14"><a href="lesson-3b-data-transformation.html#cb166-14" tabindex="-1"></a><span class="do">## 10 1925         400      34133653463 13072776          1        1.99</span></span>
 <span id="cb166-15"><a href="lesson-3b-data-transformation.html#cb166-15" tabindex="-1"></a><span class="do">## # ℹ 1,193 more rows</span></span>
-<span id="cb166-16"><a href="lesson-3b-data-transformation.html#cb166-16" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb166-17"><a href="lesson-3b-data-transformation.html#cb166-17" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb166-18"><a href="lesson-3b-data-transformation.html#cb166-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb166-19"><a href="lesson-3b-data-transformation.html#cb166-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb166-20"><a href="lesson-3b-data-transformation.html#cb166-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb166-21"><a href="lesson-3b-data-transformation.html#cb166-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb166-16"><a href="lesson-3b-data-transformation.html#cb166-16" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb166-17"><a href="lesson-3b-data-transformation.html#cb166-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>The <code>%in%</code> operator allows us to select every row where <code>x</code> is one of the values in <code>y</code>. We could use it to rewrite the code above as:</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lesson-3b-data-transformation.html#cb167-1" tabindex="-1"></a><span class="fu">filter</span>(df, store_id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;309&quot;</span>, <span class="st">&quot;400&quot;</span>))</span>
 <span id="cb167-2"><a href="lesson-3b-data-transformation.html#cb167-2" tabindex="-1"></a><span class="do">## # A tibble: 1,203 × 11</span></span>
-<span id="cb167-3"><a href="lesson-3b-data-transformation.html#cb167-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb167-4"><a href="lesson-3b-data-transformation.html#cb167-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb167-5"><a href="lesson-3b-data-transformation.html#cb167-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb167-6"><a href="lesson-3b-data-transformation.html#cb167-6" tabindex="-1"></a><span class="do">##  2 1113         400      34204801923</span></span>
-<span id="cb167-7"><a href="lesson-3b-data-transformation.html#cb167-7" tabindex="-1"></a><span class="do">##  3 519          309      32931585175</span></span>
-<span id="cb167-8"><a href="lesson-3b-data-transformation.html#cb167-8" tabindex="-1"></a><span class="do">##  4 1946         400      41352204380</span></span>
-<span id="cb167-9"><a href="lesson-3b-data-transformation.html#cb167-9" tabindex="-1"></a><span class="do">##  5 709          400      40911786843</span></span>
-<span id="cb167-10"><a href="lesson-3b-data-transformation.html#cb167-10" tabindex="-1"></a><span class="do">##  6 725          400      33106940650</span></span>
-<span id="cb167-11"><a href="lesson-3b-data-transformation.html#cb167-11" tabindex="-1"></a><span class="do">##  7 1662         400      34258865155</span></span>
-<span id="cb167-12"><a href="lesson-3b-data-transformation.html#cb167-12" tabindex="-1"></a><span class="do">##  8 1662         400      32065200596</span></span>
-<span id="cb167-13"><a href="lesson-3b-data-transformation.html#cb167-13" tabindex="-1"></a><span class="do">##  9 1957         400      34338650191</span></span>
-<span id="cb167-14"><a href="lesson-3b-data-transformation.html#cb167-14" tabindex="-1"></a><span class="do">## 10 1925         400      34133653463</span></span>
+<span id="cb167-3"><a href="lesson-3b-data-transformation.html#cb167-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb167-4"><a href="lesson-3b-data-transformation.html#cb167-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb167-5"><a href="lesson-3b-data-transformation.html#cb167-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb167-6"><a href="lesson-3b-data-transformation.html#cb167-6" tabindex="-1"></a><span class="do">##  2 1113         400      34204801923 998119            1        3.19</span></span>
+<span id="cb167-7"><a href="lesson-3b-data-transformation.html#cb167-7" tabindex="-1"></a><span class="do">##  3 519          309      32931585175 1029743           1        2.69</span></span>
+<span id="cb167-8"><a href="lesson-3b-data-transformation.html#cb167-8" tabindex="-1"></a><span class="do">##  4 1946         400      41352204380 1120213           3        5   </span></span>
+<span id="cb167-9"><a href="lesson-3b-data-transformation.html#cb167-9" tabindex="-1"></a><span class="do">##  5 709          400      40911786843 923559            1        1   </span></span>
+<span id="cb167-10"><a href="lesson-3b-data-transformation.html#cb167-10" tabindex="-1"></a><span class="do">##  6 725          400      33106940650 1000664           1        0.34</span></span>
+<span id="cb167-11"><a href="lesson-3b-data-transformation.html#cb167-11" tabindex="-1"></a><span class="do">##  7 1662         400      34258865155 1114465           2        2.08</span></span>
+<span id="cb167-12"><a href="lesson-3b-data-transformation.html#cb167-12" tabindex="-1"></a><span class="do">##  8 1662         400      32065200596 1085939           1        2.19</span></span>
+<span id="cb167-13"><a href="lesson-3b-data-transformation.html#cb167-13" tabindex="-1"></a><span class="do">##  9 1957         400      34338650191 933835            1        0.6 </span></span>
+<span id="cb167-14"><a href="lesson-3b-data-transformation.html#cb167-14" tabindex="-1"></a><span class="do">## 10 1925         400      34133653463 13072776          1        1.99</span></span>
 <span id="cb167-15"><a href="lesson-3b-data-transformation.html#cb167-15" tabindex="-1"></a><span class="do">## # ℹ 1,193 more rows</span></span>
-<span id="cb167-16"><a href="lesson-3b-data-transformation.html#cb167-16" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb167-17"><a href="lesson-3b-data-transformation.html#cb167-17" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb167-18"><a href="lesson-3b-data-transformation.html#cb167-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb167-19"><a href="lesson-3b-data-transformation.html#cb167-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb167-20"><a href="lesson-3b-data-transformation.html#cb167-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb167-21"><a href="lesson-3b-data-transformation.html#cb167-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb167-16"><a href="lesson-3b-data-transformation.html#cb167-16" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb167-17"><a href="lesson-3b-data-transformation.html#cb167-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>There are additional filtering and subsetting functions that are quite useful:</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="lesson-3b-data-transformation.html#cb168-1" tabindex="-1"></a><span class="co"># remove duplicate rows</span></span>
 <span id="cb168-2"><a href="lesson-3b-data-transformation.html#cb168-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() </span>
@@ -1149,41 +1126,37 @@ that occurred at store 343 or 441 but excludes household 253.
 <span id="cb169-18"><a href="lesson-3b-data-transformation.html#cb169-18" tabindex="-1"></a><span class="co"># Select all columns between household_id and sales_value (inclusive)</span></span>
 <span id="cb169-19"><a href="lesson-3b-data-transformation.html#cb169-19" tabindex="-1"></a><span class="fu">select</span>(df, household_id<span class="sc">:</span>sales_value)</span>
 <span id="cb169-20"><a href="lesson-3b-data-transformation.html#cb169-20" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 6</span></span>
-<span id="cb169-21"><a href="lesson-3b-data-transformation.html#cb169-21" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb169-22"><a href="lesson-3b-data-transformation.html#cb169-22" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb169-23"><a href="lesson-3b-data-transformation.html#cb169-23" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb169-24"><a href="lesson-3b-data-transformation.html#cb169-24" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496</span></span>
-<span id="cb169-25"><a href="lesson-3b-data-transformation.html#cb169-25" tabindex="-1"></a><span class="do">##  3 511          316      32445856036</span></span>
-<span id="cb169-26"><a href="lesson-3b-data-transformation.html#cb169-26" tabindex="-1"></a><span class="do">##  4 400          388      31932241118</span></span>
-<span id="cb169-27"><a href="lesson-3b-data-transformation.html#cb169-27" tabindex="-1"></a><span class="do">##  5 918          340      32074655895</span></span>
-<span id="cb169-28"><a href="lesson-3b-data-transformation.html#cb169-28" tabindex="-1"></a><span class="do">##  6 718          324      32614612029</span></span>
-<span id="cb169-29"><a href="lesson-3b-data-transformation.html#cb169-29" tabindex="-1"></a><span class="do">##  7 868          323      32074722463</span></span>
-<span id="cb169-30"><a href="lesson-3b-data-transformation.html#cb169-30" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304</span></span>
-<span id="cb169-31"><a href="lesson-3b-data-transformation.html#cb169-31" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102</span></span>
-<span id="cb169-32"><a href="lesson-3b-data-transformation.html#cb169-32" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707</span></span>
+<span id="cb169-21"><a href="lesson-3b-data-transformation.html#cb169-21" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb169-22"><a href="lesson-3b-data-transformation.html#cb169-22" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb169-23"><a href="lesson-3b-data-transformation.html#cb169-23" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb169-24"><a href="lesson-3b-data-transformation.html#cb169-24" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902            1        1.59</span></span>
+<span id="cb169-25"><a href="lesson-3b-data-transformation.html#cb169-25" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901            1        1   </span></span>
+<span id="cb169-26"><a href="lesson-3b-data-transformation.html#cb169-26" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913          2       11.9 </span></span>
+<span id="cb169-27"><a href="lesson-3b-data-transformation.html#cb169-27" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604           1        1.29</span></span>
+<span id="cb169-28"><a href="lesson-3b-data-transformation.html#cb169-28" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203            1        2.5 </span></span>
+<span id="cb169-29"><a href="lesson-3b-data-transformation.html#cb169-29" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484           1        3.49</span></span>
+<span id="cb169-30"><a href="lesson-3b-data-transformation.html#cb169-30" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715           1        2   </span></span>
+<span id="cb169-31"><a href="lesson-3b-data-transformation.html#cb169-31" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613            2        6.55</span></span>
+<span id="cb169-32"><a href="lesson-3b-data-transformation.html#cb169-32" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497            1        3.99</span></span>
 <span id="cb169-33"><a href="lesson-3b-data-transformation.html#cb169-33" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb169-34"><a href="lesson-3b-data-transformation.html#cb169-34" tabindex="-1"></a><span class="do">## # ℹ 3 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb169-35"><a href="lesson-3b-data-transformation.html#cb169-35" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;</span></span>
-<span id="cb169-36"><a href="lesson-3b-data-transformation.html#cb169-36" tabindex="-1"></a></span>
-<span id="cb169-37"><a href="lesson-3b-data-transformation.html#cb169-37" tabindex="-1"></a><span class="co"># Select all columns except those between household_id and sales_value</span></span>
-<span id="cb169-38"><a href="lesson-3b-data-transformation.html#cb169-38" tabindex="-1"></a><span class="fu">select</span>(df, <span class="sc">-</span><span class="fu">c</span>(household_id<span class="sc">:</span>sales_value))</span>
-<span id="cb169-39"><a href="lesson-3b-data-transformation.html#cb169-39" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb169-40"><a href="lesson-3b-data-transformation.html#cb169-40" tabindex="-1"></a><span class="do">##    retail_disc coupon_disc</span></span>
-<span id="cb169-41"><a href="lesson-3b-data-transformation.html#cb169-41" tabindex="-1"></a><span class="do">##          &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb169-42"><a href="lesson-3b-data-transformation.html#cb169-42" tabindex="-1"></a><span class="do">##  1        0.43           0</span></span>
-<span id="cb169-43"><a href="lesson-3b-data-transformation.html#cb169-43" tabindex="-1"></a><span class="do">##  2        0.9            0</span></span>
-<span id="cb169-44"><a href="lesson-3b-data-transformation.html#cb169-44" tabindex="-1"></a><span class="do">##  3        0.69           0</span></span>
-<span id="cb169-45"><a href="lesson-3b-data-transformation.html#cb169-45" tabindex="-1"></a><span class="do">##  4        2.9            0</span></span>
-<span id="cb169-46"><a href="lesson-3b-data-transformation.html#cb169-46" tabindex="-1"></a><span class="do">##  5        0              0</span></span>
-<span id="cb169-47"><a href="lesson-3b-data-transformation.html#cb169-47" tabindex="-1"></a><span class="do">##  6        0.49           0</span></span>
-<span id="cb169-48"><a href="lesson-3b-data-transformation.html#cb169-48" tabindex="-1"></a><span class="do">##  7        0              0</span></span>
-<span id="cb169-49"><a href="lesson-3b-data-transformation.html#cb169-49" tabindex="-1"></a><span class="do">##  8        1.79           0</span></span>
-<span id="cb169-50"><a href="lesson-3b-data-transformation.html#cb169-50" tabindex="-1"></a><span class="do">##  9        4.44           0</span></span>
-<span id="cb169-51"><a href="lesson-3b-data-transformation.html#cb169-51" tabindex="-1"></a><span class="do">## 10        0              0</span></span>
-<span id="cb169-52"><a href="lesson-3b-data-transformation.html#cb169-52" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb169-53"><a href="lesson-3b-data-transformation.html#cb169-53" tabindex="-1"></a><span class="do">## # ℹ 3 more variables:</span></span>
-<span id="cb169-54"><a href="lesson-3b-data-transformation.html#cb169-54" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb169-55"><a href="lesson-3b-data-transformation.html#cb169-55" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb169-34"><a href="lesson-3b-data-transformation.html#cb169-34" tabindex="-1"></a></span>
+<span id="cb169-35"><a href="lesson-3b-data-transformation.html#cb169-35" tabindex="-1"></a><span class="co"># Select all columns except those between household_id and sales_value</span></span>
+<span id="cb169-36"><a href="lesson-3b-data-transformation.html#cb169-36" tabindex="-1"></a><span class="fu">select</span>(df, <span class="sc">-</span><span class="fu">c</span>(household_id<span class="sc">:</span>sales_value))</span>
+<span id="cb169-37"><a href="lesson-3b-data-transformation.html#cb169-37" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
+<span id="cb169-38"><a href="lesson-3b-data-transformation.html#cb169-38" tabindex="-1"></a><span class="do">##    retail_disc coupon_disc coupon_match_disc  week</span></span>
+<span id="cb169-39"><a href="lesson-3b-data-transformation.html#cb169-39" tabindex="-1"></a><span class="do">##          &lt;dbl&gt;       &lt;dbl&gt;             &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb169-40"><a href="lesson-3b-data-transformation.html#cb169-40" tabindex="-1"></a><span class="do">##  1        0.43           0                 0     5</span></span>
+<span id="cb169-41"><a href="lesson-3b-data-transformation.html#cb169-41" tabindex="-1"></a><span class="do">##  2        0.9            0                 0    10</span></span>
+<span id="cb169-42"><a href="lesson-3b-data-transformation.html#cb169-42" tabindex="-1"></a><span class="do">##  3        0.69           0                 0    13</span></span>
+<span id="cb169-43"><a href="lesson-3b-data-transformation.html#cb169-43" tabindex="-1"></a><span class="do">##  4        2.9            0                 0     8</span></span>
+<span id="cb169-44"><a href="lesson-3b-data-transformation.html#cb169-44" tabindex="-1"></a><span class="do">##  5        0              0                 0    10</span></span>
+<span id="cb169-45"><a href="lesson-3b-data-transformation.html#cb169-45" tabindex="-1"></a><span class="do">##  6        0.49           0                 0    15</span></span>
+<span id="cb169-46"><a href="lesson-3b-data-transformation.html#cb169-46" tabindex="-1"></a><span class="do">##  7        0              0                 0    10</span></span>
+<span id="cb169-47"><a href="lesson-3b-data-transformation.html#cb169-47" tabindex="-1"></a><span class="do">##  8        1.79           0                 0    33</span></span>
+<span id="cb169-48"><a href="lesson-3b-data-transformation.html#cb169-48" tabindex="-1"></a><span class="do">##  9        4.44           0                 0     2</span></span>
+<span id="cb169-49"><a href="lesson-3b-data-transformation.html#cb169-49" tabindex="-1"></a><span class="do">## 10        0              0                 0    16</span></span>
+<span id="cb169-50"><a href="lesson-3b-data-transformation.html#cb169-50" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
+<span id="cb169-51"><a href="lesson-3b-data-transformation.html#cb169-51" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>There are a number of helper functions you can use within <code>select</code>:</p>
 <ul>
 <li><p><code>starts_with("abc")</code>: matches names that begin with “abc”.</p></li>
@@ -1200,64 +1173,55 @@ See <code>?select</code> for more details.
 <p>For example, we can select all variables that contain “id” in their name:</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="lesson-3b-data-transformation.html#cb170-1" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">contains</span>(<span class="st">&quot;id&quot;</span>))</span>
 <span id="cb170-2"><a href="lesson-3b-data-transformation.html#cb170-2" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 4</span></span>
-<span id="cb170-3"><a href="lesson-3b-data-transformation.html#cb170-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb170-4"><a href="lesson-3b-data-transformation.html#cb170-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb170-5"><a href="lesson-3b-data-transformation.html#cb170-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb170-6"><a href="lesson-3b-data-transformation.html#cb170-6" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496</span></span>
-<span id="cb170-7"><a href="lesson-3b-data-transformation.html#cb170-7" tabindex="-1"></a><span class="do">##  3 511          316      32445856036</span></span>
-<span id="cb170-8"><a href="lesson-3b-data-transformation.html#cb170-8" tabindex="-1"></a><span class="do">##  4 400          388      31932241118</span></span>
-<span id="cb170-9"><a href="lesson-3b-data-transformation.html#cb170-9" tabindex="-1"></a><span class="do">##  5 918          340      32074655895</span></span>
-<span id="cb170-10"><a href="lesson-3b-data-transformation.html#cb170-10" tabindex="-1"></a><span class="do">##  6 718          324      32614612029</span></span>
-<span id="cb170-11"><a href="lesson-3b-data-transformation.html#cb170-11" tabindex="-1"></a><span class="do">##  7 868          323      32074722463</span></span>
-<span id="cb170-12"><a href="lesson-3b-data-transformation.html#cb170-12" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304</span></span>
-<span id="cb170-13"><a href="lesson-3b-data-transformation.html#cb170-13" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102</span></span>
-<span id="cb170-14"><a href="lesson-3b-data-transformation.html#cb170-14" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707</span></span>
-<span id="cb170-15"><a href="lesson-3b-data-transformation.html#cb170-15" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb170-16"><a href="lesson-3b-data-transformation.html#cb170-16" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: product_id &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb170-3"><a href="lesson-3b-data-transformation.html#cb170-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id</span></span>
+<span id="cb170-4"><a href="lesson-3b-data-transformation.html#cb170-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;     </span></span>
+<span id="cb170-5"><a href="lesson-3b-data-transformation.html#cb170-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996    </span></span>
+<span id="cb170-6"><a href="lesson-3b-data-transformation.html#cb170-6" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902    </span></span>
+<span id="cb170-7"><a href="lesson-3b-data-transformation.html#cb170-7" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901    </span></span>
+<span id="cb170-8"><a href="lesson-3b-data-transformation.html#cb170-8" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913  </span></span>
+<span id="cb170-9"><a href="lesson-3b-data-transformation.html#cb170-9" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604   </span></span>
+<span id="cb170-10"><a href="lesson-3b-data-transformation.html#cb170-10" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203    </span></span>
+<span id="cb170-11"><a href="lesson-3b-data-transformation.html#cb170-11" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484   </span></span>
+<span id="cb170-12"><a href="lesson-3b-data-transformation.html#cb170-12" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715   </span></span>
+<span id="cb170-13"><a href="lesson-3b-data-transformation.html#cb170-13" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613    </span></span>
+<span id="cb170-14"><a href="lesson-3b-data-transformation.html#cb170-14" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497    </span></span>
+<span id="cb170-15"><a href="lesson-3b-data-transformation.html#cb170-15" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span></code></pre></div>
 <p><code>select</code> can be used to rename variables, but it’s rarely useful because it drops all of the variables not explicitly mentioned. Instead, use <code>rename</code>, which is a variant of <code>select</code> that keeps all the variables that aren’t explicitly mentioned:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lesson-3b-data-transformation.html#cb171-1" tabindex="-1"></a><span class="fu">rename</span>(df, <span class="at">store =</span> store_id, <span class="at">product =</span> product_id)</span>
 <span id="cb171-2"><a href="lesson-3b-data-transformation.html#cb171-2" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
-<span id="cb171-3"><a href="lesson-3b-data-transformation.html#cb171-3" tabindex="-1"></a><span class="do">##    household_id store basket_id   product</span></span>
-<span id="cb171-4"><a href="lesson-3b-data-transformation.html#cb171-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;  </span></span>
-<span id="cb171-5"><a href="lesson-3b-data-transformation.html#cb171-5" tabindex="-1"></a><span class="do">##  1 2261         309   31625220889 940996 </span></span>
-<span id="cb171-6"><a href="lesson-3b-data-transformation.html#cb171-6" tabindex="-1"></a><span class="do">##  2 2131         368   32053127496 873902 </span></span>
-<span id="cb171-7"><a href="lesson-3b-data-transformation.html#cb171-7" tabindex="-1"></a><span class="do">##  3 511          316   32445856036 847901 </span></span>
-<span id="cb171-8"><a href="lesson-3b-data-transformation.html#cb171-8" tabindex="-1"></a><span class="do">##  4 400          388   31932241118 130949…</span></span>
-<span id="cb171-9"><a href="lesson-3b-data-transformation.html#cb171-9" tabindex="-1"></a><span class="do">##  5 918          340   32074655895 1085604</span></span>
-<span id="cb171-10"><a href="lesson-3b-data-transformation.html#cb171-10" tabindex="-1"></a><span class="do">##  6 718          324   32614612029 883203 </span></span>
-<span id="cb171-11"><a href="lesson-3b-data-transformation.html#cb171-11" tabindex="-1"></a><span class="do">##  7 868          323   32074722463 9884484</span></span>
-<span id="cb171-12"><a href="lesson-3b-data-transformation.html#cb171-12" tabindex="-1"></a><span class="do">##  8 1688         450   34850403304 1028715</span></span>
-<span id="cb171-13"><a href="lesson-3b-data-transformation.html#cb171-13" tabindex="-1"></a><span class="do">##  9 467          31782 31280745102 896613 </span></span>
-<span id="cb171-14"><a href="lesson-3b-data-transformation.html#cb171-14" tabindex="-1"></a><span class="do">## 10 1947         32004 32744181707 978497 </span></span>
+<span id="cb171-3"><a href="lesson-3b-data-transformation.html#cb171-3" tabindex="-1"></a><span class="do">##    household_id store basket_id   product  quantity sales_value</span></span>
+<span id="cb171-4"><a href="lesson-3b-data-transformation.html#cb171-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb171-5"><a href="lesson-3b-data-transformation.html#cb171-5" tabindex="-1"></a><span class="do">##  1 2261         309   31625220889 940996          1        3.86</span></span>
+<span id="cb171-6"><a href="lesson-3b-data-transformation.html#cb171-6" tabindex="-1"></a><span class="do">##  2 2131         368   32053127496 873902          1        1.59</span></span>
+<span id="cb171-7"><a href="lesson-3b-data-transformation.html#cb171-7" tabindex="-1"></a><span class="do">##  3 511          316   32445856036 847901          1        1   </span></span>
+<span id="cb171-8"><a href="lesson-3b-data-transformation.html#cb171-8" tabindex="-1"></a><span class="do">##  4 400          388   31932241118 13094913        2       11.9 </span></span>
+<span id="cb171-9"><a href="lesson-3b-data-transformation.html#cb171-9" tabindex="-1"></a><span class="do">##  5 918          340   32074655895 1085604         1        1.29</span></span>
+<span id="cb171-10"><a href="lesson-3b-data-transformation.html#cb171-10" tabindex="-1"></a><span class="do">##  6 718          324   32614612029 883203          1        2.5 </span></span>
+<span id="cb171-11"><a href="lesson-3b-data-transformation.html#cb171-11" tabindex="-1"></a><span class="do">##  7 868          323   32074722463 9884484         1        3.49</span></span>
+<span id="cb171-12"><a href="lesson-3b-data-transformation.html#cb171-12" tabindex="-1"></a><span class="do">##  8 1688         450   34850403304 1028715         1        2   </span></span>
+<span id="cb171-13"><a href="lesson-3b-data-transformation.html#cb171-13" tabindex="-1"></a><span class="do">##  9 467          31782 31280745102 896613          2        6.55</span></span>
+<span id="cb171-14"><a href="lesson-3b-data-transformation.html#cb171-14" tabindex="-1"></a><span class="do">## 10 1947         32004 32744181707 978497          1        3.99</span></span>
 <span id="cb171-15"><a href="lesson-3b-data-transformation.html#cb171-15" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb171-16"><a href="lesson-3b-data-transformation.html#cb171-16" tabindex="-1"></a><span class="do">## # ℹ 7 more variables: quantity &lt;dbl&gt;,</span></span>
-<span id="cb171-17"><a href="lesson-3b-data-transformation.html#cb171-17" tabindex="-1"></a><span class="do">## #   sales_value &lt;dbl&gt;,</span></span>
-<span id="cb171-18"><a href="lesson-3b-data-transformation.html#cb171-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb171-19"><a href="lesson-3b-data-transformation.html#cb171-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb171-20"><a href="lesson-3b-data-transformation.html#cb171-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb171-21"><a href="lesson-3b-data-transformation.html#cb171-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb171-16"><a href="lesson-3b-data-transformation.html#cb171-16" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb171-17"><a href="lesson-3b-data-transformation.html#cb171-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>Another option is to use <code>select</code> in conjunction with the <code>everything</code> helper. This is useful if you have a handful of variables you’d like to move to the start of the data frame.</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="lesson-3b-data-transformation.html#cb172-1" tabindex="-1"></a><span class="fu">select</span>(df, household_id, quantity, sales_value, <span class="fu">everything</span>())</span>
 <span id="cb172-2"><a href="lesson-3b-data-transformation.html#cb172-2" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
-<span id="cb172-3"><a href="lesson-3b-data-transformation.html#cb172-3" tabindex="-1"></a><span class="do">##    household_id quantity sales_value</span></span>
-<span id="cb172-4"><a href="lesson-3b-data-transformation.html#cb172-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb172-5"><a href="lesson-3b-data-transformation.html#cb172-5" tabindex="-1"></a><span class="do">##  1 2261                1        3.86</span></span>
-<span id="cb172-6"><a href="lesson-3b-data-transformation.html#cb172-6" tabindex="-1"></a><span class="do">##  2 2131                1        1.59</span></span>
-<span id="cb172-7"><a href="lesson-3b-data-transformation.html#cb172-7" tabindex="-1"></a><span class="do">##  3 511                 1        1   </span></span>
-<span id="cb172-8"><a href="lesson-3b-data-transformation.html#cb172-8" tabindex="-1"></a><span class="do">##  4 400                 2       11.9 </span></span>
-<span id="cb172-9"><a href="lesson-3b-data-transformation.html#cb172-9" tabindex="-1"></a><span class="do">##  5 918                 1        1.29</span></span>
-<span id="cb172-10"><a href="lesson-3b-data-transformation.html#cb172-10" tabindex="-1"></a><span class="do">##  6 718                 1        2.5 </span></span>
-<span id="cb172-11"><a href="lesson-3b-data-transformation.html#cb172-11" tabindex="-1"></a><span class="do">##  7 868                 1        3.49</span></span>
-<span id="cb172-12"><a href="lesson-3b-data-transformation.html#cb172-12" tabindex="-1"></a><span class="do">##  8 1688                1        2   </span></span>
-<span id="cb172-13"><a href="lesson-3b-data-transformation.html#cb172-13" tabindex="-1"></a><span class="do">##  9 467                 2        6.55</span></span>
-<span id="cb172-14"><a href="lesson-3b-data-transformation.html#cb172-14" tabindex="-1"></a><span class="do">## 10 1947                1        3.99</span></span>
+<span id="cb172-3"><a href="lesson-3b-data-transformation.html#cb172-3" tabindex="-1"></a><span class="do">##    household_id quantity sales_value store_id basket_id   product_id</span></span>
+<span id="cb172-4"><a href="lesson-3b-data-transformation.html#cb172-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;     </span></span>
+<span id="cb172-5"><a href="lesson-3b-data-transformation.html#cb172-5" tabindex="-1"></a><span class="do">##  1 2261                1        3.86 309      31625220889 940996    </span></span>
+<span id="cb172-6"><a href="lesson-3b-data-transformation.html#cb172-6" tabindex="-1"></a><span class="do">##  2 2131                1        1.59 368      32053127496 873902    </span></span>
+<span id="cb172-7"><a href="lesson-3b-data-transformation.html#cb172-7" tabindex="-1"></a><span class="do">##  3 511                 1        1    316      32445856036 847901    </span></span>
+<span id="cb172-8"><a href="lesson-3b-data-transformation.html#cb172-8" tabindex="-1"></a><span class="do">##  4 400                 2       11.9  388      31932241118 13094913  </span></span>
+<span id="cb172-9"><a href="lesson-3b-data-transformation.html#cb172-9" tabindex="-1"></a><span class="do">##  5 918                 1        1.29 340      32074655895 1085604   </span></span>
+<span id="cb172-10"><a href="lesson-3b-data-transformation.html#cb172-10" tabindex="-1"></a><span class="do">##  6 718                 1        2.5  324      32614612029 883203    </span></span>
+<span id="cb172-11"><a href="lesson-3b-data-transformation.html#cb172-11" tabindex="-1"></a><span class="do">##  7 868                 1        3.49 323      32074722463 9884484   </span></span>
+<span id="cb172-12"><a href="lesson-3b-data-transformation.html#cb172-12" tabindex="-1"></a><span class="do">##  8 1688                1        2    450      34850403304 1028715   </span></span>
+<span id="cb172-13"><a href="lesson-3b-data-transformation.html#cb172-13" tabindex="-1"></a><span class="do">##  9 467                 2        6.55 31782    31280745102 896613    </span></span>
+<span id="cb172-14"><a href="lesson-3b-data-transformation.html#cb172-14" tabindex="-1"></a><span class="do">## 10 1947                1        3.99 32004    32744181707 978497    </span></span>
 <span id="cb172-15"><a href="lesson-3b-data-transformation.html#cb172-15" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb172-16"><a href="lesson-3b-data-transformation.html#cb172-16" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: store_id &lt;chr&gt;,</span></span>
-<span id="cb172-17"><a href="lesson-3b-data-transformation.html#cb172-17" tabindex="-1"></a><span class="do">## #   basket_id &lt;chr&gt;, product_id &lt;chr&gt;,</span></span>
-<span id="cb172-18"><a href="lesson-3b-data-transformation.html#cb172-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb172-19"><a href="lesson-3b-data-transformation.html#cb172-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb172-20"><a href="lesson-3b-data-transformation.html#cb172-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb172-21"><a href="lesson-3b-data-transformation.html#cb172-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb172-16"><a href="lesson-3b-data-transformation.html#cb172-16" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb172-17"><a href="lesson-3b-data-transformation.html#cb172-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -1409,21 +1373,19 @@ Figure 11.2: Summarize functions need to condense a vector input down to a singl
 <span id="cb176-9"><a href="lesson-3b-data-transformation.html#cb176-9" tabindex="-1"></a>    <span class="fu">n</span>()</span>
 <span id="cb176-10"><a href="lesson-3b-data-transformation.html#cb176-10" tabindex="-1"></a>    )</span>
 <span id="cb176-11"><a href="lesson-3b-data-transformation.html#cb176-11" tabindex="-1"></a><span class="do">## # A tibble: 293 × 7</span></span>
-<span id="cb176-12"><a href="lesson-3b-data-transformation.html#cb176-12" tabindex="-1"></a><span class="do">##    store_id `10%`  `50%` avg_sales_value</span></span>
-<span id="cb176-13"><a href="lesson-3b-data-transformation.html#cb176-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;           &lt;dbl&gt;</span></span>
-<span id="cb176-14"><a href="lesson-3b-data-transformation.html#cb176-14" tabindex="-1"></a><span class="do">##  1 108      14.0  14.0             14.0 </span></span>
-<span id="cb176-15"><a href="lesson-3b-data-transformation.html#cb176-15" tabindex="-1"></a><span class="do">##  2 1089      1     1                1   </span></span>
-<span id="cb176-16"><a href="lesson-3b-data-transformation.html#cb176-16" tabindex="-1"></a><span class="do">##  3 1098      2.28  2.28             2.28</span></span>
-<span id="cb176-17"><a href="lesson-3b-data-transformation.html#cb176-17" tabindex="-1"></a><span class="do">##  4 1102      0.55  0.825            1.17</span></span>
-<span id="cb176-18"><a href="lesson-3b-data-transformation.html#cb176-18" tabindex="-1"></a><span class="do">##  5 112       0.94  1.09             1.39</span></span>
-<span id="cb176-19"><a href="lesson-3b-data-transformation.html#cb176-19" tabindex="-1"></a><span class="do">##  6 1132      0.39  0.39             0.71</span></span>
-<span id="cb176-20"><a href="lesson-3b-data-transformation.html#cb176-20" tabindex="-1"></a><span class="do">##  7 1240      1     1                1   </span></span>
-<span id="cb176-21"><a href="lesson-3b-data-transformation.html#cb176-21" tabindex="-1"></a><span class="do">##  8 1247      0.39  0.39             0.39</span></span>
-<span id="cb176-22"><a href="lesson-3b-data-transformation.html#cb176-22" tabindex="-1"></a><span class="do">##  9 1252      0.99  0.99             0.99</span></span>
-<span id="cb176-23"><a href="lesson-3b-data-transformation.html#cb176-23" tabindex="-1"></a><span class="do">## 10 134       1.89  1.89             1.89</span></span>
-<span id="cb176-24"><a href="lesson-3b-data-transformation.html#cb176-24" tabindex="-1"></a><span class="do">## # ℹ 283 more rows</span></span>
-<span id="cb176-25"><a href="lesson-3b-data-transformation.html#cb176-25" tabindex="-1"></a><span class="do">## # ℹ 3 more variables: `90%` &lt;dbl&gt;,</span></span>
-<span id="cb176-26"><a href="lesson-3b-data-transformation.html#cb176-26" tabindex="-1"></a><span class="do">## #   sd &lt;dbl&gt;, `n()` &lt;int&gt;</span></span></code></pre></div>
+<span id="cb176-12"><a href="lesson-3b-data-transformation.html#cb176-12" tabindex="-1"></a><span class="do">##    store_id `10%`  `50%` avg_sales_value `90%`     sd `n()`</span></span>
+<span id="cb176-13"><a href="lesson-3b-data-transformation.html#cb176-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;           &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb176-14"><a href="lesson-3b-data-transformation.html#cb176-14" tabindex="-1"></a><span class="do">##  1 108      14.0  14.0             14.0  14.0   0         2</span></span>
+<span id="cb176-15"><a href="lesson-3b-data-transformation.html#cb176-15" tabindex="-1"></a><span class="do">##  2 1089      1     1                1     1    NA         1</span></span>
+<span id="cb176-16"><a href="lesson-3b-data-transformation.html#cb176-16" tabindex="-1"></a><span class="do">##  3 1098      2.28  2.28             2.28  2.28 NA         1</span></span>
+<span id="cb176-17"><a href="lesson-3b-data-transformation.html#cb176-17" tabindex="-1"></a><span class="do">##  4 1102      0.55  0.825            1.17  2.07  0.916     4</span></span>
+<span id="cb176-18"><a href="lesson-3b-data-transformation.html#cb176-18" tabindex="-1"></a><span class="do">##  5 112       0.94  1.09             1.39  2.13  0.652     6</span></span>
+<span id="cb176-19"><a href="lesson-3b-data-transformation.html#cb176-19" tabindex="-1"></a><span class="do">##  6 1132      0.39  0.39             0.71  1.35  0.716     5</span></span>
+<span id="cb176-20"><a href="lesson-3b-data-transformation.html#cb176-20" tabindex="-1"></a><span class="do">##  7 1240      1     1                1     1    NA         1</span></span>
+<span id="cb176-21"><a href="lesson-3b-data-transformation.html#cb176-21" tabindex="-1"></a><span class="do">##  8 1247      0.39  0.39             0.39  0.39 NA         1</span></span>
+<span id="cb176-22"><a href="lesson-3b-data-transformation.html#cb176-22" tabindex="-1"></a><span class="do">##  9 1252      0.99  0.99             0.99  0.99 NA         1</span></span>
+<span id="cb176-23"><a href="lesson-3b-data-transformation.html#cb176-23" tabindex="-1"></a><span class="do">## 10 134       1.89  1.89             1.89  1.89 NA         1</span></span>
+<span id="cb176-24"><a href="lesson-3b-data-transformation.html#cb176-24" tabindex="-1"></a><span class="do">## # ℹ 283 more rows</span></span></code></pre></div>
 <p>There are additional summarize alternative functions that are quite useful. Test these out and see how they work:</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lesson-3b-data-transformation.html#cb177-1" tabindex="-1"></a><span class="co"># compute the average for multiple specified variables</span></span>
 <span id="cb177-2"><a href="lesson-3b-data-transformation.html#cb177-2" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">summarize_at</span>(<span class="fu">c</span>(<span class="st">&quot;sales_value&quot;</span>, <span class="st">&quot;quantity&quot;</span>), mean) </span>
@@ -1523,48 +1485,40 @@ one.
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lesson-3b-data-transformation.html#cb179-1" tabindex="-1"></a><span class="co"># default is ascending order</span></span>
 <span id="cb179-2"><a href="lesson-3b-data-transformation.html#cb179-2" tabindex="-1"></a><span class="fu">arrange</span>(df, sales_value)</span>
 <span id="cb179-3"><a href="lesson-3b-data-transformation.html#cb179-3" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
-<span id="cb179-4"><a href="lesson-3b-data-transformation.html#cb179-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb179-5"><a href="lesson-3b-data-transformation.html#cb179-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb179-6"><a href="lesson-3b-data-transformation.html#cb179-6" tabindex="-1"></a><span class="do">##  1 1038         340      31389956808</span></span>
-<span id="cb179-7"><a href="lesson-3b-data-transformation.html#cb179-7" tabindex="-1"></a><span class="do">##  2 1166         408      31969185576</span></span>
-<span id="cb179-8"><a href="lesson-3b-data-transformation.html#cb179-8" tabindex="-1"></a><span class="do">##  3 1397         381      40800715180</span></span>
-<span id="cb179-9"><a href="lesson-3b-data-transformation.html#cb179-9" tabindex="-1"></a><span class="do">##  4 1889         369      33433310971</span></span>
-<span id="cb179-10"><a href="lesson-3b-data-transformation.html#cb179-10" tabindex="-1"></a><span class="do">##  5 1241         368      31834162699</span></span>
-<span id="cb179-11"><a href="lesson-3b-data-transformation.html#cb179-11" tabindex="-1"></a><span class="do">##  6 867          369      40436331223</span></span>
-<span id="cb179-12"><a href="lesson-3b-data-transformation.html#cb179-12" tabindex="-1"></a><span class="do">##  7 2204         367      33397465730</span></span>
-<span id="cb179-13"><a href="lesson-3b-data-transformation.html#cb179-13" tabindex="-1"></a><span class="do">##  8 40           406      40085429046</span></span>
-<span id="cb179-14"><a href="lesson-3b-data-transformation.html#cb179-14" tabindex="-1"></a><span class="do">##  9 1100         358      41125111338</span></span>
-<span id="cb179-15"><a href="lesson-3b-data-transformation.html#cb179-15" tabindex="-1"></a><span class="do">## 10 1829         445      33655105183</span></span>
+<span id="cb179-4"><a href="lesson-3b-data-transformation.html#cb179-4" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb179-5"><a href="lesson-3b-data-transformation.html#cb179-5" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb179-6"><a href="lesson-3b-data-transformation.html#cb179-6" tabindex="-1"></a><span class="do">##  1 1038         340      31389956808 983659            0           0</span></span>
+<span id="cb179-7"><a href="lesson-3b-data-transformation.html#cb179-7" tabindex="-1"></a><span class="do">##  2 1166         408      31969185576 5978656           0           0</span></span>
+<span id="cb179-8"><a href="lesson-3b-data-transformation.html#cb179-8" tabindex="-1"></a><span class="do">##  3 1397         381      40800715180 8020001           0           0</span></span>
+<span id="cb179-9"><a href="lesson-3b-data-transformation.html#cb179-9" tabindex="-1"></a><span class="do">##  4 1889         369      33433310971 903325            0           0</span></span>
+<span id="cb179-10"><a href="lesson-3b-data-transformation.html#cb179-10" tabindex="-1"></a><span class="do">##  5 1241         368      31834162699 7441102           0           0</span></span>
+<span id="cb179-11"><a href="lesson-3b-data-transformation.html#cb179-11" tabindex="-1"></a><span class="do">##  6 867          369      40436331223 5978656           0           0</span></span>
+<span id="cb179-12"><a href="lesson-3b-data-transformation.html#cb179-12" tabindex="-1"></a><span class="do">##  7 2204         367      33397465730 887782            0           0</span></span>
+<span id="cb179-13"><a href="lesson-3b-data-transformation.html#cb179-13" tabindex="-1"></a><span class="do">##  8 40           406      40085429046 5978648           0           0</span></span>
+<span id="cb179-14"><a href="lesson-3b-data-transformation.html#cb179-14" tabindex="-1"></a><span class="do">##  9 1100         358      41125111338 976199            0           0</span></span>
+<span id="cb179-15"><a href="lesson-3b-data-transformation.html#cb179-15" tabindex="-1"></a><span class="do">## 10 1829         445      33655105183 1014948           1           0</span></span>
 <span id="cb179-16"><a href="lesson-3b-data-transformation.html#cb179-16" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb179-17"><a href="lesson-3b-data-transformation.html#cb179-17" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb179-18"><a href="lesson-3b-data-transformation.html#cb179-18" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb179-19"><a href="lesson-3b-data-transformation.html#cb179-19" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb179-20"><a href="lesson-3b-data-transformation.html#cb179-20" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb179-21"><a href="lesson-3b-data-transformation.html#cb179-21" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb179-22"><a href="lesson-3b-data-transformation.html#cb179-22" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span>
-<span id="cb179-23"><a href="lesson-3b-data-transformation.html#cb179-23" tabindex="-1"></a></span>
-<span id="cb179-24"><a href="lesson-3b-data-transformation.html#cb179-24" tabindex="-1"></a><span class="co"># use desc() for descending order</span></span>
-<span id="cb179-25"><a href="lesson-3b-data-transformation.html#cb179-25" tabindex="-1"></a><span class="fu">arrange</span>(df, <span class="fu">desc</span>(sales_value))</span>
-<span id="cb179-26"><a href="lesson-3b-data-transformation.html#cb179-26" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
-<span id="cb179-27"><a href="lesson-3b-data-transformation.html#cb179-27" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb179-28"><a href="lesson-3b-data-transformation.html#cb179-28" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb179-29"><a href="lesson-3b-data-transformation.html#cb179-29" tabindex="-1"></a><span class="do">##  1 1246         334      32005986123</span></span>
-<span id="cb179-30"><a href="lesson-3b-data-transformation.html#cb179-30" tabindex="-1"></a><span class="do">##  2 2318         381      31993236318</span></span>
-<span id="cb179-31"><a href="lesson-3b-data-transformation.html#cb179-31" tabindex="-1"></a><span class="do">##  3 1172         396      34338411595</span></span>
-<span id="cb179-32"><a href="lesson-3b-data-transformation.html#cb179-32" tabindex="-1"></a><span class="do">##  4 1959         736      33510101062</span></span>
-<span id="cb179-33"><a href="lesson-3b-data-transformation.html#cb179-33" tabindex="-1"></a><span class="do">##  5 1959         323      34811925575</span></span>
-<span id="cb179-34"><a href="lesson-3b-data-transformation.html#cb179-34" tabindex="-1"></a><span class="do">##  6 2133         433      35727256342</span></span>
-<span id="cb179-35"><a href="lesson-3b-data-transformation.html#cb179-35" tabindex="-1"></a><span class="do">##  7 1764         327      33971056246</span></span>
-<span id="cb179-36"><a href="lesson-3b-data-transformation.html#cb179-36" tabindex="-1"></a><span class="do">##  8 1959         384      34103546818</span></span>
-<span id="cb179-37"><a href="lesson-3b-data-transformation.html#cb179-37" tabindex="-1"></a><span class="do">##  9 2312         442      41351830986</span></span>
-<span id="cb179-38"><a href="lesson-3b-data-transformation.html#cb179-38" tabindex="-1"></a><span class="do">## 10 2360         323      35463937998</span></span>
-<span id="cb179-39"><a href="lesson-3b-data-transformation.html#cb179-39" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb179-40"><a href="lesson-3b-data-transformation.html#cb179-40" tabindex="-1"></a><span class="do">## # ℹ 8 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb179-41"><a href="lesson-3b-data-transformation.html#cb179-41" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb179-42"><a href="lesson-3b-data-transformation.html#cb179-42" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb179-43"><a href="lesson-3b-data-transformation.html#cb179-43" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb179-44"><a href="lesson-3b-data-transformation.html#cb179-44" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb179-45"><a href="lesson-3b-data-transformation.html#cb179-45" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
+<span id="cb179-17"><a href="lesson-3b-data-transformation.html#cb179-17" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb179-18"><a href="lesson-3b-data-transformation.html#cb179-18" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span>
+<span id="cb179-19"><a href="lesson-3b-data-transformation.html#cb179-19" tabindex="-1"></a></span>
+<span id="cb179-20"><a href="lesson-3b-data-transformation.html#cb179-20" tabindex="-1"></a><span class="co"># use desc() for descending order</span></span>
+<span id="cb179-21"><a href="lesson-3b-data-transformation.html#cb179-21" tabindex="-1"></a><span class="fu">arrange</span>(df, <span class="fu">desc</span>(sales_value))</span>
+<span id="cb179-22"><a href="lesson-3b-data-transformation.html#cb179-22" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 11</span></span>
+<span id="cb179-23"><a href="lesson-3b-data-transformation.html#cb179-23" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb179-24"><a href="lesson-3b-data-transformation.html#cb179-24" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb179-25"><a href="lesson-3b-data-transformation.html#cb179-25" tabindex="-1"></a><span class="do">##  1 1246         334      32005986123 12484608          1       100  </span></span>
+<span id="cb179-26"><a href="lesson-3b-data-transformation.html#cb179-26" tabindex="-1"></a><span class="do">##  2 2318         381      31993236318 13040176          1       100. </span></span>
+<span id="cb179-27"><a href="lesson-3b-data-transformation.html#cb179-27" tabindex="-1"></a><span class="do">##  3 1172         396      34338411595 15630122          1        88.9</span></span>
+<span id="cb179-28"><a href="lesson-3b-data-transformation.html#cb179-28" tabindex="-1"></a><span class="do">##  4 1959         736      33510101062 5716076       30080        86.0</span></span>
+<span id="cb179-29"><a href="lesson-3b-data-transformation.html#cb179-29" tabindex="-1"></a><span class="do">##  5 1959         323      34811925575 6544236       26325        75  </span></span>
+<span id="cb179-30"><a href="lesson-3b-data-transformation.html#cb179-30" tabindex="-1"></a><span class="do">##  6 2133         433      35727256342 6534178       32623        75  </span></span>
+<span id="cb179-31"><a href="lesson-3b-data-transformation.html#cb179-31" tabindex="-1"></a><span class="do">##  7 1764         327      33971056246 6534178       24583        68.8</span></span>
+<span id="cb179-32"><a href="lesson-3b-data-transformation.html#cb179-32" tabindex="-1"></a><span class="do">##  8 1959         384      34103546818 6544236       23519        67.0</span></span>
+<span id="cb179-33"><a href="lesson-3b-data-transformation.html#cb179-33" tabindex="-1"></a><span class="do">##  9 2312         442      41351830986 916561            1        66.1</span></span>
+<span id="cb179-34"><a href="lesson-3b-data-transformation.html#cb179-34" tabindex="-1"></a><span class="do">## 10 2360         323      35463937998 12812261          8        65.6</span></span>
+<span id="cb179-35"><a href="lesson-3b-data-transformation.html#cb179-35" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
+<span id="cb179-36"><a href="lesson-3b-data-transformation.html#cb179-36" tabindex="-1"></a><span class="do">## # ℹ 5 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb179-37"><a href="lesson-3b-data-transformation.html#cb179-37" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;</span></span></code></pre></div>
 <p>This function becomes particularly useful when combining with summary statistics. For example, we can quickly find the product with the largest average sales value amount by adding <code>arrange</code> to the end of this sequence of functions:</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="lesson-3b-data-transformation.html#cb180-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb180-2"><a href="lesson-3b-data-transformation.html#cb180-2" tabindex="-1"></a>  <span class="fu">group_by</span>(product_id) <span class="sc">%&gt;%</span></span>
@@ -1635,25 +1589,22 @@ Check out this video to reinforce the idea of the pipe operator.
 <p>Often, we want to create a new variable that is a function of the current variables in our data frame. The <code>mutate</code> function allows us to add new variables while preserving the existing variables. For example, we can compute the net spend per item by dividing <code>sales_value</code> by <code>quantity</code>.</p>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lesson-3b-data-transformation.html#cb181-1" tabindex="-1"></a><span class="fu">mutate</span>(df, <span class="at">spend_per_item =</span> sales_value <span class="sc">/</span> quantity)</span>
 <span id="cb181-2"><a href="lesson-3b-data-transformation.html#cb181-2" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 12</span></span>
-<span id="cb181-3"><a href="lesson-3b-data-transformation.html#cb181-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id  </span></span>
-<span id="cb181-4"><a href="lesson-3b-data-transformation.html#cb181-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;      </span></span>
-<span id="cb181-5"><a href="lesson-3b-data-transformation.html#cb181-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889</span></span>
-<span id="cb181-6"><a href="lesson-3b-data-transformation.html#cb181-6" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496</span></span>
-<span id="cb181-7"><a href="lesson-3b-data-transformation.html#cb181-7" tabindex="-1"></a><span class="do">##  3 511          316      32445856036</span></span>
-<span id="cb181-8"><a href="lesson-3b-data-transformation.html#cb181-8" tabindex="-1"></a><span class="do">##  4 400          388      31932241118</span></span>
-<span id="cb181-9"><a href="lesson-3b-data-transformation.html#cb181-9" tabindex="-1"></a><span class="do">##  5 918          340      32074655895</span></span>
-<span id="cb181-10"><a href="lesson-3b-data-transformation.html#cb181-10" tabindex="-1"></a><span class="do">##  6 718          324      32614612029</span></span>
-<span id="cb181-11"><a href="lesson-3b-data-transformation.html#cb181-11" tabindex="-1"></a><span class="do">##  7 868          323      32074722463</span></span>
-<span id="cb181-12"><a href="lesson-3b-data-transformation.html#cb181-12" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304</span></span>
-<span id="cb181-13"><a href="lesson-3b-data-transformation.html#cb181-13" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102</span></span>
-<span id="cb181-14"><a href="lesson-3b-data-transformation.html#cb181-14" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707</span></span>
+<span id="cb181-3"><a href="lesson-3b-data-transformation.html#cb181-3" tabindex="-1"></a><span class="do">##    household_id store_id basket_id   product_id quantity sales_value</span></span>
+<span id="cb181-4"><a href="lesson-3b-data-transformation.html#cb181-4" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb181-5"><a href="lesson-3b-data-transformation.html#cb181-5" tabindex="-1"></a><span class="do">##  1 2261         309      31625220889 940996            1        3.86</span></span>
+<span id="cb181-6"><a href="lesson-3b-data-transformation.html#cb181-6" tabindex="-1"></a><span class="do">##  2 2131         368      32053127496 873902            1        1.59</span></span>
+<span id="cb181-7"><a href="lesson-3b-data-transformation.html#cb181-7" tabindex="-1"></a><span class="do">##  3 511          316      32445856036 847901            1        1   </span></span>
+<span id="cb181-8"><a href="lesson-3b-data-transformation.html#cb181-8" tabindex="-1"></a><span class="do">##  4 400          388      31932241118 13094913          2       11.9 </span></span>
+<span id="cb181-9"><a href="lesson-3b-data-transformation.html#cb181-9" tabindex="-1"></a><span class="do">##  5 918          340      32074655895 1085604           1        1.29</span></span>
+<span id="cb181-10"><a href="lesson-3b-data-transformation.html#cb181-10" tabindex="-1"></a><span class="do">##  6 718          324      32614612029 883203            1        2.5 </span></span>
+<span id="cb181-11"><a href="lesson-3b-data-transformation.html#cb181-11" tabindex="-1"></a><span class="do">##  7 868          323      32074722463 9884484           1        3.49</span></span>
+<span id="cb181-12"><a href="lesson-3b-data-transformation.html#cb181-12" tabindex="-1"></a><span class="do">##  8 1688         450      34850403304 1028715           1        2   </span></span>
+<span id="cb181-13"><a href="lesson-3b-data-transformation.html#cb181-13" tabindex="-1"></a><span class="do">##  9 467          31782    31280745102 896613            2        6.55</span></span>
+<span id="cb181-14"><a href="lesson-3b-data-transformation.html#cb181-14" tabindex="-1"></a><span class="do">## 10 1947         32004    32744181707 978497            1        3.99</span></span>
 <span id="cb181-15"><a href="lesson-3b-data-transformation.html#cb181-15" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb181-16"><a href="lesson-3b-data-transformation.html#cb181-16" tabindex="-1"></a><span class="do">## # ℹ 9 more variables: product_id &lt;chr&gt;,</span></span>
-<span id="cb181-17"><a href="lesson-3b-data-transformation.html#cb181-17" tabindex="-1"></a><span class="do">## #   quantity &lt;dbl&gt;, sales_value &lt;dbl&gt;,</span></span>
-<span id="cb181-18"><a href="lesson-3b-data-transformation.html#cb181-18" tabindex="-1"></a><span class="do">## #   retail_disc &lt;dbl&gt;,</span></span>
-<span id="cb181-19"><a href="lesson-3b-data-transformation.html#cb181-19" tabindex="-1"></a><span class="do">## #   coupon_disc &lt;dbl&gt;,</span></span>
-<span id="cb181-20"><a href="lesson-3b-data-transformation.html#cb181-20" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;,</span></span>
-<span id="cb181-21"><a href="lesson-3b-data-transformation.html#cb181-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;, …</span></span></code></pre></div>
+<span id="cb181-16"><a href="lesson-3b-data-transformation.html#cb181-16" tabindex="-1"></a><span class="do">## # ℹ 6 more variables: retail_disc &lt;dbl&gt;, coupon_disc &lt;dbl&gt;,</span></span>
+<span id="cb181-17"><a href="lesson-3b-data-transformation.html#cb181-17" tabindex="-1"></a><span class="do">## #   coupon_match_disc &lt;dbl&gt;, week &lt;int&gt;, transaction_timestamp &lt;dttm&gt;,</span></span>
+<span id="cb181-18"><a href="lesson-3b-data-transformation.html#cb181-18" tabindex="-1"></a><span class="do">## #   spend_per_item &lt;dbl&gt;</span></span></code></pre></div>
 <div class="note">
 <p>
 <code>mutate</code> always adds new columns at the end of your
@@ -1719,85 +1670,79 @@ dataset.
 <span id="cb182-4"><a href="lesson-3b-data-transformation.html#cb182-4" tabindex="-1"></a><span class="co"># compute total net spend amount per item</span></span>
 <span id="cb182-5"><a href="lesson-3b-data-transformation.html#cb182-5" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">spend_per_item =</span> sales_value <span class="sc">/</span> quantity)</span>
 <span id="cb182-6"><a href="lesson-3b-data-transformation.html#cb182-6" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb182-7"><a href="lesson-3b-data-transformation.html#cb182-7" tabindex="-1"></a><span class="do">##    household_id quantity sales_value</span></span>
-<span id="cb182-8"><a href="lesson-3b-data-transformation.html#cb182-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb182-9"><a href="lesson-3b-data-transformation.html#cb182-9" tabindex="-1"></a><span class="do">##  1 2261                1        3.86</span></span>
-<span id="cb182-10"><a href="lesson-3b-data-transformation.html#cb182-10" tabindex="-1"></a><span class="do">##  2 2131                1        1.59</span></span>
-<span id="cb182-11"><a href="lesson-3b-data-transformation.html#cb182-11" tabindex="-1"></a><span class="do">##  3 511                 1        1   </span></span>
-<span id="cb182-12"><a href="lesson-3b-data-transformation.html#cb182-12" tabindex="-1"></a><span class="do">##  4 400                 2       11.9 </span></span>
-<span id="cb182-13"><a href="lesson-3b-data-transformation.html#cb182-13" tabindex="-1"></a><span class="do">##  5 918                 1        1.29</span></span>
-<span id="cb182-14"><a href="lesson-3b-data-transformation.html#cb182-14" tabindex="-1"></a><span class="do">##  6 718                 1        2.5 </span></span>
-<span id="cb182-15"><a href="lesson-3b-data-transformation.html#cb182-15" tabindex="-1"></a><span class="do">##  7 868                 1        3.49</span></span>
-<span id="cb182-16"><a href="lesson-3b-data-transformation.html#cb182-16" tabindex="-1"></a><span class="do">##  8 1688                1        2   </span></span>
-<span id="cb182-17"><a href="lesson-3b-data-transformation.html#cb182-17" tabindex="-1"></a><span class="do">##  9 467                 2        6.55</span></span>
-<span id="cb182-18"><a href="lesson-3b-data-transformation.html#cb182-18" tabindex="-1"></a><span class="do">## 10 1947                1        3.99</span></span>
+<span id="cb182-7"><a href="lesson-3b-data-transformation.html#cb182-7" tabindex="-1"></a><span class="do">##    household_id quantity sales_value transaction_timestamp</span></span>
+<span id="cb182-8"><a href="lesson-3b-data-transformation.html#cb182-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt; &lt;dttm&gt;               </span></span>
+<span id="cb182-9"><a href="lesson-3b-data-transformation.html#cb182-9" tabindex="-1"></a><span class="do">##  1 2261                1        3.86 2017-01-28 14:06:53  </span></span>
+<span id="cb182-10"><a href="lesson-3b-data-transformation.html#cb182-10" tabindex="-1"></a><span class="do">##  2 2131                1        1.59 2017-02-28 22:31:57  </span></span>
+<span id="cb182-11"><a href="lesson-3b-data-transformation.html#cb182-11" tabindex="-1"></a><span class="do">##  3 511                 1        1    2017-03-26 13:22:21  </span></span>
+<span id="cb182-12"><a href="lesson-3b-data-transformation.html#cb182-12" tabindex="-1"></a><span class="do">##  4 400                 2       11.9  2017-02-18 13:13:10  </span></span>
+<span id="cb182-13"><a href="lesson-3b-data-transformation.html#cb182-13" tabindex="-1"></a><span class="do">##  5 918                 1        1.29 2017-03-02 15:05:57  </span></span>
+<span id="cb182-14"><a href="lesson-3b-data-transformation.html#cb182-14" tabindex="-1"></a><span class="do">##  6 718                 1        2.5  2017-04-05 18:14:17  </span></span>
+<span id="cb182-15"><a href="lesson-3b-data-transformation.html#cb182-15" tabindex="-1"></a><span class="do">##  7 868                 1        3.49 2017-03-02 17:45:37  </span></span>
+<span id="cb182-16"><a href="lesson-3b-data-transformation.html#cb182-16" tabindex="-1"></a><span class="do">##  8 1688                1        2    2017-08-11 22:41:02  </span></span>
+<span id="cb182-17"><a href="lesson-3b-data-transformation.html#cb182-17" tabindex="-1"></a><span class="do">##  9 467                 2        6.55 2017-01-06 07:47:01  </span></span>
+<span id="cb182-18"><a href="lesson-3b-data-transformation.html#cb182-18" tabindex="-1"></a><span class="do">## 10 1947                1        3.99 2017-04-13 17:30:04  </span></span>
 <span id="cb182-19"><a href="lesson-3b-data-transformation.html#cb182-19" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb182-20"><a href="lesson-3b-data-transformation.html#cb182-20" tabindex="-1"></a><span class="do">## # ℹ 2 more variables:</span></span>
-<span id="cb182-21"><a href="lesson-3b-data-transformation.html#cb182-21" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;,</span></span>
-<span id="cb182-22"><a href="lesson-3b-data-transformation.html#cb182-22" tabindex="-1"></a><span class="do">## #   spend_per_item &lt;dbl&gt;</span></span>
-<span id="cb182-23"><a href="lesson-3b-data-transformation.html#cb182-23" tabindex="-1"></a></span>
-<span id="cb182-24"><a href="lesson-3b-data-transformation.html#cb182-24" tabindex="-1"></a><span class="co"># log transform sales_value</span></span>
-<span id="cb182-25"><a href="lesson-3b-data-transformation.html#cb182-25" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_sales_value =</span> <span class="fu">log</span>(sales_value))</span>
-<span id="cb182-26"><a href="lesson-3b-data-transformation.html#cb182-26" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb182-27"><a href="lesson-3b-data-transformation.html#cb182-27" tabindex="-1"></a><span class="do">##    household_id quantity sales_value</span></span>
-<span id="cb182-28"><a href="lesson-3b-data-transformation.html#cb182-28" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb182-29"><a href="lesson-3b-data-transformation.html#cb182-29" tabindex="-1"></a><span class="do">##  1 2261                1        3.86</span></span>
-<span id="cb182-30"><a href="lesson-3b-data-transformation.html#cb182-30" tabindex="-1"></a><span class="do">##  2 2131                1        1.59</span></span>
-<span id="cb182-31"><a href="lesson-3b-data-transformation.html#cb182-31" tabindex="-1"></a><span class="do">##  3 511                 1        1   </span></span>
-<span id="cb182-32"><a href="lesson-3b-data-transformation.html#cb182-32" tabindex="-1"></a><span class="do">##  4 400                 2       11.9 </span></span>
-<span id="cb182-33"><a href="lesson-3b-data-transformation.html#cb182-33" tabindex="-1"></a><span class="do">##  5 918                 1        1.29</span></span>
-<span id="cb182-34"><a href="lesson-3b-data-transformation.html#cb182-34" tabindex="-1"></a><span class="do">##  6 718                 1        2.5 </span></span>
-<span id="cb182-35"><a href="lesson-3b-data-transformation.html#cb182-35" tabindex="-1"></a><span class="do">##  7 868                 1        3.49</span></span>
-<span id="cb182-36"><a href="lesson-3b-data-transformation.html#cb182-36" tabindex="-1"></a><span class="do">##  8 1688                1        2   </span></span>
-<span id="cb182-37"><a href="lesson-3b-data-transformation.html#cb182-37" tabindex="-1"></a><span class="do">##  9 467                 2        6.55</span></span>
-<span id="cb182-38"><a href="lesson-3b-data-transformation.html#cb182-38" tabindex="-1"></a><span class="do">## 10 1947                1        3.99</span></span>
-<span id="cb182-39"><a href="lesson-3b-data-transformation.html#cb182-39" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb182-40"><a href="lesson-3b-data-transformation.html#cb182-40" tabindex="-1"></a><span class="do">## # ℹ 2 more variables:</span></span>
-<span id="cb182-41"><a href="lesson-3b-data-transformation.html#cb182-41" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;,</span></span>
-<span id="cb182-42"><a href="lesson-3b-data-transformation.html#cb182-42" tabindex="-1"></a><span class="do">## #   log_sales_value &lt;dbl&gt;</span></span>
-<span id="cb182-43"><a href="lesson-3b-data-transformation.html#cb182-43" tabindex="-1"></a></span>
-<span id="cb182-44"><a href="lesson-3b-data-transformation.html#cb182-44" tabindex="-1"></a><span class="co"># order by date and compute the cumulative sum</span></span>
-<span id="cb182-45"><a href="lesson-3b-data-transformation.html#cb182-45" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> </span>
-<span id="cb182-46"><a href="lesson-3b-data-transformation.html#cb182-46" tabindex="-1"></a>  <span class="fu">arrange</span>(transaction_timestamp) <span class="sc">%&gt;%</span></span>
-<span id="cb182-47"><a href="lesson-3b-data-transformation.html#cb182-47" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumsum_sales_value =</span> <span class="fu">cumsum</span>(sales_value))</span>
-<span id="cb182-48"><a href="lesson-3b-data-transformation.html#cb182-48" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb182-49"><a href="lesson-3b-data-transformation.html#cb182-49" tabindex="-1"></a><span class="do">##    household_id quantity sales_value</span></span>
-<span id="cb182-50"><a href="lesson-3b-data-transformation.html#cb182-50" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb182-51"><a href="lesson-3b-data-transformation.html#cb182-51" tabindex="-1"></a><span class="do">##  1 906                 1        1.5 </span></span>
-<span id="cb182-52"><a href="lesson-3b-data-transformation.html#cb182-52" tabindex="-1"></a><span class="do">##  2 1873                1        1.88</span></span>
-<span id="cb182-53"><a href="lesson-3b-data-transformation.html#cb182-53" tabindex="-1"></a><span class="do">##  3 993                 1        3.49</span></span>
-<span id="cb182-54"><a href="lesson-3b-data-transformation.html#cb182-54" tabindex="-1"></a><span class="do">##  4 1465                1        1.38</span></span>
-<span id="cb182-55"><a href="lesson-3b-data-transformation.html#cb182-55" tabindex="-1"></a><span class="do">##  5 239                 1        1.59</span></span>
-<span id="cb182-56"><a href="lesson-3b-data-transformation.html#cb182-56" tabindex="-1"></a><span class="do">##  6 58                  1        2.49</span></span>
-<span id="cb182-57"><a href="lesson-3b-data-transformation.html#cb182-57" tabindex="-1"></a><span class="do">##  7 1519                2        3.55</span></span>
-<span id="cb182-58"><a href="lesson-3b-data-transformation.html#cb182-58" tabindex="-1"></a><span class="do">##  8 1130                1        3.77</span></span>
-<span id="cb182-59"><a href="lesson-3b-data-transformation.html#cb182-59" tabindex="-1"></a><span class="do">##  9 2329                1        3.99</span></span>
-<span id="cb182-60"><a href="lesson-3b-data-transformation.html#cb182-60" tabindex="-1"></a><span class="do">## 10 2329                1        3.59</span></span>
-<span id="cb182-61"><a href="lesson-3b-data-transformation.html#cb182-61" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb182-62"><a href="lesson-3b-data-transformation.html#cb182-62" tabindex="-1"></a><span class="do">## # ℹ 2 more variables:</span></span>
-<span id="cb182-63"><a href="lesson-3b-data-transformation.html#cb182-63" tabindex="-1"></a><span class="do">## #   transaction_timestamp &lt;dttm&gt;,</span></span>
-<span id="cb182-64"><a href="lesson-3b-data-transformation.html#cb182-64" tabindex="-1"></a><span class="do">## #   cumsum_sales_value &lt;dbl&gt;</span></span>
-<span id="cb182-65"><a href="lesson-3b-data-transformation.html#cb182-65" tabindex="-1"></a></span>
-<span id="cb182-66"><a href="lesson-3b-data-transformation.html#cb182-66" tabindex="-1"></a><span class="co"># compute sum of sales_value for each product and </span></span>
-<span id="cb182-67"><a href="lesson-3b-data-transformation.html#cb182-67" tabindex="-1"></a><span class="co"># rank order totals across 25 bins</span></span>
-<span id="cb182-68"><a href="lesson-3b-data-transformation.html#cb182-68" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb182-69"><a href="lesson-3b-data-transformation.html#cb182-69" tabindex="-1"></a>  <span class="fu">group_by</span>(product_id) <span class="sc">%&gt;%</span></span>
-<span id="cb182-70"><a href="lesson-3b-data-transformation.html#cb182-70" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
-<span id="cb182-71"><a href="lesson-3b-data-transformation.html#cb182-71" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bins =</span> <span class="fu">ntile</span>(total, <span class="dv">25</span>))</span>
-<span id="cb182-72"><a href="lesson-3b-data-transformation.html#cb182-72" tabindex="-1"></a><span class="do">## # A tibble: 20,902 × 3</span></span>
-<span id="cb182-73"><a href="lesson-3b-data-transformation.html#cb182-73" tabindex="-1"></a><span class="do">##    product_id total  bins</span></span>
-<span id="cb182-74"><a href="lesson-3b-data-transformation.html#cb182-74" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb182-75"><a href="lesson-3b-data-transformation.html#cb182-75" tabindex="-1"></a><span class="do">##  1 1000002    18.4     23</span></span>
-<span id="cb182-76"><a href="lesson-3b-data-transformation.html#cb182-76" tabindex="-1"></a><span class="do">##  2 1000050    33.9     24</span></span>
-<span id="cb182-77"><a href="lesson-3b-data-transformation.html#cb182-77" tabindex="-1"></a><span class="do">##  3 1000106     6.47    15</span></span>
-<span id="cb182-78"><a href="lesson-3b-data-transformation.html#cb182-78" tabindex="-1"></a><span class="do">##  4 1000140     3.29     9</span></span>
-<span id="cb182-79"><a href="lesson-3b-data-transformation.html#cb182-79" tabindex="-1"></a><span class="do">##  5 1000148     6       15</span></span>
-<span id="cb182-80"><a href="lesson-3b-data-transformation.html#cb182-80" tabindex="-1"></a><span class="do">##  6 1000165     3.34     9</span></span>
-<span id="cb182-81"><a href="lesson-3b-data-transformation.html#cb182-81" tabindex="-1"></a><span class="do">##  7 1000204     6.17    15</span></span>
-<span id="cb182-82"><a href="lesson-3b-data-transformation.html#cb182-82" tabindex="-1"></a><span class="do">##  8 1000205     3.98    10</span></span>
-<span id="cb182-83"><a href="lesson-3b-data-transformation.html#cb182-83" tabindex="-1"></a><span class="do">##  9 1000228     2.34     6</span></span>
-<span id="cb182-84"><a href="lesson-3b-data-transformation.html#cb182-84" tabindex="-1"></a><span class="do">## 10 1000236     5.39    14</span></span>
-<span id="cb182-85"><a href="lesson-3b-data-transformation.html#cb182-85" tabindex="-1"></a><span class="do">## # ℹ 20,892 more rows</span></span></code></pre></div>
+<span id="cb182-20"><a href="lesson-3b-data-transformation.html#cb182-20" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: spend_per_item &lt;dbl&gt;</span></span>
+<span id="cb182-21"><a href="lesson-3b-data-transformation.html#cb182-21" tabindex="-1"></a></span>
+<span id="cb182-22"><a href="lesson-3b-data-transformation.html#cb182-22" tabindex="-1"></a><span class="co"># log transform sales_value</span></span>
+<span id="cb182-23"><a href="lesson-3b-data-transformation.html#cb182-23" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">log_sales_value =</span> <span class="fu">log</span>(sales_value))</span>
+<span id="cb182-24"><a href="lesson-3b-data-transformation.html#cb182-24" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
+<span id="cb182-25"><a href="lesson-3b-data-transformation.html#cb182-25" tabindex="-1"></a><span class="do">##    household_id quantity sales_value transaction_timestamp</span></span>
+<span id="cb182-26"><a href="lesson-3b-data-transformation.html#cb182-26" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt; &lt;dttm&gt;               </span></span>
+<span id="cb182-27"><a href="lesson-3b-data-transformation.html#cb182-27" tabindex="-1"></a><span class="do">##  1 2261                1        3.86 2017-01-28 14:06:53  </span></span>
+<span id="cb182-28"><a href="lesson-3b-data-transformation.html#cb182-28" tabindex="-1"></a><span class="do">##  2 2131                1        1.59 2017-02-28 22:31:57  </span></span>
+<span id="cb182-29"><a href="lesson-3b-data-transformation.html#cb182-29" tabindex="-1"></a><span class="do">##  3 511                 1        1    2017-03-26 13:22:21  </span></span>
+<span id="cb182-30"><a href="lesson-3b-data-transformation.html#cb182-30" tabindex="-1"></a><span class="do">##  4 400                 2       11.9  2017-02-18 13:13:10  </span></span>
+<span id="cb182-31"><a href="lesson-3b-data-transformation.html#cb182-31" tabindex="-1"></a><span class="do">##  5 918                 1        1.29 2017-03-02 15:05:57  </span></span>
+<span id="cb182-32"><a href="lesson-3b-data-transformation.html#cb182-32" tabindex="-1"></a><span class="do">##  6 718                 1        2.5  2017-04-05 18:14:17  </span></span>
+<span id="cb182-33"><a href="lesson-3b-data-transformation.html#cb182-33" tabindex="-1"></a><span class="do">##  7 868                 1        3.49 2017-03-02 17:45:37  </span></span>
+<span id="cb182-34"><a href="lesson-3b-data-transformation.html#cb182-34" tabindex="-1"></a><span class="do">##  8 1688                1        2    2017-08-11 22:41:02  </span></span>
+<span id="cb182-35"><a href="lesson-3b-data-transformation.html#cb182-35" tabindex="-1"></a><span class="do">##  9 467                 2        6.55 2017-01-06 07:47:01  </span></span>
+<span id="cb182-36"><a href="lesson-3b-data-transformation.html#cb182-36" tabindex="-1"></a><span class="do">## 10 1947                1        3.99 2017-04-13 17:30:04  </span></span>
+<span id="cb182-37"><a href="lesson-3b-data-transformation.html#cb182-37" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
+<span id="cb182-38"><a href="lesson-3b-data-transformation.html#cb182-38" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: log_sales_value &lt;dbl&gt;</span></span>
+<span id="cb182-39"><a href="lesson-3b-data-transformation.html#cb182-39" tabindex="-1"></a></span>
+<span id="cb182-40"><a href="lesson-3b-data-transformation.html#cb182-40" tabindex="-1"></a><span class="co"># order by date and compute the cumulative sum</span></span>
+<span id="cb182-41"><a href="lesson-3b-data-transformation.html#cb182-41" tabindex="-1"></a>df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb182-42"><a href="lesson-3b-data-transformation.html#cb182-42" tabindex="-1"></a>  <span class="fu">arrange</span>(transaction_timestamp) <span class="sc">%&gt;%</span></span>
+<span id="cb182-43"><a href="lesson-3b-data-transformation.html#cb182-43" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumsum_sales_value =</span> <span class="fu">cumsum</span>(sales_value))</span>
+<span id="cb182-44"><a href="lesson-3b-data-transformation.html#cb182-44" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
+<span id="cb182-45"><a href="lesson-3b-data-transformation.html#cb182-45" tabindex="-1"></a><span class="do">##    household_id quantity sales_value transaction_timestamp</span></span>
+<span id="cb182-46"><a href="lesson-3b-data-transformation.html#cb182-46" tabindex="-1"></a><span class="do">##    &lt;chr&gt;           &lt;dbl&gt;       &lt;dbl&gt; &lt;dttm&gt;               </span></span>
+<span id="cb182-47"><a href="lesson-3b-data-transformation.html#cb182-47" tabindex="-1"></a><span class="do">##  1 906                 1        1.5  2017-01-01 07:30:27  </span></span>
+<span id="cb182-48"><a href="lesson-3b-data-transformation.html#cb182-48" tabindex="-1"></a><span class="do">##  2 1873                1        1.88 2017-01-01 08:47:20  </span></span>
+<span id="cb182-49"><a href="lesson-3b-data-transformation.html#cb182-49" tabindex="-1"></a><span class="do">##  3 993                 1        3.49 2017-01-01 09:16:13  </span></span>
+<span id="cb182-50"><a href="lesson-3b-data-transformation.html#cb182-50" tabindex="-1"></a><span class="do">##  4 1465                1        1.38 2017-01-01 09:46:04  </span></span>
+<span id="cb182-51"><a href="lesson-3b-data-transformation.html#cb182-51" tabindex="-1"></a><span class="do">##  5 239                 1        1.59 2017-01-01 10:05:51  </span></span>
+<span id="cb182-52"><a href="lesson-3b-data-transformation.html#cb182-52" tabindex="-1"></a><span class="do">##  6 58                  1        2.49 2017-01-01 10:14:16  </span></span>
+<span id="cb182-53"><a href="lesson-3b-data-transformation.html#cb182-53" tabindex="-1"></a><span class="do">##  7 1519                2        3.55 2017-01-01 10:32:09  </span></span>
+<span id="cb182-54"><a href="lesson-3b-data-transformation.html#cb182-54" tabindex="-1"></a><span class="do">##  8 1130                1        3.77 2017-01-01 10:38:18  </span></span>
+<span id="cb182-55"><a href="lesson-3b-data-transformation.html#cb182-55" tabindex="-1"></a><span class="do">##  9 2329                1        3.99 2017-01-01 10:46:03  </span></span>
+<span id="cb182-56"><a href="lesson-3b-data-transformation.html#cb182-56" tabindex="-1"></a><span class="do">## 10 2329                1        3.59 2017-01-01 10:46:03  </span></span>
+<span id="cb182-57"><a href="lesson-3b-data-transformation.html#cb182-57" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
+<span id="cb182-58"><a href="lesson-3b-data-transformation.html#cb182-58" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: cumsum_sales_value &lt;dbl&gt;</span></span>
+<span id="cb182-59"><a href="lesson-3b-data-transformation.html#cb182-59" tabindex="-1"></a></span>
+<span id="cb182-60"><a href="lesson-3b-data-transformation.html#cb182-60" tabindex="-1"></a><span class="co"># compute sum of sales_value for each product and </span></span>
+<span id="cb182-61"><a href="lesson-3b-data-transformation.html#cb182-61" tabindex="-1"></a><span class="co"># rank order totals across 25 bins</span></span>
+<span id="cb182-62"><a href="lesson-3b-data-transformation.html#cb182-62" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb182-63"><a href="lesson-3b-data-transformation.html#cb182-63" tabindex="-1"></a>  <span class="fu">group_by</span>(product_id) <span class="sc">%&gt;%</span></span>
+<span id="cb182-64"><a href="lesson-3b-data-transformation.html#cb182-64" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(sales_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb182-65"><a href="lesson-3b-data-transformation.html#cb182-65" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bins =</span> <span class="fu">ntile</span>(total, <span class="dv">25</span>))</span>
+<span id="cb182-66"><a href="lesson-3b-data-transformation.html#cb182-66" tabindex="-1"></a><span class="do">## # A tibble: 20,902 × 3</span></span>
+<span id="cb182-67"><a href="lesson-3b-data-transformation.html#cb182-67" tabindex="-1"></a><span class="do">##    product_id total  bins</span></span>
+<span id="cb182-68"><a href="lesson-3b-data-transformation.html#cb182-68" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb182-69"><a href="lesson-3b-data-transformation.html#cb182-69" tabindex="-1"></a><span class="do">##  1 1000002    18.4     23</span></span>
+<span id="cb182-70"><a href="lesson-3b-data-transformation.html#cb182-70" tabindex="-1"></a><span class="do">##  2 1000050    33.9     24</span></span>
+<span id="cb182-71"><a href="lesson-3b-data-transformation.html#cb182-71" tabindex="-1"></a><span class="do">##  3 1000106     6.47    15</span></span>
+<span id="cb182-72"><a href="lesson-3b-data-transformation.html#cb182-72" tabindex="-1"></a><span class="do">##  4 1000140     3.29     9</span></span>
+<span id="cb182-73"><a href="lesson-3b-data-transformation.html#cb182-73" tabindex="-1"></a><span class="do">##  5 1000148     6       15</span></span>
+<span id="cb182-74"><a href="lesson-3b-data-transformation.html#cb182-74" tabindex="-1"></a><span class="do">##  6 1000165     3.34     9</span></span>
+<span id="cb182-75"><a href="lesson-3b-data-transformation.html#cb182-75" tabindex="-1"></a><span class="do">##  7 1000204     6.17    15</span></span>
+<span id="cb182-76"><a href="lesson-3b-data-transformation.html#cb182-76" tabindex="-1"></a><span class="do">##  8 1000205     3.98    10</span></span>
+<span id="cb182-77"><a href="lesson-3b-data-transformation.html#cb182-77" tabindex="-1"></a><span class="do">##  9 1000228     2.34     6</span></span>
+<span id="cb182-78"><a href="lesson-3b-data-transformation.html#cb182-78" tabindex="-1"></a><span class="do">## 10 1000236     5.39    14</span></span>
+<span id="cb182-79"><a href="lesson-3b-data-transformation.html#cb182-79" tabindex="-1"></a><span class="do">## # ℹ 20,892 more rows</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -1854,24 +1799,23 @@ those transactions with the highest discount to sales ratio (bin
 <span id="cb183-4"><a href="lesson-3b-data-transformation.html#cb183-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">min_rank</span>(<span class="fu">desc</span>(total))) <span class="sc">%&gt;%</span></span>
 <span id="cb183-5"><a href="lesson-3b-data-transformation.html#cb183-5" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb183-6"><a href="lesson-3b-data-transformation.html#cb183-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total))</span>
-<span id="cb183-7"><a href="lesson-3b-data-transformation.html#cb183-7" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by</span></span>
-<span id="cb183-8"><a href="lesson-3b-data-transformation.html#cb183-8" tabindex="-1"></a><span class="do">## &#39;store_id&#39;. You can override using the</span></span>
-<span id="cb183-9"><a href="lesson-3b-data-transformation.html#cb183-9" tabindex="-1"></a><span class="do">## `.groups` argument.</span></span>
-<span id="cb183-10"><a href="lesson-3b-data-transformation.html#cb183-10" tabindex="-1"></a><span class="do">## # A tibble: 1,064 × 4</span></span>
-<span id="cb183-11"><a href="lesson-3b-data-transformation.html#cb183-11" tabindex="-1"></a><span class="do">## # Groups:   store_id [293]</span></span>
-<span id="cb183-12"><a href="lesson-3b-data-transformation.html#cb183-12" tabindex="-1"></a><span class="do">##    store_id product_id total  rank</span></span>
-<span id="cb183-13"><a href="lesson-3b-data-transformation.html#cb183-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb183-14"><a href="lesson-3b-data-transformation.html#cb183-14" tabindex="-1"></a><span class="do">##  1 375      6534178    1057.     1</span></span>
-<span id="cb183-15"><a href="lesson-3b-data-transformation.html#cb183-15" tabindex="-1"></a><span class="do">##  2 429      6534178     980.     1</span></span>
-<span id="cb183-16"><a href="lesson-3b-data-transformation.html#cb183-16" tabindex="-1"></a><span class="do">##  3 406      6534178     922      1</span></span>
-<span id="cb183-17"><a href="lesson-3b-data-transformation.html#cb183-17" tabindex="-1"></a><span class="do">##  4 343      6534178     711.     1</span></span>
-<span id="cb183-18"><a href="lesson-3b-data-transformation.html#cb183-18" tabindex="-1"></a><span class="do">##  5 422      6534178     658.     1</span></span>
-<span id="cb183-19"><a href="lesson-3b-data-transformation.html#cb183-19" tabindex="-1"></a><span class="do">##  6 367      6534178     631.     1</span></span>
-<span id="cb183-20"><a href="lesson-3b-data-transformation.html#cb183-20" tabindex="-1"></a><span class="do">##  7 329      6534178     582.     1</span></span>
-<span id="cb183-21"><a href="lesson-3b-data-transformation.html#cb183-21" tabindex="-1"></a><span class="do">##  8 361      6534178     553.     1</span></span>
-<span id="cb183-22"><a href="lesson-3b-data-transformation.html#cb183-22" tabindex="-1"></a><span class="do">##  9 429      6533889     494.     2</span></span>
-<span id="cb183-23"><a href="lesson-3b-data-transformation.html#cb183-23" tabindex="-1"></a><span class="do">## 10 33923    6534178     478.     1</span></span>
-<span id="cb183-24"><a href="lesson-3b-data-transformation.html#cb183-24" tabindex="-1"></a><span class="do">## # ℹ 1,054 more rows</span></span></code></pre></div>
+<span id="cb183-7"><a href="lesson-3b-data-transformation.html#cb183-7" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by &#39;store_id&#39;. You can override using</span></span>
+<span id="cb183-8"><a href="lesson-3b-data-transformation.html#cb183-8" tabindex="-1"></a><span class="do">## the `.groups` argument.</span></span>
+<span id="cb183-9"><a href="lesson-3b-data-transformation.html#cb183-9" tabindex="-1"></a><span class="do">## # A tibble: 1,064 × 4</span></span>
+<span id="cb183-10"><a href="lesson-3b-data-transformation.html#cb183-10" tabindex="-1"></a><span class="do">## # Groups:   store_id [293]</span></span>
+<span id="cb183-11"><a href="lesson-3b-data-transformation.html#cb183-11" tabindex="-1"></a><span class="do">##    store_id product_id total  rank</span></span>
+<span id="cb183-12"><a href="lesson-3b-data-transformation.html#cb183-12" tabindex="-1"></a><span class="do">##    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb183-13"><a href="lesson-3b-data-transformation.html#cb183-13" tabindex="-1"></a><span class="do">##  1 375      6534178    1057.     1</span></span>
+<span id="cb183-14"><a href="lesson-3b-data-transformation.html#cb183-14" tabindex="-1"></a><span class="do">##  2 429      6534178     980.     1</span></span>
+<span id="cb183-15"><a href="lesson-3b-data-transformation.html#cb183-15" tabindex="-1"></a><span class="do">##  3 406      6534178     922      1</span></span>
+<span id="cb183-16"><a href="lesson-3b-data-transformation.html#cb183-16" tabindex="-1"></a><span class="do">##  4 343      6534178     711.     1</span></span>
+<span id="cb183-17"><a href="lesson-3b-data-transformation.html#cb183-17" tabindex="-1"></a><span class="do">##  5 422      6534178     658.     1</span></span>
+<span id="cb183-18"><a href="lesson-3b-data-transformation.html#cb183-18" tabindex="-1"></a><span class="do">##  6 367      6534178     631.     1</span></span>
+<span id="cb183-19"><a href="lesson-3b-data-transformation.html#cb183-19" tabindex="-1"></a><span class="do">##  7 329      6534178     582.     1</span></span>
+<span id="cb183-20"><a href="lesson-3b-data-transformation.html#cb183-20" tabindex="-1"></a><span class="do">##  8 361      6534178     553.     1</span></span>
+<span id="cb183-21"><a href="lesson-3b-data-transformation.html#cb183-21" tabindex="-1"></a><span class="do">##  9 429      6533889     494.     2</span></span>
+<span id="cb183-22"><a href="lesson-3b-data-transformation.html#cb183-22" tabindex="-1"></a><span class="do">## 10 33923    6534178     478.     1</span></span>
+<span id="cb183-23"><a href="lesson-3b-data-transformation.html#cb183-23" tabindex="-1"></a><span class="do">## # ℹ 1,054 more rows</span></span></code></pre></div>
 </div>
 <div id="exercises-7" class="section level2 hasAnchor" number="11.9">
 <h2><span class="header-section-number">11.9</span> Exercises<a href="lesson-3b-data-transformation.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>

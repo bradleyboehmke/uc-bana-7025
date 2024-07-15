@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>26 Lesson 7a: First model with Tidymodels | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="26 Lesson 7a: First model with Tidymodels | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -933,12 +934,11 @@ names)
 <span id="cb450-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-3" tabindex="-1"></a></span>
 <span id="cb450-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-4" tabindex="-1"></a><span class="fu">tidy</span>(lm_ols)</span>
 <span id="cb450-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-5" tabindex="-1"></a><span class="do">## # A tibble: 3 × 5</span></span>
-<span id="cb450-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-6" tabindex="-1"></a><span class="do">##   term       estimate std.error statistic</span></span>
-<span id="cb450-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb450-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-8" tabindex="-1"></a><span class="do">## 1 (Intercep…  -2.16e6  69234.       -31.2</span></span>
-<span id="cb450-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-9" tabindex="-1"></a><span class="do">## 2 Gr_Liv_Ar…   9.44e1      2.12      44.4</span></span>
-<span id="cb450-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-10" tabindex="-1"></a><span class="do">## 3 Year_Built   1.11e3     35.5       31.4</span></span>
-<span id="cb450-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-11" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: p.value &lt;dbl&gt;</span></span></code></pre></div>
+<span id="cb450-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-6" tabindex="-1"></a><span class="do">##   term          estimate std.error statistic   p.value</span></span>
+<span id="cb450-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb450-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-8" tabindex="-1"></a><span class="do">## 1 (Intercept) -2157423.   69234.       -31.2 8.09e-175</span></span>
+<span id="cb450-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-9" tabindex="-1"></a><span class="do">## 2 Gr_Liv_Area       94.4      2.12      44.4 2.54e-302</span></span>
+<span id="cb450-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb450-10" tabindex="-1"></a><span class="do">## 3 Year_Built      1114.      35.5       31.4 5.30e-177</span></span></code></pre></div>
 <p>Now, you may have noticed that I only applied two of the three steps I mentioned previously:</p>
 <ol style="list-style-type: decimal">
 <li>Create a model type</li>
@@ -958,7 +958,47 @@ engines.
 </div>
 <div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-1" tabindex="-1"></a>lm_sgd <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb451-2"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-2" tabindex="-1"></a>   <span class="fu">set_engine</span>(<span class="st">&#39;keras&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb451-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-3" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span></code></pre></div>
+<span id="cb451-3"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-3" tabindex="-1"></a>   <span class="fu">fit</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Year_Built, <span class="at">data =</span> train)</span>
+<span id="cb451-4"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-4" tabindex="-1"></a><span class="do">## Epoch 1/20</span></span>
+<span id="cb451-5"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-5" tabindex="-1"></a><span class="do">## 65/65 - 1s - loss: 39845912576.0000 - 1s/epoch - 18ms/step</span></span>
+<span id="cb451-6"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-6" tabindex="-1"></a><span class="do">## Epoch 2/20</span></span>
+<span id="cb451-7"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-7" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 39660728320.0000 - 208ms/epoch - 3ms/step</span></span>
+<span id="cb451-8"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-8" tabindex="-1"></a><span class="do">## Epoch 3/20</span></span>
+<span id="cb451-9"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-9" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 39489531904.0000 - 188ms/epoch - 3ms/step</span></span>
+<span id="cb451-10"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-10" tabindex="-1"></a><span class="do">## Epoch 4/20</span></span>
+<span id="cb451-11"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-11" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 39332687872.0000 - 195ms/epoch - 3ms/step</span></span>
+<span id="cb451-12"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-12" tabindex="-1"></a><span class="do">## Epoch 5/20</span></span>
+<span id="cb451-13"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-13" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 39188385792.0000 - 196ms/epoch - 3ms/step</span></span>
+<span id="cb451-14"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-14" tabindex="-1"></a><span class="do">## Epoch 6/20</span></span>
+<span id="cb451-15"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-15" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 39055339520.0000 - 204ms/epoch - 3ms/step</span></span>
+<span id="cb451-16"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-16" tabindex="-1"></a><span class="do">## Epoch 7/20</span></span>
+<span id="cb451-17"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-17" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38934102016.0000 - 196ms/epoch - 3ms/step</span></span>
+<span id="cb451-18"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-18" tabindex="-1"></a><span class="do">## Epoch 8/20</span></span>
+<span id="cb451-19"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-19" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38822268928.0000 - 195ms/epoch - 3ms/step</span></span>
+<span id="cb451-20"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-20" tabindex="-1"></a><span class="do">## Epoch 9/20</span></span>
+<span id="cb451-21"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-21" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38717267968.0000 - 193ms/epoch - 3ms/step</span></span>
+<span id="cb451-22"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-22" tabindex="-1"></a><span class="do">## Epoch 10/20</span></span>
+<span id="cb451-23"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-23" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38618460160.0000 - 316ms/epoch - 5ms/step</span></span>
+<span id="cb451-24"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-24" tabindex="-1"></a><span class="do">## Epoch 11/20</span></span>
+<span id="cb451-25"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-25" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38523023360.0000 - 205ms/epoch - 3ms/step</span></span>
+<span id="cb451-26"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-26" tabindex="-1"></a><span class="do">## Epoch 12/20</span></span>
+<span id="cb451-27"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-27" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38428823552.0000 - 178ms/epoch - 3ms/step</span></span>
+<span id="cb451-28"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-28" tabindex="-1"></a><span class="do">## Epoch 13/20</span></span>
+<span id="cb451-29"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-29" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38332174336.0000 - 167ms/epoch - 3ms/step</span></span>
+<span id="cb451-30"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-30" tabindex="-1"></a><span class="do">## Epoch 14/20</span></span>
+<span id="cb451-31"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-31" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38230814720.0000 - 189ms/epoch - 3ms/step</span></span>
+<span id="cb451-32"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-32" tabindex="-1"></a><span class="do">## Epoch 15/20</span></span>
+<span id="cb451-33"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-33" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 38119776256.0000 - 175ms/epoch - 3ms/step</span></span>
+<span id="cb451-34"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-34" tabindex="-1"></a><span class="do">## Epoch 16/20</span></span>
+<span id="cb451-35"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-35" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 37993607168.0000 - 182ms/epoch - 3ms/step</span></span>
+<span id="cb451-36"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-36" tabindex="-1"></a><span class="do">## Epoch 17/20</span></span>
+<span id="cb451-37"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-37" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 37848645632.0000 - 188ms/epoch - 3ms/step</span></span>
+<span id="cb451-38"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-38" tabindex="-1"></a><span class="do">## Epoch 18/20</span></span>
+<span id="cb451-39"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-39" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 37680582656.0000 - 178ms/epoch - 3ms/step</span></span>
+<span id="cb451-40"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-40" tabindex="-1"></a><span class="do">## Epoch 19/20</span></span>
+<span id="cb451-41"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-41" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 37486264320.0000 - 169ms/epoch - 3ms/step</span></span>
+<span id="cb451-42"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-42" tabindex="-1"></a><span class="do">## Epoch 20/20</span></span>
+<span id="cb451-43"><a href="lesson-7a-first-model-with-tidymodels.html#cb451-43" tabindex="-1"></a><span class="do">## 65/65 - 0s - loss: 37263118336.0000 - 196ms/epoch - 3ms/step</span></span></code></pre></div>
 <div class="tip">
 <p>
 When we talk about ‘engines’ we’re really just referring to packages
@@ -1189,7 +1229,7 @@ How do these models compare?
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-harrison1978hedonic" class="csl-entry">
 Harrison Jr, David, and Daniel L Rubinfeld. 1978. <span>“Hedonic Housing Prices and the Demand for Clean Air.”</span> <em>Journal of Environmental Economics and Management</em> 5 (1): 81–102.
 </div>

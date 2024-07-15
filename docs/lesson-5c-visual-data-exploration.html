@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>20 Lesson 5c: Visual data exploration | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="20 Lesson 5c: Visual data exploration | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -809,25 +810,25 @@ div.csl-indent {
 <span id="cb326-5"><a href="lesson-5c-visual-data-exploration.html#cb326-5" tabindex="-1"></a>ames <span class="ot">&lt;-</span> AmesHousing<span class="sc">::</span><span class="fu">make_ames</span>()</span>
 <span id="cb326-6"><a href="lesson-5c-visual-data-exploration.html#cb326-6" tabindex="-1"></a>ames</span>
 <span id="cb326-7"><a href="lesson-5c-visual-data-exploration.html#cb326-7" tabindex="-1"></a><span class="do">## # A tibble: 2,930 × 81</span></span>
-<span id="cb326-8"><a href="lesson-5c-visual-data-exploration.html#cb326-8" tabindex="-1"></a><span class="do">##    MS_SubClass     MS_Zoning Lot_Frontage</span></span>
-<span id="cb326-9"><a href="lesson-5c-visual-data-exploration.html#cb326-9" tabindex="-1"></a><span class="do">##    &lt;fct&gt;           &lt;fct&gt;            &lt;dbl&gt;</span></span>
-<span id="cb326-10"><a href="lesson-5c-visual-data-exploration.html#cb326-10" tabindex="-1"></a><span class="do">##  1 One_Story_1946… Resident…          141</span></span>
-<span id="cb326-11"><a href="lesson-5c-visual-data-exploration.html#cb326-11" tabindex="-1"></a><span class="do">##  2 One_Story_1946… Resident…           80</span></span>
-<span id="cb326-12"><a href="lesson-5c-visual-data-exploration.html#cb326-12" tabindex="-1"></a><span class="do">##  3 One_Story_1946… Resident…           81</span></span>
-<span id="cb326-13"><a href="lesson-5c-visual-data-exploration.html#cb326-13" tabindex="-1"></a><span class="do">##  4 One_Story_1946… Resident…           93</span></span>
-<span id="cb326-14"><a href="lesson-5c-visual-data-exploration.html#cb326-14" tabindex="-1"></a><span class="do">##  5 Two_Story_1946… Resident…           74</span></span>
-<span id="cb326-15"><a href="lesson-5c-visual-data-exploration.html#cb326-15" tabindex="-1"></a><span class="do">##  6 Two_Story_1946… Resident…           78</span></span>
-<span id="cb326-16"><a href="lesson-5c-visual-data-exploration.html#cb326-16" tabindex="-1"></a><span class="do">##  7 One_Story_PUD_… Resident…           41</span></span>
-<span id="cb326-17"><a href="lesson-5c-visual-data-exploration.html#cb326-17" tabindex="-1"></a><span class="do">##  8 One_Story_PUD_… Resident…           43</span></span>
-<span id="cb326-18"><a href="lesson-5c-visual-data-exploration.html#cb326-18" tabindex="-1"></a><span class="do">##  9 One_Story_PUD_… Resident…           39</span></span>
-<span id="cb326-19"><a href="lesson-5c-visual-data-exploration.html#cb326-19" tabindex="-1"></a><span class="do">## 10 Two_Story_1946… Resident…           60</span></span>
+<span id="cb326-8"><a href="lesson-5c-visual-data-exploration.html#cb326-8" tabindex="-1"></a><span class="do">##    MS_SubClass   MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape</span></span>
+<span id="cb326-9"><a href="lesson-5c-visual-data-exploration.html#cb326-9" tabindex="-1"></a><span class="do">##    &lt;fct&gt;         &lt;fct&gt;            &lt;dbl&gt;    &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    </span></span>
+<span id="cb326-10"><a href="lesson-5c-visual-data-exploration.html#cb326-10" tabindex="-1"></a><span class="do">##  1 One_Story_19… Resident…          141    31770 Pave   No_A… Slightly…</span></span>
+<span id="cb326-11"><a href="lesson-5c-visual-data-exploration.html#cb326-11" tabindex="-1"></a><span class="do">##  2 One_Story_19… Resident…           80    11622 Pave   No_A… Regular  </span></span>
+<span id="cb326-12"><a href="lesson-5c-visual-data-exploration.html#cb326-12" tabindex="-1"></a><span class="do">##  3 One_Story_19… Resident…           81    14267 Pave   No_A… Slightly…</span></span>
+<span id="cb326-13"><a href="lesson-5c-visual-data-exploration.html#cb326-13" tabindex="-1"></a><span class="do">##  4 One_Story_19… Resident…           93    11160 Pave   No_A… Regular  </span></span>
+<span id="cb326-14"><a href="lesson-5c-visual-data-exploration.html#cb326-14" tabindex="-1"></a><span class="do">##  5 Two_Story_19… Resident…           74    13830 Pave   No_A… Slightly…</span></span>
+<span id="cb326-15"><a href="lesson-5c-visual-data-exploration.html#cb326-15" tabindex="-1"></a><span class="do">##  6 Two_Story_19… Resident…           78     9978 Pave   No_A… Slightly…</span></span>
+<span id="cb326-16"><a href="lesson-5c-visual-data-exploration.html#cb326-16" tabindex="-1"></a><span class="do">##  7 One_Story_PU… Resident…           41     4920 Pave   No_A… Regular  </span></span>
+<span id="cb326-17"><a href="lesson-5c-visual-data-exploration.html#cb326-17" tabindex="-1"></a><span class="do">##  8 One_Story_PU… Resident…           43     5005 Pave   No_A… Slightly…</span></span>
+<span id="cb326-18"><a href="lesson-5c-visual-data-exploration.html#cb326-18" tabindex="-1"></a><span class="do">##  9 One_Story_PU… Resident…           39     5389 Pave   No_A… Slightly…</span></span>
+<span id="cb326-19"><a href="lesson-5c-visual-data-exploration.html#cb326-19" tabindex="-1"></a><span class="do">## 10 Two_Story_19… Resident…           60     7500 Pave   No_A… Regular  </span></span>
 <span id="cb326-20"><a href="lesson-5c-visual-data-exploration.html#cb326-20" tabindex="-1"></a><span class="do">## # ℹ 2,920 more rows</span></span>
-<span id="cb326-21"><a href="lesson-5c-visual-data-exploration.html#cb326-21" tabindex="-1"></a><span class="do">## # ℹ 78 more variables: Lot_Area &lt;int&gt;,</span></span>
-<span id="cb326-22"><a href="lesson-5c-visual-data-exploration.html#cb326-22" tabindex="-1"></a><span class="do">## #   Street &lt;fct&gt;, Alley &lt;fct&gt;,</span></span>
-<span id="cb326-23"><a href="lesson-5c-visual-data-exploration.html#cb326-23" tabindex="-1"></a><span class="do">## #   Lot_Shape &lt;fct&gt;, Land_Contour &lt;fct&gt;,</span></span>
-<span id="cb326-24"><a href="lesson-5c-visual-data-exploration.html#cb326-24" tabindex="-1"></a><span class="do">## #   Utilities &lt;fct&gt;, Lot_Config &lt;fct&gt;,</span></span>
-<span id="cb326-25"><a href="lesson-5c-visual-data-exploration.html#cb326-25" tabindex="-1"></a><span class="do">## #   Land_Slope &lt;fct&gt;,</span></span>
-<span id="cb326-26"><a href="lesson-5c-visual-data-exploration.html#cb326-26" tabindex="-1"></a><span class="do">## #   Neighborhood &lt;fct&gt;, …</span></span></code></pre></div>
+<span id="cb326-21"><a href="lesson-5c-visual-data-exploration.html#cb326-21" tabindex="-1"></a><span class="do">## # ℹ 74 more variables: Land_Contour &lt;fct&gt;, Utilities &lt;fct&gt;,</span></span>
+<span id="cb326-22"><a href="lesson-5c-visual-data-exploration.html#cb326-22" tabindex="-1"></a><span class="do">## #   Lot_Config &lt;fct&gt;, Land_Slope &lt;fct&gt;, Neighborhood &lt;fct&gt;,</span></span>
+<span id="cb326-23"><a href="lesson-5c-visual-data-exploration.html#cb326-23" tabindex="-1"></a><span class="do">## #   Condition_1 &lt;fct&gt;, Condition_2 &lt;fct&gt;, Bldg_Type &lt;fct&gt;,</span></span>
+<span id="cb326-24"><a href="lesson-5c-visual-data-exploration.html#cb326-24" tabindex="-1"></a><span class="do">## #   House_Style &lt;fct&gt;, Overall_Qual &lt;fct&gt;, Overall_Cond &lt;fct&gt;,</span></span>
+<span id="cb326-25"><a href="lesson-5c-visual-data-exploration.html#cb326-25" tabindex="-1"></a><span class="do">## #   Year_Built &lt;int&gt;, Year_Remod_Add &lt;int&gt;, Roof_Style &lt;fct&gt;,</span></span>
+<span id="cb326-26"><a href="lesson-5c-visual-data-exploration.html#cb326-26" tabindex="-1"></a><span class="do">## #   Roof_Matl &lt;fct&gt;, Exterior_1st &lt;fct&gt;, Exterior_2nd &lt;fct&gt;, …</span></span></code></pre></div>
 <p>We also demonstrate some useful functions from a few other packages throughout the lesson. To replicate all the code in this lesson you’ll need to install the following additional packages:</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="lesson-5c-visual-data-exploration.html#cb327-1" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmesHousing&quot;</span>, <span class="st">&quot;ggridges&quot;</span>, <span class="st">&quot;GGally&quot;</span>, </span>
 <span id="cb327-2"><a href="lesson-5c-visual-data-exploration.html#cb327-2" tabindex="-1"></a>          <span class="st">&quot;glue&quot;</span>,<span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;hexbin&quot;</span>, <span class="st">&quot;naniar&quot;</span>, </span>
@@ -923,21 +924,19 @@ The number of bins (or equivalently, the bin width) in a histogram is a <em>tuni
 <span id="cb332-2"><a href="lesson-5c-visual-data-exploration.html#cb332-2" tabindex="-1"></a>  <span class="fu">count</span>(<span class="fu">cut_width</span>(Sale_Price, <span class="at">width =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb332-3"><a href="lesson-5c-visual-data-exploration.html#cb332-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
 <span id="cb332-4"><a href="lesson-5c-visual-data-exploration.html#cb332-4" tabindex="-1"></a><span class="do">## # A tibble: 106 × 2</span></span>
-<span id="cb332-5"><a href="lesson-5c-visual-data-exploration.html#cb332-5" tabindex="-1"></a><span class="do">##    cut_width(Sale_Price, width = …¹     n</span></span>
-<span id="cb332-6"><a href="lesson-5c-visual-data-exploration.html#cb332-6" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                            &lt;int&gt;</span></span>
-<span id="cb332-7"><a href="lesson-5c-visual-data-exploration.html#cb332-7" tabindex="-1"></a><span class="do">##  1 (1.28e+05,1.32e+05]                137</span></span>
-<span id="cb332-8"><a href="lesson-5c-visual-data-exploration.html#cb332-8" tabindex="-1"></a><span class="do">##  2 (1.42e+05,1.48e+05]                130</span></span>
-<span id="cb332-9"><a href="lesson-5c-visual-data-exploration.html#cb332-9" tabindex="-1"></a><span class="do">##  3 (1.32e+05,1.38e+05]                125</span></span>
-<span id="cb332-10"><a href="lesson-5c-visual-data-exploration.html#cb332-10" tabindex="-1"></a><span class="do">##  4 (1.38e+05,1.42e+05]                125</span></span>
-<span id="cb332-11"><a href="lesson-5c-visual-data-exploration.html#cb332-11" tabindex="-1"></a><span class="do">##  5 (1.22e+05,1.28e+05]                118</span></span>
-<span id="cb332-12"><a href="lesson-5c-visual-data-exploration.html#cb332-12" tabindex="-1"></a><span class="do">##  6 (1.52e+05,1.58e+05]                103</span></span>
-<span id="cb332-13"><a href="lesson-5c-visual-data-exploration.html#cb332-13" tabindex="-1"></a><span class="do">##  7 (1.48e+05,1.52e+05]                101</span></span>
-<span id="cb332-14"><a href="lesson-5c-visual-data-exploration.html#cb332-14" tabindex="-1"></a><span class="do">##  8 (1.18e+05,1.22e+05]                 99</span></span>
-<span id="cb332-15"><a href="lesson-5c-visual-data-exploration.html#cb332-15" tabindex="-1"></a><span class="do">##  9 (1.58e+05,1.62e+05]                 92</span></span>
-<span id="cb332-16"><a href="lesson-5c-visual-data-exploration.html#cb332-16" tabindex="-1"></a><span class="do">## 10 (1.72e+05,1.78e+05]                 92</span></span>
-<span id="cb332-17"><a href="lesson-5c-visual-data-exploration.html#cb332-17" tabindex="-1"></a><span class="do">## # ℹ 96 more rows</span></span>
-<span id="cb332-18"><a href="lesson-5c-visual-data-exploration.html#cb332-18" tabindex="-1"></a><span class="do">## # ℹ abbreviated name:</span></span>
-<span id="cb332-19"><a href="lesson-5c-visual-data-exploration.html#cb332-19" tabindex="-1"></a><span class="do">## #   ¹​`cut_width(Sale_Price, width = 5000)`</span></span></code></pre></div>
+<span id="cb332-5"><a href="lesson-5c-visual-data-exploration.html#cb332-5" tabindex="-1"></a><span class="do">##    `cut_width(Sale_Price, width = 5000)`     n</span></span>
+<span id="cb332-6"><a href="lesson-5c-visual-data-exploration.html#cb332-6" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                                 &lt;int&gt;</span></span>
+<span id="cb332-7"><a href="lesson-5c-visual-data-exploration.html#cb332-7" tabindex="-1"></a><span class="do">##  1 (1.28e+05,1.32e+05]                     137</span></span>
+<span id="cb332-8"><a href="lesson-5c-visual-data-exploration.html#cb332-8" tabindex="-1"></a><span class="do">##  2 (1.42e+05,1.48e+05]                     130</span></span>
+<span id="cb332-9"><a href="lesson-5c-visual-data-exploration.html#cb332-9" tabindex="-1"></a><span class="do">##  3 (1.32e+05,1.38e+05]                     125</span></span>
+<span id="cb332-10"><a href="lesson-5c-visual-data-exploration.html#cb332-10" tabindex="-1"></a><span class="do">##  4 (1.38e+05,1.42e+05]                     125</span></span>
+<span id="cb332-11"><a href="lesson-5c-visual-data-exploration.html#cb332-11" tabindex="-1"></a><span class="do">##  5 (1.22e+05,1.28e+05]                     118</span></span>
+<span id="cb332-12"><a href="lesson-5c-visual-data-exploration.html#cb332-12" tabindex="-1"></a><span class="do">##  6 (1.52e+05,1.58e+05]                     103</span></span>
+<span id="cb332-13"><a href="lesson-5c-visual-data-exploration.html#cb332-13" tabindex="-1"></a><span class="do">##  7 (1.48e+05,1.52e+05]                     101</span></span>
+<span id="cb332-14"><a href="lesson-5c-visual-data-exploration.html#cb332-14" tabindex="-1"></a><span class="do">##  8 (1.18e+05,1.22e+05]                      99</span></span>
+<span id="cb332-15"><a href="lesson-5c-visual-data-exploration.html#cb332-15" tabindex="-1"></a><span class="do">##  9 (1.58e+05,1.62e+05]                      92</span></span>
+<span id="cb332-16"><a href="lesson-5c-visual-data-exploration.html#cb332-16" tabindex="-1"></a><span class="do">## 10 (1.72e+05,1.78e+05]                      92</span></span>
+<span id="cb332-17"><a href="lesson-5c-visual-data-exploration.html#cb332-17" tabindex="-1"></a><span class="do">## # ℹ 96 more rows</span></span></code></pre></div>
 <p>We can assess the applicability of a log transformation by adding <code>scale_x_log()</code> to our ggplot visual. This log transformed histogram provides a couple new insights:</p>
 <ul>
 <li>It appears the log transformation helps our variable meet normality assumptions. More on this in a second.</li>
@@ -1024,18 +1023,13 @@ Figure 20.1: Information a boxplot provides.
 <span id="cb336-17"><a href="lesson-5c-visual-data-exploration.html#cb336-17" tabindex="-1"></a></span>
 <span id="cb336-18"><a href="lesson-5c-visual-data-exploration.html#cb336-18" tabindex="-1"></a><span class="co"># order outlier values</span></span>
 <span id="cb336-19"><a href="lesson-5c-visual-data-exploration.html#cb336-19" tabindex="-1"></a><span class="fu">sort</span>(ames<span class="sc">$</span>Sale_Price[outliers])</span>
-<span id="cb336-20"><a href="lesson-5c-visual-data-exploration.html#cb336-20" tabindex="-1"></a><span class="do">##  [1]  12789  13100  34900  35000  35311</span></span>
-<span id="cb336-21"><a href="lesson-5c-visual-data-exploration.html#cb336-21" tabindex="-1"></a><span class="do">##  [6]  37900  39300  40000  44000  45000</span></span>
-<span id="cb336-22"><a href="lesson-5c-visual-data-exploration.html#cb336-22" tabindex="-1"></a><span class="do">## [11]  46500  50000  50138  51689  52000</span></span>
-<span id="cb336-23"><a href="lesson-5c-visual-data-exploration.html#cb336-23" tabindex="-1"></a><span class="do">## [16]  52500  55000  55000  55000  55993</span></span>
-<span id="cb336-24"><a href="lesson-5c-visual-data-exploration.html#cb336-24" tabindex="-1"></a><span class="do">## [21]  57625  58500  58500  59000  60000</span></span>
-<span id="cb336-25"><a href="lesson-5c-visual-data-exploration.html#cb336-25" tabindex="-1"></a><span class="do">## [26]  60000  60000  61000 451950 455000</span></span>
-<span id="cb336-26"><a href="lesson-5c-visual-data-exploration.html#cb336-26" tabindex="-1"></a><span class="do">## [31] 457347 460000 462000 465000 466500</span></span>
-<span id="cb336-27"><a href="lesson-5c-visual-data-exploration.html#cb336-27" tabindex="-1"></a><span class="do">## [36] 468000 470000 475000 475000 479069</span></span>
-<span id="cb336-28"><a href="lesson-5c-visual-data-exploration.html#cb336-28" tabindex="-1"></a><span class="do">## [41] 485000 492000 500000 500067 501837</span></span>
-<span id="cb336-29"><a href="lesson-5c-visual-data-exploration.html#cb336-29" tabindex="-1"></a><span class="do">## [46] 535000 538000 545224 552000 555000</span></span>
-<span id="cb336-30"><a href="lesson-5c-visual-data-exploration.html#cb336-30" tabindex="-1"></a><span class="do">## [51] 556581 582933 584500 591587 610000</span></span>
-<span id="cb336-31"><a href="lesson-5c-visual-data-exploration.html#cb336-31" tabindex="-1"></a><span class="do">## [56] 611657 615000 625000 745000 755000</span></span></code></pre></div>
+<span id="cb336-20"><a href="lesson-5c-visual-data-exploration.html#cb336-20" tabindex="-1"></a><span class="do">##  [1]  12789  13100  34900  35000  35311  37900  39300  40000  44000</span></span>
+<span id="cb336-21"><a href="lesson-5c-visual-data-exploration.html#cb336-21" tabindex="-1"></a><span class="do">## [10]  45000  46500  50000  50138  51689  52000  52500  55000  55000</span></span>
+<span id="cb336-22"><a href="lesson-5c-visual-data-exploration.html#cb336-22" tabindex="-1"></a><span class="do">## [19]  55000  55993  57625  58500  58500  59000  60000  60000  60000</span></span>
+<span id="cb336-23"><a href="lesson-5c-visual-data-exploration.html#cb336-23" tabindex="-1"></a><span class="do">## [28]  61000 451950 455000 457347 460000 462000 465000 466500 468000</span></span>
+<span id="cb336-24"><a href="lesson-5c-visual-data-exploration.html#cb336-24" tabindex="-1"></a><span class="do">## [37] 470000 475000 475000 479069 485000 492000 500000 500067 501837</span></span>
+<span id="cb336-25"><a href="lesson-5c-visual-data-exploration.html#cb336-25" tabindex="-1"></a><span class="do">## [46] 535000 538000 545224 552000 555000 556581 582933 584500 591587</span></span>
+<span id="cb336-26"><a href="lesson-5c-visual-data-exploration.html#cb336-26" tabindex="-1"></a><span class="do">## [55] 610000 611657 615000 625000 745000 755000</span></span></code></pre></div>
 <p>As demonstrated, several plots exist for examining univariate continuous variables. Several examples were provided here but still more exist (i.e. frequency polygon, bean plot, shifted histograms). There is some general advice to follow such as histograms being poor for small data sets, dot plots being poor for large data sets, histograms being poor for identifying outlier cut-offs, box plots being good for outliers but obscuring multimodality. Consequently, it is important to draw a variety of plots. Moreover, it is important to adjust parameters within plots (i.e. bin width, axis transformation for skewed data) to get a comprehensive picture of the variable of concern.</p>
 <p>In practice, it is often helpful (encouraged, in fact) to look at many types of graphics for a particular variable. For continuous variables, it is often useful to look at histograms, box plots, Q-Q plots, and a number of other graphics (depending on the situation). We can combine multiple plots to display a wealth of important information about continuous variables, especially as it relates to typical analytic tasks (e.g., density, correlation, outliers, etc.)</p>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="lesson-5c-visual-data-exploration.html#cb337-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(<span class="at">x =</span> Sale_Price)) <span class="sc">+</span></span>
@@ -1105,15 +1099,15 @@ Figure 20.1: Information a boxplot provides.
 <span id="cb340-3"><a href="lesson-5c-visual-data-exploration.html#cb340-3" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb340-4"><a href="lesson-5c-visual-data-exploration.html#cb340-4" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(pct))</span>
 <span id="cb340-5"><a href="lesson-5c-visual-data-exploration.html#cb340-5" tabindex="-1"></a><span class="do">## # A tibble: 7 × 3</span></span>
-<span id="cb340-6"><a href="lesson-5c-visual-data-exploration.html#cb340-6" tabindex="-1"></a><span class="do">##   MS_Zoning                     n     pct</span></span>
-<span id="cb340-7"><a href="lesson-5c-visual-data-exploration.html#cb340-7" tabindex="-1"></a><span class="do">##   &lt;fct&gt;                     &lt;int&gt;   &lt;dbl&gt;</span></span>
-<span id="cb340-8"><a href="lesson-5c-visual-data-exploration.html#cb340-8" tabindex="-1"></a><span class="do">## 1 Residential_Low_Density    2273 7.76e-1</span></span>
-<span id="cb340-9"><a href="lesson-5c-visual-data-exploration.html#cb340-9" tabindex="-1"></a><span class="do">## 2 Residential_Medium_Densi…   462 1.58e-1</span></span>
-<span id="cb340-10"><a href="lesson-5c-visual-data-exploration.html#cb340-10" tabindex="-1"></a><span class="do">## 3 Floating_Village_Residen…   139 4.74e-2</span></span>
-<span id="cb340-11"><a href="lesson-5c-visual-data-exploration.html#cb340-11" tabindex="-1"></a><span class="do">## 4 Residential_High_Density     27 9.22e-3</span></span>
-<span id="cb340-12"><a href="lesson-5c-visual-data-exploration.html#cb340-12" tabindex="-1"></a><span class="do">## 5 C_all                        25 8.53e-3</span></span>
-<span id="cb340-13"><a href="lesson-5c-visual-data-exploration.html#cb340-13" tabindex="-1"></a><span class="do">## 6 A_agr                         2 6.83e-4</span></span>
-<span id="cb340-14"><a href="lesson-5c-visual-data-exploration.html#cb340-14" tabindex="-1"></a><span class="do">## 7 I_all                         2 6.83e-4</span></span></code></pre></div>
+<span id="cb340-6"><a href="lesson-5c-visual-data-exploration.html#cb340-6" tabindex="-1"></a><span class="do">##   MS_Zoning                        n      pct</span></span>
+<span id="cb340-7"><a href="lesson-5c-visual-data-exploration.html#cb340-7" tabindex="-1"></a><span class="do">##   &lt;fct&gt;                        &lt;int&gt;    &lt;dbl&gt;</span></span>
+<span id="cb340-8"><a href="lesson-5c-visual-data-exploration.html#cb340-8" tabindex="-1"></a><span class="do">## 1 Residential_Low_Density       2273 0.776   </span></span>
+<span id="cb340-9"><a href="lesson-5c-visual-data-exploration.html#cb340-9" tabindex="-1"></a><span class="do">## 2 Residential_Medium_Density     462 0.158   </span></span>
+<span id="cb340-10"><a href="lesson-5c-visual-data-exploration.html#cb340-10" tabindex="-1"></a><span class="do">## 3 Floating_Village_Residential   139 0.0474  </span></span>
+<span id="cb340-11"><a href="lesson-5c-visual-data-exploration.html#cb340-11" tabindex="-1"></a><span class="do">## 4 Residential_High_Density        27 0.00922 </span></span>
+<span id="cb340-12"><a href="lesson-5c-visual-data-exploration.html#cb340-12" tabindex="-1"></a><span class="do">## 5 C_all                           25 0.00853 </span></span>
+<span id="cb340-13"><a href="lesson-5c-visual-data-exploration.html#cb340-13" tabindex="-1"></a><span class="do">## 6 A_agr                            2 0.000683</span></span>
+<span id="cb340-14"><a href="lesson-5c-visual-data-exploration.html#cb340-14" tabindex="-1"></a><span class="do">## 7 I_all                            2 0.000683</span></span></code></pre></div>
 <p>Severely imbalanced categories can cause problems in statistical modeling, so it makes sense to sometimes combine the infrequent levels into an other category. Here we use n = 3 to retain the top three most frequent categories/levels, and condense the remaining into an other category. You can see that other still represents less than 2% of all observations.</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="lesson-5c-visual-data-exploration.html#cb341-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> </span>
 <span id="cb341-2"><a href="lesson-5c-visual-data-exploration.html#cb341-2" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">MS_Zoning =</span> forcats<span class="sc">::</span><span class="fu">fct_lump</span>(MS_Zoning, <span class="at">n =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
@@ -1126,10 +1120,8 @@ Figure 20.1: Information a boxplot provides.
 <p>In some cases, the categories of a categorical variable have a natural ordering (though, the difference between any two categories is not meaningful)—these are called ordinal variables. For example, the <code>Kitchen_Qual</code> variable in <code>ames</code> categorizes kitchen quality into five buckets:</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="lesson-5c-visual-data-exploration.html#cb342-1" tabindex="-1"></a><span class="fu">table</span>(ames<span class="sc">$</span>Kitchen_Qual)</span>
 <span id="cb342-2"><a href="lesson-5c-visual-data-exploration.html#cb342-2" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb342-3"><a href="lesson-5c-visual-data-exploration.html#cb342-3" tabindex="-1"></a><span class="do">## Excellent      Fair      Good      Poor </span></span>
-<span id="cb342-4"><a href="lesson-5c-visual-data-exploration.html#cb342-4" tabindex="-1"></a><span class="do">##       205        70      1160         1 </span></span>
-<span id="cb342-5"><a href="lesson-5c-visual-data-exploration.html#cb342-5" tabindex="-1"></a><span class="do">##   Typical </span></span>
-<span id="cb342-6"><a href="lesson-5c-visual-data-exploration.html#cb342-6" tabindex="-1"></a><span class="do">##      1494</span></span></code></pre></div>
+<span id="cb342-3"><a href="lesson-5c-visual-data-exploration.html#cb342-3" tabindex="-1"></a><span class="do">## Excellent      Fair      Good      Poor   Typical </span></span>
+<span id="cb342-4"><a href="lesson-5c-visual-data-exploration.html#cb342-4" tabindex="-1"></a><span class="do">##       205        70      1160         1      1494</span></span></code></pre></div>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="lesson-5c-visual-data-exploration.html#cb343-1" tabindex="-1"></a><span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(Kitchen_Qual)) <span class="sc">+</span> </span>
 <span id="cb343-2"><a href="lesson-5c-visual-data-exploration.html#cb343-2" tabindex="-1"></a>   <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-535-1.png" width="576" style="display: block; margin: auto;" /></p>
@@ -1143,10 +1135,8 @@ Figure 20.1: Information a boxplot provides.
 <p><img src="_main_files/figure-html/unnamed-chunk-536-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Often our data will have categorical variables that are numerically encoded (typically as integers). For example, in the <code>ames</code> data set, the month each home was sold (<code>Mo_Sold</code>) was encoded using the integers 1–12. Sometimes being numerically encoded allows us to compute stats. For example we see that the median and mean values are around 6 implying that our distribution is centered around June (month 6) with most homes selling between May (month 4) and August (month 8).</p>
 <div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="lesson-5c-visual-data-exploration.html#cb345-1" tabindex="-1"></a><span class="fu">summary</span>(ames<span class="sc">$</span>Mo_Sold)</span>
-<span id="cb345-2"><a href="lesson-5c-visual-data-exploration.html#cb345-2" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu. </span></span>
-<span id="cb345-3"><a href="lesson-5c-visual-data-exploration.html#cb345-3" tabindex="-1"></a><span class="do">##    1.00    4.00    6.00    6.22    8.00 </span></span>
-<span id="cb345-4"><a href="lesson-5c-visual-data-exploration.html#cb345-4" tabindex="-1"></a><span class="do">##    Max. </span></span>
-<span id="cb345-5"><a href="lesson-5c-visual-data-exploration.html#cb345-5" tabindex="-1"></a><span class="do">##   12.00</span></span></code></pre></div>
+<span id="cb345-2"><a href="lesson-5c-visual-data-exploration.html#cb345-2" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb345-3"><a href="lesson-5c-visual-data-exploration.html#cb345-3" tabindex="-1"></a><span class="do">##    1.00    4.00    6.00    6.22    8.00   12.00</span></span></code></pre></div>
 <p>But for visuals (and in some cases, modeling), we often want to make sure R treats such variables as categorical as this makes interpreting the plots a little easier.</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="lesson-5c-visual-data-exploration.html#cb346-1" tabindex="-1"></a><span class="co"># Keeping Mo_Sold as an integer</span></span>
 <span id="cb346-2"><a href="lesson-5c-visual-data-exploration.html#cb346-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(Mo_Sold)) <span class="sc">+</span> </span>
@@ -1552,25 +1542,21 @@ than the rest of the homes in their neighborhood?
 <span id="cb371-2"><a href="lesson-5c-visual-data-exploration.html#cb371-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(<span class="st">`</span><span class="at">Garage Type</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb371-3"><a href="lesson-5c-visual-data-exploration.html#cb371-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;garage&quot;</span>))</span>
 <span id="cb371-4"><a href="lesson-5c-visual-data-exploration.html#cb371-4" tabindex="-1"></a><span class="do">## # A tibble: 157 × 7</span></span>
-<span id="cb371-5"><a href="lesson-5c-visual-data-exploration.html#cb371-5" tabindex="-1"></a><span class="do">##    `Garage Type` `Garage Yr Blt`</span></span>
-<span id="cb371-6"><a href="lesson-5c-visual-data-exploration.html#cb371-6" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                   &lt;int&gt;</span></span>
-<span id="cb371-7"><a href="lesson-5c-visual-data-exploration.html#cb371-7" tabindex="-1"></a><span class="do">##  1 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-8"><a href="lesson-5c-visual-data-exploration.html#cb371-8" tabindex="-1"></a><span class="do">##  2 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-9"><a href="lesson-5c-visual-data-exploration.html#cb371-9" tabindex="-1"></a><span class="do">##  3 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-10"><a href="lesson-5c-visual-data-exploration.html#cb371-10" tabindex="-1"></a><span class="do">##  4 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-11"><a href="lesson-5c-visual-data-exploration.html#cb371-11" tabindex="-1"></a><span class="do">##  5 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-12"><a href="lesson-5c-visual-data-exploration.html#cb371-12" tabindex="-1"></a><span class="do">##  6 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-13"><a href="lesson-5c-visual-data-exploration.html#cb371-13" tabindex="-1"></a><span class="do">##  7 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-14"><a href="lesson-5c-visual-data-exploration.html#cb371-14" tabindex="-1"></a><span class="do">##  8 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-15"><a href="lesson-5c-visual-data-exploration.html#cb371-15" tabindex="-1"></a><span class="do">##  9 &lt;NA&gt;                       NA</span></span>
-<span id="cb371-16"><a href="lesson-5c-visual-data-exploration.html#cb371-16" tabindex="-1"></a><span class="do">## 10 &lt;NA&gt;                       NA</span></span>
+<span id="cb371-5"><a href="lesson-5c-visual-data-exploration.html#cb371-5" tabindex="-1"></a><span class="do">##    `Garage Type` `Garage Yr Blt` `Garage Finish` `Garage Cars`</span></span>
+<span id="cb371-6"><a href="lesson-5c-visual-data-exploration.html#cb371-6" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                   &lt;int&gt; &lt;chr&gt;                   &lt;int&gt;</span></span>
+<span id="cb371-7"><a href="lesson-5c-visual-data-exploration.html#cb371-7" tabindex="-1"></a><span class="do">##  1 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-8"><a href="lesson-5c-visual-data-exploration.html#cb371-8" tabindex="-1"></a><span class="do">##  2 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-9"><a href="lesson-5c-visual-data-exploration.html#cb371-9" tabindex="-1"></a><span class="do">##  3 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-10"><a href="lesson-5c-visual-data-exploration.html#cb371-10" tabindex="-1"></a><span class="do">##  4 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-11"><a href="lesson-5c-visual-data-exploration.html#cb371-11" tabindex="-1"></a><span class="do">##  5 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-12"><a href="lesson-5c-visual-data-exploration.html#cb371-12" tabindex="-1"></a><span class="do">##  6 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-13"><a href="lesson-5c-visual-data-exploration.html#cb371-13" tabindex="-1"></a><span class="do">##  7 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-14"><a href="lesson-5c-visual-data-exploration.html#cb371-14" tabindex="-1"></a><span class="do">##  8 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-15"><a href="lesson-5c-visual-data-exploration.html#cb371-15" tabindex="-1"></a><span class="do">##  9 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
+<span id="cb371-16"><a href="lesson-5c-visual-data-exploration.html#cb371-16" tabindex="-1"></a><span class="do">## 10 &lt;NA&gt;                       NA &lt;NA&gt;                        0</span></span>
 <span id="cb371-17"><a href="lesson-5c-visual-data-exploration.html#cb371-17" tabindex="-1"></a><span class="do">## # ℹ 147 more rows</span></span>
-<span id="cb371-18"><a href="lesson-5c-visual-data-exploration.html#cb371-18" tabindex="-1"></a><span class="do">## # ℹ 5 more variables:</span></span>
-<span id="cb371-19"><a href="lesson-5c-visual-data-exploration.html#cb371-19" tabindex="-1"></a><span class="do">## #   `Garage Finish` &lt;chr&gt;,</span></span>
-<span id="cb371-20"><a href="lesson-5c-visual-data-exploration.html#cb371-20" tabindex="-1"></a><span class="do">## #   `Garage Cars` &lt;int&gt;,</span></span>
-<span id="cb371-21"><a href="lesson-5c-visual-data-exploration.html#cb371-21" tabindex="-1"></a><span class="do">## #   `Garage Area` &lt;int&gt;,</span></span>
-<span id="cb371-22"><a href="lesson-5c-visual-data-exploration.html#cb371-22" tabindex="-1"></a><span class="do">## #   `Garage Qual` &lt;chr&gt;,</span></span>
-<span id="cb371-23"><a href="lesson-5c-visual-data-exploration.html#cb371-23" tabindex="-1"></a><span class="do">## #   `Garage Cond` &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb371-18"><a href="lesson-5c-visual-data-exploration.html#cb371-18" tabindex="-1"></a><span class="do">## # ℹ 3 more variables: `Garage Area` &lt;int&gt;, `Garage Qual` &lt;chr&gt;,</span></span>
+<span id="cb371-19"><a href="lesson-5c-visual-data-exploration.html#cb371-19" tabindex="-1"></a><span class="do">## #   `Garage Cond` &lt;chr&gt;</span></span></code></pre></div>
 <p>We can visually assess combinations of missingness and intersections of missingness amongst variables with the <code>gg_miss_upset</code> function. For example, the below shows the relationships across missing values in our raw Ames data. We see that there are 917 observations where <code>Pool QC</code>, <code>Misc Feature</code>, <code>Alley</code>, and <code>Fence</code> are all missing. We can also see that when garage features are missing they are pretty much missing across all garage features (versus just one or two garage features missing values).</p>
 <div class="tip">
 <p>
@@ -1657,7 +1643,7 @@ larger quantities of transactions than the rest of the departments?
 
 
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-van-flexible-2012" class="csl-entry">
 Buuren, S. van. 2012. <em>Flexible Imputation of Missing Data</em>. Chapman &amp; Hall/CRC Interdisciplinary Statistics. Taylor &amp; Francis.
 </div>

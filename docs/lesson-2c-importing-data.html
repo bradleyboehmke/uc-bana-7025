@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Lesson 2c: Importing data | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Lesson 2c: Importing data | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -859,39 +860,38 @@ You can download this data from the supplemental files in Canvas.
 <span id="cb117-2"><a href="lesson-2c-importing-data.html#cb117-2" tabindex="-1"></a></span>
 <span id="cb117-3"><a href="lesson-2c-importing-data.html#cb117-3" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;data/ames_raw.csv&#39;</span>)</span>
 <span id="cb117-4"><a href="lesson-2c-importing-data.html#cb117-4" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
-<span id="cb117-5"><a href="lesson-2c-importing-data.html#cb117-5" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────</span></span>
+<span id="cb117-5"><a href="lesson-2c-importing-data.html#cb117-5" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────</span></span>
 <span id="cb117-6"><a href="lesson-2c-importing-data.html#cb117-6" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb117-7"><a href="lesson-2c-importing-data.html#cb117-7" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning...</span></span>
-<span id="cb117-8"><a href="lesson-2c-importing-data.html#cb117-8" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Ar...</span></span>
+<span id="cb117-7"><a href="lesson-2c-importing-data.html#cb117-7" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, La...</span></span>
+<span id="cb117-8"><a href="lesson-2c-importing-data.html#cb117-8" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond...</span></span>
 <span id="cb117-9"><a href="lesson-2c-importing-data.html#cb117-9" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb117-10"><a href="lesson-2c-importing-data.html#cb117-10" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span id="cb117-11"><a href="lesson-2c-importing-data.html#cb117-11" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
 <p>We can look at it in our notebook or console and we see that it is displayed in a well-organized, concise manner. More on this in a second.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="lesson-2c-importing-data.html#cb118-1" tabindex="-1"></a>ames</span>
 <span id="cb118-2"><a href="lesson-2c-importing-data.html#cb118-2" tabindex="-1"></a><span class="do">## # A tibble: 2,930 × 82</span></span>
-<span id="cb118-3"><a href="lesson-2c-importing-data.html#cb118-3" tabindex="-1"></a><span class="do">##    Order PID    `MS SubClass` `MS Zoning`</span></span>
-<span id="cb118-4"><a href="lesson-2c-importing-data.html#cb118-4" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;      </span></span>
-<span id="cb118-5"><a href="lesson-2c-importing-data.html#cb118-5" tabindex="-1"></a><span class="do">##  1     1 05263… 020           RL         </span></span>
-<span id="cb118-6"><a href="lesson-2c-importing-data.html#cb118-6" tabindex="-1"></a><span class="do">##  2     2 05263… 020           RH         </span></span>
-<span id="cb118-7"><a href="lesson-2c-importing-data.html#cb118-7" tabindex="-1"></a><span class="do">##  3     3 05263… 020           RL         </span></span>
-<span id="cb118-8"><a href="lesson-2c-importing-data.html#cb118-8" tabindex="-1"></a><span class="do">##  4     4 05263… 020           RL         </span></span>
-<span id="cb118-9"><a href="lesson-2c-importing-data.html#cb118-9" tabindex="-1"></a><span class="do">##  5     5 05271… 060           RL         </span></span>
-<span id="cb118-10"><a href="lesson-2c-importing-data.html#cb118-10" tabindex="-1"></a><span class="do">##  6     6 05271… 060           RL         </span></span>
-<span id="cb118-11"><a href="lesson-2c-importing-data.html#cb118-11" tabindex="-1"></a><span class="do">##  7     7 05271… 120           RL         </span></span>
-<span id="cb118-12"><a href="lesson-2c-importing-data.html#cb118-12" tabindex="-1"></a><span class="do">##  8     8 05271… 120           RL         </span></span>
-<span id="cb118-13"><a href="lesson-2c-importing-data.html#cb118-13" tabindex="-1"></a><span class="do">##  9     9 05271… 120           RL         </span></span>
-<span id="cb118-14"><a href="lesson-2c-importing-data.html#cb118-14" tabindex="-1"></a><span class="do">## 10    10 05271… 060           RL         </span></span>
+<span id="cb118-3"><a href="lesson-2c-importing-data.html#cb118-3" tabindex="-1"></a><span class="do">##    Order PID        `MS SubClass` `MS Zoning` `Lot Frontage` `Lot Area`</span></span>
+<span id="cb118-4"><a href="lesson-2c-importing-data.html#cb118-4" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb118-5"><a href="lesson-2c-importing-data.html#cb118-5" tabindex="-1"></a><span class="do">##  1     1 0526301100 020           RL                     141      31770</span></span>
+<span id="cb118-6"><a href="lesson-2c-importing-data.html#cb118-6" tabindex="-1"></a><span class="do">##  2     2 0526350040 020           RH                      80      11622</span></span>
+<span id="cb118-7"><a href="lesson-2c-importing-data.html#cb118-7" tabindex="-1"></a><span class="do">##  3     3 0526351010 020           RL                      81      14267</span></span>
+<span id="cb118-8"><a href="lesson-2c-importing-data.html#cb118-8" tabindex="-1"></a><span class="do">##  4     4 0526353030 020           RL                      93      11160</span></span>
+<span id="cb118-9"><a href="lesson-2c-importing-data.html#cb118-9" tabindex="-1"></a><span class="do">##  5     5 0527105010 060           RL                      74      13830</span></span>
+<span id="cb118-10"><a href="lesson-2c-importing-data.html#cb118-10" tabindex="-1"></a><span class="do">##  6     6 0527105030 060           RL                      78       9978</span></span>
+<span id="cb118-11"><a href="lesson-2c-importing-data.html#cb118-11" tabindex="-1"></a><span class="do">##  7     7 0527127150 120           RL                      41       4920</span></span>
+<span id="cb118-12"><a href="lesson-2c-importing-data.html#cb118-12" tabindex="-1"></a><span class="do">##  8     8 0527145080 120           RL                      43       5005</span></span>
+<span id="cb118-13"><a href="lesson-2c-importing-data.html#cb118-13" tabindex="-1"></a><span class="do">##  9     9 0527146030 120           RL                      39       5389</span></span>
+<span id="cb118-14"><a href="lesson-2c-importing-data.html#cb118-14" tabindex="-1"></a><span class="do">## 10    10 0527162130 060           RL                      60       7500</span></span>
 <span id="cb118-15"><a href="lesson-2c-importing-data.html#cb118-15" tabindex="-1"></a><span class="do">## # ℹ 2,920 more rows</span></span>
-<span id="cb118-16"><a href="lesson-2c-importing-data.html#cb118-16" tabindex="-1"></a><span class="do">## # ℹ 78 more variables:</span></span>
-<span id="cb118-17"><a href="lesson-2c-importing-data.html#cb118-17" tabindex="-1"></a><span class="do">## #   `Lot Frontage` &lt;dbl&gt;,</span></span>
-<span id="cb118-18"><a href="lesson-2c-importing-data.html#cb118-18" tabindex="-1"></a><span class="do">## #   `Lot Area` &lt;dbl&gt;, Street &lt;chr&gt;,</span></span>
-<span id="cb118-19"><a href="lesson-2c-importing-data.html#cb118-19" tabindex="-1"></a><span class="do">## #   Alley &lt;chr&gt;, `Lot Shape` &lt;chr&gt;,</span></span>
-<span id="cb118-20"><a href="lesson-2c-importing-data.html#cb118-20" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;,</span></span>
-<span id="cb118-21"><a href="lesson-2c-importing-data.html#cb118-21" tabindex="-1"></a><span class="do">## #   Utilities &lt;chr&gt;, …</span></span></code></pre></div>
+<span id="cb118-16"><a href="lesson-2c-importing-data.html#cb118-16" tabindex="-1"></a><span class="do">## # ℹ 76 more variables: Street &lt;chr&gt;, Alley &lt;chr&gt;, `Lot Shape` &lt;chr&gt;,</span></span>
+<span id="cb118-17"><a href="lesson-2c-importing-data.html#cb118-17" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;, Utilities &lt;chr&gt;, `Lot Config` &lt;chr&gt;,</span></span>
+<span id="cb118-18"><a href="lesson-2c-importing-data.html#cb118-18" tabindex="-1"></a><span class="do">## #   `Land Slope` &lt;chr&gt;, Neighborhood &lt;chr&gt;, `Condition 1` &lt;chr&gt;,</span></span>
+<span id="cb118-19"><a href="lesson-2c-importing-data.html#cb118-19" tabindex="-1"></a><span class="do">## #   `Condition 2` &lt;chr&gt;, `Bldg Type` &lt;chr&gt;, `House Style` &lt;chr&gt;,</span></span>
+<span id="cb118-20"><a href="lesson-2c-importing-data.html#cb118-20" tabindex="-1"></a><span class="do">## #   `Overall Qual` &lt;dbl&gt;, `Overall Cond` &lt;dbl&gt;, `Year Built` &lt;dbl&gt;,</span></span>
+<span id="cb118-21"><a href="lesson-2c-importing-data.html#cb118-21" tabindex="-1"></a><span class="do">## #   `Year Remod/Add` &lt;dbl&gt;, `Roof Style` &lt;chr&gt;, `Roof Matl` &lt;chr&gt;, …</span></span></code></pre></div>
 <p>If we check the class of our object we do see that it is a <strong>data.frame</strong>; however, we also see some additional information. That’s because this is a special kind of data frame known as a <strong>tibble</strong>.</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="lesson-2c-importing-data.html#cb119-1" tabindex="-1"></a><span class="fu">class</span>(ames)</span>
-<span id="cb119-2"><a href="lesson-2c-importing-data.html#cb119-2" tabindex="-1"></a><span class="do">## [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;     </span></span>
-<span id="cb119-3"><a href="lesson-2c-importing-data.html#cb119-3" tabindex="-1"></a><span class="do">## [3] &quot;tbl&quot;         &quot;data.frame&quot;</span></span></code></pre></div>
+<span id="cb119-2"><a href="lesson-2c-importing-data.html#cb119-2" tabindex="-1"></a><span class="do">## [1] &quot;spec_tbl_df&quot; &quot;tbl_df&quot;      &quot;tbl&quot;         &quot;data.frame&quot;</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -905,418 +905,236 @@ You can download this data from the supplemental files in Canvas.
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="lesson-2c-importing-data.html#cb120-1" tabindex="-1"></a><span class="co"># printed output of a tibble</span></span>
 <span id="cb120-2"><a href="lesson-2c-importing-data.html#cb120-2" tabindex="-1"></a>ames</span>
 <span id="cb120-3"><a href="lesson-2c-importing-data.html#cb120-3" tabindex="-1"></a><span class="do">## # A tibble: 2,930 × 82</span></span>
-<span id="cb120-4"><a href="lesson-2c-importing-data.html#cb120-4" tabindex="-1"></a><span class="do">##    Order PID    `MS SubClass` `MS Zoning`</span></span>
-<span id="cb120-5"><a href="lesson-2c-importing-data.html#cb120-5" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;      </span></span>
-<span id="cb120-6"><a href="lesson-2c-importing-data.html#cb120-6" tabindex="-1"></a><span class="do">##  1     1 05263… 020           RL         </span></span>
-<span id="cb120-7"><a href="lesson-2c-importing-data.html#cb120-7" tabindex="-1"></a><span class="do">##  2     2 05263… 020           RH         </span></span>
-<span id="cb120-8"><a href="lesson-2c-importing-data.html#cb120-8" tabindex="-1"></a><span class="do">##  3     3 05263… 020           RL         </span></span>
-<span id="cb120-9"><a href="lesson-2c-importing-data.html#cb120-9" tabindex="-1"></a><span class="do">##  4     4 05263… 020           RL         </span></span>
-<span id="cb120-10"><a href="lesson-2c-importing-data.html#cb120-10" tabindex="-1"></a><span class="do">##  5     5 05271… 060           RL         </span></span>
-<span id="cb120-11"><a href="lesson-2c-importing-data.html#cb120-11" tabindex="-1"></a><span class="do">##  6     6 05271… 060           RL         </span></span>
-<span id="cb120-12"><a href="lesson-2c-importing-data.html#cb120-12" tabindex="-1"></a><span class="do">##  7     7 05271… 120           RL         </span></span>
-<span id="cb120-13"><a href="lesson-2c-importing-data.html#cb120-13" tabindex="-1"></a><span class="do">##  8     8 05271… 120           RL         </span></span>
-<span id="cb120-14"><a href="lesson-2c-importing-data.html#cb120-14" tabindex="-1"></a><span class="do">##  9     9 05271… 120           RL         </span></span>
-<span id="cb120-15"><a href="lesson-2c-importing-data.html#cb120-15" tabindex="-1"></a><span class="do">## 10    10 05271… 060           RL         </span></span>
+<span id="cb120-4"><a href="lesson-2c-importing-data.html#cb120-4" tabindex="-1"></a><span class="do">##    Order PID        `MS SubClass` `MS Zoning` `Lot Frontage` `Lot Area`</span></span>
+<span id="cb120-5"><a href="lesson-2c-importing-data.html#cb120-5" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb120-6"><a href="lesson-2c-importing-data.html#cb120-6" tabindex="-1"></a><span class="do">##  1     1 0526301100 020           RL                     141      31770</span></span>
+<span id="cb120-7"><a href="lesson-2c-importing-data.html#cb120-7" tabindex="-1"></a><span class="do">##  2     2 0526350040 020           RH                      80      11622</span></span>
+<span id="cb120-8"><a href="lesson-2c-importing-data.html#cb120-8" tabindex="-1"></a><span class="do">##  3     3 0526351010 020           RL                      81      14267</span></span>
+<span id="cb120-9"><a href="lesson-2c-importing-data.html#cb120-9" tabindex="-1"></a><span class="do">##  4     4 0526353030 020           RL                      93      11160</span></span>
+<span id="cb120-10"><a href="lesson-2c-importing-data.html#cb120-10" tabindex="-1"></a><span class="do">##  5     5 0527105010 060           RL                      74      13830</span></span>
+<span id="cb120-11"><a href="lesson-2c-importing-data.html#cb120-11" tabindex="-1"></a><span class="do">##  6     6 0527105030 060           RL                      78       9978</span></span>
+<span id="cb120-12"><a href="lesson-2c-importing-data.html#cb120-12" tabindex="-1"></a><span class="do">##  7     7 0527127150 120           RL                      41       4920</span></span>
+<span id="cb120-13"><a href="lesson-2c-importing-data.html#cb120-13" tabindex="-1"></a><span class="do">##  8     8 0527145080 120           RL                      43       5005</span></span>
+<span id="cb120-14"><a href="lesson-2c-importing-data.html#cb120-14" tabindex="-1"></a><span class="do">##  9     9 0527146030 120           RL                      39       5389</span></span>
+<span id="cb120-15"><a href="lesson-2c-importing-data.html#cb120-15" tabindex="-1"></a><span class="do">## 10    10 0527162130 060           RL                      60       7500</span></span>
 <span id="cb120-16"><a href="lesson-2c-importing-data.html#cb120-16" tabindex="-1"></a><span class="do">## # ℹ 2,920 more rows</span></span>
-<span id="cb120-17"><a href="lesson-2c-importing-data.html#cb120-17" tabindex="-1"></a><span class="do">## # ℹ 78 more variables:</span></span>
-<span id="cb120-18"><a href="lesson-2c-importing-data.html#cb120-18" tabindex="-1"></a><span class="do">## #   `Lot Frontage` &lt;dbl&gt;,</span></span>
-<span id="cb120-19"><a href="lesson-2c-importing-data.html#cb120-19" tabindex="-1"></a><span class="do">## #   `Lot Area` &lt;dbl&gt;, Street &lt;chr&gt;,</span></span>
-<span id="cb120-20"><a href="lesson-2c-importing-data.html#cb120-20" tabindex="-1"></a><span class="do">## #   Alley &lt;chr&gt;, `Lot Shape` &lt;chr&gt;,</span></span>
-<span id="cb120-21"><a href="lesson-2c-importing-data.html#cb120-21" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;,</span></span>
-<span id="cb120-22"><a href="lesson-2c-importing-data.html#cb120-22" tabindex="-1"></a><span class="do">## #   Utilities &lt;chr&gt;, …</span></span></code></pre></div>
+<span id="cb120-17"><a href="lesson-2c-importing-data.html#cb120-17" tabindex="-1"></a><span class="do">## # ℹ 76 more variables: Street &lt;chr&gt;, Alley &lt;chr&gt;, `Lot Shape` &lt;chr&gt;,</span></span>
+<span id="cb120-18"><a href="lesson-2c-importing-data.html#cb120-18" tabindex="-1"></a><span class="do">## #   `Land Contour` &lt;chr&gt;, Utilities &lt;chr&gt;, `Lot Config` &lt;chr&gt;,</span></span>
+<span id="cb120-19"><a href="lesson-2c-importing-data.html#cb120-19" tabindex="-1"></a><span class="do">## #   `Land Slope` &lt;chr&gt;, Neighborhood &lt;chr&gt;, `Condition 1` &lt;chr&gt;,</span></span>
+<span id="cb120-20"><a href="lesson-2c-importing-data.html#cb120-20" tabindex="-1"></a><span class="do">## #   `Condition 2` &lt;chr&gt;, `Bldg Type` &lt;chr&gt;, `House Style` &lt;chr&gt;,</span></span>
+<span id="cb120-21"><a href="lesson-2c-importing-data.html#cb120-21" tabindex="-1"></a><span class="do">## #   `Overall Qual` &lt;dbl&gt;, `Overall Cond` &lt;dbl&gt;, `Year Built` &lt;dbl&gt;,</span></span>
+<span id="cb120-22"><a href="lesson-2c-importing-data.html#cb120-22" tabindex="-1"></a><span class="do">## #   `Year Remod/Add` &lt;dbl&gt;, `Roof Style` &lt;chr&gt;, `Roof Matl` &lt;chr&gt;, …</span></span></code></pre></div>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="lesson-2c-importing-data.html#cb121-1" tabindex="-1"></a><span class="co"># printed output of a regular data frame</span></span>
 <span id="cb121-2"><a href="lesson-2c-importing-data.html#cb121-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(ames)</span>
-<span id="cb121-3"><a href="lesson-2c-importing-data.html#cb121-3" tabindex="-1"></a><span class="do">##    Order        PID MS SubClass</span></span>
-<span id="cb121-4"><a href="lesson-2c-importing-data.html#cb121-4" tabindex="-1"></a><span class="do">## 1      1 0526301100         020</span></span>
-<span id="cb121-5"><a href="lesson-2c-importing-data.html#cb121-5" tabindex="-1"></a><span class="do">## 2      2 0526350040         020</span></span>
-<span id="cb121-6"><a href="lesson-2c-importing-data.html#cb121-6" tabindex="-1"></a><span class="do">## 3      3 0526351010         020</span></span>
-<span id="cb121-7"><a href="lesson-2c-importing-data.html#cb121-7" tabindex="-1"></a><span class="do">## 4      4 0526353030         020</span></span>
-<span id="cb121-8"><a href="lesson-2c-importing-data.html#cb121-8" tabindex="-1"></a><span class="do">## 5      5 0527105010         060</span></span>
-<span id="cb121-9"><a href="lesson-2c-importing-data.html#cb121-9" tabindex="-1"></a><span class="do">## 6      6 0527105030         060</span></span>
-<span id="cb121-10"><a href="lesson-2c-importing-data.html#cb121-10" tabindex="-1"></a><span class="do">## 7      7 0527127150         120</span></span>
-<span id="cb121-11"><a href="lesson-2c-importing-data.html#cb121-11" tabindex="-1"></a><span class="do">## 8      8 0527145080         120</span></span>
-<span id="cb121-12"><a href="lesson-2c-importing-data.html#cb121-12" tabindex="-1"></a><span class="do">## 9      9 0527146030         120</span></span>
-<span id="cb121-13"><a href="lesson-2c-importing-data.html#cb121-13" tabindex="-1"></a><span class="do">## 10    10 0527162130         060</span></span>
-<span id="cb121-14"><a href="lesson-2c-importing-data.html#cb121-14" tabindex="-1"></a><span class="do">## 11    11 0527163010         060</span></span>
-<span id="cb121-15"><a href="lesson-2c-importing-data.html#cb121-15" tabindex="-1"></a><span class="do">## 12    12 0527165230         020</span></span>
-<span id="cb121-16"><a href="lesson-2c-importing-data.html#cb121-16" tabindex="-1"></a><span class="do">##    MS Zoning Lot Frontage Lot Area</span></span>
-<span id="cb121-17"><a href="lesson-2c-importing-data.html#cb121-17" tabindex="-1"></a><span class="do">## 1         RL          141    31770</span></span>
-<span id="cb121-18"><a href="lesson-2c-importing-data.html#cb121-18" tabindex="-1"></a><span class="do">## 2         RH           80    11622</span></span>
-<span id="cb121-19"><a href="lesson-2c-importing-data.html#cb121-19" tabindex="-1"></a><span class="do">## 3         RL           81    14267</span></span>
-<span id="cb121-20"><a href="lesson-2c-importing-data.html#cb121-20" tabindex="-1"></a><span class="do">## 4         RL           93    11160</span></span>
-<span id="cb121-21"><a href="lesson-2c-importing-data.html#cb121-21" tabindex="-1"></a><span class="do">## 5         RL           74    13830</span></span>
-<span id="cb121-22"><a href="lesson-2c-importing-data.html#cb121-22" tabindex="-1"></a><span class="do">## 6         RL           78     9978</span></span>
-<span id="cb121-23"><a href="lesson-2c-importing-data.html#cb121-23" tabindex="-1"></a><span class="do">## 7         RL           41     4920</span></span>
-<span id="cb121-24"><a href="lesson-2c-importing-data.html#cb121-24" tabindex="-1"></a><span class="do">## 8         RL           43     5005</span></span>
-<span id="cb121-25"><a href="lesson-2c-importing-data.html#cb121-25" tabindex="-1"></a><span class="do">## 9         RL           39     5389</span></span>
-<span id="cb121-26"><a href="lesson-2c-importing-data.html#cb121-26" tabindex="-1"></a><span class="do">## 10        RL           60     7500</span></span>
-<span id="cb121-27"><a href="lesson-2c-importing-data.html#cb121-27" tabindex="-1"></a><span class="do">## 11        RL           75    10000</span></span>
-<span id="cb121-28"><a href="lesson-2c-importing-data.html#cb121-28" tabindex="-1"></a><span class="do">## 12        RL           NA     7980</span></span>
-<span id="cb121-29"><a href="lesson-2c-importing-data.html#cb121-29" tabindex="-1"></a><span class="do">##    Street Alley Lot Shape Land Contour</span></span>
-<span id="cb121-30"><a href="lesson-2c-importing-data.html#cb121-30" tabindex="-1"></a><span class="do">## 1    Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-31"><a href="lesson-2c-importing-data.html#cb121-31" tabindex="-1"></a><span class="do">## 2    Pave  &lt;NA&gt;       Reg          Lvl</span></span>
-<span id="cb121-32"><a href="lesson-2c-importing-data.html#cb121-32" tabindex="-1"></a><span class="do">## 3    Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-33"><a href="lesson-2c-importing-data.html#cb121-33" tabindex="-1"></a><span class="do">## 4    Pave  &lt;NA&gt;       Reg          Lvl</span></span>
-<span id="cb121-34"><a href="lesson-2c-importing-data.html#cb121-34" tabindex="-1"></a><span class="do">## 5    Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-35"><a href="lesson-2c-importing-data.html#cb121-35" tabindex="-1"></a><span class="do">## 6    Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-36"><a href="lesson-2c-importing-data.html#cb121-36" tabindex="-1"></a><span class="do">## 7    Pave  &lt;NA&gt;       Reg          Lvl</span></span>
-<span id="cb121-37"><a href="lesson-2c-importing-data.html#cb121-37" tabindex="-1"></a><span class="do">## 8    Pave  &lt;NA&gt;       IR1          HLS</span></span>
-<span id="cb121-38"><a href="lesson-2c-importing-data.html#cb121-38" tabindex="-1"></a><span class="do">## 9    Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-39"><a href="lesson-2c-importing-data.html#cb121-39" tabindex="-1"></a><span class="do">## 10   Pave  &lt;NA&gt;       Reg          Lvl</span></span>
-<span id="cb121-40"><a href="lesson-2c-importing-data.html#cb121-40" tabindex="-1"></a><span class="do">## 11   Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-41"><a href="lesson-2c-importing-data.html#cb121-41" tabindex="-1"></a><span class="do">## 12   Pave  &lt;NA&gt;       IR1          Lvl</span></span>
-<span id="cb121-42"><a href="lesson-2c-importing-data.html#cb121-42" tabindex="-1"></a><span class="do">##    Utilities Lot Config Land Slope</span></span>
-<span id="cb121-43"><a href="lesson-2c-importing-data.html#cb121-43" tabindex="-1"></a><span class="do">## 1     AllPub     Corner        Gtl</span></span>
-<span id="cb121-44"><a href="lesson-2c-importing-data.html#cb121-44" tabindex="-1"></a><span class="do">## 2     AllPub     Inside        Gtl</span></span>
-<span id="cb121-45"><a href="lesson-2c-importing-data.html#cb121-45" tabindex="-1"></a><span class="do">## 3     AllPub     Corner        Gtl</span></span>
-<span id="cb121-46"><a href="lesson-2c-importing-data.html#cb121-46" tabindex="-1"></a><span class="do">## 4     AllPub     Corner        Gtl</span></span>
-<span id="cb121-47"><a href="lesson-2c-importing-data.html#cb121-47" tabindex="-1"></a><span class="do">## 5     AllPub     Inside        Gtl</span></span>
-<span id="cb121-48"><a href="lesson-2c-importing-data.html#cb121-48" tabindex="-1"></a><span class="do">## 6     AllPub     Inside        Gtl</span></span>
-<span id="cb121-49"><a href="lesson-2c-importing-data.html#cb121-49" tabindex="-1"></a><span class="do">## 7     AllPub     Inside        Gtl</span></span>
-<span id="cb121-50"><a href="lesson-2c-importing-data.html#cb121-50" tabindex="-1"></a><span class="do">## 8     AllPub     Inside        Gtl</span></span>
-<span id="cb121-51"><a href="lesson-2c-importing-data.html#cb121-51" tabindex="-1"></a><span class="do">## 9     AllPub     Inside        Gtl</span></span>
-<span id="cb121-52"><a href="lesson-2c-importing-data.html#cb121-52" tabindex="-1"></a><span class="do">## 10    AllPub     Inside        Gtl</span></span>
-<span id="cb121-53"><a href="lesson-2c-importing-data.html#cb121-53" tabindex="-1"></a><span class="do">## 11    AllPub     Corner        Gtl</span></span>
-<span id="cb121-54"><a href="lesson-2c-importing-data.html#cb121-54" tabindex="-1"></a><span class="do">## 12    AllPub     Inside        Gtl</span></span>
-<span id="cb121-55"><a href="lesson-2c-importing-data.html#cb121-55" tabindex="-1"></a><span class="do">##    Neighborhood Condition 1 Condition 2</span></span>
-<span id="cb121-56"><a href="lesson-2c-importing-data.html#cb121-56" tabindex="-1"></a><span class="do">## 1         NAmes        Norm        Norm</span></span>
-<span id="cb121-57"><a href="lesson-2c-importing-data.html#cb121-57" tabindex="-1"></a><span class="do">## 2         NAmes       Feedr        Norm</span></span>
-<span id="cb121-58"><a href="lesson-2c-importing-data.html#cb121-58" tabindex="-1"></a><span class="do">## 3         NAmes        Norm        Norm</span></span>
-<span id="cb121-59"><a href="lesson-2c-importing-data.html#cb121-59" tabindex="-1"></a><span class="do">## 4         NAmes        Norm        Norm</span></span>
-<span id="cb121-60"><a href="lesson-2c-importing-data.html#cb121-60" tabindex="-1"></a><span class="do">## 5       Gilbert        Norm        Norm</span></span>
-<span id="cb121-61"><a href="lesson-2c-importing-data.html#cb121-61" tabindex="-1"></a><span class="do">## 6       Gilbert        Norm        Norm</span></span>
-<span id="cb121-62"><a href="lesson-2c-importing-data.html#cb121-62" tabindex="-1"></a><span class="do">## 7       StoneBr        Norm        Norm</span></span>
-<span id="cb121-63"><a href="lesson-2c-importing-data.html#cb121-63" tabindex="-1"></a><span class="do">## 8       StoneBr        Norm        Norm</span></span>
-<span id="cb121-64"><a href="lesson-2c-importing-data.html#cb121-64" tabindex="-1"></a><span class="do">## 9       StoneBr        Norm        Norm</span></span>
-<span id="cb121-65"><a href="lesson-2c-importing-data.html#cb121-65" tabindex="-1"></a><span class="do">## 10      Gilbert        Norm        Norm</span></span>
-<span id="cb121-66"><a href="lesson-2c-importing-data.html#cb121-66" tabindex="-1"></a><span class="do">## 11      Gilbert        Norm        Norm</span></span>
-<span id="cb121-67"><a href="lesson-2c-importing-data.html#cb121-67" tabindex="-1"></a><span class="do">## 12      Gilbert        Norm        Norm</span></span>
-<span id="cb121-68"><a href="lesson-2c-importing-data.html#cb121-68" tabindex="-1"></a><span class="do">##    Bldg Type House Style Overall Qual</span></span>
-<span id="cb121-69"><a href="lesson-2c-importing-data.html#cb121-69" tabindex="-1"></a><span class="do">## 1       1Fam      1Story            6</span></span>
-<span id="cb121-70"><a href="lesson-2c-importing-data.html#cb121-70" tabindex="-1"></a><span class="do">## 2       1Fam      1Story            5</span></span>
-<span id="cb121-71"><a href="lesson-2c-importing-data.html#cb121-71" tabindex="-1"></a><span class="do">## 3       1Fam      1Story            6</span></span>
-<span id="cb121-72"><a href="lesson-2c-importing-data.html#cb121-72" tabindex="-1"></a><span class="do">## 4       1Fam      1Story            7</span></span>
-<span id="cb121-73"><a href="lesson-2c-importing-data.html#cb121-73" tabindex="-1"></a><span class="do">## 5       1Fam      2Story            5</span></span>
-<span id="cb121-74"><a href="lesson-2c-importing-data.html#cb121-74" tabindex="-1"></a><span class="do">## 6       1Fam      2Story            6</span></span>
-<span id="cb121-75"><a href="lesson-2c-importing-data.html#cb121-75" tabindex="-1"></a><span class="do">## 7     TwnhsE      1Story            8</span></span>
-<span id="cb121-76"><a href="lesson-2c-importing-data.html#cb121-76" tabindex="-1"></a><span class="do">## 8     TwnhsE      1Story            8</span></span>
-<span id="cb121-77"><a href="lesson-2c-importing-data.html#cb121-77" tabindex="-1"></a><span class="do">## 9     TwnhsE      1Story            8</span></span>
-<span id="cb121-78"><a href="lesson-2c-importing-data.html#cb121-78" tabindex="-1"></a><span class="do">## 10      1Fam      2Story            7</span></span>
-<span id="cb121-79"><a href="lesson-2c-importing-data.html#cb121-79" tabindex="-1"></a><span class="do">## 11      1Fam      2Story            6</span></span>
-<span id="cb121-80"><a href="lesson-2c-importing-data.html#cb121-80" tabindex="-1"></a><span class="do">## 12      1Fam      1Story            6</span></span>
-<span id="cb121-81"><a href="lesson-2c-importing-data.html#cb121-81" tabindex="-1"></a><span class="do">##    Overall Cond Year Built</span></span>
-<span id="cb121-82"><a href="lesson-2c-importing-data.html#cb121-82" tabindex="-1"></a><span class="do">## 1             5       1960</span></span>
-<span id="cb121-83"><a href="lesson-2c-importing-data.html#cb121-83" tabindex="-1"></a><span class="do">## 2             6       1961</span></span>
-<span id="cb121-84"><a href="lesson-2c-importing-data.html#cb121-84" tabindex="-1"></a><span class="do">## 3             6       1958</span></span>
-<span id="cb121-85"><a href="lesson-2c-importing-data.html#cb121-85" tabindex="-1"></a><span class="do">## 4             5       1968</span></span>
-<span id="cb121-86"><a href="lesson-2c-importing-data.html#cb121-86" tabindex="-1"></a><span class="do">## 5             5       1997</span></span>
-<span id="cb121-87"><a href="lesson-2c-importing-data.html#cb121-87" tabindex="-1"></a><span class="do">## 6             6       1998</span></span>
-<span id="cb121-88"><a href="lesson-2c-importing-data.html#cb121-88" tabindex="-1"></a><span class="do">## 7             5       2001</span></span>
-<span id="cb121-89"><a href="lesson-2c-importing-data.html#cb121-89" tabindex="-1"></a><span class="do">## 8             5       1992</span></span>
-<span id="cb121-90"><a href="lesson-2c-importing-data.html#cb121-90" tabindex="-1"></a><span class="do">## 9             5       1995</span></span>
-<span id="cb121-91"><a href="lesson-2c-importing-data.html#cb121-91" tabindex="-1"></a><span class="do">## 10            5       1999</span></span>
-<span id="cb121-92"><a href="lesson-2c-importing-data.html#cb121-92" tabindex="-1"></a><span class="do">## 11            5       1993</span></span>
-<span id="cb121-93"><a href="lesson-2c-importing-data.html#cb121-93" tabindex="-1"></a><span class="do">## 12            7       1992</span></span>
-<span id="cb121-94"><a href="lesson-2c-importing-data.html#cb121-94" tabindex="-1"></a><span class="do">##    Year Remod/Add Roof Style Roof Matl</span></span>
-<span id="cb121-95"><a href="lesson-2c-importing-data.html#cb121-95" tabindex="-1"></a><span class="do">## 1            1960        Hip   CompShg</span></span>
-<span id="cb121-96"><a href="lesson-2c-importing-data.html#cb121-96" tabindex="-1"></a><span class="do">## 2            1961      Gable   CompShg</span></span>
-<span id="cb121-97"><a href="lesson-2c-importing-data.html#cb121-97" tabindex="-1"></a><span class="do">## 3            1958        Hip   CompShg</span></span>
-<span id="cb121-98"><a href="lesson-2c-importing-data.html#cb121-98" tabindex="-1"></a><span class="do">## 4            1968        Hip   CompShg</span></span>
-<span id="cb121-99"><a href="lesson-2c-importing-data.html#cb121-99" tabindex="-1"></a><span class="do">## 5            1998      Gable   CompShg</span></span>
-<span id="cb121-100"><a href="lesson-2c-importing-data.html#cb121-100" tabindex="-1"></a><span class="do">## 6            1998      Gable   CompShg</span></span>
-<span id="cb121-101"><a href="lesson-2c-importing-data.html#cb121-101" tabindex="-1"></a><span class="do">## 7            2001      Gable   CompShg</span></span>
-<span id="cb121-102"><a href="lesson-2c-importing-data.html#cb121-102" tabindex="-1"></a><span class="do">## 8            1992      Gable   CompShg</span></span>
-<span id="cb121-103"><a href="lesson-2c-importing-data.html#cb121-103" tabindex="-1"></a><span class="do">## 9            1996      Gable   CompShg</span></span>
-<span id="cb121-104"><a href="lesson-2c-importing-data.html#cb121-104" tabindex="-1"></a><span class="do">## 10           1999      Gable   CompShg</span></span>
-<span id="cb121-105"><a href="lesson-2c-importing-data.html#cb121-105" tabindex="-1"></a><span class="do">## 11           1994      Gable   CompShg</span></span>
-<span id="cb121-106"><a href="lesson-2c-importing-data.html#cb121-106" tabindex="-1"></a><span class="do">## 12           2007      Gable   CompShg</span></span>
-<span id="cb121-107"><a href="lesson-2c-importing-data.html#cb121-107" tabindex="-1"></a><span class="do">##    Exterior 1st Exterior 2nd</span></span>
-<span id="cb121-108"><a href="lesson-2c-importing-data.html#cb121-108" tabindex="-1"></a><span class="do">## 1       BrkFace      Plywood</span></span>
-<span id="cb121-109"><a href="lesson-2c-importing-data.html#cb121-109" tabindex="-1"></a><span class="do">## 2       VinylSd      VinylSd</span></span>
-<span id="cb121-110"><a href="lesson-2c-importing-data.html#cb121-110" tabindex="-1"></a><span class="do">## 3       Wd Sdng      Wd Sdng</span></span>
-<span id="cb121-111"><a href="lesson-2c-importing-data.html#cb121-111" tabindex="-1"></a><span class="do">## 4       BrkFace      BrkFace</span></span>
-<span id="cb121-112"><a href="lesson-2c-importing-data.html#cb121-112" tabindex="-1"></a><span class="do">## 5       VinylSd      VinylSd</span></span>
-<span id="cb121-113"><a href="lesson-2c-importing-data.html#cb121-113" tabindex="-1"></a><span class="do">## 6       VinylSd      VinylSd</span></span>
-<span id="cb121-114"><a href="lesson-2c-importing-data.html#cb121-114" tabindex="-1"></a><span class="do">## 7       CemntBd      CmentBd</span></span>
-<span id="cb121-115"><a href="lesson-2c-importing-data.html#cb121-115" tabindex="-1"></a><span class="do">## 8       HdBoard      HdBoard</span></span>
-<span id="cb121-116"><a href="lesson-2c-importing-data.html#cb121-116" tabindex="-1"></a><span class="do">## 9       CemntBd      CmentBd</span></span>
-<span id="cb121-117"><a href="lesson-2c-importing-data.html#cb121-117" tabindex="-1"></a><span class="do">## 10      VinylSd      VinylSd</span></span>
-<span id="cb121-118"><a href="lesson-2c-importing-data.html#cb121-118" tabindex="-1"></a><span class="do">## 11      HdBoard      HdBoard</span></span>
-<span id="cb121-119"><a href="lesson-2c-importing-data.html#cb121-119" tabindex="-1"></a><span class="do">## 12      HdBoard      HdBoard</span></span>
-<span id="cb121-120"><a href="lesson-2c-importing-data.html#cb121-120" tabindex="-1"></a><span class="do">##    Mas Vnr Type Mas Vnr Area Exter Qual</span></span>
-<span id="cb121-121"><a href="lesson-2c-importing-data.html#cb121-121" tabindex="-1"></a><span class="do">## 1         Stone          112         TA</span></span>
-<span id="cb121-122"><a href="lesson-2c-importing-data.html#cb121-122" tabindex="-1"></a><span class="do">## 2          None            0         TA</span></span>
-<span id="cb121-123"><a href="lesson-2c-importing-data.html#cb121-123" tabindex="-1"></a><span class="do">## 3       BrkFace          108         TA</span></span>
-<span id="cb121-124"><a href="lesson-2c-importing-data.html#cb121-124" tabindex="-1"></a><span class="do">## 4          None            0         Gd</span></span>
-<span id="cb121-125"><a href="lesson-2c-importing-data.html#cb121-125" tabindex="-1"></a><span class="do">## 5          None            0         TA</span></span>
-<span id="cb121-126"><a href="lesson-2c-importing-data.html#cb121-126" tabindex="-1"></a><span class="do">## 6       BrkFace           20         TA</span></span>
-<span id="cb121-127"><a href="lesson-2c-importing-data.html#cb121-127" tabindex="-1"></a><span class="do">## 7          None            0         Gd</span></span>
-<span id="cb121-128"><a href="lesson-2c-importing-data.html#cb121-128" tabindex="-1"></a><span class="do">## 8          None            0         Gd</span></span>
-<span id="cb121-129"><a href="lesson-2c-importing-data.html#cb121-129" tabindex="-1"></a><span class="do">## 9          None            0         Gd</span></span>
-<span id="cb121-130"><a href="lesson-2c-importing-data.html#cb121-130" tabindex="-1"></a><span class="do">## 10         None            0         TA</span></span>
-<span id="cb121-131"><a href="lesson-2c-importing-data.html#cb121-131" tabindex="-1"></a><span class="do">## 11         None            0         TA</span></span>
-<span id="cb121-132"><a href="lesson-2c-importing-data.html#cb121-132" tabindex="-1"></a><span class="do">## 12         None            0         TA</span></span>
-<span id="cb121-133"><a href="lesson-2c-importing-data.html#cb121-133" tabindex="-1"></a><span class="do">##    Exter Cond Foundation Bsmt Qual</span></span>
-<span id="cb121-134"><a href="lesson-2c-importing-data.html#cb121-134" tabindex="-1"></a><span class="do">## 1          TA     CBlock        TA</span></span>
-<span id="cb121-135"><a href="lesson-2c-importing-data.html#cb121-135" tabindex="-1"></a><span class="do">## 2          TA     CBlock        TA</span></span>
-<span id="cb121-136"><a href="lesson-2c-importing-data.html#cb121-136" tabindex="-1"></a><span class="do">## 3          TA     CBlock        TA</span></span>
-<span id="cb121-137"><a href="lesson-2c-importing-data.html#cb121-137" tabindex="-1"></a><span class="do">## 4          TA     CBlock        TA</span></span>
-<span id="cb121-138"><a href="lesson-2c-importing-data.html#cb121-138" tabindex="-1"></a><span class="do">## 5          TA      PConc        Gd</span></span>
-<span id="cb121-139"><a href="lesson-2c-importing-data.html#cb121-139" tabindex="-1"></a><span class="do">## 6          TA      PConc        TA</span></span>
-<span id="cb121-140"><a href="lesson-2c-importing-data.html#cb121-140" tabindex="-1"></a><span class="do">## 7          TA      PConc        Gd</span></span>
-<span id="cb121-141"><a href="lesson-2c-importing-data.html#cb121-141" tabindex="-1"></a><span class="do">## 8          TA      PConc        Gd</span></span>
-<span id="cb121-142"><a href="lesson-2c-importing-data.html#cb121-142" tabindex="-1"></a><span class="do">## 9          TA      PConc        Gd</span></span>
-<span id="cb121-143"><a href="lesson-2c-importing-data.html#cb121-143" tabindex="-1"></a><span class="do">## 10         TA      PConc        TA</span></span>
-<span id="cb121-144"><a href="lesson-2c-importing-data.html#cb121-144" tabindex="-1"></a><span class="do">## 11         TA      PConc        Gd</span></span>
-<span id="cb121-145"><a href="lesson-2c-importing-data.html#cb121-145" tabindex="-1"></a><span class="do">## 12         Gd      PConc        Gd</span></span>
-<span id="cb121-146"><a href="lesson-2c-importing-data.html#cb121-146" tabindex="-1"></a><span class="do">##    Bsmt Cond Bsmt Exposure</span></span>
-<span id="cb121-147"><a href="lesson-2c-importing-data.html#cb121-147" tabindex="-1"></a><span class="do">## 1         Gd            Gd</span></span>
-<span id="cb121-148"><a href="lesson-2c-importing-data.html#cb121-148" tabindex="-1"></a><span class="do">## 2         TA            No</span></span>
-<span id="cb121-149"><a href="lesson-2c-importing-data.html#cb121-149" tabindex="-1"></a><span class="do">## 3         TA            No</span></span>
-<span id="cb121-150"><a href="lesson-2c-importing-data.html#cb121-150" tabindex="-1"></a><span class="do">## 4         TA            No</span></span>
-<span id="cb121-151"><a href="lesson-2c-importing-data.html#cb121-151" tabindex="-1"></a><span class="do">## 5         TA            No</span></span>
-<span id="cb121-152"><a href="lesson-2c-importing-data.html#cb121-152" tabindex="-1"></a><span class="do">## 6         TA            No</span></span>
-<span id="cb121-153"><a href="lesson-2c-importing-data.html#cb121-153" tabindex="-1"></a><span class="do">## 7         TA            Mn</span></span>
-<span id="cb121-154"><a href="lesson-2c-importing-data.html#cb121-154" tabindex="-1"></a><span class="do">## 8         TA            No</span></span>
-<span id="cb121-155"><a href="lesson-2c-importing-data.html#cb121-155" tabindex="-1"></a><span class="do">## 9         TA            No</span></span>
-<span id="cb121-156"><a href="lesson-2c-importing-data.html#cb121-156" tabindex="-1"></a><span class="do">## 10        TA            No</span></span>
-<span id="cb121-157"><a href="lesson-2c-importing-data.html#cb121-157" tabindex="-1"></a><span class="do">## 11        TA            No</span></span>
-<span id="cb121-158"><a href="lesson-2c-importing-data.html#cb121-158" tabindex="-1"></a><span class="do">## 12        TA            No</span></span>
-<span id="cb121-159"><a href="lesson-2c-importing-data.html#cb121-159" tabindex="-1"></a><span class="do">##    BsmtFin Type 1 BsmtFin SF 1</span></span>
-<span id="cb121-160"><a href="lesson-2c-importing-data.html#cb121-160" tabindex="-1"></a><span class="do">## 1             BLQ          639</span></span>
-<span id="cb121-161"><a href="lesson-2c-importing-data.html#cb121-161" tabindex="-1"></a><span class="do">## 2             Rec          468</span></span>
-<span id="cb121-162"><a href="lesson-2c-importing-data.html#cb121-162" tabindex="-1"></a><span class="do">## 3             ALQ          923</span></span>
-<span id="cb121-163"><a href="lesson-2c-importing-data.html#cb121-163" tabindex="-1"></a><span class="do">## 4             ALQ         1065</span></span>
-<span id="cb121-164"><a href="lesson-2c-importing-data.html#cb121-164" tabindex="-1"></a><span class="do">## 5             GLQ          791</span></span>
-<span id="cb121-165"><a href="lesson-2c-importing-data.html#cb121-165" tabindex="-1"></a><span class="do">## 6             GLQ          602</span></span>
-<span id="cb121-166"><a href="lesson-2c-importing-data.html#cb121-166" tabindex="-1"></a><span class="do">## 7             GLQ          616</span></span>
-<span id="cb121-167"><a href="lesson-2c-importing-data.html#cb121-167" tabindex="-1"></a><span class="do">## 8             ALQ          263</span></span>
-<span id="cb121-168"><a href="lesson-2c-importing-data.html#cb121-168" tabindex="-1"></a><span class="do">## 9             GLQ         1180</span></span>
-<span id="cb121-169"><a href="lesson-2c-importing-data.html#cb121-169" tabindex="-1"></a><span class="do">## 10            Unf            0</span></span>
-<span id="cb121-170"><a href="lesson-2c-importing-data.html#cb121-170" tabindex="-1"></a><span class="do">## 11            Unf            0</span></span>
-<span id="cb121-171"><a href="lesson-2c-importing-data.html#cb121-171" tabindex="-1"></a><span class="do">## 12            ALQ          935</span></span>
-<span id="cb121-172"><a href="lesson-2c-importing-data.html#cb121-172" tabindex="-1"></a><span class="do">##    BsmtFin Type 2 BsmtFin SF 2</span></span>
-<span id="cb121-173"><a href="lesson-2c-importing-data.html#cb121-173" tabindex="-1"></a><span class="do">## 1             Unf            0</span></span>
-<span id="cb121-174"><a href="lesson-2c-importing-data.html#cb121-174" tabindex="-1"></a><span class="do">## 2             LwQ          144</span></span>
-<span id="cb121-175"><a href="lesson-2c-importing-data.html#cb121-175" tabindex="-1"></a><span class="do">## 3             Unf            0</span></span>
-<span id="cb121-176"><a href="lesson-2c-importing-data.html#cb121-176" tabindex="-1"></a><span class="do">## 4             Unf            0</span></span>
-<span id="cb121-177"><a href="lesson-2c-importing-data.html#cb121-177" tabindex="-1"></a><span class="do">## 5             Unf            0</span></span>
-<span id="cb121-178"><a href="lesson-2c-importing-data.html#cb121-178" tabindex="-1"></a><span class="do">## 6             Unf            0</span></span>
-<span id="cb121-179"><a href="lesson-2c-importing-data.html#cb121-179" tabindex="-1"></a><span class="do">## 7             Unf            0</span></span>
-<span id="cb121-180"><a href="lesson-2c-importing-data.html#cb121-180" tabindex="-1"></a><span class="do">## 8             Unf            0</span></span>
-<span id="cb121-181"><a href="lesson-2c-importing-data.html#cb121-181" tabindex="-1"></a><span class="do">## 9             Unf            0</span></span>
-<span id="cb121-182"><a href="lesson-2c-importing-data.html#cb121-182" tabindex="-1"></a><span class="do">## 10            Unf            0</span></span>
-<span id="cb121-183"><a href="lesson-2c-importing-data.html#cb121-183" tabindex="-1"></a><span class="do">## 11            Unf            0</span></span>
-<span id="cb121-184"><a href="lesson-2c-importing-data.html#cb121-184" tabindex="-1"></a><span class="do">## 12            Unf            0</span></span>
-<span id="cb121-185"><a href="lesson-2c-importing-data.html#cb121-185" tabindex="-1"></a><span class="do">##    Bsmt Unf SF Total Bsmt SF Heating</span></span>
-<span id="cb121-186"><a href="lesson-2c-importing-data.html#cb121-186" tabindex="-1"></a><span class="do">## 1          441          1080    GasA</span></span>
-<span id="cb121-187"><a href="lesson-2c-importing-data.html#cb121-187" tabindex="-1"></a><span class="do">## 2          270           882    GasA</span></span>
-<span id="cb121-188"><a href="lesson-2c-importing-data.html#cb121-188" tabindex="-1"></a><span class="do">## 3          406          1329    GasA</span></span>
-<span id="cb121-189"><a href="lesson-2c-importing-data.html#cb121-189" tabindex="-1"></a><span class="do">## 4         1045          2110    GasA</span></span>
-<span id="cb121-190"><a href="lesson-2c-importing-data.html#cb121-190" tabindex="-1"></a><span class="do">## 5          137           928    GasA</span></span>
-<span id="cb121-191"><a href="lesson-2c-importing-data.html#cb121-191" tabindex="-1"></a><span class="do">## 6          324           926    GasA</span></span>
-<span id="cb121-192"><a href="lesson-2c-importing-data.html#cb121-192" tabindex="-1"></a><span class="do">## 7          722          1338    GasA</span></span>
-<span id="cb121-193"><a href="lesson-2c-importing-data.html#cb121-193" tabindex="-1"></a><span class="do">## 8         1017          1280    GasA</span></span>
-<span id="cb121-194"><a href="lesson-2c-importing-data.html#cb121-194" tabindex="-1"></a><span class="do">## 9          415          1595    GasA</span></span>
-<span id="cb121-195"><a href="lesson-2c-importing-data.html#cb121-195" tabindex="-1"></a><span class="do">## 10         994           994    GasA</span></span>
-<span id="cb121-196"><a href="lesson-2c-importing-data.html#cb121-196" tabindex="-1"></a><span class="do">## 11         763           763    GasA</span></span>
-<span id="cb121-197"><a href="lesson-2c-importing-data.html#cb121-197" tabindex="-1"></a><span class="do">## 12         233          1168    GasA</span></span>
-<span id="cb121-198"><a href="lesson-2c-importing-data.html#cb121-198" tabindex="-1"></a><span class="do">##    Heating QC Central Air Electrical</span></span>
-<span id="cb121-199"><a href="lesson-2c-importing-data.html#cb121-199" tabindex="-1"></a><span class="do">## 1          Fa           Y      SBrkr</span></span>
-<span id="cb121-200"><a href="lesson-2c-importing-data.html#cb121-200" tabindex="-1"></a><span class="do">## 2          TA           Y      SBrkr</span></span>
-<span id="cb121-201"><a href="lesson-2c-importing-data.html#cb121-201" tabindex="-1"></a><span class="do">## 3          TA           Y      SBrkr</span></span>
-<span id="cb121-202"><a href="lesson-2c-importing-data.html#cb121-202" tabindex="-1"></a><span class="do">## 4          Ex           Y      SBrkr</span></span>
-<span id="cb121-203"><a href="lesson-2c-importing-data.html#cb121-203" tabindex="-1"></a><span class="do">## 5          Gd           Y      SBrkr</span></span>
-<span id="cb121-204"><a href="lesson-2c-importing-data.html#cb121-204" tabindex="-1"></a><span class="do">## 6          Ex           Y      SBrkr</span></span>
-<span id="cb121-205"><a href="lesson-2c-importing-data.html#cb121-205" tabindex="-1"></a><span class="do">## 7          Ex           Y      SBrkr</span></span>
-<span id="cb121-206"><a href="lesson-2c-importing-data.html#cb121-206" tabindex="-1"></a><span class="do">## 8          Ex           Y      SBrkr</span></span>
-<span id="cb121-207"><a href="lesson-2c-importing-data.html#cb121-207" tabindex="-1"></a><span class="do">## 9          Ex           Y      SBrkr</span></span>
-<span id="cb121-208"><a href="lesson-2c-importing-data.html#cb121-208" tabindex="-1"></a><span class="do">## 10         Gd           Y      SBrkr</span></span>
-<span id="cb121-209"><a href="lesson-2c-importing-data.html#cb121-209" tabindex="-1"></a><span class="do">## 11         Gd           Y      SBrkr</span></span>
-<span id="cb121-210"><a href="lesson-2c-importing-data.html#cb121-210" tabindex="-1"></a><span class="do">## 12         Ex           Y      SBrkr</span></span>
-<span id="cb121-211"><a href="lesson-2c-importing-data.html#cb121-211" tabindex="-1"></a><span class="do">##    1st Flr SF 2nd Flr SF Low Qual Fin SF</span></span>
-<span id="cb121-212"><a href="lesson-2c-importing-data.html#cb121-212" tabindex="-1"></a><span class="do">## 1        1656          0               0</span></span>
-<span id="cb121-213"><a href="lesson-2c-importing-data.html#cb121-213" tabindex="-1"></a><span class="do">## 2         896          0               0</span></span>
-<span id="cb121-214"><a href="lesson-2c-importing-data.html#cb121-214" tabindex="-1"></a><span class="do">## 3        1329          0               0</span></span>
-<span id="cb121-215"><a href="lesson-2c-importing-data.html#cb121-215" tabindex="-1"></a><span class="do">## 4        2110          0               0</span></span>
-<span id="cb121-216"><a href="lesson-2c-importing-data.html#cb121-216" tabindex="-1"></a><span class="do">## 5         928        701               0</span></span>
-<span id="cb121-217"><a href="lesson-2c-importing-data.html#cb121-217" tabindex="-1"></a><span class="do">## 6         926        678               0</span></span>
-<span id="cb121-218"><a href="lesson-2c-importing-data.html#cb121-218" tabindex="-1"></a><span class="do">## 7        1338          0               0</span></span>
-<span id="cb121-219"><a href="lesson-2c-importing-data.html#cb121-219" tabindex="-1"></a><span class="do">## 8        1280          0               0</span></span>
-<span id="cb121-220"><a href="lesson-2c-importing-data.html#cb121-220" tabindex="-1"></a><span class="do">## 9        1616          0               0</span></span>
-<span id="cb121-221"><a href="lesson-2c-importing-data.html#cb121-221" tabindex="-1"></a><span class="do">## 10       1028        776               0</span></span>
-<span id="cb121-222"><a href="lesson-2c-importing-data.html#cb121-222" tabindex="-1"></a><span class="do">## 11        763        892               0</span></span>
-<span id="cb121-223"><a href="lesson-2c-importing-data.html#cb121-223" tabindex="-1"></a><span class="do">## 12       1187          0               0</span></span>
-<span id="cb121-224"><a href="lesson-2c-importing-data.html#cb121-224" tabindex="-1"></a><span class="do">##    Gr Liv Area Bsmt Full Bath</span></span>
-<span id="cb121-225"><a href="lesson-2c-importing-data.html#cb121-225" tabindex="-1"></a><span class="do">## 1         1656              1</span></span>
-<span id="cb121-226"><a href="lesson-2c-importing-data.html#cb121-226" tabindex="-1"></a><span class="do">## 2          896              0</span></span>
-<span id="cb121-227"><a href="lesson-2c-importing-data.html#cb121-227" tabindex="-1"></a><span class="do">## 3         1329              0</span></span>
-<span id="cb121-228"><a href="lesson-2c-importing-data.html#cb121-228" tabindex="-1"></a><span class="do">## 4         2110              1</span></span>
-<span id="cb121-229"><a href="lesson-2c-importing-data.html#cb121-229" tabindex="-1"></a><span class="do">## 5         1629              0</span></span>
-<span id="cb121-230"><a href="lesson-2c-importing-data.html#cb121-230" tabindex="-1"></a><span class="do">## 6         1604              0</span></span>
-<span id="cb121-231"><a href="lesson-2c-importing-data.html#cb121-231" tabindex="-1"></a><span class="do">## 7         1338              1</span></span>
-<span id="cb121-232"><a href="lesson-2c-importing-data.html#cb121-232" tabindex="-1"></a><span class="do">## 8         1280              0</span></span>
-<span id="cb121-233"><a href="lesson-2c-importing-data.html#cb121-233" tabindex="-1"></a><span class="do">## 9         1616              1</span></span>
-<span id="cb121-234"><a href="lesson-2c-importing-data.html#cb121-234" tabindex="-1"></a><span class="do">## 10        1804              0</span></span>
-<span id="cb121-235"><a href="lesson-2c-importing-data.html#cb121-235" tabindex="-1"></a><span class="do">## 11        1655              0</span></span>
-<span id="cb121-236"><a href="lesson-2c-importing-data.html#cb121-236" tabindex="-1"></a><span class="do">## 12        1187              1</span></span>
-<span id="cb121-237"><a href="lesson-2c-importing-data.html#cb121-237" tabindex="-1"></a><span class="do">##    Bsmt Half Bath Full Bath Half Bath</span></span>
-<span id="cb121-238"><a href="lesson-2c-importing-data.html#cb121-238" tabindex="-1"></a><span class="do">## 1               0         1         0</span></span>
-<span id="cb121-239"><a href="lesson-2c-importing-data.html#cb121-239" tabindex="-1"></a><span class="do">## 2               0         1         0</span></span>
-<span id="cb121-240"><a href="lesson-2c-importing-data.html#cb121-240" tabindex="-1"></a><span class="do">## 3               0         1         1</span></span>
-<span id="cb121-241"><a href="lesson-2c-importing-data.html#cb121-241" tabindex="-1"></a><span class="do">## 4               0         2         1</span></span>
-<span id="cb121-242"><a href="lesson-2c-importing-data.html#cb121-242" tabindex="-1"></a><span class="do">## 5               0         2         1</span></span>
-<span id="cb121-243"><a href="lesson-2c-importing-data.html#cb121-243" tabindex="-1"></a><span class="do">## 6               0         2         1</span></span>
-<span id="cb121-244"><a href="lesson-2c-importing-data.html#cb121-244" tabindex="-1"></a><span class="do">## 7               0         2         0</span></span>
-<span id="cb121-245"><a href="lesson-2c-importing-data.html#cb121-245" tabindex="-1"></a><span class="do">## 8               0         2         0</span></span>
-<span id="cb121-246"><a href="lesson-2c-importing-data.html#cb121-246" tabindex="-1"></a><span class="do">## 9               0         2         0</span></span>
-<span id="cb121-247"><a href="lesson-2c-importing-data.html#cb121-247" tabindex="-1"></a><span class="do">## 10              0         2         1</span></span>
-<span id="cb121-248"><a href="lesson-2c-importing-data.html#cb121-248" tabindex="-1"></a><span class="do">## 11              0         2         1</span></span>
-<span id="cb121-249"><a href="lesson-2c-importing-data.html#cb121-249" tabindex="-1"></a><span class="do">## 12              0         2         0</span></span>
-<span id="cb121-250"><a href="lesson-2c-importing-data.html#cb121-250" tabindex="-1"></a><span class="do">##    Bedroom AbvGr Kitchen AbvGr</span></span>
-<span id="cb121-251"><a href="lesson-2c-importing-data.html#cb121-251" tabindex="-1"></a><span class="do">## 1              3             1</span></span>
-<span id="cb121-252"><a href="lesson-2c-importing-data.html#cb121-252" tabindex="-1"></a><span class="do">## 2              2             1</span></span>
-<span id="cb121-253"><a href="lesson-2c-importing-data.html#cb121-253" tabindex="-1"></a><span class="do">## 3              3             1</span></span>
-<span id="cb121-254"><a href="lesson-2c-importing-data.html#cb121-254" tabindex="-1"></a><span class="do">## 4              3             1</span></span>
-<span id="cb121-255"><a href="lesson-2c-importing-data.html#cb121-255" tabindex="-1"></a><span class="do">## 5              3             1</span></span>
-<span id="cb121-256"><a href="lesson-2c-importing-data.html#cb121-256" tabindex="-1"></a><span class="do">## 6              3             1</span></span>
-<span id="cb121-257"><a href="lesson-2c-importing-data.html#cb121-257" tabindex="-1"></a><span class="do">## 7              2             1</span></span>
-<span id="cb121-258"><a href="lesson-2c-importing-data.html#cb121-258" tabindex="-1"></a><span class="do">## 8              2             1</span></span>
-<span id="cb121-259"><a href="lesson-2c-importing-data.html#cb121-259" tabindex="-1"></a><span class="do">## 9              2             1</span></span>
-<span id="cb121-260"><a href="lesson-2c-importing-data.html#cb121-260" tabindex="-1"></a><span class="do">## 10             3             1</span></span>
-<span id="cb121-261"><a href="lesson-2c-importing-data.html#cb121-261" tabindex="-1"></a><span class="do">## 11             3             1</span></span>
-<span id="cb121-262"><a href="lesson-2c-importing-data.html#cb121-262" tabindex="-1"></a><span class="do">## 12             3             1</span></span>
-<span id="cb121-263"><a href="lesson-2c-importing-data.html#cb121-263" tabindex="-1"></a><span class="do">##    Kitchen Qual TotRms AbvGrd Functional</span></span>
-<span id="cb121-264"><a href="lesson-2c-importing-data.html#cb121-264" tabindex="-1"></a><span class="do">## 1            TA             7        Typ</span></span>
-<span id="cb121-265"><a href="lesson-2c-importing-data.html#cb121-265" tabindex="-1"></a><span class="do">## 2            TA             5        Typ</span></span>
-<span id="cb121-266"><a href="lesson-2c-importing-data.html#cb121-266" tabindex="-1"></a><span class="do">## 3            Gd             6        Typ</span></span>
-<span id="cb121-267"><a href="lesson-2c-importing-data.html#cb121-267" tabindex="-1"></a><span class="do">## 4            Ex             8        Typ</span></span>
-<span id="cb121-268"><a href="lesson-2c-importing-data.html#cb121-268" tabindex="-1"></a><span class="do">## 5            TA             6        Typ</span></span>
-<span id="cb121-269"><a href="lesson-2c-importing-data.html#cb121-269" tabindex="-1"></a><span class="do">## 6            Gd             7        Typ</span></span>
-<span id="cb121-270"><a href="lesson-2c-importing-data.html#cb121-270" tabindex="-1"></a><span class="do">## 7            Gd             6        Typ</span></span>
-<span id="cb121-271"><a href="lesson-2c-importing-data.html#cb121-271" tabindex="-1"></a><span class="do">## 8            Gd             5        Typ</span></span>
-<span id="cb121-272"><a href="lesson-2c-importing-data.html#cb121-272" tabindex="-1"></a><span class="do">## 9            Gd             5        Typ</span></span>
-<span id="cb121-273"><a href="lesson-2c-importing-data.html#cb121-273" tabindex="-1"></a><span class="do">## 10           Gd             7        Typ</span></span>
-<span id="cb121-274"><a href="lesson-2c-importing-data.html#cb121-274" tabindex="-1"></a><span class="do">## 11           TA             7        Typ</span></span>
-<span id="cb121-275"><a href="lesson-2c-importing-data.html#cb121-275" tabindex="-1"></a><span class="do">## 12           TA             6        Typ</span></span>
-<span id="cb121-276"><a href="lesson-2c-importing-data.html#cb121-276" tabindex="-1"></a><span class="do">##    Fireplaces Fireplace Qu Garage Type</span></span>
-<span id="cb121-277"><a href="lesson-2c-importing-data.html#cb121-277" tabindex="-1"></a><span class="do">## 1           2           Gd      Attchd</span></span>
-<span id="cb121-278"><a href="lesson-2c-importing-data.html#cb121-278" tabindex="-1"></a><span class="do">## 2           0         &lt;NA&gt;      Attchd</span></span>
-<span id="cb121-279"><a href="lesson-2c-importing-data.html#cb121-279" tabindex="-1"></a><span class="do">## 3           0         &lt;NA&gt;      Attchd</span></span>
-<span id="cb121-280"><a href="lesson-2c-importing-data.html#cb121-280" tabindex="-1"></a><span class="do">## 4           2           TA      Attchd</span></span>
-<span id="cb121-281"><a href="lesson-2c-importing-data.html#cb121-281" tabindex="-1"></a><span class="do">## 5           1           TA      Attchd</span></span>
-<span id="cb121-282"><a href="lesson-2c-importing-data.html#cb121-282" tabindex="-1"></a><span class="do">## 6           1           Gd      Attchd</span></span>
-<span id="cb121-283"><a href="lesson-2c-importing-data.html#cb121-283" tabindex="-1"></a><span class="do">## 7           0         &lt;NA&gt;      Attchd</span></span>
-<span id="cb121-284"><a href="lesson-2c-importing-data.html#cb121-284" tabindex="-1"></a><span class="do">## 8           0         &lt;NA&gt;      Attchd</span></span>
-<span id="cb121-285"><a href="lesson-2c-importing-data.html#cb121-285" tabindex="-1"></a><span class="do">## 9           1           TA      Attchd</span></span>
-<span id="cb121-286"><a href="lesson-2c-importing-data.html#cb121-286" tabindex="-1"></a><span class="do">## 10          1           TA      Attchd</span></span>
-<span id="cb121-287"><a href="lesson-2c-importing-data.html#cb121-287" tabindex="-1"></a><span class="do">## 11          1           TA      Attchd</span></span>
-<span id="cb121-288"><a href="lesson-2c-importing-data.html#cb121-288" tabindex="-1"></a><span class="do">## 12          0         &lt;NA&gt;      Attchd</span></span>
-<span id="cb121-289"><a href="lesson-2c-importing-data.html#cb121-289" tabindex="-1"></a><span class="do">##    Garage Yr Blt Garage Finish</span></span>
-<span id="cb121-290"><a href="lesson-2c-importing-data.html#cb121-290" tabindex="-1"></a><span class="do">## 1           1960           Fin</span></span>
-<span id="cb121-291"><a href="lesson-2c-importing-data.html#cb121-291" tabindex="-1"></a><span class="do">## 2           1961           Unf</span></span>
-<span id="cb121-292"><a href="lesson-2c-importing-data.html#cb121-292" tabindex="-1"></a><span class="do">## 3           1958           Unf</span></span>
-<span id="cb121-293"><a href="lesson-2c-importing-data.html#cb121-293" tabindex="-1"></a><span class="do">## 4           1968           Fin</span></span>
-<span id="cb121-294"><a href="lesson-2c-importing-data.html#cb121-294" tabindex="-1"></a><span class="do">## 5           1997           Fin</span></span>
-<span id="cb121-295"><a href="lesson-2c-importing-data.html#cb121-295" tabindex="-1"></a><span class="do">## 6           1998           Fin</span></span>
-<span id="cb121-296"><a href="lesson-2c-importing-data.html#cb121-296" tabindex="-1"></a><span class="do">## 7           2001           Fin</span></span>
-<span id="cb121-297"><a href="lesson-2c-importing-data.html#cb121-297" tabindex="-1"></a><span class="do">## 8           1992           RFn</span></span>
-<span id="cb121-298"><a href="lesson-2c-importing-data.html#cb121-298" tabindex="-1"></a><span class="do">## 9           1995           RFn</span></span>
-<span id="cb121-299"><a href="lesson-2c-importing-data.html#cb121-299" tabindex="-1"></a><span class="do">## 10          1999           Fin</span></span>
-<span id="cb121-300"><a href="lesson-2c-importing-data.html#cb121-300" tabindex="-1"></a><span class="do">## 11          1993           Fin</span></span>
-<span id="cb121-301"><a href="lesson-2c-importing-data.html#cb121-301" tabindex="-1"></a><span class="do">## 12          1992           Fin</span></span>
-<span id="cb121-302"><a href="lesson-2c-importing-data.html#cb121-302" tabindex="-1"></a><span class="do">##    Garage Cars Garage Area Garage Qual</span></span>
-<span id="cb121-303"><a href="lesson-2c-importing-data.html#cb121-303" tabindex="-1"></a><span class="do">## 1            2         528          TA</span></span>
-<span id="cb121-304"><a href="lesson-2c-importing-data.html#cb121-304" tabindex="-1"></a><span class="do">## 2            1         730          TA</span></span>
-<span id="cb121-305"><a href="lesson-2c-importing-data.html#cb121-305" tabindex="-1"></a><span class="do">## 3            1         312          TA</span></span>
-<span id="cb121-306"><a href="lesson-2c-importing-data.html#cb121-306" tabindex="-1"></a><span class="do">## 4            2         522          TA</span></span>
-<span id="cb121-307"><a href="lesson-2c-importing-data.html#cb121-307" tabindex="-1"></a><span class="do">## 5            2         482          TA</span></span>
-<span id="cb121-308"><a href="lesson-2c-importing-data.html#cb121-308" tabindex="-1"></a><span class="do">## 6            2         470          TA</span></span>
-<span id="cb121-309"><a href="lesson-2c-importing-data.html#cb121-309" tabindex="-1"></a><span class="do">## 7            2         582          TA</span></span>
-<span id="cb121-310"><a href="lesson-2c-importing-data.html#cb121-310" tabindex="-1"></a><span class="do">## 8            2         506          TA</span></span>
-<span id="cb121-311"><a href="lesson-2c-importing-data.html#cb121-311" tabindex="-1"></a><span class="do">## 9            2         608          TA</span></span>
-<span id="cb121-312"><a href="lesson-2c-importing-data.html#cb121-312" tabindex="-1"></a><span class="do">## 10           2         442          TA</span></span>
-<span id="cb121-313"><a href="lesson-2c-importing-data.html#cb121-313" tabindex="-1"></a><span class="do">## 11           2         440          TA</span></span>
-<span id="cb121-314"><a href="lesson-2c-importing-data.html#cb121-314" tabindex="-1"></a><span class="do">## 12           2         420          TA</span></span>
-<span id="cb121-315"><a href="lesson-2c-importing-data.html#cb121-315" tabindex="-1"></a><span class="do">##    Garage Cond Paved Drive Wood Deck SF</span></span>
-<span id="cb121-316"><a href="lesson-2c-importing-data.html#cb121-316" tabindex="-1"></a><span class="do">## 1           TA           P          210</span></span>
-<span id="cb121-317"><a href="lesson-2c-importing-data.html#cb121-317" tabindex="-1"></a><span class="do">## 2           TA           Y          140</span></span>
-<span id="cb121-318"><a href="lesson-2c-importing-data.html#cb121-318" tabindex="-1"></a><span class="do">## 3           TA           Y          393</span></span>
-<span id="cb121-319"><a href="lesson-2c-importing-data.html#cb121-319" tabindex="-1"></a><span class="do">## 4           TA           Y            0</span></span>
-<span id="cb121-320"><a href="lesson-2c-importing-data.html#cb121-320" tabindex="-1"></a><span class="do">## 5           TA           Y          212</span></span>
-<span id="cb121-321"><a href="lesson-2c-importing-data.html#cb121-321" tabindex="-1"></a><span class="do">## 6           TA           Y          360</span></span>
-<span id="cb121-322"><a href="lesson-2c-importing-data.html#cb121-322" tabindex="-1"></a><span class="do">## 7           TA           Y            0</span></span>
-<span id="cb121-323"><a href="lesson-2c-importing-data.html#cb121-323" tabindex="-1"></a><span class="do">## 8           TA           Y            0</span></span>
-<span id="cb121-324"><a href="lesson-2c-importing-data.html#cb121-324" tabindex="-1"></a><span class="do">## 9           TA           Y          237</span></span>
-<span id="cb121-325"><a href="lesson-2c-importing-data.html#cb121-325" tabindex="-1"></a><span class="do">## 10          TA           Y          140</span></span>
-<span id="cb121-326"><a href="lesson-2c-importing-data.html#cb121-326" tabindex="-1"></a><span class="do">## 11          TA           Y          157</span></span>
-<span id="cb121-327"><a href="lesson-2c-importing-data.html#cb121-327" tabindex="-1"></a><span class="do">## 12          TA           Y          483</span></span>
-<span id="cb121-328"><a href="lesson-2c-importing-data.html#cb121-328" tabindex="-1"></a><span class="do">##    Open Porch SF Enclosed Porch</span></span>
-<span id="cb121-329"><a href="lesson-2c-importing-data.html#cb121-329" tabindex="-1"></a><span class="do">## 1             62              0</span></span>
-<span id="cb121-330"><a href="lesson-2c-importing-data.html#cb121-330" tabindex="-1"></a><span class="do">## 2              0              0</span></span>
-<span id="cb121-331"><a href="lesson-2c-importing-data.html#cb121-331" tabindex="-1"></a><span class="do">## 3             36              0</span></span>
-<span id="cb121-332"><a href="lesson-2c-importing-data.html#cb121-332" tabindex="-1"></a><span class="do">## 4              0              0</span></span>
-<span id="cb121-333"><a href="lesson-2c-importing-data.html#cb121-333" tabindex="-1"></a><span class="do">## 5             34              0</span></span>
-<span id="cb121-334"><a href="lesson-2c-importing-data.html#cb121-334" tabindex="-1"></a><span class="do">## 6             36              0</span></span>
-<span id="cb121-335"><a href="lesson-2c-importing-data.html#cb121-335" tabindex="-1"></a><span class="do">## 7              0            170</span></span>
-<span id="cb121-336"><a href="lesson-2c-importing-data.html#cb121-336" tabindex="-1"></a><span class="do">## 8             82              0</span></span>
-<span id="cb121-337"><a href="lesson-2c-importing-data.html#cb121-337" tabindex="-1"></a><span class="do">## 9            152              0</span></span>
-<span id="cb121-338"><a href="lesson-2c-importing-data.html#cb121-338" tabindex="-1"></a><span class="do">## 10            60              0</span></span>
-<span id="cb121-339"><a href="lesson-2c-importing-data.html#cb121-339" tabindex="-1"></a><span class="do">## 11            84              0</span></span>
-<span id="cb121-340"><a href="lesson-2c-importing-data.html#cb121-340" tabindex="-1"></a><span class="do">## 12            21              0</span></span>
-<span id="cb121-341"><a href="lesson-2c-importing-data.html#cb121-341" tabindex="-1"></a><span class="do">##    3Ssn Porch Screen Porch Pool Area</span></span>
-<span id="cb121-342"><a href="lesson-2c-importing-data.html#cb121-342" tabindex="-1"></a><span class="do">## 1           0            0         0</span></span>
-<span id="cb121-343"><a href="lesson-2c-importing-data.html#cb121-343" tabindex="-1"></a><span class="do">## 2           0          120         0</span></span>
-<span id="cb121-344"><a href="lesson-2c-importing-data.html#cb121-344" tabindex="-1"></a><span class="do">## 3           0            0         0</span></span>
-<span id="cb121-345"><a href="lesson-2c-importing-data.html#cb121-345" tabindex="-1"></a><span class="do">## 4           0            0         0</span></span>
-<span id="cb121-346"><a href="lesson-2c-importing-data.html#cb121-346" tabindex="-1"></a><span class="do">## 5           0            0         0</span></span>
-<span id="cb121-347"><a href="lesson-2c-importing-data.html#cb121-347" tabindex="-1"></a><span class="do">## 6           0            0         0</span></span>
-<span id="cb121-348"><a href="lesson-2c-importing-data.html#cb121-348" tabindex="-1"></a><span class="do">## 7           0            0         0</span></span>
-<span id="cb121-349"><a href="lesson-2c-importing-data.html#cb121-349" tabindex="-1"></a><span class="do">## 8           0          144         0</span></span>
-<span id="cb121-350"><a href="lesson-2c-importing-data.html#cb121-350" tabindex="-1"></a><span class="do">## 9           0            0         0</span></span>
-<span id="cb121-351"><a href="lesson-2c-importing-data.html#cb121-351" tabindex="-1"></a><span class="do">## 10          0            0         0</span></span>
-<span id="cb121-352"><a href="lesson-2c-importing-data.html#cb121-352" tabindex="-1"></a><span class="do">## 11          0            0         0</span></span>
-<span id="cb121-353"><a href="lesson-2c-importing-data.html#cb121-353" tabindex="-1"></a><span class="do">## 12          0            0         0</span></span>
-<span id="cb121-354"><a href="lesson-2c-importing-data.html#cb121-354" tabindex="-1"></a><span class="do">##    Pool QC Fence Misc Feature Misc Val</span></span>
-<span id="cb121-355"><a href="lesson-2c-importing-data.html#cb121-355" tabindex="-1"></a><span class="do">## 1     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-356"><a href="lesson-2c-importing-data.html#cb121-356" tabindex="-1"></a><span class="do">## 2     &lt;NA&gt; MnPrv         &lt;NA&gt;        0</span></span>
-<span id="cb121-357"><a href="lesson-2c-importing-data.html#cb121-357" tabindex="-1"></a><span class="do">## 3     &lt;NA&gt;  &lt;NA&gt;         Gar2    12500</span></span>
-<span id="cb121-358"><a href="lesson-2c-importing-data.html#cb121-358" tabindex="-1"></a><span class="do">## 4     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-359"><a href="lesson-2c-importing-data.html#cb121-359" tabindex="-1"></a><span class="do">## 5     &lt;NA&gt; MnPrv         &lt;NA&gt;        0</span></span>
-<span id="cb121-360"><a href="lesson-2c-importing-data.html#cb121-360" tabindex="-1"></a><span class="do">## 6     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-361"><a href="lesson-2c-importing-data.html#cb121-361" tabindex="-1"></a><span class="do">## 7     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-362"><a href="lesson-2c-importing-data.html#cb121-362" tabindex="-1"></a><span class="do">## 8     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-363"><a href="lesson-2c-importing-data.html#cb121-363" tabindex="-1"></a><span class="do">## 9     &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-364"><a href="lesson-2c-importing-data.html#cb121-364" tabindex="-1"></a><span class="do">## 10    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-365"><a href="lesson-2c-importing-data.html#cb121-365" tabindex="-1"></a><span class="do">## 11    &lt;NA&gt;  &lt;NA&gt;         &lt;NA&gt;        0</span></span>
-<span id="cb121-366"><a href="lesson-2c-importing-data.html#cb121-366" tabindex="-1"></a><span class="do">## 12    &lt;NA&gt; GdPrv         Shed      500</span></span>
-<span id="cb121-367"><a href="lesson-2c-importing-data.html#cb121-367" tabindex="-1"></a><span class="do">##    Mo Sold Yr Sold Sale Type</span></span>
-<span id="cb121-368"><a href="lesson-2c-importing-data.html#cb121-368" tabindex="-1"></a><span class="do">## 1        5    2010        WD</span></span>
-<span id="cb121-369"><a href="lesson-2c-importing-data.html#cb121-369" tabindex="-1"></a><span class="do">## 2        6    2010        WD</span></span>
-<span id="cb121-370"><a href="lesson-2c-importing-data.html#cb121-370" tabindex="-1"></a><span class="do">## 3        6    2010        WD</span></span>
-<span id="cb121-371"><a href="lesson-2c-importing-data.html#cb121-371" tabindex="-1"></a><span class="do">## 4        4    2010        WD</span></span>
-<span id="cb121-372"><a href="lesson-2c-importing-data.html#cb121-372" tabindex="-1"></a><span class="do">## 5        3    2010        WD</span></span>
-<span id="cb121-373"><a href="lesson-2c-importing-data.html#cb121-373" tabindex="-1"></a><span class="do">## 6        6    2010        WD</span></span>
-<span id="cb121-374"><a href="lesson-2c-importing-data.html#cb121-374" tabindex="-1"></a><span class="do">## 7        4    2010        WD</span></span>
-<span id="cb121-375"><a href="lesson-2c-importing-data.html#cb121-375" tabindex="-1"></a><span class="do">## 8        1    2010        WD</span></span>
-<span id="cb121-376"><a href="lesson-2c-importing-data.html#cb121-376" tabindex="-1"></a><span class="do">## 9        3    2010        WD</span></span>
-<span id="cb121-377"><a href="lesson-2c-importing-data.html#cb121-377" tabindex="-1"></a><span class="do">## 10       6    2010        WD</span></span>
-<span id="cb121-378"><a href="lesson-2c-importing-data.html#cb121-378" tabindex="-1"></a><span class="do">## 11       4    2010        WD</span></span>
-<span id="cb121-379"><a href="lesson-2c-importing-data.html#cb121-379" tabindex="-1"></a><span class="do">## 12       3    2010        WD</span></span>
-<span id="cb121-380"><a href="lesson-2c-importing-data.html#cb121-380" tabindex="-1"></a><span class="do">##    Sale Condition SalePrice</span></span>
-<span id="cb121-381"><a href="lesson-2c-importing-data.html#cb121-381" tabindex="-1"></a><span class="do">## 1          Normal    215000</span></span>
-<span id="cb121-382"><a href="lesson-2c-importing-data.html#cb121-382" tabindex="-1"></a><span class="do">## 2          Normal    105000</span></span>
-<span id="cb121-383"><a href="lesson-2c-importing-data.html#cb121-383" tabindex="-1"></a><span class="do">## 3          Normal    172000</span></span>
-<span id="cb121-384"><a href="lesson-2c-importing-data.html#cb121-384" tabindex="-1"></a><span class="do">## 4          Normal    244000</span></span>
-<span id="cb121-385"><a href="lesson-2c-importing-data.html#cb121-385" tabindex="-1"></a><span class="do">## 5          Normal    189900</span></span>
-<span id="cb121-386"><a href="lesson-2c-importing-data.html#cb121-386" tabindex="-1"></a><span class="do">## 6          Normal    195500</span></span>
-<span id="cb121-387"><a href="lesson-2c-importing-data.html#cb121-387" tabindex="-1"></a><span class="do">## 7          Normal    213500</span></span>
-<span id="cb121-388"><a href="lesson-2c-importing-data.html#cb121-388" tabindex="-1"></a><span class="do">## 8          Normal    191500</span></span>
-<span id="cb121-389"><a href="lesson-2c-importing-data.html#cb121-389" tabindex="-1"></a><span class="do">## 9          Normal    236500</span></span>
-<span id="cb121-390"><a href="lesson-2c-importing-data.html#cb121-390" tabindex="-1"></a><span class="do">## 10         Normal    189000</span></span>
-<span id="cb121-391"><a href="lesson-2c-importing-data.html#cb121-391" tabindex="-1"></a><span class="do">## 11         Normal    175900</span></span>
-<span id="cb121-392"><a href="lesson-2c-importing-data.html#cb121-392" tabindex="-1"></a><span class="do">## 12         Normal    185000</span></span>
-<span id="cb121-393"><a href="lesson-2c-importing-data.html#cb121-393" tabindex="-1"></a><span class="do">##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 2918 rows ]</span></span></code></pre></div>
+<span id="cb121-3"><a href="lesson-2c-importing-data.html#cb121-3" tabindex="-1"></a><span class="do">##    Order        PID MS SubClass MS Zoning Lot Frontage Lot Area Street</span></span>
+<span id="cb121-4"><a href="lesson-2c-importing-data.html#cb121-4" tabindex="-1"></a><span class="do">## 1      1 0526301100         020        RL          141    31770   Pave</span></span>
+<span id="cb121-5"><a href="lesson-2c-importing-data.html#cb121-5" tabindex="-1"></a><span class="do">## 2      2 0526350040         020        RH           80    11622   Pave</span></span>
+<span id="cb121-6"><a href="lesson-2c-importing-data.html#cb121-6" tabindex="-1"></a><span class="do">## 3      3 0526351010         020        RL           81    14267   Pave</span></span>
+<span id="cb121-7"><a href="lesson-2c-importing-data.html#cb121-7" tabindex="-1"></a><span class="do">## 4      4 0526353030         020        RL           93    11160   Pave</span></span>
+<span id="cb121-8"><a href="lesson-2c-importing-data.html#cb121-8" tabindex="-1"></a><span class="do">## 5      5 0527105010         060        RL           74    13830   Pave</span></span>
+<span id="cb121-9"><a href="lesson-2c-importing-data.html#cb121-9" tabindex="-1"></a><span class="do">## 6      6 0527105030         060        RL           78     9978   Pave</span></span>
+<span id="cb121-10"><a href="lesson-2c-importing-data.html#cb121-10" tabindex="-1"></a><span class="do">## 7      7 0527127150         120        RL           41     4920   Pave</span></span>
+<span id="cb121-11"><a href="lesson-2c-importing-data.html#cb121-11" tabindex="-1"></a><span class="do">## 8      8 0527145080         120        RL           43     5005   Pave</span></span>
+<span id="cb121-12"><a href="lesson-2c-importing-data.html#cb121-12" tabindex="-1"></a><span class="do">## 9      9 0527146030         120        RL           39     5389   Pave</span></span>
+<span id="cb121-13"><a href="lesson-2c-importing-data.html#cb121-13" tabindex="-1"></a><span class="do">## 10    10 0527162130         060        RL           60     7500   Pave</span></span>
+<span id="cb121-14"><a href="lesson-2c-importing-data.html#cb121-14" tabindex="-1"></a><span class="do">## 11    11 0527163010         060        RL           75    10000   Pave</span></span>
+<span id="cb121-15"><a href="lesson-2c-importing-data.html#cb121-15" tabindex="-1"></a><span class="do">## 12    12 0527165230         020        RL           NA     7980   Pave</span></span>
+<span id="cb121-16"><a href="lesson-2c-importing-data.html#cb121-16" tabindex="-1"></a><span class="do">##    Alley Lot Shape Land Contour Utilities Lot Config Land Slope</span></span>
+<span id="cb121-17"><a href="lesson-2c-importing-data.html#cb121-17" tabindex="-1"></a><span class="do">## 1   &lt;NA&gt;       IR1          Lvl    AllPub     Corner        Gtl</span></span>
+<span id="cb121-18"><a href="lesson-2c-importing-data.html#cb121-18" tabindex="-1"></a><span class="do">## 2   &lt;NA&gt;       Reg          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-19"><a href="lesson-2c-importing-data.html#cb121-19" tabindex="-1"></a><span class="do">## 3   &lt;NA&gt;       IR1          Lvl    AllPub     Corner        Gtl</span></span>
+<span id="cb121-20"><a href="lesson-2c-importing-data.html#cb121-20" tabindex="-1"></a><span class="do">## 4   &lt;NA&gt;       Reg          Lvl    AllPub     Corner        Gtl</span></span>
+<span id="cb121-21"><a href="lesson-2c-importing-data.html#cb121-21" tabindex="-1"></a><span class="do">## 5   &lt;NA&gt;       IR1          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-22"><a href="lesson-2c-importing-data.html#cb121-22" tabindex="-1"></a><span class="do">## 6   &lt;NA&gt;       IR1          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-23"><a href="lesson-2c-importing-data.html#cb121-23" tabindex="-1"></a><span class="do">## 7   &lt;NA&gt;       Reg          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-24"><a href="lesson-2c-importing-data.html#cb121-24" tabindex="-1"></a><span class="do">## 8   &lt;NA&gt;       IR1          HLS    AllPub     Inside        Gtl</span></span>
+<span id="cb121-25"><a href="lesson-2c-importing-data.html#cb121-25" tabindex="-1"></a><span class="do">## 9   &lt;NA&gt;       IR1          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-26"><a href="lesson-2c-importing-data.html#cb121-26" tabindex="-1"></a><span class="do">## 10  &lt;NA&gt;       Reg          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-27"><a href="lesson-2c-importing-data.html#cb121-27" tabindex="-1"></a><span class="do">## 11  &lt;NA&gt;       IR1          Lvl    AllPub     Corner        Gtl</span></span>
+<span id="cb121-28"><a href="lesson-2c-importing-data.html#cb121-28" tabindex="-1"></a><span class="do">## 12  &lt;NA&gt;       IR1          Lvl    AllPub     Inside        Gtl</span></span>
+<span id="cb121-29"><a href="lesson-2c-importing-data.html#cb121-29" tabindex="-1"></a><span class="do">##    Neighborhood Condition 1 Condition 2 Bldg Type House Style</span></span>
+<span id="cb121-30"><a href="lesson-2c-importing-data.html#cb121-30" tabindex="-1"></a><span class="do">## 1         NAmes        Norm        Norm      1Fam      1Story</span></span>
+<span id="cb121-31"><a href="lesson-2c-importing-data.html#cb121-31" tabindex="-1"></a><span class="do">## 2         NAmes       Feedr        Norm      1Fam      1Story</span></span>
+<span id="cb121-32"><a href="lesson-2c-importing-data.html#cb121-32" tabindex="-1"></a><span class="do">## 3         NAmes        Norm        Norm      1Fam      1Story</span></span>
+<span id="cb121-33"><a href="lesson-2c-importing-data.html#cb121-33" tabindex="-1"></a><span class="do">## 4         NAmes        Norm        Norm      1Fam      1Story</span></span>
+<span id="cb121-34"><a href="lesson-2c-importing-data.html#cb121-34" tabindex="-1"></a><span class="do">## 5       Gilbert        Norm        Norm      1Fam      2Story</span></span>
+<span id="cb121-35"><a href="lesson-2c-importing-data.html#cb121-35" tabindex="-1"></a><span class="do">## 6       Gilbert        Norm        Norm      1Fam      2Story</span></span>
+<span id="cb121-36"><a href="lesson-2c-importing-data.html#cb121-36" tabindex="-1"></a><span class="do">## 7       StoneBr        Norm        Norm    TwnhsE      1Story</span></span>
+<span id="cb121-37"><a href="lesson-2c-importing-data.html#cb121-37" tabindex="-1"></a><span class="do">## 8       StoneBr        Norm        Norm    TwnhsE      1Story</span></span>
+<span id="cb121-38"><a href="lesson-2c-importing-data.html#cb121-38" tabindex="-1"></a><span class="do">## 9       StoneBr        Norm        Norm    TwnhsE      1Story</span></span>
+<span id="cb121-39"><a href="lesson-2c-importing-data.html#cb121-39" tabindex="-1"></a><span class="do">## 10      Gilbert        Norm        Norm      1Fam      2Story</span></span>
+<span id="cb121-40"><a href="lesson-2c-importing-data.html#cb121-40" tabindex="-1"></a><span class="do">## 11      Gilbert        Norm        Norm      1Fam      2Story</span></span>
+<span id="cb121-41"><a href="lesson-2c-importing-data.html#cb121-41" tabindex="-1"></a><span class="do">## 12      Gilbert        Norm        Norm      1Fam      1Story</span></span>
+<span id="cb121-42"><a href="lesson-2c-importing-data.html#cb121-42" tabindex="-1"></a><span class="do">##    Overall Qual Overall Cond Year Built Year Remod/Add Roof Style</span></span>
+<span id="cb121-43"><a href="lesson-2c-importing-data.html#cb121-43" tabindex="-1"></a><span class="do">## 1             6            5       1960           1960        Hip</span></span>
+<span id="cb121-44"><a href="lesson-2c-importing-data.html#cb121-44" tabindex="-1"></a><span class="do">## 2             5            6       1961           1961      Gable</span></span>
+<span id="cb121-45"><a href="lesson-2c-importing-data.html#cb121-45" tabindex="-1"></a><span class="do">## 3             6            6       1958           1958        Hip</span></span>
+<span id="cb121-46"><a href="lesson-2c-importing-data.html#cb121-46" tabindex="-1"></a><span class="do">## 4             7            5       1968           1968        Hip</span></span>
+<span id="cb121-47"><a href="lesson-2c-importing-data.html#cb121-47" tabindex="-1"></a><span class="do">## 5             5            5       1997           1998      Gable</span></span>
+<span id="cb121-48"><a href="lesson-2c-importing-data.html#cb121-48" tabindex="-1"></a><span class="do">## 6             6            6       1998           1998      Gable</span></span>
+<span id="cb121-49"><a href="lesson-2c-importing-data.html#cb121-49" tabindex="-1"></a><span class="do">## 7             8            5       2001           2001      Gable</span></span>
+<span id="cb121-50"><a href="lesson-2c-importing-data.html#cb121-50" tabindex="-1"></a><span class="do">## 8             8            5       1992           1992      Gable</span></span>
+<span id="cb121-51"><a href="lesson-2c-importing-data.html#cb121-51" tabindex="-1"></a><span class="do">## 9             8            5       1995           1996      Gable</span></span>
+<span id="cb121-52"><a href="lesson-2c-importing-data.html#cb121-52" tabindex="-1"></a><span class="do">## 10            7            5       1999           1999      Gable</span></span>
+<span id="cb121-53"><a href="lesson-2c-importing-data.html#cb121-53" tabindex="-1"></a><span class="do">## 11            6            5       1993           1994      Gable</span></span>
+<span id="cb121-54"><a href="lesson-2c-importing-data.html#cb121-54" tabindex="-1"></a><span class="do">## 12            6            7       1992           2007      Gable</span></span>
+<span id="cb121-55"><a href="lesson-2c-importing-data.html#cb121-55" tabindex="-1"></a><span class="do">##    Roof Matl Exterior 1st Exterior 2nd Mas Vnr Type Mas Vnr Area</span></span>
+<span id="cb121-56"><a href="lesson-2c-importing-data.html#cb121-56" tabindex="-1"></a><span class="do">## 1    CompShg      BrkFace      Plywood        Stone          112</span></span>
+<span id="cb121-57"><a href="lesson-2c-importing-data.html#cb121-57" tabindex="-1"></a><span class="do">## 2    CompShg      VinylSd      VinylSd         None            0</span></span>
+<span id="cb121-58"><a href="lesson-2c-importing-data.html#cb121-58" tabindex="-1"></a><span class="do">## 3    CompShg      Wd Sdng      Wd Sdng      BrkFace          108</span></span>
+<span id="cb121-59"><a href="lesson-2c-importing-data.html#cb121-59" tabindex="-1"></a><span class="do">## 4    CompShg      BrkFace      BrkFace         None            0</span></span>
+<span id="cb121-60"><a href="lesson-2c-importing-data.html#cb121-60" tabindex="-1"></a><span class="do">## 5    CompShg      VinylSd      VinylSd         None            0</span></span>
+<span id="cb121-61"><a href="lesson-2c-importing-data.html#cb121-61" tabindex="-1"></a><span class="do">## 6    CompShg      VinylSd      VinylSd      BrkFace           20</span></span>
+<span id="cb121-62"><a href="lesson-2c-importing-data.html#cb121-62" tabindex="-1"></a><span class="do">## 7    CompShg      CemntBd      CmentBd         None            0</span></span>
+<span id="cb121-63"><a href="lesson-2c-importing-data.html#cb121-63" tabindex="-1"></a><span class="do">## 8    CompShg      HdBoard      HdBoard         None            0</span></span>
+<span id="cb121-64"><a href="lesson-2c-importing-data.html#cb121-64" tabindex="-1"></a><span class="do">## 9    CompShg      CemntBd      CmentBd         None            0</span></span>
+<span id="cb121-65"><a href="lesson-2c-importing-data.html#cb121-65" tabindex="-1"></a><span class="do">## 10   CompShg      VinylSd      VinylSd         None            0</span></span>
+<span id="cb121-66"><a href="lesson-2c-importing-data.html#cb121-66" tabindex="-1"></a><span class="do">## 11   CompShg      HdBoard      HdBoard         None            0</span></span>
+<span id="cb121-67"><a href="lesson-2c-importing-data.html#cb121-67" tabindex="-1"></a><span class="do">## 12   CompShg      HdBoard      HdBoard         None            0</span></span>
+<span id="cb121-68"><a href="lesson-2c-importing-data.html#cb121-68" tabindex="-1"></a><span class="do">##    Exter Qual Exter Cond Foundation Bsmt Qual Bsmt Cond Bsmt Exposure</span></span>
+<span id="cb121-69"><a href="lesson-2c-importing-data.html#cb121-69" tabindex="-1"></a><span class="do">## 1          TA         TA     CBlock        TA        Gd            Gd</span></span>
+<span id="cb121-70"><a href="lesson-2c-importing-data.html#cb121-70" tabindex="-1"></a><span class="do">## 2          TA         TA     CBlock        TA        TA            No</span></span>
+<span id="cb121-71"><a href="lesson-2c-importing-data.html#cb121-71" tabindex="-1"></a><span class="do">## 3          TA         TA     CBlock        TA        TA            No</span></span>
+<span id="cb121-72"><a href="lesson-2c-importing-data.html#cb121-72" tabindex="-1"></a><span class="do">## 4          Gd         TA     CBlock        TA        TA            No</span></span>
+<span id="cb121-73"><a href="lesson-2c-importing-data.html#cb121-73" tabindex="-1"></a><span class="do">## 5          TA         TA      PConc        Gd        TA            No</span></span>
+<span id="cb121-74"><a href="lesson-2c-importing-data.html#cb121-74" tabindex="-1"></a><span class="do">## 6          TA         TA      PConc        TA        TA            No</span></span>
+<span id="cb121-75"><a href="lesson-2c-importing-data.html#cb121-75" tabindex="-1"></a><span class="do">## 7          Gd         TA      PConc        Gd        TA            Mn</span></span>
+<span id="cb121-76"><a href="lesson-2c-importing-data.html#cb121-76" tabindex="-1"></a><span class="do">## 8          Gd         TA      PConc        Gd        TA            No</span></span>
+<span id="cb121-77"><a href="lesson-2c-importing-data.html#cb121-77" tabindex="-1"></a><span class="do">## 9          Gd         TA      PConc        Gd        TA            No</span></span>
+<span id="cb121-78"><a href="lesson-2c-importing-data.html#cb121-78" tabindex="-1"></a><span class="do">## 10         TA         TA      PConc        TA        TA            No</span></span>
+<span id="cb121-79"><a href="lesson-2c-importing-data.html#cb121-79" tabindex="-1"></a><span class="do">## 11         TA         TA      PConc        Gd        TA            No</span></span>
+<span id="cb121-80"><a href="lesson-2c-importing-data.html#cb121-80" tabindex="-1"></a><span class="do">## 12         TA         Gd      PConc        Gd        TA            No</span></span>
+<span id="cb121-81"><a href="lesson-2c-importing-data.html#cb121-81" tabindex="-1"></a><span class="do">##    BsmtFin Type 1 BsmtFin SF 1 BsmtFin Type 2 BsmtFin SF 2 Bsmt Unf SF</span></span>
+<span id="cb121-82"><a href="lesson-2c-importing-data.html#cb121-82" tabindex="-1"></a><span class="do">## 1             BLQ          639            Unf            0         441</span></span>
+<span id="cb121-83"><a href="lesson-2c-importing-data.html#cb121-83" tabindex="-1"></a><span class="do">## 2             Rec          468            LwQ          144         270</span></span>
+<span id="cb121-84"><a href="lesson-2c-importing-data.html#cb121-84" tabindex="-1"></a><span class="do">## 3             ALQ          923            Unf            0         406</span></span>
+<span id="cb121-85"><a href="lesson-2c-importing-data.html#cb121-85" tabindex="-1"></a><span class="do">## 4             ALQ         1065            Unf            0        1045</span></span>
+<span id="cb121-86"><a href="lesson-2c-importing-data.html#cb121-86" tabindex="-1"></a><span class="do">## 5             GLQ          791            Unf            0         137</span></span>
+<span id="cb121-87"><a href="lesson-2c-importing-data.html#cb121-87" tabindex="-1"></a><span class="do">## 6             GLQ          602            Unf            0         324</span></span>
+<span id="cb121-88"><a href="lesson-2c-importing-data.html#cb121-88" tabindex="-1"></a><span class="do">## 7             GLQ          616            Unf            0         722</span></span>
+<span id="cb121-89"><a href="lesson-2c-importing-data.html#cb121-89" tabindex="-1"></a><span class="do">## 8             ALQ          263            Unf            0        1017</span></span>
+<span id="cb121-90"><a href="lesson-2c-importing-data.html#cb121-90" tabindex="-1"></a><span class="do">## 9             GLQ         1180            Unf            0         415</span></span>
+<span id="cb121-91"><a href="lesson-2c-importing-data.html#cb121-91" tabindex="-1"></a><span class="do">## 10            Unf            0            Unf            0         994</span></span>
+<span id="cb121-92"><a href="lesson-2c-importing-data.html#cb121-92" tabindex="-1"></a><span class="do">## 11            Unf            0            Unf            0         763</span></span>
+<span id="cb121-93"><a href="lesson-2c-importing-data.html#cb121-93" tabindex="-1"></a><span class="do">## 12            ALQ          935            Unf            0         233</span></span>
+<span id="cb121-94"><a href="lesson-2c-importing-data.html#cb121-94" tabindex="-1"></a><span class="do">##    Total Bsmt SF Heating Heating QC Central Air Electrical 1st Flr SF</span></span>
+<span id="cb121-95"><a href="lesson-2c-importing-data.html#cb121-95" tabindex="-1"></a><span class="do">## 1           1080    GasA         Fa           Y      SBrkr       1656</span></span>
+<span id="cb121-96"><a href="lesson-2c-importing-data.html#cb121-96" tabindex="-1"></a><span class="do">## 2            882    GasA         TA           Y      SBrkr        896</span></span>
+<span id="cb121-97"><a href="lesson-2c-importing-data.html#cb121-97" tabindex="-1"></a><span class="do">## 3           1329    GasA         TA           Y      SBrkr       1329</span></span>
+<span id="cb121-98"><a href="lesson-2c-importing-data.html#cb121-98" tabindex="-1"></a><span class="do">## 4           2110    GasA         Ex           Y      SBrkr       2110</span></span>
+<span id="cb121-99"><a href="lesson-2c-importing-data.html#cb121-99" tabindex="-1"></a><span class="do">## 5            928    GasA         Gd           Y      SBrkr        928</span></span>
+<span id="cb121-100"><a href="lesson-2c-importing-data.html#cb121-100" tabindex="-1"></a><span class="do">## 6            926    GasA         Ex           Y      SBrkr        926</span></span>
+<span id="cb121-101"><a href="lesson-2c-importing-data.html#cb121-101" tabindex="-1"></a><span class="do">## 7           1338    GasA         Ex           Y      SBrkr       1338</span></span>
+<span id="cb121-102"><a href="lesson-2c-importing-data.html#cb121-102" tabindex="-1"></a><span class="do">## 8           1280    GasA         Ex           Y      SBrkr       1280</span></span>
+<span id="cb121-103"><a href="lesson-2c-importing-data.html#cb121-103" tabindex="-1"></a><span class="do">## 9           1595    GasA         Ex           Y      SBrkr       1616</span></span>
+<span id="cb121-104"><a href="lesson-2c-importing-data.html#cb121-104" tabindex="-1"></a><span class="do">## 10           994    GasA         Gd           Y      SBrkr       1028</span></span>
+<span id="cb121-105"><a href="lesson-2c-importing-data.html#cb121-105" tabindex="-1"></a><span class="do">## 11           763    GasA         Gd           Y      SBrkr        763</span></span>
+<span id="cb121-106"><a href="lesson-2c-importing-data.html#cb121-106" tabindex="-1"></a><span class="do">## 12          1168    GasA         Ex           Y      SBrkr       1187</span></span>
+<span id="cb121-107"><a href="lesson-2c-importing-data.html#cb121-107" tabindex="-1"></a><span class="do">##    2nd Flr SF Low Qual Fin SF Gr Liv Area Bsmt Full Bath</span></span>
+<span id="cb121-108"><a href="lesson-2c-importing-data.html#cb121-108" tabindex="-1"></a><span class="do">## 1           0               0        1656              1</span></span>
+<span id="cb121-109"><a href="lesson-2c-importing-data.html#cb121-109" tabindex="-1"></a><span class="do">## 2           0               0         896              0</span></span>
+<span id="cb121-110"><a href="lesson-2c-importing-data.html#cb121-110" tabindex="-1"></a><span class="do">## 3           0               0        1329              0</span></span>
+<span id="cb121-111"><a href="lesson-2c-importing-data.html#cb121-111" tabindex="-1"></a><span class="do">## 4           0               0        2110              1</span></span>
+<span id="cb121-112"><a href="lesson-2c-importing-data.html#cb121-112" tabindex="-1"></a><span class="do">## 5         701               0        1629              0</span></span>
+<span id="cb121-113"><a href="lesson-2c-importing-data.html#cb121-113" tabindex="-1"></a><span class="do">## 6         678               0        1604              0</span></span>
+<span id="cb121-114"><a href="lesson-2c-importing-data.html#cb121-114" tabindex="-1"></a><span class="do">## 7           0               0        1338              1</span></span>
+<span id="cb121-115"><a href="lesson-2c-importing-data.html#cb121-115" tabindex="-1"></a><span class="do">## 8           0               0        1280              0</span></span>
+<span id="cb121-116"><a href="lesson-2c-importing-data.html#cb121-116" tabindex="-1"></a><span class="do">## 9           0               0        1616              1</span></span>
+<span id="cb121-117"><a href="lesson-2c-importing-data.html#cb121-117" tabindex="-1"></a><span class="do">## 10        776               0        1804              0</span></span>
+<span id="cb121-118"><a href="lesson-2c-importing-data.html#cb121-118" tabindex="-1"></a><span class="do">## 11        892               0        1655              0</span></span>
+<span id="cb121-119"><a href="lesson-2c-importing-data.html#cb121-119" tabindex="-1"></a><span class="do">## 12          0               0        1187              1</span></span>
+<span id="cb121-120"><a href="lesson-2c-importing-data.html#cb121-120" tabindex="-1"></a><span class="do">##    Bsmt Half Bath Full Bath Half Bath Bedroom AbvGr Kitchen AbvGr</span></span>
+<span id="cb121-121"><a href="lesson-2c-importing-data.html#cb121-121" tabindex="-1"></a><span class="do">## 1               0         1         0             3             1</span></span>
+<span id="cb121-122"><a href="lesson-2c-importing-data.html#cb121-122" tabindex="-1"></a><span class="do">## 2               0         1         0             2             1</span></span>
+<span id="cb121-123"><a href="lesson-2c-importing-data.html#cb121-123" tabindex="-1"></a><span class="do">## 3               0         1         1             3             1</span></span>
+<span id="cb121-124"><a href="lesson-2c-importing-data.html#cb121-124" tabindex="-1"></a><span class="do">## 4               0         2         1             3             1</span></span>
+<span id="cb121-125"><a href="lesson-2c-importing-data.html#cb121-125" tabindex="-1"></a><span class="do">## 5               0         2         1             3             1</span></span>
+<span id="cb121-126"><a href="lesson-2c-importing-data.html#cb121-126" tabindex="-1"></a><span class="do">## 6               0         2         1             3             1</span></span>
+<span id="cb121-127"><a href="lesson-2c-importing-data.html#cb121-127" tabindex="-1"></a><span class="do">## 7               0         2         0             2             1</span></span>
+<span id="cb121-128"><a href="lesson-2c-importing-data.html#cb121-128" tabindex="-1"></a><span class="do">## 8               0         2         0             2             1</span></span>
+<span id="cb121-129"><a href="lesson-2c-importing-data.html#cb121-129" tabindex="-1"></a><span class="do">## 9               0         2         0             2             1</span></span>
+<span id="cb121-130"><a href="lesson-2c-importing-data.html#cb121-130" tabindex="-1"></a><span class="do">## 10              0         2         1             3             1</span></span>
+<span id="cb121-131"><a href="lesson-2c-importing-data.html#cb121-131" tabindex="-1"></a><span class="do">## 11              0         2         1             3             1</span></span>
+<span id="cb121-132"><a href="lesson-2c-importing-data.html#cb121-132" tabindex="-1"></a><span class="do">## 12              0         2         0             3             1</span></span>
+<span id="cb121-133"><a href="lesson-2c-importing-data.html#cb121-133" tabindex="-1"></a><span class="do">##    Kitchen Qual TotRms AbvGrd Functional Fireplaces Fireplace Qu</span></span>
+<span id="cb121-134"><a href="lesson-2c-importing-data.html#cb121-134" tabindex="-1"></a><span class="do">## 1            TA             7        Typ          2           Gd</span></span>
+<span id="cb121-135"><a href="lesson-2c-importing-data.html#cb121-135" tabindex="-1"></a><span class="do">## 2            TA             5        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb121-136"><a href="lesson-2c-importing-data.html#cb121-136" tabindex="-1"></a><span class="do">## 3            Gd             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb121-137"><a href="lesson-2c-importing-data.html#cb121-137" tabindex="-1"></a><span class="do">## 4            Ex             8        Typ          2           TA</span></span>
+<span id="cb121-138"><a href="lesson-2c-importing-data.html#cb121-138" tabindex="-1"></a><span class="do">## 5            TA             6        Typ          1           TA</span></span>
+<span id="cb121-139"><a href="lesson-2c-importing-data.html#cb121-139" tabindex="-1"></a><span class="do">## 6            Gd             7        Typ          1           Gd</span></span>
+<span id="cb121-140"><a href="lesson-2c-importing-data.html#cb121-140" tabindex="-1"></a><span class="do">## 7            Gd             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb121-141"><a href="lesson-2c-importing-data.html#cb121-141" tabindex="-1"></a><span class="do">## 8            Gd             5        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb121-142"><a href="lesson-2c-importing-data.html#cb121-142" tabindex="-1"></a><span class="do">## 9            Gd             5        Typ          1           TA</span></span>
+<span id="cb121-143"><a href="lesson-2c-importing-data.html#cb121-143" tabindex="-1"></a><span class="do">## 10           Gd             7        Typ          1           TA</span></span>
+<span id="cb121-144"><a href="lesson-2c-importing-data.html#cb121-144" tabindex="-1"></a><span class="do">## 11           TA             7        Typ          1           TA</span></span>
+<span id="cb121-145"><a href="lesson-2c-importing-data.html#cb121-145" tabindex="-1"></a><span class="do">## 12           TA             6        Typ          0         &lt;NA&gt;</span></span>
+<span id="cb121-146"><a href="lesson-2c-importing-data.html#cb121-146" tabindex="-1"></a><span class="do">##    Garage Type Garage Yr Blt Garage Finish Garage Cars Garage Area</span></span>
+<span id="cb121-147"><a href="lesson-2c-importing-data.html#cb121-147" tabindex="-1"></a><span class="do">## 1       Attchd          1960           Fin           2         528</span></span>
+<span id="cb121-148"><a href="lesson-2c-importing-data.html#cb121-148" tabindex="-1"></a><span class="do">## 2       Attchd          1961           Unf           1         730</span></span>
+<span id="cb121-149"><a href="lesson-2c-importing-data.html#cb121-149" tabindex="-1"></a><span class="do">## 3       Attchd          1958           Unf           1         312</span></span>
+<span id="cb121-150"><a href="lesson-2c-importing-data.html#cb121-150" tabindex="-1"></a><span class="do">## 4       Attchd          1968           Fin           2         522</span></span>
+<span id="cb121-151"><a href="lesson-2c-importing-data.html#cb121-151" tabindex="-1"></a><span class="do">## 5       Attchd          1997           Fin           2         482</span></span>
+<span id="cb121-152"><a href="lesson-2c-importing-data.html#cb121-152" tabindex="-1"></a><span class="do">## 6       Attchd          1998           Fin           2         470</span></span>
+<span id="cb121-153"><a href="lesson-2c-importing-data.html#cb121-153" tabindex="-1"></a><span class="do">## 7       Attchd          2001           Fin           2         582</span></span>
+<span id="cb121-154"><a href="lesson-2c-importing-data.html#cb121-154" tabindex="-1"></a><span class="do">## 8       Attchd          1992           RFn           2         506</span></span>
+<span id="cb121-155"><a href="lesson-2c-importing-data.html#cb121-155" tabindex="-1"></a><span class="do">## 9       Attchd          1995           RFn           2         608</span></span>
+<span id="cb121-156"><a href="lesson-2c-importing-data.html#cb121-156" tabindex="-1"></a><span class="do">## 10      Attchd          1999           Fin           2         442</span></span>
+<span id="cb121-157"><a href="lesson-2c-importing-data.html#cb121-157" tabindex="-1"></a><span class="do">## 11      Attchd          1993           Fin           2         440</span></span>
+<span id="cb121-158"><a href="lesson-2c-importing-data.html#cb121-158" tabindex="-1"></a><span class="do">## 12      Attchd          1992           Fin           2         420</span></span>
+<span id="cb121-159"><a href="lesson-2c-importing-data.html#cb121-159" tabindex="-1"></a><span class="do">##    Garage Qual Garage Cond Paved Drive Wood Deck SF Open Porch SF</span></span>
+<span id="cb121-160"><a href="lesson-2c-importing-data.html#cb121-160" tabindex="-1"></a><span class="do">## 1           TA          TA           P          210            62</span></span>
+<span id="cb121-161"><a href="lesson-2c-importing-data.html#cb121-161" tabindex="-1"></a><span class="do">## 2           TA          TA           Y          140             0</span></span>
+<span id="cb121-162"><a href="lesson-2c-importing-data.html#cb121-162" tabindex="-1"></a><span class="do">## 3           TA          TA           Y          393            36</span></span>
+<span id="cb121-163"><a href="lesson-2c-importing-data.html#cb121-163" tabindex="-1"></a><span class="do">## 4           TA          TA           Y            0             0</span></span>
+<span id="cb121-164"><a href="lesson-2c-importing-data.html#cb121-164" tabindex="-1"></a><span class="do">## 5           TA          TA           Y          212            34</span></span>
+<span id="cb121-165"><a href="lesson-2c-importing-data.html#cb121-165" tabindex="-1"></a><span class="do">## 6           TA          TA           Y          360            36</span></span>
+<span id="cb121-166"><a href="lesson-2c-importing-data.html#cb121-166" tabindex="-1"></a><span class="do">## 7           TA          TA           Y            0             0</span></span>
+<span id="cb121-167"><a href="lesson-2c-importing-data.html#cb121-167" tabindex="-1"></a><span class="do">## 8           TA          TA           Y            0            82</span></span>
+<span id="cb121-168"><a href="lesson-2c-importing-data.html#cb121-168" tabindex="-1"></a><span class="do">## 9           TA          TA           Y          237           152</span></span>
+<span id="cb121-169"><a href="lesson-2c-importing-data.html#cb121-169" tabindex="-1"></a><span class="do">## 10          TA          TA           Y          140            60</span></span>
+<span id="cb121-170"><a href="lesson-2c-importing-data.html#cb121-170" tabindex="-1"></a><span class="do">## 11          TA          TA           Y          157            84</span></span>
+<span id="cb121-171"><a href="lesson-2c-importing-data.html#cb121-171" tabindex="-1"></a><span class="do">## 12          TA          TA           Y          483            21</span></span>
+<span id="cb121-172"><a href="lesson-2c-importing-data.html#cb121-172" tabindex="-1"></a><span class="do">##    Enclosed Porch 3Ssn Porch Screen Porch Pool Area Pool QC Fence</span></span>
+<span id="cb121-173"><a href="lesson-2c-importing-data.html#cb121-173" tabindex="-1"></a><span class="do">## 1               0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-174"><a href="lesson-2c-importing-data.html#cb121-174" tabindex="-1"></a><span class="do">## 2               0          0          120         0    &lt;NA&gt; MnPrv</span></span>
+<span id="cb121-175"><a href="lesson-2c-importing-data.html#cb121-175" tabindex="-1"></a><span class="do">## 3               0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-176"><a href="lesson-2c-importing-data.html#cb121-176" tabindex="-1"></a><span class="do">## 4               0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-177"><a href="lesson-2c-importing-data.html#cb121-177" tabindex="-1"></a><span class="do">## 5               0          0            0         0    &lt;NA&gt; MnPrv</span></span>
+<span id="cb121-178"><a href="lesson-2c-importing-data.html#cb121-178" tabindex="-1"></a><span class="do">## 6               0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-179"><a href="lesson-2c-importing-data.html#cb121-179" tabindex="-1"></a><span class="do">## 7             170          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-180"><a href="lesson-2c-importing-data.html#cb121-180" tabindex="-1"></a><span class="do">## 8               0          0          144         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-181"><a href="lesson-2c-importing-data.html#cb121-181" tabindex="-1"></a><span class="do">## 9               0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-182"><a href="lesson-2c-importing-data.html#cb121-182" tabindex="-1"></a><span class="do">## 10              0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-183"><a href="lesson-2c-importing-data.html#cb121-183" tabindex="-1"></a><span class="do">## 11              0          0            0         0    &lt;NA&gt;  &lt;NA&gt;</span></span>
+<span id="cb121-184"><a href="lesson-2c-importing-data.html#cb121-184" tabindex="-1"></a><span class="do">## 12              0          0            0         0    &lt;NA&gt; GdPrv</span></span>
+<span id="cb121-185"><a href="lesson-2c-importing-data.html#cb121-185" tabindex="-1"></a><span class="do">##    Misc Feature Misc Val Mo Sold Yr Sold Sale Type Sale Condition</span></span>
+<span id="cb121-186"><a href="lesson-2c-importing-data.html#cb121-186" tabindex="-1"></a><span class="do">## 1          &lt;NA&gt;        0       5    2010        WD         Normal</span></span>
+<span id="cb121-187"><a href="lesson-2c-importing-data.html#cb121-187" tabindex="-1"></a><span class="do">## 2          &lt;NA&gt;        0       6    2010        WD         Normal</span></span>
+<span id="cb121-188"><a href="lesson-2c-importing-data.html#cb121-188" tabindex="-1"></a><span class="do">## 3          Gar2    12500       6    2010        WD         Normal</span></span>
+<span id="cb121-189"><a href="lesson-2c-importing-data.html#cb121-189" tabindex="-1"></a><span class="do">## 4          &lt;NA&gt;        0       4    2010        WD         Normal</span></span>
+<span id="cb121-190"><a href="lesson-2c-importing-data.html#cb121-190" tabindex="-1"></a><span class="do">## 5          &lt;NA&gt;        0       3    2010        WD         Normal</span></span>
+<span id="cb121-191"><a href="lesson-2c-importing-data.html#cb121-191" tabindex="-1"></a><span class="do">## 6          &lt;NA&gt;        0       6    2010        WD         Normal</span></span>
+<span id="cb121-192"><a href="lesson-2c-importing-data.html#cb121-192" tabindex="-1"></a><span class="do">## 7          &lt;NA&gt;        0       4    2010        WD         Normal</span></span>
+<span id="cb121-193"><a href="lesson-2c-importing-data.html#cb121-193" tabindex="-1"></a><span class="do">## 8          &lt;NA&gt;        0       1    2010        WD         Normal</span></span>
+<span id="cb121-194"><a href="lesson-2c-importing-data.html#cb121-194" tabindex="-1"></a><span class="do">## 9          &lt;NA&gt;        0       3    2010        WD         Normal</span></span>
+<span id="cb121-195"><a href="lesson-2c-importing-data.html#cb121-195" tabindex="-1"></a><span class="do">## 10         &lt;NA&gt;        0       6    2010        WD         Normal</span></span>
+<span id="cb121-196"><a href="lesson-2c-importing-data.html#cb121-196" tabindex="-1"></a><span class="do">## 11         &lt;NA&gt;        0       4    2010        WD         Normal</span></span>
+<span id="cb121-197"><a href="lesson-2c-importing-data.html#cb121-197" tabindex="-1"></a><span class="do">## 12         Shed      500       3    2010        WD         Normal</span></span>
+<span id="cb121-198"><a href="lesson-2c-importing-data.html#cb121-198" tabindex="-1"></a><span class="do">##    SalePrice</span></span>
+<span id="cb121-199"><a href="lesson-2c-importing-data.html#cb121-199" tabindex="-1"></a><span class="do">## 1     215000</span></span>
+<span id="cb121-200"><a href="lesson-2c-importing-data.html#cb121-200" tabindex="-1"></a><span class="do">## 2     105000</span></span>
+<span id="cb121-201"><a href="lesson-2c-importing-data.html#cb121-201" tabindex="-1"></a><span class="do">## 3     172000</span></span>
+<span id="cb121-202"><a href="lesson-2c-importing-data.html#cb121-202" tabindex="-1"></a><span class="do">## 4     244000</span></span>
+<span id="cb121-203"><a href="lesson-2c-importing-data.html#cb121-203" tabindex="-1"></a><span class="do">## 5     189900</span></span>
+<span id="cb121-204"><a href="lesson-2c-importing-data.html#cb121-204" tabindex="-1"></a><span class="do">## 6     195500</span></span>
+<span id="cb121-205"><a href="lesson-2c-importing-data.html#cb121-205" tabindex="-1"></a><span class="do">## 7     213500</span></span>
+<span id="cb121-206"><a href="lesson-2c-importing-data.html#cb121-206" tabindex="-1"></a><span class="do">## 8     191500</span></span>
+<span id="cb121-207"><a href="lesson-2c-importing-data.html#cb121-207" tabindex="-1"></a><span class="do">## 9     236500</span></span>
+<span id="cb121-208"><a href="lesson-2c-importing-data.html#cb121-208" tabindex="-1"></a><span class="do">## 10    189000</span></span>
+<span id="cb121-209"><a href="lesson-2c-importing-data.html#cb121-209" tabindex="-1"></a><span class="do">## 11    175900</span></span>
+<span id="cb121-210"><a href="lesson-2c-importing-data.html#cb121-210" tabindex="-1"></a><span class="do">## 12    185000</span></span>
+<span id="cb121-211"><a href="lesson-2c-importing-data.html#cb121-211" tabindex="-1"></a><span class="do">##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 2918 rows ]</span></span></code></pre></div>
 <p>The differences in the subsetting are not important at this time but the main takeaway is that tibbles are more strict and will behave more consistently then data frames for certain subsetting tasks.</p>
 <div class="tip">
 <p>
@@ -1342,10 +1160,10 @@ href="https://r4ds.had.co.nz/tibbles.html#tibbles">here</a>.
 <p>I can always use the absolute path in <code>read_csv()</code>:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="lesson-2c-importing-data.html#cb123-1" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(absolute_path)</span>
 <span id="cb123-2"><a href="lesson-2c-importing-data.html#cb123-2" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
-<span id="cb123-3"><a href="lesson-2c-importing-data.html#cb123-3" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────</span></span>
+<span id="cb123-3"><a href="lesson-2c-importing-data.html#cb123-3" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────</span></span>
 <span id="cb123-4"><a href="lesson-2c-importing-data.html#cb123-4" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb123-5"><a href="lesson-2c-importing-data.html#cb123-5" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning...</span></span>
-<span id="cb123-6"><a href="lesson-2c-importing-data.html#cb123-6" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Ar...</span></span>
+<span id="cb123-5"><a href="lesson-2c-importing-data.html#cb123-5" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, La...</span></span>
+<span id="cb123-6"><a href="lesson-2c-importing-data.html#cb123-6" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond...</span></span>
 <span id="cb123-7"><a href="lesson-2c-importing-data.html#cb123-7" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb123-8"><a href="lesson-2c-importing-data.html#cb123-8" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span id="cb123-9"><a href="lesson-2c-importing-data.html#cb123-9" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
@@ -1376,10 +1194,10 @@ href="https://r4ds.had.co.nz/tibbles.html#tibbles">here</a>.
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="lesson-2c-importing-data.html#cb127-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&#39;https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv&#39;</span></span>
 <span id="cb127-2"><a href="lesson-2c-importing-data.html#cb127-2" tabindex="-1"></a>ames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
 <span id="cb127-3"><a href="lesson-2c-importing-data.html#cb127-3" tabindex="-1"></a><span class="do">## Rows: 2930 Columns: 82</span></span>
-<span id="cb127-4"><a href="lesson-2c-importing-data.html#cb127-4" tabindex="-1"></a><span class="do">## ── Column specification ─────────────────</span></span>
+<span id="cb127-4"><a href="lesson-2c-importing-data.html#cb127-4" tabindex="-1"></a><span class="do">## ── Column specification ───────────────────────────────────────────────</span></span>
 <span id="cb127-5"><a href="lesson-2c-importing-data.html#cb127-5" tabindex="-1"></a><span class="do">## Delimiter: &quot;,&quot;</span></span>
-<span id="cb127-6"><a href="lesson-2c-importing-data.html#cb127-6" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning...</span></span>
-<span id="cb127-7"><a href="lesson-2c-importing-data.html#cb127-7" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Ar...</span></span>
+<span id="cb127-6"><a href="lesson-2c-importing-data.html#cb127-6" tabindex="-1"></a><span class="do">## chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, La...</span></span>
+<span id="cb127-7"><a href="lesson-2c-importing-data.html#cb127-7" tabindex="-1"></a><span class="do">## dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond...</span></span>
 <span id="cb127-8"><a href="lesson-2c-importing-data.html#cb127-8" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb127-9"><a href="lesson-2c-importing-data.html#cb127-9" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
 <span id="cb127-10"><a href="lesson-2c-importing-data.html#cb127-10" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
@@ -1391,47 +1209,34 @@ href="https://r4ds.had.co.nz/tibbles.html#tibbles">here</a>.
 <span id="cb128-2"><a href="lesson-2c-importing-data.html#cb128-2" tabindex="-1"></a><span class="do">## [1] 2930   82</span></span></code></pre></div>
 <p>We can also see all the names of our columns:</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="lesson-2c-importing-data.html#cb129-1" tabindex="-1"></a><span class="fu">names</span>(ames)</span>
-<span id="cb129-2"><a href="lesson-2c-importing-data.html#cb129-2" tabindex="-1"></a><span class="do">##  [1] &quot;Order&quot;           &quot;PID&quot;            </span></span>
-<span id="cb129-3"><a href="lesson-2c-importing-data.html#cb129-3" tabindex="-1"></a><span class="do">##  [3] &quot;MS SubClass&quot;     &quot;MS Zoning&quot;      </span></span>
-<span id="cb129-4"><a href="lesson-2c-importing-data.html#cb129-4" tabindex="-1"></a><span class="do">##  [5] &quot;Lot Frontage&quot;    &quot;Lot Area&quot;       </span></span>
-<span id="cb129-5"><a href="lesson-2c-importing-data.html#cb129-5" tabindex="-1"></a><span class="do">##  [7] &quot;Street&quot;          &quot;Alley&quot;          </span></span>
-<span id="cb129-6"><a href="lesson-2c-importing-data.html#cb129-6" tabindex="-1"></a><span class="do">##  [9] &quot;Lot Shape&quot;       &quot;Land Contour&quot;   </span></span>
-<span id="cb129-7"><a href="lesson-2c-importing-data.html#cb129-7" tabindex="-1"></a><span class="do">## [11] &quot;Utilities&quot;       &quot;Lot Config&quot;     </span></span>
-<span id="cb129-8"><a href="lesson-2c-importing-data.html#cb129-8" tabindex="-1"></a><span class="do">## [13] &quot;Land Slope&quot;      &quot;Neighborhood&quot;   </span></span>
-<span id="cb129-9"><a href="lesson-2c-importing-data.html#cb129-9" tabindex="-1"></a><span class="do">## [15] &quot;Condition 1&quot;     &quot;Condition 2&quot;    </span></span>
-<span id="cb129-10"><a href="lesson-2c-importing-data.html#cb129-10" tabindex="-1"></a><span class="do">## [17] &quot;Bldg Type&quot;       &quot;House Style&quot;    </span></span>
-<span id="cb129-11"><a href="lesson-2c-importing-data.html#cb129-11" tabindex="-1"></a><span class="do">## [19] &quot;Overall Qual&quot;    &quot;Overall Cond&quot;   </span></span>
-<span id="cb129-12"><a href="lesson-2c-importing-data.html#cb129-12" tabindex="-1"></a><span class="do">## [21] &quot;Year Built&quot;      &quot;Year Remod/Add&quot; </span></span>
-<span id="cb129-13"><a href="lesson-2c-importing-data.html#cb129-13" tabindex="-1"></a><span class="do">## [23] &quot;Roof Style&quot;      &quot;Roof Matl&quot;      </span></span>
-<span id="cb129-14"><a href="lesson-2c-importing-data.html#cb129-14" tabindex="-1"></a><span class="do">## [25] &quot;Exterior 1st&quot;    &quot;Exterior 2nd&quot;   </span></span>
-<span id="cb129-15"><a href="lesson-2c-importing-data.html#cb129-15" tabindex="-1"></a><span class="do">## [27] &quot;Mas Vnr Type&quot;    &quot;Mas Vnr Area&quot;   </span></span>
-<span id="cb129-16"><a href="lesson-2c-importing-data.html#cb129-16" tabindex="-1"></a><span class="do">## [29] &quot;Exter Qual&quot;      &quot;Exter Cond&quot;     </span></span>
-<span id="cb129-17"><a href="lesson-2c-importing-data.html#cb129-17" tabindex="-1"></a><span class="do">## [31] &quot;Foundation&quot;      &quot;Bsmt Qual&quot;      </span></span>
-<span id="cb129-18"><a href="lesson-2c-importing-data.html#cb129-18" tabindex="-1"></a><span class="do">## [33] &quot;Bsmt Cond&quot;       &quot;Bsmt Exposure&quot;  </span></span>
-<span id="cb129-19"><a href="lesson-2c-importing-data.html#cb129-19" tabindex="-1"></a><span class="do">## [35] &quot;BsmtFin Type 1&quot;  &quot;BsmtFin SF 1&quot;   </span></span>
-<span id="cb129-20"><a href="lesson-2c-importing-data.html#cb129-20" tabindex="-1"></a><span class="do">## [37] &quot;BsmtFin Type 2&quot;  &quot;BsmtFin SF 2&quot;   </span></span>
-<span id="cb129-21"><a href="lesson-2c-importing-data.html#cb129-21" tabindex="-1"></a><span class="do">## [39] &quot;Bsmt Unf SF&quot;     &quot;Total Bsmt SF&quot;  </span></span>
-<span id="cb129-22"><a href="lesson-2c-importing-data.html#cb129-22" tabindex="-1"></a><span class="do">## [41] &quot;Heating&quot;         &quot;Heating QC&quot;     </span></span>
-<span id="cb129-23"><a href="lesson-2c-importing-data.html#cb129-23" tabindex="-1"></a><span class="do">## [43] &quot;Central Air&quot;     &quot;Electrical&quot;     </span></span>
-<span id="cb129-24"><a href="lesson-2c-importing-data.html#cb129-24" tabindex="-1"></a><span class="do">## [45] &quot;1st Flr SF&quot;      &quot;2nd Flr SF&quot;     </span></span>
-<span id="cb129-25"><a href="lesson-2c-importing-data.html#cb129-25" tabindex="-1"></a><span class="do">## [47] &quot;Low Qual Fin SF&quot; &quot;Gr Liv Area&quot;    </span></span>
-<span id="cb129-26"><a href="lesson-2c-importing-data.html#cb129-26" tabindex="-1"></a><span class="do">## [49] &quot;Bsmt Full Bath&quot;  &quot;Bsmt Half Bath&quot; </span></span>
-<span id="cb129-27"><a href="lesson-2c-importing-data.html#cb129-27" tabindex="-1"></a><span class="do">## [51] &quot;Full Bath&quot;       &quot;Half Bath&quot;      </span></span>
-<span id="cb129-28"><a href="lesson-2c-importing-data.html#cb129-28" tabindex="-1"></a><span class="do">## [53] &quot;Bedroom AbvGr&quot;   &quot;Kitchen AbvGr&quot;  </span></span>
-<span id="cb129-29"><a href="lesson-2c-importing-data.html#cb129-29" tabindex="-1"></a><span class="do">## [55] &quot;Kitchen Qual&quot;    &quot;TotRms AbvGrd&quot;  </span></span>
-<span id="cb129-30"><a href="lesson-2c-importing-data.html#cb129-30" tabindex="-1"></a><span class="do">## [57] &quot;Functional&quot;      &quot;Fireplaces&quot;     </span></span>
-<span id="cb129-31"><a href="lesson-2c-importing-data.html#cb129-31" tabindex="-1"></a><span class="do">## [59] &quot;Fireplace Qu&quot;    &quot;Garage Type&quot;    </span></span>
-<span id="cb129-32"><a href="lesson-2c-importing-data.html#cb129-32" tabindex="-1"></a><span class="do">## [61] &quot;Garage Yr Blt&quot;   &quot;Garage Finish&quot;  </span></span>
-<span id="cb129-33"><a href="lesson-2c-importing-data.html#cb129-33" tabindex="-1"></a><span class="do">## [63] &quot;Garage Cars&quot;     &quot;Garage Area&quot;    </span></span>
-<span id="cb129-34"><a href="lesson-2c-importing-data.html#cb129-34" tabindex="-1"></a><span class="do">## [65] &quot;Garage Qual&quot;     &quot;Garage Cond&quot;    </span></span>
-<span id="cb129-35"><a href="lesson-2c-importing-data.html#cb129-35" tabindex="-1"></a><span class="do">## [67] &quot;Paved Drive&quot;     &quot;Wood Deck SF&quot;   </span></span>
-<span id="cb129-36"><a href="lesson-2c-importing-data.html#cb129-36" tabindex="-1"></a><span class="do">## [69] &quot;Open Porch SF&quot;   &quot;Enclosed Porch&quot; </span></span>
-<span id="cb129-37"><a href="lesson-2c-importing-data.html#cb129-37" tabindex="-1"></a><span class="do">## [71] &quot;3Ssn Porch&quot;      &quot;Screen Porch&quot;   </span></span>
-<span id="cb129-38"><a href="lesson-2c-importing-data.html#cb129-38" tabindex="-1"></a><span class="do">## [73] &quot;Pool Area&quot;       &quot;Pool QC&quot;        </span></span>
-<span id="cb129-39"><a href="lesson-2c-importing-data.html#cb129-39" tabindex="-1"></a><span class="do">## [75] &quot;Fence&quot;           &quot;Misc Feature&quot;   </span></span>
-<span id="cb129-40"><a href="lesson-2c-importing-data.html#cb129-40" tabindex="-1"></a><span class="do">## [77] &quot;Misc Val&quot;        &quot;Mo Sold&quot;        </span></span>
-<span id="cb129-41"><a href="lesson-2c-importing-data.html#cb129-41" tabindex="-1"></a><span class="do">## [79] &quot;Yr Sold&quot;         &quot;Sale Type&quot;      </span></span>
-<span id="cb129-42"><a href="lesson-2c-importing-data.html#cb129-42" tabindex="-1"></a><span class="do">## [81] &quot;Sale Condition&quot;  &quot;SalePrice&quot;</span></span></code></pre></div>
+<span id="cb129-2"><a href="lesson-2c-importing-data.html#cb129-2" tabindex="-1"></a><span class="do">##  [1] &quot;Order&quot;           &quot;PID&quot;             &quot;MS SubClass&quot;    </span></span>
+<span id="cb129-3"><a href="lesson-2c-importing-data.html#cb129-3" tabindex="-1"></a><span class="do">##  [4] &quot;MS Zoning&quot;       &quot;Lot Frontage&quot;    &quot;Lot Area&quot;       </span></span>
+<span id="cb129-4"><a href="lesson-2c-importing-data.html#cb129-4" tabindex="-1"></a><span class="do">##  [7] &quot;Street&quot;          &quot;Alley&quot;           &quot;Lot Shape&quot;      </span></span>
+<span id="cb129-5"><a href="lesson-2c-importing-data.html#cb129-5" tabindex="-1"></a><span class="do">## [10] &quot;Land Contour&quot;    &quot;Utilities&quot;       &quot;Lot Config&quot;     </span></span>
+<span id="cb129-6"><a href="lesson-2c-importing-data.html#cb129-6" tabindex="-1"></a><span class="do">## [13] &quot;Land Slope&quot;      &quot;Neighborhood&quot;    &quot;Condition 1&quot;    </span></span>
+<span id="cb129-7"><a href="lesson-2c-importing-data.html#cb129-7" tabindex="-1"></a><span class="do">## [16] &quot;Condition 2&quot;     &quot;Bldg Type&quot;       &quot;House Style&quot;    </span></span>
+<span id="cb129-8"><a href="lesson-2c-importing-data.html#cb129-8" tabindex="-1"></a><span class="do">## [19] &quot;Overall Qual&quot;    &quot;Overall Cond&quot;    &quot;Year Built&quot;     </span></span>
+<span id="cb129-9"><a href="lesson-2c-importing-data.html#cb129-9" tabindex="-1"></a><span class="do">## [22] &quot;Year Remod/Add&quot;  &quot;Roof Style&quot;      &quot;Roof Matl&quot;      </span></span>
+<span id="cb129-10"><a href="lesson-2c-importing-data.html#cb129-10" tabindex="-1"></a><span class="do">## [25] &quot;Exterior 1st&quot;    &quot;Exterior 2nd&quot;    &quot;Mas Vnr Type&quot;   </span></span>
+<span id="cb129-11"><a href="lesson-2c-importing-data.html#cb129-11" tabindex="-1"></a><span class="do">## [28] &quot;Mas Vnr Area&quot;    &quot;Exter Qual&quot;      &quot;Exter Cond&quot;     </span></span>
+<span id="cb129-12"><a href="lesson-2c-importing-data.html#cb129-12" tabindex="-1"></a><span class="do">## [31] &quot;Foundation&quot;      &quot;Bsmt Qual&quot;       &quot;Bsmt Cond&quot;      </span></span>
+<span id="cb129-13"><a href="lesson-2c-importing-data.html#cb129-13" tabindex="-1"></a><span class="do">## [34] &quot;Bsmt Exposure&quot;   &quot;BsmtFin Type 1&quot;  &quot;BsmtFin SF 1&quot;   </span></span>
+<span id="cb129-14"><a href="lesson-2c-importing-data.html#cb129-14" tabindex="-1"></a><span class="do">## [37] &quot;BsmtFin Type 2&quot;  &quot;BsmtFin SF 2&quot;    &quot;Bsmt Unf SF&quot;    </span></span>
+<span id="cb129-15"><a href="lesson-2c-importing-data.html#cb129-15" tabindex="-1"></a><span class="do">## [40] &quot;Total Bsmt SF&quot;   &quot;Heating&quot;         &quot;Heating QC&quot;     </span></span>
+<span id="cb129-16"><a href="lesson-2c-importing-data.html#cb129-16" tabindex="-1"></a><span class="do">## [43] &quot;Central Air&quot;     &quot;Electrical&quot;      &quot;1st Flr SF&quot;     </span></span>
+<span id="cb129-17"><a href="lesson-2c-importing-data.html#cb129-17" tabindex="-1"></a><span class="do">## [46] &quot;2nd Flr SF&quot;      &quot;Low Qual Fin SF&quot; &quot;Gr Liv Area&quot;    </span></span>
+<span id="cb129-18"><a href="lesson-2c-importing-data.html#cb129-18" tabindex="-1"></a><span class="do">## [49] &quot;Bsmt Full Bath&quot;  &quot;Bsmt Half Bath&quot;  &quot;Full Bath&quot;      </span></span>
+<span id="cb129-19"><a href="lesson-2c-importing-data.html#cb129-19" tabindex="-1"></a><span class="do">## [52] &quot;Half Bath&quot;       &quot;Bedroom AbvGr&quot;   &quot;Kitchen AbvGr&quot;  </span></span>
+<span id="cb129-20"><a href="lesson-2c-importing-data.html#cb129-20" tabindex="-1"></a><span class="do">## [55] &quot;Kitchen Qual&quot;    &quot;TotRms AbvGrd&quot;   &quot;Functional&quot;     </span></span>
+<span id="cb129-21"><a href="lesson-2c-importing-data.html#cb129-21" tabindex="-1"></a><span class="do">## [58] &quot;Fireplaces&quot;      &quot;Fireplace Qu&quot;    &quot;Garage Type&quot;    </span></span>
+<span id="cb129-22"><a href="lesson-2c-importing-data.html#cb129-22" tabindex="-1"></a><span class="do">## [61] &quot;Garage Yr Blt&quot;   &quot;Garage Finish&quot;   &quot;Garage Cars&quot;    </span></span>
+<span id="cb129-23"><a href="lesson-2c-importing-data.html#cb129-23" tabindex="-1"></a><span class="do">## [64] &quot;Garage Area&quot;     &quot;Garage Qual&quot;     &quot;Garage Cond&quot;    </span></span>
+<span id="cb129-24"><a href="lesson-2c-importing-data.html#cb129-24" tabindex="-1"></a><span class="do">## [67] &quot;Paved Drive&quot;     &quot;Wood Deck SF&quot;    &quot;Open Porch SF&quot;  </span></span>
+<span id="cb129-25"><a href="lesson-2c-importing-data.html#cb129-25" tabindex="-1"></a><span class="do">## [70] &quot;Enclosed Porch&quot;  &quot;3Ssn Porch&quot;      &quot;Screen Porch&quot;   </span></span>
+<span id="cb129-26"><a href="lesson-2c-importing-data.html#cb129-26" tabindex="-1"></a><span class="do">## [73] &quot;Pool Area&quot;       &quot;Pool QC&quot;         &quot;Fence&quot;          </span></span>
+<span id="cb129-27"><a href="lesson-2c-importing-data.html#cb129-27" tabindex="-1"></a><span class="do">## [76] &quot;Misc Feature&quot;    &quot;Misc Val&quot;        &quot;Mo Sold&quot;        </span></span>
+<span id="cb129-28"><a href="lesson-2c-importing-data.html#cb129-28" tabindex="-1"></a><span class="do">## [79] &quot;Yr Sold&quot;         &quot;Sale Type&quot;       &quot;Sale Condition&quot; </span></span>
+<span id="cb129-29"><a href="lesson-2c-importing-data.html#cb129-29" tabindex="-1"></a><span class="do">## [82] &quot;SalePrice&quot;</span></span></code></pre></div>
 <p>You may have also noticed the message each time we read in the data set that identified the delimiter and it also showed the following, which states that when we read in the data, 45 variables were read in as character strings and 37 were read in as double floating points.</p>
 <pre><code>chr (45): PID, MS SubClass, MS Zoning, Street, Alley, Lot Shape, Land Contour, Utilities,...
 dbl (37): Order, Lot Frontage, Lot Area, Overall Qual, Overall Cond, Year Built, Year Rem...</code></pre>
@@ -1533,34 +1338,20 @@ missing values.
 </div>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="lesson-2c-importing-data.html#cb133-1" tabindex="-1"></a>missing_values <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">is.na</span>(ames))</span>
 <span id="cb133-2"><a href="lesson-2c-importing-data.html#cb133-2" tabindex="-1"></a><span class="fu">sort</span>(missing_values[missing_values <span class="sc">&gt;</span> <span class="dv">0</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb133-3"><a href="lesson-2c-importing-data.html#cb133-3" tabindex="-1"></a><span class="do">##        Pool QC   Misc Feature </span></span>
-<span id="cb133-4"><a href="lesson-2c-importing-data.html#cb133-4" tabindex="-1"></a><span class="do">##           2917           2824 </span></span>
-<span id="cb133-5"><a href="lesson-2c-importing-data.html#cb133-5" tabindex="-1"></a><span class="do">##          Alley          Fence </span></span>
-<span id="cb133-6"><a href="lesson-2c-importing-data.html#cb133-6" tabindex="-1"></a><span class="do">##           2732           2358 </span></span>
-<span id="cb133-7"><a href="lesson-2c-importing-data.html#cb133-7" tabindex="-1"></a><span class="do">##   Fireplace Qu   Lot Frontage </span></span>
-<span id="cb133-8"><a href="lesson-2c-importing-data.html#cb133-8" tabindex="-1"></a><span class="do">##           1422            490 </span></span>
-<span id="cb133-9"><a href="lesson-2c-importing-data.html#cb133-9" tabindex="-1"></a><span class="do">##  Garage Yr Blt  Garage Finish </span></span>
-<span id="cb133-10"><a href="lesson-2c-importing-data.html#cb133-10" tabindex="-1"></a><span class="do">##            159            159 </span></span>
-<span id="cb133-11"><a href="lesson-2c-importing-data.html#cb133-11" tabindex="-1"></a><span class="do">##    Garage Qual    Garage Cond </span></span>
-<span id="cb133-12"><a href="lesson-2c-importing-data.html#cb133-12" tabindex="-1"></a><span class="do">##            159            159 </span></span>
-<span id="cb133-13"><a href="lesson-2c-importing-data.html#cb133-13" tabindex="-1"></a><span class="do">##    Garage Type  Bsmt Exposure </span></span>
-<span id="cb133-14"><a href="lesson-2c-importing-data.html#cb133-14" tabindex="-1"></a><span class="do">##            157             83 </span></span>
-<span id="cb133-15"><a href="lesson-2c-importing-data.html#cb133-15" tabindex="-1"></a><span class="do">## BsmtFin Type 2      Bsmt Qual </span></span>
-<span id="cb133-16"><a href="lesson-2c-importing-data.html#cb133-16" tabindex="-1"></a><span class="do">##             81             80 </span></span>
-<span id="cb133-17"><a href="lesson-2c-importing-data.html#cb133-17" tabindex="-1"></a><span class="do">##      Bsmt Cond BsmtFin Type 1 </span></span>
-<span id="cb133-18"><a href="lesson-2c-importing-data.html#cb133-18" tabindex="-1"></a><span class="do">##             80             80 </span></span>
-<span id="cb133-19"><a href="lesson-2c-importing-data.html#cb133-19" tabindex="-1"></a><span class="do">##   Mas Vnr Type   Mas Vnr Area </span></span>
-<span id="cb133-20"><a href="lesson-2c-importing-data.html#cb133-20" tabindex="-1"></a><span class="do">##             23             23 </span></span>
-<span id="cb133-21"><a href="lesson-2c-importing-data.html#cb133-21" tabindex="-1"></a><span class="do">## Bsmt Full Bath Bsmt Half Bath </span></span>
-<span id="cb133-22"><a href="lesson-2c-importing-data.html#cb133-22" tabindex="-1"></a><span class="do">##              2              2 </span></span>
-<span id="cb133-23"><a href="lesson-2c-importing-data.html#cb133-23" tabindex="-1"></a><span class="do">##   BsmtFin SF 1   BsmtFin SF 2 </span></span>
-<span id="cb133-24"><a href="lesson-2c-importing-data.html#cb133-24" tabindex="-1"></a><span class="do">##              1              1 </span></span>
-<span id="cb133-25"><a href="lesson-2c-importing-data.html#cb133-25" tabindex="-1"></a><span class="do">##    Bsmt Unf SF  Total Bsmt SF </span></span>
-<span id="cb133-26"><a href="lesson-2c-importing-data.html#cb133-26" tabindex="-1"></a><span class="do">##              1              1 </span></span>
-<span id="cb133-27"><a href="lesson-2c-importing-data.html#cb133-27" tabindex="-1"></a><span class="do">##     Electrical    Garage Cars </span></span>
-<span id="cb133-28"><a href="lesson-2c-importing-data.html#cb133-28" tabindex="-1"></a><span class="do">##              1              1 </span></span>
-<span id="cb133-29"><a href="lesson-2c-importing-data.html#cb133-29" tabindex="-1"></a><span class="do">##    Garage Area </span></span>
-<span id="cb133-30"><a href="lesson-2c-importing-data.html#cb133-30" tabindex="-1"></a><span class="do">##              1</span></span></code></pre></div>
+<span id="cb133-3"><a href="lesson-2c-importing-data.html#cb133-3" tabindex="-1"></a><span class="do">##        Pool QC   Misc Feature          Alley          Fence </span></span>
+<span id="cb133-4"><a href="lesson-2c-importing-data.html#cb133-4" tabindex="-1"></a><span class="do">##           2917           2824           2732           2358 </span></span>
+<span id="cb133-5"><a href="lesson-2c-importing-data.html#cb133-5" tabindex="-1"></a><span class="do">##   Fireplace Qu   Lot Frontage  Garage Yr Blt  Garage Finish </span></span>
+<span id="cb133-6"><a href="lesson-2c-importing-data.html#cb133-6" tabindex="-1"></a><span class="do">##           1422            490            159            159 </span></span>
+<span id="cb133-7"><a href="lesson-2c-importing-data.html#cb133-7" tabindex="-1"></a><span class="do">##    Garage Qual    Garage Cond    Garage Type  Bsmt Exposure </span></span>
+<span id="cb133-8"><a href="lesson-2c-importing-data.html#cb133-8" tabindex="-1"></a><span class="do">##            159            159            157             83 </span></span>
+<span id="cb133-9"><a href="lesson-2c-importing-data.html#cb133-9" tabindex="-1"></a><span class="do">## BsmtFin Type 2      Bsmt Qual      Bsmt Cond BsmtFin Type 1 </span></span>
+<span id="cb133-10"><a href="lesson-2c-importing-data.html#cb133-10" tabindex="-1"></a><span class="do">##             81             80             80             80 </span></span>
+<span id="cb133-11"><a href="lesson-2c-importing-data.html#cb133-11" tabindex="-1"></a><span class="do">##   Mas Vnr Type   Mas Vnr Area Bsmt Full Bath Bsmt Half Bath </span></span>
+<span id="cb133-12"><a href="lesson-2c-importing-data.html#cb133-12" tabindex="-1"></a><span class="do">##             23             23              2              2 </span></span>
+<span id="cb133-13"><a href="lesson-2c-importing-data.html#cb133-13" tabindex="-1"></a><span class="do">##   BsmtFin SF 1   BsmtFin SF 2    Bsmt Unf SF  Total Bsmt SF </span></span>
+<span id="cb133-14"><a href="lesson-2c-importing-data.html#cb133-14" tabindex="-1"></a><span class="do">##              1              1              1              1 </span></span>
+<span id="cb133-15"><a href="lesson-2c-importing-data.html#cb133-15" tabindex="-1"></a><span class="do">##     Electrical    Garage Cars    Garage Area </span></span>
+<span id="cb133-16"><a href="lesson-2c-importing-data.html#cb133-16" tabindex="-1"></a><span class="do">##              1              1              1</span></span></code></pre></div>
 </div>
 <div id="knowledge-check-18" class="section level3 hasAnchor" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> Knowledge check<a href="lesson-2c-importing-data.html#knowledge-check-18" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1603,8 +1394,7 @@ provide?
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lesson-2c-importing-data.html#cb134-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb134-2"><a href="lesson-2c-importing-data.html#cb134-2" tabindex="-1"></a></span>
 <span id="cb134-3"><a href="lesson-2c-importing-data.html#cb134-3" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&#39;data/products.xlsx&#39;</span>)</span>
-<span id="cb134-4"><a href="lesson-2c-importing-data.html#cb134-4" tabindex="-1"></a><span class="do">## [1] &quot;metadata&quot;      &quot;products data&quot;</span></span>
-<span id="cb134-5"><a href="lesson-2c-importing-data.html#cb134-5" tabindex="-1"></a><span class="do">## [3] &quot;grocery list&quot;</span></span></code></pre></div>
+<span id="cb134-4"><a href="lesson-2c-importing-data.html#cb134-4" tabindex="-1"></a><span class="do">## [1] &quot;metadata&quot;      &quot;products data&quot; &quot;grocery list&quot;</span></span></code></pre></div>
 <div class="warning">
 <p>
 If you don’t explicitly specify a sheet then the first worksheet will
@@ -1614,21 +1404,19 @@ be imported.
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="lesson-2c-importing-data.html#cb135-1" tabindex="-1"></a>products <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&#39;data/products.xlsx&#39;</span>, <span class="at">sheet =</span> <span class="st">&#39;products data&#39;</span>)</span>
 <span id="cb135-2"><a href="lesson-2c-importing-data.html#cb135-2" tabindex="-1"></a>products</span>
 <span id="cb135-3"><a href="lesson-2c-importing-data.html#cb135-3" tabindex="-1"></a><span class="do">## # A tibble: 151,141 × 5</span></span>
-<span id="cb135-4"><a href="lesson-2c-importing-data.html#cb135-4" tabindex="-1"></a><span class="do">##    product_num department commodity</span></span>
-<span id="cb135-5"><a href="lesson-2c-importing-data.html#cb135-5" tabindex="-1"></a><span class="do">##          &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;    </span></span>
-<span id="cb135-6"><a href="lesson-2c-importing-data.html#cb135-6" tabindex="-1"></a><span class="do">##  1       92993 NON-FOOD   PET      </span></span>
-<span id="cb135-7"><a href="lesson-2c-importing-data.html#cb135-7" tabindex="-1"></a><span class="do">##  2       93924 NON-FOOD   PET      </span></span>
-<span id="cb135-8"><a href="lesson-2c-importing-data.html#cb135-8" tabindex="-1"></a><span class="do">##  3       94272 NON-FOOD   PET      </span></span>
-<span id="cb135-9"><a href="lesson-2c-importing-data.html#cb135-9" tabindex="-1"></a><span class="do">##  4       94299 NON-FOOD   PET      </span></span>
-<span id="cb135-10"><a href="lesson-2c-importing-data.html#cb135-10" tabindex="-1"></a><span class="do">##  5       94594 NON-FOOD   PET      </span></span>
-<span id="cb135-11"><a href="lesson-2c-importing-data.html#cb135-11" tabindex="-1"></a><span class="do">##  6       94606 NON-FOOD   PET      </span></span>
-<span id="cb135-12"><a href="lesson-2c-importing-data.html#cb135-12" tabindex="-1"></a><span class="do">##  7       94613 NON-FOOD   PET      </span></span>
-<span id="cb135-13"><a href="lesson-2c-importing-data.html#cb135-13" tabindex="-1"></a><span class="do">##  8       95625 NON-FOOD   PET      </span></span>
-<span id="cb135-14"><a href="lesson-2c-importing-data.html#cb135-14" tabindex="-1"></a><span class="do">##  9       96152 NON-FOOD   PET      </span></span>
-<span id="cb135-15"><a href="lesson-2c-importing-data.html#cb135-15" tabindex="-1"></a><span class="do">## 10       96153 NON-FOOD   PET      </span></span>
-<span id="cb135-16"><a href="lesson-2c-importing-data.html#cb135-16" tabindex="-1"></a><span class="do">## # ℹ 151,131 more rows</span></span>
-<span id="cb135-17"><a href="lesson-2c-importing-data.html#cb135-17" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: brand_ty &lt;chr&gt;,</span></span>
-<span id="cb135-18"><a href="lesson-2c-importing-data.html#cb135-18" tabindex="-1"></a><span class="do">## #   x5 &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb135-4"><a href="lesson-2c-importing-data.html#cb135-4" tabindex="-1"></a><span class="do">##    product_num department commodity brand_ty x5   </span></span>
+<span id="cb135-5"><a href="lesson-2c-importing-data.html#cb135-5" tabindex="-1"></a><span class="do">##          &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;</span></span>
+<span id="cb135-6"><a href="lesson-2c-importing-data.html#cb135-6" tabindex="-1"></a><span class="do">##  1       92993 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-7"><a href="lesson-2c-importing-data.html#cb135-7" tabindex="-1"></a><span class="do">##  2       93924 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-8"><a href="lesson-2c-importing-data.html#cb135-8" tabindex="-1"></a><span class="do">##  3       94272 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-9"><a href="lesson-2c-importing-data.html#cb135-9" tabindex="-1"></a><span class="do">##  4       94299 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-10"><a href="lesson-2c-importing-data.html#cb135-10" tabindex="-1"></a><span class="do">##  5       94594 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-11"><a href="lesson-2c-importing-data.html#cb135-11" tabindex="-1"></a><span class="do">##  6       94606 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-12"><a href="lesson-2c-importing-data.html#cb135-12" tabindex="-1"></a><span class="do">##  7       94613 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-13"><a href="lesson-2c-importing-data.html#cb135-13" tabindex="-1"></a><span class="do">##  8       95625 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-14"><a href="lesson-2c-importing-data.html#cb135-14" tabindex="-1"></a><span class="do">##  9       96152 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-15"><a href="lesson-2c-importing-data.html#cb135-15" tabindex="-1"></a><span class="do">## 10       96153 NON-FOOD   PET       PRIVATE  N    </span></span>
+<span id="cb135-16"><a href="lesson-2c-importing-data.html#cb135-16" tabindex="-1"></a><span class="do">## # ℹ 151,131 more rows</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -1679,12 +1467,10 @@ databases.
 <p>This command does not load the data into the R session (as the <code>read_csv()</code> function did). Instead, it merely instructs R to connect to the SQLite database contained in the chinook.db file. Using a similar approach, you could connect to many other database management systems that are supported by R including MySQL, PostgreSQL, BigQuery, etc.</p>
 <p>Let’s take a closer look at the chinook database we just connected to:</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="lesson-2c-importing-data.html#cb138-1" tabindex="-1"></a><span class="fu">src_dbi</span>(chinook)</span>
-<span id="cb138-2"><a href="lesson-2c-importing-data.html#cb138-2" tabindex="-1"></a><span class="do">## src:  sqlite 3.44.2 [/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/chinook.db]</span></span>
-<span id="cb138-3"><a href="lesson-2c-importing-data.html#cb138-3" tabindex="-1"></a><span class="do">## tbls: albums, artists, customers,</span></span>
-<span id="cb138-4"><a href="lesson-2c-importing-data.html#cb138-4" tabindex="-1"></a><span class="do">##   employees, genres, invoice_items,</span></span>
-<span id="cb138-5"><a href="lesson-2c-importing-data.html#cb138-5" tabindex="-1"></a><span class="do">##   invoices, media_types, playlist_track,</span></span>
-<span id="cb138-6"><a href="lesson-2c-importing-data.html#cb138-6" tabindex="-1"></a><span class="do">##   playlists, sqlite_sequence,</span></span>
-<span id="cb138-7"><a href="lesson-2c-importing-data.html#cb138-7" tabindex="-1"></a><span class="do">##   sqlite_stat1, tracks</span></span></code></pre></div>
+<span id="cb138-2"><a href="lesson-2c-importing-data.html#cb138-2" tabindex="-1"></a><span class="do">## src:  sqlite 3.46.0 [/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/chinook.db]</span></span>
+<span id="cb138-3"><a href="lesson-2c-importing-data.html#cb138-3" tabindex="-1"></a><span class="do">## tbls: albums, artists, customers, employees, genres, invoice_items,</span></span>
+<span id="cb138-4"><a href="lesson-2c-importing-data.html#cb138-4" tabindex="-1"></a><span class="do">##   invoices, media_types, playlist_track, playlists, sqlite_sequence,</span></span>
+<span id="cb138-5"><a href="lesson-2c-importing-data.html#cb138-5" tabindex="-1"></a><span class="do">##   sqlite_stat1, tracks</span></span></code></pre></div>
 <p>Just like a spreadsheet with multiple worksheets, a SQLite database can contain multiple tables. In this case there are several tables listed in the tbls row in the output above:</p>
 <ul>
 <li>albums</li>
@@ -1705,19 +1491,19 @@ databases.
 <span id="cb140-3"><a href="lesson-2c-importing-data.html#cb140-3" tabindex="-1"></a>long_tracks <span class="ot">&lt;-</span> <span class="fu">tbl</span>(chinook, <span class="fu">sql</span>(sql_query))</span>
 <span id="cb140-4"><a href="lesson-2c-importing-data.html#cb140-4" tabindex="-1"></a>long_tracks</span>
 <span id="cb140-5"><a href="lesson-2c-importing-data.html#cb140-5" tabindex="-1"></a><span class="do">## # Source:   SQL [?? x 3]</span></span>
-<span id="cb140-6"><a href="lesson-2c-importing-data.html#cb140-6" tabindex="-1"></a><span class="do">## # Database: sqlite 3.44.2 [/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/chinook.db]</span></span>
-<span id="cb140-7"><a href="lesson-2c-importing-data.html#cb140-7" tabindex="-1"></a><span class="do">##    name             composer milliseconds</span></span>
-<span id="cb140-8"><a href="lesson-2c-importing-data.html#cb140-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;            &lt;chr&gt;           &lt;int&gt;</span></span>
-<span id="cb140-9"><a href="lesson-2c-importing-data.html#cb140-9" tabindex="-1"></a><span class="do">##  1 For Those About… Angus Y…       343719</span></span>
-<span id="cb140-10"><a href="lesson-2c-importing-data.html#cb140-10" tabindex="-1"></a><span class="do">##  2 Fast As a Shark  F. Balt…       230619</span></span>
-<span id="cb140-11"><a href="lesson-2c-importing-data.html#cb140-11" tabindex="-1"></a><span class="do">##  3 Restless and Wi… F. Balt…       252051</span></span>
-<span id="cb140-12"><a href="lesson-2c-importing-data.html#cb140-12" tabindex="-1"></a><span class="do">##  4 Princess of the… Deaffy …       375418</span></span>
-<span id="cb140-13"><a href="lesson-2c-importing-data.html#cb140-13" tabindex="-1"></a><span class="do">##  5 Put The Finger … Angus Y…       205662</span></span>
-<span id="cb140-14"><a href="lesson-2c-importing-data.html#cb140-14" tabindex="-1"></a><span class="do">##  6 Let&#39;s Get It Up  Angus Y…       233926</span></span>
-<span id="cb140-15"><a href="lesson-2c-importing-data.html#cb140-15" tabindex="-1"></a><span class="do">##  7 Inject The Venom Angus Y…       210834</span></span>
-<span id="cb140-16"><a href="lesson-2c-importing-data.html#cb140-16" tabindex="-1"></a><span class="do">##  8 Snowballed       Angus Y…       203102</span></span>
-<span id="cb140-17"><a href="lesson-2c-importing-data.html#cb140-17" tabindex="-1"></a><span class="do">##  9 Evil Walks       Angus Y…       263497</span></span>
-<span id="cb140-18"><a href="lesson-2c-importing-data.html#cb140-18" tabindex="-1"></a><span class="do">## 10 Breaking The Ru… Angus Y…       263288</span></span>
+<span id="cb140-6"><a href="lesson-2c-importing-data.html#cb140-6" tabindex="-1"></a><span class="do">## # Database: sqlite 3.46.0 [/Users/b294776/Desktop/workspace/training/UC/uc-bana-7025/data/chinook.db]</span></span>
+<span id="cb140-7"><a href="lesson-2c-importing-data.html#cb140-7" tabindex="-1"></a><span class="do">##    name                                    composer        milliseconds</span></span>
+<span id="cb140-8"><a href="lesson-2c-importing-data.html#cb140-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;                                   &lt;chr&gt;                  &lt;int&gt;</span></span>
+<span id="cb140-9"><a href="lesson-2c-importing-data.html#cb140-9" tabindex="-1"></a><span class="do">##  1 For Those About To Rock (We Salute You) Angus Young, M…       343719</span></span>
+<span id="cb140-10"><a href="lesson-2c-importing-data.html#cb140-10" tabindex="-1"></a><span class="do">##  2 Fast As a Shark                         F. Baltes, S. …       230619</span></span>
+<span id="cb140-11"><a href="lesson-2c-importing-data.html#cb140-11" tabindex="-1"></a><span class="do">##  3 Restless and Wild                       F. Baltes, R.A…       252051</span></span>
+<span id="cb140-12"><a href="lesson-2c-importing-data.html#cb140-12" tabindex="-1"></a><span class="do">##  4 Princess of the Dawn                    Deaffy &amp; R.A. …       375418</span></span>
+<span id="cb140-13"><a href="lesson-2c-importing-data.html#cb140-13" tabindex="-1"></a><span class="do">##  5 Put The Finger On You                   Angus Young, M…       205662</span></span>
+<span id="cb140-14"><a href="lesson-2c-importing-data.html#cb140-14" tabindex="-1"></a><span class="do">##  6 Let&#39;s Get It Up                         Angus Young, M…       233926</span></span>
+<span id="cb140-15"><a href="lesson-2c-importing-data.html#cb140-15" tabindex="-1"></a><span class="do">##  7 Inject The Venom                        Angus Young, M…       210834</span></span>
+<span id="cb140-16"><a href="lesson-2c-importing-data.html#cb140-16" tabindex="-1"></a><span class="do">##  8 Snowballed                              Angus Young, M…       203102</span></span>
+<span id="cb140-17"><a href="lesson-2c-importing-data.html#cb140-17" tabindex="-1"></a><span class="do">##  9 Evil Walks                              Angus Young, M…       263497</span></span>
+<span id="cb140-18"><a href="lesson-2c-importing-data.html#cb140-18" tabindex="-1"></a><span class="do">## 10 Breaking The Rules                      Angus Young, M…       263288</span></span>
 <span id="cb140-19"><a href="lesson-2c-importing-data.html#cb140-19" tabindex="-1"></a><span class="do">## # ℹ more rows</span></span></code></pre></div>
 </div>
 <div id="many-other-file-types" class="section level2 hasAnchor" number="8.6">
@@ -1800,11 +1586,9 @@ href="http://uc-r.github.io/exporting#export_r_objects">here</a>.
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="lesson-2c-importing-data.html#cb145-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;data/xy.RData&#39;</span>)</span></code></pre></div>
 <p>For .rds files you can use <strong>readr</strong>’s <code>read_rds()</code> function:</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lesson-2c-importing-data.html#cb146-1" tabindex="-1"></a><span class="fu">read_rds</span>(<span class="st">&#39;data/x.rds&#39;</span>)</span>
-<span id="cb146-2"><a href="lesson-2c-importing-data.html#cb146-2" tabindex="-1"></a><span class="do">##  [1] 0.758310 0.999693 0.314913 0.978646</span></span>
-<span id="cb146-3"><a href="lesson-2c-importing-data.html#cb146-3" tabindex="-1"></a><span class="do">##  [5] 0.168522 0.597689 0.209016 0.848492</span></span>
-<span id="cb146-4"><a href="lesson-2c-importing-data.html#cb146-4" tabindex="-1"></a><span class="do">##  [9] 0.073632 0.106206 0.116106 0.696880</span></span>
-<span id="cb146-5"><a href="lesson-2c-importing-data.html#cb146-5" tabindex="-1"></a><span class="do">## [13] 0.725726 0.011556 0.052708 0.472079</span></span>
-<span id="cb146-6"><a href="lesson-2c-importing-data.html#cb146-6" tabindex="-1"></a><span class="do">## [17] 0.072446 0.786448 0.924837 0.228298</span></span></code></pre></div>
+<span id="cb146-2"><a href="lesson-2c-importing-data.html#cb146-2" tabindex="-1"></a><span class="do">##  [1] 0.758310 0.999693 0.314913 0.978646 0.168522 0.597689 0.209016</span></span>
+<span id="cb146-3"><a href="lesson-2c-importing-data.html#cb146-3" tabindex="-1"></a><span class="do">##  [8] 0.848492 0.073632 0.106206 0.116106 0.696880 0.725726 0.011556</span></span>
+<span id="cb146-4"><a href="lesson-2c-importing-data.html#cb146-4" tabindex="-1"></a><span class="do">## [15] 0.052708 0.472079 0.072446 0.786448 0.924837 0.228298</span></span></code></pre></div>
 </div>
 </div>
 <div id="exercises-5" class="section level2 hasAnchor" number="8.7">

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Lesson 1b: R fundamentals | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Lesson 1b: R fundamentals | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -984,14 +985,17 @@ Assign the values 1000, 5, and 0.05 to variables <code>D</code>,
 <code>K</code>, and <code>h</code> respectively.
 </li>
 <li>
-Compute <span class="math inline"><span class="math inline">\(2 \times D \times K\)</span></span>.
+Compute <span class="math inline"><span class="math inline">\(2 \times D \times
+K\)</span></span>.
 </li>
 <li>
-Compute <span class="math inline"><span class="math inline">\(\frac{2 \times D \times K}{h}\)</span></span>.
+Compute <span class="math inline"><span class="math inline">\(\frac{2 \times D \times
+K}{h}\)</span></span>.
 </li>
 <li>
 Now put this together to compute the Economic Order Quantity, which
-is <span class="math inline"><span class="math inline">\(\sqrt{\frac{2 \times D \times K}{h}}\)</span></span>. Save the output as <code>Q</code>.
+is <span class="math inline"><span class="math inline">\(\sqrt{\frac{2 \times D \times
+K}{h}}\)</span></span>. Save the output as <code>Q</code>.
 </li>
 </ol>
 </div>
@@ -1133,13 +1137,13 @@ is equivalent to running the 29 lines of code below 👇!
 <span id="cb28-28"><a href="lesson-1b-r-fundamentals.html#cb28-28" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span></code></pre></div>
 <p>If we load the <strong>tidyverse</strong> package we will see that it loads 8 packages for us: <strong>ggplot2</strong>_, <strong>tibble</strong>, <strong>tidyr</strong>, <strong>readr</strong>, <strong>purrr</strong>, <strong>dplyr</strong>, <strong>stringr</strong>, and <strong>forcats</strong>. These are packages that we will tend to use in almost any data analysis project.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="lesson-1b-r-fundamentals.html#cb29-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-2"><a href="lesson-1b-r-fundamentals.html#cb29-2" tabindex="-1"></a><span class="do">## ── Attaching core tidyverse packages ────</span></span>
-<span id="cb29-3"><a href="lesson-1b-r-fundamentals.html#cb29-3" tabindex="-1"></a><span class="do">## ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
-<span id="cb29-4"><a href="lesson-1b-r-fundamentals.html#cb29-4" tabindex="-1"></a><span class="do">## ✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
-<span id="cb29-5"><a href="lesson-1b-r-fundamentals.html#cb29-5" tabindex="-1"></a><span class="do">## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1</span></span>
-<span id="cb29-6"><a href="lesson-1b-r-fundamentals.html#cb29-6" tabindex="-1"></a><span class="do">## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0</span></span>
-<span id="cb29-7"><a href="lesson-1b-r-fundamentals.html#cb29-7" tabindex="-1"></a><span class="do">## ✔ purrr     1.0.1     </span></span>
-<span id="cb29-8"><a href="lesson-1b-r-fundamentals.html#cb29-8" tabindex="-1"></a><span class="do">## ── Conflicts ─── tidyverse_conflicts() ──</span></span>
+<span id="cb29-2"><a href="lesson-1b-r-fundamentals.html#cb29-2" tabindex="-1"></a><span class="do">## ── Attaching core tidyverse packages ─────────────── tidyverse 2.0.0 ──</span></span>
+<span id="cb29-3"><a href="lesson-1b-r-fundamentals.html#cb29-3" tabindex="-1"></a><span class="do">## ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
+<span id="cb29-4"><a href="lesson-1b-r-fundamentals.html#cb29-4" tabindex="-1"></a><span class="do">## ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span>
+<span id="cb29-5"><a href="lesson-1b-r-fundamentals.html#cb29-5" tabindex="-1"></a><span class="do">## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1</span></span>
+<span id="cb29-6"><a href="lesson-1b-r-fundamentals.html#cb29-6" tabindex="-1"></a><span class="do">## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1</span></span>
+<span id="cb29-7"><a href="lesson-1b-r-fundamentals.html#cb29-7" tabindex="-1"></a><span class="do">## ✔ purrr     1.0.2     </span></span>
+<span id="cb29-8"><a href="lesson-1b-r-fundamentals.html#cb29-8" tabindex="-1"></a><span class="do">## ── Conflicts ───────────────────────────────── tidyverse_conflicts() ──</span></span>
 <span id="cb29-9"><a href="lesson-1b-r-fundamentals.html#cb29-9" tabindex="-1"></a><span class="do">## ✖ dplyr::filter() masks stats::filter()</span></span>
 <span id="cb29-10"><a href="lesson-1b-r-fundamentals.html#cb29-10" tabindex="-1"></a><span class="do">## ✖ dplyr::lag()    masks stats::lag()</span></span>
 <span id="cb29-11"><a href="lesson-1b-r-fundamentals.html#cb29-11" tabindex="-1"></a><span class="do">## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
@@ -1180,7 +1184,7 @@ is equivalent to running the 8 lines of code below 👇!
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="lesson-1b-r-fundamentals.html#cb31-1" tabindex="-1"></a><span class="co"># Good</span></span>
 <span id="cb31-2"><a href="lesson-1b-r-fundamentals.html#cb31-2" tabindex="-1"></a>weather<span class="sc">-</span>analysis.R</span>
 <span id="cb31-3"><a href="lesson-1b-r-fundamentals.html#cb31-3" tabindex="-1"></a>emerson<span class="sc">-</span>text<span class="sc">-</span>analysis.R</span>
-<span id="cb31-4"><a href="lesson-1b-r-fundamentals.html#cb31-4" tabindex="-1"></a>lesson<span class="sc">-</span>1b<span class="sc">-</span>homework.R</span>
+<span id="cb31-4"><a href="lesson-1b-r-fundamentals.html#cb31-4" tabindex="-1"></a>lesson<span class="dv">-1</span>b<span class="sc">-</span>homework.R</span>
 <span id="cb31-5"><a href="lesson-1b-r-fundamentals.html#cb31-5" tabindex="-1"></a></span>
 <span id="cb31-6"><a href="lesson-1b-r-fundamentals.html#cb31-6" tabindex="-1"></a><span class="co"># Bad</span></span>
 <span id="cb31-7"><a href="lesson-1b-r-fundamentals.html#cb31-7" tabindex="-1"></a>basic<span class="sc">-</span>stuff.r</span>
@@ -1341,7 +1345,7 @@ in #6 do.
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-wickham2015r" class="csl-entry">
 ———. 2015. <em>R Packages: Organize, Test, Document, and Share Your Code</em>. " O’Reilly Media, Inc.".
 </div>

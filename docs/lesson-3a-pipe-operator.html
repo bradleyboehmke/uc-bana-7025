@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 Lesson 3a: Pipe operator | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 Lesson 3a: Pipe operator | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -918,22 +919,16 @@ incorporated the pipe operator.
 <span id="cb150-11"><a href="lesson-3a-pipe-operator.html#cb150-11" tabindex="-1"></a><span class="do">##  -8.62  -2.19  -1.16   0.34  47.42 </span></span>
 <span id="cb150-12"><a href="lesson-3a-pipe-operator.html#cb150-12" tabindex="-1"></a><span class="do">## </span></span>
 <span id="cb150-13"><a href="lesson-3a-pipe-operator.html#cb150-13" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb150-14"><a href="lesson-3a-pipe-operator.html#cb150-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value</span></span>
-<span id="cb150-15"><a href="lesson-3a-pipe-operator.html#cb150-15" tabindex="-1"></a><span class="do">## (Intercept)  3.10845    0.20549   15.13</span></span>
-<span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" tabindex="-1"></a><span class="do">## week         0.00185    0.00641    0.29</span></span>
-<span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" tabindex="-1"></a><span class="do">## retail_disc  1.09089    0.10396   10.49</span></span>
-<span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" tabindex="-1"></a><span class="do">##             Pr(&gt;|t|)    </span></span>
-<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" tabindex="-1"></a><span class="do">## (Intercept)   &lt;2e-16 ***</span></span>
-<span id="cb150-20"><a href="lesson-3a-pipe-operator.html#cb150-20" tabindex="-1"></a><span class="do">## week            0.77    </span></span>
-<span id="cb150-21"><a href="lesson-3a-pipe-operator.html#cb150-21" tabindex="-1"></a><span class="do">## retail_disc   &lt;2e-16 ***</span></span>
-<span id="cb150-22"><a href="lesson-3a-pipe-operator.html#cb150-22" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb150-23"><a href="lesson-3a-pipe-operator.html#cb150-23" tabindex="-1"></a><span class="do">## Signif. codes:  </span></span>
-<span id="cb150-24"><a href="lesson-3a-pipe-operator.html#cb150-24" tabindex="-1"></a><span class="do">##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;</span></span>
-<span id="cb150-25"><a href="lesson-3a-pipe-operator.html#cb150-25" tabindex="-1"></a><span class="do">##   0.1 &#39; &#39; 1</span></span>
-<span id="cb150-26"><a href="lesson-3a-pipe-operator.html#cb150-26" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb150-27"><a href="lesson-3a-pipe-operator.html#cb150-27" tabindex="-1"></a><span class="do">## Residual standard error: 4.5 on 2126 degrees of freedom</span></span>
-<span id="cb150-28"><a href="lesson-3a-pipe-operator.html#cb150-28" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0493, Adjusted R-squared:  0.0484 </span></span>
-<span id="cb150-29"><a href="lesson-3a-pipe-operator.html#cb150-29" tabindex="-1"></a><span class="do">## F-statistic: 55.1 on 2 and 2126 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<span id="cb150-14"><a href="lesson-3a-pipe-operator.html#cb150-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb150-15"><a href="lesson-3a-pipe-operator.html#cb150-15" tabindex="-1"></a><span class="do">## (Intercept)  3.10845    0.20549   15.13   &lt;2e-16 ***</span></span>
+<span id="cb150-16"><a href="lesson-3a-pipe-operator.html#cb150-16" tabindex="-1"></a><span class="do">## week         0.00185    0.00641    0.29     0.77    </span></span>
+<span id="cb150-17"><a href="lesson-3a-pipe-operator.html#cb150-17" tabindex="-1"></a><span class="do">## retail_disc  1.09089    0.10396   10.49   &lt;2e-16 ***</span></span>
+<span id="cb150-18"><a href="lesson-3a-pipe-operator.html#cb150-18" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb150-19"><a href="lesson-3a-pipe-operator.html#cb150-19" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb150-20"><a href="lesson-3a-pipe-operator.html#cb150-20" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb150-21"><a href="lesson-3a-pipe-operator.html#cb150-21" tabindex="-1"></a><span class="do">## Residual standard error: 4.5 on 2126 degrees of freedom</span></span>
+<span id="cb150-22"><a href="lesson-3a-pipe-operator.html#cb150-22" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0493, Adjusted R-squared:  0.0484 </span></span>
+<span id="cb150-23"><a href="lesson-3a-pipe-operator.html#cb150-23" tabindex="-1"></a><span class="do">## F-statistic: 55.1 on 2 and 2126 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
 <p>You can also use <code>%&gt;%</code> to feed into plots:</p>
 <div class="note">
 <p>
@@ -999,8 +994,7 @@ follows!
 <span id="cb156-6"><a href="lesson-3a-pipe-operator.html#cb156-6" tabindex="-1"></a>df<span class="sc">$</span>sales_value <span class="sc">%&lt;&gt;%</span> log</span>
 <span id="cb156-7"><a href="lesson-3a-pipe-operator.html#cb156-7" tabindex="-1"></a></span>
 <span id="cb156-8"><a href="lesson-3a-pipe-operator.html#cb156-8" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sales_value)</span>
-<span id="cb156-9"><a href="lesson-3a-pipe-operator.html#cb156-9" tabindex="-1"></a><span class="do">## [1] 1.35067 0.46373 0.00000 2.47401</span></span>
-<span id="cb156-10"><a href="lesson-3a-pipe-operator.html#cb156-10" tabindex="-1"></a><span class="do">## [5] 0.25464 0.91629</span></span></code></pre></div>
+<span id="cb156-9"><a href="lesson-3a-pipe-operator.html#cb156-9" tabindex="-1"></a><span class="do">## [1] 1.35067 0.46373 0.00000 2.47401 0.25464 0.91629</span></span></code></pre></div>
 <div class="warning">
 <p>
 You should be cautious in your use of <code>%&lt;&gt;%</code> since

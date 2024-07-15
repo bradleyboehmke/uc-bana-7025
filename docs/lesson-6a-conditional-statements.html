@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>22 Lesson 6a: Conditional statements | Data Wrangling with R</title>
   <meta name="description" content="Master the art of data wrangling with the R programming language." />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="22 Lesson 6a: Conditional statements | Data Wrangling with R" />
   <meta property="og:type" content="book" />
@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -131,6 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -1063,18 +1064,15 @@ Figure 22.2: Illustration of vectorized conditional statements.
 </div>
 <p>We can vectorize an <code>if...else</code> statement a couple of ways. One option is to use the <code>ifelse()</code> function built in base R:</p>
 <div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="lesson-6a-conditional-statements.html#cb389-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">5</span>), <span class="cn">NA</span>))</span>
-<span id="cb389-2"><a href="lesson-6a-conditional-statements.html#cb389-2" tabindex="-1"></a><span class="do">## [1] 0.306769 0.426908 0.693102 0.085136</span></span>
-<span id="cb389-3"><a href="lesson-6a-conditional-statements.html#cb389-3" tabindex="-1"></a><span class="do">## [5] 0.225437       NA</span></span>
-<span id="cb389-4"><a href="lesson-6a-conditional-statements.html#cb389-4" tabindex="-1"></a></span>
-<span id="cb389-5"><a href="lesson-6a-conditional-statements.html#cb389-5" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>)</span>
-<span id="cb389-6"><a href="lesson-6a-conditional-statements.html#cb389-6" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;   </span></span>
-<span id="cb389-7"><a href="lesson-6a-conditional-statements.html#cb389-7" tabindex="-1"></a><span class="do">## [3] &quot;greater than&quot; &quot;less than&quot;   </span></span>
-<span id="cb389-8"><a href="lesson-6a-conditional-statements.html#cb389-8" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;    NA</span></span></code></pre></div>
+<span id="cb389-2"><a href="lesson-6a-conditional-statements.html#cb389-2" tabindex="-1"></a><span class="do">## [1] 0.306769 0.426908 0.693102 0.085136 0.225437       NA</span></span>
+<span id="cb389-3"><a href="lesson-6a-conditional-statements.html#cb389-3" tabindex="-1"></a></span>
+<span id="cb389-4"><a href="lesson-6a-conditional-statements.html#cb389-4" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>)</span>
+<span id="cb389-5"><a href="lesson-6a-conditional-statements.html#cb389-5" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;    &quot;less than&quot;    &quot;greater than&quot; &quot;less than&quot;   </span></span>
+<span id="cb389-6"><a href="lesson-6a-conditional-statements.html#cb389-6" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;    NA</span></span></code></pre></div>
 <p>Second, we can use <code>dplyr::if_else()</code>, which provides a little more stability in output type and flexibility in what to do with missing values:</p>
 <div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="lesson-6a-conditional-statements.html#cb390-1" tabindex="-1"></a><span class="fu">if_else</span>(x <span class="sc">&gt;</span> .<span class="dv">5</span>, <span class="st">&quot;greater than&quot;</span>, <span class="st">&quot;less than&quot;</span>, <span class="at">missing =</span> <span class="st">&quot;something else&quot;</span>)</span>
-<span id="cb390-2"><a href="lesson-6a-conditional-statements.html#cb390-2" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;     </span></span>
-<span id="cb390-3"><a href="lesson-6a-conditional-statements.html#cb390-3" tabindex="-1"></a><span class="do">## [3] &quot;greater than&quot;   &quot;less than&quot;     </span></span>
-<span id="cb390-4"><a href="lesson-6a-conditional-statements.html#cb390-4" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;      &quot;something else&quot;</span></span></code></pre></div>
+<span id="cb390-2"><a href="lesson-6a-conditional-statements.html#cb390-2" tabindex="-1"></a><span class="do">## [1] &quot;less than&quot;      &quot;less than&quot;      &quot;greater than&quot;   &quot;less than&quot;     </span></span>
+<span id="cb390-3"><a href="lesson-6a-conditional-statements.html#cb390-3" tabindex="-1"></a><span class="do">## [5] &quot;less than&quot;      &quot;something else&quot;</span></span></code></pre></div>
 <p>However, in both cases, they can only assess binary conditional statements. If we want to vectorize multiple conditions (i.e. <code>if...else...if...else</code>) then the best approach is to use <code>dplyr::case_when()</code>.</p>
 <p>The syntax for <code>case_when()</code> can be a little confusing at first. Basically, a conditional expression looks like <code>condition ~ code to execute</code>. Consequently:</p>
 <ul>
@@ -1084,26 +1082,21 @@ Figure 22.2: Illustration of vectorized conditional statements.
 </ul>
 <div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="lesson-6a-conditional-statements.html#cb391-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb391-2"><a href="lesson-6a-conditional-statements.html#cb391-2" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">10</span>), <span class="cn">NA</span>, <span class="cn">Inf</span>, <span class="fl">1.25</span>))</span>
-<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017</span></span>
-<span id="cb391-4"><a href="lesson-6a-conditional-statements.html#cb391-4" tabindex="-1"></a><span class="do">##  [5] 0.940467 0.045556 0.528105 0.892419</span></span>
-<span id="cb391-5"><a href="lesson-6a-conditional-statements.html#cb391-5" tabindex="-1"></a><span class="do">##  [9] 0.551435 0.456615       NA      Inf</span></span>
-<span id="cb391-6"><a href="lesson-6a-conditional-statements.html#cb391-6" tabindex="-1"></a><span class="do">## [13] 1.250000</span></span>
-<span id="cb391-7"><a href="lesson-6a-conditional-statements.html#cb391-7" tabindex="-1"></a></span>
-<span id="cb391-8"><a href="lesson-6a-conditional-statements.html#cb391-8" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb391-9"><a href="lesson-6a-conditional-statements.html#cb391-9" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">3</span>   <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
-<span id="cb391-10"><a href="lesson-6a-conditional-statements.html#cb391-10" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">7</span>   <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
-<span id="cb391-11"><a href="lesson-6a-conditional-statements.html#cb391-11" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">9</span>   <span class="sc">~</span> <span class="st">&quot;medium high&quot;</span>,</span>
-<span id="cb391-12"><a href="lesson-6a-conditional-statements.html#cb391-12" tabindex="-1"></a>  x <span class="sc">&lt;=</span><span class="fl">1.0</span>  <span class="sc">~</span> <span class="st">&quot;high&quot;</span>,</span>
-<span id="cb391-13"><a href="lesson-6a-conditional-statements.html#cb391-13" tabindex="-1"></a>  <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;missing&quot;</span>,</span>
-<span id="cb391-14"><a href="lesson-6a-conditional-statements.html#cb391-14" tabindex="-1"></a>  <span class="cn">TRUE</span>     <span class="sc">~</span> <span class="st">&quot;out of bounds&quot;</span></span>
-<span id="cb391-15"><a href="lesson-6a-conditional-statements.html#cb391-15" tabindex="-1"></a>)</span>
-<span id="cb391-16"><a href="lesson-6a-conditional-statements.html#cb391-16" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;  </span></span>
-<span id="cb391-17"><a href="lesson-6a-conditional-statements.html#cb391-17" tabindex="-1"></a><span class="do">##  [3] &quot;medium&quot;        &quot;medium high&quot;  </span></span>
-<span id="cb391-18"><a href="lesson-6a-conditional-statements.html#cb391-18" tabindex="-1"></a><span class="do">##  [5] &quot;high&quot;          &quot;low&quot;          </span></span>
-<span id="cb391-19"><a href="lesson-6a-conditional-statements.html#cb391-19" tabindex="-1"></a><span class="do">##  [7] &quot;medium&quot;        &quot;medium high&quot;  </span></span>
-<span id="cb391-20"><a href="lesson-6a-conditional-statements.html#cb391-20" tabindex="-1"></a><span class="do">##  [9] &quot;medium&quot;        &quot;medium&quot;       </span></span>
-<span id="cb391-21"><a href="lesson-6a-conditional-statements.html#cb391-21" tabindex="-1"></a><span class="do">## [11] &quot;missing&quot;       &quot;out of bounds&quot;</span></span>
-<span id="cb391-22"><a href="lesson-6a-conditional-statements.html#cb391-22" tabindex="-1"></a><span class="do">## [13] &quot;out of bounds&quot;</span></span></code></pre></div>
+<span id="cb391-3"><a href="lesson-6a-conditional-statements.html#cb391-3" tabindex="-1"></a><span class="do">##  [1] 0.287578 0.788305 0.408977 0.883017 0.940467 0.045556 0.528105</span></span>
+<span id="cb391-4"><a href="lesson-6a-conditional-statements.html#cb391-4" tabindex="-1"></a><span class="do">##  [8] 0.892419 0.551435 0.456615       NA      Inf 1.250000</span></span>
+<span id="cb391-5"><a href="lesson-6a-conditional-statements.html#cb391-5" tabindex="-1"></a></span>
+<span id="cb391-6"><a href="lesson-6a-conditional-statements.html#cb391-6" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb391-7"><a href="lesson-6a-conditional-statements.html#cb391-7" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">3</span>   <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
+<span id="cb391-8"><a href="lesson-6a-conditional-statements.html#cb391-8" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">7</span>   <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb391-9"><a href="lesson-6a-conditional-statements.html#cb391-9" tabindex="-1"></a>  x <span class="sc">&lt;</span> .<span class="dv">9</span>   <span class="sc">~</span> <span class="st">&quot;medium high&quot;</span>,</span>
+<span id="cb391-10"><a href="lesson-6a-conditional-statements.html#cb391-10" tabindex="-1"></a>  x <span class="sc">&lt;=</span><span class="fl">1.0</span>  <span class="sc">~</span> <span class="st">&quot;high&quot;</span>,</span>
+<span id="cb391-11"><a href="lesson-6a-conditional-statements.html#cb391-11" tabindex="-1"></a>  <span class="fu">is.na</span>(x) <span class="sc">~</span> <span class="st">&quot;missing&quot;</span>,</span>
+<span id="cb391-12"><a href="lesson-6a-conditional-statements.html#cb391-12" tabindex="-1"></a>  <span class="cn">TRUE</span>     <span class="sc">~</span> <span class="st">&quot;out of bounds&quot;</span></span>
+<span id="cb391-13"><a href="lesson-6a-conditional-statements.html#cb391-13" tabindex="-1"></a>)</span>
+<span id="cb391-14"><a href="lesson-6a-conditional-statements.html#cb391-14" tabindex="-1"></a><span class="do">##  [1] &quot;low&quot;           &quot;medium high&quot;   &quot;medium&quot;        &quot;medium high&quot;  </span></span>
+<span id="cb391-15"><a href="lesson-6a-conditional-statements.html#cb391-15" tabindex="-1"></a><span class="do">##  [5] &quot;high&quot;          &quot;low&quot;           &quot;medium&quot;        &quot;medium high&quot;  </span></span>
+<span id="cb391-16"><a href="lesson-6a-conditional-statements.html#cb391-16" tabindex="-1"></a><span class="do">##  [9] &quot;medium&quot;        &quot;medium&quot;        &quot;missing&quot;       &quot;out of bounds&quot;</span></span>
+<span id="cb391-17"><a href="lesson-6a-conditional-statements.html#cb391-17" tabindex="-1"></a><span class="do">## [13] &quot;out of bounds&quot;</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
@@ -1145,20 +1138,19 @@ with <code>month &lt;- 1:13</code>.
 <span id="cb393-4"><a href="lesson-6a-conditional-statements.html#cb393-4" tabindex="-1"></a>   <span class="fu">select</span>(household_id, basket_id, sales_value) <span class="sc">%&gt;%</span></span>
 <span id="cb393-5"><a href="lesson-6a-conditional-statements.html#cb393-5" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">if_else</span>(sales_value <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">&#39;high value&#39;</span>, <span class="st">&#39;low value&#39;</span>))</span>
 <span id="cb393-6"><a href="lesson-6a-conditional-statements.html#cb393-6" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 4</span></span>
-<span id="cb393-7"><a href="lesson-6a-conditional-statements.html#cb393-7" tabindex="-1"></a><span class="do">##    household_id basket_id   sales_value</span></span>
-<span id="cb393-8"><a href="lesson-6a-conditional-statements.html#cb393-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;</span></span>
-<span id="cb393-9"><a href="lesson-6a-conditional-statements.html#cb393-9" tabindex="-1"></a><span class="do">##  1 2261         31625220889        3.86</span></span>
-<span id="cb393-10"><a href="lesson-6a-conditional-statements.html#cb393-10" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1.59</span></span>
-<span id="cb393-11"><a href="lesson-6a-conditional-statements.html#cb393-11" tabindex="-1"></a><span class="do">##  3 511          32445856036        1   </span></span>
-<span id="cb393-12"><a href="lesson-6a-conditional-statements.html#cb393-12" tabindex="-1"></a><span class="do">##  4 400          31932241118       11.9 </span></span>
-<span id="cb393-13"><a href="lesson-6a-conditional-statements.html#cb393-13" tabindex="-1"></a><span class="do">##  5 918          32074655895        1.29</span></span>
-<span id="cb393-14"><a href="lesson-6a-conditional-statements.html#cb393-14" tabindex="-1"></a><span class="do">##  6 718          32614612029        2.5 </span></span>
-<span id="cb393-15"><a href="lesson-6a-conditional-statements.html#cb393-15" tabindex="-1"></a><span class="do">##  7 868          32074722463        3.49</span></span>
-<span id="cb393-16"><a href="lesson-6a-conditional-statements.html#cb393-16" tabindex="-1"></a><span class="do">##  8 1688         34850403304        2   </span></span>
-<span id="cb393-17"><a href="lesson-6a-conditional-statements.html#cb393-17" tabindex="-1"></a><span class="do">##  9 467          31280745102        6.55</span></span>
-<span id="cb393-18"><a href="lesson-6a-conditional-statements.html#cb393-18" tabindex="-1"></a><span class="do">## 10 1947         32744181707        3.99</span></span>
-<span id="cb393-19"><a href="lesson-6a-conditional-statements.html#cb393-19" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb393-20"><a href="lesson-6a-conditional-statements.html#cb393-20" tabindex="-1"></a><span class="do">## # ℹ 1 more variable: value &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb393-7"><a href="lesson-6a-conditional-statements.html#cb393-7" tabindex="-1"></a><span class="do">##    household_id basket_id   sales_value value     </span></span>
+<span id="cb393-8"><a href="lesson-6a-conditional-statements.html#cb393-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;     </span></span>
+<span id="cb393-9"><a href="lesson-6a-conditional-statements.html#cb393-9" tabindex="-1"></a><span class="do">##  1 2261         31625220889        3.86 low value </span></span>
+<span id="cb393-10"><a href="lesson-6a-conditional-statements.html#cb393-10" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1.59 low value </span></span>
+<span id="cb393-11"><a href="lesson-6a-conditional-statements.html#cb393-11" tabindex="-1"></a><span class="do">##  3 511          32445856036        1    low value </span></span>
+<span id="cb393-12"><a href="lesson-6a-conditional-statements.html#cb393-12" tabindex="-1"></a><span class="do">##  4 400          31932241118       11.9  high value</span></span>
+<span id="cb393-13"><a href="lesson-6a-conditional-statements.html#cb393-13" tabindex="-1"></a><span class="do">##  5 918          32074655895        1.29 low value </span></span>
+<span id="cb393-14"><a href="lesson-6a-conditional-statements.html#cb393-14" tabindex="-1"></a><span class="do">##  6 718          32614612029        2.5  low value </span></span>
+<span id="cb393-15"><a href="lesson-6a-conditional-statements.html#cb393-15" tabindex="-1"></a><span class="do">##  7 868          32074722463        3.49 low value </span></span>
+<span id="cb393-16"><a href="lesson-6a-conditional-statements.html#cb393-16" tabindex="-1"></a><span class="do">##  8 1688         34850403304        2    low value </span></span>
+<span id="cb393-17"><a href="lesson-6a-conditional-statements.html#cb393-17" tabindex="-1"></a><span class="do">##  9 467          31280745102        6.55 low value </span></span>
+<span id="cb393-18"><a href="lesson-6a-conditional-statements.html#cb393-18" tabindex="-1"></a><span class="do">## 10 1947         32744181707        3.99 low value </span></span>
+<span id="cb393-19"><a href="lesson-6a-conditional-statements.html#cb393-19" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span></code></pre></div>
 <div class="tip">
 <p>
 <code>dplyr::if_else</code> is preferred to the base R
@@ -1187,21 +1179,19 @@ values more conveniently.
 <span id="cb394-11"><a href="lesson-6a-conditional-statements.html#cb394-11" tabindex="-1"></a>     )</span>
 <span id="cb394-12"><a href="lesson-6a-conditional-statements.html#cb394-12" tabindex="-1"></a>   )</span>
 <span id="cb394-13"><a href="lesson-6a-conditional-statements.html#cb394-13" tabindex="-1"></a><span class="do">## # A tibble: 75,000 × 5</span></span>
-<span id="cb394-14"><a href="lesson-6a-conditional-statements.html#cb394-14" tabindex="-1"></a><span class="do">##    household_id basket_id   quantity</span></span>
-<span id="cb394-15"><a href="lesson-6a-conditional-statements.html#cb394-15" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb394-16"><a href="lesson-6a-conditional-statements.html#cb394-16" tabindex="-1"></a><span class="do">##  1 2261         31625220889        1</span></span>
-<span id="cb394-17"><a href="lesson-6a-conditional-statements.html#cb394-17" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1</span></span>
-<span id="cb394-18"><a href="lesson-6a-conditional-statements.html#cb394-18" tabindex="-1"></a><span class="do">##  3 511          32445856036        1</span></span>
-<span id="cb394-19"><a href="lesson-6a-conditional-statements.html#cb394-19" tabindex="-1"></a><span class="do">##  4 400          31932241118        2</span></span>
-<span id="cb394-20"><a href="lesson-6a-conditional-statements.html#cb394-20" tabindex="-1"></a><span class="do">##  5 918          32074655895        1</span></span>
-<span id="cb394-21"><a href="lesson-6a-conditional-statements.html#cb394-21" tabindex="-1"></a><span class="do">##  6 718          32614612029        1</span></span>
-<span id="cb394-22"><a href="lesson-6a-conditional-statements.html#cb394-22" tabindex="-1"></a><span class="do">##  7 868          32074722463        1</span></span>
-<span id="cb394-23"><a href="lesson-6a-conditional-statements.html#cb394-23" tabindex="-1"></a><span class="do">##  8 1688         34850403304        1</span></span>
-<span id="cb394-24"><a href="lesson-6a-conditional-statements.html#cb394-24" tabindex="-1"></a><span class="do">##  9 467          31280745102        2</span></span>
-<span id="cb394-25"><a href="lesson-6a-conditional-statements.html#cb394-25" tabindex="-1"></a><span class="do">## 10 1947         32744181707        1</span></span>
-<span id="cb394-26"><a href="lesson-6a-conditional-statements.html#cb394-26" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span>
-<span id="cb394-27"><a href="lesson-6a-conditional-statements.html#cb394-27" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: sales_value &lt;dbl&gt;,</span></span>
-<span id="cb394-28"><a href="lesson-6a-conditional-statements.html#cb394-28" tabindex="-1"></a><span class="do">## #   value &lt;chr&gt;</span></span></code></pre></div>
+<span id="cb394-14"><a href="lesson-6a-conditional-statements.html#cb394-14" tabindex="-1"></a><span class="do">##    household_id basket_id   quantity sales_value value          </span></span>
+<span id="cb394-15"><a href="lesson-6a-conditional-statements.html#cb394-15" tabindex="-1"></a><span class="do">##    &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;          </span></span>
+<span id="cb394-16"><a href="lesson-6a-conditional-statements.html#cb394-16" tabindex="-1"></a><span class="do">##  1 2261         31625220889        1        3.86 Small purchase </span></span>
+<span id="cb394-17"><a href="lesson-6a-conditional-statements.html#cb394-17" tabindex="-1"></a><span class="do">##  2 2131         32053127496        1        1.59 Small purchase </span></span>
+<span id="cb394-18"><a href="lesson-6a-conditional-statements.html#cb394-18" tabindex="-1"></a><span class="do">##  3 511          32445856036        1        1    Small purchase </span></span>
+<span id="cb394-19"><a href="lesson-6a-conditional-statements.html#cb394-19" tabindex="-1"></a><span class="do">##  4 400          31932241118        2       11.9  Large purchase </span></span>
+<span id="cb394-20"><a href="lesson-6a-conditional-statements.html#cb394-20" tabindex="-1"></a><span class="do">##  5 918          32074655895        1        1.29 Small purchase </span></span>
+<span id="cb394-21"><a href="lesson-6a-conditional-statements.html#cb394-21" tabindex="-1"></a><span class="do">##  6 718          32614612029        1        2.5  Small purchase </span></span>
+<span id="cb394-22"><a href="lesson-6a-conditional-statements.html#cb394-22" tabindex="-1"></a><span class="do">##  7 868          32074722463        1        3.49 Small purchase </span></span>
+<span id="cb394-23"><a href="lesson-6a-conditional-statements.html#cb394-23" tabindex="-1"></a><span class="do">##  8 1688         34850403304        1        2    Small purchase </span></span>
+<span id="cb394-24"><a href="lesson-6a-conditional-statements.html#cb394-24" tabindex="-1"></a><span class="do">##  9 467          31280745102        2        6.55 Medium purchase</span></span>
+<span id="cb394-25"><a href="lesson-6a-conditional-statements.html#cb394-25" tabindex="-1"></a><span class="do">## 10 1947         32744181707        1        3.99 Small purchase </span></span>
+<span id="cb394-26"><a href="lesson-6a-conditional-statements.html#cb394-26" tabindex="-1"></a><span class="do">## # ℹ 74,990 more rows</span></span></code></pre></div>
 <div class="video">
 <p>
 <br>
