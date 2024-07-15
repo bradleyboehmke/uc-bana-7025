@@ -33,14 +33,14 @@ By the end of this lesson you will be able to:
 
 For this lesson we'll use the **tidymodels** package and we'll use data from the **modeldata** package.
 
-```{r}
+```{r lesson7a_pkgs}
 library(tidymodels)
 library(modeldata)
 ```
 
 The two data sets we'll use are `ames` and `attrition`. You've seen the `ames` data plenty of times up to  this point but the `attrition` data is new. You can read about the `attrition` data at `?attrition`. Long story short, it is a data set that contains employee attrition information and allows us to illustrate classification modeling techniques (whereas `ames` is a regression problem).
 
-```{r}
+```{r lesson7a_data}
 data(ames, attrition)
 ```
 
@@ -75,7 +75,7 @@ The simplest way to split the data into training and test sets is to take a simp
 Sampling is a random process so setting the random number generator with a common seed allows for reproducible results.  Throughout this course we'll often use the seed `123` for reproducibility but the number itself has no special meaning.
 ```
 
-```{r}
+```{r lesson7a_data_splitting}
 # create train/test split
 set.seed(123)  # for reproducibility
 split  <- initial_split(ames, prop = 0.7)
