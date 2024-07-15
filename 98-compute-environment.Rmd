@@ -4,6 +4,6 @@
 
 This book was built with the following computing environment and packages:
 
-```{r}
+```{r compute_environment}
 sessioninfo::session_info(pkgs = 'attached')
 ```
