@@ -39,35 +39,35 @@ index:
 modules:
   - module: 1
     week: 1
-    topics: ["introduction", "python basics", "jupyter", "data types"]
-    chapters: ["01-introduction", "02-python-foundations", "03-jupyter-colab"]
+    topics: ["introduction", "data science", "python setup", "python basics", "data types", "variables"]
+    chapters: ["01-intro-data-mining", "02-preparing-for-code", "03-python-basics"]
 
   - module: 2
     week: 2
-    topics: ["dataframes", "pandas", "importing data", "read_csv"]
-    chapters: ["04-dataframes", "05-importing-data"]
+    topics: ["jupyter", "notebooks", "data structures", "lists", "dicts", "libraries", "packages", "import"]
+    chapters: ["04-jupyter", "05-data-structures", "06-libraries"]
 
   - module: 3
     week: 3
-    topics: ["cleaning", "missing values", "dtypes", "string cleaning"]
-    chapters: ["06-cleaning-data"]
+    topics: ["importing data", "read_csv", "dataframes", "pandas", "subsetting", "filtering", "selecting columns"]
+    chapters: ["07-importing-data", "08-dataframes", "09-subsetting"]
 
   - module: 4
     week: 4
-    topics: ["filtering", "sorting", "groupby", "aggregation", "transformation"]
-    chapters: ["07-wrangling-data"]
+    topics: ["manipulating data", "transforming columns", "aggregation", "groupby", "joining", "merge"]
+    chapters: ["10-manipulating-data", "11_aggregating_data", "12-joining-data"]
 
   - module: 5
     week: 5
-    topics: ["joining", "merge", "reshape", "pivot", "melt", "tidy data"]
-    chapters: ["08-joining-data", "09-reshaping-data"]
+    topics: ["visualization", "plotting", "pandas plot", "matplotlib", "seaborn", "bokeh", "interactive"]
+    chapters: ["13-data-viz-pandas", "14-data-viz-matplotlib", "15-data-viz-bokeh"]
 
   - module: 6
     week: 6
-    topics: ["visualization", "matplotlib", "seaborn", "EDA", "exploratory"]
-    chapters: ["10-visualization", "11-eda"]
+    topics: ["control flow", "if else", "iteration", "for loops", "while loops", "functions", "reusable code"]
+    chapters: ["16-control-statements", "17-iteration-statements", "18-functions"]
 
   - module: 7
     week: 7
-    topics: ["functions", "control flow", "modeling", "scikit-learn"]
-    chapters: ["12-functions-control-flow", "13-intro-modeling"]
+    topics: ["EDA", "data exploration", "modeling", "scikit-learn", "feature engineering", "model evaluation"]
+    chapters: ["19-data-exploration", "20-first-model", "21-feature-engineering", "22-model-evaluation"]

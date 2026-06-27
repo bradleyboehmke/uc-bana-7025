@@ -1,7 +1,9 @@
 # =============================================================================
-# Claude Code — contains API keys and local permissions, never commit
+# Claude Code — settings may contain API keys; commands are tracked intentionally
 # =============================================================================
-.claude/
+.claude/**
+!.claude/commands/
+!.claude/commands/**
 
 # =============================================================================
 # Quarto — build output (deployed to gh-pages branch by GitHub Actions)
