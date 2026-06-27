@@ -1,0 +1,76 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "BANA 7025: Data Wrangling with Python"
+  author: "Brad Boehmke"
+  date: today
+  search: true
+  sidebar:
+    style: docked
+  repo-url: https://github.com/bradleyboehmke/uc-bana-7025
+  repo-branch: main
+  repo-actions: [edit, issue]
+  downloads: [epub]
+  sharing: [twitter]
+
+  chapters:
+    - index.qmd
+    - part: book/module-01-overview.qmd
+      chapters:
+        - book/01-intro-data-mining.qmd
+        - book/02-preparing-for-code.qmd
+        - book/03-python-basics.qmd
+    - part: book/module-02-overview.qmd
+      chapters:
+        - book/04-jupyter.qmd
+        - book/05-data-structures.qmd
+        - book/06-libraries.qmd
+    - part: book/module-03-overview.qmd
+      chapters:
+        - book/07-importing-data.qmd
+        - book/08-dataframes.qmd
+        - book/09-subsetting.qmd
+    - part: book/module-04-overview.qmd
+      chapters:
+        - book/10-manipulating-data.qmd
+        - book/11_aggregating_data.qmd
+        - book/12-joining-data.qmd
+    - part: book/module-05-overview.qmd
+      chapters:
+        - book/13-data-viz-pandas.qmd
+        - book/14-data-viz-matplotlib.qmd
+        - book/15-data-viz-bokeh.qmd
+    - part: book/module-06-overview.qmd
+      chapters:
+        - book/16-control-statements.qmd
+        - book/17-iteration-statements.qmd
+        - book/18-functions.qmd
+    - part: book/module-07-overview.qmd
+      chapters:
+        - book/19-data-exploration.qmd
+        - book/20-first-model.qmd
+        - book/21-feature-engineering.qmd
+        - book/22-model-evaluation.qmd
+    - book/references.qmd
+  appendices:
+    - book/99-anaconda-install.qmd
+    - book/99-vscode-install.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    respect-user-color-scheme: true
+    theme:
+      light: flatly
+      dark: superhero
+    code-link: true
+    callout-appearance: simple
+    number-depth: 2
+    mermaid:
+      theme: neutral
+
+execute:
+  eval: false

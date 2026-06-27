@@ -1,0 +1,59 @@
+# Welcome {.unnumbered}
+
+Welcome to **BANA 7025: Data Wrangling with Python** — a 7-week graduate course that teaches you how to work with data in Python from first principles through applied wrangling, visualization, and reproducible workflows.
+
+## What this course is about
+
+Data rarely arrives in the form you need. Before any analysis, modeling, or reporting can happen, someone has to clean it, reshape it, join it, and make sense of it. That work is data wrangling — and it is the most common, most time-consuming, and most underestimated skill in applied data science.
+
+This course teaches you to do that work fluently in Python.
+
+By the end of BANA 7025, you will:
+
+- Set up and navigate a Python environment for data science
+- Read data from CSV, Excel, databases, and the web
+- Inspect, filter, sort, and select data with pandas
+- Clean messy, missing, and inconsistently formatted data
+- Aggregate and summarize data across groups
+- Join and reshape multiple tables
+- Visualize patterns with matplotlib and seaborn
+- Write reusable functions and reproducible workflows
+- Apply basic modeling concepts to your data
+
+## The semester project
+
+Each module connects to a semester-long project built around the **Complete Journey** retail transaction dataset — a rich, multi-table dataset from a real grocery retailer that tracks household purchases over time. You will load, clean, join, aggregate, and visualize this data week by week, arriving at a final analytic dataset and summary report by the end of the course.
+
+## How to use this book
+
+This book is the primary reading material for BANA 7025. Each chapter maps to one or more lessons in the course:
+
+| Module | Topics | Chapters |
+|--------|--------|---------|
+| 1 | Getting started | 1 – 3 |
+| 2 | Working with data | 4 – 5 |
+| 3 | Cleaning data | 6 |
+| 4 | Data wrangling | 7 |
+| 5 | Combining & reshaping | 8 – 9 |
+| 6 | Visualization & EDA | 10 – 11 |
+| 7 | Functions & modeling | 12 – 13 |
+
+Each chapter includes:
+
+- **Conceptual explanations** of the topic
+- **Worked Python examples** you can run in Jupyter or Google Colab
+- **Your Turn** exercises to check your understanding
+- **Semester project checkpoints** that apply the concepts to the Complete Journey data
+
+## Resources
+
+- [Course slides](../slides/week-01.html) — weekly Reveal.js decks
+- [Lab notebooks](../labs/) — Thursday lab assignments (.ipynb)
+- [Semester project](../project/semester-project-overview.html) — full project overview and checkpoints
+- [AI Tutor](../tutor/) — grounded in course content, available anytime
+
+## Getting help
+
+The AI tutor embedded in this platform is trained on this textbook, the slides, and the example notebooks. It can help you understand concepts, debug code, and reason through problems — but it will not complete graded assignments for you.
+
+For questions about grading, logistics, or policies, contact the course instructor directly.
