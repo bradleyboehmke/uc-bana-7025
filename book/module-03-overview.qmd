@@ -1,0 +1,35 @@
+# Module 3: DataFrames & Importing Data {.unnumbered}
+
+This module is where the data wrangling begins in earnest. You'll learn to load data from files and databases into pandas DataFrames, explore their structure, and start selecting and filtering rows and columns. By the end of Week 3, you'll be able to take a raw data file and quickly understand what's in it.
+
+## Learning Objectives {.unnumbered}
+
+By the end of this module, you will:
+
+- Read data from CSV, Excel, JSON, and database sources into pandas DataFrames
+- Inspect a DataFrame's shape, columns, dtypes, and summary statistics
+- Select columns and filter rows using boolean indexing
+- Understand the relationship between a pandas Series and a DataFrame
+
+## Module Resources {.unnumbered}
+
+### Lecture {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📊 Week 3 Slides | [View slides](../slides/week-03.html){target="_blank"} |
+| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+
+### Chapters & Notebooks {.unnumbered}
+
+| Chapter | Topic | Colab Notebook |
+|---------|-------|---------------|
+| 7 | Importing Data | *Coming soon* |
+| 8 | DataFrames | *Coming soon* |
+| 9 | Subsetting Data | *Coming soon* |
+
+### Lab {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 🧪 Lab 3 | *Coming soon* |

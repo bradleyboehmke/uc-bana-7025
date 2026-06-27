@@ -1,0 +1,35 @@
+# Module 5: Data Visualization {.unnumbered}
+
+This module introduces the Python visualization ecosystem. You'll learn to create quick exploratory charts with pandas, build polished static figures with matplotlib, and make interactive visualizations with Bokeh. By the end of Week 5, you'll be able to choose the right tool for the visualization task and customize the result for your audience.
+
+## Learning Objectives {.unnumbered}
+
+By the end of this module, you will:
+
+- Create quick exploratory charts directly from a DataFrame using pandas `.plot()`
+- Build and customize static figures using matplotlib's figure/axes architecture
+- Create interactive charts for web delivery using Bokeh
+- Choose the appropriate chart type for a given data question
+
+## Module Resources {.unnumbered}
+
+### Lecture {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📊 Week 5 Slides | [View slides](../slides/week-05.html){target="_blank"} |
+| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+
+### Chapters & Notebooks {.unnumbered}
+
+| Chapter | Topic | Colab Notebook |
+|---------|-------|---------------|
+| 13 | Visualization with Pandas | *Coming soon* |
+| 14 | Visualization with Matplotlib | *Coming soon* |
+| 15 | Interactive Visualization with Bokeh | *Coming soon* |
+
+### Lab {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 🧪 Lab 5 | *Coming soon* |
