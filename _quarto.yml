@@ -54,6 +54,9 @@ book:
         - book/21-feature-engineering.qmd
         - book/22-model-evaluation.qmd
     - book/references.qmd
+    - part: "Cheat Sheets"
+      chapters:
+        - book/module-01-cheatsheet.qmd
   appendices:
     - book/99-anaconda-install.qmd
     - book/99-vscode-install.qmd
