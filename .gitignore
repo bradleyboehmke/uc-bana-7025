@@ -4,9 +4,10 @@
 .claude/
 
 # =============================================================================
-# Quarto
+# Quarto — build output (deployed to gh-pages branch by GitHub Actions)
 # =============================================================================
 /.quarto/
+/docs/
 *_files/
 *_cache/
 *.quarto_ipynb
