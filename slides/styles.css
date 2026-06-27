@@ -1,0 +1,18 @@
+/*-- scss:rules --*/
+
+.reveal h1, .reveal h2 {
+  font-weight: 600;
+}
+
+.reveal .slide-number {
+  font-size: 0.6em;
+}
+
+.reveal pre code {
+  max-height: 500px;
+  font-size: 0.85em;
+}
+
+.reveal .callout {
+  font-size: 0.85em;
+}
