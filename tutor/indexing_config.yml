@@ -1,0 +1,73 @@
+# Tutor content indexing configuration
+
+course:
+  name: "BANA 7025"
+  title: "Data Wrangling with Python"
+  institution: "University of Cincinnati"
+
+index:
+  output_file: "tutor/content_index.json"
+
+  chunk_settings:
+    max_chunk_tokens: 512
+    overlap_tokens: 64
+    min_chunk_tokens: 50
+
+  metadata_template:
+    course: "BANA 7025"
+    module: null        # populated per file
+    week: null          # populated per file
+    topic: null         # populated per file
+    source_type: null   # textbook | slides | example | lab | project
+    path: null          # file path
+    student_visible: null
+    graded: null
+    content: null       # chunked text
+
+  extraction:
+    qmd:
+      strip_yaml: true
+      include_code: true
+      include_callouts: true
+
+    ipynb:
+      include_markdown: true
+      include_code: true
+      skip_output: true   # don't index cell outputs
+
+# Module/week metadata for tagging during indexing
+modules:
+  - module: 1
+    week: 1
+    topics: ["introduction", "python basics", "jupyter", "data types"]
+    chapters: ["01-introduction", "02-python-foundations", "03-jupyter-colab"]
+
+  - module: 2
+    week: 2
+    topics: ["dataframes", "pandas", "importing data", "read_csv"]
+    chapters: ["04-dataframes", "05-importing-data"]
+
+  - module: 3
+    week: 3
+    topics: ["cleaning", "missing values", "dtypes", "string cleaning"]
+    chapters: ["06-cleaning-data"]
+
+  - module: 4
+    week: 4
+    topics: ["filtering", "sorting", "groupby", "aggregation", "transformation"]
+    chapters: ["07-wrangling-data"]
+
+  - module: 5
+    week: 5
+    topics: ["joining", "merge", "reshape", "pivot", "melt", "tidy data"]
+    chapters: ["08-joining-data", "09-reshaping-data"]
+
+  - module: 6
+    week: 6
+    topics: ["visualization", "matplotlib", "seaborn", "EDA", "exploratory"]
+    chapters: ["10-visualization", "11-eda"]
+
+  - module: 7
+    week: 7
+    topics: ["functions", "control flow", "modeling", "scikit-learn"]
+    chapters: ["12-functions-control-flow", "13-intro-modeling"]
