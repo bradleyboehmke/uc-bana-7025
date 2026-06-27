@@ -651,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will use data from the 1994 US census that we downloaded from <a href="http://openml.org/">OpenML</a>.</p>
 <p>You can look at the OpenML webpage to learn more about this dataset: <a href="http://www.openml.org/d/1590" class="uri">http://www.openml.org/d/1590</a></p>
 <p>The dataset is available as a CSV (Comma-Separated Values) file and we will use pandas to read it.</p>
-<div id="847634f4" class="cell" data-execution_count="1">
+<div id="dc8cb2d1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>adult_census <span class="op">=</span> pd.read_csv(<span class="st">"../data/adult-census.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -665,7 +665,7 @@ information, etc.</code></pre>
 <p>The column named <code>class</code> is our target variable (i.e., the variable which we want to predict).</p>
 <p>The two possible classes are &lt;=50K (low-revenue) and &gt;50K (high-revenue).</p>
 <p>Consequently, this is called a <em>binary classification</em> problem.</p>
-<div id="be3305b9" class="cell" data-execution_count="2">
+<div id="a71bd896" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>target_column <span class="op">=</span> <span class="st">'class'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>adult_census[target_column].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -677,11 +677,11 @@ and may need special techniques when building a predictive model.</code></pre>
 <h2 data-number="19.4" class="anchored" data-anchor-id="features"><span class="header-section-number">19.4</span> Features</h2>
 <p>The other columns represent pieces of information (aka “features”) that may be useful in predicting the response variable.</p>
 <p>In the field of machine learning and descriptive statistics, commonly used equivalent terms are “variable”, “attribute”, or “covariate”.</p>
-<div id="2f70a0f5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="3">
+<div id="e6f1e43a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> adult_census.drop(columns<span class="op">=</span><span class="st">'class'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>features.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="758270db" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
+<div id="717921b1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> features.select_dtypes(include<span class="op">=</span>np.number).columns.values</span>
@@ -706,7 +706,7 @@ and may need special techniques when building a predictive model.</code></pre>
 <li>we may identify feature engineering tasks that could improve modeling performance.</li>
 </ul>
 <p>Let’s look at the distribution of individual features, to get some insights about the data. We can start by plotting histograms, note that this only works for features containing numerical values:</p>
-<div id="8f83b213" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
+<div id="23f8eda1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>adult_census.hist(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">14</span>))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can already make a few comments about some of the variables:</p>
@@ -717,17 +717,17 @@ and may need special techniques when building a predictive model.</code></pre>
 <li>most values of <code>capital-gain</code> and <code>capital-loss</code> are close to zero.</li>
 </ul>
 <p>For categorical variables, we can look at the distribution of values:</p>
-<div id="47cb1930" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
+<div id="223dc894" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>adult_census[<span class="st">'sex'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that there is an important imbalance on the data collection concerning the number of male/female samples. Be aware that any kind of data imbalance will impact the generalizability of a model trained on it. Moreover, it can lead to <a href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-fairness-ml#what-is-machine-learning-fairness">fairness</a> problems if used naively when deploying a real life setting.</p>
 <p>We recommend our readers to refer to <a href="https://fairlearn.org/">fairlearn.org</a> for resources on how to quantify and potentially mitigate fairness issues related to the deployment of automated decision making systems that relying on machine learning components.</p>
-<div id="8fab438d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="7">
+<div id="27d7e592" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>adult_census[<span class="st">'education'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><code>dmwosskddwet Question: :class: attention What do you think the difference is between `education` and `education-num`?</code></p>
+<p><code>scajzprblivf Question: :class: attention What do you think the difference is between `education` and `education-num`?</code></p>
 <p>Let’s look at the relationship between <code>education</code> and <code>education-num</code>.</p>
-<div id="b61c6b3b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="8">
+<div id="2a9fde2a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>adult_census[<span class="st">'education'</span>],</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>adult_census[<span class="st">'education-num'</span>]</span>
@@ -736,12 +736,12 @@ and may need special techniques when building a predictive model.</code></pre>
 <p>This shows that <code>education</code> and <code>education-num</code> give you the same information. For example, <code>education-num=2</code> is equivalent to <code>education='1st-4th'</code>. In practice that means we can remove <code>education-num</code> without losing information.</p>
 <pre class="{note}"><code>Having redundant (or highly correlated) columns can be a problem for machine learning algorithms. In the upcoming notebooks, we will only keep the `education` variable, excluding the `education-num` variable since the latter is redundant with the former.</code></pre>
 <p>We can measure the actual correlation across our numeric features using the <code>.corr()</code> method. Highly correlated variables is something to keep an eye on as they can cause problems in certain machine learning algorithms. However, in this data the numeric features have low correlation.</p>
-<div id="66b3f4b7" class="cell" data-execution_count="9">
+<div id="8cbbab4d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> adult_census[numeric_columns].corr()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>corr.style.background_gradient(cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Another way to inspect the data is to do a <code>pairplot</code> and show how each variable differs according to our target, i.e.&nbsp;<code>class</code>. Plots along the diagonal show the distribution of individual variables for each <code>class</code>. The plots on the off-diagonal can reveal interesting interactions between variables.</p>
-<div id="148692a5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
+<div id="7ca30ba7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We will plot a subset of the data to keep the plot readable and make the</span></span>
@@ -756,9 +756,9 @@ and may need special techniques when building a predictive model.</code></pre>
 <section id="creating-decision-rules-by-hand" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="creating-decision-rules-by-hand"><span class="header-section-number">19.6</span> Creating decision rules by hand</h2>
 <p>By looking at the previous plots, we could create some hand-written rules that predicts whether someone has a high- or low-income.</p>
-<p><code>dmwosskddwet Question: :class: attention Looking at the prior pairplot, what type of decision rules would you suggest?</code></p>
+<p><code>scajzprblivf Question: :class: attention Looking at the prior pairplot, what type of decision rules would you suggest?</code></p>
 <p>For instance, we could focus on the combination of the <code>hours-per-week</code> and <code>age</code> features.</p>
-<div id="9f8aaad9" class="cell" data-execution_count="11">
+<div id="d31284c1" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"age"</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"hours-per-week"</span>,</span>
@@ -769,7 +769,7 @@ and may need special techniques when building a predictive model.</code></pre>
 </div>
 <p>The data points (circles) show the distribution of <code>hours-per-week</code> and <code>age</code> in the dataset. Blue points mean low-income and orange points mean high-income. This part of the plot is the same as the bottom-left plot in the pairplot above.</p>
 <p>In this plot, we can try to find regions that mainly contains a single class such that we can easily decide what class one should predict. We could come up with hand-written rules as shown in this plot:</p>
-<div id="40845eca" class="cell" data-execution_count="12">
+<div id="1073c68a" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.scatterplot(</span>
@@ -803,7 +803,7 @@ and may need special techniques when building a predictive model.</code></pre>
 </section>
 <section id="exercises" class="level2" data-number="19.8">
 <h2 data-number="19.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">19.8</span> Exercises</h2>
-<p>```dmwosskddwet Questions: Using the <strong>ames_clean.csv</strong> data:</p>
+<p>```scajzprblivf Questions: Using the <strong>ames_clean.csv</strong> data:</p>
 <ol type="1">
 <li>Assess the distribution of the response variable (<code>SalePrice</code>)</li>
 <li>How many features are numeric vs.&nbsp;categorical?</li>
@@ -813,7 +813,7 @@ and may need special techniques when building a predictive model.</code></pre>
 <pre><code>
 ## Computing environment
 
-::: {#f3033e1d .cell execution_count=13}
+::: {#14bc68ee .cell execution_count=13}
 ``` {.python .cell-code}
 %load_ext watermark
 %watermark -v -p jupyterlab,pandas,numpy,seaborn,matplotlib</code></pre>
