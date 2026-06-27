@@ -1,0 +1,124 @@
+---
+title: "Semester Project Overview"
+subtitle: "BANA 7025: Data Wrangling with Python"
+---
+
+## Overview
+
+The BANA 7025 semester project is a progressive, multi-week analysis built around the **Complete Journey** retail transaction dataset. Each week, you apply the skills from that week's module to extend your project — arriving at a final analytic notebook by the end of the course.
+
+The goal is not to produce a polished research paper. The goal is to practice real data wrangling work in a realistic business context, making deliberate analytical choices and documenting your reasoning as you go.
+
+## Dataset: Complete Journey
+
+The Complete Journey dataset is provided by a real U.S. grocery retailer. It tracks the purchase behavior of 2,500 households over two years of shopping.
+
+**Install the package:**
+
+```bash
+pip install completejourney_py
+```
+
+**Load the data:**
+
+```python
+from completejourney_py import get_data
+
+cj = get_data()
+
+transactions = cj['transactions']    # purchase records
+products     = cj['products']        # product metadata
+demographics = cj['demographics']    # household demographics
+campaigns    = cj['campaigns']       # marketing promotions
+```
+
+**Key tables:**
+
+| Table | Rows | Key columns |
+|-------|------|-------------|
+| `transactions` | ~2.5M | household_id, product_id, quantity, sales_value, week |
+| `products` | ~92K | product_id, department, commodity_desc, brand |
+| `demographics` | ~801 | household_id, age, income, marital_status, household_size |
+| `campaigns` | ~7.2K | household_id, campaign_id, campaign_type |
+
+## Weekly Checkpoints
+
+Each checkpoint builds on the previous one. Work on checkpoints in the provided notebook templates in `notebooks/project-checkpoints/`.
+
+### Checkpoint 1 (Week 2): Load & Inspect
+
+**Skills:** DataFrames, `.info()`, `.describe()`, `.head()`
+
+- Load all four tables
+- Report the shape (rows × columns) of each
+- List the columns and dtypes
+- Write 2–3 observations about the data
+
+### Checkpoint 2 (Week 3): Inspect Rows & Columns
+
+**Skills:** Indexing, value counts, unique values
+
+- How many unique households are in the transaction data?
+- How many unique products?
+- What is the date range of the transactions?
+- What are the top 5 departments by number of products?
+
+### Checkpoint 3 (Week 4): Clean the Data
+
+**Skills:** Missing values, type conversion, string cleaning
+
+- Identify and count missing values in each table
+- Fix any columns with incorrect dtypes
+- Document your cleaning decisions with comments
+
+### Checkpoint 4 (Week 5): Filter & Aggregate
+
+**Skills:** Boolean filtering, `.groupby()`, `.agg()`
+
+- Filter transactions to a single department of your choice
+- Compute: total spend, average basket size, and number of trips per household
+- Identify the top 10 households by total spend
+
+### Checkpoint 5 (Week 6): Join & Reshape
+
+**Skills:** `pd.merge()`, pivot tables
+
+- Join transactions to products and demographics
+- Create a summary table: average spend by income level and department
+- Pivot the result for readability
+
+### Checkpoint 6 (Week 7): Visualize
+
+**Skills:** matplotlib, seaborn
+
+- Create at least 3 visualizations that answer business questions:
+  1. Distribution of household spend
+  2. Top categories by revenue
+  3. One comparison across a demographic dimension
+
+### Final Submission (Week 7)
+
+Your final project notebook should:
+
+1. Load and document the data
+2. Show your cleaning and wrangling steps
+3. Present your joined, aggregated, reshaped dataset
+4. Include 3+ visualizations with captions
+5. Write a 1-page executive summary: what did you find, and what would you recommend to the business?
+
+## Grading
+
+| Component | Weight |
+|-----------|--------|
+| Checkpoints 1–5 (5 × 5%) | 25% |
+| Checkpoint 6 + Visualizations | 20% |
+| Final notebook — code quality | 20% |
+| Final notebook — analysis narrative | 20% |
+| Executive summary | 15% |
+
+## Resources
+
+- [Course textbook](../book/index.html) — chapters map to each checkpoint
+- [Example notebooks](../notebooks/examples/) — working code for each topic
+- [AI Tutor](../tutor/) — ask about the data, the code, or the concepts
+- [completejourney_py documentation](https://cunningjames.github.io/completejourney_py/)

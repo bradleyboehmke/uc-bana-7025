@@ -1,0 +1,35 @@
+# Module 2: Python Data Science Ecosystem {.unnumbered}
+
+This module covers the tools and structures at the heart of Python data science: Jupyter notebooks as your working environment, Python's built-in data structures, and the package ecosystem that powers everything else. By the end of Week 2, you'll be comfortable importing libraries, working with collections of data, and understanding how Python packages fit together.
+
+## Learning Objectives {.unnumbered}
+
+By the end of this module, you will:
+
+- Navigate JupyterLab and use notebooks effectively for data work
+- Work with Python's core data structures: lists, tuples, sets, and dictionaries
+- Import and use third-party packages (`pandas`, `numpy`, `matplotlib`)
+- Understand the difference between the Python standard library and the data science ecosystem
+
+## Module Resources {.unnumbered}
+
+### Lecture {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📊 Week 2 Slides | [View slides](../slides/week-02.html){target="_blank"} |
+| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+
+### Chapters & Notebooks {.unnumbered}
+
+| Chapter | Topic | Colab Notebook |
+|---------|-------|---------------|
+| 4 | Jupyter Notebooks | *Coming soon* |
+| 5 | Data Structures | *Coming soon* |
+| 6 | Packages & Libraries | *Coming soon* |
+
+### Lab {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 🧪 Lab 2 | *Coming soon* |

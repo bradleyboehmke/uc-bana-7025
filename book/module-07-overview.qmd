@@ -1,0 +1,43 @@
+# Module 7: Introduction to Machine Learning {.unnumbered}
+
+This module bridges data wrangling and predictive modeling. You'll explore data systematically before modeling, fit your first scikit-learn model, engineer features to improve predictions, and evaluate model performance rigorously. By the end of Week 7, you'll have a complete end-to-end ML workflow and a foundation for further study in BANA 4080.
+
+## Learning Objectives {.unnumbered}
+
+By the end of this module, you will:
+
+- Conduct systematic exploratory data analysis prior to modeling
+- Split data into training and test sets and explain why the split matters
+- Fit a baseline model using the scikit-learn API (`fit`, `predict`, `score`)
+- Apply common feature engineering transformations (scaling, encoding)
+- Evaluate model performance using appropriate metrics (RMSE, accuracy, AUC)
+- Compare multiple models and select based on held-out performance
+
+## Module Resources {.unnumbered}
+
+### Lecture {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📊 Week 7 Slides | [View slides](../slides/week-07.html){target="_blank"} |
+| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+
+### Chapters & Notebooks {.unnumbered}
+
+| Chapter | Topic | Colab Notebook |
+|---------|-------|---------------|
+| 19 | Data Exploration | *Coming soon* |
+| 20 | First Model with scikit-learn | *Coming soon* |
+| 21 | Feature Engineering | *Coming soon* |
+| 22 | Model Evaluation & Selection | *Coming soon* |
+
+### Lab {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 🧪 Lab 7 | *Coming soon* |
+
+::: {.callout-note}
+## What comes next?
+Module 7 is an introduction. BANA 4080 covers the full machine learning curriculum — regression, classification, tree-based models, cross-validation, hyperparameter tuning, and unsupervised learning — in depth.
+:::

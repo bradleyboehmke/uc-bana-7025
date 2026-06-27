@@ -1,0 +1,39 @@
+# Allowed sources for AI tutor indexing
+# These are student-facing materials the tutor may use to ground responses.
+
+sources:
+  - path: "book/**/*.qmd"
+    description: "Course textbook chapters"
+    student_visible: true
+    graded: false
+
+  - path: "slides/**/*.qmd"
+    description: "Weekly lecture slides"
+    student_visible: true
+    graded: false
+
+  - path: "notebooks/examples/**/*.ipynb"
+    description: "Example notebooks for each topic"
+    student_visible: true
+    graded: false
+
+  - path: "notebooks/tuesday-your-turn/**/*.ipynb"
+    description: "Tuesday in-class coding notebooks (student-facing)"
+    student_visible: true
+    graded: false
+
+  - path: "labs/**/*.ipynb"
+    description: "Lab notebooks (student-facing, not answer keys)"
+    student_visible: true
+    graded: true
+    note: "Index problem statements only — not solutions"
+
+  - path: "project/semester-project-overview.qmd"
+    description: "Semester project overview and checkpoint instructions"
+    student_visible: true
+    graded: false
+
+  - path: "project/data/**"
+    description: "Dataset documentation"
+    student_visible: true
+    graded: false

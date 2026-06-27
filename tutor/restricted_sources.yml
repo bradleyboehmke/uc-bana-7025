@@ -1,0 +1,33 @@
+# Restricted sources for AI tutor indexing
+# These files must NEVER be indexed or surfaced to students.
+
+restricted:
+  - path: "instructor/**"
+    reason: "Instructor-only planning materials"
+
+  - path: "assignments/**/answer-key*"
+    reason: "Graded assignment answer keys"
+
+  - path: "assignments/**/solution*"
+    reason: "Solution notebooks"
+
+  - path: "labs/**/*answer*"
+    reason: "Lab answer keys"
+
+  - path: "labs/**/*solution*"
+    reason: "Lab solution notebooks"
+
+  - path: "labs/**/*key*"
+    reason: "Lab answer keys (alternate naming)"
+
+  - path: "assignments/midterm-project/**"
+    reason: "Midterm project materials (graded)"
+
+  - path: "assignments/final-project/**"
+    reason: "Final project materials (graded)"
+
+  - path: "tutor/**"
+    reason: "Tutor configuration — never expose to students"
+
+  - path: "notebooks/project-checkpoints/**/*solution*"
+    reason: "Project checkpoint solutions"

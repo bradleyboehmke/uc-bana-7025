@@ -1,0 +1,33 @@
+---
+title: "Week 7: Introduction to Machine Learning"
+subtitle: "BANA 7025"
+format:
+  revealjs:
+    self-contained: true
+    slide-number: true
+    preview-links: auto
+    revealjs-plugins:
+      - appearance
+      - highlight-text
+    css:
+      - styles.css
+      - _extensions/martinomagnifico/appearance/appearance.css
+    mermaid:
+      theme: neutral
+footer: "BANA 7025 | Week 7"
+filters:
+  - timer
+---
+
+# Week 7: Introduction to Machine Learning {background="#43464B"}
+
+## Coming soon
+
+Slides for Module 7 (Introduction to Machine Learning) will be added here.
+
+Topics covered in this module:
+
+- Data exploration before modeling
+- First model with scikit-learn
+- Feature engineering
+- Model evaluation & selection

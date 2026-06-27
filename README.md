@@ -1,53 +1,111 @@
-UC BANA 7025 Data Wrangling
-================
+# BANA 7025: Data Wrangling with Python
 
-**By [Brad Boehmke](https://github.com/bradleyboehmke) 🚀**
+A 7-week graduate course at the University of Cincinnati that teaches students to work with data in Python — from first import through wrangling, visualization, and reproducible workflows.
 
-Welcome to Data Wrangling with R! This course provides an intensive, hands-on introduction to Data Wrangling with the R programming language. You will learn the fundamental skills required to acquire, munge, transform, manipulate, and visualize data in a computing environment that fosters reproducibility.
+**Instructor:** Brad Boehmke  
+**Format:** Quarto book + Reveal.js slides + Jupyter lab notebooks  
+**Project dataset:** [Complete Journey](https://cunningjames.github.io/completejourney_py/) retail transaction data
 
-## Learning Objectives
+---
 
-Upon successfully completing this course, you will be able to:
+## Course structure
 
-* Perform your data analysis in a literate programming environment
-* Manage different types of data
-* Manage different data structures
-* Import and export data
-* Index, subset, reshape and transform your data
-* Compute descriptive statistics
-* Visualize data
-* Make your code efficient by using control statements & iteration
-* Write your own functions
-* Train and evaluate predictive models
+| Module | Week | Topics |
+|--------|------|--------|
+| 1 | 1 | Introduction, Python foundations, Jupyter/Colab |
+| 2 | 2 | DataFrames, importing data |
+| 3 | 3 | Cleaning data |
+| 4 | 4 | Data wrangling (filter, transform, aggregate) |
+| 5 | 5 | Joining and reshaping data |
+| 6 | 6 | Visualization and EDA |
+| 7 | 7 | Functions, control flow, and intro modeling |
 
-...all with R!
+---
 
-## Content Covered
+## Repository structure
 
-| Module        | Description                                         |
-|:-------------:|:----------------------------------------------------|
-| **1**         | **Introduction**                                    |
-|               | R fundamentals & the Rstudio IDE                    |
-|               | Deeper understanding of vectors                     |
-| **2**         | **Reproducible Documents and Importing Data**       |
-|               | Managing your workflow and reproducibility          |
-|               | Data structures & importing data                    |
-| **3**         | **Tidy Data and Data Manipulation**                 |
-|               | Data manipulation & summarization                   |
-|               | Tidy data                                           |
-| **4**         | **Relational Data and More Tidyverse Packages**     |
-|               | Relational data                                     |
-|               | Leveraging the Tidyverse to text & date-time data   |
-| **5**         | **Data Visualization & Exploration**                |
-|               | Data visualization                                  |
-|               | Exploratory data analysis                           |
-| **6**         | **Creating Efficient Code in R**                    |
-|               | Control statements & iteration                      |
-|               | Writing functions                                   |
-| **7**         | **Introduction to Applied Modeling**                |
-|               | Introduction to tidymodels                          |
-|               | Feature engineering & model evaluation/selection    |
+```
+uc-bana-7025/
+├── _quarto.yml              # Quarto book configuration
+├── requirements.txt         # Python dependencies
+├── book/                    # Textbook chapters (.qmd)
+├── slides/                  # Weekly Reveal.js slide decks (.qmd)
+├── notebooks/
+│   ├── examples/            # Example notebooks for each topic
+│   ├── tuesday-your-turn/   # Tuesday in-class coding notebooks
+│   └── project-checkpoints/ # Semester project checkpoint templates
+├── labs/                    # Thursday lab assignments (.ipynb)
+├── assignments/             # Homework, midterm, final project
+├── project/                 # Semester project overview and data
+├── tutor/                   # AI tutor configuration
+├── instructor/              # Instructor-only materials (not indexed)
+└── data/                    # Shared datasets
+```
 
-## Getting Started
+---
 
-The primary course material is provided via this Bookdown resource [:closed_book:](https://bradleyboehmke.github.io/uc-bana-7025/).
+## Local development
+
+**1. Install Python dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+**2. Install Quarto**
+
+Download from [quarto.org](https://quarto.org/docs/get-started/)
+
+**3. Render the book**
+
+```bash
+quarto render
+```
+
+**4. Preview locally**
+
+```bash
+quarto preview
+```
+
+The site will open at `http://localhost:4200` (or similar).
+
+**5. Run a notebook**
+
+```bash
+jupyter lab
+```
+
+---
+
+## Content authoring
+
+- **Textbook chapters:** Edit `.qmd` files in `book/`. Run `quarto preview` to see changes live.
+- **Slides:** Edit `.qmd` files in `slides/`. Each file is a standalone Reveal.js deck.
+- **Lab notebooks:** Edit `.ipynb` files in `labs/`. Clear outputs before committing.
+- **Example notebooks:** Add to `notebooks/examples/` and update the tutor index.
+
+---
+
+## AI Tutor
+
+The AI tutor is configured in `tutor/`. It is grounded in student-facing course content and guardrailed from instructor-only materials and answer keys.
+
+To rebuild the content index after adding new materials:
+
+```bash
+python tutor/build_index.py
+```
+
+---
+
+## Related courses
+
+- [BANA 4080: Data Mining](https://github.com/bradleyboehmke/uc-bana-4080) — broader data mining curriculum
+- [BANA 6043: Statistical Computing](https://github.com/bradleyboehmke/uc-bana-6043) — statistical computing foundations
+
+---
+
+## License
+
+Content is licensed under [Creative Commons Attribution 4.0](LICENSE).
