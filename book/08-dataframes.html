@@ -668,7 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To illustrate our points throughout this lesson, we’ll use the following <a href="https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/airlines.csv">airlines data</a> which includes the name of the airline carrier and the airline carrier code:</p>
-<div id="c69d1d91" class="cell" data-execution_count="1">
+<div id="724091e4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../data/airlines.csv'</span>)</span>
@@ -679,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="8.2" class="anchored" data-anchor-id="understanding-the-dataframe-structure"><span class="header-section-number">8.2</span> Understanding the DataFrame Structure</h2>
 <p>A DataFrame is a two-dimensional, labeled data structure—similar to a table in Excel or a SQL database—that is used to store and manipulate structured data. You can think of it as a spreadsheet-like object where the data is organized into rows and columns.</p>
 <p>Each column in a DataFrame is actually a special type of object in Pandas called a <strong>Series</strong>. A Series is a one-dimensional array-like object that holds data and a corresponding index for labeling each entry. While the concept of a Series might be new to you, it’s fundamental to how Pandas works under the hood. Understanding how Series operate is essential because much of your interaction with DataFrames involves accessing and manipulating individual Series.</p>
-<div id="d0a53c7d" class="cell" data-execution_count="2">
+<div id="9cada346" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.info()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -725,20 +725,20 @@ Figure&nbsp;8.1: Source: <a href="https://www.tomasbeuzen.com/python-programming
 </figure>
 </div>
 <p>You can extract a Series using bracket notation with the column name:</p>
-<div id="d255a6d4" class="cell" data-execution_count="3">
+<div id="40b8a725" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>carrier_column <span class="op">=</span> df[<span class="st">'carrier'</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>carrier_column</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This looks very much like a column of data — and it is — but under the hood, it’s a different type of object than the full DataFrame:</p>
-<div id="12e7abd5" class="cell" data-execution_count="4">
+<div id="b86cbfd1" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(carrier_column)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This confirms that what you extracted is a <code>Series</code>. You can verify its one-dimensional nature with:</p>
-<div id="6840b019" class="cell" data-execution_count="5">
+<div id="54212cc8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>carrier_column.shape  <span class="co"># One dimension (just the number of rows)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Compare this with the shape of the full DataFrame, which has both rows and columns:</p>
-<div id="d0284f52" class="cell" data-execution_count="6">
+<div id="8e6aaf38" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.shape  <span class="co"># Two dimensions (rows, columns)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It’s important to be familiar with Series because they are fundamentally the core of DataFrames.</p>
@@ -769,16 +769,16 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 </div>
 </div>
 </div>
-<div id="294e19bd" class="cell" data-execution_count="7">
+<div id="6b2707e7" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> df.loc[<span class="dv">0</span>]  <span class="co"># Using .loc to access the first row of the DataFrame</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(first_row)        <span class="co"># pandas.core.series.Series</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This reinforces the idea that both columns and rows, when isolated, are treated as Series.</p>
 <p>Another difference lies in the methods available to each. Series come with some specialized methods, such as <code>.to_list()</code>, which converts the data to a basic Python list. This method is not available on DataFrames:</p>
-<div id="a859722d" class="cell" data-execution_count="8">
+<div id="50250e1a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>carrier_column.to_list()  <span class="co"># works</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="32bceef3" class="cell" data-execution_count="9">
+<div id="04d7aaec" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This will raise an error</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.to_list()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -822,7 +822,7 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 <h2 data-number="8.4" class="anchored" data-anchor-id="creating-and-indexing-a-series"><span class="header-section-number">8.4</span> Creating and Indexing a Series</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/mJ3dAY3QYiw?si=Si83kRM56S0g9eZ0" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>First, let’s create our own Series object from scratch – they don’t always need to come from a DataFrame. Here, we pass a list in as an argument and it will be converted to a Series:</p>
-<div id="ad7aeefa" class="cell" data-execution_count="10">
+<div id="ffa6bbca" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -834,30 +834,30 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 </ul>
 <p>Values are fairly self-explanatory — they’re the list elements we passed in. The data type describes what kind of values are being stored (numbers, strings, etc.). Series are often homogeneous — holding only one data type — though technically they can hold a mix (which we’ll avoid for clarity).</p>
 <p>The <strong>index</strong> is where things get more interesting. Every Series has an index, which functions much like the keys in a dictionary — each label maps to a value. By default, Pandas assigns numeric labels starting at 0:</p>
-<div id="8836bb01" class="cell" data-execution_count="11">
+<div id="806bcdf7" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s.index  <span class="co"># Default index (RangeIndex)</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>But we can change the index to be more meaningful. For example, we could relabel the values using letters:</p>
-<div id="b3056dcf" class="cell" data-execution_count="12">
+<div id="d02cddc1" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>s.index <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, if we want to access the value <code>40</code>, we can do so by label:</p>
-<div id="7839cfe8" class="cell" data-execution_count="13">
+<div id="821cbd70" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s[<span class="st">'d'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This flexibility is powerful. Recall how rows in a DataFrame are also Series. Let’s revisit our airline DataFrame:</p>
-<div id="c532bda7" class="cell" data-execution_count="14">
+<div id="dc732051" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If we extract the first row using <code>.loc[0]</code>, we get:</p>
-<div id="4b426aa2" class="cell" data-execution_count="15">
+<div id="843d6f11" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> df.loc[<span class="dv">0</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>first_row</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here, the index labels of the Series are the original column names:</p>
-<div id="fb42b4c9" class="cell" data-execution_count="16">
+<div id="68228d56" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>first_row[<span class="st">'carrier'</span>]  <span class="co"># returns '9E'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This demonstrates how Series behave consistently whether they’re extracted from columns, rows, or created from scratch. Understanding indexing will help you fluently navigate, reshape, and analyze your data as we move forward.</p>
@@ -888,27 +888,27 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 <h2 data-number="8.5" class="anchored" data-anchor-id="indexing-in-dataframes"><span class="header-section-number">8.5</span> Indexing in DataFrames</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/7qGoubP8trA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>It’s not just Series that have indexes! DataFrames have them too. Take a look at the carrier DataFrame again and note the bold numbers on the left.</p>
-<div id="fab347dd" class="cell" data-execution_count="17">
+<div id="41caab4b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These numbers are an index, just like the one we saw on our example Series. And DataFrame indexes support similar functionality.</p>
-<div id="f62dea1e" class="cell" data-execution_count="18">
+<div id="3a87eaf7" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our index is a range from 0 (inclusive) to 16 (exclusive).</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df.index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When loading in a DataFrame, the default index will always be 0 to N-1, where N is the number of rows in your DataFrame. This is called a <code>RangeIndex</code>. Selecting individual rows by their index can also be done with the <code>.loc</code> accessor.</p>
-<div id="e5e4ace6" class="cell" data-execution_count="19">
+<div id="d8baf54e" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the row at index 4 (the fifth row).</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As with Series, DataFrames support reassigning their index. However, with DataFrames it often makes sense to change one of your columns into the index. This is analogous to a primary key in relational databases: a way to rapidly look up rows within a table.</p>
 <p>In our case, maybe we will often use the carrier code (<code>carrier</code>) to look up the full name of the airline. In that case, it would make sense to set the carrier column as our index.</p>
-<div id="0ae4ce7e" class="cell" data-execution_count="20">
+<div id="7a6a8950" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">'carrier'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now the RangeIndex has been replaced with a more meaningful index, and it’s possible to look up rows of the table by passing a carrier code to the <code>.loc</code> accessor.</p>
-<div id="2714315b" class="cell" data-execution_count="21">
+<div id="ca1bedad" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="st">'AA'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-warning">
@@ -922,10 +922,10 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 </div>
 </div>
 <p>When starting to work with a DataFrame, it’s often a good idea to determine what column makes sense as your index and to set it immediately. This will make your code nicer – by letting you directly look up values with the index – and also make your selections and filters faster, because Pandas is optimized for operations by index. If you want to change the index of your DataFrame later, you can always <code>reset_index</code> (and then assign a new one).</p>
-<div id="9c3b6a0f" class="cell" data-execution_count="22">
+<div id="e013f1d1" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.head() <span class="co"># DataFrame with carrier as the index</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="833e4df0" class="cell" data-execution_count="23">
+<div id="192d17b1" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.reset_index() <span class="co"># resetting the index to be 0:n-1</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1011,7 +1011,7 @@ Figure&nbsp;8.2: Source: <a href="https://www.tomasbeuzen.com/python-programming
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="aa149c68" class="cell" data-execution_count="24">
+<div id="74ff03cd" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv"</span></span>
