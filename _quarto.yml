@@ -57,6 +57,7 @@ book:
     - part: "Cheat Sheets"
       chapters:
         - book/module-01-cheatsheet.qmd
+        - book/module-02-cheatsheet.qmd
   appendices:
     - book/99-anaconda-install.qmd
     - book/99-vscode-install.qmd
