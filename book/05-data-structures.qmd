@@ -92,7 +92,7 @@ Python uses zero-based indexing, which means that the first element in a list ha
 
 ```{python}
 print(fruits[0])   # first item
-print(fruits[2])   # second item
+print(fruits[1])   # second item
 print(fruits[-1])  # last item
 ```
 
@@ -137,7 +137,7 @@ fruits.pop()           # removes and returns the last item
 These methods are especially useful in data wrangling tasks, such as filtering survey responses, cleaning up logs, or ranking scores.
 
 ::: {.callout-tip}
-You can find many other list operations here: https://docs.python.org/3/tutorial/datastructures.html#data-structures
+You can find many other list operations here: <https://docs.python.org/3/tutorial/datastructures.html#data-structures>
 :::
 
 ### Use Cases
