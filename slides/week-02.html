@@ -2664,7 +2664,7 @@ Hard to automate workflows</code></pre>
 <section id="build-from-scratch-or-reuse" class="slide level2 smaller">
 <h2>🤔 Build from Scratch or Reuse?</h2>
 <p>If you needed to calculate the <strong>correlation between two variables (x and y)</strong></p>
-<div id="74336d09" class="cell" data-execution_count="1">
+<div id="d91bdd1f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href></a>x <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">13</span>]</span>
 <span id="cb10-2"><a href></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">13</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2672,7 +2672,7 @@ Hard to automate workflows</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>🛠️ Build It Yourself</strong></p>
-<div id="9683efbe" class="cell" data-execution_count="2">
+<div id="cb928817" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href></a>mean_x <span class="op">=</span> <span class="bu">sum</span>(x) <span class="op">/</span> <span class="bu">len</span>(x)</span>
 <span id="cb11-2"><a href></a>mean_y <span class="op">=</span> <span class="bu">sum</span>(y) <span class="op">/</span> <span class="bu">len</span>(y)</span>
 <span id="cb11-3"><a href></a></span>
@@ -2690,7 +2690,7 @@ Hard to automate workflows</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>🤖 Use a Library</strong></p>
-<div id="779ddf49" class="cell" data-execution_count="3">
+<div id="28dccb52" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href></a></span>
 <span id="cb13-3"><a href></a>correlation <span class="op">=</span> np.corrcoef(x, y)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
@@ -2763,15 +2763,15 @@ Hard to automate workflows</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Standard Library</strong></p>
-<div id="3c7f7d98" class="cell" data-execution_count="4">
+<div id="5f45d4f8" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href></a><span class="im">import</span> random</span>
 <span id="cb15-2"><a href></a>random.randint(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>1</code></pre>
+<pre><code>10</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="6675a601" class="cell" data-execution_count="5">
+<div id="e6843c6a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href></a><span class="im">import</span> datetime</span>
 <span id="cb17-2"><a href></a><span class="bu">print</span>(datetime.date.today())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2784,7 +2784,7 @@ Hard to automate workflows</code></pre>
 <span id="cb19-2"><a href></a>pip install numpy   <span class="co"># command line</span></span>
 <span id="cb19-3"><a href></a><span class="op">!</span>pip install numpy  <span class="co"># jupyter notebook</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><br></p>
-<div id="25fad8bf" class="cell" data-execution_count="6">
+<div id="032e7d41" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a href></a></span>
 <span id="cb20-3"><a href></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
