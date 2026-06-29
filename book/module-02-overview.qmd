@@ -33,3 +33,9 @@ By the end of this module, you will:
 | Resource | Link |
 |----------|------|
 | 🧪 Lab 2 | *Coming soon* |
+
+### Reference {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📋 Module 2 Cheat Sheet | [View cheat sheet](module-02-cheatsheet.html){target="_blank"} |

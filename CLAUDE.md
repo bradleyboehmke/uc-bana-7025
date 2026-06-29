@@ -30,13 +30,13 @@ data/          Shared datasets
 
 | Module | Week | Chapters |
 |--------|------|---------|
-| 1 | 1 | 01-introduction, 02-python-foundations, 03-jupyter-colab |
-| 2 | 2 | 04-dataframes, 05-importing-data |
-| 3 | 3 | 06-cleaning-data |
-| 4 | 4 | 07-wrangling-data |
-| 5 | 5 | 08-joining-data, 09-reshaping-data |
-| 6 | 6 | 10-visualization, 11-eda |
-| 7 | 7 | 12-functions-control-flow, 13-intro-modeling |
+| 1 | 1 | 01-intro-data-mining, 02-preparing-for-code, 03-python-basics |
+| 2 | 2 | 04-jupyter, 05-data-structures, 06-libraries |
+| 3 | 3 | 07-importing-data, 08-dataframes, 09-subsetting |
+| 4 | 4 | 10-manipulating-data, 11_aggregating_data, 12-joining-data |
+| 5 | 5 | 13-data-viz-pandas, 14-data-viz-matplotlib, 15-data-viz-bokeh |
+| 6 | 6 | 16-control-statements, 17-iteration-statements, 18-functions |
+| 7 | 7 | 19-data-exploration, 20-first-model, 21-feature-engineering, 22-model-evaluation |
 
 ## Content conventions
 
@@ -92,7 +92,7 @@ quarto render
 quarto preview
 
 # Render a single file
-quarto render book/01-introduction.qmd
+quarto render book/01-intro-data-mining.qmd
 
 # Clear Quarto cache
 quarto clean

@@ -31,12 +31,12 @@ This book is the primary reading material for BANA 7025. Each chapter maps to on
 | Module | Topics | Chapters |
 |--------|--------|---------|
 | 1 | Getting started | 1 – 3 |
-| 2 | Working with data | 4 – 5 |
-| 3 | Cleaning data | 6 |
-| 4 | Data wrangling | 7 |
-| 5 | Combining & reshaping | 8 – 9 |
-| 6 | Visualization & EDA | 10 – 11 |
-| 7 | Functions & modeling | 12 – 13 |
+| 2 | Python data science ecosystem | 4 – 6 |
+| 3 | DataFrames & importing data | 7 – 9 |
+| 4 | Data manipulation | 10 – 12 |
+| 5 | Data visualization | 13 – 15 |
+| 6 | Creating efficient code | 16 – 18 |
+| 7 | Introduction to machine learning | 19 – 22 |
 
 Each chapter includes:
 
@@ -47,10 +47,19 @@ Each chapter includes:
 
 ## Resources
 
-- [Course slides](../slides/week-01.html) — weekly Reveal.js decks
-- [Lab notebooks](../labs/) — Thursday lab assignments (.ipynb)
-- [Semester project](../project/semester-project-overview.html) — full project overview and checkpoints
-- [AI Tutor](../tutor/) — grounded in course content, available anytime
+Each module has a landing page that lists all the content for that week. For example, [Module 1](book/module-01-overview.html) includes:
+
+- **Lecture slides** — Reveal.js deck for the week
+- **Chapter notebooks** — Colab-ready notebooks paired with each chapter's code
+- **Lab notebook** — Thursday lab assignment
+- **Cheat sheet** — quick reference card for the module's key concepts and syntax
+
+Every module follows this same structure. Start at the module landing page and work through the resources in order.
+
+Additional course resources:
+
+- [Semester project](project/semester-project-overview.html) — full project overview and weekly checkpoints
+- [AI Tutor](tutor/) — grounded in course content, available anytime
 
 ## Getting help
 

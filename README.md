@@ -12,13 +12,13 @@ A 7-week graduate course at the University of Cincinnati that teaches students t
 
 | Module | Week | Topics |
 |--------|------|--------|
-| 1 | 1 | Introduction, Python foundations, Jupyter/Colab |
-| 2 | 2 | DataFrames, importing data |
-| 3 | 3 | Cleaning data |
-| 4 | 4 | Data wrangling (filter, transform, aggregate) |
-| 5 | 5 | Joining and reshaping data |
-| 6 | 6 | Visualization and EDA |
-| 7 | 7 | Functions, control flow, and intro modeling |
+| 1 | 1 | Introduction, Python setup, Python basics |
+| 2 | 2 | Jupyter notebooks, data structures, Python libraries |
+| 3 | 3 | Importing data, DataFrames, subsetting |
+| 4 | 4 | Manipulating data, aggregating, joining tables |
+| 5 | 5 | Visualization (pandas, matplotlib, Bokeh) |
+| 6 | 6 | Control flow, iteration, functions |
+| 7 | 7 | Data exploration, modeling, feature engineering, evaluation |
 
 ---
 
@@ -39,7 +39,8 @@ uc-bana-7025/
 ├── project/                 # Semester project overview and data
 ├── tutor/                   # AI tutor configuration
 ├── instructor/              # Instructor-only materials (not indexed)
-└── data/                    # Shared datasets
+├── data/                    # Shared datasets
+└── .claude/commands/        # Project slash commands for Claude Code
 ```
 
 ---
