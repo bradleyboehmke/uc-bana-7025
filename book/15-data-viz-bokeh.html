@@ -591,6 +591,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 1 Cheat Sheet</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/module-02-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Module 2 Cheat Sheet</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -699,7 +705,7 @@ window.Quarto = {
 <section id="prerequisites" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">15.1</span> Prerequisites</h2>
 <p>Most of the functionality of Bokeh is accessed through submodules such as <code>bokeh.plotting</code> and <code>bokeh.models</code>. Also, when using Bokeh in a notebook we need to run <code>bokeh.io.output_notebook()</code> to make our plots viewable and interactive.</p>
-<div id="923aa4a8" class="cell" data-execution_count="1">
+<div id="e715179b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Our main plotting package (must have explicit import of submodules)</span></span>
@@ -712,7 +718,7 @@ window.Quarto = {
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>bokeh.io.output_notebook()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We’ll use a <a href="https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/ames_clean.csv">cleaned up version of the Ames, IA housing data</a> for illustration purposes:</p>
-<div id="5d122d36" class="cell" data-execution_count="2">
+<div id="f66da568" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../data/ames_clean.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -730,7 +736,7 @@ window.Quarto = {
 <p>Let’s go through these steps to generate an interactive scatter plot of home sales price and total living area. So you have the concrete example in mind, the final graphic will look like this:</p>
 <p>1. Our first step is creating a figure, our “canvas.” In creating the figure, we are implicitly thinking about what kind of representation for our data we want. That is, we have to specify axes and their labels. We might also want to specify the title of the figure, whether or not to have grid lines, and all sorts of other customizations. Naturally, we also want to specify the size of the figure.</p>
 <p>(Almost) all of this is accomplished in Bokeh by making a call to <code>bokeh.plotting.figure()</code> with the appropriate keyword arguments.</p>
-<div id="015a88fc" class="cell" data-execution_count="4">
+<div id="8d826962" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure, stored in variable `p`</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">700</span>,</span>
@@ -742,7 +748,7 @@ window.Quarto = {
 </div>
 <p>There are many more keyword attributes you can assign, including <a href="https://bokeh.pydata.org/en/latest/docs/reference/models/plots.html#bokeh.models.plots.Plot">all of those listed in the Bokeh Plot class</a> and <a href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure">the additional ones listed in the Bokeh Figure class</a>.</p>
 <p>2. Now that we have set up our canvas, we can decide on the data source. It is convenient to create a <strong><code>ColumnDataSource</code></strong>, a special Bokeh object that holds data to be displayed in a plot. (Later on we will see that we can change the data in a <code>ColumnDataSource</code> and the plot will automatically update!) Conveniently, we can instantiate a <code>ColumnDataSource</code> directly from a Pandas data frame.</p>
-<div id="8b1798b8" class="cell" data-execution_count="5">
+<div id="830cb554" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> bokeh.models.ColumnDataSource(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-note">
@@ -758,7 +764,7 @@ window.Quarto = {
 </div>
 <p>3. Since we are creating a scatter plot we will choose scatter as our glyph. This kind of glyph requires that we specify which column of the data source will serve to place the glyphs along the <span class="math inline">\(x\)</span>-axis and which will serve to place the glyphs along the <span class="math inline">\(y\)</span>-axis. We choose the <code>'GrLivArea'</code> column to specify the <span class="math inline">\(x\)</span>-coordinate of the glyph and the <code>'SalePrice'</code> column to specify the <span class="math inline">\(y\)</span>-coordinate. Since there are a lot of observations clustered together we can control overplotting by adjusting the transparency with <code>alpha</code>.</p>
 <p>We accomplish step 3 by calling one of the <a href="https://docs.bokeh.org/en/latest/docs/user_guide/plotting.html#scatter-markers"><strong>glyph methods</strong></a> of the Bokeh <code>Figure</code> instance, <code>p</code>. Since we are choosing a scatter plot, the appropriate method is <code>p.scatter()</code>, and we use the <code>source</code>, <code>x</code>, and <code>y</code> kwargs to specify the positions of the glyphs.</p>
-<div id="86b9b4dd" class="cell" data-execution_count="6">
+<div id="fb02e07f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p.scatter(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    source<span class="op">=</span>source,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'GrLivArea'</span>,</span>
@@ -778,7 +784,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The syntax for a tooltip is a list of 2-tuples, where each tuple represents the tooltip you want. The first entry in the tuple is the label and the second is the column from the data source that has the values. The second entry must be preceded with an <code>@</code> symbol signifying that it is a field in the data source and not field that is intrinsic to the plot, which is preceded with a <code>$</code> sign. If there are spaces in the column heading, enclose the column name in braces (i.e.&nbsp;<code>{name with spaces}</code>). (See the <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#basic-tooltips">documentation for tooltip specification</a> for more information.)</p>
-<div id="203533a6" class="cell" data-execution_count="7">
+<div id="66d743b4" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p.yaxis.formatter <span class="op">=</span> bokeh.models.NumeralTickFormatter(<span class="bu">format</span><span class="op">=</span><span class="st">"$,"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p.xaxis.formatter <span class="op">=</span> bokeh.models.NumeralTickFormatter(<span class="bu">format</span><span class="op">=</span><span class="st">","</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -787,7 +793,7 @@ window.Quarto = {
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>p.add_tools(hover)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now that we have built the plot, we can render it in the notebook using <code>bokeh.io.show()</code>.</p>
-<div id="890032b1" class="cell" data-execution_count="8">
+<div id="f813e772" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In looking at the plot, notice a toolbar to right of the plot that enables you to zoom and pan within the plot.</p>
@@ -799,7 +805,7 @@ window.Quarto = {
 <li>We create a color mapping using <code>factor_cmap()</code> that assigns colors to the discrete levels of a given factor (CentralAir in this example). Here, we simply assign red and blue colors; however, Bokeh has many <a href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">color palettes to choose from</a>.</li>
 <li>We can then use the <code>scatter</code> method to assign the glyph of choice and pass the <code>color_mapper</code> object to <code>fill_color</code> and/or <code>fill_line</code>. I also add the legend field so it shows up in the plot and we can format our legend as necessary (i.e.&nbsp;add title, change font).</li>
 </ol>
-<div id="1e8f9a87" class="cell" data-execution_count="9">
+<div id="4854e889" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure, stored in variable `p`</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> bokeh.plotting.figure(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    frame_width<span class="op">=</span><span class="dv">700</span>,</span>
@@ -846,14 +852,14 @@ window.Quarto = {
 <p>After you create your plot, you can save it to a variety of formats. Most commonly you would save them as PNG (for presentations), SVG (for publications in the paper of the past), and HTML (for the paper of the future or sharing with colleagues).</p>
 <p>To save as a PNG for quick use, you can click the disk icon in the tool bar.</p>
 <p>To save to SVG, you first change the output backend to <code>'svg'</code> and then you can click the disk icon again, and you will get an SVG rendering of the plot. After saving the SVG, you should change the output backend back to <code>'canvas'</code> because it has much better in-browser performance.</p>
-<div id="f62cda8e" class="cell" data-execution_count="10">
+<div id="216e8081" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'svg'</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>bokeh.io.show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, click the disk icon in the plot above to save it.</p>
 <p>After saving, we should switch back to canvas.</p>
-<div id="e7998f2f" class="cell" data-execution_count="11">
+<div id="92acc38d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p.output_backend <span class="op">=</span> <span class="st">'canvas'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can also save the figure programmatically using the <code>bokeh.io.export_svgs()</code> function. This requires additional installations, so we will not do it here, but show the code to do it. Again, this will only work if the output backed is <code>'svg'</code>.</p>

@@ -263,7 +263,7 @@
 <p><img data-src="images/cj_data_relationships.png" style="width:80.0%"></p>
 </div><div class="column">
 <p><br></p>
-<div id="c6fa6ef0" class="cell" data-execution_count="1">
+<div id="cc2a4f10" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co"># you may need to pip install first</span></span>
 <span id="cb1-2"><a href=""></a><span class="co"># !pip install completejourney-py</span></span>
 <span id="cb1-3"><a href=""></a></span>
@@ -369,7 +369,7 @@
 <h2>Messy Data</h2>
 <p>Our complete journey data is not too bad; however, let’s look at this raw Ames data.</p>
 <p><mark>What do you notice?</mark></p>
-<div id="a1d88384" class="cell" data-execution_count="2">
+<div id="08ef3e81" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href=""></a></span>
 <span id="cb3-3"><a href=""></a>ames <span class="op">=</span> pd.read_csv(<span class="st">"../data/ames_raw.csv"</span>)</span>
@@ -580,7 +580,7 @@
 </div>
 </div>
 </div><div class="column">
-<div id="f85a7fd1" class="cell" data-execution_count="3">
+<div id="9d2680e2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>ames.rename(columns<span class="op">=</span>{</span>
 <span id="cb4-2"><a href=""></a>    <span class="st">'MS SubClass'</span>: <span class="st">'ms_subclass'</span>,</span>
 <span id="cb4-3"><a href=""></a>    <span class="st">'MS Zoning'</span>: <span class="st">'ms_zoning'</span></span>
@@ -763,7 +763,7 @@
 <section id="reformatting-many-columns" class="slide level2 smaller">
 <h2>Reformatting Many Columns</h2>
 <p>😳</p>
-<div id="a16b9ba8" class="cell" data-execution_count="4">
+<div id="991e4d18" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>(</span>
 <span id="cb5-2"><a href=""></a>  ames.columns</span>
 <span id="cb5-3"><a href=""></a>  .<span class="bu">str</span>.lower()               <span class="co"># convert to lowercase</span></span>
@@ -798,7 +798,7 @@
 <section id="reformatting-many-columns-1" class="slide level2 smaller">
 <h2>Reformatting Many Columns</h2>
 <p>😎</p>
-<div id="84a4f99a" class="cell" data-execution_count="5">
+<div id="ea9b230a" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>ames.columns <span class="op">=</span> (</span>
 <span id="cb7-2"><a href=""></a>  ames.columns.</span>
 <span id="cb7-3"><a href=""></a>  <span class="bu">str</span>.lower()               <span class="co"># convert to lowercase</span></span>
@@ -989,7 +989,7 @@
 <div class="columns">
 <div class="column">
 <p><strong>Selecting columns of interest</strong></p>
-<div id="bf62427c" class="cell" data-execution_count="6">
+<div id="c0f956f2" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>cols <span class="op">=</span> [<span class="st">'gr_liv_area'</span>, <span class="st">'saleprice'</span>, <span class="st">'overall_qual'</span>]</span>
 <span id="cb8-2"><a href=""></a></span>
 <span id="cb8-3"><a href=""></a>ames[cols].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1057,7 +1057,7 @@
 </div>
 </div><div class="column">
 <p><strong>Dropping columns of disinterest</strong></p>
-<div id="d23b625c" class="cell" data-execution_count="7">
+<div id="07720a5f" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>cols <span class="op">=</span> [<span class="st">'order'</span>, <span class="st">'pid'</span>, <span class="st">'ms_subclass'</span>]</span>
 <span id="cb9-2"><a href=""></a></span>
 <span id="cb9-3"><a href=""></a>ames.drop(columns<span class="op">=</span>cols, inplace<span class="op">=</span><span class="va">True</span>)</span>
@@ -1253,7 +1253,7 @@
 <li>To <strong>transform existing data</strong> into a more useful format (e.g., converting grams to pounds).</li>
 <li>To <strong>transform values</strong> (e.g., months <code>1</code>, <code>2</code>, <code>3</code> → <code>"Jan"</code>, <code>"Feb"</code>, <code>"Mar"</code>).</li>
 </ul>
-<div id="915465f5" class="cell" data-execution_count="8">
+<div id="0084941a" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="co"># Create a price per sqft column</span></span>
 <span id="cb10-2"><a href=""></a>ames[<span class="st">'price_per_sqft'</span>] <span class="op">=</span> ames[<span class="st">'saleprice'</span>] <span class="op">/</span> ames[<span class="st">'gr_liv_area'</span>]</span>
 <span id="cb10-3"><a href=""></a></span>
@@ -1438,7 +1438,7 @@
 <li>To <strong>transform existing data</strong> into a more useful format (e.g., converting grams to pounds).</li>
 <li><mark>To <strong>transform values</strong> (e.g., months <code>1</code>, <code>2</code>, <code>3</code> → <code>"Jan"</code>, <code>"Feb"</code>, <code>"Mar"</code>).</mark></li>
 </ul>
-<div id="81f2d3f0" class="cell" data-execution_count="9">
+<div id="c1a215d2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co"># dict containing mapping of {old values: new values}</span></span>
 <span id="cb11-2"><a href=""></a>months <span class="op">=</span> {</span>
 <span id="cb11-3"><a href=""></a>    <span class="dv">1</span>: <span class="st">'Jan'</span>, <span class="dv">2</span>: <span class="st">'Feb'</span>, <span class="dv">3</span>: <span class="st">'Mar'</span>, <span class="dv">4</span>: <span class="st">'Apr'</span>, <span class="dv">5</span>: <span class="st">'May'</span>, <span class="dv">6</span>: <span class="st">'Jun'</span>, </span>
@@ -1623,7 +1623,7 @@
 <section id="handling-missing-values" class="slide level2 smaller">
 <h2>Handling Missing Values</h2>
 <p>We can always check for missing values with <code>isnull()</code>.</p>
-<div id="ae5c9fae" class="cell" data-execution_count="10">
+<div id="3cd21e4c" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>ames.isnull().<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>pool_qc           2917
@@ -1664,7 +1664,7 @@ Length: 80, dtype: int64</code></pre>
 <h2>Handling Missing Values</h2>
 <div class="columns">
 <div class="column">
-<div id="f47581b4" class="cell" data-execution_count="11">
+<div id="03b50ff6" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a>ames[[<span class="st">'pool_area'</span>, <span class="st">'pool_qc'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
@@ -1723,7 +1723,7 @@ Length: 80, dtype: int64</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="06ebdcdd" class="cell" data-execution_count="12">
+<div id="584f0fbb" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>ames[<span class="st">'pool_qc'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>pool_qc
@@ -1735,7 +1735,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div id="746e7100" class="cell" data-execution_count="13">
+<div id="3789e831" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>ames[<span class="st">'pool_qc'</span>].fillna(<span class="st">'no pool'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb17-2"><a href=""></a>ames[[<span class="st">'pool_area'</span>, <span class="st">'pool_qc'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -1795,7 +1795,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="d551d5d4" class="cell" data-execution_count="14">
+<div id="fb6b7dba" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>ames[[<span class="st">'pool_qc'</span>]].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>pool_qc
@@ -1811,7 +1811,7 @@ Name: count, dtype: int64</code></pre>
 <section id="code-with-me-clean-product-names" class="slide level2 smaller scrollable">
 <h2>🧑‍💻 Code With Me: Clean Product Names</h2>
 <p><strong>Business Question:</strong> Our marketing team wants cleaner product category names for their dashboard. Can we standardize the Complete Journey product categories?</p>
-<div id="9344d705" class="cell" data-execution_count="15">
+<div id="c82ada81" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="co"># Load the products data</span></span>
 <span id="cb20-2"><a href=""></a>products <span class="op">=</span> cj_data[<span class="st">"products"</span>]</span>
 <span id="cb20-3"><a href=""></a>products[<span class="st">'product_category'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1853,7 +1853,7 @@ Name: count, Length: 303, dtype: int64</code></pre>
 <section id="code-with-me-create-business-metrics" class="slide level2 smaller scrollable">
 <h2>🧑‍💻 Code With Me: Create Business Metrics</h2>
 <p><strong>Business Question:</strong> Our analytics team wants to calculate unit prices to identify premium vs budget products.</p>
-<div id="3e9b72c4" class="cell" data-execution_count="16">
+<div id="81759bd7" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a><span class="co"># Let's look at our transaction data</span></span>
 <span id="cb23-2"><a href=""></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
 <span id="cb23-3"><a href=""></a>transactions[[<span class="st">'sales_value'</span>, <span class="st">'quantity'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1943,7 +1943,7 @@ Name: count, Length: 303, dtype: int64</code></pre>
 <section id="simple-aggregation" class="slide level2 smaller">
 <h2>Simple Aggregation</h2>
 <p>Last week we saw how we can compute various summary stats for a given column:</p>
-<div id="999a531a" class="cell" data-execution_count="17">
+<div id="8ee73657" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a>avg_price <span class="op">=</span> ames[<span class="st">'saleprice'</span>].mean()</span>
 <span id="cb25-2"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Avg Sale Price: $</span><span class="sc">{</span>avg_price<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1951,7 +1951,7 @@ Name: count, Length: 303, dtype: int64</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="4e2bf30f" class="cell" data-execution_count="18">
+<div id="0da0bd06" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a>min_ppsqft <span class="op">=</span> ames[<span class="st">'price_per_sqft'</span>].<span class="bu">min</span>()</span>
 <span id="cb27-2"><a href=""></a>max_ppsqft <span class="op">=</span> ames[<span class="st">'price_per_sqft'</span>].<span class="bu">max</span>()</span>
 <span id="cb27-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Min &amp; Max Price per Sqft: $</span><span class="sc">{</span>min_ppsqft<span class="sc">:,.2f}</span><span class="ss"> - $</span><span class="sc">{</span>max_ppsqft<span class="sc">:,.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1962,7 +1962,7 @@ Name: count, Length: 303, dtype: int64</code></pre>
 <div class="fragment">
 <p><br></p>
 <p>We can even get summary stats for multiple columns:</p>
-<div id="29b53614" class="cell" data-execution_count="19">
+<div id="cd70fc68" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>cols <span class="op">=</span> [<span class="st">'gr_liv_area'</span>, <span class="st">'saleprice'</span>, <span class="st">'price_per_sqft'</span>]</span>
 <span id="cb29-2"><a href=""></a>ames[cols].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
@@ -1985,7 +1985,7 @@ dtype: float64</code></pre>
 <div class="fragment">
 <div class="columns">
 <div class="column">
-<div id="3d235258" class="cell" data-execution_count="20">
+<div id="c0ca679d" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>ames.aggregate({</span>
 <span id="cb31-2"><a href=""></a>    <span class="st">'saleprice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>],</span>
 <span id="cb31-3"><a href=""></a>    <span class="st">'price_per_sqft'</span>: [<span class="st">'mean'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>]</span>
@@ -2042,7 +2042,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div id="c1975443" class="cell" data-execution_count="21">
+<div id="97b81a13" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>ames.agg({</span>
 <span id="cb32-2"><a href=""></a>    <span class="st">'saleprice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>],</span>
 <span id="cb32-3"><a href=""></a>    <span class="st">'price_per_sqft'</span>: [<span class="st">'mean'</span>, <span class="st">'min'</span>, <span class="st">'max'</span>]</span>
@@ -2124,7 +2124,7 @@ dtype: float64</code></pre>
 <img data-src="images/model-for-grouped-aggs.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="avg-sale-price-by-neighborhood" class="slide level2 smaller">
 <h2>Avg Sale Price By Neighborhood</h2>
-<div id="4ac7281a" class="cell" data-execution_count="22">
+<div id="2458abc7" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a>(</span>
 <span id="cb33-2"><a href=""></a>  ames.</span>
 <span id="cb33-3"><a href=""></a>  groupby(<span class="st">'neighborhood'</span>, as_index<span class="op">=</span><span class="va">False</span>).</span>
@@ -2338,7 +2338,7 @@ dtype: float64</code></pre>
 </section>
 <section id="group-by-multiple-variables" class="slide level2 smaller">
 <h2>Group-by Multiple Variables</h2>
-<div id="cc0b9519" class="cell" data-execution_count="23">
+<div id="9b692ff0" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>(</span>
 <span id="cb34-2"><a href=""></a>  ames.</span>
 <span id="cb34-3"><a href=""></a>  groupby([<span class="st">'neighborhood'</span>, <span class="st">'mo_sold'</span>], as_index<span class="op">=</span><span class="va">False</span>).</span>
@@ -2463,7 +2463,7 @@ dtype: float64</code></pre>
 <section id="code-with-me-top-revenue-products" class="slide level2 smaller scrollable">
 <h2>🧑‍💻 Code With Me: Top Revenue Products</h2>
 <p><strong>Business Question:</strong> Which products generate the most revenue? Our merchandising team needs this for inventory planning.</p>
-<div id="749c5371" class="cell" data-execution_count="24">
+<div id="0dd5cd27" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a><span class="co"># Let's look at our transaction data</span></span>
 <span id="cb35-2"><a href=""></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
 <span id="cb35-3"><a href=""></a>transactions[[<span class="st">'product_id'</span>, <span class="st">'sales_value'</span>, <span class="st">'quantity'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2545,7 +2545,7 @@ dtype: float64</code></pre>
 <section id="code-with-me-store-performance" class="slide level2 smaller">
 <h2>🧑‍💻 Code With Me: Store Performance</h2>
 <p><strong>Business Question:</strong> Which stores are performing best? Our operations team wants to understand store-level performance.</p>
-<div id="bcac1550" class="cell" data-execution_count="25">
+<div id="2d96193c" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a><span class="co"># Look at store information in our transactions</span></span>
 <span id="cb37-2"><a href=""></a>transactions[<span class="st">'store_id'</span>].value_counts().head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -2782,7 +2782,7 @@ Name: count, dtype: int64</code></pre>
 <p>What is the total sales value for the top 10 selling products?</p>
 </blockquote>
 <p><br></p>
-<div id="2d6a84ef" class="cell" data-execution_count="26">
+<div id="bc099e5b" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
 <span id="cb42-2"><a href=""></a>products <span class="op">=</span> cj_data[<span class="st">"products"</span>]</span>
 <span id="cb42-3"><a href=""></a></span>
@@ -2889,7 +2889,7 @@ Name: count, dtype: int64</code></pre>
 <section id="code-with-me-customer-demographics-analysis" class="slide level2 smaller scrollable">
 <h2>🧑‍💻 Code With Me: Customer Demographics Analysis</h2>
 <p><strong>Business Question:</strong> Do families with kids spend more than families without kids? Our marketing team wants to target family-friendly promotions.</p>
-<div id="62bb89fe" class="cell" data-execution_count="27">
+<div id="1cf452da" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a><span class="co"># Let's explore what we have</span></span>
 <span id="cb43-2"><a href=""></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
 <span id="cb43-3"><a href=""></a>demographics <span class="op">=</span> cj_data[<span class="st">"demographics"</span>] </span>

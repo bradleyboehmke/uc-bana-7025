@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – BANA 7025: Data Wrangling with Python</title>
+<title>24&nbsp; Module 2 Cheat Sheet – BANA 7025: Data Wrangling with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../book/02-preparing-for-code.html" rel="next">
-<link href="../book/module-01-overview.html" rel="prev">
+<link href="../book/99-anaconda-install.html" rel="next">
+<link href="../book/module-01-cheatsheet.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -260,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-overview.html">Module 1: Getting Started</a></li><li class="breadcrumb-item"><a href="../book/01-intro-data-mining.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-02-cheatsheet.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Module 2 Cheat Sheet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -308,7 +343,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/01-intro-data-mining.html" class="sidebar-item-text sidebar-link active">
+  <a href="../book/01-intro-data-mining.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -529,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/module-02-cheatsheet.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/module-02-cheatsheet.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Module 2 Cheat Sheet</span></span></a>
   </div>
 </li>
@@ -568,40 +603,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-are-we-here" id="toc-why-are-we-here" class="nav-link active" data-scroll-target="#why-are-we-here"><span class="header-section-number">1.1</span> Why are we here?</a>
-  <ul class="collapse">
-  <li><a href="#youve-built-the-foundationnow-its-time-to-apply-it." id="toc-youve-built-the-foundationnow-its-time-to-apply-it." class="nav-link" data-scroll-target="#youve-built-the-foundationnow-its-time-to-apply-it.">You’ve built the foundation—now it’s time to apply it.</a></li>
-  <li><a href="#this-course-is-about-doing." id="toc-this-course-is-about-doing." class="nav-link" data-scroll-target="#this-course-is-about-doing.">This course is about doing.</a></li>
-  </ul></li>
-  <li><a href="#isnt-ai-supposed-to-do-all-this-for-us-now" id="toc-isnt-ai-supposed-to-do-all-this-for-us-now" class="nav-link" data-scroll-target="#isnt-ai-supposed-to-do-all-this-for-us-now"><span class="header-section-number">1.2</span> Isn’t AI supposed to do all this for us now?</a>
-  <ul class="collapse">
-  <li><a href="#ai-is-helpfulbut-its-not-a-substitute-for-understanding." id="toc-ai-is-helpfulbut-its-not-a-substitute-for-understanding." class="nav-link" data-scroll-target="#ai-is-helpfulbut-its-not-a-substitute-for-understanding.">AI is helpful—but it’s not a substitute for understanding.</a></li>
-  <li><a href="#ai-tools-are-assistants-not-autopilots." id="toc-ai-tools-are-assistants-not-autopilots." class="nav-link" data-scroll-target="#ai-tools-are-assistants-not-autopilots.">AI tools are assistants, not autopilots.</a></li>
-  </ul></li>
-  <li><a href="#why-python-and-why-now" id="toc-why-python-and-why-now" class="nav-link" data-scroll-target="#why-python-and-why-now"><span class="header-section-number">1.3</span> Why Python, and why now?</a>
-  <ul class="collapse">
-  <li><a href="#python-is-beginner-friendly-but-not-just-for-beginners." id="toc-python-is-beginner-friendly-but-not-just-for-beginners." class="nav-link" data-scroll-target="#python-is-beginner-friendly-but-not-just-for-beginners.">Python is beginner-friendly, but not just for beginners.</a></li>
-  <li><a href="#its-not-just-the-language-its-the-ecosystem." id="toc-its-not-just-the-language-its-the-ecosystem." class="nav-link" data-scroll-target="#its-not-just-the-language-its-the-ecosystem.">It’s not just the language, it’s the ecosystem.</a></li>
-  <li><a href="#python-is-your-toolset.-this-course-is-your-training-ground." id="toc-python-is-your-toolset.-this-course-is-your-training-ground." class="nav-link" data-scroll-target="#python-is-your-toolset.-this-course-is-your-training-ground.">Python is your toolset. This course is your training ground.</a></li>
-  </ul></li>
-  <li><a href="#learning-to-code-a-reality-check" id="toc-learning-to-code-a-reality-check" class="nav-link" data-scroll-target="#learning-to-code-a-reality-check"><span class="header-section-number">1.4</span> Learning to code: a reality check</a>
-  <ul class="collapse">
-  <li><a href="#learning-to-code-is-like-learning-a-new-language-because-it-is" id="toc-learning-to-code-is-like-learning-a-new-language-because-it-is" class="nav-link" data-scroll-target="#learning-to-code-is-like-learning-a-new-language-because-it-is">Learning to code is like learning a new language (because it is)</a></li>
-  <li><a href="#this-course-is-designed-for-beginners" id="toc-this-course-is-designed-for-beginners" class="nav-link" data-scroll-target="#this-course-is-designed-for-beginners">This course is designed for beginners</a></li>
-  <li><a href="#its-okay-to-use-ai-tools-but-dont-skip-the-struggle" id="toc-its-okay-to-use-ai-tools-but-dont-skip-the-struggle" class="nav-link" data-scroll-target="#its-okay-to-use-ai-tools-but-dont-skip-the-struggle">It’s okay to use AI tools but don’t skip the struggle</a></li>
-  </ul></li>
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up"><span class="header-section-number">1.5</span> Wrap-Up</a></li>
-  <li><a href="#exercise-can-you-help-taylor" id="toc-exercise-can-you-help-taylor" class="nav-link" data-scroll-target="#exercise-can-you-help-taylor"><span class="header-section-number">1.6</span> Exercise: “Can You Help Taylor?”</a></li>
+  <li><a href="#jupyter-notebooks" id="toc-jupyter-notebooks" class="nav-link active" data-scroll-target="#jupyter-notebooks">Jupyter Notebooks</a></li>
+  <li><a href="#kernel-execution-state" id="toc-kernel-execution-state" class="nav-link" data-scroll-target="#kernel-execution-state">Kernel &amp; Execution State</a></li>
+  <li><a href="#notebooks-vs-.py-scripts" id="toc-notebooks-vs-.py-scripts" class="nav-link" data-scroll-target="#notebooks-vs-.py-scripts">Notebooks vs .py Scripts</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples">Tuples</a></li>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">Dictionaries</a></li>
+  <li><a href="#data-structure-comparison" id="toc-data-structure-comparison" class="nav-link" data-scroll-target="#data-structure-comparison">Data Structure Comparison</a></li>
+  <li><a href="#standard-vs-third-party-libraries" id="toc-standard-vs-third-party-libraries" class="nav-link" data-scroll-target="#standard-vs-third-party-libraries">Standard vs Third-Party Libraries</a></li>
+  <li><a href="#importing-libraries" id="toc-importing-libraries" class="nav-link" data-scroll-target="#importing-libraries">Importing Libraries</a></li>
+  <li><a href="#key-data-science-libraries" id="toc-key-data-science-libraries" class="nav-link" data-scroll-target="#key-data-science-libraries">Key Data Science Libraries</a></li>
+  <li><a href="#common-pitfalls" id="toc-common-pitfalls" class="nav-link" data-scroll-target="#common-pitfalls">Common Pitfalls</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/01-intro-data-mining.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-02-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-overview.html">Module 1: Getting Started</a></li><li class="breadcrumb-item"><a href="../book/01-intro-data-mining.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-02-cheatsheet.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Module 2 Cheat Sheet</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Module 2 Cheat Sheet</span></h1>
+<p class="subtitle lead">Key concepts, definitions, and code from Chapters 4–6</p>
 </div>
 
 
@@ -618,356 +641,365 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to your journey into the world of data science. Whether you’re here out of curiosity, career aspirations, or because it’s a required course, you’re stepping into a field that blends logic, creativity, and curiosity to solve real-world problems using data. But let’s be honest—if you’ve never written a line of code before, the idea of learning Python or building machine learning models might feel a bit intimidating. You might even be wondering: <em>“Why do I need to learn this when tools like ChatGPT or Copilot can just write code for me?”</em> That’s a fair question — and one we’ll unpack in this chapter. Our goal is to give you a clear picture of why learning these foundational skills still matters, why Python is at the heart of modern data science, and how to approach the learning process with the right expectations and mindset.</p>
-<p>By the end of this chapter, you will:</p>
-<ul>
-<li>Understand why foundational coding and data skills matter in today’s world.</li>
-<li>Reflect on the role of GenAI tools like ChatGPT in the learning process.</li>
-<li>Recognize the value of learning Python for data science.</li>
-<li>Acknowledge the challenges of learning to code and adopt a growth mindset.</li>
-</ul>
-<section id="why-are-we-here" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="why-are-we-here"><span class="header-section-number">1.1</span> Why are we here?</h2>
-<p>Let’s start with a story.</p>
-<p>Imagine you’re a college junior named Taylor who just landed a summer internship at a local marketing analytics firm. On your first day, your manager hands you a file — it’s a messy spreadsheet filled with customer purchase data — and says, <em>“We’re trying to understand what drives repeat purchases. Can you dig into this and see what you find?”</em></p>
-<p>Taylor freezes.</p>
-<p>You’ve taken calculus, stats, and maybe even a regression course. You’ve know Excel, used it to build a few dashboards in your business classes, and maybe dabbled in a little VBA. You know how to analyze formulas on paper and interpret statistical summaries. You’ve studied how marketing campaigns influence consumer behavior, how pricing affects demand, how supply chains function, and how companies generate profits.</p>
-<p>But now, faced with a real dataset and a vague question, you’re not sure where to begin.</p>
-<ul>
-<li>Do you start sorting columns manually?</li>
-<li>Write an IF statement?</li>
-<li>Ask ChatGPT to explain the data?</li>
-<li>Look for a “correlation” button in Excel?</li>
-</ul>
-<p>You know there’s a story in the data; something important about customer behavior that the business wants to uncover. But without a roadmap, the numbers feel more overwhelming than enlightening.</p>
-<section id="youve-built-the-foundationnow-its-time-to-apply-it." class="level3">
-<h3 class="anchored" data-anchor-id="youve-built-the-foundationnow-its-time-to-apply-it.">You’ve built the foundation—now it’s time to apply it.</h3>
-<p>That feeling Taylor has? That’s not a sign of being unprepared, it’s a sign of the gap that exists between traditional classroom learning and the real-world application of data science.</p>
-<p>You already know more than you think:</p>
-<ul>
-<li>You understand business operations, customer behavior, and the bottom-line goals companies care about.</li>
-<li>You’ve studied quantitative methods and statistical inference.</li>
-<li>You know how to think critically and ask good questions.</li>
-</ul>
-<p>What you <em>haven’t</em> had (yet) is the experience of turning raw data into actionable insight using tools like Python to clean, explore, visualize, and model information in a repeatable, scalable way.</p>
-<p>That’s where this course comes in.</p>
+<p>A quick-reference summary of the essential ideas from Module 2. Click any section heading to jump to the full coverage in the book.</p>
+<hr>
+<section id="jupyter-notebooks" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="jupyter-notebooks"><a href="04-jupyter.html#notebook-anatomy-and-core-features">Jupyter Notebooks</a></h2>
+<blockquote class="blockquote">
+<p>A <strong>Jupyter notebook</strong> is a document that blends executable code, formatted text, and output (tables, plots) in a single shareable file.</p>
+</blockquote>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 30%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cell type</th>
+<th>Purpose</th>
+<th>Run with</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Code</strong></td>
+<td>Write and execute Python</td>
+<td><code>Shift + Enter</code></td>
+</tr>
+<tr class="even">
+<td><strong>Markdown</strong></td>
+<td>Add headings, explanations, equations</td>
+<td><code>Shift + Enter</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Markdown quick reference:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1    ## Heading 2    ### Heading 3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>**bold**        *italic*        <span class="in">`inline code`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bullet        1. numbered</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>$a^2 + b^2 = c^2$   (inline equation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="this-course-is-about-doing." class="level3">
-<h3 class="anchored" data-anchor-id="this-course-is-about-doing.">This course is about doing.</h3>
-<p>We’re going to close the gap between the theory you’ve learned and the practice that’s expected in today’s data-driven workplace. You’ll work with messy datasets just like Taylor’s. You’ll write code to clean, organize, and analyze real data. And you’ll build up your own toolkit so that, the next time someone asks you to “see what you can find,” you won’t freeze — you’ll get to work.</p>
-<p>And yes, we’ll even talk about when to use tools like ChatGPT to help you along the way (and when not to).</p>
-<div class="callout callout-style-simple callout-note">
+<section id="kernel-execution-state" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="kernel-execution-state"><a href="04-jupyter.html#code-execution-state">Kernel &amp; Execution State</a></h2>
+<p>The <strong>kernel</strong> is the running Python process behind your notebook. All variables defined in executed cells persist in memory until the kernel is restarted.</p>
+<div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>By the end of this course, you’ll have the confidence and experience to tackle open-ended data problems, the skills to automate and scale your work, and the mindset to keep growing as a data-driven problem solver.</p>
+<p>Cells can be run out of order. Always <strong>Restart &amp; Run All</strong> before sharing or submitting — this is the only way to confirm your notebook runs top-to-bottom without hidden state.</p>
 </div>
 </div>
 </div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Restart kernel</td>
+<td>Clear all variables and start fresh</td>
+</tr>
+<tr class="even">
+<td>Restart &amp; Run All</td>
+<td>Verify notebook works top-to-bottom</td>
+</tr>
+<tr class="odd">
+<td>Clear outputs</td>
+<td>Before committing or sharing</td>
+</tr>
+</tbody>
+</table>
+<hr>
 </section>
+<section id="notebooks-vs-.py-scripts" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="notebooks-vs-.py-scripts"><a href="04-jupyter.html#when-not-to-use-notebooks">Notebooks vs .py Scripts</a></h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Use notebooks for…</th>
+<th>Use <code>.py</code> scripts for…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Exploration &amp; EDA</td>
+<td>Reusable functions and modules</td>
+</tr>
+<tr class="even">
+<td>Teaching &amp; presentations</td>
+<td>Production pipelines</td>
+</tr>
+<tr class="odd">
+<td>One-off analysis</td>
+<td>Code that needs unit tests</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Running a <code>.py</code> script from inside a notebook:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run my_script.py      <span class="co"># execute the script; its variables enter notebook scope</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load my_script.py     <span class="co"># paste the script contents into a new cell</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> my_module       <span class="co"># import functions from a .py file like a package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="isnt-ai-supposed-to-do-all-this-for-us-now" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="isnt-ai-supposed-to-do-all-this-for-us-now"><span class="header-section-number">1.2</span> Isn’t AI supposed to do all this for us now?</h2>
-<p>Let’s address the question that’s probably been lingering in your mind since the moment you signed up for this course:</p>
+<section id="lists" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="lists"><a href="05-data-structures.html#lists-ordered-and-mutable">Lists</a></h2>
 <blockquote class="blockquote">
-<p><em>“Why do I need to learn how to code when tools like ChatGPT, Copilot, and Claude can just do it for me?”</em></p>
+<p>A <strong>list</strong> is an ordered, <strong>mutable</strong> collection. Use it when items need to stay in sequence and may change over time.</p>
 </blockquote>
-<p>It’s a fair question.</p>
-<p>In fact, you may have already used one of these tools to generate code. Maybe you asked ChatGPT to “write a Python script that reads a CSV file and finds the average,” and in seconds — boom — you had something that worked.</p>
-<p>So… case closed, right? Not quite.</p>
-<section id="ai-is-helpfulbut-its-not-a-substitute-for-understanding." class="level3">
-<h3 class="anchored" data-anchor-id="ai-is-helpfulbut-its-not-a-substitute-for-understanding.">AI is helpful—but it’s not a substitute for understanding.</h3>
-<p>Generative AI tools are incredible accelerators. They can save time, reduce friction, and provide helpful starting points. But they’re not magic. They don’t <em>know</em> your data. They don’t <em>understand</em> the business context. And they certainly don’t <em>guarantee</em> correct answers.</p>
-<p>These tools work by predicting the next most likely word or line of code based on patterns in data they’ve seen. They don’t reason like humans. They can’t debug your logic or decide which metric is appropriate for your analysis. And sometimes? They just make stuff up.</p>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">88</span>, <span class="dv">92</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">0</span>]           <span class="co"># 85  — first element (zero-based indexing)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>scores[<span class="op">-</span><span class="dv">1</span>]          <span class="co"># 92  — last element</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>scores.append(<span class="dv">95</span>)   <span class="co"># add to end</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">91</span>      <span class="co"># modify in place</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(scores)         <span class="co"># number of elements</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>scores.sort()       <span class="co"># sort in place</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">'apple'</span> <span class="kw">in</span> scores   <span class="co"># membership check → False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Callout: It’s like autocorrect but for code!
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If you’ve ever had your phone turn “on my way!” into “omg my weasel!” — you already understand how these tools work.</p>
-<p>GenAI models, like ChatGPT and Copilot, are basically super-powered autocomplete engines. They’re predicting what comes next based on what they’ve seen before. That means they can sometimes nail it… and other times leave you wondering, <em>“What were you even trying to say?”</em></p>
-<p><img src="images/7-chocolate-shart-just-asked-and-guy-laughed-at-5-minutes-omg-omg-s-chocolate-sparkle-am-lmao-sorry.jpeg" class="img-fluid" style="width:30.0%"></p>
-<p>Just like with autocorrect, the key is knowing when the suggestion is helpful—and when to hit backspace.</p>
+<div class="callout-body-container">
+<p>Python uses <strong>zero-based indexing</strong>: <code>scores[0]</code> is the first element, <code>scores[1]</code> is the second. <code>scores[4]</code> on a 4-item list raises an <code>IndexError</code>.</p>
 </div>
 </div>
 </div>
-<p>If you don’t have the foundational skills, you won’t know when they’re wrong—or worse, when they’re <em>subtly</em> wrong.</p>
+<hr>
 </section>
-<section id="ai-tools-are-assistants-not-autopilots." class="level3">
-<h3 class="anchored" data-anchor-id="ai-tools-are-assistants-not-autopilots.">AI tools are assistants, not autopilots.</h3>
-<p>Learning how to code and analyze data yourself is what allows you to:</p>
-<ul>
-<li>Spot mistakes in generated code</li>
-<li>Ask better questions (better prompts = better results)</li>
-<li>Customize and build on what AI gives you</li>
-<li>Evaluate whether an approach is valid or helpful</li>
-<li>Explain what your analysis means and how it should be used</li>
-</ul>
-<p>You don’t need to <em>fear</em> these tools. But you also don’t want to <em>depend</em> on them blindly. This course will teach you the skills needed to use AI as a powerful assistant — <strong>not a crutch</strong>.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Student Reflection Prompt
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Have you ever used a tool like ChatGPT, Claude, or Copilot to generate code or solve a problem?</p>
-<ul>
-<li>What did it get right?</li>
-<li>What did it miss?</li>
-<li>How confident were you in the result?</li>
-</ul>
-</div>
-</div>
-</div>
-<p>In the chapters ahead, we’ll sometimes bring GenAI tools into the learning process, especially as helpers for things like brainstorming or debugging. But we’ll always emphasize the importance of <em>understanding the code you’re working with</em>. Otherwise, you’re just copying answers without learning anything—which is like using a calculator to solve a math problem you never actually learned.</p>
-<p>And trust us: if you ever find yourself in Taylor’s shoes—staring at a spreadsheet and needing to figure out what matters—you’ll want more than a chatbot. You’ll want skill.</p>
-</section>
-</section>
-<section id="why-python-and-why-now" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="why-python-and-why-now"><span class="header-section-number">1.3</span> Why Python, and why now?</h2>
-<p>So far, we’ve talked about why it’s important to build foundational skills and not overly rely on AI tools. But that probably leaves you with another question:</p>
+<section id="tuples" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="tuples"><a href="05-data-structures.html#tuples-ordered-and-immutable">Tuples</a></h2>
 <blockquote class="blockquote">
-<p><em>“Out of all the programming languages out there, why are we learning Python?”</em></p>
+<p>A <strong>tuple</strong> is an ordered, <strong>immutable</strong> collection. Use it for fixed groupings that should never change (coordinates, dates, function return values).</p>
 </blockquote>
-<p>It’s a good question — and the answer is simple: <strong>Python is the language of modern data science.</strong></p>
-<section id="python-is-beginner-friendly-but-not-just-for-beginners." class="level3">
-<h3 class="anchored" data-anchor-id="python-is-beginner-friendly-but-not-just-for-beginners.">Python is beginner-friendly, but not just for beginners.</h3>
-<p>Python was designed to be easy to read and write. Its syntax is clean and (mostly) intuitive, which means you won’t spend hours trying to remember obscure symbols or puzzling over where the semicolon went. That makes it a great first language for students who are new to programming.</p>
-<p>But don’t mistake simplicity for lack of power. Python is also used by:</p>
-<ul>
-<li>Data scientists at companies like Google, Netflix, and Spotify</li>
-<li>Analysts at healthcare organizations, banks, and nonprofits</li>
-<li>Researchers running simulations and training machine learning models</li>
-<li>Engineers building large-scale data pipelines and AI tools</li>
-</ul>
-<p>So while Python is accessible to beginners, it’s also respected and widely used by professionals. In fact, according to the <a href="https://survey.stackoverflow.co/2023/#technology-programming-scripting-and-markup-languages">2023 Stack Overflow Developer Survey</a>, Python ranks as one of the <strong>top three most commonly used programming languages</strong> overall, and is consistently a favorite among developers working in data science, machine learning, and academic research. Its combination of readability, power, and a rich ecosystem of libraries makes it a go-to language across industries and roles.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coordinates <span class="op">=</span> (<span class="fl">39.76</span>, <span class="op">-</span><span class="fl">84.19</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>birthday <span class="op">=</span> (<span class="dv">7</span>, <span class="dv">14</span>, <span class="dv">1998</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>coordinates[<span class="dv">0</span>]           <span class="co"># 39.76 — same indexing as lists</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># coordinates[0] = 41.0  # ← TypeError: tuples are immutable</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tuple unpacking — assign each element to its own variable</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>lat, lon <span class="op">=</span> coordinates</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>month, day, year <span class="op">=</span> birthday</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="its-not-just-the-language-its-the-ecosystem." class="level3">
-<h3 class="anchored" data-anchor-id="its-not-just-the-language-its-the-ecosystem.">It’s not just the language, it’s the ecosystem.</h3>
-<p>Python has a massive collection of libraries and packages built specifically for data work. Here are just a few you’ll get to know in this course but realize there are tens of thousands of open source Python libraries that you can use for various data science tasks:</p>
-<ul>
-<li><strong>pandas</strong> – for working with data tables</li>
-<li><strong>numpy</strong> – for efficient numerical computation</li>
-<li><strong>matplotlib</strong> and <strong>seaborn</strong> – for data visualization</li>
-<li><strong>scikit-learn</strong> – for building machine learning models</li>
-</ul>
-<p>This ecosystem means you won’t have to build everything from scratch. You’ll learn to stand on the shoulders of open-source giants so you can focus more on solving problems and less on reinventing the wheel.</p>
-</section>
-<section id="python-is-your-toolset.-this-course-is-your-training-ground." class="level3">
-<h3 class="anchored" data-anchor-id="python-is-your-toolset.-this-course-is-your-training-ground.">Python is your toolset. This course is your training ground.</h3>
-<p>In this course, you’ll learn how to:</p>
-<ul>
-<li>Write Python code that manipulates and explores real datasets</li>
-<li>Use libraries like pandas and matplotlib to summarize and visualize your data</li>
-<li>Build your first machine learning models with tools like scikit-learn</li>
-<li>Gain confidence in reading and modifying code — whether it came from a textbook, a blog post, or a GenAI assistant</li>
-</ul>
-<p>By the end of this course, Python won’t feel like some intimidating, foreign technical concept you’ve been avoiding or unsure how to approach. It will become a practical skill—a tool you know how to use to explore data, uncover insights, and drive real decisions. And here’s the best part: you’ll be learning the same tool that analysts, data scientists, and business teams across your future organization are already using. Instead of feeling left out of the conversation, you’ll be equipped to lead it.</p>
-</section>
-</section>
-<section id="learning-to-code-a-reality-check" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="learning-to-code-a-reality-check"><span class="header-section-number">1.4</span> Learning to code: a reality check</h2>
-<p>Let’s be real for a minute.</p>
-<p>Learning to code can be frustrating at first. It’s not always fun to stare at an error message that makes zero sense. It’s even less fun when you fix that error… only to get a brand-new one. You might feel stuck, confused, or like everyone else “gets it” but you.</p>
-<p>That’s normal. In fact, it’s expected.</p>
-<section id="learning-to-code-is-like-learning-a-new-language-because-it-is" class="level3">
-<h3 class="anchored" data-anchor-id="learning-to-code-is-like-learning-a-new-language-because-it-is">Learning to code is like learning a new language (because it is)</h3>
-<p>When you’re first learning a spoken language, you stumble over basic phrases. You forget vocabulary. You mess up grammar. But over time, with practice, you start to think in the new language — and eventually, it just <em>clicks</em>.</p>
-<p>Coding is the same way. You’ll start by copying examples and Googling error messages. That’s fine. That’s part of the process. Over time, those patterns will stick. You’ll stop memorizing and start <em>thinking</em> in code.</p>
-</section>
-<section id="this-course-is-designed-for-beginners" class="level3">
-<h3 class="anchored" data-anchor-id="this-course-is-designed-for-beginners">This course is designed for beginners</h3>
-<p>You don’t need prior programming experience to succeed here. We’ll start from the very beginning: writing simple statements, understanding variables and data types, building up to loops, functions, and eventually full data science workflows.</p>
-<p>You’ll go from:</p>
+<section id="dictionaries" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="dictionaries"><a href="05-data-structures.html#dictionaries-key-value-pairs">Dictionaries</a></h2>
 <blockquote class="blockquote">
-<p><em>“What’s a variable?”</em></p>
+<p>A <strong>dictionary</strong> is an unordered collection of <strong>key-value pairs</strong>. Use it when data has meaningful labels (like columns in a row of data).</p>
 </blockquote>
-<p>to…</p>
-<blockquote class="blockquote">
-<p><em>“I just built a machine learning model to predict customer churn.”</em></p>
-</blockquote>
-<p>Step by step. Week by week. You’ll get there. And don’t feel like you have to go it alone.</p>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Lean on your classmates.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If you’re stuck, chances are someone else is too. Use the classroom discussion board to ask questions, share what you’re learning, and help each other out. This is a collaborative course, and we’re building a community of learners who grow together.</p>
-</div>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Jordan'</span>, <span class="st">'score'</span>: <span class="dv">95</span>, <span class="st">'major'</span>: <span class="st">'Data Science'</span>}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>student[<span class="st">'score'</span>]              <span class="co"># 95 — access by key</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>student[<span class="st">'score'</span>] <span class="op">=</span> <span class="dv">98</span>         <span class="co"># update existing value</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>student[<span class="st">'grad_year'</span>] <span class="op">=</span> <span class="dv">2025</span>   <span class="co"># add new key-value pair</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> student[<span class="st">'major'</span>]          <span class="co"># remove a key</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>student.keys()    <span class="co"># all keys</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>student.values()  <span class="co"># all values</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>student.items()   <span class="co"># all (key, value) pairs</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">'name'</span> <span class="kw">in</span> student <span class="co"># True — membership check on keys</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="its-okay-to-use-ai-tools-but-dont-skip-the-struggle" class="level3">
-<h3 class="anchored" data-anchor-id="its-okay-to-use-ai-tools-but-dont-skip-the-struggle">It’s okay to use AI tools but don’t skip the struggle</h3>
-<p>You’ll be encouraged to use tools like ChatGPT, Copilot, and Claude throughout this course. But here’s the rule: use them to <strong>learn</strong>, not to <strong>avoid learning</strong>.</p>
-<p>Think of these tools as tutors, not answer keys:</p>
-<ul>
-<li>Use them to check your understanding</li>
-<li>Ask them for help when you’re stuck</li>
-<li>Compare their answers to your own and figure out the differences</li>
-<li>But always make sure <em>you</em> understand what the code is doing</li>
-</ul>
-<p>Shortcuts don’t help if you skip the part where you build skill.</p>
-<p>Learning to code is like learning anything meaningful—it takes effort, patience, and a little bit of resilience. You won’t get everything right the first time, and that’s okay. You don’t need to be perfect. You just need to keep showing up and keep trying.</p>
-<p>And we’ll be right here to help every step of the way.</p>
+<section id="data-structure-comparison" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="data-structure-comparison"><a href="05-data-structures.html#why-data-structures">Data Structure Comparison</a></h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Structure</th>
+<th>Syntax</th>
+<th>Ordered</th>
+<th>Mutable</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>list</code></td>
+<td><code>[1, 2, 3]</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>Sequences that change</td>
+</tr>
+<tr class="even">
+<td><code>tuple</code></td>
+<td><code>(1, 2, 3)</code></td>
+<td>✓</td>
+<td>✗</td>
+<td>Fixed groupings</td>
+</tr>
+<tr class="odd">
+<td><code>dict</code></td>
+<td><code>{'k': v}</code></td>
+<td>✓*</td>
+<td>✓</td>
+<td>Labeled data, lookups</td>
+</tr>
+</tbody>
+</table>
+<p>*Insertion order preserved in Python 3.7+</p>
+<hr>
 </section>
+<section id="standard-vs-third-party-libraries" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="standard-vs-third-party-libraries"><a href="06-libraries.html#standard-library-vs-third-party-libraries">Standard vs Third-Party Libraries</a></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 43%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Standard library</th>
+<th>Third-party library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Available</strong></td>
+<td>Automatically with Python</td>
+<td>Install via <code>pip</code></td>
+</tr>
+<tr class="even">
+<td><strong>Examples</strong></td>
+<td><code>math</code>, <code>os</code>, <code>datetime</code>, <code>random</code></td>
+<td><code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, <code>seaborn</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Internet needed</strong></td>
+<td>No</td>
+<td>Yes (to install)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Install a third-party package:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In terminal</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pip install pandas</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside a Jupyter notebook cell</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="wrap-up" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="wrap-up"><span class="header-section-number">1.5</span> Wrap-Up</h2>
-<p>You’ve made it through your first chapter — nicely done!</p>
-<p>We’ve talked about why data science matters, why Python is the language we’re using, and why learning these skills (even in the age of AI) still gives you a powerful edge. We’ve also tried to set realistic expectations: learning to code can be challenging, but it’s absolutely doable—with patience, practice, and support from your classmates, instructors, and tools like ChatGPT when used wisely.</p>
-<p>The big takeaway? You’re not here to memorize formulas or passively watch someone else code. You’re here to build real skills that will help you ask better questions, explore real-world data, and create insights that drive decisions.</p>
-<p>And we’re not wasting any time. In the next chapter, we’ll jump right in — you’ll get your Python environment set up and write your first lines of code. This is where the hands-on part of the journey begins.</p>
-<p>This course moves fast, so buckle up and enjoy the ride. Let’s get started!</p>
+<section id="importing-libraries" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="importing-libraries"><a href="06-libraries.html#pythons-data-science-ecosystem-third-party-modules">Importing Libraries</a></h2>
+<p>Import once at the top of your notebook. Use the conventional aliases — they are universal in data science code.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np          <span class="co"># numerical arrays and math</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd          <span class="co"># DataFrames and data manipulation</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># static plotting</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns        <span class="co"># statistical visualization</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math                  <span class="co"># standard library — no alias needed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Dot notation</strong> accesses functions inside a library:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">144</span>)        <span class="co"># → 12.0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])    <span class="co"># → 2.0</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'data.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="exercise-can-you-help-taylor" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="exercise-can-you-help-taylor"><span class="header-section-number">1.6</span> Exercise: “Can You Help Taylor?”</h2>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Scenario
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You’re stepping into Taylor’s shoes. You’ve just been handed <a href="https://tinyurl.com/retail-data">three datasets</a> by your manager at a local marketing analytics firm:</p>
-<ol type="1">
-<li><strong>transactions.csv</strong> — individual transactions from various customers, but… it’s a litle messy.</li>
-<li><strong>hh_demographics.csv</strong> — customer-level information including age, household size, income level, etc.</li>
-<li><strong>product.csv</strong> - product-level information such as manufacturer, brand, commodity type, package size, etc.</li>
-</ol>
-<p>Your job is to begin exploring what factors might be influencing repeat purchases. But before you can even analyze anything, you’ll need to clean, combine, and make sense of the data.</p>
-<p>Throughout this exercise your objective is to:</p>
-<ul>
-<li>Inspect and describe real-world “messy” data</li>
-<li>Identify issues that must be addressed before analysis</li>
-<li>Strategize a plan for cleaning and joining datasets</li>
-<li>Experiment with using ChatGPT to assist your data work</li>
-<li>Reflect on how foundational skills + GenAI can be used together</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Part 1 – Get Oriented
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Start by opening the <strong>transactions data</strong> and take a few minutes to explore it.</p>
-<p><strong>Questions:</strong></p>
-<ol type="1">
-<li>What’s messy or confusing about this data?</li>
-<li>What would your first 2–3 steps be if you were asked to clean or prepare it for analysis?</li>
-<li>Based on this table alone, what kinds of analyses <em>might</em> you try to do?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Part 2 – Meet the Second Dataset
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Now open the <strong>household demographic</strong> and the <strong>product information</strong> data.</p>
-<p><strong>Questions:</strong></p>
-<ol type="1">
-<li>What types of information does this dataset contain that might help you understand customer behavior?</li>
-<li>How would you combine these with the transactions data?</li>
-<li>What issues do you foresee when trying to join them?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Part 3 – Ask for Help (But Be Smart About It)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Use <a href="https://chatgpt.com/">ChatGPT</a> (or any GenAI tool you’re comfortable with) to begin cleaning or analyzing the data.</p>
-<p><strong>Instructions:</strong></p>
-<ul>
-<li>Try writing 2–3 different prompts to help with basic data cleaning, joining, or summarizing the data.</li>
-<li>Try at least one prompt that combines both datasets.</li>
-</ul>
-<p><strong>Then reflect:</strong></p>
-<ol type="1">
-<li>What prompts did you use?</li>
-<li>Did the AI return usable code?</li>
-<li>Were there any errors, misunderstandings, or surprises?</li>
-<li>Did you understand what the code was doing? If not, what helped you figure it out?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Part 4 – Pull It All Together
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Write a short summary (5–7 sentences) answering the following:</strong></p>
-<ul>
-<li>What was your biggest takeaway from working with these datasets?</li>
-<li>How did this exercise reinforce the ideas from Chapter 1?</li>
-<li>Did this change your perspective on what <em>your role</em> is when using AI tools like ChatGPT in data analysis?</li>
-<li>How do you feel about starting your journey into Python after completing this activity?</li>
-</ul>
-</div>
-</div>
-</div>
+<section id="key-data-science-libraries" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-data-science-libraries"><a href="06-libraries.html#pythons-data-science-ecosystem-third-party-modules">Key Data Science Libraries</a></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 40%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Library</th>
+<th>Primary use</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>NumPy</strong></td>
+<td>Fast numerical arrays, vectorized math</td>
+<td><code>np.mean(arr)</code>, <code>arr ** 2</code></td>
+</tr>
+<tr class="even">
+<td><strong>Pandas</strong></td>
+<td>DataFrames, tabular data manipulation</td>
+<td><code>df.groupby('col').sum()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Matplotlib</strong></td>
+<td>Static plots (line, bar, scatter)</td>
+<td><code>plt.plot(x, y)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Seaborn</strong></td>
+<td>Statistical visualizations</td>
+<td><code>sns.histplot(df, x='col')</code></td>
+</tr>
+<tr class="odd">
+<td><strong>SciPy</strong></td>
+<td>Scientific computing (stats, optimization)</td>
+<td><code>scipy.stats.ttest_ind(a, b)</code></td>
+</tr>
+<tr class="even">
+<td><strong>scikit-learn</strong></td>
+<td>Machine learning</td>
+<td><code>model.fit(X, y)</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="common-pitfalls" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="common-pitfalls">Common Pitfalls</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 51%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mistake</th>
+<th>Why it happens</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>scores[4]</code> on a 4-item list</td>
+<td>Indexing starts at 0; valid indices are 0–3</td>
+<td>Use <code>scores[-1]</code> for last item or <code>len(scores)-1</code></td>
+</tr>
+<tr class="even">
+<td>Modifying a list while iterating it</td>
+<td>List length changes mid-loop</td>
+<td>Iterate over a copy: <code>for x in scores[:]</code></td>
+</tr>
+<tr class="odd">
+<td><code>coordinates[0] = 5.0</code> raises <code>TypeError</code></td>
+<td>Tuples are immutable</td>
+<td>Convert to list first, or create a new tuple</td>
+</tr>
+<tr class="even">
+<td><code>student['gpa']</code> raises <code>KeyError</code></td>
+<td>Key doesn’t exist</td>
+<td>Use <code>student.get('gpa', 0)</code> for a safe default</td>
+</tr>
+<tr class="odd">
+<td>Running cells out of order breaks later cells</td>
+<td>Kernel state depends on execution order, not cell position</td>
+<td>Restart &amp; Run All before submitting</td>
+</tr>
+<tr class="even">
+<td><code>import pandas</code> then <code>pd.read_csv(...)</code> raises <code>NameError</code></td>
+<td>Alias <code>pd</code> not defined — imported without alias</td>
+<td>Use <code>import pandas as pd</code></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -1388,13 +1420,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../book/module-01-overview.html" class="pagination-link" aria-label="Module 1: Getting Started">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Module 1: Getting Started</span>
+      <a href="../book/module-01-cheatsheet.html" class="pagination-link" aria-label="Module 1 Cheat Sheet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Module 1 Cheat Sheet</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../book/02-preparing-for-code.html" class="pagination-link" aria-label="Setting Up Your Python Environment">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting Up Your Python Environment</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../book/99-anaconda-install.html" class="pagination-link" aria-label="Anaconda Installation">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Anaconda Installation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1403,4 +1435,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/01-intro-data-mining.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-02-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
