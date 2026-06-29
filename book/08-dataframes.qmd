@@ -320,6 +320,7 @@ You can access the data again from this link:
 ## Step 1: Load the data
 
 ```{python}
+#| eval: false
 import pandas as pd
 
 url = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/colleges/colleges.csv"

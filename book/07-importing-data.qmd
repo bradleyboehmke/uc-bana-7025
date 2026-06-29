@@ -77,9 +77,19 @@ Later in this chapter, we will discuss how to import data that resides on your l
 :::
 
 ```{python}
+#| eval: false
+#| echo: true
 import pandas as pd
 
 planes = pd.read_csv('https://tinyurl.com/planes-data')
+```
+
+```{python}
+#| eval: true
+#| echo: false
+import pandas as pd
+
+planes = pd.read_csv('../data/planes.csv')
 ```
 
 We see that our imported data is represented as a DataFrame:
