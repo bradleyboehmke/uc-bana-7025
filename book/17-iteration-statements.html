@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.13">
+<meta name="generator" content="quarto-1.10.14">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b9bb5de7e195162b4b928ed333a06ee7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-100cd94cf99d7f5bf0fd78e0fa747d0b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b9bb5de7e195162b4b928ed333a06ee7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-cd20848ca02fc76d36aef2d89ed0b5fd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-026357a16b9f3ea3f7adbb99b29544ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -731,7 +731,7 @@ window.Quarto = {
 </div>
 <section id="prerequisites" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">17.1</span> Prerequisites</h2>
-<div id="c8f18ddd" class="cell" data-execution_count="1">
+<div id="6788c4b3" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
@@ -752,18 +752,18 @@ window.Quarto = {
 <li><strong>Output</strong>: You must specify what to do with the result. This may include printing out a result or modifying the object in place.</li>
 </ol>
 <p>For example, say we want to iterate N times, we can perform a for loop using the <code>range()</code> function:</p>
-<div id="68fb15a8" class="cell" data-execution_count="2">
+<div id="0ff710d5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(number)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can add multiple lines to our <code>for</code> loop; we just need to ensure that each line follows the same indentation patter:</p>
-<div id="cb1d7a0e" class="cell" data-execution_count="3">
+<div id="13f22d11" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    squared <span class="op">=</span> number <span class="op">*</span> number</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> squared = </span><span class="sc">{</span>squared<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Rather than just print out some result, we can also assign the computation to an object. For example, say we wanted to assign the squared result in the previous <code>for</code> loop to a dictionary where the key is the original number and the value is the squared value.</p>
-<div id="b114cfe0" class="cell" data-execution_count="4">
+<div id="a6d98cda" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>squared_values <span class="op">=</span> {}</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
@@ -775,17 +775,17 @@ window.Quarto = {
 <section id="knowledge-check" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h3>
 <p>We can see all data sets that we have in the “<a href="https://github.com/bradleyboehmke/uc-bana-4080/tree/main/data/monthly_data">data/monthly_data</a>” folder with <code>glob.glob</code>:</p>
-<div id="5a26b1c3" class="cell" data-execution_count="5">
+<div id="eb09d2cb" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>monthly_data_files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"../data/monthly_data/*"</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>monthly_data_files</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you wanted to get just the file name from the string path we can use <code>os.path.basename</code>:</p>
-<div id="fbec1340" class="cell" data-execution_count="6">
+<div id="4aeadf99" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> os.path.basename(monthly_data_files[<span class="dv">0</span>])</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>file_name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And if we wanted to just get the name minus the file extension we can apply some simple string indexing to remove the last four characters (<code>.csv</code>):</p>
-<div id="61292e5d" class="cell" data-execution_count="7">
+<div id="bd864359" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>file_name[:<span class="op">-</span><span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
@@ -818,12 +818,12 @@ window.Quarto = {
 <li><code>break</code>: exits the entire for loop.</li>
 </ul>
 <p>Both are used in conjunction with if statements. For example, this for loop will iterate for each element in <code>year</code>; however, when it gets to the element that equals the year of <code>covid</code> (2020) it will <code>break</code> out and end the for loop process.</p>
-<div id="fd009568" class="cell" data-execution_count="8">
+<div id="6a484ea0" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># range will produce numbers starting at 2018 and up to but not include 2023</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2018</span>, <span class="dv">2023</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(years)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="17696481" class="cell" data-execution_count="9">
+<div id="a1f996a9" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>covid <span class="op">=</span> <span class="dv">2020</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> years:</span>
@@ -831,7 +831,7 @@ window.Quarto = {
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>continue</code> argument is useful when we want to skip the current iteration of a loop without terminating it. On encountering <code>continue</code>, the Python parser skips further evaluation and starts the next iteration of the loop. In this example, the for loop will iterate for each element in year; however, when it gets to the element that equals covid it will skip the rest of the code execution simply jump to the next iteration.</p>
-<div id="2bfc043e" class="cell" data-execution_count="10">
+<div id="766db023" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> years:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> year <span class="op">==</span> covid: <span class="cf">continue</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -882,7 +882,7 @@ window.Quarto = {
 <li>loop over an object and perform some computation</li>
 <li>save the result to the empty object</li>
 </ol>
-<div id="0354d2c8" class="cell" data-execution_count="11">
+<div id="1ba236cb" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>squared_values <span class="op">=</span> []</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    squared <span class="op">=</span> number <span class="op">*</span> number</span>
@@ -891,17 +891,17 @@ window.Quarto = {
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>squared_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A list comprehension allows us to condense this pattern to a single line:</p>
-<div id="0329052c" class="cell" data-execution_count="12">
+<div id="46b382a0" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>squared_values <span class="op">=</span> [number <span class="op">*</span> number <span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>squared_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>List comprehensions even allow us to add conditional statements. For example, here we use a conditional statement to skip even numbers:</p>
-<div id="f2ec5abb" class="cell" data-execution_count="13">
+<div id="aa819886" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>squared_odd_values <span class="op">=</span> [number <span class="op">*</span> number <span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>) <span class="cf">if</span> number <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span>]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>squared_odd_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For more complex conditional statements, or if the list comprehension gets a bit long, we can use multiple lines to make it easier to digest:</p>
-<div id="153adcb4" class="cell" data-execution_count="14">
+<div id="659e36bc" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>squared_certain_values <span class="op">=</span> [</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    number <span class="op">*</span> number <span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> number <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span> <span class="kw">and</span> number <span class="op">!=</span> <span class="dv">5</span></span>
@@ -910,7 +910,7 @@ window.Quarto = {
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>squared_certain_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>There are other forms of comprehensions as well. For example, we can perform a dictionary comprehension where we follow the same patter; however, we use dict brackets (<code>{</code>) instead of list brackets (<code>[</code>):</p>
-<div id="fd8a7d3b" class="cell" data-execution_count="15">
+<div id="9b2106b9" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>squared_values_dict <span class="op">=</span> {number: number<span class="op">*</span>number <span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)}</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>squared_values_dict</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -961,7 +961,7 @@ window.Quarto = {
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>do stuff here <span class="cf">with</span> i<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For example, the probability of flipping 10 coins and getting all heads or tails is <span class="math inline">\((\frac{1}{2})^{10} = 0.0009765625\)</span> (1 in 1024 tries). Let’s implement this and see how many times it’ll take to accomplish this feat.</p>
 <p>The following <code>while</code> statement will check if the number of unique values for 10 flips are 1, which implies that we flipped all heads or tails. If it is not equal to 1 then we repeat the process of flipping 10 coins and incrementing the number of tries. When our condition statement <code>ten_of_a_kind == True</code> then our while loop will stop.</p>
-<div id="296e77cc" class="cell" data-execution_count="16">
+<div id="66c719cc" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a coin</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>coin <span class="op">=</span> [<span class="st">'heads'</span>, <span class="st">'tails'</span>]</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1025,7 +1025,7 @@ window.Quarto = {
 <h2 data-number="17.6" class="anchored" data-anchor-id="iterables"><span class="header-section-number">17.6</span> Iterables</h2>
 <p>Python strongly leverages the concept of <em>iterable objects</em>. An object is considered <em>iterable</em> if it is either a physically stored sequence, or an object that produces one result at a time in the context of an interation tool like a <code>for</code> loop. Up to this point, our example looping structures have primarily iterated over a DataFrame or a list.</p>
 <p>When our <code>for</code> loop iterates over a DataFrame, underneath the hood it is first accessing the iterable object, and then iterating over each item. As the following illustrates, the default iterable components of a DataFrame are the columns:</p>
-<div id="055a556a" class="cell" data-execution_count="17">
+<div id="b10fa040" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], <span class="st">'col3'</span>: [<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>]})</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> df.<span class="fu">__iter__</span>() <span class="co"># access iterable object</span></span>
@@ -1034,7 +1034,7 @@ window.Quarto = {
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(I))    <span class="co"># third iteration</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When our <code>for</code> loop iterates over a list, the same procedure unfolds. Note that when no more items are available to iterate over, a <code>StopIteration</code> is thrown which signals to our <code>for</code> loop that no more itertions should be performed.</p>
-<div id="dc040c7f" class="cell" data-execution_count="18">
+<div id="99db26bf" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> [<span class="st">'Robert'</span>, <span class="st">'Sandy'</span>, <span class="st">'John'</span>, <span class="st">'Patrick'</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> names.<span class="fu">__iter__</span>() <span class="co"># access iterable object</span></span>
@@ -1045,7 +1045,7 @@ window.Quarto = {
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(I))       <span class="co"># no more items</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Dictionaries and tuples are also iterable objects. Iterating over dictionary automatically returns one key at a time, which allows us to have the key and index for that key at the same time:</p>
-<div id="12269fcc" class="cell" data-execution_count="19">
+<div id="64330bb4" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> {<span class="st">'a'</span>:<span class="dv">1</span>, <span class="st">'b'</span>:<span class="dv">2</span>, <span class="st">'c'</span>:<span class="dv">3</span>}</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> D.<span class="fu">__iter__</span>()  <span class="co"># access iterable object</span></span>
@@ -1053,12 +1053,12 @@ window.Quarto = {
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(I))    <span class="co"># second iteration</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(I))    <span class="co"># third iteration</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="6b4e924d" class="cell" data-execution_count="20">
+<div id="41311d6a" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> D:</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, D[key])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Although using these iterables in a for loop is quite common, you will often see two other approaches which include the iterables <code>range()</code> and <code>enumerate()</code>. range is often used to generate indexes in a for loop but you can use it anywhere you need a series of integers. However, range is an iterable that generates items on demand:</p>
-<div id="5f6df1f6" class="cell" data-execution_count="21">
+<div id="dff2ca59" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> values.<span class="fu">__iter__</span>()</span>
@@ -1067,7 +1067,7 @@ window.Quarto = {
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(I))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So if you wanted to iterate over each column in our DataFrame, an alternative is to use range. In this example, range produces the numeric index for each column so we simply use that value to index for the column within the for loop:</p>
-<div id="2afe996f" class="cell" data-execution_count="22">
+<div id="432aa02a" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>unique_values <span class="op">=</span> []</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(df.columns)):</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  value <span class="op">=</span> df.iloc[:, col].nunique()</span>
@@ -1076,14 +1076,14 @@ window.Quarto = {
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>unique_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Another common iterator you will see is <code>enumerate</code>. Actually, the <code>enumerate</code> function returns a <strong>generator object</strong>, which also supports this iterator concept. The benefit of <code>enumerate</code> is that it returns a (index, value) tuple each time through the loop:</p>
-<div id="20fce330" class="cell" data-execution_count="23">
+<div id="4317f118" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="bu">enumerate</span>(df) <span class="co"># access iterable object</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(E))    <span class="co"># first iteration</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(E))    <span class="co"># second iteration</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">next</span>(E))    <span class="co"># third iteration</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <code>for</code> loop steps through these tuples automatically and allows us to unpack their values with tuple assignment in the header of the <code>for</code> loop. In the following example, we unpack the tuples into the variables <code>index</code> and <code>col</code> and we can now use both of these values however necessary in a for loop.</p>
-<div id="2952ac7b" class="cell" data-execution_count="24">
+<div id="9df9f543" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, col <span class="kw">in</span> <span class="bu">enumerate</span>(df):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>index<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

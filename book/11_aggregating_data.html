@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.13">
+<meta name="generator" content="quarto-1.10.14">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b9bb5de7e195162b4b928ed333a06ee7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-100cd94cf99d7f5bf0fd78e0fa747d0b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b9bb5de7e195162b4b928ed333a06ee7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-cd20848ca02fc76d36aef2d89ed0b5fd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-026357a16b9f3ea3f7adbb99b29544ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -669,7 +669,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>What’s the average sale price per square foot?</li>
 <li>Are there any neighborhoods with notably low or high prices?</li>
 </ul>
-<div id="0352f8fd" class="cell" data-execution_count="1">
+<div id="757c5c01" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ames <span class="op">=</span> pd.read_csv(<span class="st">'../data/ames_raw.csv'</span>)</span>
@@ -738,20 +738,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="summarizing-a-series">Summarizing a Series</h3>
 <p>Once we’ve loaded a dataset into a Pandas DataFrame, one of the simplest ways to explore it is by summarizing individual columns—also known as <strong>Series</strong>. Pandas makes this easy with built-in methods like <code>.sum()</code>, <code>.mean()</code>, and <code>.median()</code>.</p>
 <p>Suppose we want to compute the total of all home sale prices. We can do that by selecting the <code>SalePrice</code> column and using the <code>.sum()</code> method:</p>
-<div id="f8122b21" class="cell" data-execution_count="2">
+<div id="199ad894" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'SalePrice'</span>].<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This returns a <strong>single value</strong>, which makes this a summary operation—we’re aggregating values <em>across all rows</em> in the <code>SalePrice</code> column.</p>
 <p>Pandas includes many other helpful summary methods for numerical data:</p>
-<div id="a3538583" class="cell" data-execution_count="3">
+<div id="96406f5a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average sale price</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'SalePrice'</span>].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1ac27d4c" class="cell" data-execution_count="4">
+<div id="8ed441c0" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median sale price</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'SalePrice'</span>].median()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1910971c" class="cell" data-execution_count="5">
+<div id="0ad976cc" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation of sale prices</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'SalePrice'</span>].std()   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -763,18 +763,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container">
 <p>Pandas will include the data type in the summary statistic output preceeding the actual summary stat (i.e.&nbsp;<code>np.float64</code>). If you want to not see that you can just wrap it with <code>print()</code>:</p>
-<div id="aeb292f2" class="cell" data-execution_count="6">
+<div id="edce766d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ames[<span class="st">'SalePrice'</span>].<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 <p>However, Pandas also provides summary methods that are useful for <strong>categorical variables</strong> (like neighborhood names):</p>
-<div id="5261040d" class="cell" data-execution_count="7">
+<div id="541ec55c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of unique neighborhoods</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'Neighborhood'</span>].nunique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="e346e62d" class="cell" data-execution_count="8">
+<div id="250c2de5" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Most frequent neighborhood</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'Neighborhood'</span>].mode()    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -805,7 +805,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="the-describe-method">The <code>describe()</code> Method</h3>
 <p>When you’re first getting familiar with a dataset, it’s helpful to quickly view a variety of summary statistics all at once. Pandas provides the <code>.describe()</code> method for exactly this purpose.</p>
 <p>For numeric variables, <code>.describe()</code> returns common summary statistics such as the count, mean, standard deviation, min, and max values:</p>
-<div id="0140e172" class="cell" data-execution_count="9">
+<div id="d2918e9f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'SalePrice'</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is especially useful during <strong>exploratory data analysis (EDA)</strong> when you’re trying to get a sense of a column’s range, distribution, and central tendency.</p>
@@ -820,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>For categorical variables, <code>.describe()</code> provides a different summary, showing the number of non-null entries, number of unique values, most frequent value, and its frequency:</p>
-<div id="879abaf4" class="cell" data-execution_count="10">
+<div id="8b015d99" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'Neighborhood'</span>].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In both cases, <code>.describe()</code> gives you a quick and informative overview—whether you’re working with numbers or categories.</p>
@@ -829,15 +829,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="summarizing-a-dataframe">Summarizing a DataFrame</h3>
 <p>So far, we’ve focused on summarizing individual columns (Series). But in many cases, we want to explore <strong>multiple variables at once</strong>. Fortunately, Pandas allows us to apply the same summary methods to a subset of columns in a DataFrame.</p>
 <p>First, recall how to select multiple columns using double brackets and a list of column names:</p>
-<div id="dc6393b4" class="cell" data-execution_count="11">
+<div id="23f0c51b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ames[[<span class="st">'SalePrice'</span>, <span class="st">'Gr Liv Area'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This returns a new DataFrame with just the <code>SalePrice</code> and <code>Gr Liv Area</code> columns.</p>
 <p>We can now apply summary methods—just like we did with a single Series:</p>
-<div id="c02f63cb" class="cell" data-execution_count="12">
+<div id="855708fe" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ames[[<span class="st">'SalePrice'</span>, <span class="st">'Gr Liv Area'</span>]].mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="6225a471" class="cell" data-execution_count="13">
+<div id="3f784fe6" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ames[[<span class="st">'SalePrice'</span>, <span class="st">'Gr Liv Area'</span>]].median()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These methods return a <strong>Series object</strong>, where:</p>
@@ -867,7 +867,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>To overcome these limitations, Pandas provides a more flexible tool: the <code>.agg()</code> method (short for <code>.aggregate()</code>).</p>
 <p>Here’s a basic example:</p>
-<div id="c3adb07c" class="cell" data-execution_count="14">
+<div id="517052ef" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ames.agg({</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>]</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -889,7 +889,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="94ae254b" class="cell" data-execution_count="15">
+<div id="53225934" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbose version</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ames.aggregate({</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>]</span>
@@ -901,14 +901,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can easily extend this to include multiple columns:</p>
-<div id="e2418cd8" class="cell" data-execution_count="16">
+<div id="ae0f7c76" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ames.agg({</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>],</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gr Liv Area'</span>: [<span class="st">'mean'</span>]</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And because the values in the dictionary are <strong>lists</strong>, we can apply multiple summary functions to each column:</p>
-<div id="c047fd2d" class="cell" data-execution_count="17">
+<div id="e5905f8a" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ames.agg({</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gr Liv Area'</span>: [<span class="st">'mean'</span>, <span class="st">'min'</span>]</span>
@@ -956,7 +956,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="the-describe-method-1">The <code>describe()</code> Method</h3>
 <p>While <code>.agg()</code> is a powerful and flexible tool for customized summaries, the <code>.describe()</code> method offers a <strong>quick and convenient overview</strong> of your entire DataFrame—making it especially useful during <strong>exploratory data analysis (EDA)</strong>.</p>
 <p>Try running <code>.describe()</code> on the full Ames dataset:</p>
-<div id="2652ead7" class="cell" data-execution_count="18">
+<div id="03e08de2" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ames.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>By default, Pandas will summarize only the <strong>numeric columns</strong>, returning statistics like count, mean, standard deviation, min, max, and quartiles.</p>
@@ -972,7 +972,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If you want to include other variable types, you can use the <code>include</code> parameter to tell Pandas what to summarize. For example:</p>
-<div id="0f1213e2" class="cell" data-execution_count="19">
+<div id="3acf321b" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ames.describe(include<span class="op">=</span>[<span class="st">'int'</span>, <span class="st">'float'</span>, <span class="st">'object'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will generate descriptive statistics for <strong>all numeric and categorical variables</strong>, including counts, unique values, top categories, and their frequencies.</p>
@@ -1019,19 +1019,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="creating-a-grouped-object" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-grouped-object">Creating a Grouped Object</h3>
 <p>We use the <code>groupby()</code> method to define how we want to group the data. For example, to group homes by <code>Neighborhood</code>:</p>
-<div id="bfc20e19" class="cell" data-execution_count="20">
+<div id="72ff3373" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ames_grp <span class="op">=</span> ames.groupby(<span class="st">'Neighborhood'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This creates a <strong>GroupBy object</strong>—it doesn’t return a DataFrame yet, but rather an internal structure that maps each group to its corresponding rows.</p>
-<div id="ff958afe" class="cell" data-execution_count="21">
+<div id="baee4290" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ames_grp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You can inspect the structure of the groups:</p>
-<div id="886cadc7" class="cell" data-execution_count="22">
+<div id="e9cee963" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ames_grp.groups</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And access a specific group:</p>
-<div id="98461407" class="cell" data-execution_count="23">
+<div id="a35384a4" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the Bloomington neighborhood group</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ames_grp.get_group(<span class="st">'Blmngtn'</span>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1039,7 +1039,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="applying-aggregations-to-groups" class="level3">
 <h3 class="anchored" data-anchor-id="applying-aggregations-to-groups">Applying Aggregations to Groups</h3>
 <p>Once a group is defined, you can apply the same aggregation methods we used earlier:</p>
-<div id="f6b01394" class="cell" data-execution_count="24">
+<div id="ffcf93ce" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ames.groupby(<span class="st">'Neighborhood'</span>).agg({<span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>]}).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This returns a DataFrame where each row corresponds to a different neighborhood, and the columns represent the aggregated values.</p>
@@ -1056,11 +1056,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="36de47d2" class="cell" data-execution_count="25">
+<div id="aff0deac" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ames.groupby(<span class="st">'Neighborhood'</span>).agg({<span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>]}).index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is the most efficient default behavior in Pandas. However, if you’d prefer the group column to remain a <strong>regular column</strong> instead of becoming the index, you can set <code>as_index=False</code>:</p>
-<div id="f88e20bf" class="cell" data-execution_count="26">
+<div id="9f6938e4" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ames.groupby(<span class="st">'Neighborhood'</span>, as_index<span class="op">=</span><span class="va">False</span>).agg({<span class="st">'SalePrice'</span>: [<span class="st">'mean'</span>, <span class="st">'median'</span>]}).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-simple callout-tip">
@@ -1077,7 +1077,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="grouping-by-multiple-variables" class="level3">
 <h3 class="anchored" data-anchor-id="grouping-by-multiple-variables">Grouping by Multiple Variables</h3>
 <p>You can also group by <strong>more than one variable</strong>. For example, to compute the average sale price by both <code>Neighborhood</code> and <code>Yr Sold</code>:</p>
-<div id="2dee47a3" class="cell" data-execution_count="27">
+<div id="1e37bbda" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ames.groupby([<span class="st">'Neighborhood'</span>, <span class="st">'Yr Sold'</span>], as_index<span class="op">=</span><span class="va">False</span>).agg({<span class="st">'SalePrice'</span>: <span class="st">'mean'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This returns one row for each combination of <code>Neighborhood</code> and <code>Yr Sold</code>, giving you more granular insights.</p>
@@ -1134,7 +1134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="a4153c50" class="cell" data-execution_count="28">
+<div id="85493915" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/nytimes/covid-19-data/refs/heads/master/colleges/colleges.csv"</span></span>

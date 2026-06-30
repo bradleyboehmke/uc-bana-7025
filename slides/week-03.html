@@ -6,10 +6,10 @@
 <script src="week-03_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="week-03_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="week-03_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="week-03_files/libs/quarto-html/quarto-syntax-highlighting-b9bb5de7e195162b4b928ed333a06ee7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="week-03_files/libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="week-03_files/libs/quarto-contrib/quarto-timer-1.0.0/timer.js"></script>
 <link href="week-03_files/libs/quarto-contrib/quarto-timer-1.0.0/timer.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.13">
+  <meta name="generator" content="quarto-1.10.14">
 
   <title>Week 3 – Become a Data Detective 🔍</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -430,14 +430,14 @@ data/ames.csv</code></pre>
 <section id="lets-import-our-first-dataset" class="slide level2 smaller">
 <h2>Let’s Import Our First Dataset!</h2>
 <p><strong>Step 1:</strong> Import pandas and load the Ames housing data</p>
-<div id="edd2d4bf" class="cell" data-execution_count="1">
+<div id="abf68a58" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href=""></a></span>
 <span id="cb4-3"><a href=""></a><span class="co"># Load the real estate data</span></span>
 <span id="cb4-4"><a href=""></a>ames <span class="op">=</span> pd.read_csv(<span class="st">"../data/ames_raw.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Step 2:</strong> Take a quick peek at what we imported</p>
-<div id="4a7962ec" class="cell" data-execution_count="2">
+<div id="fb906c28" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="co"># What type of object did we create?</span></span>
 <span id="cb5-2"><a href=""></a><span class="bu">type</span>(ames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -446,7 +446,7 @@ data/ames.csv</code></pre>
 </div>
 <div class="fragment">
 <p>We’ve created a <strong>DataFrame</strong> - Python’s version of a spreadsheet!</p>
-<div id="ff456f47" class="cell" data-execution_count="3">
+<div id="1b749f17" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>ames</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -776,14 +776,14 @@ data/ames.csv</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>🔍 “How big is this dataset?”</strong></p>
-<div id="1208c403" class="cell" data-execution_count="4">
+<div id="388c50dd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a>ames.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(2930, 82)</code></pre>
 </div>
 </div>
 <p><strong>👀 “What does the data look like?”</strong></p>
-<div id="c7b68434" class="cell" data-execution_count="5">
+<div id="53887da7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>ames.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -958,7 +958,7 @@ data/ames.csv</code></pre>
 </div>
 </div><div class="column">
 <p><strong>📊 “What types of data do I have?”</strong></p>
-<div id="9f4c432b" class="cell" data-execution_count="6">
+<div id="fdf9edc3" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a>ames.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -1059,7 +1059,7 @@ memory usage: 2.2 MB</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>📋 “What are my column names?”</strong></p>
-<div id="7ebf5857" class="cell" data-execution_count="7">
+<div id="68f94495" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>ames.columns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Index(['Order', 'PID', 'MS SubClass', 'MS Zoning', 'Lot Frontage', 'Lot Area',
@@ -1086,7 +1086,7 @@ memory usage: 2.2 MB</code></pre>
 </div>
 </div><div class="column">
 <p><strong>🎯 “What data types am I working with?”</strong></p>
-<div id="7447dbd5" class="cell" data-execution_count="8">
+<div id="cd11c590" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>ames.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Order               int64
@@ -1122,7 +1122,7 @@ Length: 82, dtype: object</code></pre>
 <h2>Detective Summary Statistics</h2>
 <p><strong>📈 “What are the basic statistics?”</strong></p>
 <p>The <code>.describe()</code> method gives you a quick statistical summary of your numeric columns:</p>
-<div id="012bb007" class="cell" data-execution_count="9">
+<div id="59ff4a2d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a>ames.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
@@ -1438,7 +1438,7 @@ Length: 82, dtype: object</code></pre>
 </div><div class="column">
 <p><img data-src="images/dataframe-illustration.png" style="width:90.0%"></p>
 </div></div>
-<div id="8314948c" class="cell" data-execution_count="10">
+<div id="f583762a" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="co"># Let's look at our Ames data again</span></span>
 <span id="cb20-2"><a href=""></a>ames</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1763,7 +1763,7 @@ Length: 82, dtype: object</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Extract one column:</strong></p>
-<div id="a33fc6a2" class="cell" data-execution_count="11">
+<div id="d63fca34" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a><span class="co"># Get the SalePrice column</span></span>
 <span id="cb21-2"><a href=""></a>prices <span class="op">=</span> ames[<span class="st">'SalePrice'</span>]</span>
 <span id="cb21-3"><a href=""></a><span class="bu">type</span>(prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1778,7 +1778,7 @@ Length: 82, dtype: object</code></pre>
 <li><strong>Data type</strong> (dtype)</li>
 </ul>
 </div><div class="column">
-<div id="d161de47" class="cell" data-execution_count="12">
+<div id="942fe612" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a><span class="co"># Look at the Series</span></span>
 <span id="cb23-2"><a href=""></a>prices.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1819,14 +1819,14 @@ Name: SalePrice, dtype: int64</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Single brackets = Series</strong></p>
-<div id="eac1c273" class="cell" data-execution_count="13">
+<div id="206eeecc" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="bu">type</span>(ames[<span class="st">'SalePrice'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>pandas.Series</code></pre>
 </div>
 </div>
 <p><strong>Double brackets = DataFrame</strong></p>
-<div id="844c0981" class="cell" data-execution_count="14">
+<div id="5a0cb55f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="bu">type</span>(ames[[<span class="st">'SalePrice'</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>pandas.DataFrame</code></pre>
@@ -1834,7 +1834,7 @@ Name: SalePrice, dtype: int64</code></pre>
 </div>
 </div><div class="column">
 <p><strong>Multiple columns = DataFrame</strong></p>
-<div id="5933366d" class="cell" data-execution_count="15">
+<div id="59447095" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>ames[[<span class="st">'SalePrice'</span>, <span class="st">'Year Built'</span>]].head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
@@ -1929,7 +1929,7 @@ Name: SalePrice, dtype: int64</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Method 1: List the columns you want</strong></p>
-<div id="5a5e4e71" class="cell" data-execution_count="16">
+<div id="f2db6db0" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a><span class="co"># Select multiple columns</span></span>
 <span id="cb33-2"><a href=""></a>house_basics <span class="op">=</span> ames[[<span class="st">'SalePrice'</span>, <span class="st">'Year Built'</span>]]</span>
 <span id="cb33-3"><a href=""></a>house_basics.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1981,7 +1981,7 @@ Name: SalePrice, dtype: int64</code></pre>
 </div>
 </div><div class="column">
 <p><strong>Method 2: For just one column</strong></p>
-<div id="d275f4d1" class="cell" data-execution_count="17">
+<div id="e6dcd613" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a><span class="co"># Just the prices (as a Series)</span></span>
 <span id="cb34-2"><a href=""></a>just_prices <span class="op">=</span> ames[<span class="st">'SalePrice'</span>]</span>
 <span id="cb34-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Type: </span><span class="sc">{</span><span class="bu">type</span>(just_prices)<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -2032,7 +2032,7 @@ First few values: [215000, 105000, 172000]</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Mystery 1: How many houses?</strong></p>
-<div id="5194985e" class="cell" data-execution_count="18">
+<div id="6ea17f8a" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="co"># Check dataset dimensions</span></span>
 <span id="cb36-2"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Dataset shape: </span><span class="sc">{</span>ames<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb36-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Number of houses: </span><span class="sc">{</span>ames<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2042,7 +2042,7 @@ Number of houses: 2930</code></pre>
 </div>
 </div>
 <p><strong>Mystery 2: Highest sale price?</strong></p>
-<div id="9fc898c7" class="cell" data-execution_count="19">
+<div id="0b06b089" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a><span class="co"># Find maximum sale price</span></span>
 <span id="cb38-2"><a href=""></a>highest_price <span class="op">=</span> ames[<span class="st">'SalePrice'</span>].<span class="bu">max</span>()</span>
 <span id="cb38-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Highest sale price: $</span><span class="sc">{</span>highest_price<span class="sc">:,}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2052,7 +2052,7 @@ Number of houses: 2930</code></pre>
 </div>
 </div><div class="column">
 <p><strong>Mystery 3: Average year built?</strong></p>
-<div id="84e8589f" class="cell" data-execution_count="20">
+<div id="183deabc" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="co"># Calculate average year built</span></span>
 <span id="cb40-2"><a href=""></a>avg_year <span class="op">=</span> ames[<span class="st">'Year Built'</span>].mean()</span>
 <span id="cb40-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Average year built: </span><span class="sc">{</span>avg_year<span class="sc">:.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2087,7 +2087,7 @@ Number of houses: 2930</code></pre>
 <div class="columns">
 <div class="column">
 <p><strong>Step 1:</strong> Create a condition (True/False for each row)</p>
-<div id="57a83db6" class="cell" data-execution_count="21">
+<div id="21b2e037" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="co"># Which houses sold for more than $200,000?</span></span>
 <span id="cb42-2"><a href=""></a>expensive_houses <span class="op">=</span> ames[<span class="st">'SalePrice'</span>] <span class="op">&gt;</span> <span class="dv">200000</span></span>
 <span id="cb42-3"><a href=""></a>expensive_houses</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2109,7 +2109,7 @@ Name: SalePrice, Length: 2930, dtype: bool</code></pre>
 <p>This creates a <strong>boolean Series</strong> - True/False for each row!</p>
 </div><div class="column">
 <p><strong>Step 2:</strong> Use the condition to filter</p>
-<div id="4b08ba4a" class="cell" data-execution_count="22">
+<div id="1dff9c80" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="co"># Keep only the True rows</span></span>
 <span id="cb44-2"><a href=""></a>filtered_ames <span class="op">=</span> ames[expensive_houses]</span>
 <span id="cb44-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Original dataset: </span><span class="sc">{</span>ames<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> houses"</span>)</span>
@@ -2296,7 +2296,7 @@ Expensive houses: 857 houses</code></pre>
 <section id="building-more-complex-filters" class="slide level2 smaller">
 <h2>Building More Complex Filters</h2>
 <p><strong>Real Estate Question:</strong> Find houses that are <strong>expensive</strong> AND <strong>recently built</strong></p>
-<div id="1cda6ef0" class="cell" data-execution_count="23">
+<div id="795e5581" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" data-code-line-numbers="2,3,6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a><span class="co"># Step 1: Define our conditions</span></span>
 <span id="cb46-2"><a href=""></a>expensive <span class="op">=</span> ames[<span class="st">'SalePrice'</span>] <span class="op">&gt;</span> <span class="dv">200000</span></span>
 <span id="cb46-3"><a href=""></a>recent <span class="op">=</span> ames[<span class="st">'Year Built'</span>] <span class="op">&gt;</span> <span class="dv">2000</span></span>
@@ -2350,7 +2350,7 @@ Expensive houses: 857 houses</code></pre>
 </div>
 <div class="fragment">
 <p><strong>Basic filtering:</strong></p>
-<div id="a5ec29d0" class="cell" data-execution_count="24">
+<div id="4be44b1b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a><span class="co"># Houses built after 2000</span></span>
 <span id="cb48-2"><a href=""></a>recent_houses <span class="op">=</span> ames.loc[ames[<span class="st">'Year Built'</span>] <span class="op">&gt;</span> <span class="dv">2000</span>]</span>
 <span id="cb48-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>recent_houses<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2359,7 +2359,7 @@ Expensive houses: 857 houses</code></pre>
 </div>
 </div>
 <p><strong>Select columns AND filter rows:</strong></p>
-<div id="f3070e37" class="cell" data-execution_count="25">
+<div id="46956432" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50" data-code-line-numbers="2,3,5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a><span class="co"># Get price and year for recent houses</span></span>
 <span id="cb50-2"><a href=""></a>rows <span class="op">=</span> ames[<span class="st">'Year Built'</span>] <span class="op">&gt;</span> <span class="dv">2000</span></span>
 <span id="cb50-3"><a href=""></a>cols <span class="op">=</span> [<span class="st">'SalePrice'</span>, <span class="st">'Year Built'</span>]</span>
@@ -2455,7 +2455,7 @@ Expensive houses: 857 houses</code></pre>
 <h2>Data Mystery #2 Solutions 🎯</h2>
 <p><strong>The Answers:</strong></p>
 <p><strong>Mystery 1: Houses built 2005+</strong></p>
-<div id="8c83dbc5" class="cell" data-execution_count="26">
+<div id="0d414f6c" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href=""></a><span class="co"># Filter for houses built in 2005 or later</span></span>
 <span id="cb51-2"><a href=""></a>recent_houses <span class="op">=</span> ames[ames[<span class="st">'Year Built'</span>] <span class="op">&gt;=</span> <span class="dv">2005</span>]</span>
 <span id="cb51-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Houses built 2005+: </span><span class="sc">{</span>recent_houses<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2464,7 +2464,7 @@ Expensive houses: 857 houses</code></pre>
 </div>
 </div>
 <p><strong>Mystery 2: Average price (&gt;2000 sq ft)</strong></p>
-<div id="d42edba5" class="cell" data-execution_count="27">
+<div id="28762869" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53" data-code-line-numbers="2,3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href=""></a><span class="co"># Filter for large houses and get average price</span></span>
 <span id="cb53-2"><a href=""></a>large_houses <span class="op">=</span> ames[ames[<span class="st">'Gr Liv Area'</span>] <span class="op">&gt;</span> <span class="dv">2000</span>]</span>
 <span id="cb53-3"><a href=""></a>avg_price <span class="op">=</span> large_houses[<span class="st">'SalePrice'</span>].mean()</span>
@@ -2474,7 +2474,7 @@ Expensive houses: 857 houses</code></pre>
 </div>
 </div>
 <p><strong>Mystery 3: Expensive AND large houses</strong></p>
-<div id="d3c8a5a9" class="cell" data-execution_count="28">
+<div id="c95d0170" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href=""></a><span class="co"># Combine conditions: expensive (&gt;$300k) AND large (&gt;2500 sq ft)</span></span>
 <span id="cb55-2"><a href=""></a>expensive_and_large <span class="op">=</span> ames.loc[(ames[<span class="st">'SalePrice'</span>] <span class="op">&gt;</span> <span class="dv">300000</span>) <span class="op">&amp;</span> (ames[<span class="st">'Gr Liv Area'</span>] <span class="op">&gt;</span> <span class="dv">2500</span>)]</span>
 <span id="cb55-3"><a href=""></a><span class="bu">print</span>(<span class="ss">f"Expensive AND large houses: </span><span class="sc">{</span>expensive_and_large<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -2593,7 +2593,7 @@ Expensive houses: 857 houses</code></pre>
 <h2>Real-World Detective Work Challenge!</h2>
 <p><strong>Back to our original challenge:</strong> Let’s solve it the Python way!</p>
 <p><strong>Your Task:</strong> Find the <strong>average number of seats</strong> on aircraft manufactured by <strong>Embraer</strong> in <strong>2004 or later</strong></p>
-<div id="de50e667" class="cell" data-execution_count="29">
+<div id="8db60a8d" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href=""></a><span class="co"># Load the planes dataset</span></span>
 <span id="cb62-2"><a href=""></a>planes <span class="op">=</span> pd.read_csv(<span class="st">"../data/planes.csv"</span>)</span>
 <span id="cb62-3"><a href=""></a></span>
@@ -2704,7 +2704,7 @@ Expensive houses: 857 houses</code></pre>
 <section id="the-python-solution" class="slide level2 smaller">
 <h2>The Python Solution 🎯</h2>
 <p><strong>Complete Solution:</strong> Here’s how to solve it step by step</p>
-<div id="ae8c3956" class="cell" data-execution_count="30">
+<div id="26535865" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63" data-code-line-numbers="1-5,8-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href=""></a><span class="co"># Step 1: Filter for Embraer aircraft built in 2004 or later</span></span>
 <span id="cb63-2"><a href=""></a>embraer_recent <span class="op">=</span> planes.loc[</span>
 <span id="cb63-3"><a href=""></a>    (planes[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>) <span class="op">&amp;</span> (planes[<span class="st">'year'</span>] <span class="op">&gt;=</span> <span class="dv">2004</span>)</span>
