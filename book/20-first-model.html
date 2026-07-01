@@ -691,7 +691,7 @@ window.Quarto = {
 <section id="data" class="level2" data-number="20.2">
 <h2 data-number="20.2" class="anchored" data-anchor-id="data"><span class="header-section-number">20.2</span> Data</h2>
 <p>We will use the same dataset “adult_census” described in the previous lesson. For more details about the dataset see <a href="http://www.openml.org/d/1590" class="uri">http://www.openml.org/d/1590</a>.</p>
-<div id="114590ad" class="cell" data-execution_count="1">
+<div id="6a9bbe77" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>adult_census <span class="op">=</span> pd.read_csv(<span class="st">"../data/adult-census.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -702,14 +702,14 @@ window.Quarto = {
 <p>Scikit-learn prefers our features (<span class="math inline">\(X\)</span>) apart from our target (<span class="math inline">\(y\)</span>). Consequently, it’s quite common to create separate data objects to hold our feature and target data.</p>
 <pre class="{note}"><code>Numerical data is the most natural type of data used in machine learning and can (often)  be directly fed into predictive models. Consequently, for this lesson we will use a subset of the original data with only the numerical columns.</code></pre>
 <p>Here, we create a <code>target</code> data object that contains our target variable (<code>class</code>) data and a <code>features</code> data object that contains all our numeric feature data.</p>
-<div id="d42548d8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="2">
+<div id="4cab121c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create column names of interest</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>target_col <span class="op">=</span> <span class="st">"class"</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>feature_col <span class="op">=</span> adult_census.drop(columns<span class="op">=</span>target_col).select_dtypes(np.number).columns.values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="b6d556e1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="3">
+<div id="ebf58b89" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> adult_census[target_col]</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>target</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -727,7 +727,7 @@ window.Quarto = {
 Name: class, Length: 48842, dtype: str</code></pre>
 </div>
 </div>
-<div id="19d173be" class="cell" data-execution_count="4">
+<div id="7f2ac432" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> adult_census[feature_col]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>features</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -841,7 +841,7 @@ Name: class, Length: 48842, dtype: str</code></pre>
 </div>
 </div>
 </div>
-<div id="b612dd14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;skip&quot;}}" data-tags="[]" data-execution_count="5">
+<div id="c74ad86d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;skip&quot;}}" data-tags="[]" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"The dataset contains </span><span class="sc">{</span>features<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> samples and "</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="sc">{</span>features<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> features"</span></span>
@@ -852,7 +852,7 @@ Name: class, Length: 48842, dtype: str</code></pre>
 </div>
 <section id="knowledge-check" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h3>
-<p><code>ptcrzlkbkdub Questions: :class: attention     1. What type of object is the target data set? 2. What type of object is the feature data set?</code></p>
+<p><code>xhsmicxintxv Questions: :class: attention     1. What type of object is the target data set? 2. What type of object is the feature data set?</code></p>
 </section>
 </section>
 <section id="fit-a-model" class="level2" data-number="20.4">
@@ -861,12 +861,12 @@ Name: class, Length: 48842, dtype: str</code></pre>
 <pre class="{note}"><code>We use a K-nearest neighbors here. However, be aware that it is seldom useful
 in practice. We use it because it is an intuitive algorithm. In future lessons, we will introduce alternative algorithms.</code></pre>
 <p>The <code>.fit</code> method is called to train the model from the input (features) and target data.</p>
-<div id="a60fbab1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
+<div id="422a1e7a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to display nice model diagram</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> set_config</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>set_config(display<span class="op">=</span><span class="st">'diagram'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="0f5d9380" class="cell" data-execution_count="7">
+<div id="e0d23fa2" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. define the algorithm</span></span>
@@ -1960,7 +1960,7 @@ commonly called`y`.</code></pre>
 <section id="make-predictions" class="level2" data-number="20.5">
 <h2 data-number="20.5" class="anchored" data-anchor-id="make-predictions"><span class="header-section-number">20.5</span> Make predictions</h2>
 <p>Let’s use our model to make some predictions using the same dataset. To predict, a model uses a <strong>prediction function</strong> that will use the input data together with the model states.</p>
-<div id="42ea4a7a" class="cell" data-execution_count="8">
+<div id="693b0add" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>target_predicted <span class="op">=</span> model.predict(features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can illustrate the prediction mechanism as follows:</p>
@@ -1968,14 +1968,14 @@ commonly called`y`.</code></pre>
 <p><code>.predict</code> method representation. :::</p>
 <p>To predict, a model uses a prediction method that will use the input data together with the model states. As for the learning algorithm and the model states, the prediction function is specific for each type of model.</p>
 <p>Let’s now have a look at the computed predictions. For the sake of simplicity, we will look at the five first predicted targets.</p>
-<div id="7d5bdda9" class="cell" data-execution_count="9">
+<div id="e0ae6ed5" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>target_predicted[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([' &lt;=50K', ' &lt;=50K', ' &lt;=50K', ' &gt;50K', ' &lt;=50K'], dtype=object)</code></pre>
 </div>
 </div>
 <p>…and we can even check if the predictions agree with the real targets:</p>
-<div id="74191af9" class="cell" data-execution_count="10">
+<div id="1a4ef54e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy of first 5 predictions</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>target[:<span class="dv">5</span>] <span class="op">==</span> target_predicted[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1989,7 +1989,7 @@ Name: class, dtype: bool</code></pre>
 </div>
 <pre class="{note}"><code>Here, we see that our model makes a mistake when predicting the third observation.</code></pre>
 <p>To get a better assessment, we can compute the average accuracy rate.</p>
-<div id="1fd81520" class="cell" data-execution_count="11">
+<div id="18971df1" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(target <span class="op">==</span> target_predicted).mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>np.float64(0.850538470988084)</code></pre>
@@ -2003,7 +2003,7 @@ Name: class, dtype: bool</code></pre>
 <p>Correct evaluation is easily done by leaving out a subset of the data when training the model and using it afterwards for model evaluation.</p>
 <p>The data used to fit a model is called <b><em>training data</em></b> while the data used to assess a model is called <b><em>testing data</em></b>.</p>
 <p>Scikit-learn provides the helper function <code>sklearn.model_selection.train_test_split</code> which is used to automatically split the dataset into two subsets.</p>
-<div id="d26c6656" class="cell" data-execution_count="12">
+<div id="8f9e66f8" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
@@ -2022,13 +2022,13 @@ decides how the dataset is split into a train and a test set).
 And as your target becomes more imbalanced it is important to use the `stratify` parameter.</code></pre>
 <section id="knowledge-check-1" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check-1">Knowledge check</h3>
-<p><code>ptcrzlkbkdub Questions: :class: attention 1. How many observations are in your train and test data sets? 2. What is the proportion of response values in your `y_train` and `y_test`?</code></p>
+<p><code>xhsmicxintxv Questions: :class: attention 1. How many observations are in your train and test data sets? 2. What is the proportion of response values in your `y_train` and `y_test`?</code></p>
 <p>Instead of computing the prediction and manually computing the average success rate, we can use the method <code>score</code>. When dealing with classifiers this method returns their performance metric.</p>
 <p>We can illustrate the score mechanism as follows:</p>
 <p>:::{figure-md} score-method <img src="../images/api_diagram-predictor.score.svg" alt="score method" width="90%"></p>
 <p><code>.score</code> method representation. :::</p>
 <p>The <code>.score</code> method is very similar to the <code>.predict</code> method; however, it adds one additional step to compare the predictions made to the actual values and then return an accuracy score. Note how below, we use the test data in the <code>.score</code> method so that we are scoring our accuracy based on test data (data not used to train our model).</p>
-<div id="5bc2f62a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="13">
+<div id="e89c6334" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. define the algorithm</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> KNeighborsClassifier()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2053,7 +2053,7 @@ predictive models on a different set than the one used to train these models.</c
 </section>
 <section id="exercises" class="level2" data-number="20.7">
 <h2 data-number="20.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">20.7</span> Exercises</h2>
-<p>``<code>ptcrzlkbkdub Questions: :class: attention Scikit-learn provides a logistic regression algorithm, which is another type of algorithm for making binary classification predictions. This algorithm is available at</code>sklearn.linear_model.LogisticRegression`</p>
+<p>``<code>xhsmicxintxv Questions: :class: attention Scikit-learn provides a logistic regression algorithm, which is another type of algorithm for making binary classification predictions. This algorithm is available at</code>sklearn.linear_model.LogisticRegression`</p>
 <p>Fill in the blanks below to import the <code>LogisticRegression</code> module, define the algorithm, fit the model, and score on the test data.</p>
 <pre><code>```python
 # 1. import the LogisticRegression module
@@ -2071,7 +2071,7 @@ model.score(______, ______)</code></pre>
 <pre><code>
 ## Computing environment
 
-::: {#0320ab0c .cell execution_count=14}
+::: {#b0a2aed7 .cell execution_count=14}
 ``` {.python .cell-code}
 %load_ext watermark
 %watermark -v -p jupyterlab,pandas,numpy,sklearn</code></pre>
