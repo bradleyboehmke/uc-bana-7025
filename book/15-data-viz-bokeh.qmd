@@ -1,3 +1,8 @@
+---
+execute:
+  eval: false
+---
+
 # Interactive Data Visualization with Bokeh
 
 In the previous two lessons, you learned how to visualize data using **pandas**' high-level plotting tools for quick insights, and **matplotlib** for more detailed and customized charting.

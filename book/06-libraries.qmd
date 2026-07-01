@@ -486,7 +486,7 @@ No matter what type of scientific, numerical, or statistical problem you are fac
 
    p = bokeh.plotting.figure(height=250, width=275)
    p.line(x, y, color='red', line_width=3)
-   text = bokeh.models.Label(x=0, y=0, text='BANA 4080', text_align='center')
+   text = bokeh.models.Label(x=0, y=0, text='BANA 7025', text_align='center')
    p.add_layout(text)
 
    bokeh.io.show(p)
@@ -495,7 +495,7 @@ No matter what type of scientific, numerical, or statistical problem you are fac
 3. After executing the code:
 
    * What shape is created by this visualization?
-   * What part of the code controls the label “BANA 4080”?
+   * What part of the code controls the label “BANA 7025”?
    * How does `numpy` assist in preparing the data for visualization?
 
 :::
@@ -550,7 +550,7 @@ Use the following standard libraries: `math`, `os`, `datetime`, and `random`.
 
    p = bokeh.plotting.figure(height=250, width=275)
    p.line(x, y, color='red', line_width=3)
-   text = bokeh.models.Label(x=0, y=0, text='BANA 4080', text_align='center')
+   text = bokeh.models.Label(x=0, y=0, text='BANA 7025', text_align='center')
    p.add_layout(text)
 
    bokeh.io.show(p)
@@ -558,7 +558,7 @@ Use the following standard libraries: `math`, `os`, `datetime`, and `random`.
 3. Add a markdown cell answering the following:
    * What shape is drawn?
    * How does `numpy` help in generating the plot data?
-   * What part of the code adds the label “BANA 4080”?
+   * What part of the code adds the label “BANA 7025”?
 :::
 
 ::: {.callout collapse="true"}
