@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -111,6 +111,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -718,7 +721,7 @@ Figure&nbsp;14.1: Anatomy of Matplotlib figures.
 <section id="importing-the-pyplot-module" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="importing-the-pyplot-module"><span class="header-section-number">14.2</span> Importing the pyplot module</h2>
 <p>Importing matplotlib into your workspace is done a little differently than NumPy or Pandas. You rarely will import matplotlib itself directly like this:</p>
-<div id="e952b30c" class="cell" data-execution_count="1">
+<div id="1680169c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The above is perfectly valid code, but the matplotlib developers decided not to put all the main functionality in the top level module.</p>
@@ -744,7 +747,7 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 <p>Let’s import the pyplot module now and alias it as <code>plt</code>, which is commonly done by convention:</p>
-<div id="3ef5f962" class="cell" data-execution_count="2">
+<div id="1f2bb87d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -762,26 +765,46 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 </div>
-<div id="50a29be3" class="cell" data-execution_count="3">
+<div id="71838d03" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-4-output-1.png" width="582" height="417" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Let’s verify that we indeed have a Figure and Axes.</p>
-<div id="860dab76" class="cell" data-execution_count="4">
+<div id="fb2bb748" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(fig)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>matplotlib.figure.Figure</code></pre>
 </div>
-<div id="bc0b6960" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ax)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0783a75c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ax)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>matplotlib.axes._axes.Axes</code></pre>
+</div>
 </div>
 <section id="distinguishing-the-figure-from-the-axes" class="level3">
 <h3 class="anchored" data-anchor-id="distinguishing-the-figure-from-the-axes">Distinguishing the Figure from the Axes</h3>
 <p>It’s not obvious, from looking at the plot which part is the Figure and which is the Axes. We will call our first method, <strong><code>set_facecolor</code></strong> in an object-oriented fashion from both the Figure and Axes objects. We pass it a name of a color (more on colors later).</p>
-<div id="6cce9a0e" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set figure and axes colors</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig.set_facecolor(<span class="st">'skyblue'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.set_facecolor(<span class="st">'sandybrown'</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show result</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e736c00b" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set figure and axes colors</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fig.set_facecolor(<span class="st">'skyblue'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax.set_facecolor(<span class="st">'sandybrown'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># show result</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-7-output-1.png" width="582" height="417" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -798,10 +821,17 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <h3 class="anchored" data-anchor-id="setting-the-size-of-the-figure-upon-creation">Setting the size of the Figure upon creation</h3>
 <p>The default Figure is fairly small. We can change this when creating it with the <code>figsize</code> parameter. Pass a two-item tuple to configure the height and width of the figure as we did in the previous lesson with Pandas plotting. By default, these dimensions are 6 by 4. They represent <strong>inches</strong> and are literally the inches that your figure would be if you printed out on paper.</p>
 <p>Below, we create a new Figure that is 8 inches in width by 4 inches in height. We also color the faces of the both the Figure and Axes again.</p>
-<div id="a65eb37d" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig.set_facecolor(<span class="st">'skyblue'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.set_facecolor(<span class="st">'sandybrown'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="54a247c7" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fig.set_facecolor(<span class="st">'skyblue'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax.set_facecolor(<span class="st">'sandybrown'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-8-output-1.png" width="656" height="343" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Everything on our plot is a separate object. Each of these objects may be explicitly referenced by a variable. Once we have a reference to a particular object, we can then modify it by calling methods on it.</p>
 <p>Thus far we have two references, <code>fig</code> and <code>ax</code>. There are many other objects on our Axes that we can reference such as the x and y axis, tick marks, tick labels, and others. We do not yet have references to these objects.</p>
@@ -819,35 +849,64 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <section id="getting-and-setting-the-title-of-the-axes" class="level4">
 <h4 class="anchored" data-anchor-id="getting-and-setting-the-title-of-the-axes">Getting and setting the title of the Axes</h4>
 <p>The <code>get_title</code> method will return the title of the Axes as a string. There is no title at this moment so it returns an empty string.</p>
-<div id="1c7c2a4b" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ax.get_title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8bf8feca" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ax.get_title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>''</code></pre>
+</div>
 </div>
 <p>The <code>set_title</code> method will place a centered title on our Axes when passing it a string. Notice that a matplotlib Text object has been returned. More on this later.</p>
-<div id="e24b378f" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'My First Matplotlib Graph'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7bb8c235" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'My First Matplotlib Graph'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Text(0.5, 1.0, 'My First Matplotlib Graph')</code></pre>
+</div>
 </div>
 <p>Again, we must place our Figure variable name as the last line in our cell to show it in our notebook.</p>
-<div id="66172ace" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="44623c50" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-11-output-1.png" width="656" height="358" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Now, if we run the <code>get_title</code> method again, we will get the string that was used as the title.</p>
-<div id="b08aa4eb" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ax.get_title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="45b2fcb5" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ax.get_title()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>'My First Matplotlib Graph'</code></pre>
+</div>
 </div>
 </section>
 <section id="getting-and-setting-the-x-and-y-limits" class="level4">
 <h4 class="anchored" data-anchor-id="getting-and-setting-the-x-and-y-limits">Getting and setting the x and y limits</h4>
 <p>By default, the limits of both the x and y axis are 0 to 1. We can change this with the <code>set_xlim</code> and <code>set_ylim</code> methods. Pass these methods a new left and right boundary to change the limits. These methods actually return a tuple of the limits.</p>
-<div id="f07c30fe" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ax.get_xlim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="04e0ae09" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ax.get_xlim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>(np.float64(0.0), np.float64(1.0))</code></pre>
 </div>
-<div id="c68c9616" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ax.get_ylim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ee888bdd" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">10</span>, <span class="dv">50</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4cd668d8" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ax.get_ylim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>(np.float64(0.0), np.float64(1.0))</code></pre>
+</div>
+</div>
+<div id="5eb60bbf" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-15-output-1.png" width="656" height="358" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -863,11 +922,17 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <section id="getting-and-setting-the-location-of-the-x-and-y-ticks" class="level4">
 <h4 class="anchored" data-anchor-id="getting-and-setting-the-location-of-the-x-and-y-ticks">Getting and setting the location of the x and y ticks</h4>
 <p>In the graph above, it has chosen to place ticks every 1 unit for the x and every 10 units for the y. Matplotlib chooses reasonable default values. Let’s see the location of these ticks with the <code>get_xticks</code> and <code>get_yticks</code> methods.</p>
-<div id="0aee7d21" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ax.get_xticks()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1abd091c" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ax.get_xticks()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>array([0., 1., 2., 3., 4., 5.])</code></pre>
 </div>
-<div id="1c295782" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ax.get_yticks()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8d2f798a" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ax.get_yticks()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>array([-10.,   0.,  10.,  20.,  30.,  40.,  50.])</code></pre>
+</div>
 </div>
 <p>We can specify the exact location of the x and y ticks with the <code>set_xticks</code> and <code>set_ticks</code> methods. We pass them a list of numbers indicating where we want the ticks.</p>
 <div class="callout callout-style-simple callout-tip">
@@ -880,23 +945,40 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 </div>
-<div id="980d6be5" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="fl">1.8</span>, <span class="fl">3.99</span>, <span class="fl">4.4</span>])</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([<span class="op">-</span><span class="dv">99</span>, <span class="op">-</span><span class="dv">9</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">22</span>, <span class="dv">44</span>])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6a4d69de" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="fl">1.8</span>, <span class="fl">3.99</span>, <span class="fl">4.4</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([<span class="op">-</span><span class="dv">99</span>, <span class="op">-</span><span class="dv">9</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">22</span>, <span class="dv">44</span>])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-18-output-1.png" width="652" height="358" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="getting-and-setting-the-x-and-y-tick-labels" class="level4">
 <h4 class="anchored" data-anchor-id="getting-and-setting-the-x-and-y-tick-labels">Getting and setting the x and y tick labels</h4>
 <p>The current tick labels for the x-axis and y-axis are the same as the tick locations. Let’s first view the current tick labels. The output displays a list of <code>Text</code> objects that contain <code>Text(xaxis_location, yaxis_location, tick_label)</code>.</p>
-<div id="ec1b03e2" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax.get_xticklabels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d1d91c12" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ax.get_xticklabels()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>[Text(1.8, 0, '1.80'), Text(3.99, 0, '3.99'), Text(4.4, 0, '4.40')]</code></pre>
+</div>
 </div>
 <p>We can pass the <code>set_xticklabels</code> and <code>set_yticklabels</code> methods a list of strings to use as the new labels.</p>
-<div id="e1835f68" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'dog'</span>, <span class="st">'cat'</span>, <span class="st">'snake'</span>])</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([<span class="st">'Boehmke'</span>, <span class="st">'D'</span>, <span class="st">'A'</span>, <span class="st">'R'</span>, <span class="st">'B'</span>])</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="82f8f0dc" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'dog'</span>, <span class="st">'cat'</span>, <span class="st">'snake'</span>])</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([<span class="st">'Boehmke'</span>, <span class="st">'D'</span>, <span class="st">'A'</span>, <span class="st">'R'</span>, <span class="st">'B'</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-20-output-1.png" width="688" height="358" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -922,27 +1004,73 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <li><code>fontname</code> - Name of font as a string</li>
 <li><code>rotation</code> - Degree of rotation</li>
 </ul>
-<div id="b9496da8" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ax.set_title(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tests'</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">20</span>, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'firebrick'</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    backgroundcolor<span class="op">=</span><span class="st">'steelblue'</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    fontname<span class="op">=</span><span class="st">'Courier New'</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    rotation<span class="op">=</span><span class="dv">70</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="90784ac8" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ax.set_title(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tests'</span>,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">20</span>, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'firebrick'</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    backgroundcolor<span class="op">=</span><span class="st">'steelblue'</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    fontname<span class="op">=</span><span class="st">'Courier New'</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    rotation<span class="op">=</span><span class="dv">70</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-21-output-2.png" width="688" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Any other text may be stylized with those same parameters. Below we do so with the x labels.</p>
-<div id="861836f3" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'New and Imporved X-Axis Stylized Label'</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">15</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'indigo'</span>, </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    fontname<span class="op">=</span><span class="st">'Times New Roman'</span>, </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    rotation<span class="op">=</span><span class="dv">15</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8638e198" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'New and Imporved X-Axis Stylized Label'</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">15</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'indigo'</span>, </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    fontname<span class="op">=</span><span class="st">'Times New Roman'</span>, </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    rotation<span class="op">=</span><span class="dv">15</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Times New Roman' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.
+findfont: Font family 'Courier New' not found.</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-22-output-2.png" width="688" height="540" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="knowledge-check" class="level3">
@@ -974,37 +1102,245 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <p>The <a href="https://matplotlib.org/api/axes_api.html">matplotlib documentation</a> has a nice layout of the Axes API. There are around 300 different calls you make with an Axes object. The API page categorizes and groups each method by its functionality. The first third (approximately) of the categories in the API are used to create plots.</p>
 <p>The simplest and most common plots are found in the Basics category and include <code>plot</code>, <code>scatter</code>, <code>bar</code>, <code>pie</code>, and others.</p>
 <p>Let’s go ahead and import Pandas along with our Complete Journey data:</p>
-<div id="e8b79a13" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    cj_data[<span class="st">'transactions'</span>]</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'products'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'demographics'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'household_id'</span>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="93ffbf03" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    cj_data[<span class="st">'transactions'</span>]</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'products'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'demographics'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'household_id'</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">household_id</th>
+<th data-quarto-table-cell-role="th">store_id</th>
+<th data-quarto-table-cell-role="th">basket_id</th>
+<th data-quarto-table-cell-role="th">product_id</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+<th data-quarto-table-cell-role="th">retail_disc</th>
+<th data-quarto-table-cell-role="th">coupon_disc</th>
+<th data-quarto-table-cell-role="th">coupon_match_disc</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">product_category</th>
+<th data-quarto-table-cell-role="th">product_type</th>
+<th data-quarto-table-cell-role="th">package_size</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">home_ownership</th>
+<th data-quarto-table-cell-role="th">marital_status</th>
+<th data-quarto-table-cell-role="th">household_size</th>
+<th data-quarto-table-cell-role="th">household_comp</th>
+<th data-quarto-table-cell-role="th">kids_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>900</td>
+<td>330</td>
+<td>31198570044</td>
+<td>1095275</td>
+<td>1</td>
+<td>0.50</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>...</td>
+<td>ROLLS</td>
+<td>ROLLS: BAGELS</td>
+<td>4 OZ</td>
+<td>35-44</td>
+<td>35-49K</td>
+<td>Homeowner</td>
+<td>Married</td>
+<td>2</td>
+<td>2 Adults No Kids</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>900</td>
+<td>330</td>
+<td>31198570047</td>
+<td>9878513</td>
+<td>1</td>
+<td>0.99</td>
+<td>0.10</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>...</td>
+<td>FACIAL TISS/DNR NAPKIN</td>
+<td>FACIAL TISSUE &amp; PAPER HANDKE</td>
+<td>85 CT</td>
+<td>35-44</td>
+<td>35-49K</td>
+<td>Homeowner</td>
+<td>Married</td>
+<td>2</td>
+<td>2 Adults No Kids</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1228</td>
+<td>406</td>
+<td>31198655051</td>
+<td>1041453</td>
+<td>1</td>
+<td>1.43</td>
+<td>0.15</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>...</td>
+<td>BAG SNACKS</td>
+<td>POTATO CHIPS</td>
+<td>11.5 OZ</td>
+<td>45-54</td>
+<td>100-124K</td>
+<td>NaN</td>
+<td>Unmarried</td>
+<td>1</td>
+<td>1 Adult No Kids</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1020156</td>
+<td>1</td>
+<td>1.50</td>
+<td>0.29</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>...</td>
+<td>REFRGRATD DOUGH PRODUCTS</td>
+<td>REFRIGERATED BAGELS</td>
+<td>17.1 OZ</td>
+<td>55-64</td>
+<td>Under 15K</td>
+<td>Homeowner</td>
+<td>Married</td>
+<td>2</td>
+<td>1 Adult Kids</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1053875</td>
+<td>2</td>
+<td>2.78</td>
+<td>0.80</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>...</td>
+<td>SEAFOOD - SHELF STABLE</td>
+<td>TUNA</td>
+<td>5.0 OZ</td>
+<td>55-64</td>
+<td>Under 15K</td>
+<td>Homeowner</td>
+<td>Married</td>
+<td>2</td>
+<td>1 Adult Kids</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 24 columns</p>
+</div>
+</div>
 </div>
 <section id="line-plots" class="level3">
 <h3 class="anchored" data-anchor-id="line-plots">Line <code>plot</code>s</h3>
 <p>The <code>plot</code> method’s primary purpose is to create line plots. It does have the ability to create scatter plots as well, but that task is best reserved for <code>scatter</code>. The <code>plot</code> method is very flexible and can take a variety of different inputs (i.e.&nbsp;lists, numpy arrays, Pandas Series) but our examples will focus on using Matplotlib with a DataFrame.</p>
 <p>Let’s compute the total daily sales and create a line plot:</p>
-<div id="e26aa832" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>daily_sales <span class="op">=</span> (</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    .set_index(<span class="st">'transaction_timestamp'</span>)[<span class="st">'sales_value'</span>]</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    .resample(<span class="st">'D'</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    .to_frame()</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>daily_sales.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3c1e2df9" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>daily_sales <span class="op">=</span> (</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    .set_index(<span class="st">'transaction_timestamp'</span>)[<span class="st">'sales_value'</span>]</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    .resample(<span class="st">'D'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">sum</span>()</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    .to_frame()</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>daily_sales.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">transaction_timestamp</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2017-01-01</td>
+<td>4604.39</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2017-01-02</td>
+<td>6488.94</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2017-01-03</td>
+<td>6856.84</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2017-01-04</td>
+<td>7087.92</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2017-01-05</td>
+<td>6894.67</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="b0d1e5a9" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="st">'transaction_timestamp'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>daily_sales)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="aa140c7e" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ax.plot(<span class="st">'transaction_timestamp'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>daily_sales)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-25-output-1.png" width="815" height="338" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>We can change several properties of this plot. For example, we can change the line style and color of our line directly in the <code>ax.plot</code> call along with adding plot a</p>
 <div class="callout callout-style-simple callout-tip">
@@ -1017,22 +1353,29 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 </div>
-<div id="0aae9184" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create/modify line plot</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="34ff2ace" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create/modify line plot</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-26-output-1.png" width="834" height="366" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>We can even add additional features such as gridlines and text/arrows to call out certain parts of the plot.</p>
 <div class="callout callout-style-simple callout-note">
@@ -1045,81 +1388,168 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 </div>
-<div id="53e14b5d" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date <span class="im">as</span> dt</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create/modify line plot</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add gridlines, arrow, and text</span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>ax.grid(linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>ax.annotate(</span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Christmas Eve'</span>, </span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    xy<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">12</span>, <span class="dv">20</span>), <span class="dv">15900</span>]), </span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    xytext<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">9</span>, <span class="dv">1</span>), <span class="dv">15500</span>]), </span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'blue'</span>, <span class="st">'width'</span>:<span class="dv">2</span>},</span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">10</span></span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="70385487" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date <span class="im">as</span> dt</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create/modify line plot</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add gridlines, arrow, and text</span></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>ax.grid(linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>ax.annotate(</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Christmas Eve'</span>, </span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    xy<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">12</span>, <span class="dv">20</span>), <span class="dv">15900</span>]), </span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>    xytext<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">9</span>, <span class="dv">1</span>), <span class="dv">15500</span>]), </span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'blue'</span>, <span class="st">'width'</span>:<span class="dv">2</span>},</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-27-output-1.png" width="834" height="366" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="other-plots" class="level3">
 <h3 class="anchored" data-anchor-id="other-plots">Other plots</h3>
 <p>We can create many of the other forms of plots that we saw in the previous lesson. The following are just a few examples that recreate the histogram, boxplot, and scatter plots that we made in <a href="13-data-viz-pandas.html" class="quarto-xref"><span>Chapter 13</span></a>.</p>
-<div id="f8e8a8b1" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>totals_by_store <span class="op">=</span> df.groupby(<span class="st">'store_id'</span>).agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>, <span class="st">'quantity'</span>: <span class="st">'sum'</span>})</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ax.hist(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, bins<span class="op">=</span><span class="dv">30</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b7930652" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>totals_by_store <span class="op">=</span> df.groupby(<span class="st">'store_id'</span>).agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>, <span class="st">'quantity'</span>: <span class="st">'sum'</span>})</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>ax.hist(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, bins<span class="op">=</span><span class="dv">30</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-28-output-1.png" width="650" height="338" class="figure-img"></p>
+</figure>
 </div>
-<div id="8339f14a" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ax.boxplot(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, vert<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust axes</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">'log'</span>)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels(<span class="st">''</span>)</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="9af7e6a6" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span><span class="st">'gray'</span>, s<span class="op">=</span><span class="dv">5</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="e99ed959" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>ax.boxplot(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, vert<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust axes</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">'log'</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels(<span class="st">''</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_3511/3837292886.py:3: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  ax.boxplot('sales_value', data=totals_by_store, vert=False)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-29-output-2.png" width="614" height="340" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="63ab04d7" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span><span class="st">'gray'</span>, s<span class="op">=</span><span class="dv">5</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-30-output-1.png" width="675" height="355" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="adding-more-dimensions" class="level3">
 <h3 class="anchored" data-anchor-id="adding-more-dimensions">Adding more dimensions</h3>
 <p>In some cases we can even add additional dimensions to our data. For example, say we have the following data set that has total quantity and sales_value plus a third variable that indicates the number of transactions for each store.</p>
-<div id="1f346b6a" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>store_count <span class="op">=</span> (</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'store_id'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    .size()</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    .rename(columns<span class="op">=</span>{<span class="st">'size'</span>: <span class="st">'n'</span>})</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>totals_by_store <span class="op">=</span> (</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    df</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'store_id'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    .agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>, <span class="st">'quantity'</span>: <span class="st">'sum'</span>})</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    .merge(store_count)</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>totals_by_store.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f527d5ae" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>store_count <span class="op">=</span> (</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'store_id'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    .size()</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    .rename(columns<span class="op">=</span>{<span class="st">'size'</span>: <span class="st">'n'</span>})</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>totals_by_store <span class="op">=</span> (</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    df</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'store_id'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    .agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>, <span class="st">'quantity'</span>: <span class="st">'sum'</span>})</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    .merge(store_count)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>totals_by_store.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">store_id</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2</td>
+<td>13.99</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>27</td>
+<td>443.97</td>
+<td>186</td>
+<td>150</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>37</td>
+<td>7.27</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>42</td>
+<td>22.78</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>45</td>
+<td>13.01</td>
+<td>9</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>We can actually have the color (<code>c</code>) and size (<code>s</code>) of our points based on data. For example, here we create a Series that is based on the number of store observations and another Series to indicate if the store count was greater than the 95 percentile.</p>
 <div class="callout callout-style-simple callout-note">
@@ -1132,82 +1562,117 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 </div>
 </div>
 </div>
-<div id="476fb4b6" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>size_adj <span class="op">=</span> totals_by_store[<span class="st">'n'</span>]<span class="op">**</span><span class="fl">0.4</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>n_outliers <span class="op">=</span> totals_by_store[<span class="st">'n'</span>] <span class="op">&gt;</span> totals_by_store[<span class="st">'n'</span>].quantile(<span class="fl">0.95</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span>n_outliers, s<span class="op">=</span>size_adj)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3046c0df" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>size_adj <span class="op">=</span> totals_by_store[<span class="st">'n'</span>]<span class="op">**</span><span class="fl">0.4</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>n_outliers <span class="op">=</span> totals_by_store[<span class="st">'n'</span>] <span class="op">&gt;</span> totals_by_store[<span class="st">'n'</span>].quantile(<span class="fl">0.95</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span>n_outliers, s<span class="op">=</span>size_adj)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-32-output-1.png" width="675" height="355" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 <section id="multiple-plots" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-plots">Multiple plots</h3>
 <p>We can create multiple plots (“Axes”) within our figure. For example, the following will create 4 plots (2 rows x 2 colums).</p>
-<div id="8863d82d" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fig, ax_array <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1ff3348d" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>fig, ax_array <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-33-output-1.png" width="779" height="587" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Whenever you create multiple Axes on a figure with <strong><code>subplots</code></strong>, you will be returned a NumPy array of Axes objects. Let’s verify that the type and shape of this array.</p>
-<div id="4e5e288e" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ax_array)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a4d3cb1d" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ax_array)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>numpy.ndarray</code></pre>
 </div>
-<div id="5356ffdc" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ax_array.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8bbc5019" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ax_array.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>(2, 2)</code></pre>
+</div>
 </div>
 <p>If we simply output the array, we will see 4 different Axes objects. Let’s extract each of these Axes into their own variable. We need to index for both the row and column to get the respective plot (remember that we need to use zero-based indexing!)</p>
-<div id="052061ad" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ax_array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="a2d3b4b1" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ax_array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>array([[&lt;Axes: &gt;, &lt;Axes: &gt;],
+       [&lt;Axes: &gt;, &lt;Axes: &gt;]], dtype=object)</code></pre>
 </div>
-<div id="97bee83e" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> ax_array[<span class="dv">0</span>, <span class="dv">0</span>]  <span class="co"># row 0, col 0</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax_array[<span class="dv">0</span>, <span class="dv">1</span>]  <span class="co"># row 0, col 1</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax_array[<span class="dv">1</span>, <span class="dv">0</span>]  <span class="co"># row 1, col 0</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>ax4 <span class="op">=</span> ax_array[<span class="dv">1</span>, <span class="dv">1</span>]  <span class="co"># row 1, col 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d6580a34" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> ax_array[<span class="dv">0</span>, <span class="dv">0</span>]  <span class="co"># row 0, col 0</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax_array[<span class="dv">0</span>, <span class="dv">1</span>]  <span class="co"># row 0, col 1</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax_array[<span class="dv">1</span>, <span class="dv">0</span>]  <span class="co"># row 1, col 0</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>ax4 <span class="op">=</span> ax_array[<span class="dv">1</span>, <span class="dv">1</span>]  <span class="co"># row 1, col 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now customize our individual plots:</p>
-<div id="e3716728" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 1</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add gridlines, arrow, and text</span></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>ax1.grid(linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">8</span>, labelrotation<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>ax1.annotate(</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Christmas Eve'</span>, </span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    xy<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">12</span>, <span class="dv">20</span>), <span class="dv">15900</span>]), </span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    xytext<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="dv">15500</span>]), </span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'blue'</span>, <span class="st">'width'</span>:<span class="fl">0.5</span>},</span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">8</span></span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 2</span></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>ax2.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span>n_outliers, s<span class="op">=</span>size_adj)</span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Total store-level sales vs quantity.'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 3</span></span>
-<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>ax3.hist(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, bins<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">'Histogram of total store-level sales.'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 4</span></span>
-<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>ax4.boxplot(<span class="st">'quantity'</span>, data<span class="op">=</span>totals_by_store, vert<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>ax4.set_xscale(<span class="st">'log'</span>)</span>
-<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>ax4.set_yticklabels(<span class="st">''</span>)</span>
-<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>ax4.set_yticks([])</span>
-<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>ax4.set_title(<span class="st">'Histogram of total store-level quantity.'</span>, size<span class="op">=</span><span class="dv">12</span>)<span class="op">;</span></span>
-<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a><span class="co"># final plot title</span></span>
-<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Total store-level sales and quantities (2017)'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="bb8548b9" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 1</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ax1.plot(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transaction_timestamp'</span>, </span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'sales_value'</span>, </span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>daily_sales, </span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">':'</span>, </span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'gray'</span>,</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add additional context</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Total daily sales across all stores'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Total sales ($)'</span>)<span class="op">;</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co"># add gridlines, arrow, and text</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>ax1.grid(linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">8</span>, labelrotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>ax1.annotate(</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Christmas Eve'</span>, </span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>    xy<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">12</span>, <span class="dv">20</span>), <span class="dv">15900</span>]), </span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>    xytext<span class="op">=</span>([dt(<span class="dv">2017</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="dv">15500</span>]), </span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>    arrowprops<span class="op">=</span>{<span class="st">'color'</span>:<span class="st">'blue'</span>, <span class="st">'width'</span>:<span class="fl">0.5</span>},</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="dv">8</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 2</span></span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>ax2.scatter(<span class="st">'quantity'</span>, <span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, c<span class="op">=</span>n_outliers, s<span class="op">=</span>size_adj)</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Total store-level sales vs quantity.'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 3</span></span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>ax3.hist(<span class="st">'sales_value'</span>, data<span class="op">=</span>totals_by_store, bins<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">'Histogram of total store-level sales.'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot 4</span></span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>ax4.boxplot(<span class="st">'quantity'</span>, data<span class="op">=</span>totals_by_store, vert<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a>ax4.set_xscale(<span class="st">'log'</span>)</span>
+<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a>ax4.set_yticklabels(<span class="st">''</span>)</span>
+<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a>ax4.set_yticks([])</span>
+<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a>ax4.set_title(<span class="st">'Histogram of total store-level quantity.'</span>, size<span class="op">=</span><span class="dv">12</span>)<span class="op">;</span></span>
+<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a><span class="co"># final plot title</span></span>
+<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Total store-level sales and quantities (2017)'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_3511/2977954422.py:35: MatplotlibDeprecationWarning: vert: bool was deprecated in Matplotlib 3.11 and will be removed in 3.13. Use orientation: {'vertical', 'horizontal'} instead.
+  ax4.boxplot('quantity', data=totals_by_store, vert=False)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<div>
+<figure class="figure">
+<p><img src="14-data-viz-matplotlib_files/figure-html/cell-38-output-2.png" width="783" height="587" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1258,16 +1723,16 @@ Figure&nbsp;14.2: pyplot submodule within matplotlib library.
 <h2 data-number="14.7" class="anchored" data-anchor-id="exercise-customizing-pizza-visualizations-with-matplotlib"><span class="header-section-number">14.7</span> Exercise: Customizing Pizza Visualizations with Matplotlib</h2>
 <p>In this exercise set, you’ll revisit the pizza-related analyses from the previous chapter. However, this time you’ll build the plots using <strong>Matplotlib directly</strong>, allowing you to practice creating visualizations from scratch and customizing them for improved clarity and presentation quality.</p>
 <p>Use the datasets from the <code>completejourney_py</code> package and import Matplotlib as needed:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    cj_data[<span class="st">'transactions'</span>]</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'products'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'demographics'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'household_id'</span>)</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    cj_data[<span class="st">'transactions'</span>]</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'products'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    .merge(cj_data[<span class="st">'demographics'</span>], how<span class="op">=</span><span class="st">'inner'</span>, on<span class="op">=</span><span class="st">'household_id'</span>)</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

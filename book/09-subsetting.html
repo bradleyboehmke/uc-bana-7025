@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -111,6 +111,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -695,11 +698,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prerequisites" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">9.1</span> Prerequisites</h2>
 <p>To illustrate selecting and filtering let’s go ahead and load the pandas library and import our planes data we’ve been using:</p>
-<div id="a00e3ac1" class="cell" data-execution_count="1">
+<div id="882a9235" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>planes_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/planes.csv'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>N102UW</td>
+<td>1998.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>N103US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>N104UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -733,18 +821,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>filter</strong> to cases where the manufacturer is Embraer</li>
 </ol>
 <p>But we also want to return a new DataFrame – not just highlight certain cells. In other words, we want to turn this:</p>
-<div id="2b207622" class="cell" data-execution_count="2">
+<div id="6451caa3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>N102UW</td>
+<td>1998.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>N103US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>N104UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Into this:</p>
-<div id="9e94b049" class="cell" data-execution_count="3">
+<div id="9bba0c24" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>planes_df.head().loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>, [<span class="st">'year'</span>, <span class="st">'engines'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">engines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>So we really have a third need: return the resulting DataFrame so we can continue our analysis:</p>
 <ol type="1">
@@ -756,8 +957,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="subsetting-variables" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="subsetting-variables"><span class="header-section-number">9.3</span> Subsetting variables</h2>
 <p>Recall that the subsetting of variables/columns is called <strong>selecting</strong> variables/columns. In a simple example, we can select a single variable using bracket subsetting notation:</p>
-<div id="89edf61b" class="cell" data-execution_count="4">
+<div id="0211b4a1" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'year'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0    2004.0
+1    1998.0
+2    1999.0
+3    1999.0
+4    2002.0
+Name: year, dtype: float64</code></pre>
+</div>
 </div>
 <p>Notice the <code>head()</code> method also works on <code>planes_df['year']</code> to return the first five elements.</p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
@@ -774,8 +983,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This returns <code>pandas.core.series.Series</code>, referred to simply as a “Series”, rather than a DataFrame.</p>
-<div id="c7c30b00" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[<span class="st">'year'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="65c94e14" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[<span class="st">'year'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>pandas.Series</code></pre>
+</div>
 </div>
 <p>This is okay – the Series is a popular data structure in Python. Recall from a previous lesson:</p>
 <ul>
@@ -789,12 +1001,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Series can be useful, but for now, we are interested in <em>returning a DataFrame</em> rather than a series. We can select a single variable and return a DataFrame by still using bracket subsetting notation, but this time we will <strong>pass a <code>list</code> of variables names</strong>:</p>
-<div id="a2428d7e" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="81a72713" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1998.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1999.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1999.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>And we can see that we’ve returned a DataFrame:</p>
-<div id="d2fc6178" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[[<span class="st">'year'</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f8cf4fd0" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[[<span class="st">'year'</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>pandas.DataFrame</code></pre>
+</div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -810,12 +1062,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Passing a list into the bracket subsetting notation allows us to select multiple variables at once:</p>
-<div id="21115284" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="62e10002" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">engines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1998.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1999.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1999.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>In another example, assume we are interested in the <code>model</code> of plane, number of <code>seats</code> and <code>engine</code> type:</p>
-<div id="54b40daa" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'model'</span>, <span class="st">'seats'</span>, <span class="st">'engine'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ac8ef767" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'model'</span>, <span class="st">'seats'</span>, <span class="st">'engine'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>EMB-145XR</td>
+<td>55</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>A320-214</td>
+<td>182</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>A320-214</td>
+<td>182</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>A320-214</td>
+<td>182</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>EMB-145LR</td>
+<td>55</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <section id="knowledge-check" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h3>
@@ -833,7 +1177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>______ is a common term for subsetting DataFrame variables.</p></li>
 <li><p>What type of object is a DataFrame column?</p></li>
 <li><p>What will be returned by the following code?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'type'</span>, <span class="st">'model'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'type'</span>, <span class="st">'model'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/1l19iK1DzoE?si=Mzt73NBLcQOJ_FY_" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </div>
@@ -850,12 +1194,194 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="slicing-rows" class="level3">
 <h3 class="anchored" data-anchor-id="slicing-rows">Slicing rows</h3>
 <p>Remember that all DataFrames have an Index:</p>
-<div id="82bf664a" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="48014b13" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>N102UW</td>
+<td>1998.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>N103US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>N104UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>We can <strong>slice</strong> cases/rows using the values in the Index and bracket subsetting notation. It’s common practice to use <code>.loc</code> to slice cases/rows:</p>
-<div id="34dee934" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[<span class="dv">0</span>:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8ee33d19" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[<span class="dv">0</span>:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>N102UW</td>
+<td>1998.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>N103US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>N104UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>N105UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
@@ -868,34 +1394,473 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can also pass a <code>list</code> of Index values:</p>
-<div id="8c7c88c6" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b47c3f52" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>N103US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">6</th>
+<td>N107US</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>N109UW</td>
+<td>1999.0</td>
+<td>Fixed wing multi engine</td>
+<td>AIRBUS INDUSTRIE</td>
+<td>A320-214</td>
+<td>2</td>
+<td>182</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="filtering-rows" class="level3">
 <h3 class="anchored" data-anchor-id="filtering-rows">Filtering rows</h3>
 <p>We can <strong>filter</strong> rows using a logical sequence equal in length to the number of rows in the DataFrame.</p>
 <p>Continuing our example, assume we want to determine whether each case’s <code>manufacturer</code> is Embraer. We can use the <code>manufacturer</code> Series and a logical equivalency test to find the result for each row:</p>
-<div id="c8ff84bc" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6cf98d67" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>0        True
+1       False
+2       False
+3       False
+4        True
+        ...  
+3317    False
+3318    False
+3319    False
+3320    False
+3321    False
+Name: manufacturer, Length: 3322, dtype: bool</code></pre>
+</div>
 </div>
 <p>We can use this resulting logical sequence to test <strong>filter</strong> cases – rows that are <code>True</code> will be returned while those that are <code>False</code> will be removed:</p>
-<div id="d2a05e62" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>planes_df[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fc13a923" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>planes_df[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>N11106</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>N11107</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>N11109</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This also works with <code>.loc</code>:</p>
-<div id="fed06ed6" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="68937a82" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>N10575</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145LR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>N11106</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>N11107</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>N11109</td>
+<td>2002.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Any conditional test can be used to <strong>filter</strong> DataFrame rows:</p>
-<div id="6a2869f7" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="05ad3084" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>N11121</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>N11127</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>N11137</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>N11140</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>And multiple conditional tests can be combined using logical operators:</p>
-<div id="c688b5e7" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002 and less than 2007</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[(planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2007</span>)].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5a1ed2c3" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002 and less than 2007</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[(planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2007</span>)].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>N11121</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>N11127</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>N11137</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>N11140</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
@@ -908,9 +1873,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Often, as your condition gets more complex, it can be easier to read if you separate out the condition:</p>
-<div id="b046bf70" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cond <span class="op">=</span> (planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2004</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[cond].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="32c368c6" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cond <span class="op">=</span> (planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2004</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[cond].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">15</th>
+<td>N11121</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">16</th>
+<td>N11127</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">17</th>
+<td>N11137</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">18</th>
+<td>N11140</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">19</th>
+<td>N11150</td>
+<td>2003.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="knowledge-check-1" class="level3">
@@ -928,7 +1978,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>What’s the difference between <strong>slicing</strong> cases and <strong>filtering</strong> cases?</p></li>
 <li><p>Fill in the blanks to fix the following code to find planes that have more than three engines:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a> planes_df.loc[______[<span class="st">'______'</span>] <span class="op">&gt;</span> <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a> planes_df.loc[______[<span class="st">'______'</span>] <span class="op">&gt;</span> <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/u174sBhrivQ?si=LwDGxnvMim8ny6nh" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </div>
@@ -945,24 +1995,153 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sequential-operations" class="level3">
 <h3 class="anchored" data-anchor-id="sequential-operations">Sequential Operations</h3>
 <p>We can use what we’ve previously learned to select variables and filter cases in multiple steps:</p>
-<div id="7af76c81" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>planes_df_filtered <span class="op">=</span> planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>]</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected <span class="op">=</span> planes_df_filtered[[<span class="st">'year'</span>, <span class="st">'engines'</span>]]</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="300c4f1f" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>planes_df_filtered <span class="op">=</span> planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected <span class="op">=</span> planes_df_filtered[[<span class="st">'year'</span>, <span class="st">'engines'</span>]]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">engines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This is a good way to learn how to select and filter independently, and it also reads very clearly.</p>
 </section>
 <section id="simultaneous-operations" class="level3">
 <h3 class="anchored" data-anchor-id="simultaneous-operations">Simultaneous operations</h3>
 <p>However, we can also do both selecting and filtering in a single step with <code>.loc</code>:</p>
-<div id="b2e389d4" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>, [<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fe171e7d" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>, [<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">engines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This option is more succinct and also reduces programming time. As before, as your filtering and selecting conditions get longer and/or more complex, it can make it easier to read to break it up into separate lines:</p>
-<div id="8f4239c2" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'engines'</span>]</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>planes_df.loc[rows, cols].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4f77ae6e" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'engines'</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>planes_df.loc[rows, cols].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">engines</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2004.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>2002.0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="knowledge-check-2" class="level3">
@@ -988,33 +2167,161 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>One thing to be aware of, as you will likely experience it eventually, is the concept of returning a <strong><em>view</em></strong> (“looking” at a part of an existing object) versus a <strong><em>copy</em></strong> (making a new copy of the object in memory). This can be a bit abstract and even <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">this section in the Pandas docs</a> states <em>“…it’s very hard to predict whether it will return a view or a copy.”</em></p>
 <p>The main takeaway is that the most common warning you’ll encounter in Pandas is the <code>SettingWithCopyWarning</code>; Pandas raises it as a warning that you might not be doing what you think you’re doing or because the operation you are performing may behave unpredictably.</p>
 <p>Let’s look at an example. Say the number of seats on this particular plane was recorded incorrectly. Instead of 55 seats it should actually be 60 seats.</p>
-<div id="9361242c" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tailnum_of_interest <span class="op">=</span> planes_df[<span class="st">'tailnum'</span>] <span class="op">==</span> <span class="st">'N10156'</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4ebc0311" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>tailnum_of_interest <span class="op">=</span> planes_df[<span class="st">'tailnum'</span>] <span class="op">==</span> <span class="st">'N10156'</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>Instead of using <code>.iloc</code>, we could actually filter and select this element in our DataFrame with the following bracket notation.</p>
-<div id="e5e9ed20" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1c8c5f96" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>0    55
+Name: seats, dtype: int64</code></pre>
 </div>
-<div id="4222ebf0" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="58669485" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_3321/2190037627.py:1: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
+
+Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
+
+See the documentation for a more detailed explanation: https://pandas.pydata.org/pandas-docs/stable/user_guide/copy_on_write.html#chained-assignment
+  planes_df[tailnum_of_interest]['seats'] = 60</code></pre>
+</div>
 </div>
 <p>So what’s going on? Did our DataFrame get changed?</p>
-<div id="262fe24e" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="469034b6" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>55</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>No it didn’t, even though you probably thought it did. What happened above is that <code>planes_df[tailnum_of_interest]['seats']</code> was executed first and returned a copy of the DataFrame, which is an entirely different object. We can confirm by using <code>id()</code>:</p>
-<div id="a3e6a522" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The id of the original dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" The id of the indexed dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df[tailnum_of_interest])<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="42d3c72b" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The id of the original dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" The id of the indexed dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df[tailnum_of_interest])<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The id of the original dataframe is: 140569315861584
+ The id of the indexed dataframe is: 140568174090800</code></pre>
+</div>
 </div>
 <p>We then tried to set a value on this new object by appending <code>['seats'] = 60</code>. Pandas is warning us that we are doing that operation on a copy of the original dataframe, which is probably not what we want. To fix this, you need to index in a single go, using <code>.loc[]</code> for example:</p>
-<div id="a4b9842b" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[tailnum_of_interest, <span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f48033bc" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[tailnum_of_interest, <span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>No error this time! And let’s confirm the change:</p>
-<div id="e0dc08c9" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e965cd84" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">tailnum</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">manufacturer</th>
+<th data-quarto-table-cell-role="th">model</th>
+<th data-quarto-table-cell-role="th">engines</th>
+<th data-quarto-table-cell-role="th">seats</th>
+<th data-quarto-table-cell-role="th">speed</th>
+<th data-quarto-table-cell-role="th">engine</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>N10156</td>
+<td>2004.0</td>
+<td>Fixed wing multi engine</td>
+<td>EMBRAER</td>
+<td>EMB-145XR</td>
+<td>2</td>
+<td>60</td>
+<td>NaN</td>
+<td>Turbo-fan</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -1123,12 +2430,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="09c852ed" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/nytimes/covid-19-data/refs/heads/master/colleges/colleges.csv"</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>college_df <span class="op">=</span> pd.read_csv(data_url)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>college_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="980037e5" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/nytimes/covid-19-data/refs/heads/master/colleges/colleges.csv"</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>college_df <span class="op">=</span> pd.read_csv(data_url)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>college_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">state</th>
+<th data-quarto-table-cell-role="th">county</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">ipeds_id</th>
+<th data-quarto-table-cell-role="th">college</th>
+<th data-quarto-table-cell-role="th">cases</th>
+<th data-quarto-table-cell-role="th">cases_2021</th>
+<th data-quarto-table-cell-role="th">notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2021-05-26</td>
+<td>Alabama</td>
+<td>Madison</td>
+<td>Huntsville</td>
+<td>100654</td>
+<td>Alabama A&amp;M University</td>
+<td>41</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2021-05-26</td>
+<td>Alabama</td>
+<td>Montgomery</td>
+<td>Montgomery</td>
+<td>100724</td>
+<td>Alabama State University</td>
+<td>2</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2021-05-26</td>
+<td>Alabama</td>
+<td>Limestone</td>
+<td>Athens</td>
+<td>100812</td>
+<td>Athens State University</td>
+<td>45</td>
+<td>10.0</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2021-05-26</td>
+<td>Alabama</td>
+<td>Lee</td>
+<td>Auburn</td>
+<td>100858</td>
+<td>Auburn University</td>
+<td>2742</td>
+<td>567.0</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2021-05-26</td>
+<td>Alabama</td>
+<td>Montgomery</td>
+<td>Montgomery</td>
+<td>100830</td>
+<td>Auburn University at Montgomery</td>
+<td>220</td>
+<td>80.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This dataset includes many columns, but for this exercise, we’re going to focus only on:</p>
 <ul>
@@ -1192,8 +2584,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Try making your filtering logic more flexible by defining parameters at the top of your notebook:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_state <span class="op">=</span> <span class="st">"OH"</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_state <span class="op">=</span> <span class="st">"OH"</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then write code that will:</p>
 <ul>
 <li>Filter for all colleges in <code>my_state</code> with <code>cases</code> greater than <code>threshold</code></li>

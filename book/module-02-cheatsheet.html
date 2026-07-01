@@ -603,13 +603,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#jupyter-notebooks" id="toc-jupyter-notebooks" class="nav-link active" data-scroll-target="#jupyter-notebooks">Jupyter Notebooks</a></li>
+  <li><a href="#cell-types" id="toc-cell-types" class="nav-link active" data-scroll-target="#cell-types">Cell Types</a></li>
   <li><a href="#kernel-execution-state" id="toc-kernel-execution-state" class="nav-link" data-scroll-target="#kernel-execution-state">Kernel &amp; Execution State</a></li>
   <li><a href="#notebooks-vs-.py-scripts" id="toc-notebooks-vs-.py-scripts" class="nav-link" data-scroll-target="#notebooks-vs-.py-scripts">Notebooks vs .py Scripts</a></li>
   <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
   <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples">Tuples</a></li>
   <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">Dictionaries</a></li>
   <li><a href="#data-structure-comparison" id="toc-data-structure-comparison" class="nav-link" data-scroll-target="#data-structure-comparison">Data Structure Comparison</a></li>
+  <li><a href="#standard-library" id="toc-standard-library" class="nav-link" data-scroll-target="#standard-library">Standard Library</a></li>
   <li><a href="#standard-vs-third-party-libraries" id="toc-standard-vs-third-party-libraries" class="nav-link" data-scroll-target="#standard-vs-third-party-libraries">Standard vs Third-Party Libraries</a></li>
   <li><a href="#importing-libraries" id="toc-importing-libraries" class="nav-link" data-scroll-target="#importing-libraries">Importing Libraries</a></li>
   <li><a href="#key-data-science-libraries" id="toc-key-data-science-libraries" class="nav-link" data-scroll-target="#key-data-science-libraries">Key Data Science Libraries</a></li>
@@ -643,8 +644,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>A quick-reference summary of the essential ideas from Module 2. Click any section heading to jump to the full coverage in the book.</p>
 <hr>
-<section id="jupyter-notebooks" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="jupyter-notebooks"><a href="04-jupyter.html#notebook-anatomy-and-core-features">Jupyter Notebooks</a></h2>
+<section id="cell-types" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="cell-types"><a href="04-jupyter.html#code-vs-markdown-cells">Cell Types</a></h2>
 <blockquote class="blockquote">
 <p>A <strong>Jupyter notebook</strong> is a document that blends executable code, formatted text, and output (tables, plots) in a single shareable file.</p>
 </blockquote>
@@ -675,14 +676,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><strong>Markdown quick reference:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1    ## Heading 2    ### Heading 3</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>**bold**        *italic*        <span class="in">`inline code`</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bullet        1. numbered</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>$a^2 + b^2 = c^2$   (inline equation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Heading 1     ## Heading 2      ### Heading 3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>**bold**         *italic*          <span class="in">`inline code`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>bullet         1. numbered list</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>$a^2 + b^2 = c^2$   (inline math equation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="kernel-execution-state" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="kernel-execution-state"><a href="04-jupyter.html#code-execution-state">Kernel &amp; Execution State</a></h2>
+<h2 class="unnumbered anchored" data-anchor-id="kernel-execution-state"><a href="04-jupyter.html#code-execution-state-state">Kernel &amp; Execution State</a></h2>
 <p>The <strong>kernel</strong> is the running Python process behind your notebook. All variables defined in executed cells persist in memory until the kernel is restarted.</p>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
@@ -690,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Cells can be run out of order. Always <strong>Restart &amp; Run All</strong> before sharing or submitting — this is the only way to confirm your notebook runs top-to-bottom without hidden state.</p>
+<p>Cells can be run out of order. Always <strong>Restart &amp; Run All</strong> before sharing or submitting — this is the only way to confirm the notebook runs top-to-bottom without hidden state.</p>
 </div>
 </div>
 </div>
@@ -738,13 +739,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>One-off analysis</td>
-<td>Code that needs unit tests</td>
+<td>Code that needs unit tests or version control</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Running a <code>.py</code> script from inside a notebook:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run my_script.py      <span class="co"># execute the script; its variables enter notebook scope</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load my_script.py     <span class="co"># paste the script contents into a new cell</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run my_script.py      <span class="co"># execute script; its variables enter notebook scope</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load my_script.py     <span class="co"># paste script contents into a new cell to edit</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> my_module       <span class="co"># import functions from a .py file like a package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
@@ -757,18 +758,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">0</span>]           <span class="co"># 85  — first element (zero-based indexing)</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>scores[<span class="op">-</span><span class="dv">1</span>]          <span class="co"># 92  — last element</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>scores.append(<span class="dv">95</span>)   <span class="co"># add to end</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">91</span>      <span class="co"># modify in place</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(scores)         <span class="co"># number of elements</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>scores.sort()       <span class="co"># sort in place</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">'apple'</span> <span class="kw">in</span> scores   <span class="co"># membership check → False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>scores.append(<span class="dv">95</span>)   <span class="co"># add to the end</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>scores[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">91</span>      <span class="co"># update in place</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(scores)         <span class="co"># number of elements → 5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>scores.sort()       <span class="co"># sort in place (ascending)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">'apple'</span> <span class="kw">in</span> scores   <span class="co"># membership check → False</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>scores.remove(<span class="dv">85</span>)   <span class="co"># remove first occurrence of 85</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>scores.pop()        <span class="co"># remove and return the last item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Python uses <strong>zero-based indexing</strong>: <code>scores[0]</code> is the first element, <code>scores[1]</code> is the second. <code>scores[4]</code> on a 4-item list raises an <code>IndexError</code>.</p>
+<p>Python uses <strong>zero-based indexing</strong>: <code>scores[0]</code> is the first element, <code>scores[1]</code> is the second. Accessing <code>scores[5]</code> on a 5-item list raises an <code>IndexError</code>.</p>
 </div>
 </div>
 </div>
@@ -793,7 +796,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dictionaries" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="dictionaries"><a href="05-data-structures.html#dictionaries-key-value-pairs">Dictionaries</a></h2>
 <blockquote class="blockquote">
-<p>A <strong>dictionary</strong> is an unordered collection of <strong>key-value pairs</strong>. Use it when data has meaningful labels (like columns in a row of data).</p>
+<p>A <strong>dictionary</strong> is a mutable collection of <strong>key-value pairs</strong>. Use it when data has meaningful labels (like a row of named fields).</p>
 </blockquote>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>student <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Jordan'</span>, <span class="st">'score'</span>: <span class="dv">95</span>, <span class="st">'major'</span>: <span class="st">'Data Science'</span>}</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -802,10 +805,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>student[<span class="st">'grad_year'</span>] <span class="op">=</span> <span class="dv">2025</span>   <span class="co"># add new key-value pair</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> student[<span class="st">'major'</span>]          <span class="co"># remove a key</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>student.keys()    <span class="co"># all keys</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>student.values()  <span class="co"># all values</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>student.items()   <span class="co"># all (key, value) pairs</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">'name'</span> <span class="kw">in</span> student <span class="co"># True — membership check on keys</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>student.keys()                <span class="co"># all keys</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>student.values()              <span class="co"># all values</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>student.items()               <span class="co"># all (key, value) pairs as tuples</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">'name'</span> <span class="kw">in</span> student             <span class="co"># True — membership check on keys</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>student.get(<span class="st">'gpa'</span>, <span class="dv">0</span>)         <span class="co"># safe access — returns 0 if key missing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="data-structure-comparison" class="level2 unnumbered">
@@ -833,18 +837,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>(1, 2, 3)</code></td>
 <td>✓</td>
 <td>✗</td>
-<td>Fixed groupings</td>
+<td>Fixed groupings, function returns</td>
 </tr>
 <tr class="odd">
 <td><code>dict</code></td>
 <td><code>{'k': v}</code></td>
 <td>✓*</td>
 <td>✓</td>
-<td>Labeled data, lookups</td>
+<td>Labeled data, fast lookups</td>
 </tr>
 </tbody>
 </table>
 <p>*Insertion order preserved in Python 3.7+</p>
+<hr>
+</section>
+<section id="standard-library" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="standard-library"><a href="06-libraries.html#working-with-the-standard-library">Standard Library</a></h2>
+<blockquote class="blockquote">
+<p>The <strong>standard library</strong> ships with every Python installation — no <code>pip</code> needed.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">144</span>)        <span class="co"># → 12.0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">6</span>)     <span class="co"># → 720</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>math.ceil(<span class="fl">9.2</span>)        <span class="co"># → 10</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>os.getcwd()           <span class="co"># current working directory</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>os.listdir()          <span class="co"># list files in current directory</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>today <span class="op">=</span> datetime.date.today()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>birthday <span class="op">=</span> datetime.date(<span class="dv">1998</span>, <span class="dv">7</span>, <span class="dv">14</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>(today <span class="op">-</span> birthday).days   <span class="co"># days between two dates</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>random.randint(<span class="dv">1</span>, <span class="dv">6</span>)  <span class="co"># roll a 6-sided die</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="standard-vs-third-party-libraries" class="level2 unnumbered">
@@ -881,56 +908,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p><strong>Install a third-party package:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In terminal</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pip install pandas</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside a Jupyter notebook cell</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In terminal</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pip install pandas</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inside a Jupyter notebook cell</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="importing-libraries" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="importing-libraries"><a href="06-libraries.html#pythons-data-science-ecosystem-third-party-modules">Importing Libraries</a></h2>
 <p>Import once at the top of your notebook. Use the conventional aliases — they are universal in data science code.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np          <span class="co"># numerical arrays and math</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd          <span class="co"># DataFrames and data manipulation</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  <span class="co"># static plotting</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns        <span class="co"># statistical visualization</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math                  <span class="co"># standard library — no alias needed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np              <span class="co"># numerical arrays and vectorized math</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd             <span class="co"># DataFrames and data manipulation</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># static plotting</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns           <span class="co"># statistical visualization</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math                     <span class="co"># standard library — no alias needed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Dot notation</strong> accesses functions inside a library:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">144</span>)        <span class="co"># → 12.0</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])    <span class="co"># → 2.0</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'data.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">144</span>)          <span class="co"># → 12.0</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])      <span class="co"># → 2.0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'data.csv'</span>) <span class="co"># load a CSV into a DataFrame</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="key-data-science-libraries" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="key-data-science-libraries"><a href="06-libraries.html#pythons-data-science-ecosystem-third-party-modules">Key Data Science Libraries</a></h2>
 <table class="caption-top table">
 <colgroup>
+<col style="width: 22%">
 <col style="width: 30%">
-<col style="width: 40%">
-<col style="width: 30%">
+<col style="width: 47%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Library</th>
 <th>Primary use</th>
-<th>Example</th>
+<th>Signature example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>NumPy</strong></td>
-<td>Fast numerical arrays, vectorized math</td>
-<td><code>np.mean(arr)</code>, <code>arr ** 2</code></td>
+<td>Fast arrays, vectorized math</td>
+<td><code>arr ** 2</code> squares every element at once</td>
 </tr>
 <tr class="even">
 <td><strong>Pandas</strong></td>
-<td>DataFrames, tabular data manipulation</td>
-<td><code>df.groupby('col').sum()</code></td>
+<td>DataFrames, tabular data</td>
+<td><code>df.groupby('label').sum()</code></td>
 </tr>
 <tr class="odd">
 <td><strong>Matplotlib</strong></td>
-<td>Static plots (line, bar, scatter)</td>
+<td>Static plots</td>
 <td><code>plt.plot(x, y)</code></td>
 </tr>
 <tr class="even">
@@ -950,6 +977,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<p><strong>NumPy vectorization</strong> — operate on every element without a loop:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">10</span>)   <span class="co"># array([1, 2, 3, 4, 5, 6, 7, 8, 9])</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">**</span> <span class="dv">2</span>                  <span class="co"># array([ 1,  4,  9, 16, 25, 36, 49, 64, 81])</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>np.mean(x)              <span class="co"># → 5.0</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>x.reshape((<span class="dv">3</span>, <span class="dv">3</span>))       <span class="co"># reshape into a 3×3 matrix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="common-pitfalls" class="level2 unnumbered">
@@ -969,34 +1003,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>scores[4]</code> on a 4-item list</td>
-<td>Indexing starts at 0; valid indices are 0–3</td>
-<td>Use <code>scores[-1]</code> for last item or <code>len(scores)-1</code></td>
+<td><code>scores[5]</code> on a 5-item list raises <code>IndexError</code></td>
+<td>Indexing starts at 0; valid indices are 0–4</td>
+<td>Use <code>scores[-1]</code> for the last item</td>
 </tr>
 <tr class="even">
-<td>Modifying a list while iterating it</td>
-<td>List length changes mid-loop</td>
-<td>Iterate over a copy: <code>for x in scores[:]</code></td>
+<td>Cells run out of order break later cells</td>
+<td>Kernel state depends on execution order, not cell position</td>
+<td>Restart &amp; Run All before submitting</td>
 </tr>
 <tr class="odd">
 <td><code>coordinates[0] = 5.0</code> raises <code>TypeError</code></td>
 <td>Tuples are immutable</td>
-<td>Convert to list first, or create a new tuple</td>
+<td>Create a new tuple or convert to a list first</td>
 </tr>
 <tr class="even">
 <td><code>student['gpa']</code> raises <code>KeyError</code></td>
-<td>Key doesn’t exist</td>
-<td>Use <code>student.get('gpa', 0)</code> for a safe default</td>
+<td>Key doesn’t exist in the dictionary</td>
+<td>Use <code>student.get('gpa', default)</code></td>
 </tr>
 <tr class="odd">
-<td>Running cells out of order breaks later cells</td>
-<td>Kernel state depends on execution order, not cell position</td>
-<td>Restart &amp; Run All before submitting</td>
+<td><code>import pandas</code> then <code>pd.read_csv(...)</code> raises <code>NameError</code></td>
+<td>Alias <code>pd</code> not defined when importing without it</td>
+<td>Use <code>import pandas as pd</code></td>
 </tr>
 <tr class="even">
-<td><code>import pandas</code> then <code>pd.read_csv(...)</code> raises <code>NameError</code></td>
-<td>Alias <code>pd</code> not defined — imported without alias</td>
-<td>Use <code>import pandas as pd</code></td>
+<td><code>x_list ** 2</code> raises <code>TypeError</code> on a plain Python list</td>
+<td>Lists don’t support vectorized operations</td>
+<td>Convert to NumPy: <code>x = np.array(x_list)</code></td>
 </tr>
 </tbody>
 </table>

@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -111,6 +111,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -709,7 +712,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prerequisites" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">12.1</span> Prerequisites</h2>
 <p>Before we dive into real-world data, let’s start by loading the <code>pandas</code> library. This will give us access to the join functions we’ll be using throughout the chapter.</p>
-<div id="bef3e817" class="cell" data-execution_count="1">
+<div id="5916d6ef" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To build your intuition around joins, we’ll begin with two very simple DataFrames, <code>x</code> and <code>y</code>. In these examples:</p>
@@ -733,7 +736,7 @@ Figure&nbsp;12.1: Two simple DataFrames with a shared key column.
 </figure>
 </div>
 <p>Here’s how we’ll create them in code:</p>
-<div id="c2a6a866" class="cell" data-execution_count="2">
+<div id="68e18d62" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'val_x'</span>: [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]})</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>], <span class="st">'val_y'</span>: [<span class="st">'y1'</span>, <span class="st">'y2'</span>, <span class="st">'y4'</span>]})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -759,16 +762,116 @@ Figure&nbsp;12.1: Two simple DataFrames with a shared key column.
 </div>
 </div>
 </div>
-<div id="c3dbdbd7" class="cell" data-execution_count="3">
+<div id="95b7da61" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get_data() provides a dictionary of several DataFrames</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cj_data.keys()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>dict_keys(['campaign_descriptions', 'coupons', 'promotions', 'campaigns', 'demographics', 'transactions', 'coupon_redemptions', 'products'])</code></pre>
 </div>
-<div id="e58f9689" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can check out the transactions data with the following</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>cj_data[<span class="st">'transactions'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="32178840" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can check out the transactions data with the following</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cj_data[<span class="st">'transactions'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">household_id</th>
+<th data-quarto-table-cell-role="th">store_id</th>
+<th data-quarto-table-cell-role="th">basket_id</th>
+<th data-quarto-table-cell-role="th">product_id</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+<th data-quarto-table-cell-role="th">retail_disc</th>
+<th data-quarto-table-cell-role="th">coupon_disc</th>
+<th data-quarto-table-cell-role="th">coupon_match_disc</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">transaction_timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>900</td>
+<td>330</td>
+<td>31198570044</td>
+<td>1095275</td>
+<td>1</td>
+<td>0.50</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 11:53:26</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>900</td>
+<td>330</td>
+<td>31198570047</td>
+<td>9878513</td>
+<td>1</td>
+<td>0.99</td>
+<td>0.10</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:10:28</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1228</td>
+<td>406</td>
+<td>31198655051</td>
+<td>1041453</td>
+<td>1</td>
+<td>1.43</td>
+<td>0.15</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:26:30</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1020156</td>
+<td>1</td>
+<td>1.50</td>
+<td>0.29</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:30:27</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1053875</td>
+<td>2</td>
+<td>2.78</td>
+<td>0.80</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:30:27</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -813,15 +916,21 @@ Figure&nbsp;12.1: Two simple DataFrames with a shared key column.
 </div>
 <p>Together, these keys form a <strong>relation</strong>. In most cases, the relationship is <strong>one-to-many</strong>: one household can have many transactions, but each transaction belongs to only one household. Occasionally, you’ll encounter <strong>one-to-one</strong> relationships, where each row in one table maps to exactly one row in another.</p>
 <p>When data is cleaned appropriately the keys used to match two tables will be commonly named. For example, the variable that can link our <code>x</code> and <code>y</code> data sets is named <code>id</code>:</p>
-<div id="43d0b803" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x.columns.intersection(y.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4cc06073" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x.columns.intersection(y.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Index(['id'], dtype='str')</code></pre>
+</div>
 </div>
 <p>We can easily see this by looking at the <code>x</code> and <code>y</code> data but when working with larger data sets this becomes more appropriate than just viewing the data. For example, we can easily identify the common columns in the <strong>completejourney_py</strong> <code>transactions</code> and <code>demographics</code> data:</p>
-<div id="8f199f7a" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> cj_data[<span class="st">'transactions'</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>demographics <span class="op">=</span> cj_data[<span class="st">'demographics'</span>]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>transactions.columns.intersection(demographics.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="088afb0f" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> cj_data[<span class="st">'transactions'</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>demographics <span class="op">=</span> cj_data[<span class="st">'demographics'</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>transactions.columns.intersection(demographics.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Index(['household_id'], dtype='str')</code></pre>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -879,8 +988,39 @@ Figure&nbsp;12.2: Inner join (<a href="https://r4ds.had.co.nz/relational-data.ht
 </figcaption>
 </figure>
 </div>
-<div id="c045254b" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="23dc149a" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"inner"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">val_x</th>
+<th data-quarto-table-cell-role="th">val_y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>y1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>y2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -920,15 +1060,89 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 <section id="left-join" class="level4">
 <h4 class="anchored" data-anchor-id="left-join">Left Join</h4>
 <p>A <strong>left join</strong> keeps all rows from the left DataFrame (<code>x</code>) and adds matching rows from the right DataFrame (<code>y</code>). If no match is found, the result will contain <code>NaN</code> for the missing values.</p>
-<div id="93be6ca3" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="eda0140f" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"left"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">val_x</th>
+<th data-quarto-table-cell-role="th">val_y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>y1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>y2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>x3</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="right-join" class="level4">
 <h4 class="anchored" data-anchor-id="right-join">Right Join</h4>
 <p>A <strong>right join</strong> is similar to a left join, but it retains all rows from the right DataFrame (<code>y</code>).</p>
-<div id="42fc7c7e" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"right"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5ccc4b36" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"right"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">val_x</th>
+<th data-quarto-table-cell-role="th">val_y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>y1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>y2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>4</td>
+<td>NaN</td>
+<td>y4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
@@ -944,8 +1158,51 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 <section id="full-outer-join" class="level4">
 <h4 class="anchored" data-anchor-id="full-outer-join">Full Outer Join</h4>
 <p>A <strong>full outer join</strong> retains all rows from both DataFrames. Where there are no matches, it fills in <code>NaN</code> for missing values.</p>
-<div id="741c54b9" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"outer"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="7a28dbde" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">"id"</span>, how<span class="op">=</span><span class="st">"outer"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">val_x</th>
+<th data-quarto-table-cell-role="th">val_y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>y1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>y2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>x3</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>NaN</td>
+<td>y4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -964,9 +1221,9 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 <h2 data-number="12.4" class="anchored" data-anchor-id="working-with-differently-named-keys"><span class="header-section-number">12.4</span> Working with Differently Named Keys</h2>
 <p>So far, the keys we’ve used to join two DataFrames have had the same name. This was encoded by using <code>on='id'</code>. However, having keys with the same name is not a requirement. But what happens we our common key variable is named differently in each DataFrame?</p>
 <p>For example:</p>
-<div id="0f0f6aec" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> pd.DataFrame({<span class="st">'id_a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'val_a'</span>: [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]})</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> pd.DataFrame({<span class="st">'id_b'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>], <span class="st">'val_b'</span>: [<span class="st">'y1'</span>, <span class="st">'y2'</span>, <span class="st">'y4'</span>]})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e6ae447e" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> pd.DataFrame({<span class="st">'id_a'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'val_a'</span>: [<span class="st">'x1'</span>, <span class="st">'x2'</span>, <span class="st">'x3'</span>]})</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> pd.DataFrame({<span class="st">'id_b'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>], <span class="st">'val_b'</span>: [<span class="st">'y1'</span>, <span class="st">'y2'</span>, <span class="st">'y4'</span>]})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In this case, since our common key variable has different names in each table (<code>id_a</code> in <code>a</code> and <code>id_b</code> in <code>b</code>), our inner join function doesn’t know how to join these two DataFrames and an error results.</p>
 <div class="callout callout-style-simple callout-warning callout-titled">
@@ -981,15 +1238,123 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="26aa6139" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a.merge(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f73c63ca" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a.merge(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">MergeError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> a.merge(b)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/core/frame.py:12900</span>, in <span class="ansi-cyan-fg">DataFrame.merge</span><span class="ansi-blue-fg">(self, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="ansi-green-fg">  12896</span>         self._check_copy_deprecation(copy)
+<span class="ansi-green-fg">  12897</span> 
+<span class="ansi-green-fg">  12898</span>         <span style="font-weight:bold;color:rgb(0,135,0)">from</span> pandas.core.reshape.merge <span style="font-weight:bold;color:rgb(0,135,0)">import</span> merge
+<span class="ansi-green-fg">  12899</span> 
+<span class="ansi-green-fg">&gt; </span><span class="ansi-green-fg">12900</span>         return merge(
+<span class="ansi-green-fg">  12901</span>             self,
+<span class="ansi-green-fg">  12902</span>             right,
+<span class="ansi-green-fg">  12903</span>             how=how,
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py:385</span>, in <span class="ansi-cyan-fg">merge</span><span class="ansi-blue-fg">(left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="ansi-green-fg">    371</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _cross_merge(
+<span class="ansi-green-fg">    372</span>         left_df,
+<span class="ansi-green-fg">    373</span>         right_df,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    382</span>         validate=validate,
+<span class="ansi-green-fg">    383</span>     )
+<span class="ansi-green-fg">    384</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">385</span>     op = <span class="ansi-black-fg ansi-yellow-bg">_MergeOperation</span><span class="ansi-black-fg ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    386</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">left_df</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    387</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">right_df</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    388</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">how</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">how</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    389</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">on</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">on</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    390</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">left_on</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">left_on</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    391</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">right_on</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">right_on</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    392</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">left_index</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">left_index</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    393</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">right_index</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">right_index</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    394</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">sort</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">sort</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    395</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">suffixes</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">suffixes</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    396</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">indicator</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">indicator</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    397</span> <span class="ansi-black-fg ansi-yellow-bg">        </span><span class="ansi-black-fg ansi-yellow-bg">validate</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">validate</span><span class="ansi-black-fg ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    398</span> <span class="ansi-black-fg ansi-yellow-bg">    </span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    399</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> op.get_result()
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py:1010</span>, in <span class="ansi-cyan-fg">_MergeOperation.__init__</span><span class="ansi-blue-fg">(self, left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, indicator, validate)</span>
+<span class="ansi-green-fg">   1003</span>     msg = (
+<span class="ansi-green-fg">   1004</span>         <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Not allowed to merge between different levels. </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1005</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">(</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>_left.columns.nlevels<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg"> levels on the left, </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1006</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>_right.columns.nlevels<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg"> on the right)</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1007</span>     )
+<span class="ansi-green-fg">   1008</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> MergeError(msg)
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1010</span> <span style="color:rgb(0,135,0)">self</span>.left_on, <span style="color:rgb(0,135,0)">self</span>.right_on = <span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">_validate_left_right_on</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">left_on</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">right_on</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1012</span> (
+<span class="ansi-green-fg">   1013</span>     <span style="color:rgb(0,135,0)">self</span>.left_join_keys,
+<span class="ansi-green-fg">   1014</span>     <span style="color:rgb(0,135,0)">self</span>.right_join_keys,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1017</span>     right_drop,
+<span class="ansi-green-fg">   1018</span> ) = <span style="color:rgb(0,135,0)">self</span>._get_merge_keys()
+<span class="ansi-green-fg">   1020</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> left_drop:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/pandas/core/reshape/merge.py:1899</span>, in <span class="ansi-cyan-fg">_MergeOperation._validate_left_right_on</span><span class="ansi-blue-fg">(self, left_on, right_on)</span>
+<span class="ansi-green-fg">   1897</span> common_cols = left_cols.intersection(right_cols)
+<span class="ansi-green-fg">   1898</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(common_cols) == <span class="ansi-green-fg">0</span>:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1899</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> MergeError(
+<span class="ansi-green-fg">   1900</span>         <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">No common columns to perform merge on. </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1901</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Merge options: left_on=</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>left_on<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">, </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1902</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">right_on=</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>right_on<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">, </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1903</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">left_index=</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">self</span>.left_index<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">, </span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1904</span>         <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">right_index=</span><span style="font-weight:bold;color:rgb(175,95,135)">{</span><span style="color:rgb(0,135,0)">self</span>.right_index<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">   1905</span>     )
+<span class="ansi-green-fg">   1906</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> (
+<span class="ansi-green-fg">   1907</span>     <span style="font-weight:bold;color:rgb(175,0,255)">not</span> left_cols.join(common_cols, how=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">inner</span><span class="ansi-yellow-fg">"</span>).is_unique
+<span class="ansi-green-fg">   1908</span>     <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> right_cols.join(common_cols, how=<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">inner</span><span class="ansi-yellow-fg">"</span>).is_unique
+<span class="ansi-green-fg">   1909</span> ):
+<span class="ansi-green-fg">   1910</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> MergeError(<span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Data columns not unique: </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>common_cols<span style="font-weight:bold;color:rgb(175,95,135)">!r}</span><span class="ansi-yellow-fg">"</span>)
+
+<span class="ansi-red-fg">MergeError</span>: No common columns to perform merge on. Merge options: left_on=None, right_on=None, left_index=False, right_index=False</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <p>When this happens, we can explicitly tell our join function to use unique key names in each DataFrame as a common key with the <code>left_on</code> and <code>right_on</code> arguments:</p>
-<div id="825054ca" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a.merge(b, left_on<span class="op">=</span><span class="st">"id_a"</span>, right_on<span class="op">=</span><span class="st">"id_b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="88835eaa" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a.merge(b, left_on<span class="op">=</span><span class="st">"id_a"</span>, right_on<span class="op">=</span><span class="st">"id_b"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id_a</th>
+<th data-quarto-table-cell-role="th">val_a</th>
+<th data-quarto-table-cell-role="th">id_b</th>
+<th data-quarto-table-cell-role="th">val_b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>1</td>
+<td>y1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>2</td>
+<td>y2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="a-larger-example-with-complete-journey-data" class="level2" data-number="12.5">
@@ -997,17 +1362,29 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 <p>Let’s apply what we’ve learned to real data from the <code>completejourney_py</code> package.</p>
 <p>Suppose we want to add product details to each transaction. That means we’ll join the <code>transactions</code> and <code>products</code> DataFrames. Because we want to retain all transaction records, even if product details are missing, we’ll use a <strong>left join</strong>.</p>
 <p>First, check the column names:</p>
-<div id="9c0990e2" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> cj_data[<span class="st">"products"</span>]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'transactions columns: </span><span class="sc">{</span>transactions<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'products columns: </span><span class="sc">{</span>products<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c2ec993f" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>transactions <span class="op">=</span> cj_data[<span class="st">"transactions"</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> cj_data[<span class="st">"products"</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'transactions columns: </span><span class="sc">{</span>transactions<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'products columns: </span><span class="sc">{</span>products<span class="sc">.</span>columns<span class="sc">}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>transactions columns: Index(['household_id', 'store_id', 'basket_id', 'product_id', 'quantity',
+       'sales_value', 'retail_disc', 'coupon_disc', 'coupon_match_disc',
+       'week', 'transaction_timestamp'],
+      dtype='str')
+products columns: Index(['product_id', 'manufacturer_id', 'department', 'brand',
+       'product_category', 'product_type', 'package_size'],
+      dtype='str')</code></pre>
+</div>
 </div>
 <p>And we can find if a common column name exists:</p>
-<div id="3ebe41bc" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>transactions.columns.intersection(products.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c09793ca" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>transactions.columns.intersection(products.columns)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>Index(['product_id'], dtype='str')</code></pre>
+</div>
 </div>
 <p>We see that both DataFrames share the <code>product_id</code> column. This aligns to the <a href="https://cunningjames.github.io/completejourney_py/user-guide/datasets/">data dictionary</a> so we can trust this is the accurate common key. We can now perform a left join using<code>product_id</code> as the common key.</p>
 <div class="callout callout-style-simple callout-tip">
@@ -1020,19 +1397,245 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 </div>
 </div>
 </div>
-<div id="65f69530" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>transactions.merge(products, on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9b14d6c0" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>transactions.merge(products, on<span class="op">=</span><span class="st">"product_id"</span>, how<span class="op">=</span><span class="st">"left"</span>).head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">household_id</th>
+<th data-quarto-table-cell-role="th">store_id</th>
+<th data-quarto-table-cell-role="th">basket_id</th>
+<th data-quarto-table-cell-role="th">product_id</th>
+<th data-quarto-table-cell-role="th">quantity</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+<th data-quarto-table-cell-role="th">retail_disc</th>
+<th data-quarto-table-cell-role="th">coupon_disc</th>
+<th data-quarto-table-cell-role="th">coupon_match_disc</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">transaction_timestamp</th>
+<th data-quarto-table-cell-role="th">manufacturer_id</th>
+<th data-quarto-table-cell-role="th">department</th>
+<th data-quarto-table-cell-role="th">brand</th>
+<th data-quarto-table-cell-role="th">product_category</th>
+<th data-quarto-table-cell-role="th">product_type</th>
+<th data-quarto-table-cell-role="th">package_size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>900</td>
+<td>330</td>
+<td>31198570044</td>
+<td>1095275</td>
+<td>1</td>
+<td>0.50</td>
+<td>0.00</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 11:53:26</td>
+<td>2.0</td>
+<td>PASTRY</td>
+<td>National</td>
+<td>ROLLS</td>
+<td>ROLLS: BAGELS</td>
+<td>4 OZ</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>900</td>
+<td>330</td>
+<td>31198570047</td>
+<td>9878513</td>
+<td>1</td>
+<td>0.99</td>
+<td>0.10</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:10:28</td>
+<td>69.0</td>
+<td>GROCERY</td>
+<td>Private</td>
+<td>FACIAL TISS/DNR NAPKIN</td>
+<td>FACIAL TISSUE &amp; PAPER HANDKE</td>
+<td>85 CT</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1228</td>
+<td>406</td>
+<td>31198655051</td>
+<td>1041453</td>
+<td>1</td>
+<td>1.43</td>
+<td>0.15</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:26:30</td>
+<td>69.0</td>
+<td>GROCERY</td>
+<td>Private</td>
+<td>BAG SNACKS</td>
+<td>POTATO CHIPS</td>
+<td>11.5 OZ</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1020156</td>
+<td>1</td>
+<td>1.50</td>
+<td>0.29</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:30:27</td>
+<td>2142.0</td>
+<td>GROCERY</td>
+<td>National</td>
+<td>REFRGRATD DOUGH PRODUCTS</td>
+<td>REFRIGERATED BAGELS</td>
+<td>17.1 OZ</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>906</td>
+<td>319</td>
+<td>31198705046</td>
+<td>1053875</td>
+<td>2</td>
+<td>2.78</td>
+<td>0.80</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1</td>
+<td>2017-01-01 12:30:27</td>
+<td>2326.0</td>
+<td>GROCERY</td>
+<td>National</td>
+<td>SEAFOOD - SHELF STABLE</td>
+<td>TUNA</td>
+<td>5.0 OZ</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This has now added product information to each transaction. Consequently, if we wanted to get the total sales across the meat <code>department</code> but summarized at the <code>product_category</code> level so that we can identify which products generate the greatest sales we could follow this joining procedure with additional skills we learned in previous lessons:</p>
-<div id="601f3afa" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    transactions</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    .merge(products, how<span class="op">=</span><span class="st">'left'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"department == 'MEAT'"</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'product_category'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    .agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>})</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    .sort_values(by<span class="op">=</span><span class="st">'sales_value'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="33a01124" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    transactions</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    .merge(products, how<span class="op">=</span><span class="st">'left'</span>, on<span class="op">=</span><span class="st">'product_id'</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"department == 'MEAT'"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'product_category'</span>, as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    .agg({<span class="st">'sales_value'</span>: <span class="st">'sum'</span>})</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    .sort_values(by<span class="op">=</span><span class="st">'sales_value'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">product_category</th>
+<th data-quarto-table-cell-role="th">sales_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1</th>
+<td>BEEF</td>
+<td>176614.54</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>CHICKEN</td>
+<td>52703.51</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>PORK</td>
+<td>50809.31</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">12</th>
+<td>SMOKED MEATS</td>
+<td>15324.22</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">13</th>
+<td>TURKEY</td>
+<td>11128.95</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>EXOTIC GAME/FOWL</td>
+<td>860.42</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>LAMB</td>
+<td>829.27</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">14</th>
+<td>VEAL</td>
+<td>167.13</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>MEAT SUPPLIES</td>
+<td>57.03</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>MEAT - MISC</td>
+<td>39.66</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>RW FRESH PROCESSED MEAT</td>
+<td>30.84</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>COUPON</td>
+<td>7.00</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>LUNCHMEAT</td>
+<td>2.20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>MISCELLANEOUS</td>
+<td>0.95</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>BACON</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <section id="knowledge-check" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h3>
@@ -1065,8 +1668,56 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 <li><code>'both'</code> — the row had a match in both tables</li>
 </ul>
 <p>This is helpful when you’re trying to understand or debug the result of a join:</p>
-<div id="3cb669a7" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, how<span class="op">=</span><span class="st">'outer'</span>, indicator<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="08028153" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x.merge(y, how<span class="op">=</span><span class="st">'outer'</span>, indicator<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">val_x</th>
+<th data-quarto-table-cell-role="th">val_y</th>
+<th data-quarto-table-cell-role="th">_merge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>x1</td>
+<td>y1</td>
+<td>both</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>x2</td>
+<td>y2</td>
+<td>both</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3</td>
+<td>x3</td>
+<td>NaN</td>
+<td>left_only</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>4</td>
+<td>NaN</td>
+<td>y4</td>
+<td>right_only</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p>This feature is also useful when filtering rows based on whether they had a match. For example:</p>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
@@ -1085,17 +1736,23 @@ Figure&nbsp;12.3: Difference in left join, right join, and outer join procedures
 </div>
 </div>
 <p>You can answer this by performing an outer join between <code>transactions</code> and <code>demographics</code>, then filtering for rows with <code>_merge == 'left_only'</code>:</p>
-<div id="d8f6f4fd" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of transactions</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>transactions.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3f7f34bc" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of transactions</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>transactions.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>(1469307, 11)</code></pre>
 </div>
-<div id="3385300f" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transactions without matching demographic info</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    transactions</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    .merge(demographics, how<span class="op">=</span><span class="st">'outer'</span>, indicator<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"_merge == 'left_only'"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>).shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b050b94d" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transactions without matching demographic info</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    transactions</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    .merge(demographics, how<span class="op">=</span><span class="st">'outer'</span>, indicator<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"_merge == 'left_only'"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>).shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>(640457, 19)</code></pre>
+</div>
 </div>
 <p>In this case, 640,457 transactions (about 43%) come from households without demographic information.</p>
 <section id="knowledge-check-1" class="level3">
