@@ -4,6 +4,7 @@ subtitle: "Importing, Exploring & Subsetting Data with Pandas"
 format:
   revealjs:
     slide-number: true
+    self-contained: true
     preview-links: auto
     revealjs-plugins:
       - appearance
@@ -13,11 +14,13 @@ format:
       - _extensions/martinomagnifico/appearance/appearance.css
     mermaid:
       theme: neutral
-footer: 'BANA 4080'
+footer: 'BANA 7025 | Week 3'
 title-slide-attributes:
     data-background-image: images/pandas-icon.png
-    data-background-size: cover
+    data-background-size: contain
     data-background-opacity: "1.0"
+    data-background-color: "#000000"
+    style: "color: white;"
 filters: 
   - timer
 execute:
@@ -119,6 +122,16 @@ Let's take a few minutes to address any questions or concerns from last week bef
 
 # Getting Data Into Python {background="#43464B"}
 
+## 📓 Follow Along in the Notebook
+
+::: {.callout-tip}
+## Week 3 Lecture Notebook
+
+Open the companion notebook in Colab now and follow along as we work through today's examples on importing data, exploring DataFrames, and subsetting rows and columns.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-03-lecture.ipynb)
+:::
+
 ## The Data Journey: From Disk to Detective Work {.smaller}
 
 Python stores data in **memory** for fast analysis, but first we need to get it there!
@@ -214,12 +227,6 @@ Excel + Python power = Reproducible & scalable data analysis
 :::
 ::::
 
-::: {.callout-important}
-## Follow Along
-
-<https://tinyurl.com/255kurnz>
-:::
-
 ## Let's Import Our First Dataset! {.smaller}
 
 **Step 1:** Import pandas and load the Ames housing data
@@ -245,6 +252,33 @@ We've created a **DataFrame** - Python's version of a spreadsheet!
 ```{python}
 ames
 ```
+
+## Importing Data in Google Colab ☁️ {.smaller}
+
+**The challenge:** In Colab, your files aren't on your local machine — they're on a cloud VM.
+
+**Option 1: Load directly from a URL**
+```{python}
+ames = pd.read_csv('https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/main/data/ames_raw.csv')
+```
+
+**Option 2: Upload a local file**
+```python
+from google.colab import files
+
+# Opens a file picker — select a file from your computer
+uploaded = files.upload()
+```
+
+Then read the uploaded file just like any local file:
+
+```python
+ames = pd.read_csv('ames_raw.csv')
+```
+
+::: {.callout-warning}
+Files uploaded this way **only persist for the current Colab session**. If you close the browser or restart your runtime, you'll need to re-upload.
+:::
 
 # Getting to Know Your Data 🧐 {background="#43464B"}
 
@@ -278,6 +312,10 @@ ames.info()
 
 ## More Detective Tools {.smaller}
 
+::: {.callout-important}
+**Key Insight:** Always inspect your data first! These tools help you understand what you're working with.
+:::
+
 :::: {.columns}
 ::: {.column}
 
@@ -297,9 +335,6 @@ ames.dtypes
 :::
 ::::
 
-::: {.callout-important}
-**Key Insight:** Always inspect your data first! These tools help you understand what you're working with.
-:::
 
 ## Detective Summary Statistics {.smaller}
 
@@ -466,6 +501,34 @@ ames[['SalePrice', 'Year Built']].head(3)
 **Key Rule:** Use `[[]]` when you want to keep working with DataFrame methods!
 :::
 
+## Your Turn! 🎯 {.smaller}
+
+:::: {.columns}
+::: {.column width="65%"}
+
+Using the `ames` DataFrame:
+
+1. Extract the `Neighborhood` column as a **Series**. What neighborhood are the first 3 records in?
+2. Extract the `Neighborhood` column as a **DataFrame**.
+3. Extract the `Neighborhood`, `Overall Qual`, and `SalePrice` columns as a **DataFrame**.
+
+:::
+::: {.column width="35%"}
+
+<center>
+
+<div id="3minYourTurn"></div>
+<script src="_extensions/produnis/timer/timer.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        initializeTimer("3minYourTurn", 180, "slide");
+    });
+</script>
+</center>
+
+:::
+::::
+
 # Data Subsetting: Finding What Matters {background="#43464B"}
 
 ## The Two Dimensions of Subsetting {.smaller}
@@ -542,8 +605,6 @@ print(f"First few values: {just_prices.head(3).tolist()}")
 - `.shape`
 - `.max()`
 - `.mean()`
-
-**Colab Notebook:** [Data Mystery #1](https://colab.research.google.com/github/bradleyboehmke/uc-bana-4080/blob/main/example-notebooks/data_mystery_1.ipynb)
 :::
 ::: {.column}
 <center>
