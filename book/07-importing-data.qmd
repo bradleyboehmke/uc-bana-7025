@@ -11,10 +11,10 @@ Later chapters will teach you how to clean, transform, and analyze data — but 
 ::: {.callout collapse="true"}
 ## Experience First: Explore a Raw Dataset
 
-Before we dive into the code, let’s simulate your first task on the job. Check out [this](https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/ames_raw.csv) dataset on residential property sales in Ames, Iowa ([source](http://jse.amstat.org/v19n3/decock.pdf)).
+Before we dive into the code, let’s simulate your first task on the job. Check out [this](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/ames_raw.csv) dataset on residential property sales in Ames, Iowa ([source](http://jse.amstat.org/v19n3/decock.pdf)).
 
 1. Download the ames_raw.csv file from this URL:
-https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/ames_raw.csv
+https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/ames_raw.csv
 1. Open the file in Excel, Google Sheets, or a text editor.
 2. Skim through the data. Ask yourself:
    - What kind of information is being recorded?
@@ -66,7 +66,7 @@ Pandas provides a very efficient and simple way to load these types of files usi
 
 {{< video https://www.youtube.com/embed/_pXeLrqQhxI?si=NDBCiV2x9sek6j6X >}}
 
-In the example below, we use `read_csv()` to load a [dataset listing some information on aircraft](https://raw.githubusercontent.com/bradleyboehmke/uc-bana-4080/refs/heads/main/data/planes.csv). 
+In the example below, we use `read_csv()` to load a [dataset listing some information on aircraft](https://raw.githubusercontent.com/bradleyboehmke/uc-bana-7025/refs/heads/main/data/planes.csv). 
 
 ::: {.callout-note}
 Please note that **you must have internet access for this example to work.** 
@@ -212,7 +212,7 @@ Project A
 ::: {.callout}
 ## Try Different File Paths
 
-Download the [`ames_raw.csv` dataset](https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/ames_raw.csv) and save the file in a folder structure like this:
+Download the [`ames_raw.csv` dataset](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/ames_raw.csv) and save the file in a folder structure like this:
 
 ```
 Project A
@@ -230,8 +230,6 @@ Now, do the following:
    * Which method feels easier or more flexible to you?
    * In what situations might you prefer absolute over relative paths?
 :::
-
-Great idea — adding an example using [Google Colab](https://colab.research.google.com/) will help students who are working in the cloud and need to upload files directly from their local machine. Here’s a clean, student-friendly example you can drop into your chapter:
 
 ## Importing Data in Google Colab
 
@@ -466,7 +464,7 @@ To import data directly from an Excel workbook, you can use the `read_excel()` f
 pip install openpyxl
 ```
 
-In this example, we’ll import a mock dataset of grocery store products stored in a file called `products.xlsx` (download [here](https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/products.xlsx)).
+In this example, we’ll import a mock dataset of grocery store products stored in a file called `products.xlsx` (download [here](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/products.xlsx)).
 
 ```{python}
 # Preview the available sheets in the workbook
@@ -515,7 +513,7 @@ Download the dataset directly from this GitHub URL: [`colleges.csv`](https://git
 Set up your project directory to look like this:
 
 ```
-BANA 4080
+BANA 7025
 ├── notebooks
 │   └── covid_analysis.ipynb
 └── data

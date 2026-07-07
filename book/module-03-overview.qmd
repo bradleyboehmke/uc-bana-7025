@@ -18,18 +18,26 @@ By the end of this module, you will:
 | Resource | Link |
 |----------|------|
 | 📊 Week 3 Slides | [View slides](../slides/week-03.html){target="_blank"} |
-| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+| 💻 Tuesday Your Turn Notebook | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-03-lecture.ipynb){target="_blank"} |
 
 ### Chapters & Notebooks {.unnumbered}
 
+Each chapter has a companion Colab notebook with all the code from the chapter — ready to run, no installation required.
+
 | Chapter | Topic | Colab Notebook |
 |---------|-------|---------------|
-| 7 | Importing Data | *Coming soon* |
-| 8 | DataFrames | *Coming soon* |
-| 9 | Subsetting Data | *Coming soon* |
+| 7 | Importing Data | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/06_importing_data.ipynb){target="_blank"} |
+| 8 | DataFrames | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/07_dataframes.ipynb){target="_blank"} |
+| 9 | Subsetting Data | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/08_subsetting.ipynb){target="_blank"} |
 
 ### Lab {.unnumbered}
 
 | Resource | Link |
 |----------|------|
-| 🧪 Lab 3 | *Coming soon* |
+| 🧪 Lab 3 | [Open lab](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/labs/lab-03-importing-data.ipynb){target="_blank"} |
+
+### Reference {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📋 Module 3 Cheat Sheet | [View cheat sheet](module-03-cheatsheet.html){target="_blank"} |
