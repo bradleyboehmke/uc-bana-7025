@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Setting Up Your Python Environment – BANA 7025: Data Wrangling with Python</title>
+<title>26&nbsp; Module 4 Cheat Sheet – BANA 7025: Data Wrangling with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../book/03-python-basics.html" rel="next">
-<link href="../book/01-intro-data-mining.html" rel="prev">
+<link href="../book/99-anaconda-install.html" rel="next">
+<link href="../book/module-03-cheatsheet.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-overview.html">Module 1: Getting Started</a></li><li class="breadcrumb-item"><a href="../book/02-preparing-for-code.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting Up Your Python Environment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-04-cheatsheet.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/02-preparing-for-code.html" class="sidebar-item-text sidebar-link active">
+  <a href="../book/02-preparing-for-code.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting Up Your Python Environment</span></span></a>
   </div>
 </li>
@@ -576,7 +576,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/module-04-cheatsheet.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/module-04-cheatsheet.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></span></a>
   </div>
 </li>
@@ -615,30 +615,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#hello-world" id="toc-hello-world" class="nav-link active" data-scroll-target="#hello-world"><span class="header-section-number">2.1</span> Hello World</a>
-  <ul class="collapse">
-  <li><a href="#running-python-in-google-colab" id="toc-running-python-in-google-colab" class="nav-link" data-scroll-target="#running-python-in-google-colab">Running Python in Google Colab</a></li>
-  <li><a href="#knowledge-check" id="toc-knowledge-check" class="nav-link" data-scroll-target="#knowledge-check">Knowledge Check</a></li>
-  <li><a href="#try-this-generate-python-code-with-ai" id="toc-try-this-generate-python-code-with-ai" class="nav-link" data-scroll-target="#try-this-generate-python-code-with-ai">Try This: Generate Python Code with AI</a></li>
-  </ul></li>
-  <li><a href="#development-environments" id="toc-development-environments" class="nav-link" data-scroll-target="#development-environments"><span class="header-section-number">2.2</span> Development Environments</a>
-  <ul class="collapse">
-  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
-  <li><a href="#anaconda-distribution" id="toc-anaconda-distribution" class="nav-link" data-scroll-target="#anaconda-distribution">Anaconda Distribution</a></li>
-  <li><a href="#visual-studio-code-vs-code" id="toc-visual-studio-code-vs-code" class="nav-link" data-scroll-target="#visual-studio-code-vs-code">Visual Studio Code (VS Code)</a></li>
-  </ul></li>
-  <li><a href="#choosing-your-path-forward" id="toc-choosing-your-path-forward" class="nav-link" data-scroll-target="#choosing-your-path-forward"><span class="header-section-number">2.3</span> Choosing Your Path Forward</a></li>
-  <li><a href="#exercise-pick-your-environment-and-make-it-yours" id="toc-exercise-pick-your-environment-and-make-it-yours" class="nav-link" data-scroll-target="#exercise-pick-your-environment-and-make-it-yours"><span class="header-section-number">2.4</span> Exercise: Pick Your Environment and Make It Yours</a></li>
+  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link active" data-scroll-target="#renaming-columns">Renaming Columns</a></li>
+  <li><a href="#adding-removing-columns" id="toc-adding-removing-columns" class="nav-link" data-scroll-target="#adding-removing-columns">Adding &amp; Removing Columns</a></li>
+  <li><a href="#handling-missing-values" id="toc-handling-missing-values" class="nav-link" data-scroll-target="#handling-missing-values">Handling Missing Values</a></li>
+  <li><a href="#replacing-values-custom-functions" id="toc-replacing-values-custom-functions" class="nav-link" data-scroll-target="#replacing-values-custom-functions">Replacing Values &amp; Custom Functions</a></li>
+  <li><a href="#simple-aggregations" id="toc-simple-aggregations" class="nav-link" data-scroll-target="#simple-aggregations">Simple Aggregations</a></li>
+  <li><a href="#grouped-aggregation" id="toc-grouped-aggregation" class="nav-link" data-scroll-target="#grouped-aggregation">Grouped Aggregation</a></li>
+  <li><a href="#understanding-keys" id="toc-understanding-keys" class="nav-link" data-scroll-target="#understanding-keys">Understanding Keys</a></li>
+  <li><a href="#join-types" id="toc-join-types" class="nav-link" data-scroll-target="#join-types">Join Types</a></li>
+  <li><a href="#performing-merges" id="toc-performing-merges" class="nav-link" data-scroll-target="#performing-merges">Performing Merges</a></li>
+  <li><a href="#merge-indicator" id="toc-merge-indicator" class="nav-link" data-scroll-target="#merge-indicator">Merge Indicator</a></li>
+  <li><a href="#common-pitfalls" id="toc-common-pitfalls" class="nav-link" data-scroll-target="#common-pitfalls">Common Pitfalls</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/02-preparing-for-code.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-04-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-overview.html">Module 1: Getting Started</a></li><li class="breadcrumb-item"><a href="../book/02-preparing-for-code.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting Up Your Python Environment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-04-cheatsheet.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-preparing-for-code" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting Up Your Python Environment</span></span></h1>
+<h1 class="title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></h1>
+<p class="subtitle lead">Key concepts, definitions, and code from Chapters 10–12</p>
 </div>
 
 
@@ -655,296 +653,341 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Before we dive deep into the world of data science, we need to get you set up with the tools of the trade. Just like a carpenter needs a good workbench and set of tools, a data scientist needs a place to write and run code. The good news? There are several ways to do this—and even better, there’s no one-size-fits-all answer. You’ll get to choose the approach that works best for you.</p>
-<p>In this chapter, we’ll introduce three common ways to set up a Python environment: <strong>Google Colab</strong>, the <strong>Anaconda distribution</strong>, and <strong>Visual Studio Code</strong>. We’ll start with the path of least resistance (Colab), then explore more powerful and flexible setups as we go.</p>
-<p>We’ll kick things off by writing your very first Python program—a classic:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Why “Hello World”?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You might be wondering—why does everyone always start with <code>print("Hello World")</code>? It’s a tradition in programming that goes back decades. This simple line of code is often the first one beginners write because it’s the easiest way to confirm that everything is working correctly. It doesn’t require any complex logic or setup—just a basic command that tells the computer to display a message on the screen. Think of it as the programmer’s equivalent of saying <em>“Testing, 1, 2, 3…”</em> into a microphone. If you see “Hello World,” it means your environment is set up and ready to go!</p>
-</div>
-</div>
-</div>
-<p>By the end of this chapter, you’ll not only have a working Python environment, but you’ll also understand the pros and cons of each approach and know how to get started coding in any of them. Let’s get your hands on the keyboard.</p>
-<section id="hello-world" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="hello-world"><span class="header-section-number">2.1</span> Hello World</h2>
-<p>Welcome to your first moment of writing real Python code. We’re not going to lecture you about the perfect setup right away. Instead, let’s just do something. This short activity gives you a quick win and shows you how easy it can be to get started with Python—no installations or configurations required.</p>
-<section id="running-python-in-google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="running-python-in-google-colab">Running Python in Google Colab</h3>
-<p>Google Colab is a free, cloud-based tool that lets you run Python code in your browser. It requires no setup and is perfect for getting started.</p>
-<ol type="1">
-<li><p><strong>Go to</strong>: <a href="https://colab.research.google.com/">https://colab.research.google.com/</a></p></li>
-<li><p><strong>Sign in</strong> with your Google account (you’ll need one).</p></li>
-<li><p>Click on <strong>“New Notebook.”</strong></p></li>
-<li><p>In the cell that appears, type:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Press <strong>Shift + Enter</strong> to run the cell.</p></li>
-</ol>
-<p>You should see:</p>
-<pre><code>Hello World</code></pre>
-<p>You just wrote and ran your first line of Python code! 🎉🎉🎉</p>
-</section>
-<section id="knowledge-check" class="level3">
-<h3 class="anchored" data-anchor-id="knowledge-check">Knowledge Check</h3>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Example Notebook
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let’s put your new skills to the test by working through a simple example notebook.</p>
-<p>📓 We’ve created a <a href="https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/01_first_notebook.ipynb">sample notebook</a> that introduces:</p>
-<ul>
-<li>The <code>print()</code> function</li>
-<li>How to format and write some basic text with Markdown</li>
-<li>How to combine code and notes in one place</li>
-</ul>
-<p>👉 Click the <strong>“Open in Colab”</strong> link at the top of the notebook to launch it in Google Colab and run through the notebook.</p>
-</div>
-</div>
-</section>
-<section id="try-this-generate-python-code-with-ai" class="level3">
-<h3 class="anchored" data-anchor-id="try-this-generate-python-code-with-ai">Try This: Generate Python Code with AI</h3>
-<p>After you run your <code>print("Hello World")</code>, take a moment to explore the built-in AI assistant in Google Colab. You might notice a prompt that says:</p>
+<p>A quick-reference summary of the essential ideas from Module 4. Click any section heading to jump to the full coverage in the book.</p>
+<hr>
+<section id="renaming-columns" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="renaming-columns"><a href="10-manipulating-data.html#renaming-columns">Renaming Columns</a></h2>
 <blockquote class="blockquote">
-<p><em>“Start coding or generate with AI”</em></p>
+<p><strong><code>.rename()</code></strong> accepts a <code>columns=</code> dictionary mapping old names to new names and returns a new DataFrame with updated labels.</p>
 </blockquote>
-<p>This is your chance to see how AI tools can help you write Python code. Try typing in a prompt or click on the suggestion box to let Colab help generate code for you. You can run the code to see what it does—and even tweak it to make it your own.</p>
-<p>Feel free to come up with your own prompt, or try one of these to get started:</p>
-<ul>
-<li><em>“Write Python code to compute the area of a 12-inch pizza.”</em></li>
-<li><em>“Write Python code to find all prime numbers between 2 and 100.”</em></li>
-<li><em>“Write a Python program that asks for a user’s name and prints a greeting.”</em></li>
-</ul>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Reflect: Your First Python Experience
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Take a few minutes to reflect on your first hands-on experience writing Python code and using an AI assistant. You can jot your answers in a notebook, a note-taking app, or even directly in your Colab notebook using a text cell (don’t know how to do this, that’s ok, ask Colab’s AI to help 😉).</p>
-<p>Consider the following questions:</p>
-<ol type="1">
-<li>Was writing and running your first lines of Python code easier or harder than you expected?</li>
-<li>How did it feel to use the AI assistant to generate code? Do you think tools like this can make you more productive? How confident are you that the code was actually correct?</li>
-<li>Google Colab makes it easy to get started, but do you think this is the kind of environment you would use at work? Why or why not?</li>
-</ol>
-<p>You don’t need to write a long answer—just a few thoughtful sentences to capture your perspective at this early stage in your learning journey.</p>
-</div>
-</div>
-</div>
-<p>Next, we’ll step back and look at what just happened. Then, we’ll dive into the different ways you can set up your Python environment, from easy to advanced.</p>
-</section>
-</section>
-<section id="development-environments" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="development-environments"><span class="header-section-number">2.2</span> Development Environments</h2>
-<p>Now that you’ve written and run your first line of Python code, it’s time to step back and understand <strong><em>where</em></strong> that code actually runs—and what your options are going forward.</p>
-<p>In programming, the place where you write and run your code is called your <strong>development environment</strong>. Think of it like your digital workspace: it includes the tools, interface, and underlying systems that allow you to code, debug, and manage projects.</p>
-<p>There’s no single “best” environment—just the one that’s best for your current needs. In this course, you’ll be exposed to three common Python environments used by data scientists, ranging from beginner-friendly to professional-grade. Each has its own strengths and trade-offs, and over time you may find yourself using all three depending on the situation.</p>
-<p>Below is a quick overview of the three environments we’ll focus on in this course.</p>
-<section id="google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="google-colab">Google Colab</h3>
-<p>You’ve already used this! Colab is a cloud-based environment that lets you run Python in your browser, no installation required. It’s perfect for beginners or anyone who wants to start quickly and painlessly.</p>
-<p><strong>Pros:</strong></p>
-<ul>
-<li>No installation needed—works in your browser.</li>
-<li>Built-in support for Jupyter notebooks.</li>
-<li>Easy to share and collaborate via Google Drive.</li>
-<li>Includes access to an AI assistant to help generate code.</li>
-</ul>
-<p><strong>Cons:</strong></p>
-<ul>
-<li>Requires an internet connection.</li>
-<li>Limited access to your local files or custom setups.</li>
-<li>Not commonly used in professional, production-level environments.</li>
-</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename specific columns</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ames <span class="op">=</span> ames.rename(columns<span class="op">=</span>{<span class="st">'MS SubClass'</span>: <span class="st">'ms_subclass'</span>, <span class="st">'MS Zoning'</span>: <span class="st">'ms_zoning'</span>})</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename all columns at once — lowercase + underscores</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ames.columns <span class="op">=</span> ames.columns.<span class="bu">str</span>.lower().<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">"_"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Chain multiple string operations</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ames.columns <span class="op">=</span> ames.columns.<span class="bu">str</span>.lower().<span class="bu">str</span>.replace(<span class="st">" "</span>, <span class="st">"_"</span>).<span class="bu">str</span>.strip()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>While Colab is excellent for learning, prototyping, and sharing code, it isn’t typically used in workplace settings—especially for production code, version-controlled projects, or large-scale data workflows. Because of this, <strong><em>we encourage you to use Colab to get started quickly, but strive to set up one of the other environments (Anaconda or VS Code) as you progress through the course</em></strong>. These tools will better reflect the development environments you’re likely to use in internships, co-ops, or full-time roles</p>
+<p><code>.rename()</code> returns a <strong>new</strong> DataFrame — it does not modify the original. Either reassign the result (<code>df = df.rename(...)</code>) or use <code>inplace=True</code>.</p>
 </div>
 </div>
 </div>
+<hr>
 </section>
-<section id="anaconda-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="anaconda-distribution">Anaconda Distribution</h3>
-<p><a href="https://www.anaconda.com/">Anaconda</a> is a local setup that installs Python along with most of the libraries and tools used in data science, including Jupyter Notebook and JupyterLab. It’s an excellent next step for learners who want more control while still keeping things simple.</p>
-<div id="fig-anaconda" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-anaconda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Anaconda-about.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Anaconda</figcaption>
-</figure>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anaconda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Anaconda is one of the most widely used platforms for data science, offering an all-in-one distribution of Python, Jupyter, and essential packages for analysis and machine learning.
-</figcaption>
-</figure>
-</div>
-<p><strong>Pros:</strong></p>
-<ul>
-<li>All-in-one installation of Python + essential libraries.</li>
-<li>User-friendly interface via Anaconda Navigator.</li>
-<li>Includes JupyterLab for notebook-based development.</li>
-<li>Works locally without internet access.</li>
-</ul>
-<p><strong>Cons:</strong></p>
-<ul>
-<li>Large download and install size (~3 GB).</li>
-<li>You’ll need to learn how to manage packages and environments with Conda.</li>
-<li>Slightly more complex than Colab, but still beginner-friendly.</li>
-</ul>
+<section id="adding-removing-columns" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="adding-removing-columns"><a href="10-manipulating-data.html#adding-and-removing-columns">Adding &amp; Removing Columns</a></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column (scalar or column arithmetic)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'sale_price_k'</span>] <span class="op">=</span> ames[<span class="st">'saleprice'</span>] <span class="op">/</span> <span class="dv">1000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'price_per_sqft'</span>] <span class="op">=</span> ames[<span class="st">'saleprice'</span>] <span class="op">/</span> ames[<span class="st">'gr_liv_area'</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Overwrite an existing column</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'lot_area'</span>] <span class="op">=</span> ames[<span class="st">'lot_area'</span>] <span class="op">-</span> <span class="dv">50</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove one or more columns (returns a new DataFrame)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ames <span class="op">=</span> ames.drop(columns<span class="op">=</span>[<span class="st">'order'</span>, <span class="st">'sale_price_k'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="visual-studio-code-vs-code" class="level3">
-<h3 class="anchored" data-anchor-id="visual-studio-code-vs-code">Visual Studio Code (VS Code)</h3>
-<p>VS Code is a lightweight but powerful code editor used by professional developers and data scientists. With the right extensions, it supports Python and Jupyter notebooks and is ideal for building larger or more complex projects.</p>
-<div class="callout callout-style-simple callout-note">
+<section id="handling-missing-values" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="handling-missing-values"><a href="10-manipulating-data.html#missing-values">Handling Missing Values</a></h2>
+<blockquote class="blockquote">
+<p><strong><code>NaN</code></strong> is pandas’ sentinel for a missing value. <code>.isnull()</code> and <code>.isna()</code> are interchangeable aliases that return a Boolean mask.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detect missing values</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.isnull()                          <span class="co"># Boolean DataFrame — True where missing</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.isnull().<span class="bu">sum</span>()                    <span class="co"># Count missing per column</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df.isnull().<span class="bu">any</span>()                    <span class="co"># True/False per column — has any missing?</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with any missing value</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df.dropna()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing values</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df.fillna(<span class="dv">0</span>)                              <span class="co"># Replace NaN with a constant</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col'</span>].fillna(df[<span class="st">'col'</span>].mean())        <span class="co"># Replace NaN with column mean</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df.ffill()                                <span class="co"># Forward-fill from previous non-NaN</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df.bfill()                                <span class="co"># Backward-fill from next non-NaN</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.dropna()</code></td>
+<td>Missing values are truly unrecoverable</td>
+</tr>
+<tr class="even">
+<td><code>.fillna(value)</code></td>
+<td>A fixed or computed replacement is appropriate</td>
+</tr>
+<tr class="odd">
+<td><code>.ffill()</code> / <code>.bfill()</code></td>
+<td>Data is ordered and adjacent values are meaningful</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="replacing-values-custom-functions" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="replacing-values-custom-functions"><a href="10-manipulating-data.html#replacing-values">Replacing Values &amp; Custom Functions</a></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Map old values to new values using a dictionary</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>month_map <span class="op">=</span> {<span class="dv">1</span>: <span class="st">'Jan'</span>, <span class="dv">2</span>: <span class="st">'Feb'</span>, <span class="dv">3</span>: <span class="st">'Mar'</span>, <span class="dv">4</span>: <span class="st">'Apr'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             <span class="dv">5</span>: <span class="st">'May'</span>, <span class="dv">6</span>: <span class="st">'Jun'</span>, <span class="dv">7</span>: <span class="st">'Jul'</span>, <span class="dv">8</span>: <span class="st">'Aug'</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>             <span class="dv">9</span>: <span class="st">'Sep'</span>, <span class="dv">10</span>: <span class="st">'Oct'</span>, <span class="dv">11</span>: <span class="st">'Nov'</span>, <span class="dv">12</span>: <span class="st">'Dec'</span>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'mo_sold'</span>] <span class="op">=</span> ames[<span class="st">'mo_sold'</span>].replace(month_map)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a function element-wise to a Series</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'saleprice'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'Luxury'</span> <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">500000</span> <span class="cf">else</span> <span class="st">'Standard'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a named function</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> price_tier(x):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">500000</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Luxury'</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'Standard'</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ames[<span class="st">'saleprice'</span>].<span class="bu">apply</span>(price_tier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="simple-aggregations" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="simple-aggregations"><a href="11_aggregating_data.html#simple-aggregation">Simple Aggregations</a></h2>
+<blockquote class="blockquote">
+<p><strong>Summary functions</strong> collapse a column (or DataFrame) into one or more descriptive values — reducing many rows into one result per column.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Single-column summaries</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'SalePrice'</span>].mean()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'SalePrice'</span>].median()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'SalePrice'</span>].<span class="bu">sum</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick overview of all numeric columns</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>df.describe()                          <span class="co"># count, mean, std, min, quartiles, max</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">'all'</span>)             <span class="co"># also includes object/categorical columns</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom multi-column summary with .agg()</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>df.agg({</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>:   [<span class="st">'mean'</span>, <span class="st">'median'</span>],</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gr Liv Area'</span>: [<span class="st">'mean'</span>, <span class="st">'min'</span>]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.mean()</code> / <code>.median()</code></td>
+<td>A single statistic on one column</td>
+</tr>
+<tr class="even">
+<td><code>.describe()</code></td>
+<td>Quick exploratory overview of all numeric columns</td>
+</tr>
+<tr class="odd">
+<td><code>.agg({col: [fns]})</code></td>
+<td>Different statistics on different columns</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="grouped-aggregation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="grouped-aggregation"><a href="11_aggregating_data.html#grouped-aggregation">Grouped Aggregation</a></h2>
+<blockquote class="blockquote">
+<p><strong>Split–apply–combine</strong>: <code>groupby()</code> splits the DataFrame into groups, a summary function is applied to each group, and the results are recombined into one table.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic grouped summary</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ames.groupby(<span class="st">'Neighborhood'</span>).agg({<span class="st">'SalePrice'</span>: <span class="st">'mean'</span>})</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple functions on multiple columns</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ames.groupby(<span class="st">'Neighborhood'</span>).agg({</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SalePrice'</span>:   [<span class="st">'mean'</span>, <span class="st">'median'</span>],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gr Liv Area'</span>: [<span class="st">'mean'</span>, <span class="st">'min'</span>]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by multiple variables</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ames.groupby([<span class="st">'Neighborhood'</span>, <span class="st">'Yr Sold'</span>], as_index<span class="op">=</span><span class="va">False</span>).agg({<span class="st">'SalePrice'</span>: <span class="st">'mean'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>VS Code is my preferred environment for writing code, so throughout this course, most of the code you’ll see during lectures and demos will be displayed using VS Code. This will give you exposure to an industry-standard tool that’s commonly used across the kinds of organizations you’re likely to intern or work at.</p>
+<p>Use <code>as_index=False</code> to keep group columns as regular columns instead of the index — this makes filtering and further merges easier.</p>
 </div>
 </div>
 </div>
-<div id="fig-anaconda" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-anaconda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://code.visualstudio.com/assets/docs/datascience/data-science-tutorial/notebook-editor.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>VS Code</figcaption>
-</figure>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anaconda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Visual Studio Code (VS Code) is one of the leading code editors used by data scientists and software developers. It’s widely adopted across industry and is likely the primary development environment you’ll encounter in internships or full-time roles.
-</figcaption>
-</figure>
-</div>
-<p><strong>Pros:</strong></p>
-<ul>
-<li>Highly customizable and fast.</li>
-<li>Great for real-world development workflows.</li>
-<li>Integrated support for version control (Git), debugging, and extensions.</li>
-</ul>
-<p><strong>Cons:</strong></p>
-<ul>
-<li>Steeper learning curve—more setup required.</li>
-<li>Requires separate installations of Python, extensions, and Jupyter support.</li>
-<li>Best suited for students who want to grow into more advanced tools.</li>
-</ul>
+<hr>
 </section>
+<section id="understanding-keys" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="understanding-keys"><a href="12-joining-data.html#understanding-keys">Understanding Keys</a></h2>
+<blockquote class="blockquote">
+<p>A <strong>key</strong> is one or more columns used to match rows between two tables.</p>
+</blockquote>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Key type</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Primary key</strong></td>
+<td>Uniquely identifies each row within its own table</td>
+</tr>
+<tr class="even">
+<td><strong>Foreign key</strong></td>
+<td>References a primary key in another table, creating a link</td>
+</tr>
+</tbody>
+</table>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find columns shared between two DataFrames</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>transactions.columns.intersection(demographics.columns)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># → Index(['household_id'], dtype='object')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="choosing-your-path-forward" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="choosing-your-path-forward"><span class="header-section-number">2.3</span> Choosing Your Path Forward</h2>
-<p>How you decide to move forward from here is up to you. For now, you’re welcome to continue using Google Colab, especially if it’s helping you build confidence and get comfortable writing Python code without worrying about software setup.</p>
-<p>That said, by the <strong>end of this course</strong>, you’ll be expected to have a local Python development environment set up on your computer—either using Anaconda or Visual Studio Code. These environments are more reflective of what you’ll use in real-world internships, co-ops, or full-time roles, and they’ll give you greater flexibility and power as your projects grow in complexity.</p>
-<p>When you’re ready to make the leap, use the resources below to guide you:</p>
-<ul>
-<li>Anaconda Installation: <a href="99-anaconda-install.html" class="quarto-xref">Appendix&nbsp;<span>A</span></a></li>
-<li>VS Code Installation: <a href="99-vscode-install.html" class="quarto-xref">Appendix&nbsp;<span>B</span></a></li>
-</ul>
-<p>You don’t need to switch immediately, but the sooner you get comfortable working locally, the better prepared you’ll be for the kinds of tasks data scientists regularly tackle in the field.</p>
+<section id="join-types" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="join-types"><a href="12-joining-data.html#types-of-joins">Join Types</a></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 26%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Join type</th>
+<th><code>how=</code></th>
+<th>Rows kept</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Inner</strong></td>
+<td><code>'inner'</code></td>
+<td>Only rows with matching keys in <strong>both</strong> tables</td>
+</tr>
+<tr class="even">
+<td><strong>Left</strong></td>
+<td><code>'left'</code></td>
+<td>All rows from the <strong>left</strong> table; matches from right (NaN if none)</td>
+</tr>
+<tr class="odd">
+<td><strong>Right</strong></td>
+<td><code>'right'</code></td>
+<td>All rows from the <strong>right</strong> table; matches from left (NaN if none)</td>
+</tr>
+<tr class="even">
+<td><strong>Outer</strong></td>
+<td><code>'outer'</code></td>
+<td>All rows from <strong>both</strong> tables (NaN where no match)</td>
+</tr>
+</tbody>
+</table>
+<p>The default in <code>pd.merge()</code> is an <strong>inner join</strong>.</p>
+<hr>
 </section>
-<section id="exercise-pick-your-environment-and-make-it-yours" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="exercise-pick-your-environment-and-make-it-yours"><span class="header-section-number">2.4</span> Exercise: Pick Your Environment and Make It Yours</h2>
-<p>Choose one of the following paths based on your current comfort level and curiosity. Your goal is to take one step toward becoming confident in your development environment.</p>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<section id="performing-merges" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="performing-merges"><a href="12-joining-data.html#mutating-joins">Performing Merges</a></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join on a shared column name</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x.merge(y, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join — keeps all transaction rows even if product is missing</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>transactions.merge(products, on<span class="op">=</span><span class="st">'product_id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Join when the key has different names in each table</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>a.merge(b, left_on<span class="op">=</span><span class="st">'id_a'</span>, right_on<span class="op">=</span><span class="st">'id_b'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas infers common column names when on= is omitted</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>x.merge(y)   <span class="co"># auto-joins on all columns with the same name in both tables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Option 1: Stay with Colab (for now)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Open a new Colab notebook.</li>
-<li>Use the AI assistant to generate and run a short piece of Python code.</li>
-<li>Try modifying the code and run it again to see how it changes.</li>
-<li>Add a <strong>Markdown cell</strong> where you reflect on:
-<ul>
-<li>What the code does.</li>
-<li>What you changed.</li>
-<li>What you’re still unsure about.</li>
-</ul></li>
-</ul>
-<p><strong><em>Note:</em></strong> Not sure what a Markdown cell is? Great opportunity to Google or ask ChatGPT! But don’t worry, we’ll discuss this more next week.</p>
+<div class="callout-body-container">
+<p>Always verify the join key with <code>df1.columns.intersection(df2.columns)</code> before merging — accidentally joining on an unintended shared column produces wrong results without any error.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Option 2: Install Anaconda
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Follow the instructions in <a href="99-anaconda-install.html" class="quarto-xref">appendix&nbsp;<span>A</span></a> to install Anaconda and launch JupyterLab.</li>
-<li>Create a new notebook and run <code>print("Hello from Anaconda!")</code>.</li>
-<li>Take a screenshot of your working notebook or write a short note on how it went.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Option 3: Set Up VS Code
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Follow the instructions in <a href="99-vscode-install.html" class="quarto-xref">appendix&nbsp;<span>B</span></a> to install VS Code and set up Python and Jupyter support.</li>
-<li>Open a Jupyter notebook and run <code>print("Hello from VS Code!")</code>.</li>
-<li>Explore the editor: try renaming a file, changing themes, or opening the terminal.</li>
-<li>Write a brief reflection on what you liked or didn’t like about this environment.</li>
-</ul>
-</div>
-</div>
-</div>
+<hr>
+</section>
+<section id="merge-indicator" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="merge-indicator"><a href="12-joining-data.html#merge-indicator">Merge Indicator</a></h2>
+<blockquote class="blockquote">
+<p>The <code>indicator=True</code> argument adds a <code>_merge</code> column that shows where each row originated.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> transactions.merge(demographics, how<span class="op">=</span><span class="st">'outer'</span>, indicator<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># _merge values: 'left_only', 'right_only', 'both'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Count transactions with no matching demographic info</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>result.query(<span class="st">"_merge == 'left_only'"</span>).shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="common-pitfalls" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="common-pitfalls">Common Pitfalls</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 51%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mistake</th>
+<th>Why it happens</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Renaming doesn’t stick</td>
+<td><code>.rename()</code> returns a new DataFrame; original is unchanged</td>
+<td>Reassign: <code>df = df.rename(columns={...})</code></td>
+</tr>
+<tr class="even">
+<td><code>drop()</code> removes rows, not columns</td>
+<td>Default <code>axis=0</code> targets rows</td>
+<td>Use <code>drop(columns=['col'])</code> to target columns explicitly</td>
+</tr>
+<tr class="odd">
+<td><code>fillna()</code> doesn’t modify in place</td>
+<td>Most pandas methods return copies</td>
+<td>Reassign: <code>df['col'] = df['col'].fillna(value)</code></td>
+</tr>
+<tr class="even">
+<td><code>describe()</code> skips text columns</td>
+<td>Default covers numeric dtypes only</td>
+<td>Use <code>df.describe(include='all')</code> to include object columns</td>
+</tr>
+<tr class="odd">
+<td>Wrong join type silently drops rows</td>
+<td>Inner join discards unmatched rows with no warning</td>
+<td>Check row counts before and after; use <code>indicator=True</code> to audit</td>
+</tr>
+<tr class="even">
+<td>Merging on an unintended shared column</td>
+<td>Both tables share a column you didn’t mean to join on</td>
+<td>Always specify <code>on=</code> explicitly; verify with <code>.columns.intersection()</code></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -1365,13 +1408,13 @@ Figure&nbsp;2.2: Visual Studio Code (VS Code) is one of the leading code editors
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../book/01-intro-data-mining.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      <a href="../book/module-03-cheatsheet.html" class="pagination-link" aria-label="Module 3 Cheat Sheet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Module 3 Cheat Sheet</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../book/03-python-basics.html" class="pagination-link" aria-label="Python Basics – Working with Data and Variables">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Python Basics – Working with Data and Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../book/99-anaconda-install.html" class="pagination-link" aria-label="Anaconda Installation">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Anaconda Installation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1380,4 +1423,4 @@ Figure&nbsp;2.2: Visual Studio Code (VS Code) is one of the leading code editors
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/02-preparing-for-code.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-04-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
