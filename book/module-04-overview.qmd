@@ -18,18 +18,26 @@ By the end of this module, you will:
 | Resource | Link |
 |----------|------|
 | 📊 Week 4 Slides | [View slides](../slides/week-04.html){target="_blank"} |
-| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+| 💻 Tuesday Your Turn Notebook | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-04-lecture.ipynb){target="_blank"} |
 
 ### Chapters & Notebooks {.unnumbered}
 
+Each chapter has a companion Colab notebook with all the code from the chapter — ready to run, no installation required.
+
 | Chapter | Topic | Colab Notebook |
 |---------|-------|---------------|
-| 10 | Manipulating Data | *Coming soon* |
-| 11 | Aggregating Data | *Coming soon* |
-| 12 | Joining Data | *Coming soon* |
+| 10 | Manipulating Data | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/09_manipulating_data.ipynb){target="_blank"} |
+| 11 | Aggregating Data | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/10_aggregating_data.ipynb){target="_blank"} |
+| 12 | Joining Data | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/11_relational_data.ipynb){target="_blank"} |
 
 ### Lab {.unnumbered}
 
 | Resource | Link |
 |----------|------|
-| 🧪 Lab 4 | *Coming soon* |
+| 🧪 Lab 4 | [Open lab](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/labs/lab-04-data-wrangling.ipynb){target="_blank"} |
+
+### Reference {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📋 Module 4 Cheat Sheet | [View cheat sheet](module-04-cheatsheet.html){target="_blank"} |

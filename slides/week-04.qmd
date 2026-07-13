@@ -4,6 +4,7 @@ subtitle: "Manipulating, summarizing, and joining data"
 format:
   revealjs:
     slide-number: true
+    self-contained: true
     preview-links: auto
     revealjs-plugins:
       - appearance
@@ -13,11 +14,13 @@ format:
       - _extensions/martinomagnifico/appearance/appearance.css
     mermaid:
       theme: neutral
-footer: 'BANA 4080'
+footer: 'BANA 7025 | Week 4'
 title-slide-attributes:
     data-background-image: images/pandas-icon.png
-    data-background-size: cover
+    data-background-size: contain
     data-background-opacity: "1.0"
+    data-background-color: "#000000"
+    style: "color: white;"
 filters: 
   - timer
 execute:
@@ -48,10 +51,12 @@ execute:
 
 ## Intro Activity – Load the Data {.smaller .scrollable}
 
-::: {.callout-important}
-## Follow along
+::: {.callout-note}
+## 💻 Follow Along
 
-Open up Colab and load the Complete Journey data: [tinyurl.com/bana4080-wk4-lecture](https://tinyurl.com/bana4080-wk4-lecture)
+Open the companion notebook in Colab to code along with today's examples:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-04-lecture.ipynb)
 :::
 
 

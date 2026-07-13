@@ -103,8 +103,8 @@ cj_data.keys()
 cj_data['transactions'].head()
 ```
 
-::: {.callout}
-## TODO
+::: {.callout-tip}
+## Explore the Data
 
 Take some time to read about the [completejourney_py data sets](https://cunningjames.github.io/completejourney_py/user-guide/datasets/).
 
