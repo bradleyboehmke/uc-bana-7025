@@ -26,7 +26,7 @@ As you read through this chapter, we encourage you to follow along using the [co
 
 ### The Ames Housing Data
 
-You first encountered the [**Ames Housing** dataset](https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/ames_raw.csv) back in @sec-importing-data, where you were challenged with the task of analyzing raw data for the Ames, Iowa housing market. In this chapter, we’ll return to the Ames data as our primary example to learn how to manipulate and prepare real-world data for analysis.
+You first encountered the [**Ames Housing** dataset](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/ames_raw.csv) back in @sec-importing-data, where you were challenged with the task of analyzing raw data for the Ames, Iowa housing market. In this chapter, we’ll return to the Ames data as our primary example to learn how to manipulate and prepare real-world data for analysis.
 
 Before diving into the new concepts, take a few minutes to reacquaint yourself with the data:
 
@@ -592,7 +592,7 @@ By the end of these upcoming lessons, you'll be well-equipped to clean, prepare,
 
 In this exercise, you'll apply what you've learned in this chapter to a new dataset on **heart disease**, which includes various patient health indicators that may be predictive of cardiovascular conditions.
 
-Read more about this dataset on [Kaggle](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset), and you can download copy of the `heart.csv` file [here](https://github.com/bradleyboehmke/uc-bana-4080/blob/main/data/heart.csv).
+Read more about this dataset on [Kaggle](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset), and you can download copy of the `heart.csv` file [here](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/data/heart.csv).
 
 Your task is to perform several data wrangling steps to start cleaning and transforming this dataset.
 
