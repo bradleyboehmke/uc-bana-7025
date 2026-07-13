@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.14">
+<meta name="generator" content="quarto-1.10.15">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-cd20848ca02fc76d36aef2d89ed0b5fd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7832d8100c30e5308af25d4a964213de.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-11336406cf8fb0fbd1564e93963cbc50.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-47611d5b405515063748fbb02ca7b37d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-11336406cf8fb0fbd1564e93963cbc50.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-026357a16b9f3ea3f7adbb99b29544ab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -672,7 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will use data from the 1994 US census that we downloaded from <a href="http://openml.org/">OpenML</a>.</p>
 <p>You can look at the OpenML webpage to learn more about this dataset: <a href="http://www.openml.org/d/1590" class="uri">http://www.openml.org/d/1590</a></p>
 <p>The dataset is available as a CSV (Comma-Separated Values) file and we will use pandas to read it.</p>
-<div id="4b749d3f" class="cell" data-execution_count="1">
+<div id="db957bac" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>adult_census <span class="op">=</span> pd.read_csv(<span class="st">"../data/adult-census.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -686,7 +686,7 @@ information, etc.</code></pre>
 <p>The column named <code>class</code> is our target variable (i.e., the variable which we want to predict).</p>
 <p>The two possible classes are &lt;=50K (low-revenue) and &gt;50K (high-revenue).</p>
 <p>Consequently, this is called a <em>binary classification</em> problem.</p>
-<div id="2041ab57" class="cell" data-execution_count="2">
+<div id="91988b77" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>target_column <span class="op">=</span> <span class="st">'class'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>adult_census[target_column].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -704,7 +704,7 @@ and may need special techniques when building a predictive model.</code></pre>
 <h2 data-number="19.4" class="anchored" data-anchor-id="features"><span class="header-section-number">19.4</span> Features</h2>
 <p>The other columns represent pieces of information (aka “features”) that may be useful in predicting the response variable.</p>
 <p>In the field of machine learning and descriptive statistics, commonly used equivalent terms are “variable”, “attribute”, or “covariate”.</p>
-<div id="0ab7eb43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="3">
+<div id="6730de98" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> adult_census.drop(columns<span class="op">=</span><span class="st">'class'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>features.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -817,7 +817,7 @@ and may need special techniques when building a predictive model.</code></pre>
 </div>
 </div>
 </div>
-<div id="c9b1cf20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
+<div id="e814a934" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> features.select_dtypes(include<span class="op">=</span>np.number).columns.values</span>
@@ -851,7 +851,7 @@ Categorical features: workclass, education, marital-status, occupation, relation
 <li>we may identify feature engineering tasks that could improve modeling performance.</li>
 </ul>
 <p>Let’s look at the distribution of individual features, to get some insights about the data. We can start by plotting histograms, note that this only works for features containing numerical values:</p>
-<div id="2f7736e6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
+<div id="b2d3eb5e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>adult_census.hist(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">14</span>))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -869,7 +869,7 @@ Categorical features: workclass, education, marital-status, occupation, relation
 <li>most values of <code>capital-gain</code> and <code>capital-loss</code> are close to zero.</li>
 </ul>
 <p>For categorical variables, we can look at the distribution of values:</p>
-<div id="49e1ce3b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
+<div id="1816dee0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>adult_census[<span class="st">'sex'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>sex
@@ -880,7 +880,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>Note that there is an important imbalance on the data collection concerning the number of male/female samples. Be aware that any kind of data imbalance will impact the generalizability of a model trained on it. Moreover, it can lead to <a href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-fairness-ml#what-is-machine-learning-fairness">fairness</a> problems if used naively when deploying a real life setting.</p>
 <p>We recommend our readers to refer to <a href="https://fairlearn.org/">fairlearn.org</a> for resources on how to quantify and potentially mitigate fairness issues related to the deployment of automated decision making systems that relying on machine learning components.</p>
-<div id="a016cc9f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="7">
+<div id="e3eeffd1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>adult_census[<span class="st">'education'</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>education
@@ -903,9 +903,9 @@ Preschool          83
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<p><code>wkjballcjnub Question: :class: attention What do you think the difference is between `education` and `education-num`?</code></p>
+<p><code>rqorcjteixlq Question: :class: attention What do you think the difference is between `education` and `education-num`?</code></p>
 <p>Let’s look at the relationship between <code>education</code> and <code>education-num</code>.</p>
-<div id="f3b59e50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="8">
+<div id="1e0d15c1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>adult_census[<span class="st">'education'</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>adult_census[<span class="st">'education-num'</span>]</span>
@@ -1269,131 +1269,131 @@ Name: count, dtype: int64</code></pre>
 <p>This shows that <code>education</code> and <code>education-num</code> give you the same information. For example, <code>education-num=2</code> is equivalent to <code>education='1st-4th'</code>. In practice that means we can remove <code>education-num</code> without losing information.</p>
 <pre class="{note}"><code>Having redundant (or highly correlated) columns can be a problem for machine learning algorithms. In the upcoming notebooks, we will only keep the `education` variable, excluding the `education-num` variable since the latter is redundant with the former.</code></pre>
 <p>We can measure the actual correlation across our numeric features using the <code>.corr()</code> method. Highly correlated variables is something to keep an eye on as they can cause problems in certain machine learning algorithms. However, in this data the numeric features have low correlation.</p>
-<div id="7b11f28f" class="cell" data-execution_count="9">
+<div id="b3a99e1b" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>corr <span class="op">=</span> adult_census[numeric_columns].corr()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>corr.style.background_gradient(cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <style type="text/css">
-#T_b482e_row0_col0, #T_b482e_row1_col1, #T_b482e_row2_col2, #T_b482e_row3_col3, #T_b482e_row4_col4 {
+#T_c7375_row0_col0, #T_c7375_row1_col1, #T_c7375_row2_col2, #T_c7375_row3_col3, #T_c7375_row4_col4 {
   background-color: #b40426;
   color: #f1f1f1;
 }
-#T_b482e_row0_col1, #T_b482e_row1_col0, #T_b482e_row2_col3, #T_b482e_row3_col2, #T_b482e_row3_col4 {
+#T_c7375_row0_col1, #T_c7375_row1_col0, #T_c7375_row2_col3, #T_c7375_row3_col2, #T_c7375_row3_col4 {
   background-color: #3b4cc0;
   color: #f1f1f1;
 }
-#T_b482e_row0_col2 {
+#T_c7375_row0_col2 {
   background-color: #5a78e4;
   color: #f1f1f1;
 }
-#T_b482e_row0_col3, #T_b482e_row4_col3 {
+#T_c7375_row0_col3, #T_c7375_row4_col3 {
   background-color: #5470de;
   color: #f1f1f1;
 }
-#T_b482e_row0_col4 {
+#T_c7375_row0_col4 {
   background-color: #3f53c6;
   color: #f1f1f1;
 }
-#T_b482e_row1_col2 {
+#T_c7375_row1_col2 {
   background-color: #6a8bef;
   color: #f1f1f1;
 }
-#T_b482e_row1_col3 {
+#T_c7375_row1_col3 {
   background-color: #5b7ae5;
   color: #f1f1f1;
 }
-#T_b482e_row1_col4, #T_b482e_row2_col1 {
+#T_c7375_row1_col4, #T_c7375_row2_col1 {
   background-color: #5875e1;
   color: #f1f1f1;
 }
-#T_b482e_row2_col0 {
+#T_c7375_row2_col0 {
   background-color: #4961d2;
   color: #f1f1f1;
 }
-#T_b482e_row2_col4 {
+#T_c7375_row2_col4 {
   background-color: #4358cb;
   color: #f1f1f1;
 }
-#T_b482e_row3_col0 {
+#T_c7375_row3_col0 {
   background-color: #4257c9;
   color: #f1f1f1;
 }
-#T_b482e_row3_col1 {
+#T_c7375_row3_col1 {
   background-color: #4a63d3;
   color: #f1f1f1;
 }
-#T_b482e_row4_col0 {
+#T_c7375_row4_col0 {
   background-color: #465ecf;
   color: #f1f1f1;
 }
-#T_b482e_row4_col1 {
+#T_c7375_row4_col1 {
   background-color: #5e7de7;
   color: #f1f1f1;
 }
-#T_b482e_row4_col2 {
+#T_c7375_row4_col2 {
   background-color: #5d7ce6;
   color: #f1f1f1;
 }
 </style>
 
-<table id="T_b482e" class="caption-top table table-sm table-striped small">
+<table id="T_c7375" class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_b482e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">age</th>
-<th id="T_b482e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">education-num</th>
-<th id="T_b482e_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">capital-gain</th>
-<th id="T_b482e_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">capital-loss</th>
-<th id="T_b482e_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">hours-per-week</th>
+<th id="T_c7375_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">age</th>
+<th id="T_c7375_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">education-num</th>
+<th id="T_c7375_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">capital-gain</th>
+<th id="T_c7375_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">capital-loss</th>
+<th id="T_c7375_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">hours-per-week</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th id="T_b482e_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">age</th>
-<td id="T_b482e_row0_col0" class="data row0 col0">1.000000</td>
-<td id="T_b482e_row0_col1" class="data row0 col1">0.030940</td>
-<td id="T_b482e_row0_col2" class="data row0 col2">0.077229</td>
-<td id="T_b482e_row0_col3" class="data row0 col3">0.056944</td>
-<td id="T_b482e_row0_col4" class="data row0 col4">0.071558</td>
+<th id="T_c7375_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">age</th>
+<td id="T_c7375_row0_col0" class="data row0 col0">1.000000</td>
+<td id="T_c7375_row0_col1" class="data row0 col1">0.030940</td>
+<td id="T_c7375_row0_col2" class="data row0 col2">0.077229</td>
+<td id="T_c7375_row0_col3" class="data row0 col3">0.056944</td>
+<td id="T_c7375_row0_col4" class="data row0 col4">0.071558</td>
 </tr>
 <tr class="even">
-<th id="T_b482e_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">education-num</th>
-<td id="T_b482e_row1_col0" class="data row1 col0">0.030940</td>
-<td id="T_b482e_row1_col1" class="data row1 col1">1.000000</td>
-<td id="T_b482e_row1_col2" class="data row1 col2">0.125146</td>
-<td id="T_b482e_row1_col3" class="data row1 col3">0.080972</td>
-<td id="T_b482e_row1_col4" class="data row1 col4">0.143689</td>
+<th id="T_c7375_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">education-num</th>
+<td id="T_c7375_row1_col0" class="data row1 col0">0.030940</td>
+<td id="T_c7375_row1_col1" class="data row1 col1">1.000000</td>
+<td id="T_c7375_row1_col2" class="data row1 col2">0.125146</td>
+<td id="T_c7375_row1_col3" class="data row1 col3">0.080972</td>
+<td id="T_c7375_row1_col4" class="data row1 col4">0.143689</td>
 </tr>
 <tr class="odd">
-<th id="T_b482e_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">capital-gain</th>
-<td id="T_b482e_row2_col0" class="data row2 col0">0.077229</td>
-<td id="T_b482e_row2_col1" class="data row2 col1">0.125146</td>
-<td id="T_b482e_row2_col2" class="data row2 col2">1.000000</td>
-<td id="T_b482e_row2_col3" class="data row2 col3">-0.031441</td>
-<td id="T_b482e_row2_col4" class="data row2 col4">0.082157</td>
+<th id="T_c7375_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">capital-gain</th>
+<td id="T_c7375_row2_col0" class="data row2 col0">0.077229</td>
+<td id="T_c7375_row2_col1" class="data row2 col1">0.125146</td>
+<td id="T_c7375_row2_col2" class="data row2 col2">1.000000</td>
+<td id="T_c7375_row2_col3" class="data row2 col3">-0.031441</td>
+<td id="T_c7375_row2_col4" class="data row2 col4">0.082157</td>
 </tr>
 <tr class="even">
-<th id="T_b482e_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">capital-loss</th>
-<td id="T_b482e_row3_col0" class="data row3 col0">0.056944</td>
-<td id="T_b482e_row3_col1" class="data row3 col1">0.080972</td>
-<td id="T_b482e_row3_col2" class="data row3 col2">-0.031441</td>
-<td id="T_b482e_row3_col3" class="data row3 col3">1.000000</td>
-<td id="T_b482e_row3_col4" class="data row3 col4">0.054467</td>
+<th id="T_c7375_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">capital-loss</th>
+<td id="T_c7375_row3_col0" class="data row3 col0">0.056944</td>
+<td id="T_c7375_row3_col1" class="data row3 col1">0.080972</td>
+<td id="T_c7375_row3_col2" class="data row3 col2">-0.031441</td>
+<td id="T_c7375_row3_col3" class="data row3 col3">1.000000</td>
+<td id="T_c7375_row3_col4" class="data row3 col4">0.054467</td>
 </tr>
 <tr class="odd">
-<th id="T_b482e_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">hours-per-week</th>
-<td id="T_b482e_row4_col0" class="data row4 col0">0.071558</td>
-<td id="T_b482e_row4_col1" class="data row4 col1">0.143689</td>
-<td id="T_b482e_row4_col2" class="data row4 col2">0.082157</td>
-<td id="T_b482e_row4_col3" class="data row4 col3">0.054467</td>
-<td id="T_b482e_row4_col4" class="data row4 col4">1.000000</td>
+<th id="T_c7375_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">hours-per-week</th>
+<td id="T_c7375_row4_col0" class="data row4 col0">0.071558</td>
+<td id="T_c7375_row4_col1" class="data row4 col1">0.143689</td>
+<td id="T_c7375_row4_col2" class="data row4 col2">0.082157</td>
+<td id="T_c7375_row4_col3" class="data row4 col3">0.054467</td>
+<td id="T_c7375_row4_col4" class="data row4 col4">1.000000</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <p>Another way to inspect the data is to do a <code>pairplot</code> and show how each variable differs according to our target, i.e.&nbsp;<code>class</code>. Plots along the diagonal show the distribution of individual variables for each <code>class</code>. The plots on the off-diagonal can reveal interesting interactions between variables.</p>
-<div id="63107420" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
+<div id="1364d9b0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We will plot a subset of the data to keep the plot readable and make the</span></span>
@@ -1415,9 +1415,9 @@ Name: count, dtype: int64</code></pre>
 <section id="creating-decision-rules-by-hand" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="creating-decision-rules-by-hand"><span class="header-section-number">19.6</span> Creating decision rules by hand</h2>
 <p>By looking at the previous plots, we could create some hand-written rules that predicts whether someone has a high- or low-income.</p>
-<p><code>wkjballcjnub Question: :class: attention Looking at the prior pairplot, what type of decision rules would you suggest?</code></p>
+<p><code>rqorcjteixlq Question: :class: attention Looking at the prior pairplot, what type of decision rules would you suggest?</code></p>
 <p>For instance, we could focus on the combination of the <code>hours-per-week</code> and <code>age</code> features.</p>
-<div id="3f6e8edf" class="cell" data-execution_count="11">
+<div id="577b923d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"age"</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"hours-per-week"</span>,</span>
@@ -1435,7 +1435,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 <p>The data points (circles) show the distribution of <code>hours-per-week</code> and <code>age</code> in the dataset. Blue points mean low-income and orange points mean high-income. This part of the plot is the same as the bottom-left plot in the pairplot above.</p>
 <p>In this plot, we can try to find regions that mainly contains a single class such that we can easily decide what class one should predict. We could come up with hand-written rules as shown in this plot:</p>
-<div id="ae71049e" class="cell" data-execution_count="12">
+<div id="94eda427" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.scatterplot(</span>
@@ -1476,7 +1476,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="exercises" class="level2" data-number="19.8">
 <h2 data-number="19.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">19.8</span> Exercises</h2>
-<p>```wkjballcjnub Questions: Using the <strong>ames_clean.csv</strong> data:</p>
+<p>```rqorcjteixlq Questions: Using the <strong>ames_clean.csv</strong> data:</p>
 <ol type="1">
 <li>Assess the distribution of the response variable (<code>SalePrice</code>)</li>
 <li>How many features are numeric vs.&nbsp;categorical?</li>
@@ -1486,7 +1486,7 @@ Name: count, dtype: int64</code></pre>
 <pre><code>
 ## Computing environment
 
-::: {#f6020267 .cell execution_count=13}
+::: {#05709ba0 .cell execution_count=13}
 ``` {.python .cell-code}
 %load_ext watermark
 %watermark -v -p jupyterlab,pandas,numpy,seaborn,matplotlib</code></pre>
