@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.16">
+<meta name="generator" content="quarto-1.10.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f0f1e7e5799cfbfbb90bef6f3704cb81.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-63687a1bdef878e043e8453898854efd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9e771c2559e625a2bd492f8123448f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f9db7b056a069864f13fac741a481948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -715,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="prerequisites" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">9.1</span> Prerequisites</h2>
 <p>To illustrate selecting and filtering let’s go ahead and load the pandas library and import our planes data we’ve been using:</p>
-<div id="635b87f3" class="cell" data-execution_count="1">
+<div id="175c5b85" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>planes_df <span class="op">=</span> pd.read_csv(<span class="st">'../data/planes.csv'</span>)</span>
@@ -838,7 +841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>filter</strong> to cases where the manufacturer is Embraer</li>
 </ol>
 <p>But we also want to return a new DataFrame – not just highlight certain cells. In other words, we want to turn this:</p>
-<div id="03ccebbb" class="cell" data-execution_count="2">
+<div id="0302b2e3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -930,7 +933,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Into this:</p>
-<div id="e521764b" class="cell" data-execution_count="3">
+<div id="043274fa" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>planes_df.head().loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>, [<span class="st">'year'</span>, <span class="st">'engines'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -974,7 +977,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="subsetting-variables" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="subsetting-variables"><span class="header-section-number">9.3</span> Subsetting variables</h2>
 <p>Recall that the subsetting of variables/columns is called <strong>selecting</strong> variables/columns. In a simple example, we can select a single variable using bracket subsetting notation:</p>
-<div id="098b27c9" class="cell" data-execution_count="4">
+<div id="b895abc6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'year'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>0    2004.0
@@ -1000,7 +1003,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>This returns <code>pandas.core.series.Series</code>, referred to simply as a “Series”, rather than a DataFrame.</p>
-<div id="05d6995d" class="cell" data-execution_count="5">
+<div id="6c26823d" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[<span class="st">'year'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>pandas.Series</code></pre>
@@ -1018,7 +1021,7 @@ Name: year, dtype: float64</code></pre>
 </figure>
 </div>
 <p>Series can be useful, but for now, we are interested in <em>returning a DataFrame</em> rather than a series. We can select a single variable and return a DataFrame by still using bracket subsetting notation, but this time we will <strong>pass a <code>list</code> of variables names</strong>:</p>
-<div id="906784f2" class="cell" data-execution_count="6">
+<div id="7a2b963f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
@@ -1059,7 +1062,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>And we can see that we’ve returned a DataFrame:</p>
-<div id="7c966d33" class="cell" data-execution_count="7">
+<div id="0150de6b" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(planes_df[[<span class="st">'year'</span>]].head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>pandas.DataFrame</code></pre>
@@ -1079,7 +1082,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>Passing a list into the bracket subsetting notation allows us to select multiple variables at once:</p>
-<div id="ed45fc00" class="cell" data-execution_count="8">
+<div id="5d0b7777" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -1126,7 +1129,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>In another example, assume we are interested in the <code>model</code> of plane, number of <code>seats</code> and <code>engine</code> type:</p>
-<div id="d99672a1" class="cell" data-execution_count="9">
+<div id="35e15e6e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>planes_df[[<span class="st">'model'</span>, <span class="st">'seats'</span>, <span class="st">'engine'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
@@ -1211,7 +1214,7 @@ Name: year, dtype: float64</code></pre>
 <section id="slicing-rows" class="level3">
 <h3 class="anchored" data-anchor-id="slicing-rows">Slicing rows</h3>
 <p>Remember that all DataFrames have an Index:</p>
-<div id="0c106d57" class="cell" data-execution_count="10">
+<div id="d8c6bbb8" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>planes_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -1300,7 +1303,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>We can <strong>slice</strong> cases/rows using the values in the Index and bracket subsetting notation. It’s common practice to use <code>.loc</code> to slice cases/rows:</p>
-<div id="f35926da" class="cell" data-execution_count="11">
+<div id="7935c7bc" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[<span class="dv">0</span>:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
@@ -1411,7 +1414,7 @@ Name: year, dtype: float64</code></pre>
 </div>
 </div>
 <p>We can also pass a <code>list</code> of Index values:</p>
-<div id="b2ddfbf1" class="cell" data-execution_count="12">
+<div id="da31d421" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
@@ -1504,7 +1507,7 @@ Name: year, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="filtering-rows">Filtering rows</h3>
 <p>We can <strong>filter</strong> rows using a logical sequence equal in length to the number of rows in the DataFrame.</p>
 <p>Continuing our example, assume we want to determine whether each case’s <code>manufacturer</code> is Embraer. We can use the <code>manufacturer</code> Series and a logical equivalency test to find the result for each row:</p>
-<div id="cfc58a98" class="cell" data-execution_count="13">
+<div id="1ff613c5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0        True
@@ -1522,7 +1525,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>We can use this resulting logical sequence to test <strong>filter</strong> cases – rows that are <code>True</code> will be returned while those that are <code>False</code> will be removed:</p>
-<div id="19720167" class="cell" data-execution_count="14">
+<div id="8161d923" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>planes_df[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
@@ -1611,7 +1614,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>This also works with <code>.loc</code>:</p>
-<div id="dc7b2939" class="cell" data-execution_count="15">
+<div id="f4735d91" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
@@ -1700,7 +1703,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>Any conditional test can be used to <strong>filter</strong> DataFrame rows:</p>
-<div id="8c780d27" class="cell" data-execution_count="16">
+<div id="28505c9c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
@@ -1790,7 +1793,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>And multiple conditional tests can be combined using logical operators:</p>
-<div id="608568d6" class="cell" data-execution_count="17">
+<div id="703255f1" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter observations where year is greater than 2002 and less than 2007</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[(planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2007</span>)].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -1890,7 +1893,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>Often, as your condition gets more complex, it can be easier to read if you separate out the condition:</p>
-<div id="fb63ac7a" class="cell" data-execution_count="18">
+<div id="2b2954aa" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cond <span class="op">=</span> (planes_df[<span class="st">'year'</span>] <span class="op">&gt;</span> <span class="dv">2002</span>) <span class="op">&amp;</span> (planes_df[<span class="st">'year'</span>] <span class="op">&lt;</span> <span class="dv">2004</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>planes_df.loc[cond].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -2012,7 +2015,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 <section id="sequential-operations" class="level3">
 <h3 class="anchored" data-anchor-id="sequential-operations">Sequential Operations</h3>
 <p>We can use what we’ve previously learned to select variables and filter cases in multiple steps:</p>
-<div id="68deb57c" class="cell" data-execution_count="19">
+<div id="20f1523f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>planes_df_filtered <span class="op">=</span> planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>]</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected <span class="op">=</span> planes_df_filtered[[<span class="st">'year'</span>, <span class="st">'engines'</span>]]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>planes_df_filtered_and_selected.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2065,7 +2068,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 <section id="simultaneous-operations" class="level3">
 <h3 class="anchored" data-anchor-id="simultaneous-operations">Simultaneous operations</h3>
 <p>However, we can also do both selecting and filtering in a single step with <code>.loc</code>:</p>
-<div id="66b3f996" class="cell" data-execution_count="20">
+<div id="025c3390" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span>, [<span class="st">'year'</span>, <span class="st">'engines'</span>]].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
@@ -2112,7 +2115,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>This option is more succinct and also reduces programming time. As before, as your filtering and selecting conditions get longer and/or more complex, it can make it easier to read to break it up into separate lines:</p>
-<div id="366dd904" class="cell" data-execution_count="21">
+<div id="b21ae9e5" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> planes_df[<span class="st">'manufacturer'</span>] <span class="op">==</span> <span class="st">'EMBRAER'</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'engines'</span>]</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>planes_df.loc[rows, cols].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2184,7 +2187,7 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 <p>One thing to be aware of, as you will likely experience it eventually, is the concept of returning a <strong><em>view</em></strong> (“looking” at a part of an existing object) versus a <strong><em>copy</em></strong> (making a new copy of the object in memory). This can be a bit abstract and even <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">this section in the Pandas docs</a> states <em>“…it’s very hard to predict whether it will return a view or a copy.”</em></p>
 <p>The main takeaway is that the most common warning you’ll encounter in Pandas is the <code>SettingWithCopyWarning</code>; Pandas raises it as a warning that you might not be doing what you think you’re doing or because the operation you are performing may behave unpredictably.</p>
 <p>Let’s look at an example. Say the number of seats on this particular plane was recorded incorrectly. Instead of 55 seats it should actually be 60 seats.</p>
-<div id="6ae79e67" class="cell" data-execution_count="22">
+<div id="a79871ee" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>tailnum_of_interest <span class="op">=</span> planes_df[<span class="st">'tailnum'</span>] <span class="op">==</span> <span class="st">'N10156'</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -2226,17 +2229,17 @@ Name: manufacturer, Length: 3322, dtype: bool</code></pre>
 </div>
 </div>
 <p>Instead of using <code>.iloc</code>, we could actually filter and select this element in our DataFrame with the following bracket notation.</p>
-<div id="294a03d0" class="cell" data-execution_count="23">
+<div id="94a06374" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>0    55
 Name: seats, dtype: int64</code></pre>
 </div>
 </div>
-<div id="821c86c4" class="cell" data-execution_count="24">
+<div id="264f364b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest][<span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_3327/2190037627.py:1: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
+<pre><code>/tmp/ipykernel_3269/2190037627.py:1: ChainedAssignmentError: A value is being set on a copy of a DataFrame or Series through chained assignment.
 Such chained assignment never works to update the original DataFrame or Series, because the intermediate object on which we are setting values always behaves as a copy (due to Copy-on-Write).
 
 Try using '.loc[row_indexer, col_indexer] = value' instead, to perform the assignment in a single step.
@@ -2246,7 +2249,7 @@ See the documentation for a more detailed explanation: https://pandas.pydata.org
 </div>
 </div>
 <p>So what’s going on? Did our DataFrame get changed?</p>
-<div id="21f054b2" class="cell" data-execution_count="25">
+<div id="3a5bd16b" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
@@ -2287,20 +2290,20 @@ See the documentation for a more detailed explanation: https://pandas.pydata.org
 </div>
 </div>
 <p>No it didn’t, even though you probably thought it did. What happened above is that <code>planes_df[tailnum_of_interest]['seats']</code> was executed first and returned a copy of the DataFrame, which is an entirely different object. We can confirm by using <code>id()</code>:</p>
-<div id="d0b271a1" class="cell" data-execution_count="26">
+<div id="0b5ec2d2" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The id of the original dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f" The id of the indexed dataframe is: </span><span class="sc">{</span><span class="bu">id</span>(planes_df[tailnum_of_interest])<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The id of the original dataframe is: 140506910107280
- The id of the indexed dataframe is: 140505682028416</code></pre>
+<pre><code>The id of the original dataframe is: 140525754873904
+ The id of the indexed dataframe is: 140525732386224</code></pre>
 </div>
 </div>
 <p>We then tried to set a value on this new object by appending <code>['seats'] = 60</code>. Pandas is warning us that we are doing that operation on a copy of the original dataframe, which is probably not what we want. To fix this, you need to index in a single go, using <code>.loc[]</code> for example:</p>
-<div id="87dcb363" class="cell" data-execution_count="27">
+<div id="8989ed1c" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>planes_df.loc[tailnum_of_interest, <span class="st">'seats'</span>] <span class="op">=</span> <span class="dv">60</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>No error this time! And let’s confirm the change:</p>
-<div id="9cf95ee8" class="cell" data-execution_count="28">
+<div id="455b4653" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>planes_df[tailnum_of_interest]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
@@ -2432,7 +2435,7 @@ See the documentation for a more detailed explanation: https://pandas.pydata.org
 <section id="project-checkpoint" class="level2" data-number="9.8">
 <h2 data-number="9.8" class="anchored" data-anchor-id="project-checkpoint"><span class="header-section-number">9.8</span> Project Checkpoint</h2>
 <p>Now that you can import, inspect, and subset a DataFrame, it’s time to apply those skills to the <strong>Complete Journey</strong> dataset — the retail grocery data you’ll use throughout the semester project.</p>
-<div id="946709c2" class="cell" data-execution_count="29">
+<div id="c6bf151c" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>cj_data <span class="op">=</span> get_data()</span>
@@ -2466,7 +2469,7 @@ See the documentation for a more detailed explanation: https://pandas.pydata.org
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="81741635" class="cell" data-execution_count="30">
+<div id="e980e58a" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>data_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/nytimes/covid-19-data/refs/heads/master/colleges/colleges.csv"</span></span>

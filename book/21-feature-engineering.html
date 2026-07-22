@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.16">
+<meta name="generator" content="quarto-1.10.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f0f1e7e5799cfbfbb90bef6f3704cb81.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-63687a1bdef878e043e8453898854efd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9e771c2559e625a2bd492f8123448f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f9db7b056a069864f13fac741a481948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -680,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="21.2" class="anchored" data-anchor-id="basic-prerequisites"><span class="header-section-number">21.2</span> Basic prerequisites</h2>
 <p>Let’s go ahead and import a couple required libraries and import our data.</p>
 <pre class="{note}"><code>We will import additional libraries and functions as we proceed but we do so at the time of using the libraries and functions as that will help you to connect specific steps to particular modules/functions imported.</code></pre>
-<div id="ad142d47" class="cell" data-tags="[]" data-execution_count="1">
+<div id="b5d09bce" class="cell" data-tags="[]" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to display nice model diagram</span></span>
@@ -702,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Numeric</strong>: a quantity represented by a real or integer number.</li>
 <li><strong>Categorical</strong>: a discrete value, typically represented by string labels (but not only) taken from a finite list of possible choices.</li>
 </ul>
-<div id="e9124a39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="2">
+<div id="1d10cc7c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>features.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>age               int64
@@ -726,7 +729,7 @@ dtype: object</code></pre>
 Bottom line, always understand how your data is representing your features!</code></pre>
 <p>We can separate categorical and numerical variables using their data types to identify them.</p>
 <p>There are a few ways we can do this. Here, we make use of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html"><code>make_column_selector</code></a> helper to select the corresponding columns.</p>
-<div id="a38c3f2b" class="cell" data-execution_count="3">
+<div id="000993a7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create selector object based on data type</span></span>
@@ -748,7 +751,7 @@ Bottom line, always understand how your data is representing your features!</cod
 <h2 data-number="21.4" class="anchored" data-anchor-id="preprocessing-numerical-data"><span class="header-section-number">21.4</span> Preprocessing numerical data</h2>
 <p>Scikit-learn works “out of the box” with numeric features. However, some algorithms make some assumptions regarding the distribution of our features.</p>
 <p>We see that our numeric features span across different ranges:</p>
-<div id="441f88a1" class="cell" data-execution_count="4">
+<div id="5b75032c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>numerical_features <span class="op">=</span> features[numerical_columns]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>numerical_features.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -848,7 +851,7 @@ gradient descent) to find their optimal parameters. This solver converges
 faster when the features are scaled.</code></pre>
 <p>Whether or not a machine learning model requires normalization of the features depends on the model family. Linear models such as logistic regression generally benefit from scaling the features while other models such as tree-based models (i.e.&nbsp;decision trees, random forests) do not need such preprocessing (but will not suffer from it).</p>
 <p>We can apply such normalization using a scikit-learn transformer called <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code>StandardScaler</code></a>.</p>
-<div id="99d6ff19" class="cell" data-execution_count="5">
+<div id="2fe2bcd0" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
@@ -1905,14 +1908,14 @@ standard deviations is specific to the `StandardScaler`. Other
 scikit-learn transformers will compute different statistics and store them
 as model states, in the same fashion.</code></pre>
 <p>We can inspect the computed means and standard deviations.</p>
-<div id="7eb4373c" class="cell" data-execution_count="6">
+<div id="a757ecf0" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>scaler.mean_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([  38.64358544,   10.07808853, 1079.06762622,   87.50231358,
          40.42238238])</code></pre>
 </div>
 </div>
-<div id="e6a7fb16" class="cell" data-execution_count="7">
+<div id="74f47762" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>scaler.scale_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([1.37103696e+01, 2.57094644e+00, 7.45194277e+03, 4.03000427e+02,
@@ -1923,7 +1926,7 @@ as model states, in the same fashion.</code></pre>
 ends with an underscore (i.e. `_`), as in `mean_` and `scale_` for the
 `StandardScaler`.</code></pre>
 <p>Once we have called the <code>fit</code> method, we can perform the data transformation by calling the method <code>transform</code>.</p>
-<div id="0ace691c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="8">
+<div id="bf277263" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>numerical_features_scaled <span class="op">=</span> scaler.transform(numerical_features)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>numerical_features_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -1944,7 +1947,7 @@ ends with an underscore (i.e. `_`), as in `mean_` and `scale_` for the
 <p>Finally, the method <code>fit_transform</code> is a shorthand method to call successively <code>fit</code> and then <code>transform</code>.</p>
 <p>:::{figure-md} transformer-fit_transform-method <img src="../images/api_diagram-transformer.fit_transform.svg" alt="transfomer.fit_transform method" width="80%"></p>
 <p><code>transformer.fit_transform</code> method representation. :::</p>
-<div id="da368df0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="9">
+<div id="bc0c7758" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitting and transforming in one step</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>scaler.fit_transform(numerical_features)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1959,7 +1962,7 @@ ends with an underscore (i.e. `_`), as in `mean_` and `scale_` for the
 </div>
 </div>
 <p>Notice that the mean of all the columns is close to 0 and the standard deviation in all cases is close to 1:</p>
-<div id="16836989" class="cell" data-execution_count="10">
+<div id="379ba596" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>numerical_features <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    numerical_features_scaled,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>numerical_columns</span>
@@ -2056,7 +2059,7 @@ ends with an underscore (i.e. `_`), as in `mean_` and `scale_` for the
 <section id="model-pipelines" class="level2" data-number="21.5">
 <h2 data-number="21.5" class="anchored" data-anchor-id="model-pipelines"><span class="header-section-number">21.5</span> Model pipelines</h2>
 <p>We can easily combine sequential operations with a scikit-learn <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html"><code>Pipeline</code></a>, which chains together operations and is used as any other classifier or regressor. The helper function <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline"><code>make_pipeline</code></a> will create a <code>Pipeline</code>: it takes as arguments the successive transformations to perform, followed by the classifier or regressor model.</p>
-<div id="2ea9cc0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="11">
+<div id="25c352ba" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3296,7 +3299,7 @@ forceTheme('sk-container-id-2');</script>
 </div>
 </div>
 <p>Let’s divide our data into train and test sets and then apply and score our logistic regression model:</p>
-<div id="0deacd6d" class="cell" data-execution_count="12">
+<div id="3a5bdbf2" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># split our data into train &amp; test</span></span>
@@ -3319,7 +3322,7 @@ forceTheme('sk-container-id-2');</script>
 <section id="encoding-ordinal-categories" class="level3">
 <h3 class="anchored" data-anchor-id="encoding-ordinal-categories">Encoding ordinal categories</h3>
 <p>The most intuitive strategy is to encode each category with a different number. The <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html"><code>OrdinalEncoder</code></a> will transform the data in such manner. We will start by encoding a single column to understand how the encoding works.</p>
-<div id="ce7c205b" class="cell" data-execution_count="13">
+<div id="5753cf58" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OrdinalEncoder</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let's illustrate with the 'education' feature</span></span>
@@ -3339,7 +3342,7 @@ forceTheme('sk-container-id-2');</script>
 </div>
 </div>
 <p>We see that each category in <code>"education"</code> has been replaced by a numeric value. We could check the mapping between the categories and the numerical values by checking the fitted attribute <code>categories_</code>.</p>
-<div id="ffce5e46" class="cell" data-execution_count="14">
+<div id="cc634e24" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>encoder.categories_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>[array([' 10th', ' 11th', ' 12th', ' 1st-4th', ' 5th-6th', ' 7th-8th',
@@ -3352,7 +3355,7 @@ forceTheme('sk-container-id-2');</script>
 <p>However, be careful when applying this encoding strategy: using this integer representation leads downstream predictive models to assume that the values are ordered (0 &lt; 1 &lt; 2 &lt; 3… for instance).</p>
 <p>By default, <code>OrdinalEncoder</code> uses a lexicographical strategy to map string category labels to integers. This strategy is arbitrary and often meaningless. For instance, suppose the dataset has a categorical variable named <code>"size"</code> with categories such as “S”, “M”, “L”, “XL”. We would like the integer representation to respect the meaning of the sizes by mapping them to increasing integers such as <code>0, 1, 2, 3</code>. However, the lexicographical strategy used by default would map the labels “S”, “M”, “L”, “XL” to 2, 1, 0, 3, by following the alphabetical order.</p>
 <p>The <code>OrdinalEncoder</code> class accepts a <code>categories</code> argument to pass categories in the expected ordering explicitly (<code>categories[i]</code> holds the categories expected in the ith column).</p>
-<div id="6da47c1a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="15">
+<div id="0c0f0e11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ed_levels <span class="op">=</span> [<span class="st">' Preschool'</span>, <span class="st">' 1st-4th'</span>, <span class="st">' 5th-6th'</span>, <span class="st">' 7th-8th'</span>, <span class="st">' 9th'</span>, <span class="st">' 10th'</span>, <span class="st">' 11th'</span>,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">' 12th'</span>, <span class="st">' HS-grad'</span>, <span class="st">' Prof-school'</span>, <span class="st">' Some-college'</span>, <span class="st">' Assoc-acdm'</span>,</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">' Assoc-voc'</span>, <span class="st">' Bachelors'</span>, <span class="st">' Masters'</span>, <span class="st">' Doctorate'</span>]</span>
@@ -3370,7 +3373,7 @@ forceTheme('sk-container-id-2');</script>
        [ 8.]], shape=(48842, 1))</code></pre>
 </div>
 </div>
-<div id="9dc4e6fa" class="cell" data-execution_count="16">
+<div id="c7a527a9" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>encoder.categories_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>[array([' Preschool', ' 1st-4th', ' 5th-6th', ' 7th-8th', ' 9th', ' 10th',
@@ -3385,7 +3388,7 @@ forceTheme('sk-container-id-2');</script>
 <h3 class="anchored" data-anchor-id="ecoding-nominal-categories">Ecoding nominal categories</h3>
 <p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html"><code>OneHotEncoder</code></a> is an alternative encoder that converts the categorical levels into new columns.</p>
 <p>We will start by encoding a single feature (e.g.&nbsp;<code>"education"</code>) to illustrate how the encoding works.</p>
-<div id="f9309273" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="17">
+<div id="78508462" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>)</span>
@@ -3408,7 +3411,7 @@ Sparse matrices are efficient data structures when most of your matrix
 elements are zero. They won't be covered in detail in this workshop. If you
 want more details about them, you can look at [this](https://scipy-lectures.org/advanced/scipy_sparse/introduction.html#why-sparse-matrices).</code></pre>
 <p>Viewing this as a data frame provides a more intuitive illustration:</p>
-<div id="c035f7d4" class="cell" data-execution_count="18">
+<div id="1ea8c971" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> encoder.get_feature_names_out(input_features<span class="op">=</span>[<span class="st">"education"</span>])</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(education_encoded, columns<span class="op">=</span>feature_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -3656,7 +3659,7 @@ want more details about them, you can look at [this](https://scipy-lectures.org/
 </div>
 <p>As we can see, each category (unique value) became a column; the encoding returned, for each sample, a 1 to specify which category it belongs to.</p>
 <p>Let’s apply this encoding to all the categorical features:</p>
-<div id="12abfa03" class="cell" data-execution_count="19">
+<div id="2e156aad" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get all categorical features</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> features[categorical_columns]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3842,7 +3845,7 @@ good strategy with **tree-based models**.</code></pre>
 <h2 data-number="21.7" class="anchored" data-anchor-id="using-numerical-and-categorical-variables-together"><span class="header-section-number">21.7</span> Using numerical and categorical variables together</h2>
 <p>Now let’s look at how to combine some of these tasks so we can preprocess both numeric and categorical data.</p>
 <p>First, let’s get our train &amp; test data established:</p>
-<div id="8e3837be" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="20">
+<div id="36b78a89" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the duplicated column `"education-num"` as stated in the data exploration notebook</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> features.drop(columns<span class="op">=</span><span class="st">'education-num'</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3870,7 +3873,7 @@ good strategy with **tree-based models**.</code></pre>
 <li>the columns.</li>
 </ol>
 <p>First, let’s create the preprocessors for the numerical and categorical parts.</p>
-<div id="114da680" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="21">
+<div id="721b458a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>categorical_preprocessor <span class="op">=</span> OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>numerical_preprocessor <span class="op">=</span> StandardScaler()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -3880,7 +3883,7 @@ good strategy with **tree-based models**.</code></pre>
 
 </div>
 <p>Now, we create the transformer and associate each of these preprocessors with their respective columns.</p>
-<div id="fb18551d" class="cell" data-execution_count="22">
+<div id="9c0ae594" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer([</span>
@@ -3898,7 +3901,7 @@ good strategy with **tree-based models**.</code></pre>
 <li>It then <strong>concatenates the transformed datasets</strong> into a single dataset.</li>
 </ul>
 <p>The important thing is that <code>ColumnTransformer</code> is like any other scikit-learn transformer. In particular it can be combined with a classifier in a <code>Pipeline</code>:</p>
-<div id="99be550a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="23">
+<div id="2c91f3dd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> make_pipeline(preprocessor, LogisticRegression(max_iter<span class="op">=</span><span class="dv">500</span>))</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
@@ -5445,7 +5448,7 @@ forceTheme('sk-container-id-3');</script>
 </div>
 <pre class="{warning}"><code>Including non-scaled data can cause some algorithms to iterate
 longer in order to converge. Since our categorical features are not scaled it's often recommended to increase the number of allowed iterations for linear models.</code></pre>
-<div id="4c1bf42e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="24">
+<div id="a790e8be" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit our model</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> model.fit(X_train, y_train)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5463,7 +5466,7 @@ longer in order to converge. Since our categorical features are not scaled it's 
 </section>
 <section id="exercises" class="level2" data-number="21.9">
 <h2 data-number="21.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">21.9</span> Exercises</h2>
-<p>```urdoivwpxlrc Questions: :class: attention Using the <strong>ames_clean.csv</strong> data:</p>
+<p>```dsyxlteqmzuc Questions: :class: attention Using the <strong>ames_clean.csv</strong> data:</p>
 <ul>
 <li>Numeric features:
 <ul>
@@ -5484,7 +5487,7 @@ longer in order to converge. Since our categorical features are not scaled it's 
 </section>
 <section id="computing-environment" class="level2" data-number="21.10">
 <h2 data-number="21.10" class="anchored" data-anchor-id="computing-environment"><span class="header-section-number">21.10</span> Computing environment</h2>
-<div id="1f6c578a" class="cell" data-execution_count="25">
+<div id="43bc4ccc" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext watermark</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>watermark <span class="op">-</span>v <span class="op">-</span>p jupyterlab,pandas,sklearn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -5493,7 +5496,7 @@ Python version       : 3.12.13
 IPython version      : 9.15.0
 
 jupyterlab: 4.6.2
-pandas    : 3.0.3
+pandas    : 3.0.5
 sklearn   : 1.9.0
 </code></pre>
 </div>

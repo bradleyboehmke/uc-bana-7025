@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.16">
+<meta name="generator" content="quarto-1.10.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,14 +79,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f0f1e7e5799cfbfbb90bef6f3704cb81.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2051dbbaa7ae7a279e016470f480e120.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-63687a1bdef878e043e8453898854efd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9e771c2559e625a2bd492f8123448f98.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-73efc4be9f52ad75f623d13189e4336e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f9db7b056a069864f13fac741a481948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8e5e5d23fd57b5b0e074c41e2d76a44f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -713,7 +716,7 @@ window.Quarto = {
 <section id="data-prep" class="level3">
 <h3 class="anchored" data-anchor-id="data-prep">Data prep</h3>
 <p>In lesson 7b we discussed how we typically separate our features and target into distinct data objects and that we create a train-test split so we can measure model performance on data that our model was not trained on.</p>
-<div id="60169420" class="cell" data-execution_count="1">
+<div id="cc0d5fa2" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages used</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -735,7 +738,7 @@ window.Quarto = {
 <section id="feature-engineering" class="level3">
 <h3 class="anchored" data-anchor-id="feature-engineering">Feature engineering</h3>
 <p>In lesson 7c we looked at how we can apply common feature engineering tasks to numeric and categorical features and how we can combine these tasks with <code>ColumnTransformer</code>.</p>
-<div id="be3bcf96" class="cell" data-execution_count="2">
+<div id="93b3fd03" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages used</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> make_column_selector <span class="im">as</span> selector</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
@@ -764,7 +767,7 @@ window.Quarto = {
 <section id="modeling" class="level3">
 <h3 class="anchored" data-anchor-id="modeling">Modeling</h3>
 <p>And we also discussed how we can combine feature engineering steps with modeling steps using a pipeline object.</p>
-<div id="45f3c6cc" class="cell" data-execution_count="3">
+<div id="9cfb0ee6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages used</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
@@ -810,19 +813,19 @@ window.Quarto = {
 <p>Illustration of a 5-fold cross validation procedure. :::</p>
 <p>In scikit-learn, the function <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html"><code>cross_validate</code></a> allows us to perform cross-validation and you need to pass it the model, the data, and the target. Since there exists several cross-validation strategies, cross_validate takes a parameter <code>cv</code> which defines the splitting strategy.</p>
 <pre class="{tip}"><code>In practice, one typically uses k=5 or k=10. There is no formal rule as to the size of k; however, as k gets larger, the difference between the estimated performance and the true performance to be seen on the test set will decrease.</code></pre>
-<div id="fcd0a540" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
+<div id="34e85173" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_validate</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>cv_result <span class="op">=</span> cross_validate(model, X_train, y_train, cv<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>cv_result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 5.22 s, sys: 32.7 ms, total: 5.25 s
-Wall time: 1.64 s</code></pre>
+<pre><code>CPU times: user 5.23 s, sys: 31.4 ms, total: 5.26 s
+Wall time: 1.68 s</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>{'fit_time': array([0.25762749, 0.2840445 , 0.28358793, 0.26114345, 0.27329803]),
- 'score_time': array([0.04376364, 0.04250145, 0.04337144, 0.04112482, 0.04258037]),
+<pre><code>{'fit_time': array([0.25635076, 0.27661872, 0.27604055, 0.25641489, 0.34976625]),
+ 'score_time': array([0.04109311, 0.03978062, 0.03953671, 0.04052877, 0.04049134]),
  'test_score': array([0.85246349, 0.84575485, 0.85790336, 0.85066885, 0.85544636])}</code></pre>
 </div>
 </div>
@@ -832,7 +835,7 @@ Wall time: 1.64 s</code></pre>
 <li><code>score_time</code>: the time to predict with the model on the testing data for each fold, and</li>
 <li><code>test_score</code>: the default score on the testing data for each fold.</li>
 </ul>
-<div id="209e24db" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
+<div id="a4baad79" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cv_result[<span class="st">"test_score"</span>]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The mean cross-validation accuracy is: "</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"</span><span class="sc">{</span>scores<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss"> +/- </span><span class="sc">{</span>scores<span class="sc">.</span>std()<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -842,7 +845,7 @@ Wall time: 1.64 s</code></pre>
 </div>
 <section id="knowledge-check" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h3>
-<p><code>gilranwtkmgs Question: Using `KNeighborsClassifier()`, run a 5 fold cross validation procedure and compare the accuracy and standard deviation to the `LogisticRegression` model we just ran. Which model has a better CV score?</code></p>
+<p><code>jlbcokbobrnd Question: Using `KNeighborsClassifier()`, run a 5 fold cross validation procedure and compare the accuracy and standard deviation to the `LogisticRegression` model we just ran. Which model has a better CV score?</code></p>
 </section>
 </section>
 <section id="evaluation-metrics" class="level2" data-number="22.5">
@@ -853,7 +856,7 @@ Wall time: 1.64 s</code></pre>
 <section id="estimator-scoring-method" class="level3">
 <h3 class="anchored" data-anchor-id="estimator-scoring-method">Estimator scoring method</h3>
 <p>Every estimator (regression/classification model) has a default scoring method. Most classifiers return the mean accuracy of the model on the supplied <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span>:</p>
-<div id="98735c44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
+<div id="79dbc7ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># toy data</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_breast_cancer</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>X_cancer, y_cancer <span class="op">=</span> load_breast_cancer(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
@@ -868,7 +871,7 @@ Wall time: 1.64 s</code></pre>
 </div>
 </div>
 <p>While most regressors return the <span class="math inline">\(R^2\)</span> metric:</p>
-<div id="37fb7661" class="cell" data-execution_count="7">
+<div id="0f88ba84" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># toy data</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>X_diabetes, y_diabetes <span class="op">=</span> load_diabetes(return_X_y<span class="op">=</span><span class="va">True</span>)</span>
@@ -889,12 +892,12 @@ Wall time: 1.64 s</code></pre>
 <p>However, these default evaluation metrics are often not the metrics most suitable to the business problem.</p>
 <p>There are many loss functions to choose from; each with unique characteristics that can be beneficial for certain problems. * Regression problems - Mean squared error (MSE) - Root mean squared error (RMSE) - Mean absolute error (MAE) - etc. * Classification problems - Area under the curve (AUC) - Cross-entropy (aka Log loss) - Precision - etc.</p>
 <p>Scikit-Learn provides many <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">scoring functions</a> to choose from.</p>
-<div id="589cabd6" class="cell" data-execution_count="8">
+<div id="33721279" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The functions take actual y values and predicted y values – <span class="math inline">\(f(y_{i} - \hat{y}_i)\)</span></p>
 <p><strong>Example regression metrics</strong>:</p>
-<div id="5097647a" class="cell" data-execution_count="9">
+<div id="76abdfed" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> reg.predict(X_diabetes)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean squared error</span></span>
@@ -903,7 +906,7 @@ Wall time: 1.64 s</code></pre>
 <pre><code>2859.69634758675</code></pre>
 </div>
 </div>
-<div id="517275ff" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
+<div id="9aa92afb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean absolute percentage error</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>metrics.mean_absolute_percentage_error(y_diabetes, y_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -911,7 +914,7 @@ Wall time: 1.64 s</code></pre>
 </div>
 </div>
 <p><strong>Example classification metrics</strong>:</p>
-<div id="f7a97e99" class="cell" data-execution_count="11">
+<div id="fe7792da" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_cancer)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Area under the curve</span></span>
@@ -920,14 +923,14 @@ Wall time: 1.64 s</code></pre>
 <pre><code>0.9543760900586651</code></pre>
 </div>
 </div>
-<div id="e4205f6e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="12">
+<div id="2d2e383e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># F1 score</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>metrics.f1_score(y_cancer, y_pred)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>0.9680111265646731</code></pre>
 </div>
 </div>
-<div id="481df4cd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="13">
+<div id="2f1d576c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiple metrics at once!</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_cancer, y_pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -947,35 +950,35 @@ weighted avg       0.96      0.96      0.96       569
 <h3 class="anchored" data-anchor-id="scoring-parameters">Scoring parameters</h3>
 <p>And since we prefer to use cross-validation procedures, scikit-learn has incorporated a <code>scoring</code> parameter.</p>
 <p>Most evaluation metrics have a predefined text string that can be supplied as a <code>scoring</code> argument.</p>
-<div id="4df7f918" class="cell" data-execution_count="14">
+<div id="75dd19c6" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># say we wanted to use AUC as our loss function while using 5-fold validation</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>cross_validate(model, X_train, y_train, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'roc_auc'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'fit_time': array([0.25955105, 0.28294396, 0.28112674, 0.31083751, 0.27046275]),
- 'score_time': array([0.05017066, 0.04911017, 0.04892993, 0.04813647, 0.04828429]),
+<pre><code>{'fit_time': array([0.25978518, 0.27848196, 0.27515769, 0.25750566, 0.26702166]),
+ 'score_time': array([0.0471096 , 0.0463531 , 0.04579854, 0.04599404, 0.04605484]),
  'test_score': array([0.90490722, 0.90316435, 0.91314045, 0.90543753, 0.90815237])}</code></pre>
 </div>
 </div>
 <pre class="{note}"><code>The unified scoring API in scikit-learn always &lt;u&gt;maximizes&lt;/u&gt; the score, so metrics which need to be minimized are negated in order for the unified scoring API to work correctly. Consequently, some metrics such as `mean_squared_error()` will use a predefined text string starting with &lt;b&gt;neg_&lt;/b&gt; (i.e. 'neg_mean_squared_error').</code></pre>
-<div id="a6fe216d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="15">
+<div id="f33c2ec0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># applying mean squared error in a regression k-fold cross validation procedure</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>cross_validate(reg, X_diabetes, y_diabetes, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'neg_root_mean_squared_error'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>{'fit_time': array([0.00142241, 0.00165224, 0.00196266, 0.00123262, 0.00120568]),
- 'score_time': array([0.0007751 , 0.00071621, 0.00069404, 0.00070858, 0.0007143 ]),
+<pre><code>{'fit_time': array([0.00230813, 0.00100946, 0.00097418, 0.00097799, 0.00097084]),
+ 'score_time': array([0.00068235, 0.00058198, 0.0005877 , 0.00053692, 0.00053859]),
  'test_score': array([-52.72497937, -55.03486476, -56.90068179, -54.85204179,
         -53.94638716])}</code></pre>
 </div>
 </div>
 <p>You can even supply <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#using-multiple-metric-evaluation">more than one metric</a> or even <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#defining-your-scoring-strategy-from-metric-functions">define your own custom metric</a>.</p>
-<div id="4ff416e4" class="cell" data-execution_count="16">
+<div id="439a3937" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example of supplying more than one metric</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'accuracy'</span>, <span class="st">'roc_auc'</span>]</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>cross_validate(model, X_train, y_train, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span>metrics)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>{'fit_time': array([0.28875732, 0.27183509, 0.26843619, 0.25034595, 0.26218796]),
- 'score_time': array([0.09366465, 0.08881092, 0.08998966, 0.09114695, 0.09218645]),
+<pre><code>{'fit_time': array([0.25950432, 0.27213335, 0.29218221, 0.24879861, 0.25753474]),
+ 'score_time': array([0.08639526, 0.08639836, 0.08443737, 0.08732557, 0.08397388]),
  'test_accuracy': array([0.85246349, 0.84575485, 0.85790336, 0.85066885, 0.85544636]),
  'test_roc_auc': array([0.90490722, 0.90316435, 0.91314045, 0.90543753, 0.90815237])}</code></pre>
 </div>
@@ -983,7 +986,7 @@ weighted avg       0.96      0.96      0.96       569
 </section>
 <section id="knowledge-check-1" class="level3">
 <h3 class="anchored" data-anchor-id="knowledge-check-1">Knowledge check</h3>
-<p><code>gilranwtkmgs Questions: :class: attention Using the `KNeighborsClassifier()` from the previous &lt;b&gt;Knowledge check&lt;/b&gt; exercise, perform a 5 fold cross validation and compute the accuracy &lt;u&gt;&lt;b&gt;and&lt;/b&gt;&lt;/u&gt; ROC AUC.</code></p>
+<p><code>jlbcokbobrnd Questions: :class: attention Using the `KNeighborsClassifier()` from the previous &lt;b&gt;Knowledge check&lt;/b&gt; exercise, perform a 5 fold cross validation and compute the accuracy &lt;u&gt;&lt;b&gt;and&lt;/b&gt;&lt;/u&gt; ROC AUC.</code></p>
 </section>
 </section>
 <section id="hyperparameter-tuning" class="level2" data-number="22.6">
@@ -1018,7 +1021,7 @@ weighted avg       0.96      0.96      0.96       569
 <p>k-nearest neighbor model with differing values for k. :::</p>
 <p>While other models such as gradient boosted machines (GBMs) and deep learning models can have many.</p>
 <p><strong><em>Hyperparameter tuning</em></strong> is the process of screening hyperparameter values (or combinations of hyperparameter values) to find a model that balances bias &amp; variance so that the model generalizes well to unseen data.</p>
-<div id="11ee954b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="17">
+<div id="3ba8823e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
@@ -1036,8 +1039,8 @@ weighted avg       0.96      0.96      0.96       569
 <span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'KNN model with 10 neighbors: AUC = </span><span class="sc">{</span>np<span class="sc">.</span>mean(results)<span class="sc">:.3f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>KNN model with 10 neighbors: AUC = 0.883
-CPU times: user 12.1 s, sys: 1.53 s, total: 13.6 s
-Wall time: 13.6 s</code></pre>
+CPU times: user 12.4 s, sys: 1.11 s, total: 13.5 s
+Wall time: 13.4 s</code></pre>
 </div>
 </div>
 <p>But what if we wanted to assess and compare <code>n_neighbors</code> = 5, 10, 15, 20, … ?</p>
@@ -1045,7 +1048,7 @@ Wall time: 13.6 s</code></pre>
 <section id="full-cartesian-grid-search" class="level3">
 <h3 class="anchored" data-anchor-id="full-cartesian-grid-search">Full cartesian grid search</h3>
 <p>For this we could use a <strong><em>full cartesian grid search</em></strong> using Scikit-Learn’s <code>GridSearchCV()</code>:</p>
-<div id="5ab67288" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="18">
+<div id="4a65e3e5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GridSearchCV</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
@@ -1066,15 +1069,15 @@ Wall time: 13.6 s</code></pre>
 <span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Best model's cross validated AUC</span></span>
 <span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(results.best_score_)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 428 ms, sys: 102 ms, total: 530 ms
-Wall time: 28.4 s</code></pre>
+<pre><code>CPU times: user 384 ms, sys: 120 ms, total: 504 ms
+Wall time: 27.4 s</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>np.float64(0.8938098982243889)</code></pre>
 </div>
 </div>
 <pre class="{tip}"><code>We use `Pipeline` rather than `make_pipeline` in the above because it allows us to name the different steps in the pipeline. This allows us to assign hyperparameters to distinct steps within the pipeline.</code></pre>
-<div id="dfddc1f7" class="cell" data-execution_count="19">
+<div id="117b6603" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>results.best_params_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>{'knn__n_neighbors': 20}</code></pre>
@@ -1092,7 +1095,7 @@ Wall time: 28.4 s</code></pre>
 <p>Random search compared to standard grid search. :::</p>
 <pre class="{note}"><code>Random search based on hyperparameter distributions has proven to perform as well, if not better than, standard grid search. Learn more &lt;a href="http://jmlr.csail.mit.edu/papers/volume13/bergstra12a/bergstra12a.pdf"&gt;here&lt;/a&gt;.</code></pre>
 <p>For example, say we want to train a random forest classifier. Random forests are very flexible algorithms and can have <em>several</em> hyperparameters.</p>
-<div id="8d8d1407" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="20">
+<div id="395cc125" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;fragment&quot;}}" data-tags="[]" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># basic model object</span></span>
@@ -1113,7 +1116,7 @@ Wall time: 28.4 s</code></pre>
 <p>Instead, we’ll use a random latin hypercube search using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html"><code>RandomizedSearchCV</code></a>.</p>
 <p>To build our grid, we need to specify distributions for our hyperparameters.</p>
 <pre class="{tip}"><code>`scipy.stats.loguniform` can be used to generate floating numbers. To generate random values for integer-valued parameters (e.g. `min_samples_leaf`) we can adapt is as follows:</code></pre>
-<div id="fbcaac12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;skip&quot;}}" data-tags="[]" data-execution_count="21">
+<div id="28aef4e6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;skip&quot;}}" data-tags="[]" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> loguniform</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1126,7 +1129,7 @@ Wall time: 28.4 s</code></pre>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Random variable sample"""</span></span>
 <span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>._distribution.rvs(<span class="op">*</span>args, <span class="op">**</span>kwargs).astype(<span class="bu">int</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ad8818a3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="22">
+<div id="125f0be5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># specify hyperparameter distributions to randomly sample from</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>param_distributions <span class="op">=</span> {</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'rf__n_estimators'</span>: loguniform_int(<span class="dv">50</span>, <span class="dv">1000</span>),</span>
@@ -1138,7 +1141,7 @@ Wall time: 28.4 s</code></pre>
 </div>
 <p>Now, we can define the randomized search using the different distributions.</p>
 <p>Executing 10 iterations of 5-fold cross-validation for random parametrizations of this model on this dataset can take from 10 seconds to several minutes, depending on the speed of the host computer and the number of available processors.</p>
-<div id="a2f74b9a" class="cell" data-execution_count="23">
+<div id="8d213a34" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1156,31 +1159,31 @@ Wall time: 28.4 s</code></pre>
 <span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> random_search.fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Fitting 5 folds for each of 10 candidates, totalling 50 fits
-CPU times: user 4.54 s, sys: 222 ms, total: 4.76 s
-Wall time: 1min 45s</code></pre>
+CPU times: user 24.6 s, sys: 247 ms, total: 24.8 s
+Wall time: 2min 47s</code></pre>
 </div>
 </div>
-<div id="3710b3d8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="24">
+<div id="d157cdc2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;slideshow&quot;,&quot;value&quot;:{&quot;slide_type&quot;:&quot;slide&quot;}}" data-tags="[]" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>results.best_score_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>np.float64(0.9153112852205773)</code></pre>
+<pre><code>np.float64(0.9168435493151819)</code></pre>
 </div>
 </div>
-<div id="9f322382" class="cell" data-execution_count="25">
+<div id="6e139629" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>results.best_params_</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>{'rf__max_depth': np.int64(13),
- 'rf__max_features': np.float64(0.2516079402186527),
- 'rf__max_samples': np.float64(0.6309976057306341),
- 'rf__min_samples_leaf': np.int64(1),
- 'rf__n_estimators': np.int64(52)}</code></pre>
+<pre><code>{'rf__max_depth': np.int64(19),
+ 'rf__max_features': np.float64(0.12762751481667575),
+ 'rf__max_samples': np.float64(0.6019102102452695),
+ 'rf__min_samples_leaf': np.int64(3),
+ 'rf__n_estimators': np.int64(363)}</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="22.7">
 <h2 data-number="22.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">22.7</span> Exercises</h2>
-<p>```gilranwtkmgs Questions: :class: attention Import the dataset blood_transfusion.csv:</p>
+<p>```jlbcokbobrnd Questions: :class: attention Import the dataset blood_transfusion.csv:</p>
 <ol type="1">
 <li>The column “Class” contains the target variable. Investigate this variable. Is this a regression or classification problem?</li>
 <li>Why is it relevant to add a preprocessing step to scale the data using a <code>StandardScaler</code> when working with a <code>KNeighborsClassifier</code>?</li>
@@ -1191,7 +1194,7 @@ Wall time: 1min 45s</code></pre>
 <pre><code>
 ## Computing environment
 
-::: {#1ac145de .cell execution_count=26}
+::: {#0eb02ac6 .cell execution_count=26}
 ``` {.python .cell-code}
 %load_ext watermark
 %watermark -v -p jupyterlab,pandas,sklearn</code></pre>
@@ -1201,7 +1204,7 @@ Python version       : 3.12.13
 IPython version      : 9.15.0
 
 jupyterlab: 4.6.2
-pandas    : 3.0.3
+pandas    : 3.0.5
 sklearn   : 1.9.0
 </code></pre>
 </div>
