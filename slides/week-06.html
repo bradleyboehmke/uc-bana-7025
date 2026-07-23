@@ -281,7 +281,7 @@
 <p><strong>Scenario:</strong> Alert when inventory is low</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="26c6482e" class="cell" data-execution_count="1">
+<div id="8e9c2bbf" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-label="1"></a><span class="co"># Low inventory</span></span>
 <span id="cb1-2"><a href="" aria-label="2"></a>stock_level <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="" aria-label="3"></a></span>
@@ -295,7 +295,7 @@ Current stock: 5 units</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="15eb7d44" class="cell" data-execution_count="2">
+<div id="01ff472c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-label="1"></a><span class="co"># Sufficient inventory</span></span>
 <span id="cb3-2"><a href="" aria-label="2"></a>stock_level <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb3-3"><a href="" aria-label="3"></a></span>
@@ -328,7 +328,7 @@ Current stock: 5 units</code></pre>
 <p><strong>Scenario:</strong> Two possible outcomes based on a condition</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="9d88f2bf" class="cell" data-execution_count="3">
+<div id="81220fa7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-label="1"></a><span class="co"># VIP customer</span></span>
 <span id="cb5-2"><a href="" aria-label="2"></a>base_price <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb5-3"><a href="" aria-label="3"></a>is_vip <span class="op">=</span> <span class="va">True</span></span>
@@ -347,7 +347,7 @@ Price: $80.0</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="06d38ba5" class="cell" data-execution_count="4">
+<div id="54912ccd" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-label="1"></a><span class="co"># Regular customer</span></span>
 <span id="cb7-2"><a href="" aria-label="2"></a>base_price <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb7-3"><a href="" aria-label="3"></a>is_vip <span class="op">=</span> <span class="va">False</span></span>
@@ -386,7 +386,7 @@ Price: $95.0</code></pre>
 <p><strong>Scenario:</strong> Multiple conditions to check in order</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="09f79f22" class="cell" data-execution_count="5">
+<div id="c194838b" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-label="1"></a><span class="co"># High-value customer</span></span>
 <span id="cb9-2"><a href="" aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb9-3"><a href="" aria-label="3"></a></span>
@@ -409,7 +409,7 @@ Price: $95.0</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="5757c9fd" class="cell" data-execution_count="6">
+<div id="49a60096" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-label="1"></a><span class="co"># Medium-value customer</span></span>
 <span id="cb11-2"><a href="" aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">7500</span></span>
 <span id="cb11-3"><a href="" aria-label="3"></a></span>
@@ -464,7 +464,7 @@ Price: $95.0</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>✅ Correct Order (Most to Least Specific)</strong></p>
-<div id="fb0e0ad0" class="cell" data-execution_count="7">
+<div id="4e3d56a9" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-label="1"></a><span class="co"># Check from high to low</span></span>
 <span id="cb13-2"><a href="" aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb13-3"><a href="" aria-label="3"></a></span>
@@ -484,7 +484,7 @@ Price: $95.0</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>❌ Wrong Order (Least to Most Specific)</strong></p>
-<div id="f1f88377" class="cell" data-execution_count="8">
+<div id="3e978dda" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-label="1"></a><span class="co"># Check from low to high - WRONG!</span></span>
 <span id="cb15-2"><a href="" aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb15-3"><a href="" aria-label="3"></a></span>
@@ -551,7 +551,7 @@ else:
 </section>
 <section id="solution-vip-discount-logic" class="slide level2 smaller">
 <h2>Solution: VIP Discount Logic</h2>
-<div id="064d2d51" class="cell" data-execution_count="9">
+<div id="c0d385c4" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-label="1"></a><span class="co"># Solution</span></span>
 <span id="cb18-2"><a href="" aria-label="2"></a>customer_type <span class="op">=</span> <span class="st">'VIP'</span></span>
 <span id="cb18-3"><a href="" aria-label="3"></a></span>
@@ -579,7 +579,7 @@ else:
 </section>
 <section id="illustration-np.where-for-ifelse" class="slide level2 smaller">
 <h2>Illustration: <code>np.where()</code> for if/else</h2>
-<div id="e170e9f5" class="cell" data-execution_count="10">
+<div id="9aee3f36" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a href="" aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-3"><a href="" aria-label="3"></a></span>
@@ -697,7 +697,7 @@ else:
 <section id="illustration-1-simple-list-iteration" class="slide level2 smaller">
 <h2>Illustration 1: Simple List Iteration</h2>
 <p><strong>Scenario:</strong> Calculate 10% commission on each sale</p>
-<div id="2d162bac" class="cell" data-execution_count="11">
+<div id="722dae91" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-label="1"></a><span class="co"># Sales amounts from five transactions</span></span>
 <span id="cb21-2"><a href="" aria-label="2"></a>sales_amounts <span class="op">=</span> [<span class="dv">45000</span>, <span class="dv">52000</span>, <span class="dv">38000</span>, <span class="dv">41000</span>, <span class="dv">67000</span>]</span>
 <span id="cb21-3"><a href="" aria-label="3"></a></span>
@@ -716,7 +716,7 @@ Sales: $67,000 → Commission: $6,700</code></pre>
 <p><strong>Pattern:</strong> Iterate through each item, perform calculation, use result</p>
 <div class="fragment">
 <p>Sometimes we iterate and just store the results:</p>
-<div id="3329bb87" class="cell" data-execution_count="12">
+<div id="2407c5a8" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-label="1"></a>commissions <span class="op">=</span> []</span>
 <span id="cb23-2"><a href="" aria-label="2"></a></span>
 <span id="cb23-3"><a href="" aria-label="3"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_amounts:</span>
@@ -733,7 +733,7 @@ Sales: $67,000 → Commission: $6,700</code></pre>
 <section id="illustration-2-dictionary-iteration" class="slide level2 smaller">
 <h2>Illustration 2: Dictionary Iteration</h2>
 <p><strong>Scenario:</strong> Extract store names and sales from dictionary</p>
-<div id="4aa3c95c" class="cell" data-execution_count="13">
+<div id="f5b1f522" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-label="1"></a><span class="co"># Store performance data</span></span>
 <span id="cb25-2"><a href="" aria-label="2"></a>store_data <span class="op">=</span> {</span>
 <span id="cb25-3"><a href="" aria-label="3"></a>    <span class="st">'Downtown'</span>: <span class="dv">125000</span>,</span>
@@ -761,7 +761,7 @@ Airport : 8700.0</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Traditional for loop:</strong></p>
-<div id="dd6df4d6" class="cell" data-execution_count="14">
+<div id="898f811c" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-label="1"></a><span class="co"># Original prices</span></span>
 <span id="cb27-2"><a href="" aria-label="2"></a>prices <span class="op">=</span> [<span class="fl">29.99</span>, <span class="fl">49.99</span>, <span class="fl">19.99</span>, <span class="fl">89.99</span>]</span>
 <span id="cb27-3"><a href="" aria-label="3"></a></span>
@@ -778,7 +778,7 @@ Airport : 8700.0</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>List comprehension:</strong></p>
-<div id="89803e03" class="cell" data-execution_count="15">
+<div id="93919b2c" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-label="1"></a><span class="co"># Original prices</span></span>
 <span id="cb29-2"><a href="" aria-label="2"></a>prices <span class="op">=</span> [<span class="fl">29.99</span>, <span class="fl">49.99</span>, <span class="fl">19.99</span>, <span class="fl">89.99</span>]</span>
 <span id="cb29-3"><a href="" aria-label="3"></a></span>
@@ -847,7 +847,7 @@ Airport : 8700.0</code></pre>
 <section id="solution-temperature-converter" class="slide level2 smaller">
 <h2>Solution: Temperature Converter</h2>
 <p><strong>Part 1: Using a for loop</strong></p>
-<div id="1cb5ded9" class="cell" data-execution_count="16">
+<div id="07175a89" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-label="1"></a><span class="co"># Given data</span></span>
 <span id="cb32-2"><a href="" aria-label="2"></a>celsius_temps <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">19</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">22</span>]</span>
 <span id="cb32-3"><a href="" aria-label="3"></a></span>
@@ -863,7 +863,7 @@ Airport : 8700.0</code></pre>
 </div>
 </div>
 <p><strong>Part 2: Using list comprehension</strong></p>
-<div id="78b85a3d" class="cell" data-execution_count="17">
+<div id="4d7a9e9a" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-label="1"></a><span class="co"># Convert using list comprehension</span></span>
 <span id="cb34-2"><a href="" aria-label="2"></a>fahrenheit_temps <span class="op">=</span> [(celsius <span class="op">*</span> <span class="dv">9</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span> <span class="dv">32</span> <span class="cf">for</span> celsius <span class="kw">in</span> celsius_temps]</span>
 <span id="cb34-3"><a href="" aria-label="3"></a></span>
@@ -910,7 +910,7 @@ Airport : 8700.0</code></pre>
 <section id="anatomy-of-a-good-function" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 1: Basic function - inputs and output</strong></p>
-<div id="f3b76252" class="cell" data-execution_count="18">
+<div id="61b2086c" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue, cost):</span>
 <span id="cb37-2"><a href="" aria-label="2"></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> revenue</span>
 <span id="cb37-3"><a href="" aria-label="3"></a>    <span class="cf">return</span> margin</span>
@@ -925,7 +925,7 @@ Airport : 8700.0</code></pre>
 <section id="anatomy-of-a-good-function-1" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 2: Add documentation (docstring)</strong></p>
-<div id="87af8f2d" class="cell" data-execution_count="19">
+<div id="48f93617" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue, cost):</span>
 <span id="cb39-2"><a href="" aria-label="2"></a>    <span class="co">"""</span></span>
 <span id="cb39-3"><a href="" aria-label="3"></a><span class="co">    Calculate profit margin as a percentage.</span></span>
@@ -963,7 +963,7 @@ Airport : 8700.0</code></pre>
 <section id="anatomy-of-a-good-function-2" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 3: Add type hints (optional but helpful)</strong></p>
-<div id="01aae943" class="cell" data-execution_count="20">
+<div id="08d20a95" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb41-2"><a href="" aria-label="2"></a>    <span class="co">"""</span></span>
 <span id="cb41-3"><a href="" aria-label="3"></a><span class="co">    Calculate profit margin as a percentage.</span></span>
@@ -1016,7 +1016,7 @@ Airport : 8700.0</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Without validation:</strong></p>
-<div id="206ba536" class="cell" data-execution_count="21">
+<div id="7b5a8fcb" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb43-2"><a href="" aria-label="2"></a>    <span class="co">"""Calculate profit margin."""</span></span>
 <span id="cb43-3"><a href="" aria-label="3"></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> revenue <span class="op">*</span> <span class="dv">100</span></span>
@@ -1031,7 +1031,7 @@ Airport : 8700.0</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>With validation:</strong></p>
-<div id="7f53ace3" class="cell" data-execution_count="22">
+<div id="7d93a067" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb45-2"><a href="" aria-label="2"></a>    <span class="co">"""Calculate profit margin with validation."""</span></span>
 <span id="cb45-3"><a href="" aria-label="3"></a></span>
@@ -1077,7 +1077,7 @@ Airport : 8700.0</code></pre>
 </section>
 <section id="illustration-roi-function" class="slide level2 smaller scrollable">
 <h2>Illustration: ROI Function</h2>
-<div id="ef855887" class="cell" data-execution_count="23">
+<div id="7c92d465" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="" aria-label="1"></a><span class="kw">def</span> calculate_roi(revenue, cost):</span>
 <span id="cb46-2"><a href="" aria-label="2"></a>    <span class="co">"""Calculate return on investment as a percentage."""</span></span>
 <span id="cb46-3"><a href="" aria-label="3"></a>    <span class="cf">return</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> cost <span class="op">*</span> <span class="dv">100</span></span>
@@ -1098,7 +1098,7 @@ Campaign C ROI: 33.3%</code></pre>
 </div>
 <div class="fragment">
 <p>Or even more likely…</p>
-<div id="be48c6bf" class="cell" data-execution_count="24">
+<div id="ca8526b4" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="" aria-label="1"></a><span class="co"># Campaign performance data</span></span>
 <span id="cb48-2"><a href="" aria-label="2"></a>campaigns <span class="op">=</span> {</span>
 <span id="cb48-3"><a href="" aria-label="3"></a>    <span class="st">'Email'</span>: {<span class="st">'revenue'</span>: <span class="dv">15000</span>, <span class="st">'cost'</span>: <span class="dv">10000</span>},</span>
@@ -1167,7 +1167,7 @@ Campaign C ROI: 33.3%</code></pre>
 </section>
 <section id="solution-customer-lifetime-value" class="slide level2 smaller">
 <h2>Solution: Customer Lifetime Value</h2>
-<div id="83d1a027" class="cell" data-execution_count="25">
+<div id="709d8913" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="" aria-label="1"></a><span class="co"># Solution</span></span>
 <span id="cb50-2"><a href="" aria-label="2"></a><span class="kw">def</span> customer_lifetime_value(avg_order_value, purchase_frequency, gross_margin, customer_lifespan):</span>
 <span id="cb50-3"><a href="" aria-label="3"></a>    <span class="co">"""Calculate Customer Lifetime Value (CLV)."""</span></span>
@@ -1188,7 +1188,7 @@ Campaign C ROI: 33.3%</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="c53889ca" class="cell" data-execution_count="26">
+<div id="4bce8d8c" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="" aria-label="1"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">200</span>, <span class="dv">6</span>, <span class="fl">0.30</span>, <span class="dv">5</span>))</span>
 <span id="cb52-2"><a href="" aria-label="2"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">100</span>, <span class="dv">3</span>, <span class="fl">0.20</span>, <span class="dv">2</span>))</span>
 <span id="cb52-3"><a href="" aria-label="3"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">75</span>, <span class="dv">12</span>, <span class="fl">0.15</span>, <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1203,7 +1203,7 @@ Campaign C ROI: 33.3%</code></pre>
 <section id="functions-dataframes-scaling-analysis" class="slide level2 smaller scrollable">
 <h2>Functions + DataFrames: Scaling Analysis</h2>
 <p><strong>Scenario:</strong> Apply custom function to each row of a DataFrame</p>
-<div id="61a82dc9" class="cell" data-execution_count="27">
+<div id="8235cbd7" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" data-code-line-numbers="12-21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="" aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb54-2"><a href="" aria-label="2"></a></span>
 <span id="cb54-3"><a href="" aria-label="3"></a><span class="co"># Customer portfolio data</span></span>
