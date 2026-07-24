@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.17">
+<meta name="generator" content="quarto-1.11.0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Module 5: Data Visualization – BANA 7025: Data Wrangling with Python</title>
+<title>Module 5: Data Visualization &amp; EDA – BANA 7025: Data Wrangling with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -44,9 +44,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-63687a1bdef878e043e8453898854efd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ebc60db188ef306950d9575fb91cd422.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1f6b49074e5d0829091baadfd4d4b39d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-08b2a7a6d322e0e5f9dcf7a6bb5db38d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1f6b49074e5d0829091baadfd4d4b39d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-9a6697f2cd8758de5839cb2668cd0b77.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -263,7 +263,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-05-overview.html">Module 5: Data Visualization</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-05-overview.html">Module 5: Data Visualization &amp; EDA</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../book/module-05-overview.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Module 5: Data Visualization</span></a>
+ <span class="menu-text">Module 5: Data Visualization &amp; EDA</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -433,14 +433,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/14-data-viz-matplotlib.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Fundamentals of Plotting with Matplotlib</span></span></a>
+  <a href="../book/14-advanced-data-viz.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Advanced Data Visualization</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/15-data-viz-bokeh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Interactive Data Visualization with Bokeh</span></span></a>
+  <a href="../book/15-exploratory-data-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -548,6 +548,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../book/module-05-cheatsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 5 Cheat Sheet</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -589,6 +595,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lecture" id="toc-lecture" class="nav-link" data-scroll-target="#lecture">Lecture</a></li>
   <li><a href="#chapters-notebooks" id="toc-chapters-notebooks" class="nav-link" data-scroll-target="#chapters-notebooks">Chapters &amp; Notebooks</a></li>
   <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-05-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -599,7 +606,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Module 5: Data Visualization</h1>
+<h1 class="title">Module 5: Data Visualization &amp; EDA</h1>
 </div>
 
 
@@ -616,15 +623,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This module introduces the Python visualization ecosystem. You’ll learn to create quick exploratory charts with pandas, build polished static figures with matplotlib, and make interactive visualizations with Bokeh. By the end of Week 5, you’ll be able to choose the right tool for the visualization task and customize the result for your audience.</p>
+<p>This module builds your visualization toolkit and introduces exploratory data analysis as a systematic practice. You will start with quick exploratory charts in Pandas, then expand to three specialized libraries — Seaborn for statistical visualization, Matplotlib for publication-quality figures, and Bokeh for interactive web-ready charts. The module closes with a full EDA case study that weaves together data wrangling, aggregation, and visualization into a coherent analytical workflow.</p>
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>By the end of this module, you will:</p>
 <ul>
-<li>Create quick exploratory charts directly from a DataFrame using pandas <code>.plot()</code></li>
-<li>Build and customize static figures using matplotlib’s figure/axes architecture</li>
-<li>Create interactive charts for web delivery using Bokeh</li>
-<li>Choose the appropriate chart type for a given data question</li>
+<li>Create quick exploratory charts directly from a DataFrame using Pandas <code>.plot()</code></li>
+<li>Choose the right visualization library for a given analytical goal</li>
+<li>Build statistical visualizations with Seaborn using minimal code</li>
+<li>Create polished, fully-customized figures with Matplotlib’s Figure/Axes API</li>
+<li>Produce interactive, web-ready charts with Bokeh including hover tooltips and zoom</li>
+<li>Apply a systematic EDA framework — question → structure → distributions → segmentation → story — to a new dataset</li>
 </ul>
 </section>
 <section id="module-resources" class="level2 unnumbered">
@@ -645,7 +654,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>💻 Tuesday Your Turn Notebook</td>
-<td><em>Coming soon</em></td>
+<td><a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-05-lecture.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open in Colab"></a></td>
 </tr>
 </tbody>
 </table>
@@ -664,17 +673,17 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>13</td>
 <td>Visualization with Pandas</td>
-<td><em>Coming soon</em></td>
+<td><a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/12_data_viz_pandas.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open in Colab"></a></td>
 </tr>
 <tr class="even">
 <td>14</td>
-<td>Visualization with Matplotlib</td>
-<td><em>Coming soon</em></td>
+<td>Advanced Data Visualization (Seaborn, Matplotlib, Bokeh)</td>
+<td><a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/13_advanced_data_viz.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open in Colab"></a></td>
 </tr>
 <tr class="odd">
 <td>15</td>
-<td>Interactive Visualization with Bokeh</td>
-<td><em>Coming soon</em></td>
+<td>Exploratory Data Analysis</td>
+<td><a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/14_eda.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open in Colab"></a></td>
 </tr>
 </tbody>
 </table>
@@ -691,7 +700,24 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>🧪 Lab 5</td>
-<td><em>Coming soon</em></td>
+<td><a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/labs/lab-05-project-ideation.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" class="img-fluid" alt="Open in Colab"></a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reference" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="reference">Reference</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Resource</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>📋 Module 5 Cheat Sheet</td>
+<td><a href="module-05-cheatsheet.html">View cheat sheet</a></td>
 </tr>
 </tbody>
 </table>

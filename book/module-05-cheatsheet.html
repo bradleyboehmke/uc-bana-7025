@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Getting Started with Jupyter Notebooks – BANA 7025: Data Wrangling with Python</title>
+<title>27&nbsp; Module 5 Cheat Sheet – BANA 7025: Data Wrangling with Python</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../book/05-data-structures.html" rel="next">
-<link href="../book/module-02-overview.html" rel="prev">
+<link href="../book/99-anaconda-install.html" rel="next">
+<link href="../book/module-04-cheatsheet.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -115,35 +115,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -327,7 +298,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-02-overview.html">Module 2: Python Data Science Ecosystem</a></li><li class="breadcrumb-item"><a href="../book/04-jupyter.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with Jupyter Notebooks</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-05-cheatsheet.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 5 Cheat Sheet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -404,7 +375,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/04-jupyter.html" class="sidebar-item-text sidebar-link active">
+  <a href="../book/04-jupyter.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with Jupyter Notebooks</span></span></a>
   </div>
 </li>
@@ -614,7 +585,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../book/module-05-cheatsheet.html" class="sidebar-item-text sidebar-link">
+  <a href="../book/module-05-cheatsheet.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 5 Cheat Sheet</span></span></a>
   </div>
 </li>
@@ -653,44 +624,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#benefits" id="toc-benefits" class="nav-link active" data-scroll-target="#benefits"><span class="header-section-number">4.1</span> Benefits:</a></li>
-  <li><a href="#notebook-anatomy-and-core-features" id="toc-notebook-anatomy-and-core-features" class="nav-link" data-scroll-target="#notebook-anatomy-and-core-features"><span class="header-section-number">4.2</span> Notebook Anatomy and Core Features</a>
-  <ul class="collapse">
-  <li><a href="#code-vs-markdown-cells" id="toc-code-vs-markdown-cells" class="nav-link" data-scroll-target="#code-vs-markdown-cells">Code vs Markdown Cells</a></li>
-  <li><a href="#markdown-basics" id="toc-markdown-basics" class="nav-link" data-scroll-target="#markdown-basics">Markdown Basics</a></li>
-  <li><a href="#code-execution-state" id="toc-code-execution-state" class="nav-link" data-scroll-target="#code-execution-state">Code Execution &amp; State</a></li>
-  <li><a href="#managing-your-notebook" id="toc-managing-your-notebook" class="nav-link" data-scroll-target="#managing-your-notebook">Managing Your Notebook</a></li>
-  </ul></li>
-  <li><a href="#when-not-to-use-notebooks" id="toc-when-not-to-use-notebooks" class="nav-link" data-scroll-target="#when-not-to-use-notebooks"><span class="header-section-number">4.3</span> When Not to Use Notebooks</a>
-  <ul class="collapse">
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations:</a></li>
-  <li><a href="#when-notebooks-shine" id="toc-when-notebooks-shine" class="nav-link" data-scroll-target="#when-notebooks-shine">When Notebooks Shine</a></li>
-  <li><a href="#when-to-use-something-else" id="toc-when-to-use-something-else" class="nav-link" data-scroll-target="#when-to-use-something-else">When to Use Something Else</a></li>
-  </ul></li>
-  <li><a href="#using-.py-files-in-notebooks" id="toc-using-.py-files-in-notebooks" class="nav-link" data-scroll-target="#using-.py-files-in-notebooks"><span class="header-section-number">4.4</span> Using <code>.py</code> Files in Notebooks</a>
-  <ul class="collapse">
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods:</a></li>
-  <li><a href="#why-use-.py-files" id="toc-why-use-.py-files" class="nav-link" data-scroll-target="#why-use-.py-files">Why use <code>.py</code> files?</a></li>
-  </ul></li>
-  <li><a href="#best-practices-and-pro-tips" id="toc-best-practices-and-pro-tips" class="nav-link" data-scroll-target="#best-practices-and-pro-tips"><span class="header-section-number">4.5</span> Best Practices and Pro Tips</a>
-  <ul class="collapse">
-  <li><a href="#want-to-learn-more" id="toc-want-to-learn-more" class="nav-link" data-scroll-target="#want-to-learn-more">Want to Learn More?</a></li>
-  </ul></li>
-  <li><a href="#summary-and-whats-next" id="toc-summary-and-whats-next" class="nav-link" data-scroll-target="#summary-and-whats-next"><span class="header-section-number">4.6</span> 6. Summary and What’s Next</a>
-  <ul class="collapse">
-  <li><a href="#next-up" id="toc-next-up" class="nav-link" data-scroll-target="#next-up">Next Up:</a></li>
-  </ul></li>
-  <li><a href="#exercise-comparing-movie-theater-snacks" id="toc-exercise-comparing-movie-theater-snacks" class="nav-link" data-scroll-target="#exercise-comparing-movie-theater-snacks"><span class="header-section-number">4.7</span> Exercise: Comparing Movie Theater Snacks</a></li>
+  <li><a href="#which-tool-should-i-use" id="toc-which-tool-should-i-use" class="nav-link active" data-scroll-target="#which-tool-should-i-use">Which Tool Should I Use?</a></li>
+  <li><a href="#pandas-.plot" id="toc-pandas-.plot" class="nav-link" data-scroll-target="#pandas-.plot">Pandas <code>.plot()</code></a></li>
+  <li><a href="#seaborn" id="toc-seaborn" class="nav-link" data-scroll-target="#seaborn">Seaborn</a></li>
+  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib">Matplotlib</a></li>
+  <li><a href="#bokeh" id="toc-bokeh" class="nav-link" data-scroll-target="#bokeh">Bokeh</a></li>
+  <li><a href="#eda-workflow" id="toc-eda-workflow" class="nav-link" data-scroll-target="#eda-workflow">EDA Workflow</a></li>
+  <li><a href="#common-pitfalls" id="toc-common-pitfalls" class="nav-link" data-scroll-target="#common-pitfalls">Common Pitfalls</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/04-jupyter.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-05-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-02-overview.html">Module 2: Python Data Science Ecosystem</a></li><li class="breadcrumb-item"><a href="../book/04-jupyter.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with Jupyter Notebooks</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../book/module-01-cheatsheet.html">Cheat Sheets</a></li><li class="breadcrumb-item"><a href="../book/module-05-cheatsheet.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 5 Cheat Sheet</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Getting Started with Jupyter Notebooks</span></h1>
+<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Module 5 Cheat Sheet</span></h1>
+<p class="subtitle lead">Key concepts, definitions, and code from Chapters 13–15</p>
 </div>
 
 
@@ -707,449 +658,361 @@ window.Quarto = {
 </header>
 
 
-<p>In data science, we don’t just write code — we tell stories with data. Jupyter notebooks are an essential tool because they allow us to blend code, explanatory text, and visualizations in a single document. This makes it easier to understand, share, and reflect on your work.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://docs.jupyter.org/en/latest/_images/jupyterlab.png" class="img-fluid figure-img"></p>
-<figcaption>Example notebook with text, code, and visualization</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Think About It
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Have you ever had to write a report, lab summary, or project write-up where you needed to show data, perform calculations, and explain your thinking? How did you do it? How easy was it to share your work or revise it later?</p>
-<p>As you learn about Jupyter notebooks, keep that experience in mind. You’ll soon see how notebooks can transform that process.</p>
-</div>
-</div>
-<section id="benefits" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="benefits"><span class="header-section-number">4.1</span> Benefits:</h2>
-<p>Here are a few key reasons why Jupyter notebooks are so widely used and appreciated in the data science world:</p>
-<ul>
-<li><strong>Blending code and context</strong>: Jupyter notebooks allow you to seamlessly combine executable Python code with rich text elements using Markdown. This means you can explain your thought process, document your workflow, and display results all in one place—making your analysis easier to follow and reproduce.</li>
-<li><strong>Exploratory-friendly</strong>: Notebooks are designed for experimentation. You can write and run code in small, manageable chunks (cells), see immediate feedback, and iteratively refine your approach. This makes it easy to test ideas, debug, and learn as you go.</li>
-<li><strong>Sharable and visual</strong>: Notebooks support inline visualizations, tables, and formatted text, making your work more engaging and accessible. You can easily export notebooks as HTML or PDF files to share with others, ensuring your analysis is both readable and reproducible.</li>
-</ul>
+<p>A quick-reference summary of the essential ideas from Module 5. Click any section heading to jump to the full coverage in the book.</p>
+<hr>
+<section id="which-tool-should-i-use" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="which-tool-should-i-use">Which Tool Should I Use?</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 64%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Reach for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quick exploration directly from a DataFrame</td>
+<td><strong>Pandas</strong> <code>.plot()</code></td>
+</tr>
+<tr class="even">
+<td>Statistical visualization — distributions, comparisons, relationships</td>
+<td><strong>Seaborn</strong></td>
+</tr>
+<tr class="odd">
+<td>Full layout control, publication-quality output, annotations</td>
+<td><strong>Matplotlib</strong></td>
+</tr>
+<tr class="even">
+<td>Interactive charts — hover, zoom, pan for stakeholder exploration</td>
+<td><strong>Bokeh</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The libraries build on each other: Pandas wraps Matplotlib; Seaborn wraps Matplotlib; the <code>ax</code> object returned by any of them accepts Matplotlib customization. Learning Matplotlib once pays dividends across the entire ecosystem.</p>
+<hr>
+</section>
+<section id="pandas-.plot" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="pandas-.plot"><a href="13-data-viz-pandas.html">Pandas <code>.plot()</code></a></h2>
+<blockquote class="blockquote">
+<p><strong><code>.plot()</code></strong> is a DataFrame method that delegates to Matplotlib. It is the fastest path from a DataFrame to a chart.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Common plot types</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col'</span>].plot(kind<span class="op">=</span><span class="st">'hist'</span>, bins<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'col'</span>].plot(kind<span class="op">=</span><span class="st">'box'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">'bar'</span>,  x<span class="op">=</span><span class="st">'category'</span>, y<span class="op">=</span><span class="st">'value'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">'barh'</span>, x<span class="op">=</span><span class="st">'category'</span>, y<span class="op">=</span><span class="st">'value'</span>)   <span class="co"># horizontal bars</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">'scatter'</span>, x<span class="op">=</span><span class="st">'col_a'</span>, y<span class="op">=</span><span class="st">'col_b'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">'line'</span>)                              <span class="co"># default for numeric index</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Key shared parameters</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), title<span class="op">=</span><span class="st">'My Chart'</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'X Label'</span>, ylabel<span class="op">=</span><span class="st">'Y Label'</span>, legend<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the underlying Axes object to apply Matplotlib customization</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Refined Title'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="seaborn" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="seaborn"><a href="14-advanced-data-viz.html#seaborn">Seaborn</a></h2>
+<blockquote class="blockquote">
+<p><strong>Seaborn</strong> is a statistical visualization library built on Matplotlib. It works natively with DataFrames and adds distribution analysis, group comparison, and relational plots with minimal code.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribution — histogram with optional KDE overlay</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">'col'</span>], bins<span class="op">=</span><span class="dv">40</span>, kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">'col'</span>], bins<span class="op">=</span><span class="dv">40</span>, kde<span class="op">=</span><span class="va">True</span>, ax<span class="op">=</span>ax)  <span class="co"># pass an Axes object</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Group comparison — box or violin</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'category'</span>, y<span class="op">=</span><span class="st">'numeric_col'</span>, order<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>sns.violinplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'category'</span>, y<span class="op">=</span><span class="st">'numeric_col'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Relational — scatter with a third dimension as color</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'col_a'</span>, y<span class="op">=</span><span class="st">'col_b'</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">'group'</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                palette<span class="op">=</span>{<span class="st">'Group 1'</span>: <span class="st">'#e63946'</span>, <span class="st">'Group 2'</span>: <span class="st">'#457b9d'</span>},</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                s<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap — requires a pivot table as input</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> df.pivot_table(index<span class="op">=</span><span class="st">'row_var'</span>, columns<span class="op">=</span><span class="st">'col_var'</span>, values<span class="op">=</span><span class="st">'metric'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pivot, cmap<span class="op">=</span><span class="st">'YlOrRd'</span>, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'.0f'</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            cbar_kws<span class="op">=</span>{<span class="st">'label'</span>: <span class="st">'Metric'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Use when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>histplot</code></td>
+<td>Understanding the distribution of one numeric variable</td>
+</tr>
+<tr class="even">
+<td><code>boxplot</code> / <code>violinplot</code></td>
+<td>Comparing a numeric variable across categories</td>
+</tr>
+<tr class="odd">
+<td><code>scatterplot</code></td>
+<td>Showing the relationship between two numeric variables, optionally colored by a third</td>
+</tr>
+<tr class="even">
+<td><code>heatmap</code></td>
+<td>Visualizing a matrix of values across two categorical dimensions</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Think of a notebook as your digital lab notebook. Instead of jumping between different tools to write your analysis, calculate results, and explain your thinking, a Jupyter notebook lets you do it all in one place—cleanly combining code, commentary, and visuals in a single, easy-to-follow narrative.</p>
+<p>The <code>hue</code> parameter is Seaborn’s built-in mechanism for adding a third dimension to almost any plot type — it maps a column to color without any extra code.</p>
 </div>
 </div>
 </div>
+<hr>
 </section>
-<section id="notebook-anatomy-and-core-features" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="notebook-anatomy-and-core-features"><span class="header-section-number">4.2</span> Notebook Anatomy and Core Features</h2>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>📓 Follow Along in Colab!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As you read through this chapter, we encourage you to follow along using the <a href="https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/03_jupyter_notebook_basics.ipynb">companion notebook</a> in Google Colab (or other editor of choice). This interactive notebook lets you run code examples covered in the chapter—and experiment with your own ideas.</p>
-<p>👉 Open the <a href="https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/03_jupyter_notebook_basics.ipynb">Jupyter Basics Notebook in Colab</a>.</p>
-</div>
-</div>
-<section id="code-vs-markdown-cells" class="level3">
-<h3 class="anchored" data-anchor-id="code-vs-markdown-cells">Code vs Markdown Cells</h3>
-<p>Jupyter notebooks are made up of <strong>cells</strong>, and there are two main types you’ll use regularly: <strong><em>code cells</em></strong> and <strong><em>Markdown cells</em></strong>.</p>
-<ul>
-<li><strong>Code cells</strong> are where you write and run Python code. When executed, these cells display output directly beneath the cell—whether it’s a simple calculation, a table, or a visualization.</li>
-<li><strong>Markdown cells</strong> allow you to format text to explain your work, provide instructions, insert images, or even write mathematical formulas. These cells support formatting tools like headers, bullet points, bold/italic text, and LaTeX for equations.</li>
-</ul>
-<p>By combining these two types of cells, you can create a clear, readable narrative that both documents your process and shows your results.</p>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong>Watch from 5:20-8:45 in this video</strong> to see simple examples of code cells and Markdown cells.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/CeRoQ9DFmZI?si=Ev9bOO90wPElpnZz" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-</div>
-</div>
-<p>To select the type of a cell (Code or Markdown), use the dropdown menu typically found at the top of the notebook interface. In Jupyter Lab or classic Jupyter Notebook, it will say ‘Code’ or ‘Markdown’—click it to change. In VS Code, you can right-click a cell and choose the type, or use shortcuts like <code>Cmd+M M</code> (Markdown) and <code>Cmd+M Y</code> (Code) on Mac (<code>Ctrl+M</code> equivalents on Windows).</p>
-<p>To run a cell: <code>Shift + Enter</code></p>
-<section id="knowledge-check" class="level4">
-<h4 class="anchored" data-anchor-id="knowledge-check">Knowledge check</h4>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Try It!
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="matplotlib" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="matplotlib"><a href="14-advanced-data-viz.html#matplotlib">Matplotlib</a></h2>
+<blockquote class="blockquote">
+<p><strong>Matplotlib</strong> is the foundation of Python visualization. Every other library is built on it. Use it when you need full control over figure layout, annotations, tick formatting, and multi-panel composition.</p>
+</blockquote>
+<p><strong>The standard starting pattern:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mtick</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(width, height))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ... build the plot on ax ...</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Multi-panel layout:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">5</span>), constrained_layout<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].bar(x, y, color<span class="op">=</span><span class="st">'steelblue'</span>)   <span class="co"># left panel</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].hist(values, bins<span class="op">=</span><span class="dv">40</span>)           <span class="co"># right panel</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Shared Title'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Common <code>ax.*</code> methods:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ax.plot(x, y)</code></td>
+<td>Line chart</td>
+</tr>
+<tr class="even">
+<td><code>ax.bar(x, y)</code> / <code>ax.barh(x, y)</code></td>
+<td>Vertical / horizontal bar chart</td>
+</tr>
+<tr class="odd">
+<td><code>ax.scatter(x, y)</code></td>
+<td>Scatter plot</td>
+</tr>
+<tr class="even">
+<td><code>ax.hist(values, bins=n)</code></td>
+<td>Histogram</td>
+</tr>
+<tr class="odd">
+<td><code>ax.set_title('text')</code></td>
+<td>Chart title</td>
+</tr>
+<tr class="even">
+<td><code>ax.set_xlabel('text')</code></td>
+<td>x-axis label</td>
+</tr>
+<tr class="odd">
+<td><code>ax.set_ylabel('text')</code></td>
+<td>y-axis label</td>
+</tr>
+<tr class="even">
+<td><code>ax.set_xlim(lo, hi)</code> / <code>ax.set_ylim(lo, hi)</code></td>
+<td>Axis limits</td>
+</tr>
+<tr class="odd">
+<td><code>ax.set_xscale('log')</code></td>
+<td>Log scale axis</td>
+</tr>
+<tr class="even">
+<td><code>ax.grid(linestyle='dashed', alpha=0.4)</code></td>
+<td>Grid lines</td>
+</tr>
+<tr class="odd">
+<td><code>ax.annotate('text', xy=..., xytext=..., arrowprops=...)</code></td>
+<td>Arrow + label annotation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tick formatting:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mtick</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(mtick.StrMethodFormatter(<span class="st">'$</span><span class="sc">{x:,.0f}</span><span class="st">'</span>))  <span class="co"># dollar format</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(mtick.PercentFormatter())                <span class="co"># percent format</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)                                   <span class="co"># rotate labels</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Built-in styles:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'fivethirtyeight'</span>)   <span class="co"># apply a style</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ... build chart ...</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'default'</span>)           <span class="co"># always reset after to avoid side effects</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plt.style.available)         <span class="co"># list all available styles</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="bokeh" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="bokeh"><a href="14-advanced-data-viz.html#bokeh">Bokeh</a></h2>
+<blockquote class="blockquote">
+<p><strong>Bokeh</strong> produces interactive charts that run in a web browser — users can zoom, pan, hover for details, and filter. Use it when your audience needs to explore the data themselves.</p>
+</blockquote>
+<p><strong>Setup:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.plotting <span class="im">import</span> figure, show</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.models <span class="im">import</span> HoverTool, ColumnDataSource</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.io <span class="im">import</span> output_notebook</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>output_notebook()   <span class="co"># render inline in Jupyter</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Core pattern — figure → glyph → show:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> ColumnDataSource(df)   <span class="co"># wraps a DataFrame for Bokeh</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> figure(title<span class="op">=</span><span class="st">'Chart Title'</span>, width<span class="op">=</span><span class="dv">700</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           tools<span class="op">=</span><span class="st">'pan,wheel_zoom,box_zoom,reset,save'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>p.line(<span class="st">'x_col'</span>, <span class="st">'y_col'</span>, source<span class="op">=</span>source, line_width<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'steelblue'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or: p.scatter(), p.circle(), p.rect(), p.vbar()</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>HoverTool:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hover <span class="op">=</span> HoverTool(tooltips<span class="op">=</span>[</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'Label'</span>, <span class="st">'@column_name'</span>),           <span class="co"># string column</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'Value'</span>, <span class="st">'@numeric_col{$0,0.00}'</span>),  <span class="co"># dollar formatted</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'Date'</span>,  <span class="st">'@date_col{</span><span class="sc">%F</span><span class="st">}'</span>),          <span class="co"># date formatted</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>], formatters<span class="op">=</span>{<span class="st">'@date_col'</span>: <span class="st">'datetime'</span>})</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>p.add_tools(hover)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Color encoding:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.transform <span class="im">import</span> factor_cmap</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.palettes <span class="im">import</span> Category10</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>tiers <span class="op">=</span> df[<span class="st">'group'</span>].unique().tolist()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>p.scatter(<span class="st">'x'</span>, <span class="st">'y'</span>, source<span class="op">=</span>source,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          color<span class="op">=</span>factor_cmap(<span class="st">'group'</span>, palette<span class="op">=</span>Category10[<span class="dv">3</span>][:<span class="dv">2</span>], factors<span class="op">=</span>tiers),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          legend_field<span class="op">=</span><span class="st">'group'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Color mapper (continuous → color):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.models <span class="im">import</span> LinearColorMapper, ColorBar</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.transform <span class="im">import</span> transform</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bokeh.palettes <span class="im">import</span> YlOrRd9</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mapper <span class="op">=</span> LinearColorMapper(palette<span class="op">=</span>YlOrRd9[::<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                           low<span class="op">=</span>df[<span class="st">'value'</span>].<span class="bu">min</span>(),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                           high<span class="op">=</span>df[<span class="st">'value'</span>].<span class="bu">max</span>())</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p.rect(x<span class="op">=</span><span class="st">'x_col'</span>, y<span class="op">=</span><span class="st">'y_col'</span>, width<span class="op">=</span><span class="dv">1</span>, height<span class="op">=</span><span class="dv">1</span>, source<span class="op">=</span>source,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       fill_color<span class="op">=</span>transform(<span class="st">'value'</span>, mapper), line_color<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>color_bar <span class="op">=</span> ColorBar(color_mapper<span class="op">=</span>mapper, title<span class="op">=</span><span class="st">'Value'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>p.add_layout(color_bar, <span class="st">'right'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Log axes:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> figure(x_axis_type<span class="op">=</span><span class="st">'log'</span>, y_axis_type<span class="op">=</span><span class="st">'log'</span>, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="eda-workflow" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="eda-workflow"><a href="15-exploratory-data-analysis.html">EDA Workflow</a></h2>
+<blockquote class="blockquote">
+<p><strong>Exploratory Data Analysis (EDA)</strong> is a systematic process for understanding a dataset before drawing conclusions. It is driven by questions, not random plotting.</p>
+</blockquote>
+<p><strong>The four-step framework:</strong></p>
 <ol type="1">
-<li><p>Create and execute a Markdown cell and write the following: “Today I’m learning about Jupyter notebooks!”</p></li>
-<li><p>Below it, create and execute a Code cell that:</p>
-<ul>
-<li>Defines a variable, like <code>x = 5</code></li>
-<li>Prints a message that includes the variable (e.g., <code>print(f'The value of x is {x}')</code>)</li>
-</ul></li>
+<li><strong>Start with a question</strong> — specific enough to focus the analysis, open enough to allow discovery</li>
+<li><strong>Understand the structure first</strong> — <code>.shape</code>, <code>.info()</code>, <code>.describe()</code>, <code>.isnull().sum()</code></li>
+<li><strong>Explore distributions before relationships</strong> — univariate before bivariate</li>
+<li><strong>Let the data surprise you</strong> — follow unexpected findings; they are often the real insight</li>
 </ol>
-</div>
-</div>
+<p><strong>Common EDA patterns:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Orient to the data</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df.shape          <span class="co"># (rows, columns)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df.info()         <span class="co"># dtypes and null counts</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>df.describe()     <span class="co"># summary stats for numeric columns</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df.isnull().<span class="bu">sum</span>() <span class="co"># missing value counts per column</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Define the unit of analysis</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>trips <span class="op">=</span> (</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    transactions</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    .groupby([<span class="st">'household_id'</span>, <span class="st">'basket_id'</span>], as_index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    .agg(spend<span class="op">=</span>(<span class="st">'sales_value'</span>, <span class="st">'sum'</span>), items<span class="op">=</span>(<span class="st">'quantity'</span>, <span class="st">'sum'</span>))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Compute inter-event gaps</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>df_sorted <span class="op">=</span> df.sort_values([<span class="st">'id_col'</span>, <span class="st">'date_col'</span>])</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>df_sorted[<span class="st">'days_since_last'</span>] <span class="op">=</span> (</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    df_sorted.groupby(<span class="st">'id_col'</span>)[<span class="st">'date_col'</span>].diff().dt.days</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Classify into segments</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify(x):</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;=</span> <span class="dv">7</span>:   <span class="cf">return</span> <span class="st">'Frequent'</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&lt;=</span> <span class="dv">30</span>: <span class="cf">return</span> <span class="st">'Occasional'</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:         <span class="cf">return</span> <span class="st">'Rare'</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'segment'</span>] <span class="op">=</span> df[<span class="st">'metric'</span>].<span class="bu">apply</span>(classify)</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Normalize within groups for fair comparison</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'pct'</span>] <span class="op">=</span> df.groupby(<span class="st">'group'</span>)[<span class="st">'count'</span>].transform(<span class="kw">lambda</span> x: x <span class="op">/</span> x.<span class="bu">sum</span>() <span class="op">*</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-</section>
-<section id="markdown-basics" class="level3">
-<h3 class="anchored" data-anchor-id="markdown-basics">Markdown Basics</h3>
-<p>There’s a lot you can do with Markdown to make your notebooks clearer and more engaging. You can add headings, lists, formatting, and even mathematical expressions to help document your analysis and guide readers through your work.</p>
-<p>Here are a few basics to get you started but check out the cheat sheet below to see more:</p>
-<ul>
-<li><strong>Headers</strong>: Use <code>#</code>, <code>##</code>, <code>###</code> to create headings of different sizes</li>
-<li><strong>Bold and Italic</strong>: <code>**bold**</code>, <code>*italic*</code></li>
-<li><strong>Lists</strong>: <code>- item</code> for bullet points or <code>1. item</code> for numbered lists</li>
-<li><strong>Equations</strong>: Use LaTeX syntax between dollar signs, like <code>$a^2 + b^2 = c^2$</code></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/markdown-cheatsheet.png" class="img-fluid figure-img"></p>
-<figcaption>Markdown Cheat Sheet (<a href="https://media.datacamp.com/legacy/image/upload/v1697797990/Marketing/Blog/Markdown_Cheat_Sheet.pdf">Datacamp</a>)</figcaption>
-</figure>
-</div>
-<p>Want to go deeper? You can explore more Markdown syntax in these helpful guides:</p>
-<ul>
-<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html">Jupyter Docs on Markdown</a>: A quick and easy introduction to get you started with basic Markdown syntax.</li>
-<li><a href="https://www.markdownguide.org/basic-syntax/">Markdown Guide</a>: A more detailed reference for adding more structure and polish to your notebook explanations.</li>
-<li><a href="https://colab.research.google.com/notebooks/markdown_guide.ipynb">Colab Markdown Guide notebook</a>: An example Colab notebook that allows you to experiment directly with Markdown syntax - a great playground for practicing different Markdown elements in a live notebook environment.&nbsp;</li>
-</ul>
-<section id="knowledge-check-1" class="level4">
-<h4 class="anchored" data-anchor-id="knowledge-check-1">Knowledge check</h4>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Try It!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Build on the previous activity by enhancing your notebook with more Markdown elements:</p>
-<ol type="1">
-<li>At the very top of your notebook, add a <strong>title</strong> using a level-1 header (<code>#</code>).</li>
-<li>Add a <strong>second-level header</strong> (<code>##</code>) introducing a new section.</li>
-<li>Under that header, create a <strong>bulleted list</strong>—for example, a grocery shopping list.</li>
-<li><em>(Stretch Goal)</em> Try writing a simple <strong>equation</strong> in Markdown, such as the formula for the area of a circle: <code>$A = \pi r^2$</code>.</li>
-</ol>
-<p>This will help you practice using Markdown to better organize and explain your work.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="code-execution-state" class="level3">
-<h3 class="anchored" data-anchor-id="code-execution-state">Code Execution &amp; State</h3>
-<p>One of the key features of Jupyter notebooks is that they allow you to execute code one cell at a time. This supports experimentation, but also introduces some complexity.</p>
-<ul>
-<li><strong>Code is executed in the order you run the cells</strong>, not necessarily from top to bottom. This means you can define a variable in one cell and use it later—even if that later cell is above the original one. While this can be convenient, it can also lead to confusion or bugs if you’re not careful.</li>
-</ul>
-<div class="callout callout-style-simple callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Example:
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>In one code cell, type: <code>x = 42</code></li>
-<li>Now scroll up and create a new code cell <strong>above</strong> that one.</li>
-<li>In that new cell, type: <code>print(x)</code> and run it.</li>
-</ol>
-<p>It will work—because the variable <code>x</code> was already defined in memory. But if someone runs the notebook from top to bottom, it will break. This illustrates why executing cells out of order can lead to unpredictable behavior.</p>
-</div>
-</div>
-<ul>
-<li><strong>The notebook maintains a running memory called the kernel.</strong> As long as the kernel is active, all the variables and functions you’ve defined persist in memory. This makes it easy to build on previous work, but if you make a mistake or want a clean slate, you may need to restart the kernel.</li>
-</ul>
-<p>A good habit is to periodically restart the kernel and run all cells in order to ensure your notebook works as expected from top to bottom.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/qjRfyjNXpKE?si=f9sU2kJFXcQxmB_e" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-<section id="managing-your-notebook" class="level3">
-<h3 class="anchored" data-anchor-id="managing-your-notebook">Managing Your Notebook</h3>
-<p>Working in Jupyter notebooks involves managing both your work and the underlying system that runs it. Here are a few key features and best practices to help keep things running smoothly:</p>
-<ul>
-<li><p><strong>Save often</strong>: Notebooks autosave regularly, especially when working in a browser-based environment like Jupyter Lab or Colab. However, it’s still a good habit to manually save using <code>Ctrl+S</code> or <code>Cmd+S</code>, especially before running all cells or restarting the kernel.</p></li>
-<li><p><strong>Restarting the Kernel</strong>: If your notebook starts behaving unpredictably—due to memory overload, undefined variables, or bugs—it’s a good idea to restart the kernel. Restarting wipes the slate clean by clearing all variables from memory, allowing you to re-run the notebook from the top.</p></li>
-<li><p><strong>Clear Outputs</strong>: Before sharing your notebook with others or submitting it for review, consider clearing all outputs (cell results, print statements, plots, etc.). This makes your notebook easier to read and ensures the reader sees only the final results when they run it themselves. You can usually do this via the <code>Kernel</code> or <code>Edit</code> menu.</p></li>
-</ul>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Again, can’t highlight this enough, a good practice is to “Restart and Run All” to make sure your notebook runs cleanly from start to finish without relying on any hidden state or cell order.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="when-not-to-use-notebooks" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="when-not-to-use-notebooks"><span class="header-section-number">4.3</span> When Not to Use Notebooks</h2>
-<p>Notebooks are powerful and flexible, but they aren’t the best fit for every type of task—especially as your work becomes more complex or transitions into production environments.</p>
-<section id="limitations" class="level3">
-<h3 class="anchored" data-anchor-id="limitations">Limitations:</h3>
-<ul>
-<li><strong>Hard to modularize and test</strong>: Notebooks encourage an exploratory, linear style of development. But when you need reusable functions, testable components, or well-structured projects, notebooks can become unwieldy.</li>
-<li><strong>Poor version control</strong>: While tools like Git work well with text files, notebooks save code and output together in JSON format. This makes it difficult to track changes or resolve merge conflicts. This is improving but is still less than stellar.</li>
-<li><strong>Execution order issues</strong>: Since notebooks allow you to run cells out of order, it’s easy to accidentally create dependencies that break when someone else (or you later) tries to run the notebook top to bottom.</li>
-</ul>
-</section>
-<section id="when-notebooks-shine" class="level3">
-<h3 class="anchored" data-anchor-id="when-notebooks-shine">When Notebooks Shine</h3>
-<p>Jupyter notebooks truly excel in scenarios where exploration, explanation, and communication are key. Here are a few situations where notebooks are particularly well-suited:</p>
-<ul>
-<li><strong>Learning and teaching</strong>: The ability to mix code, narrative, and output in one place makes notebooks an ideal format for both instruction and self-study.</li>
-<li><strong>Exploratory data analysis (EDA)</strong>: Notebooks allow you to quickly test hypotheses, visualize data, and keep track of your insights along the way.</li>
-<li><strong>Prototyping and trying out ideas</strong>: Need to test a small function or compare two approaches? Notebooks provide a fast and flexible way to experiment.</li>
-<li><strong>Creating interactive reports and visualizations</strong>: With support for charts, tables, and even interactive widgets, notebooks are a powerful medium for communicating data-driven stories.</li>
-</ul>
-</section>
-<section id="when-to-use-something-else" class="level3">
-<h3 class="anchored" data-anchor-id="when-to-use-something-else">When to Use Something Else</h3>
-<p>While notebooks are fantastic for interactive work, they aren’t ideal when software engineering discipline and scalability are required. Here are scenarios where other tools—like <code>.py</code> scripts, IDEs, or structured repositories—are often a better choice:</p>
-<ul>
-<li><strong>Building and deploying production applications</strong>: Applications that need to be deployed on servers or integrated with other systems require a more modular and structured codebase than notebooks typically provide.</li>
-<li><strong>Creating libraries, APIs, or packages</strong>: These projects need reusable components, proper documentation, and automated testing, which are easier to maintain outside of notebooks.</li>
-<li><strong>Collaborating with others using complex Git workflows</strong>: Notebooks don’t lend themselves well to detailed version control, especially with branching and merging.</li>
-<li><strong>Developing software that requires extensive testing or CI/CD pipelines</strong>: Production-grade software often relies on unit testing, linting, and automated builds, which are best handled in traditional <code>.py</code> environments.</li>
-</ul>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>If you don’t yet know what all the bullet points above mean — like <strong><em>Git</em></strong>, <strong><em>APIs</em></strong>, <strong><em>CI/CD</em></strong>, or <strong><em>modular code</em></strong> — that’s completely fine. You’ll encounter these concepts as you progress in your data science journey. For now, just understand that as projects get more complex and move closer to production, notebooks often aren’t the best tool for the job.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="using-.py-files-in-notebooks" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="using-.py-files-in-notebooks"><span class="header-section-number">4.4</span> Using <code>.py</code> Files in Notebooks</h2>
-<p>Mixing <code>.py</code> scripts with notebooks is common in real-world workflows, especially as your projects grow in complexity or require reusable functions. Instead of writing everything directly in a notebook, you can keep your reusable logic—like data cleaning functions, utility tools, or modeling pipelines—in a <code>.py</code> script and then import or run that script from within your notebook.</p>
-<p>This approach offers several benefits: you avoid cluttering your notebook with repeated code, you can test pieces of logic more easily, and your codebase becomes easier to maintain and share.</p>
-<section id="methods" class="level3">
-<h3 class="anchored" data-anchor-id="methods">Methods:</h3>
-<p>There are a few different ways to work with <code>.py</code> files inside your notebook, each useful in different situations:</p>
-<ul>
-<li><p><code>%run your_script.py</code> – This runs the entire Python script as if you had pasted the code into the notebook. Any variables, functions, or classes defined in that script will be available in your notebook’s environment after execution.</p></li>
-<li><p><code>%load your_script.py</code> – This loads the contents of the script into a new notebook cell so you can review or edit it before running. It’s a nice way to examine the code without opening another file.</p></li>
-<li><p><code>import your_script</code> – This is the standard Python approach for using modules. If your script is in the same directory as your notebook, you can import functions or variables from it using this command. For example, if your script has a function called <code>clean_data()</code>, you could use it in your notebook with <code>your_script.clean_data()</code>. Don’t worry if this is new—we’ll cover imports and module structure later in the class.</p></li>
-</ul>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Example
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<p>See an example of running a .py script with <code>%run your_script.py</code> in this video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/Ob2fR5gO7pc?si=bHrIYcEVqyT3odSI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-</div>
-</div>
-</section>
-<section id="why-use-.py-files" class="level3">
-<h3 class="anchored" data-anchor-id="why-use-.py-files">Why use <code>.py</code> files?</h3>
-<p>Organizing your code into <code>.py</code> files offers several advantages, especially as your projects grow beyond a single notebook:</p>
-<ul>
-<li><strong>Reusability</strong>: Functions or logic stored in a <code>.py</code> file can be reused across multiple notebooks or scripts without duplication.</li>
-<li><strong>Organization</strong>: Separating logic from analysis helps keep your notebooks clean and focused on storytelling, while your <code>.py</code> files house the supporting code.</li>
-<li><strong>Version control</strong>: Unlike notebooks, <code>.py</code> files are plain text and work much better with Git and other version control tools—making it easier to track changes, review code, and collaborate with others.</li>
-</ul>
-<section id="knowledge-check-2" class="level4">
-<h4 class="anchored" data-anchor-id="knowledge-check-2">Knowledge check</h4>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Try It!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Open your editor of choice (such as Colab, JupyterLab, or VS Code).</p></li>
-<li><p>Create a new <code>.py</code> file and type the following line into it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello .py scripts!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Save this file as <code>my_first_script.py</code>.</p></li>
-<li><p>Now open a new Jupyter notebook.</p></li>
-<li><p>In a code cell in the notebook, type and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run my_first_script.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-<p>You should see the message “Hello .py scripts!” printed in the notebook output.</p>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="best-practices-and-pro-tips" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="best-practices-and-pro-tips"><span class="header-section-number">4.5</span> Best Practices and Pro Tips</h2>
-<p>Following a few best practices can make your Jupyter notebooks more readable, reliable, and professional—both for yourself and others who use your work.</p>
-<ul>
-<li><strong>Name files clearly</strong>: Use descriptive and consistent naming conventions for your notebooks. For example, <code>eda_customer_data.ipynb</code> is much more informative than <code>untitled3.ipynb</code>.</li>
-<li><strong>Use Markdown generously</strong>: Narrate your thought process. Include headers, bullet points, and equations to guide the reader through your analysis. Also, take time to format your writing as you would for any professional report—pay attention to grammar, clarity, and structure to ensure your notebook is polished and easy to follow.</li>
-<li><strong>Restart and clear output before sharing</strong>: This ensures the notebook runs top-to-bottom and that readers aren’t confused by leftover output or state.</li>
-<li><strong>Export as HTML or PDF</strong>: If you’re turning in a notebook or sharing it for review, exporting to a static format can ensure others see exactly what you intended.</li>
-</ul>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Pro Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Structure your notebook like a story—introduce the goal, describe your approach, show the results, and summarize your findings. Your future self will thank you!</p>
-<p>Here’s a <a href="https://coderpad.io/blog/data-science/mastering-jupyter-notebooks-best-practices-for-data-science/">great article</a> that walks through best practices to help you make this a reality.</p>
-</div>
-</div>
-<section id="want-to-learn-more" class="level3">
-<h3 class="anchored" data-anchor-id="want-to-learn-more">Want to Learn More?</h3>
-<p>Here are a few helpful references that expand on Jupyter notebook best practices:</p>
-<ul>
-<li><a href="https://jupyter.org/documentation">Project Jupyter Guidelines</a></li>
-<li><a href="https://realpython.com/jupyter-notebook-introduction/">Real Python – Jupyter Notebook Tips, Tricks, and Shortcuts</a></li>
-</ul>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/5pf0_bpNbkw?si=g4EzR3T9MohlVg9m" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section>
-</section>
-<section id="summary-and-whats-next" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="summary-and-whats-next"><span class="header-section-number">4.6</span> 6. Summary and What’s Next</h2>
-<p>Let’s recap what you’ve learned in this chapter:</p>
-<ul>
-<li>Jupyter notebooks are an essential tool for blending code, narrative, and output in one place.</li>
-<li>You now know how to use different cell types, write Markdown, and execute code.</li>
-<li>You’ve seen how notebooks maintain memory with the kernel and why it’s important to restart and re-run code in order.</li>
-<li>We covered notebook limitations and when it’s better to switch to <code>.py</code> scripts or more robust development tools.</li>
-<li>You explored how to organize your code using <code>.py</code> files and how to run them inside your notebooks.</li>
-<li>Finally, you picked up several best practices for writing professional and readable notebooks.</li>
-</ul>
-<section id="next-up" class="level3">
-<h3 class="anchored" data-anchor-id="next-up">Next Up:</h3>
-<p>In the next chapter, we’ll dive into Python’s basic data structures—like lists and dictionaries. These tools are essential for organizing and manipulating data efficiently, and they will serve as the foundation for the rest of your data analysis journey.</p>
-</section>
-</section>
-<section id="exercise-comparing-movie-theater-snacks" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="exercise-comparing-movie-theater-snacks"><span class="header-section-number">4.7</span> Exercise: Comparing Movie Theater Snacks</h2>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Scenario
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>You’re deciding between three snack combos at the movie theater. Each combo includes popcorn and a drink. Your task is to figure out which option gives you the most food value for your money, based on calories per dollar.</p>
-<p><strong>Combo Details:</strong></p>
-<ul>
-<li>Combo 1: $7.50 and 500 calories</li>
-<li>Combo 2: $9.00 and 700 calories</li>
-<li>Combo 3: $10.50 and 900 calories</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Create Notebook
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Create a new Jupyter notebook and name it something meaningful and relevant for this analysis.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Execute Code
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Use a code cell to define the following variables for each combo:</p>
-<ul>
-<li><code>combo_1_price = 7.50</code></li>
-<li><code>combo_1_calories = 500</code></li>
-<li><code>combo_2_price = 9.00</code></li>
-<li><code>combo_2_calories = 700</code></li>
-<li><code>combo_3_price = 10.50</code></li>
-<li><code>combo_3_calories = 900</code></li>
-</ul></li>
-<li><p>Use another code cell to calculate the calories per dollar for each combo:</p>
-<p><code>combo_1_value = combo_1_calories / combo_1_price</code></p></li>
-<li><p>Use a final code cell to print the results for each combo.</p></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-none no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">None</span>Document Your Notebook
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Use Markdown cells to:</p>
-<ol type="1">
-<li>Give your notebook a proper title and write a short introduction explaining the goal of the analysis.</li>
-<li>Display the formula used: <span class="math inline">\(Value = \frac{Calories}{Price}\)</span></li>
-<li>Report your findings: Which combo offers the best value, and how did you determine this?</li>
-</ol>
-</div>
-</div>
-</div>
+<section id="common-pitfalls" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="common-pitfalls">Common Pitfalls</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 64%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mistake</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Forgot <code>plt.tight_layout()</code> → panels overlap</td>
+<td>Add <code>plt.tight_layout()</code> or use <code>constrained_layout=True</code> in <code>plt.subplots()</code></td>
+</tr>
+<tr class="even">
+<td><code>fig.suptitle()</code> prints text output in notebook</td>
+<td>Add a trailing semicolon: <code>fig.suptitle('...');</code></td>
+</tr>
+<tr class="odd">
+<td><code>plt.style.use()</code> affects all subsequent plots</td>
+<td>Always reset: <code>plt.style.use('default')</code> after a styled block</td>
+</tr>
+<tr class="even">
+<td>Bokeh <code>wheel_zoom</code> captured by browser scroll</td>
+<td>Add <code>box_zoom</code> to tools: <code>tools='pan,wheel_zoom,box_zoom,reset'</code></td>
+</tr>
+<tr class="odd">
+<td>Seaborn <code>heatmap</code> missing categories</td>
+<td>Use <code>.reindex(columns=order, fill_value=0)</code> instead of <code>[order]</code> column selection</td>
+</tr>
+<tr class="even">
+<td>Hard y-axis limit hides all variation</td>
+<td>Try log scale (<code>ax.set_yscale('log')</code>) or clip to a percentile before plotting</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -1570,13 +1433,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../book/module-02-overview.html" class="pagination-link" aria-label="Module 2: Python Data Science Ecosystem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Module 2: Python Data Science Ecosystem</span>
+      <a href="../book/module-04-cheatsheet.html" class="pagination-link" aria-label="Module 4 Cheat Sheet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Module 4 Cheat Sheet</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../book/05-data-structures.html" class="pagination-link" aria-label="Introduction to Data Structures">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Data Structures</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../book/99-anaconda-install.html" class="pagination-link" aria-label="Anaconda Installation">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Anaconda Installation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1585,4 +1448,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/04-jupyter.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/edit/main/book/module-05-cheatsheet.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bradleyboehmke/uc-bana-7025/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
