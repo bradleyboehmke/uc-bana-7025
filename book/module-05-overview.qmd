@@ -1,15 +1,17 @@
-# Module 5: Data Visualization {.unnumbered}
+# Module 5: Data Visualization & EDA {.unnumbered}
 
-This module introduces the Python visualization ecosystem. You'll learn to create quick exploratory charts with pandas, build polished static figures with matplotlib, and make interactive visualizations with Bokeh. By the end of Week 5, you'll be able to choose the right tool for the visualization task and customize the result for your audience.
+This module builds your visualization toolkit and introduces exploratory data analysis as a systematic practice. You will start with quick exploratory charts in Pandas, then expand to three specialized libraries — Seaborn for statistical visualization, Matplotlib for publication-quality figures, and Bokeh for interactive web-ready charts. The module closes with a full EDA case study that weaves together data wrangling, aggregation, and visualization into a coherent analytical workflow.
 
 ## Learning Objectives {.unnumbered}
 
 By the end of this module, you will:
 
-- Create quick exploratory charts directly from a DataFrame using pandas `.plot()`
-- Build and customize static figures using matplotlib's figure/axes architecture
-- Create interactive charts for web delivery using Bokeh
-- Choose the appropriate chart type for a given data question
+- Create quick exploratory charts directly from a DataFrame using Pandas `.plot()`
+- Choose the right visualization library for a given analytical goal
+- Build statistical visualizations with Seaborn using minimal code
+- Create polished, fully-customized figures with Matplotlib's Figure/Axes API
+- Produce interactive, web-ready charts with Bokeh including hover tooltips and zoom
+- Apply a systematic EDA framework — question → structure → distributions → segmentation → story — to a new dataset
 
 ## Module Resources {.unnumbered}
 
@@ -18,18 +20,24 @@ By the end of this module, you will:
 | Resource | Link |
 |----------|------|
 | 📊 Week 5 Slides | [View slides](../slides/week-05.html){target="_blank"} |
-| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+| 💻 Tuesday Your Turn Notebook | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-05-lecture.ipynb){target="_blank"} |
 
 ### Chapters & Notebooks {.unnumbered}
 
 | Chapter | Topic | Colab Notebook |
 |---------|-------|---------------|
-| 13 | Visualization with Pandas | *Coming soon* |
-| 14 | Visualization with Matplotlib | *Coming soon* |
-| 15 | Interactive Visualization with Bokeh | *Coming soon* |
+| 13 | Visualization with Pandas | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/12_data_viz_pandas.ipynb){target="_blank"} |
+| 14 | Advanced Data Visualization (Seaborn, Matplotlib, Bokeh) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/13_advanced_data_viz.ipynb){target="_blank"} |
+| 15 | Exploratory Data Analysis | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/14_eda.ipynb){target="_blank"} |
 
 ### Lab {.unnumbered}
 
 | Resource | Link |
 |----------|------|
-| 🧪 Lab 5 | *Coming soon* |
+| 🧪 Lab 5 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/labs/lab-05-project-ideation.ipynb){target="_blank"} |
+
+### Reference {.unnumbered}
+
+| Resource | Link |
+|----------|------|
+| 📋 Module 5 Cheat Sheet | [View cheat sheet](module-05-cheatsheet.html) |

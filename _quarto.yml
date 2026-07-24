@@ -40,8 +40,8 @@ book:
     - part: book/module-05-overview.qmd
       chapters:
         - book/13-data-viz-pandas.qmd
-        - book/14-data-viz-matplotlib.qmd
-        - book/15-data-viz-bokeh.qmd
+        - book/14-advanced-data-viz.qmd
+        - book/15-exploratory-data-analysis.qmd
     - part: book/module-06-overview.qmd
       chapters:
         - book/16-control-statements.qmd
@@ -60,6 +60,7 @@ book:
         - book/module-02-cheatsheet.qmd
         - book/module-03-cheatsheet.qmd
         - book/module-04-cheatsheet.qmd
+        - book/module-05-cheatsheet.qmd
   appendices:
     - book/99-anaconda-install.qmd
     - book/99-vscode-install.qmd
