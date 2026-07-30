@@ -47,12 +47,6 @@ book:
         - book/16-control-statements.qmd
         - book/17-iteration-statements.qmd
         - book/18-functions.qmd
-    - part: book/module-07-overview.qmd
-      chapters:
-        - book/19-data-exploration.qmd
-        - book/20-first-model.qmd
-        - book/21-feature-engineering.qmd
-        - book/22-model-evaluation.qmd
     - book/references.qmd
     - part: "Cheat Sheets"
       chapters:
@@ -61,6 +55,7 @@ book:
         - book/module-03-cheatsheet.qmd
         - book/module-04-cheatsheet.qmd
         - book/module-05-cheatsheet.qmd
+        - book/module-06-cheatsheet.qmd
   appendices:
     - book/99-anaconda-install.qmd
     - book/99-vscode-install.qmd
