@@ -67,7 +67,3 @@ modules:
     topics: ["control flow", "if else", "iteration", "for loops", "while loops", "functions", "reusable code"]
     chapters: ["16-control-statements", "17-iteration-statements", "18-functions"]
 
-  - module: 7
-    week: 7
-    topics: ["EDA", "data exploration", "modeling", "scikit-learn", "feature engineering", "model evaluation"]
-    chapters: ["19-data-exploration", "20-first-model", "21-feature-engineering", "22-model-evaluation"]

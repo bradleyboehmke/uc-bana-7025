@@ -19,18 +19,22 @@ By the end of this module, you will:
 | Resource | Link |
 |----------|------|
 | 📊 Week 6 Slides | [View slides](../slides/week-06.html){target="_blank"} |
-| 💻 Tuesday Your Turn Notebook | *Coming soon* |
+| 💻 Tuesday Your Turn Notebook | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/tuesday-your-turn/week-06-lecture.ipynb){target="_blank"} |
 
 ### Chapters & Notebooks {.unnumbered}
 
 | Chapter | Topic | Colab Notebook |
 |---------|-------|---------------|
-| 16 | Control Statements | *Coming soon* |
-| 17 | Iteration Statements | *Coming soon* |
-| 18 | Writing Functions | *Coming soon* |
+| 16 | Control Statements | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/15_conditional_statements.ipynb){target="_blank"} |
+| 17 | Iteration Statements | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/16_iteration_statements.ipynb){target="_blank"} |
+| 18 | Writing Functions | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/17_functions.ipynb){target="_blank"} |
 
-### Lab {.unnumbered}
+### Reference {.unnumbered}
 
 | Resource | Link |
 |----------|------|
-| 🧪 Lab 6 | *Coming soon* |
+| 📋 Module 6 Cheat Sheet | [View cheat sheet](module-06-cheatsheet.html){target="_blank"} |
+
+### Lab {.unnumbered}
+
+This week's lab is dedicated to **project work time**. There is no separate lab file — use the Thursday session to make progress on your semester project with instructor support available.
