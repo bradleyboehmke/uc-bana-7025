@@ -16,9 +16,9 @@ A 7-week graduate course at the University of Cincinnati that teaches students t
 | 2 | 2 | Jupyter notebooks, data structures, Python libraries |
 | 3 | 3 | Importing data, DataFrames, subsetting |
 | 4 | 4 | Manipulating data, aggregating, joining tables |
-| 5 | 5 | Visualization (pandas, matplotlib, Bokeh) |
+| 5 | 5 | Visualization (pandas, advanced viz, EDA) |
 | 6 | 6 | Control flow, iteration, functions |
-| 7 | 7 | Data exploration, modeling, feature engineering, evaluation |
+| 7 | 7 | Semester project |
 
 ---
 

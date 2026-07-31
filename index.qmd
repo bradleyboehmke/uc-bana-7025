@@ -16,9 +16,9 @@ By the end of BANA 7025, you will:
 - Clean messy, missing, and inconsistently formatted data
 - Aggregate and summarize data across groups
 - Join and reshape multiple tables
-- Visualize patterns with matplotlib and seaborn
+- Visualize patterns with matplotlib, seaborn, and Bokeh
+- Conduct exploratory data analysis as a systematic workflow
 - Write reusable functions and reproducible workflows
-- Apply basic modeling concepts to your data
 
 ## The semester project
 
@@ -34,9 +34,9 @@ This book is the primary reading material for BANA 7025. Each chapter maps to on
 | 2 | Python data science ecosystem | 4 – 6 |
 | 3 | DataFrames & importing data | 7 – 9 |
 | 4 | Data manipulation | 10 – 12 |
-| 5 | Data visualization | 13 – 15 |
+| 5 | Data visualization & EDA | 13 – 15 |
 | 6 | Creating efficient code | 16 – 18 |
-| 7 | Introduction to machine learning | 19 – 22 |
+| 7 | Semester project | — |
 
 Each chapter includes:
 
