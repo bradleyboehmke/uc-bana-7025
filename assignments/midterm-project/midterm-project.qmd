@@ -1,0 +1,279 @@
+---
+title: "Mid-Term Project"
+subtitle: "BANA 7025: Data Wrangling with Python"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    self-contained: true
+---
+
+## Overview
+
+You are a data scientist for a national grocery chain named **Regork**. Your manager has asked you to identify a potential growth opportunity where the company could invest future resources to increase revenue and profits.
+
+Your task is to:
+
+1. Define a clear business question that investigates a specific growth opportunity.
+2. Analyze the company's data to answer that question.
+3. Communicate your findings through:
+   - A **written analytic report** (produced in Jupyter Notebook and shared as HTML)
+   - A **3-minute business presentation** to the CEO
+
+This project simulates a real-world analytics engagement where the problem statement may be broad at first, and it's your job to refine it, find meaningful insights, and make actionable recommendations.
+
+::: {.callout-note}
+**Building on Your Proposal**
+
+In Week 5 you submitted a project proposal with a refined business question, data plan, and preliminary exploration. Your mid-term project should build directly on that approved proposal. Your business question may continue to evolve as your analysis deepens — but your final report must clearly state one main question and fully address it. If you significantly pivot from your proposal, briefly note why in your introduction.
+:::
+
+---
+
+## Business Question
+
+Growth opportunities can take many forms. Your task is to propose and refine a business question that focuses your analysis. You will use data to defend your proposition and support a clear recommendation.
+
+Here are some example questions to inspire your thinking:
+
+**Customer segments & demographics**
+
+- Are certain demographic groups underrepresented in specific product categories?
+- Are there untapped demographics for certain products due to lack of marketing?
+
+**Trends over time**
+
+- Do purchasing patterns shift seasonally or around holidays?
+- Are certain products or customer segments showing sales growth or decline?
+
+**Product relationships**
+
+- Are certain products frequently purchased together?
+  - *Example: Are frozen pizzas and beer often bought in the same transaction?*
+
+**Promotions & marketing**
+
+- Which promotions drive the most revenue uplift?
+- Are certain campaigns more successful for specific products or customer groups?
+
+::: {.callout-important}
+Your business question may evolve as you explore the data, but your final report must clearly state **one main question** and fully address it.
+:::
+
+---
+
+## Analytic Approach
+
+Once you have a business question, design a clear and logical plan to answer it.
+
+A strong analysis should:
+
+- Tell a clear narrative that ties your findings back to the business question.
+- Use appropriate visuals that enhance the story (not just charts for the sake of charts).
+- End with specific, actionable recommendations — tell the CEO exactly what to do next.
+
+**Example:**
+
+> *Business Question: Are frozen pizzas and beer commonly purchased together?*
+>
+> *Approach: Join transactions + products, identify relevant items, compute co-purchase rates, visualize results.*
+>
+> *Dig Deeper:*
+> - Is the co-purchase more common Thursday–Saturday than earlier in the week?
+> - Does it spike during football season compared to the rest of the year?
+> - Are these items co-purchased more by households with kids than those without?
+>
+> *Refined Recommendation: Based on these findings, run targeted "Pizza & Beer" promotions Thursday–Saturday, especially during football season, and focus marketing toward households with kids.*
+
+**Bottom line:** Provide a robust, multi-angle understanding of the business problem so you can paint a complete picture for the CEO.
+
+---
+
+## Data
+
+You will use the `completejourney` dataset via the Python `completejourney_py` package.
+
+Full dataset documentation: <https://cunningjames.github.io/completejourney_py/>
+
+**Requirements:**
+
+- You must use **at least two tables** from the package and join them in a meaningful way.
+- All data must come from `completejourney_py`. External datasets are not permitted unless you receive prior written approval from the instructor.
+- Your analysis should demonstrate thoughtful data selection, joining, and preparation to address your business question.
+
+The package includes the following tables: `transactions`, `products`, `demographics`, `campaigns`, `campaign_descriptions`, `coupons`, and `coupon_redemptions`.
+
+---
+
+## Course Skills to Demonstrate
+
+Your project should serve as a showcase of the core skills from this course. The rubric rewards mastery, so be intentional about applying the following:
+
+| Skill | What to Show |
+|---|---|
+| Importing & loading data | Load data cleanly with all imports at the top; suppress warnings |
+| Data structure & exploration | Inspect shape, dtypes, missing values, and distributions before diving in |
+| Subsetting & filtering | Isolate relevant subsets to answer specific sub-questions |
+| Data manipulation | Create derived variables, reshape data, and aggregate meaningfully |
+| Joining data | Join at least two tables on appropriate keys with a deliberate join type |
+| Data visualization | Use matplotlib/seaborn to produce polished, well-labeled charts |
+| Code style | Follow PEP 8 conventions — consistent naming, spacing, and structure |
+
+::: {.callout-tip}
+**Code Style Expectations**
+
+Follow PEP 8 and the course conventions covered in class:
+
+- Use `snake_case` for variable and function names (e.g., `promo_lift`, `filtered_df`)
+- Import all libraries at the top of the notebook in a single cell
+- Prefer pandas method chaining over intermediate throwaway variables
+- Add a comment only when the *why* is non-obvious — do not narrate what the code does
+- Keep cells focused: one idea per cell
+
+Your `.ipynb` file must execute fully without errors, and the output must match the HTML you submit.
+:::
+
+---
+
+## Deliverables
+
+### A. Written Report
+
+**Format:** HTML report generated from a Jupyter Notebook, submitted as `.html`.
+
+**Content Requirements:**
+
+1. **Introduction** — State the business problem, explain why it matters to the Regork CEO, summarize your data and methodology, and state your proposed solution.
+2. **Packages / Libraries** — Import all packages in a single upfront cell with warnings suppressed. Briefly explain any non-standard packages.
+3. **Data Preparation** — Import, inspect, clean, and join the data. Document key decisions.
+4. **Exploratory Data Analysis** — Slice and dice the data in multiple ways. Combine plots, tables, and written interpretation into a cohesive narrative. Every chart should make exactly one point.
+5. **Summary** — Recap the question, your approach, key insights, and a specific recommendation for the CEO. Discuss limitations and next steps.
+
+**Scope guidance:** Most strong reports are 20–35 notebook cells. Quality and clarity matter more than length — do not pad.
+
+**File Naming:**
+
+```
+YYYY_BANA7025_groupXX_midtermproject.html
+```
+
+*Example:* `2026_BANA7025_group02_midtermproject.html`
+
+---
+
+### B. Presentation
+
+**Length:** 3 minutes (maximum — presentations that run over will lose points).
+
+**Audience:** Senior business executive (CEO) — assume no technical background.
+
+**Content:**
+
+1. State the business problem and why it matters.
+2. Summarize key findings with visuals.
+3. Deliver a clear, actionable recommendation.
+4. Briefly note limitations and next steps.
+
+**Format requirements:**
+
+- No code — this is a business presentation, not a notebook walkthrough.
+- Use visuals and language appropriate for an executive audience.
+- Record your presentation as a video and submit the recording (see tools below).
+
+**Recommended Recording Tools:**
+
+- **Zoom** — Start a meeting, share your slides, click Record, and present.
+- **Kaltura** — Upload and share your presentation video in Canvas.
+
+**Help & Tutorials:**
+
+- [UC Zoom Information](https://mailuc.sharepoint.com/sites/ITatUC/SitePages/Zoom-is-Here.aspx)
+- [Kaltura Upload Tutorial](https://lcob.mediaspace.kaltura.com/media/How+To+Upload+a+Kaltura+Video+for+an+Assignment/1_2rmmj9uh)
+
+---
+
+## Past Examples
+
+The following submissions from a similar class illustrate what strong work looks like:
+
+- **Targeting parents vs. non-parent customers** — report | presentation
+- **More efficient campaigns** — [report](https://jasonjday.github.io/BANA6043/_build/html/Introduction.html) | presentation
+- **Improving pizza sales** — report | presentation
+- **Display location performance** — presentation
+
+---
+
+## Groups
+
+- Work in teams of **2–4 students**.
+- Self-select your team from the pre-defined groups listed in Canvas under **People → Mid-Term Project**.
+- You must join one of the listed groups — you may not create your own group outside of the list.
+- **Group formation deadline: see Canvas.** Do not wait — groups that form late have less time to align on a direction.
+
+**Peer Evaluations:**
+
+- You will evaluate your teammates' contributions at the end of the project.
+- Peer evaluations count toward **25% of your engagement grade**.
+- Unequal contributions will affect individual grades.
+
+---
+
+## Submission Guidelines
+
+- **One group member** submits all final files on behalf of the team.
+- Submit both deliverables together — the HTML report and the presentation video — **in a single submission**.
+- If multiple members submit, only the most recent submission will be kept for all group members.
+- Submitting files separately may result in one file overwriting the other.
+
+**Plan ahead:**
+
+- Large files (e.g., a 4–5 MB video) may take time to upload.
+- Submit several hours before the deadline to avoid last-minute technical issues.
+- Late submissions due to upload delays will not be excused.
+
+---
+
+## Timeline
+
+| Milestone | Due |
+|---|---|
+| Group formed in Canvas | See Canvas |
+| Project Proposal (Week 5 Homework) | Week 5 deadline |
+| Mid-Term Project (report + video) | **October 11** |
+| Peer Reviews | See Canvas (typically 3–5 days after submission deadline) |
+
+::: {.callout-warning}
+**Peer Reviews Are Required**
+
+You must complete peer reviews for **1 or more other teams** (both report and presentation). Failure to submit your peer reviews results in a **25% deduction from your engagement grade**. Check Canvas for the exact peer review deadline — it will appear after the submission window closes.
+
+To complete a peer review, follow [these instructions](https://community.canvaslms.com/t5/Student-Guide/How-do-I-submit-a-peer-review-to-an-assignment/ta-p/293). You must fill out the grading rubric (not just leave a comment) for your peer review to count.
+:::
+
+---
+
+## Grading
+
+**Total Points: 75**
+
+Your project will be graded by both the instructor and your peers using the rubric below. Review it carefully before starting.
+
+### Report Rubric
+
+| Criterion | Full Marks | Partial | No Marks | Points |
+|---|---|---|---|---|
+| **Introduction** — business problem, methodology, proposed solution | Addresses all criteria; gives the reader a clear picture of the analysis | Missing criteria or unclear framing | Addresses no criteria | 5 |
+| **Packages / Libraries** — all loaded upfront, warnings suppressed, non-standard packages explained | All criteria met; no stray warnings | Some libraries loaded mid-notebook or unexplained | No criteria addressed | 5 |
+| **Exploratory Data Analysis** — new information uncovered via slicing, joining, derived variables; findings presented via polished plots and tables; insights explained | Thorough EDA; clear patterns uncovered and explained; well-designed displays | Most criteria met; patterns found but explanations incomplete | No patterns uncovered; poorly designed displays | 10 |
+| **Summary** — business question, methodology, insights, CEO recommendation, limitations | Addresses all criteria; clear summary and recommendation | Missing criteria or unclear summary | Addresses no criteria | 5 |
+| **Formatting & Other Requirements** — PEP 8 style, systematic code, mastery of course content, notebook fully executes without errors | Well-designed; mastery and creative application evident | Acceptable but lacks mastery or signs of creativity | Poorly designed; basic concepts not grasped | 15 |
+
+### Presentation Rubric
+
+| Criterion | Full Marks | Partial | No Marks | Points |
+|---|---|---|---|---|
+| **Introduction** — business problem, methodology, proposed solution | Addresses all criteria clearly | Missing criteria or unclear framing | Addresses no criteria | 5 |
+| **Findings** — polished visuals, one point per chart, insights clearly explained | Well-designed and clearly explained | Acceptable but not thorough | Poorly designed or unclear | 10 |
+| **Summary** — insights, implications, CEO recommendation, limitations | Addresses all criteria; clear recommendation | Missing criteria or unclear | Addresses no criteria | 5 |
+| **Formatting & Other Requirements** — ≤3 min, professional design, compelling narrative, actionable recommendation | Well-designed; within time limit; professional and persuasive | Acceptable but exceeds time or lacks clarity | Poorly designed; walks through notebook rather than presenting findings | 15 |

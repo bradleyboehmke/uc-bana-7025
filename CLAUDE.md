@@ -15,7 +15,7 @@ This file guides Claude Code when working in this repository.
 ## Repository layout
 
 ```
-book/          Quarto textbook chapters (01–13 + index + references)
+book/          Quarto textbook chapters (01–18 + index + references)
 slides/        Weekly Reveal.js decks (week-01.qmd, week-02.qmd, ...)
 notebooks/     Jupyter notebooks (examples/, tuesday-your-turn/, project-checkpoints/)
 labs/          Thursday lab assignments (.ipynb)
@@ -34,9 +34,9 @@ data/          Shared datasets
 | 2 | 2 | 04-jupyter, 05-data-structures, 06-libraries |
 | 3 | 3 | 07-importing-data, 08-dataframes, 09-subsetting |
 | 4 | 4 | 10-manipulating-data, 11_aggregating_data, 12-joining-data |
-| 5 | 5 | 13-data-viz-pandas, 14-data-viz-matplotlib, 15-data-viz-bokeh |
+| 5 | 5 | 13-data-viz-pandas, 14-advanced-data-viz, 15-exploratory-data-analysis |
 | 6 | 6 | 16-control-statements, 17-iteration-statements, 18-functions |
-| 7 | 7 | 19-data-exploration, 20-first-model, 21-feature-engineering, 22-model-evaluation |
+| 7 | 7 | Semester project (no textbook chapters) |
 
 ## Content conventions
 
