@@ -5043,7 +5043,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="how-quickly-can-you-spot-insights-1" class="slide level2 smaller">
 <h2>How Quickly Can You Spot Insights?</h2>
 <p>What can you tell from this <span style="color:steelblue;font-weight:bold;">plot</span>?</p>
-<div id="dbb1bad2" class="cell" data-fig-height="3.5" data-execution_count="2">
+<div id="8656252a" class="cell" data-fig-height="3.5" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -5274,7 +5274,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <li>Enough for exploratory work; not meant for final deliverables</li>
 <li>When to use: <strong>speed over polish</strong></li>
 </ul>
-<div id="b8c338aa" class="cell" data-execution_count="3">
+<div id="4737d017" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href aria-label="1"></a><span class="co"># One-liner from aggregated data</span></span>
 <span id="cb1-2"><a href aria-label="2"></a>basket_spend[<span class="st">&#39;basket_spend&#39;</span>].plot(kind<span class="op">=</span><span class="st">&#39;hist&#39;</span>, bins<span class="op">=</span><span class="dv">40</span>, title<span class="op">=</span><span class="st">&#39;Basket Spend Distribution&#39;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -5297,14 +5297,14 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="the-.plot-mental-model" class="slide level2 smaller">
 <h2>The <code>.plot()</code> Mental Model</h2>
 <p><strong>One variable</strong> — call <code>.plot()</code> on a <strong>Series</strong>, specify <code>kind</code>:</p>
-<div id="2b9b749f" class="cell" data-execution_count="4">
+<div id="d60598f6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href aria-label="1"></a>series.plot(kind<span class="op">=</span><span class="st">&#39;hist&#39;</span>)        <span class="co"># distribution of one column</span></span>
 <span id="cb2-2"><a href aria-label="2"></a>series.plot(kind<span class="op">=</span><span class="st">&#39;box&#39;</span>)         <span class="co"># spread and outliers</span></span>
 <span id="cb2-3"><a href aria-label="3"></a>series.plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>)        <span class="co"># trend (index is x-axis)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p><strong>Two variables</strong> — call <code>.plot()</code> on a <strong>DataFrame</strong>, add <code>x=</code> and <code>y=</code>:</p>
-<div id="81980249" class="cell" data-execution_count="5">
+<div id="587cbdda" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href aria-label="1"></a>df.plot(kind<span class="op">=</span><span class="st">&#39;scatter&#39;</span>, x<span class="op">=</span><span class="st">&#39;col_a&#39;</span>,    y<span class="op">=</span><span class="st">&#39;col_b&#39;</span>)   <span class="co"># relationship</span></span>
 <span id="cb3-2"><a href aria-label="2"></a>df.plot(kind<span class="op">=</span><span class="st">&#39;bar&#39;</span>,     x<span class="op">=</span><span class="st">&#39;category&#39;</span>, y<span class="op">=</span><span class="st">&#39;value&#39;</span>) <span class="co"># comparison</span></span>
 <span id="cb3-3"><a href aria-label="3"></a>df.plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>,    x<span class="op">=</span><span class="st">&#39;date&#39;</span>,     y<span class="op">=</span><span class="st">&#39;value&#39;</span>) <span class="co"># trend over time</span></span>
@@ -5329,7 +5329,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="chart-types-distribution" class="slide level2 smaller">
 <h2>Chart Types: Distribution</h2>
-<div id="13e2ef8b" class="cell" data-fig-height="3.5" data-execution_count="6">
+<div id="c2d3f70f" class="cell" data-fig-height="3.5" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="1-4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href aria-label="1"></a>basket_spend[<span class="st">&#39;basket_spend&#39;</span>].plot(</span>
 <span id="cb4-2"><a href aria-label="2"></a>    kind<span class="op">=</span><span class="st">&#39;hist&#39;</span>, bins<span class="op">=</span><span class="dv">40</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.2</span>),</span>
 <span id="cb4-3"><a href aria-label="3"></a>    title<span class="op">=</span><span class="st">&#39;Distribution of basket spend&#39;</span>, xlabel<span class="op">=</span><span class="st">&#39;Basket spend ($)&#39;</span></span>
@@ -5347,7 +5347,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="chart-types-category-comparison" class="slide level2 smaller">
 <h2>Chart Types: Category Comparison</h2>
-<div id="7347a8fe" class="cell" data-fig-height="3.5" data-execution_count="7">
+<div id="af92cb9d" class="cell" data-fig-height="3.5" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-code-line-numbers="1-5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href aria-label="1"></a>category_totals.plot(</span>
 <span id="cb5-2"><a href aria-label="2"></a>    kind<span class="op">=</span><span class="st">&#39;barh&#39;</span>, x<span class="op">=</span><span class="st">&#39;department&#39;</span>, y<span class="op">=</span><span class="st">&#39;sales_value&#39;</span>,</span>
 <span id="cb5-3"><a href aria-label="3"></a>    figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.5</span>), legend<span class="op">=</span><span class="va">False</span>,</span>
@@ -5366,7 +5366,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="chart-types-trend-over-time" class="slide level2 smaller">
 <h2>Chart Types: Trend Over Time</h2>
-<div id="8d06b533" class="cell" data-fig-height="3.2" data-execution_count="8">
+<div id="1dfc9a27" class="cell" data-fig-height="3.2" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="1-5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href aria-label="1"></a>weekly_sales.plot(</span>
 <span id="cb6-2"><a href aria-label="2"></a>    kind<span class="op">=</span><span class="st">&#39;line&#39;</span>, x<span class="op">=</span><span class="st">&#39;week&#39;</span>, y<span class="op">=</span><span class="st">&#39;total_sales&#39;</span>,</span>
 <span id="cb6-3"><a href aria-label="3"></a>    figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.2</span>), legend<span class="op">=</span><span class="va">False</span>,</span>
@@ -5386,7 +5386,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="pandas-is-just-a-wrapper" class="slide level2 smaller">
 <h2>Pandas is Just a Wrapper</h2>
 <p>Pandas <code>.plot()</code> calls Matplotlib under the hood — which means you can mix them:</p>
-<div id="4d1f74e6" class="cell" data-fig-height="3" data-execution_count="9">
+<div id="958d48bc" class="cell" data-fig-height="3" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href aria-label="1"></a>plt.style.use(<span class="st">&#39;fivethirtyeight&#39;</span>)</span>
 <span id="cb7-2"><a href aria-label="2"></a></span>
 <span id="cb7-3"><a href aria-label="3"></a>weekly_sales.plot(</span>
@@ -5618,7 +5618,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="the-seaborn-mental-model" class="slide level2 smaller">
 <h2>The Seaborn Mental Model</h2>
 <p>Every Seaborn function follows the same pattern:</p>
-<div id="25359135" class="cell" data-execution_count="11">
+<div id="62f367ed" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href aria-label="1"></a>sns.function(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">&#39;col&#39;</span>, y<span class="op">=</span><span class="st">&#39;col&#39;</span>, hue<span class="op">=</span><span class="st">&#39;group&#39;</span>, ...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
@@ -5666,7 +5666,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 <div class="fragment">
 <p><strong>Common functions by goal:</strong></p>
-<div id="2eb53cd5" class="cell" data-execution_count="12">
+<div id="9e98bc62" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href aria-label="1"></a>sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">&#39;col&#39;</span>, kde<span class="op">=</span><span class="va">True</span>)                     <span class="co"># distribution shape</span></span>
 <span id="cb9-2"><a href aria-label="2"></a>sns.boxplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">&#39;group&#39;</span>, y<span class="op">=</span><span class="st">&#39;col&#39;</span>, order<span class="op">=</span>[…])          <span class="co"># spread across groups</span></span>
 <span id="cb9-3"><a href aria-label="3"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">&#39;col_a&#39;</span>, y<span class="op">=</span><span class="st">&#39;col_b&#39;</span>, hue<span class="op">=</span><span class="st">&#39;group&#39;</span>)  <span class="co"># relationship</span></span>
@@ -5677,7 +5677,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="distribution-histplot" class="slide level2 smaller">
 <h2>Distribution: <code>histplot</code></h2>
-<div id="c48475ee" class="cell" data-fig-height="3.2" data-execution_count="13">
+<div id="ea75e222" class="cell" data-fig-height="3.2" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2-8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.2</span>))</span>
 <span id="cb10-2"><a href aria-label="2"></a>sns.histplot(</span>
 <span id="cb10-3"><a href aria-label="3"></a>    data<span class="op">=</span>basket_demo,</span>
@@ -5702,7 +5702,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="group-comparison-boxplot" class="slide level2 smaller">
 <h2>Group Comparison: <code>boxplot</code></h2>
-<div id="fd8a0588" class="cell" data-fig-height="3.8" data-execution_count="14">
+<div id="a1448875" class="cell" data-fig-height="3.8" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2-9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.8</span>))</span>
 <span id="cb11-2"><a href aria-label="2"></a>sns.boxplot(</span>
 <span id="cb11-3"><a href aria-label="3"></a>    data<span class="op">=</span>basket_demo,</span>
@@ -5729,7 +5729,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="patterns-heatmap" class="slide level2 smaller">
 <h2>Patterns: <code>heatmap</code></h2>
-<div id="35ca3632" class="cell" data-fig-height="3.8" data-execution_count="15">
+<div id="ad95df09" class="cell" data-fig-height="3.8" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers="2-8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.8</span>))</span>
 <span id="cb12-2"><a href aria-label="2"></a>sns.heatmap(</span>
 <span id="cb12-3"><a href aria-label="3"></a>    heatmap_data.iloc[:, <span class="dv">6</span>:<span class="dv">22</span>],   <span class="co"># hours 6am–10pm</span></span>
@@ -5967,7 +5967,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="the-figure-axes-hierarchy" class="slide level2 smaller">
 <h2>The Figure / Axes Hierarchy</h2>
 <p>Everything in Matplotlib is an object you can reference and modify:</p>
-<div id="9f0c0c55" class="cell" data-fig-height="2.5" data-execution_count="16">
+<div id="fa05f238" class="cell" data-fig-height="2.5" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">2.5</span>))</span>
 <span id="cb13-2"><a href aria-label="2"></a><span class="co"># fig = the overall canvas</span></span>
 <span id="cb13-3"><a href aria-label="3"></a><span class="co"># ax  = the actual plot area (axes, ticks, lines, labels)</span></span>
@@ -5988,7 +5988,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="step-0-quick-pandas-starting-point" class="slide level2 smaller">
 <h2>Step 0: Quick Pandas Starting Point</h2>
 <p>Start with a rough Pandas plot — fast, but no formatting:</p>
-<div id="5634a1c7" class="cell" data-fig-height="3" data-execution_count="17">
+<div id="6b8b0e38" class="cell" data-fig-height="3" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href aria-label="1"></a>weekly_sales.plot(kind<span class="op">=</span><span class="st">&#39;line&#39;</span>, x<span class="op">=</span><span class="st">&#39;week&#39;</span>, y<span class="op">=</span><span class="st">&#39;total_sales&#39;</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.0</span>), legend<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb14-2"><a href aria-label="2"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -6003,7 +6003,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="step-1-move-to-the-figure-axes-api" class="slide level2 smaller">
 <h2>Step 1: Move to the Figure / Axes API</h2>
 <p>Get handles — now you control everything:</p>
-<div id="d010f9b9" class="cell" data-fig-height="3" data-execution_count="18">
+<div id="77ddd349" class="cell" data-fig-height="3" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.0</span>))</span>
 <span id="cb15-2"><a href aria-label="2"></a>ax.plot(weekly_sales[<span class="st">&#39;week&#39;</span>], weekly_sales[<span class="st">&#39;total_sales&#39;</span>], linewidth<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb15-3"><a href aria-label="3"></a>ax.set_title(<span class="st">&#39;Weekly total sales&#39;</span>)</span>
@@ -6022,7 +6022,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="step-2-executive-ready-formatting" class="slide level2 smaller">
 <h2>Step 2: Executive-Ready Formatting</h2>
-<div id="18aa124b" class="cell" data-fig-height="3.2" data-execution_count="19">
+<div id="abeacbb1" class="cell" data-fig-height="3.2" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="5,8-10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.2</span>))</span>
 <span id="cb16-2"><a href aria-label="2"></a>ax.plot(weekly_sales[<span class="st">&#39;week&#39;</span>], weekly_sales[<span class="st">&#39;total_sales&#39;</span>], linewidth<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb16-3"><a href aria-label="3"></a>ax.set_title(<span class="st">&#39;Weekly total sales — Regork grocery chain&#39;</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
@@ -6044,7 +6044,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="step-3-highlight-the-insight" class="slide level2 smaller">
 <h2>Step 3: Highlight the Insight</h2>
-<div id="faf17a34" class="cell" data-fig-height="5" data-execution_count="20">
+<div id="174fb844" class="cell" data-fig-height="5" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="9-18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href aria-label="1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.5</span>))</span>
 <span id="cb17-2"><a href aria-label="2"></a>ax.plot(weekly_sales[<span class="st">&#39;week&#39;</span>], weekly_sales[<span class="st">&#39;total_sales&#39;</span>], linewidth<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb17-3"><a href aria-label="3"></a>ax.set_title(<span class="st">&#39;Weekly total sales — note holiday spike in late December&#39;</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
@@ -6082,7 +6082,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h2>Matplotlib Is the Foundation</h2>
 <p>Most Python visualization libraries are built <strong>on top of Matplotlib</strong> — so once you know the Figure/Axes API, you can refine plots from Seaborn, Pandas, and others using the exact same code.</p>
 <div class="fragment">
-<div id="3e525dcf" class="cell" data-fig-height="3.8" data-execution_count="21">
+<div id="021faa07" class="cell" data-fig-height="3.8" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|1-7|9-16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href aria-label="1"></a><span class="co"># --- Seaborn draws the plot ---</span></span>
 <span id="cb18-2"><a href aria-label="2"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.8</span>))</span>
 <span id="cb18-3"><a href aria-label="3"></a>sns.boxplot(</span>
@@ -6342,7 +6342,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <li>Best for: dashboards, stakeholder exploration tools, final deliverables that need to be shared</li>
 </ul>
 <div class="fragment">
-<div id="5ca66401" class="cell" data-execution_count="22">
+<div id="af9d7c1a" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
     <style>
 .bk-notebook-logo {
@@ -6354,7 +6354,7 @@ background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYA
 </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="da9dd3df-f7f0-4918-a381-9022483d0d5d">Loading BokehJS ...</span>
+        <span id="afb117e9-cd4f-4471-a5e3-1a65a007ef6f">Loading BokehJS ...</span>
     </div>
 </div>
 <div class="cell-output cell-output-display">
@@ -6522,7 +6522,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded(error = null) {
-    const el = document.getElementById("da9dd3df-f7f0-4918-a381-9022483d0d5d");
+    const el = document.getElementById("afb117e9-cd4f-4471-a5e3-1a65a007ef6f");
     if (el != null) {
       const html = (() => {
         if (typeof root.Bokeh === "undefined") {
@@ -6656,7 +6656,7 @@ function(Bokeh) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("da9dd3df-f7f0-4918-a381-9022483d0d5d")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("afb117e9-cd4f-4471-a5e3-1a65a007ef6f")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -6678,7 +6678,7 @@ function(Bokeh) {
 </section>
 <section id="interactive-weekly-sales-explorer" class="slide level2 smaller scrollable">
 <h2>Interactive Weekly Sales Explorer</h2>
-<div id="2d2e0e4e" class="cell" data-execution_count="23">
+<div id="09a2987b" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|1-2|3-11|14-20|22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href aria-label="1"></a>source <span class="op">=</span> ColumnDataSource(weekly_sales)</span>
 <span id="cb19-2"><a href aria-label="2"></a></span>
 <span id="cb19-3"><a href aria-label="3"></a>p <span class="op">=</span> figure(</span>
@@ -6703,14 +6703,14 @@ function(Bokeh) {
 <span id="cb19-22"><a href aria-label="22"></a>show(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 
-  <div id="dd1d5362-acc9-450e-aab9-1c54ffa6975c" data-root-id="p1004" style="display: contents;"></div>
+  <div id="b27cd47c-0aba-4864-b9ef-02f0a557eb6f" data-root-id="p1004" style="display: contents;"></div>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/javascript">
 (function(root) {
   function embed_document(root) {
-  const docs_json = {"b8a8777d-ceec-4609-ad74-952c8517f64a":{"version":"3.4.3","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1004","attributes":{"width":750,"height":350,"x_range":{"type":"object","name":"DataRange1d","id":"p1005"},"y_range":{"type":"object","name":"DataRange1d","id":"p1006"},"x_scale":{"type":"object","name":"LinearScale","id":"p1014"},"y_scale":{"type":"object","name":"LinearScale","id":"p1015"},"title":{"type":"object","name":"Title","id":"p1007","attributes":{"text":"Total Weekly Sales \u2014 hover, zoom, and pan to explore"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1054","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1001","attributes":{"selected":{"type":"object","name":"Selection","id":"p1002","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1003"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAA"},"shape":[54],"dtype":"int32","order":"little"}],["week",{"type":"ndarray","array":{"type":"bytes","data":"AABANnWVdUIAAID+tZd1QgAAwMb2mXVCAAAAjzecdUIAAEBXeJ51QgAAgB+5oHVCAADA5/midUIAAACwOqV1QgAAQHh7p3VCAACAQLypdUIAAMAI/at1QgAAANE9rnVCAABAmX6wdUIAAIBhv7J1QgAAwCkAtXVCAAAA8kC3dUIAAEC6gbl1QgAAgILCu3VCAADASgO+dUIAAAATRMB1QgAAQNuEwnVCAACAo8XEdUIAAMBrBsd1QgAAADRHyXVCAABA/IfLdUIAAIDEyM11QgAAwIwJ0HVCAAAAVUrSdUIAAEAdi9R1QgAAgOXL1nVCAADArQzZdUIAAAB2Tdt1QgAAQD6O3XVCAACABs/fdUIAAMDOD+J1QgAAAJdQ5HVCAABAX5HmdUIAAIAn0uh1QgAAwO8S63VCAAAAuFPtdUIAAECAlO91QgAAgEjV8XVCAADAEBb0dUIAAADZVvZ1QgAAQKGX+HVCAACAadj6dUIAAMAxGf11QgAAAPpZ/3VCAABAwpoBdkIAAICK2wN2QgAAwFIcBnZCAAAAG10IdkIAAEDjnQp2QgAAgKveDHZC"},"shape":[54],"dtype":"float64","order":"little"}],["total_sales",{"type":"ndarray","array":{"type":"bytes","data":"MzMzM/MbwUB7FK5HVbD2QD0K16MsUPRApHA9CgtZ9EDD9Shcn5jzQGZmZmY+mfdAw/UoXPt69UBxPQrXq+TzQFK4HoWv2PRASOF6FLLT9UCamZmZBT/1QEjhehQmq/RAzczMzBx79EBI4XoUjkT1QFyPwvXkR/VAuB6F6wnP9UCPwvUocCn0QJqZmZlhcPRAZmZmZrKL90DhehSu80z2QI/C9SgwEvZA16NwPSaB9UDhehSuo6v2QEjhehRaVvZA9ihcjxpP9UBSuB6FL+XyQDMzMzNPIPZAFa5H4YLW90Bcj8L1sD71QB+F61Hgj/RAj8L1KMCL9EDD9ShcY8D3QArXo3BRjfVAZmZmZgLb9EDNzMzMnEv0QFyPwvWIoPVASOF6FD509kA9CtejcP3zQB+F61E0B/RAAAAAAJRl9ED2KFyPbtX1QI/C9SgYb/VAXI/C9Ugz9ED2KFyPKib1QM3MzMyMc/dAKVyPwuUv9UCamZmZPV/2QOF6FK5HjPZArkfhevz39UD2KFyPwsD2QBWuR+HiWvVAmpmZmc0b/ED2KFyPfkXzQNejcD0KlZ1A"},"shape":[54],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1055","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1056"}}},"glyph":{"type":"object","name":"Line","id":"p1051","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1052","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1053","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1013","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1038"},{"type":"object","name":"WheelZoomTool","id":"p1039","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1040","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1041","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"ResetTool","id":"p1046"},{"type":"object","name":"SaveTool","id":"p1047"},{"type":"object","name":"HoverTool","id":"p1057","attributes":{"renderers":"auto","tooltips":[["Week","@week{%F}"],["Sales","@total_sales{$0,0}"]],"formatters":{"type":"map","entries":[["@week","datetime"]]}}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1033","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1034","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1035"},"axis_label":"Total Sales ($)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1036"}}}],"below":[{"type":"object","name":"DatetimeAxis","id":"p1016","attributes":{"ticker":{"type":"object","name":"DatetimeTicker","id":"p1017","attributes":{"num_minor_ticks":5,"tickers":[{"type":"object","name":"AdaptiveTicker","id":"p1018","attributes":{"num_minor_ticks":0,"mantissas":[1,2,5],"max_interval":500.0}},{"type":"object","name":"AdaptiveTicker","id":"p1019","attributes":{"num_minor_ticks":0,"base":60,"mantissas":[1,2,5,10,15,20,30],"min_interval":1000.0,"max_interval":1800000.0}},{"type":"object","name":"AdaptiveTicker","id":"p1020","attributes":{"num_minor_ticks":0,"base":24,"mantissas":[1,2,4,6,8,12],"min_interval":3600000.0,"max_interval":43200000.0}},{"type":"object","name":"DaysTicker","id":"p1021","attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}},{"type":"object","name":"DaysTicker","id":"p1022","attributes":{"days":[1,4,7,10,13,16,19,22,25,28]}},{"type":"object","name":"DaysTicker","id":"p1023","attributes":{"days":[1,8,15,22]}},{"type":"object","name":"DaysTicker","id":"p1024","attributes":{"days":[1,15]}},{"type":"object","name":"MonthsTicker","id":"p1025","attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]}},{"type":"object","name":"MonthsTicker","id":"p1026","attributes":{"months":[0,2,4,6,8,10]}},{"type":"object","name":"MonthsTicker","id":"p1027","attributes":{"months":[0,4,8]}},{"type":"object","name":"MonthsTicker","id":"p1028","attributes":{"months":[0,6]}},{"type":"object","name":"YearsTicker","id":"p1029"}]}},"formatter":{"type":"object","name":"DatetimeTickFormatter","id":"p1030"},"axis_label":"Week","major_label_policy":{"type":"object","name":"AllLabels","id":"p1031"}}}],"center":[{"type":"object","name":"Grid","id":"p1032","attributes":{"axis":{"id":"p1016"}}},{"type":"object","name":"Grid","id":"p1037","attributes":{"dimension":1,"axis":{"id":"p1033"}}}]}}]}};
-  const render_items = [{"docid":"b8a8777d-ceec-4609-ad74-952c8517f64a","roots":{"p1004":"dd1d5362-acc9-450e-aab9-1c54ffa6975c"},"root_ids":["p1004"]}];
+  const docs_json = {"fa090944-31b8-4589-8f68-97d16e041592":{"version":"3.4.3","title":"Bokeh Application","roots":[{"type":"object","name":"Figure","id":"p1004","attributes":{"width":750,"height":350,"x_range":{"type":"object","name":"DataRange1d","id":"p1005"},"y_range":{"type":"object","name":"DataRange1d","id":"p1006"},"x_scale":{"type":"object","name":"LinearScale","id":"p1014"},"y_scale":{"type":"object","name":"LinearScale","id":"p1015"},"title":{"type":"object","name":"Title","id":"p1007","attributes":{"text":"Total Weekly Sales \u2014 hover, zoom, and pan to explore"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1054","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1001","attributes":{"selected":{"type":"object","name":"Selection","id":"p1002","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1003"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAA"},"shape":[54],"dtype":"int32","order":"little"}],["week",{"type":"ndarray","array":{"type":"bytes","data":"AABANnWVdUIAAID+tZd1QgAAwMb2mXVCAAAAjzecdUIAAEBXeJ51QgAAgB+5oHVCAADA5/midUIAAACwOqV1QgAAQHh7p3VCAACAQLypdUIAAMAI/at1QgAAANE9rnVCAABAmX6wdUIAAIBhv7J1QgAAwCkAtXVCAAAA8kC3dUIAAEC6gbl1QgAAgILCu3VCAADASgO+dUIAAAATRMB1QgAAQNuEwnVCAACAo8XEdUIAAMBrBsd1QgAAADRHyXVCAABA/IfLdUIAAIDEyM11QgAAwIwJ0HVCAAAAVUrSdUIAAEAdi9R1QgAAgOXL1nVCAADArQzZdUIAAAB2Tdt1QgAAQD6O3XVCAACABs/fdUIAAMDOD+J1QgAAAJdQ5HVCAABAX5HmdUIAAIAn0uh1QgAAwO8S63VCAAAAuFPtdUIAAECAlO91QgAAgEjV8XVCAADAEBb0dUIAAADZVvZ1QgAAQKGX+HVCAACAadj6dUIAAMAxGf11QgAAAPpZ/3VCAABAwpoBdkIAAICK2wN2QgAAwFIcBnZCAAAAG10IdkIAAEDjnQp2QgAAgKveDHZC"},"shape":[54],"dtype":"float64","order":"little"}],["total_sales",{"type":"ndarray","array":{"type":"bytes","data":"MzMzM/MbwUB7FK5HVbD2QD0K16MsUPRApHA9CgtZ9EDD9Shcn5jzQGZmZmY+mfdAw/UoXPt69UBxPQrXq+TzQFK4HoWv2PRASOF6FLLT9UCamZmZBT/1QEjhehQmq/RAzczMzBx79EBI4XoUjkT1QFyPwvXkR/VAuB6F6wnP9UCPwvUocCn0QJqZmZlhcPRAZmZmZrKL90DhehSu80z2QI/C9SgwEvZA16NwPSaB9UDhehSuo6v2QEjhehRaVvZA9ihcjxpP9UBSuB6FL+XyQDMzMzNPIPZAFa5H4YLW90Bcj8L1sD71QB+F61Hgj/RAj8L1KMCL9EDD9ShcY8D3QArXo3BRjfVAZmZmZgLb9EDNzMzMnEv0QFyPwvWIoPVASOF6FD509kA9CtejcP3zQB+F61E0B/RAAAAAAJRl9ED2KFyPbtX1QI/C9SgYb/VAXI/C9Ugz9ED2KFyPKib1QM3MzMyMc/dAKVyPwuUv9UCamZmZPV/2QOF6FK5HjPZArkfhevz39UD2KFyPwsD2QBWuR+HiWvVAmpmZmc0b/ED2KFyPfkXzQNejcD0KlZ1A"},"shape":[54],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1055","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1056"}}},"glyph":{"type":"object","name":"Line","id":"p1051","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1052","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1053","attributes":{"x":{"type":"field","field":"week"},"y":{"type":"field","field":"total_sales"},"line_color":"steelblue","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1013","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1038"},{"type":"object","name":"WheelZoomTool","id":"p1039","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1040","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1041","attributes":{"syncable":false,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"ResetTool","id":"p1046"},{"type":"object","name":"SaveTool","id":"p1047"},{"type":"object","name":"HoverTool","id":"p1057","attributes":{"renderers":"auto","tooltips":[["Week","@week{%F}"],["Sales","@total_sales{$0,0}"]],"formatters":{"type":"map","entries":[["@week","datetime"]]}}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1033","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1034","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1035"},"axis_label":"Total Sales ($)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1036"}}}],"below":[{"type":"object","name":"DatetimeAxis","id":"p1016","attributes":{"ticker":{"type":"object","name":"DatetimeTicker","id":"p1017","attributes":{"num_minor_ticks":5,"tickers":[{"type":"object","name":"AdaptiveTicker","id":"p1018","attributes":{"num_minor_ticks":0,"mantissas":[1,2,5],"max_interval":500.0}},{"type":"object","name":"AdaptiveTicker","id":"p1019","attributes":{"num_minor_ticks":0,"base":60,"mantissas":[1,2,5,10,15,20,30],"min_interval":1000.0,"max_interval":1800000.0}},{"type":"object","name":"AdaptiveTicker","id":"p1020","attributes":{"num_minor_ticks":0,"base":24,"mantissas":[1,2,4,6,8,12],"min_interval":3600000.0,"max_interval":43200000.0}},{"type":"object","name":"DaysTicker","id":"p1021","attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]}},{"type":"object","name":"DaysTicker","id":"p1022","attributes":{"days":[1,4,7,10,13,16,19,22,25,28]}},{"type":"object","name":"DaysTicker","id":"p1023","attributes":{"days":[1,8,15,22]}},{"type":"object","name":"DaysTicker","id":"p1024","attributes":{"days":[1,15]}},{"type":"object","name":"MonthsTicker","id":"p1025","attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]}},{"type":"object","name":"MonthsTicker","id":"p1026","attributes":{"months":[0,2,4,6,8,10]}},{"type":"object","name":"MonthsTicker","id":"p1027","attributes":{"months":[0,4,8]}},{"type":"object","name":"MonthsTicker","id":"p1028","attributes":{"months":[0,6]}},{"type":"object","name":"YearsTicker","id":"p1029"}]}},"formatter":{"type":"object","name":"DatetimeTickFormatter","id":"p1030"},"axis_label":"Week","major_label_policy":{"type":"object","name":"AllLabels","id":"p1031"}}}],"center":[{"type":"object","name":"Grid","id":"p1032","attributes":{"axis":{"id":"p1016"}}},{"type":"object","name":"Grid","id":"p1037","attributes":{"dimension":1,"axis":{"id":"p1033"}}}]}}]}};
+  const render_items = [{"docid":"fa090944-31b8-4589-8f68-97d16e041592","roots":{"p1004":"b27cd47c-0aba-4864-b9ef-02f0a557eb6f"},"root_ids":["p1004"]}];
   void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined) {
@@ -6932,7 +6932,7 @@ function(Bokeh) {
 <section id="steps-23-structure-distributions" class="slide level2 smaller">
 <h2>Steps 2–3: Structure → Distributions</h2>
 <p>Check your data before trusting it:</p>
-<div id="773765d5" class="cell" data-fig-height="2.8" data-execution_count="24">
+<div id="f1f0eb8c" class="cell" data-fig-height="2.8" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href aria-label="1"></a><span class="co"># Step 2: understand the shape</span></span>
 <span id="cb20-2"><a href aria-label="2"></a><span class="bu">print</span>(<span class="ss">f&quot;Baskets: </span><span class="sc">{</span>basket_spend[<span class="st">&#39;basket_id&#39;</span>]<span class="sc">.</span>nunique()<span class="sc">:,}</span><span class="ss">&quot;</span>)</span>
 <span id="cb20-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="ss">f&quot;Households with demographics: </span><span class="sc">{</span>basket_demo[<span class="st">&#39;household_id&#39;</span>]<span class="sc">.</span>nunique()<span class="sc">:,}</span><span class="ss">&quot;</span>)</span>
@@ -6943,7 +6943,7 @@ Households with demographics: 801
 Median basket spend: $19.91</code></pre>
 </div>
 </div>
-<div id="4bdea4ee" class="cell" data-fig-height="2.5" data-execution_count="25">
+<div id="abf64887" class="cell" data-fig-height="2.5" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -6956,7 +6956,7 @@ Median basket spend: $19.91</code></pre>
 <section id="step-4-segmentation-where-the-story-lives" class="slide level2 smaller">
 <h2>Step 4: Segmentation — Where the Story Lives</h2>
 <p>Distributions tell you <em>what</em>. Segmentation tells you <em>who</em> and <em>where</em>.</p>
-<div id="e8ef7edd" class="cell" data-fig-height="5" data-execution_count="26">
+<div id="6e4e5f80" class="cell" data-fig-height="5" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
