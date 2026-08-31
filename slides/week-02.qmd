@@ -32,14 +32,13 @@ execute:
 ::: {.incremental}
 - What is the best sport in the world?
 - Why is data wrangling important?
-- Why learn coding with Python?
 - What is a variable?
 - What are Python's basic data types?
-- Where do we write and run Python code?
+- Where do we write and run Python code (at least for this class)?
 :::
 
 
-## 🔮 Predict the Output {.smaller}
+## 🔮 Predict the Output {.smaller .scrollable}
 
 **With your neighbor (3 min): what does each snippet print — *before* running it?**
 
@@ -104,7 +103,43 @@ print(len(word + "!"))
 
 . . .
 
-**Answers:** `3` & `1` &nbsp;|&nbsp; `Student Alice scored 95%` &nbsp;|&nbsp; `DATA` &nbsp;|&nbsp; `<class 'float'>` & `<class 'int'>` &nbsp;|&nbsp; `data!!!` & `5`
+**Answers:**
+
+```{python}
+x = 10
+print(x // 3)
+print(x % 3)
+```
+
+<br>
+
+```{python}
+name = "Alice"
+score = 94.5
+print(f"Student {name} scored {score:.0f}%")
+```
+
+<br>
+
+```{python}
+words = "data wrangling"
+print(words.upper()[:4])
+```
+
+<br>
+
+```{python}
+print(type(5 / 2))
+print(type(5 // 2))
+```
+
+<br>
+
+```{python}
+word = "data"
+print(word + "!" * 3)
+print(len(word + "!"))
+```
 
 
 # Agenda {background="#43464B"}
@@ -318,96 +353,117 @@ for plan, count in subscriptions.items():
 :::
 
 
-## 📋 How to Organize a Good Notebook {.smaller}
+## 🎯 Why Notebook Organization Matters {.smaller .scrollable}
 
-**From your textbook:** *"Structure your notebook like a story—introduce the goal, describe your approach, show the results, and summarize your findings"*
+**Your notebook has three different readers — organization is what lets one document serve all three.**
 
-. . .
+<br>
+
+:::: {.columns}
+::: {.column width="33%"}
+**👔 Stakeholders**
+
+They need the *business story*:
+
+- What problem are we solving?
+- What did you find?
+- What should we do about it?
+
+*Most will never read a line of your code.*
+:::
+::: {.column width="33%"}
+**🔍 Technical Reviewers**
+
+They need your *reasoning*:
+
+- Why this analytic approach?
+- What assumptions did you make?
+- Can I trust — and reproduce — this?
+
+*Your code shows **what**. Your writing shows **why**.*
+:::
+::: {.column width="33%"}
+**🔮 Future You**
+
+Six months from now:
+
+- What was I trying to do here?
+- Why did I do it *that* way?
+- Where do I pick this back up?
+
+*You will not remember. Write it down.*
+:::
+::::
+
+::: {.callout-tip}
+## 📂 Open both examples now — we'll review them next
+[Project notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_notebook.ipynb) · [Homework notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_homework_notebook.ipynb)
+:::
+
+
+## 📋 Exercise: What Makes These Notebooks Work? {.smaller}
+
+**Both examples:** [Project notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_notebook.ipynb) · [Homework notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_homework_notebook.ipynb)
+
+:::: {.columns}
+::: {.column width="70%"}
+**With your neighbor (5 min) — skim both and discuss:**
+
+1. **What works?** Do they feel well organized?  Are they easy to follow? What stands out as particularly clear or helpful?
+
+2. **What's missing?** What would you **add or change** to make either one clearer?
+
+:::
+::: {.column width="30%"}
+<center>
+<div id="notebookReview"></div>
+<script src="_extensions/produnis/timer/timer.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        initializeTimer("notebookReview", 300, "slide");
+    });
+</script>
+</center>
+:::
+::::
+
+
+## ✅ What Makes a Notebook Work {.smaller .scrollable}
+
+**Most of what you just called out probably lands somewhere on this list.**
 
 :::: {.columns}
 ::: {.column width="50%"}
-**📝 Content Organization**
+**📝 Structure — tells the story**
 
-- **Clear title** with date and analyst name
-- **Executive summary** (1-2 sentences)
-- **Business problem** section with questions
+- **Clear title** with date and author
+- **Executive summary** in 1–2 sentences
+- **Business problem** stated up front
 - **Methodology** explaining your approach
-- **Analysis** with code and results
-- **Key findings** highlighting insights
+- **Key findings** called out, not buried
 - **Recommendations** with next steps
 :::
 
 ::: {.column width="50%"}
-**✅ Formatting Best Practices**
+**✍️ Craft — makes it usable**
 
-- **Descriptive file names:** `customer_churn_analysis_2024.ipynb`
-- **Markdown headers** to create clear sections
+- **Descriptive file name:** `customer_churn_2026.ipynb`
+- **Markdown headers** to signal sections
 - **Explain your thinking,** not just your code
-- **Include business context** and assumptions
-- **Professional writing** with proper grammar
-- **Export to HTML/PDF** for sharing
+- **State assumptions** and data caveats
+- **Professional writing** — grammar counts
+- **Export to HTML/PDF** to share outside Jupyter
 :::
 ::::
 
-**Goal:** Anyone should be able to understand your analysis and reproduce your results!
+::: {.callout-important}
+*"Structure your notebook like a story — introduce the goal, describe your approach, show the results, and summarize your findings."*
 
-
-## 📋 Exercise: Evaluate a Well-Organized Notebook {.smaller}
-
-**Open the example notebook:** [https://tinyurl.com/4sfvm3a8](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/example-notebooks/example_notebook.ipynb)
-
-:::: {.columns}
-::: {.column width="70%"}
-**With your neighbor (3 min), discuss:**
-
-1. List **2–3 specific things** that make this notebook well-organized
-2. Identify **one thing you'd add or change** to make it even clearer
-3. **Would you send this to your manager today?** What would need to change first?
-
-We'll share responses as a class!
+**The test:** could a stakeholder, a reviewer, and future-you each get what they need — without you in the room to explain it?
 :::
-::: {.column width="30%"}
-<center>
-<div id="notebookEval1"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("notebookEval1", 180, "slide");
-    });
-</script>
-</center>
-:::
-::::
 
 
-## 📋 Exercise: Compare Notebook Styles {.smaller}
-
-**Now open the homework example:** [https://tinyurl.com/mss2adzs](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/example-notebooks/example_homework_notebook.ipynb)
-
-:::: {.columns}
-::: {.column width="70%"}
-**Compare it to the previous example (2 min):**
-
-1. How does the **structure and tone** differ from the business report?
-2. What does good **homework documentation** look like vs. a stakeholder report?
-3. **Steal one thing** from each notebook that you'll use in your own work
-
-:::
-::: {.column width="30%"}
-<center>
-<div id="notebookEval2"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("notebookEval2", 120, "slide");
-    });
-</script>
-</center>
-:::
-::::
-
-
-## ⚠️ Avoiding Common Pitfalls {.smaller}
+## ⚠️ Avoiding Common Pitfalls {.smaller .scrollable}
 
 **🚨 The #1 Problem: Execution order ≠ cell order — output can lie**
 
@@ -490,41 +546,36 @@ But in real-world analyses, we usually need to work with **collections** of valu
 This is where **data structures** come in. **Data structures help us organize values.**
 :::
 
-## 🏢 Data Structures in Business Analytics {.smaller}
+## 🏢 Data Structures in Python {.smaller}
 
-**Let's see how Python data structures solve these Excel challenges:**
+**Python's built-in structures are designed for the work data analysis actually does:**
 
 :::: {.columns}
 ::: {.column width="50%"}
-**❌ Excel Challenges**
-```
-Multiple sheets for different data
-Manual copy/paste between tabs
-No protection for critical fields
-Lookup formulas get complex
-Hard to automate workflows
-```
+**✅ What They Give You**
 
-- Prone to human error
-- Difficult to scale
-- Limited automation
+- **Fast lookups** — get a record by name or ID instantly, no scanning row by row
+- **Scales cleanly** — the same code works on 100 rows or 100 million
+- **Easy to automate** — write the logic once, re-run it on next month's data
+- **Built-in protection** — some structures refuse to change by accident
+- **Purpose-built** — dedupe, order, and label your data with no extra work
 :::
 ::: {.column width="50%"}
-**✅ Python Data Structures**
+**🐍 What They Look Like**
+
 ```python
-# Customer profiles (protected data)
-customers = {
-    "sarah": {"signup": "2023-01-15", "plan": "premium"},
-    "mike": {"signup": "2023-02-20", "plan": "basic"}
+# Dictionary
+customer_plans = {
+    "sarah": "premium",
+    "mike": "basic"
 }
 
-# Activity tracking (changeable data)
+# List
 renewals = ["sarah", "mike", "alex"]
-```
 
-- Built-in data protection
-- Fast lookups and updates
-- Easy to automate
+# Set
+regions = {"midwest", "south", "midwest"}
+```
 :::
 ::::
 
@@ -597,25 +648,50 @@ daily_sales = [1842, 2105, 1956, 2341, 890]
 **Get an item by position:**
 
 ```{python}
+#| code-line-numbers: "2"
 daily_sales = [1842, 2105, 1956, 2341, 890]
-print(daily_sales[1])   # index starts at 0, so [1] = second item
+daily_sales[1]   # index starts at 0, so [1] = second item
 ```
 
 **Append a new item to the end:**
 
 ```{python}
+#| code-line-numbers: "2"
 daily_sales = [1842, 2105, 1956, 2341, 890]
 daily_sales.append(3102)
-print(daily_sales)
+daily_sales
 ```
 
 **Change an existing item:**
 
 ```{python}
+#| code-line-numbers: "2"
 daily_sales = [1842, 2105, 1956, 2341, 890]
 daily_sales[1] = 2200   # correct a data entry error
-print(daily_sales)
+daily_sales
 ```
+
+## ✏️ Your Turn: Build a List {.smaller}
+
+**In your notebook, start with this exact list:**
+
+```python
+daily_customers = [182, 205, 196, 234, 89]
+```
+
+Then:
+
+1. **Extract** — print the **third** day's count
+2. **Add** — a sixth day had 310 customers; append it
+3. **Change** — day 5 was a typo; correct `89` to `128`
+4. Print the final list
+
+::: {.callout-tip}
+## ✅ Check your output
+`196`
+
+`[182, 205, 196, 234, 128, 310]`
+:::
 
 ## Example 2: Tuple {.smaller}
 
@@ -656,12 +732,34 @@ print(lon)
 
 ```{python}
 #| error: true
+#| code-line-numbers: "2"
 store_location = (39.1031, -84.5120)
 store_location[0] = 40.0
 ```
 
 ::: {.callout-important}
 **Key Insight:** The error is intentional — tuples *protect* your data from accidental changes.
+:::
+
+## ✏️ Your Turn: Build a Tuple {.smaller}
+
+**In your notebook, start with this exact tuple:**
+
+```python
+warehouse_gps = (39.2734, -84.4569)
+```
+
+Then:
+
+1. **Extract** — unpack it into `lat` and `lon`, then print both
+2. **Extract** — print *just* the longitude using an index
+3. **Try to change** — set the latitude to `40.0`. What happens?
+
+::: {.callout-tip}
+## ✅ Check your output
+`39.2734 -84.4569` … `-84.4569` … then:
+
+`TypeError: 'tuple' object does not support item assignment`
 :::
 
 ## Example 3: Set {.smaller}
@@ -702,10 +800,33 @@ print("alex@email.com" in subscribers)
 **Add a new item:**
 
 ```{python}
+#| code-line-numbers: "2"
 subscribers = {"john@email.com", "sarah@email.com", "mike@email.com"}
 subscribers.add("alex@email.com")
-print(subscribers)
+subscribers
 ```
+
+## ✏️ Your Turn: Build a Set {.smaller}
+
+**In your notebook, start with this exact set — note the repeats:**
+
+```python
+categories = {"dairy", "produce", "bakery", "dairy", "produce"}
+```
+
+Then:
+
+1. **Extract** — print `len(categories)`. How many survived?
+2. **Check** — is `"bakery"` in the set? Is `"frozen"`?
+3. **Add** — add `"frozen"` to the set
+4. Print `sorted(categories)`
+
+::: {.callout-tip}
+## ✅ Check your output
+`3` … `True False` … `['bakery', 'dairy', 'frozen', 'produce']`
+
+*Use `sorted()` — a set has no order, so printing it raw varies run to run!*
+:::
 
 ## Example 4: Dictionary {.smaller}
 
@@ -736,25 +857,52 @@ prices = {"organic milk": 4.99, "whole grain bread": 3.29}
 **Get a value by key:**
 
 ```{python}
+#| code-line-numbers: "2"
 prices = {"organic milk": 4.99, "whole grain bread": 3.29}
-print(prices["organic milk"])
+prices["organic milk"]
 ```
 
 **Add a new key-value pair:**
 
 ```{python}
+#| code-line-numbers: "2"
 prices = {"organic milk": 4.99, "whole grain bread": 3.29}
 prices["eggs"] = 2.89
-print(prices)
+prices
 ```
 
 **Update an existing value:**
 
 ```{python}
+#| code-line-numbers: "2"
 prices = {"organic milk": 4.99, "whole grain bread": 3.29}
 prices["organic milk"] = 5.49
-print(prices["organic milk"])
+prices["organic milk"]
 ```
+
+## ✏️ Your Turn: Build a Dictionary {.smaller}
+
+**In your notebook, start with this exact dictionary:**
+
+```python
+prices = {
+    "organic milk": 4.99,
+    "whole grain bread": 3.29,
+    "free-range eggs": 5.49,
+}
+```
+
+Then:
+
+1. **Extract** — print the price of `"whole grain bread"`
+2. **Add** — add `"cold brew coffee"` at `8.99`
+3. **Change** — bread is on sale; update it to `2.79`
+4. Print the whole dictionary
+
+::: {.callout-tip}
+## ✅ Check your output
+`3.29`, then all four items with bread at `2.79` and coffee added at the end.
+:::
 
 ## 🎯 Business Decision Framework {.smaller}
 
@@ -836,44 +984,6 @@ Build a student lookup system where professors can quickly find a student's info
 ::::
 
 
-## ✏️ Your Turn: Build Some Structures {.smaller}
-
-**In the companion notebook, create a data structure for each scenario:**
-
-1. **Grocery prices**: Store the prices of 5 items (you choose) so they can be quickly looked up by product name
-2. **Weekly sales**: Store 7 days of daily sales figures (make up reasonable numbers), preserving their order
-3. **Customer emails**: Store 6 email addresses — include at least 2 duplicates and let Python remove them
-
-```{python}
-#| eval: false
-# 1. Grocery prices — what structure fits?
-grocery_prices = # your code here
-
-# 2. Weekly sales — what structure fits?
-weekly_sales = # your code here
-
-# 3. Customer emails with duplicates — what structure fits?
-customer_emails = # your code here
-```
-
-:::: {.columns}
-::: {.column width="70%"}
-⏳ **3 minutes — then we'll compare what everyone built!**
-:::
-::: {.column width="30%"}
-<center>
-<div id="yourTurn"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("yourTurn", 180, "slide");
-    });
-</script>
-</center>
-:::
-::::
-
-
 ## Summary: Data Structures Matter {.smaller}
 
 <br>
@@ -896,10 +1006,10 @@ You'll explore these structures more in depth this week and you'll get practice:
 ## Python Ecosystem
 
 - Python is great, but not perfect out of the box
-- We use **modules**, **libraries**, and **packages** to add features
+- We use **libraries** to add features
 
 ::: {.callout-tip}
-Python's true power comes from its ecosystem of **packages, libraries, and modules** that extend its core functionality
+Python's true power comes from its ecosystem of **libraries** that extend its core functionality
 :::
 
 ## 🤔 Build from Scratch or Reuse? {.smaller}
@@ -916,7 +1026,7 @@ would you rather...
 ::::{.columns}
 ::: {.column width="50%"}
 
-**🛠️ Build It Yourself**
+**🛠️ Option 1: Build It Yourself**
 
 ```{python}
 #| echo: true
@@ -937,7 +1047,7 @@ print(f"correlation = {correlation}")
 
 ::: {.column width="50%"}
 
-**🤖 Use a Library**
+**🤖 Option 2: Use a Library**
 
 ```{python}
 #| echo: true
@@ -960,22 +1070,20 @@ print(f"correlation = {correlation}")
 
 ![](images/pkg-ecosystem.jpeg){fig-align="center"}
 
-## Vocabulary {.smaller}
-
-There are terminology differences between...
-
-- **Module**: A single .py file that contains Python code—functions, variables, classes—that you can reuse. For example, the math module lets you do mathematical calculations.
-- **Library**: A collection of related modules bundled together. For example, pandas is a library that includes several modules for data manipulation.
-- **Package**: A directory containing one or more modules or libraries, with an __init__.py file that tells Python it's a package. You can think of a package as the container that holds libraries and modules.
-
-::: {.callout-important}
-But I'm not hung up in you knowing these differences at this time.  More importantly, I want you to understand the following...
-:::
-
 ## 🛠️ Standard vs. Third-Party {.smaller}
 
-- **Standard Library** – comes with Python (`math`, `datetime`)
-- **Third-Party Libraries** – must install (`numpy`, `pandas`, `seaborn`)
+- **Standard Library**
+   
+    – comes with Python (`math`, `datetime`)
+    - [https://docs.python.org/3/library/index.html](https://docs.python.org/3/library/index.html)
+- **Third-Party Libraries**
+     
+     - must install (`numpy`, `pandas`, `seaborn`)
+     - [https://pypi.org/](https://pypi.org/)
+
+. . .
+
+Small difference in accessing these libraries
 
 :::: {.columns}
 ::: {.column}
@@ -983,17 +1091,11 @@ But I'm not hung up in you knowing these differences at this time.  More importa
 
 ```{python}
 #| echo: true
+#| code-line-numbers: "1"
 import random
 random.randint(1, 10)
 ```
 
-<br>
-
-```{python}
-#| echo: true
-import datetime
-print(datetime.date.today())
-```
 
 :::
 ::: {.column}
@@ -1007,9 +1109,9 @@ pip install numpy   # command line
 <br>
 
 ```{python}
+#| code-line-numbers: "1"
 #| echo: true
 import numpy as np
-
 np.mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 ```
 
@@ -1054,52 +1156,93 @@ np.mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 :::
 ::::
 
-## 🔮 What Do These Libraries Do? {.smaller}
+## ✏️ Your Turn: Use a Standard Library {.smaller}
 
-**With your neighbor (3 min): what does each snippet accomplish — *before* running it?**
+**Nothing to install** — `random` ships with Python.
+
+**Scenario:** simulate 10 daily sales figures between \$3,000 and \$8,500.
 
 ```{python}
-#| eval: false
 import random
-outreach = random.choices(["Email", "Call", "Text"], weights=[50, 30, 20], k=5)
-print(outreach)
+
+random.seed(13)      # so everyone gets the same "random" numbers
+
+daily_sales = random.sample(range(3000, 8501), 10)
+print(daily_sales)
 ```
 
-<br>
+Now use your **list** skills on the result:
+
+1. **Extract** — print **day 1** and **day 3** sales
+2. **Summarize** — print the **total** across all 10 days using `sum()`
+
+::: {.callout-tip}
+## ✅ Check your output
+Day 1 → `5121`  ·  Day 3 → `4521`  ·  Total → `58542`
+:::
+
+
+## ✏️ Your Turn: Now Bring in numpy {.smaller .scrollable}
+
+**Two stores this time** — and a question `random` alone can't answer.
 
 ```{python}
-#| eval: false
-import datetime
-today = datetime.date.today()
-trial_end = today + datetime.timedelta(days=30)
-print(f"Free trial ends: {trial_end}")
+import random
+
+random.seed(13)
+
+store_a = random.sample(range(3000, 8501), 10)
+store_b = random.sample(range(3000, 8501), 10)
+
+print("Store A:", store_a)
+print("Store B:", store_b)
 ```
 
-<br>
+Now bring in a **third-party library**:
+
+1. `import numpy as np` (note `np` is called an ***alias***)
+2. Compute the **mean** daily sales for each store (hint: `np.mean()`)
+3. Are the two stores related? Compute `np.corrcoef(store_a, store_b)[0, 1]`
+
+::: {.callout-tip}
+## ✅ Check your output
+Store A mean → `5854.2`  ·  Store B mean → `5007.9`  ·  correlation → `0.026`
+
+Essentially zero — we generated the two stores independently, so there's no relationship to find. **numpy gave us the number; you supplied the interpretation.**
+:::
+
+
+## ✏️ Your Turn: Install a Third-Party Package {.smaller .scrollable}
+
+**This one you have to install first** — `completejourney_py` holds the retail data we'll use all semester.
+
+```python
+# Run this once. In Colab keep the `!`; in a terminal, drop it.
+!pip install completejourney-py
+```
+
+. . .
+
+Then load the data:
 
 ```{python}
-#| eval: false
-import numpy as np
-prices = [12.99, 8.50, 24.99, 5.75, 18.00]
-print(f"Avg: ${np.mean(prices):.2f}  |  Std dev: ${np.std(prices):.2f}")
+from completejourney_py import get_data
+
+cj = get_data()          # returns a dictionary of DataFrames
+print(sorted(cj.keys()))
 ```
 
-:::: {.columns}
-::: {.column width="70%"}
+```{python}
+transactions = cj["transactions"]
 
+print(f"{transactions.shape[0]:,} rows × {transactions.shape[1]} columns")
+transactions[["household_id", "product_id", "quantity", "sales_value"]].head(3)
+```
+
+::: {.callout-tip}
+## 📖 Want to explore?
+Dataset descriptions and examples: [cunningjames.github.io/completejourney_py](https://cunningjames.github.io/completejourney_py/user-guide/datasets/)
 :::
-::: {.column width="30%"}
-<center>
-<div id="libPrediction"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("libPrediction", 180, "slide");
-    });
-</script>
-</center>
-:::
-::::
 
 
 # Let's Wrap This Up {background="#43464B"}
