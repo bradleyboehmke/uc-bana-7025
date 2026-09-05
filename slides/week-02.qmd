@@ -30,9 +30,9 @@ execute:
 ## Week 1: What Do You Remember 🤔
 
 ::: {.incremental}
-- What is the best sport in the world?
 - Why is data wrangling important?
 - What is a variable?
+- What is a assignment and how do we do it?
 - What are Python's basic data types?
 - Where do we write and run Python code (at least for this class)?
 :::
@@ -47,8 +47,9 @@ execute:
 ```{python}
 #| eval: false
 x = 10
+print(x > 3)
+print(x / 3)
 print(x // 3)
-print(x % 3)
 ```
 
 <br>
@@ -107,8 +108,9 @@ print(len(word + "!"))
 
 ```{python}
 x = 10
+print(x > 3)
+print(x / 3)
 print(x // 3)
-print(x % 3)
 ```
 
 <br>
@@ -177,7 +179,7 @@ You can also use it after class as a reference and for additional "Try It" pract
 
 # 📓 Jupyter Notebooks {background="#43464B"}
 
-## 🧠 Think-Pair-Share: Data Analysis Reality {.smaller}
+## 🧠 Data Analysis Reality {.smaller}
 
 Your manager gives you customer data and asks for a report by Friday that:
 
@@ -187,30 +189,15 @@ Your manager gives you customer data and asks for a report by Friday that:
 4. **Provides actionable recommendations**
 5. **Can be updated** when new data arrives next month
 
-. . .
+<br>
 
-:::: {.columns}
-::: {.column width="70%"}
-**How would you approach this *before* this class?**
 
-And — **what breaks at step 5** when new data arrives next month?
+::: {.callout-warning}
+## All too common
 
-⏳ You have 2–3 minutes — chat with a neighbor!
+Excel + Word
 :::
-::: {.column width="30%"}
 
-<center>
-
-<div id="3minWaitingAgain"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("3minWaitingAgain", 180, "slide");
-    });
-</script>
-</center>
-:::
-::::
 
 ## 📊 Data Analysis: Before vs After Jupyter {.smaller}
 
@@ -321,8 +308,8 @@ print(f"Best quarter:   {best_quarter} (${revenue[best_quarter]:,.0f})")
 In the companion notebook, find the "Try It" cell for this section. Write code that:
 
 1. Assigns your name to a variable
-2. Assigns any number to a second variable
-3. Prints both using an f-string
+2. Assign your age to a second variable
+3. Using an f-string and print statement - *"My name is _____ and I am __ years old."*
 :::
 
 
@@ -405,27 +392,13 @@ Six months from now:
 
 **Both examples:** [Project notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_notebook.ipynb) · [Homework notebook](https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_homework_notebook.ipynb)
 
-:::: {.columns}
-::: {.column width="70%"}
-**With your neighbor (5 min) — skim both and discuss:**
+
+**Skim both:**
 
 1. **What works?** Do they feel well organized?  Are they easy to follow? What stands out as particularly clear or helpful?
 
 2. **What's missing?** What would you **add or change** to make either one clearer?
 
-:::
-::: {.column width="30%"}
-<center>
-<div id="notebookReview"></div>
-<script src="_extensions/produnis/timer/timer.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("notebookReview", 300, "slide");
-    });
-</script>
-</center>
-:::
-::::
 
 
 ## ✅ What Makes a Notebook Work {.smaller .scrollable}
@@ -459,7 +432,7 @@ Six months from now:
 ::: {.callout-important}
 *"Structure your notebook like a story — introduce the goal, describe your approach, show the results, and summarize your findings."*
 
-**The test:** could a stakeholder, a reviewer, and future-you each get what they need — without you in the room to explain it?
+**The test:** could a stakeholder, a technical reviewer, and future-you each get what they need — without you in the room to explain it?
 :::
 
 
