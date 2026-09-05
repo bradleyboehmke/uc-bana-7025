@@ -1676,9 +1676,9 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <section id="week-1-what-do-you-remember" class="slide level2">
 <h2>Week 1: What Do You Remember 🤔</h2>
 <ul>
-<li class="fragment">What is the best sport in the world?</li>
 <li class="fragment">Why is data wrangling important?</li>
 <li class="fragment">What is a variable?</li>
+<li class="fragment">What is a assignment and how do we do it?</li>
 <li class="fragment">What are Python’s basic data types?</li>
 <li class="fragment">Where do we write and run Python code (at least for this class)?</li>
 </ul>
@@ -1688,29 +1688,30 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <p><strong>With your neighbor (3 min): what does each snippet print — <em>before</em> running it?</strong></p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<div id="921862a2" class="cell" data-execution_count="1">
+<div id="f9fe8d8d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href aria-label="1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-2"><a href aria-label="2"></a><span class="bu">print</span>(x <span class="op">//</span> <span class="dv">3</span>)</span>
-<span id="cb1-3"><a href aria-label="3"></a><span class="bu">print</span>(x <span class="op">%</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href aria-label="2"></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb1-3"><a href aria-label="3"></a><span class="bu">print</span>(x <span class="op">/</span> <span class="dv">3</span>)</span>
+<span id="cb1-4"><a href aria-label="4"></a><span class="bu">print</span>(x <span class="op">//</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div id="f3f38487" class="cell" data-execution_count="2">
+<div id="2d84b521" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href aria-label="1"></a>name <span class="op">=</span> <span class="st">&quot;Alice&quot;</span></span>
 <span id="cb2-2"><a href aria-label="2"></a>score <span class="op">=</span> <span class="fl">94.5</span></span>
 <span id="cb2-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="ss">f&quot;Student </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> scored </span><span class="sc">{</span>score<span class="sc">:.0f}</span><span class="ss">%&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div id="b0ea54bf" class="cell" data-execution_count="3">
+<div id="cfd43ad9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href aria-label="1"></a>words <span class="op">=</span> <span class="st">&quot;data wrangling&quot;</span></span>
 <span id="cb3-2"><a href aria-label="2"></a><span class="bu">print</span>(words.upper()[:<span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div id="31da535f" class="cell" data-execution_count="4">
+<div id="0df71161" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href aria-label="1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>))</span>
 <span id="cb4-2"><a href aria-label="2"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">5</span> <span class="op">//</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div id="a561da4f" class="cell" data-execution_count="5">
+<div id="ec17fee9" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href aria-label="1"></a>word <span class="op">=</span> <span class="st">&quot;data&quot;</span></span>
 <span id="cb5-2"><a href aria-label="2"></a><span class="bu">print</span>(word <span class="op">+</span> <span class="st">&quot;!&quot;</span> <span class="op">*</span> <span class="dv">3</span>)</span>
 <span id="cb5-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="bu">len</span>(word <span class="op">+</span> <span class="st">&quot;!&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1850,17 +1851,19 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div></div>
 <div class="fragment">
 <p><strong>Answers:</strong></p>
-<div id="3ea1d754" class="cell" data-execution_count="6">
+<div id="a3b0568b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href aria-label="1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb6-2"><a href aria-label="2"></a><span class="bu">print</span>(x <span class="op">//</span> <span class="dv">3</span>)</span>
-<span id="cb6-3"><a href aria-label="3"></a><span class="bu">print</span>(x <span class="op">%</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href aria-label="2"></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb6-3"><a href aria-label="3"></a><span class="bu">print</span>(x <span class="op">/</span> <span class="dv">3</span>)</span>
+<span id="cb6-4"><a href aria-label="4"></a><span class="bu">print</span>(x <span class="op">//</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3
-1</code></pre>
+<pre><code>True
+3.3333333333333335
+3</code></pre>
 </div>
 </div>
 <p><br></p>
-<div id="e6f04d97" class="cell" data-execution_count="7">
+<div id="57d6087d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href aria-label="1"></a>name <span class="op">=</span> <span class="st">&quot;Alice&quot;</span></span>
 <span id="cb8-2"><a href aria-label="2"></a>score <span class="op">=</span> <span class="fl">94.5</span></span>
 <span id="cb8-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="ss">f&quot;Student </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> scored </span><span class="sc">{</span>score<span class="sc">:.0f}</span><span class="ss">%&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1869,7 +1872,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><br></p>
-<div id="17fa13ff" class="cell" data-execution_count="8">
+<div id="f16b82a3" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href aria-label="1"></a>words <span class="op">=</span> <span class="st">&quot;data wrangling&quot;</span></span>
 <span id="cb10-2"><a href aria-label="2"></a><span class="bu">print</span>(words.upper()[:<span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1877,7 +1880,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><br></p>
-<div id="3734d332" class="cell" data-execution_count="9">
+<div id="aa322fc8" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href aria-label="1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>))</span>
 <span id="cb12-2"><a href aria-label="2"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="dv">5</span> <span class="op">//</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1886,7 +1889,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><br></p>
-<div id="2f33d14f" class="cell" data-execution_count="10">
+<div id="11c331b3" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href aria-label="1"></a>word <span class="op">=</span> <span class="st">&quot;data&quot;</span></span>
 <span id="cb14-2"><a href aria-label="2"></a><span class="bu">print</span>(word <span class="op">+</span> <span class="st">&quot;!&quot;</span> <span class="op">*</span> <span class="dv">3</span>)</span>
 <span id="cb14-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="bu">len</span>(word <span class="op">+</span> <span class="st">&quot;!&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1954,8 +1957,8 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h1>📓 Jupyter Notebooks</h1>
 
 </section>
-<section id="think-pair-share-data-analysis-reality" class="slide level2 smaller">
-<h2>🧠 Think-Pair-Share: Data Analysis Reality</h2>
+<section id="data-analysis-reality" class="slide level2 smaller">
+<h2>🧠 Data Analysis Reality</h2>
 <p>Your manager gives you customer data and asks for a report by Friday that:</p>
 <ol type="1">
 <li><strong>Explains the business problem</strong> clearly</li>
@@ -1964,145 +1967,19 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <li><strong>Provides actionable recommendations</strong></li>
 <li><strong>Can be updated</strong> when new data arrives next month</li>
 </ol>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:70%;">
-<p><strong>How would you approach this <em>before</em> this class?</strong></p>
-<p>And — <strong>what breaks at step 5</strong> when new data arrives next month?</p>
-<p>⏳ You have 2–3 minutes — chat with a neighbor!</p>
-</div><div class="column" style="width:30%;">
-<center>
-<div id="3minWaitingAgain">
-
+<p><br></p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<script>// Credit: Mateusz Rybczonec
-
-// dash array value is the circumference of the circle radius (here 45)
-const FULL_DASH_ARRAY = 2 * Math.PI * 45;
-// the second limits for color change
-const THRESHOLDS = [10, 5];
-
-// Funktion zur Initialisierung des Timers in einem Container
-function initializeTimer(containerId, timeLimit, startOn) {
-
-  let active = true;
-  let timePassed = 0;
-  let timeLeft = timeLimit;
-
-  // Dynamisches Erstellen des Timer-HTML-Inhalts für jeden Container
-  document.getElementById(containerId).innerHTML = `
-    <div class="base-timer">
-      <svg id="${containerId}-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle id="${containerId}-circle" class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-          <path
-            id="${containerId}-path-remaining"
-            stroke-dasharray="${FULL_DASH_ARRAY}"
-            class="base-timer__path-remaining"
-            d="M 50 50 m 0 -45 a 45 45 0 0 1 0 90 a 45 45 0 0 1 0 -90">
-          </path>
-          <text id="${containerId}-label" x="50%" y ="50%" dominant-baseline="middle" text-anchor="middle">
-            ${formatTime(timeLeft)}
-          </text>
-        </g>
-      </svg>
-    </div>
-    `;
-
-  document.getElementById(`${containerId}-timer-svg`).addEventListener("click", (event) => {
-    toggleTimer();
-  });
-
-  // Set the timer to inactive and then change to type slide
-  if ( startOn === "interaction" ) {
-    toggleTimer();
-    startOn = "slide";
-  }
-
-  // Startet den Timer für einen bestimmten Container
-  (function startTimer() {
-    // only advance time when focus is required and slide is in focus
-    if (active && (startOn === 'presentation' || (startOn === 'slide' && !isHidden()))) {
-
-      timePassed += 1;
-      timeLeft = timeLimit - timePassed;
-
-      document.getElementById(`${containerId}-label`).innerHTML = formatTime(
-        timeLeft
-      );
-
-      setCircleDasharray();
-      setRemainingPathColor(timeLeft);
-
-    }
-    if (timeLeft > 0) {
-      setTimeout(startTimer, 1000);
-    }
-  }());
-
-  function isHidden() {
-    let timecont = document.getElementById(containerId);
-    let ancestor = timecont.parentNode;
-
-    // look if the section element, the 'slide', is visible
-    while (ancestor.tagName !== "SECTION") {
-      ancestor = ancestor.parentNode;
-    }
-    return ancestor.hidden;
-  }
-
-  function toggleTimer() {
-    if (active) {
-      document.getElementById(`${containerId}-circle`).style.fill = '#fcb';
-    } else {
-      document.getElementById(`${containerId}-circle`).style.fill = '';
-    }
-    active = !active;
-  }
-
-  // Funktion zur Formatierung der verbleibenden Zeit
-  function formatTime(time) {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
-
-    return `${minutes}:${seconds}`;
-  }
-
-  // Funktion zur Festlegung der Farbe des verbleibenden
-  // Pfades basierend auf der verbleibenden Zeit
-  function setRemainingPathColor(timeLeft) {
-    const pathId = `${containerId}-path-remaining`;
-
-    for ( let i = 0; i < THRESHOLDS.length; i+=1 ) {
-      if (timeLeft < THRESHOLDS[i]) {
-        document.getElementById(pathId).classList.remove(`lvl${i-1}`);
-        document.getElementById(pathId).classList.add(`lvl${i}`);
-      }
-    }
-  }
-
-  // Funktion zur Festlegung der Strichlänge des verbleibenden
-  // Pfades basierend auf dem Anteil der verstrichenen Zeit
-  function setCircleDasharray() {
-    let circle_proportions = timeLeft / timeLimit * FULL_DASH_ARRAY + " ";
-    circle_proportions += (1 - timeLeft / timeLimit) * FULL_DASH_ARRAY;
-
-    document
-      .getElementById(`${containerId}-path-remaining`)
-      .setAttribute("stroke-dasharray", circle_proportions);
-  }
-}
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("3minWaitingAgain", 180, "slide");
-    });
-</script>
-</center>
-</div></div>
+<p><strong>All too common</strong></p>
+</div>
+<div class="callout-content">
+<p>Excel + Word</p>
+</div>
+</div>
 </div>
 </section>
 <section id="data-analysis-before-vs-after-jupyter" class="slide level2 smaller">
@@ -2178,7 +2055,7 @@ Re-run notebook! 🎉</code></pre>
 <section id="code-cells-in-action" class="slide level2 smaller">
 <h2>🐍 Code Cells in Action</h2>
 <p>A single code cell holds your logic <strong>and</strong> its output — no copy/paste into a slide deck.</p>
-<div id="445928b9" class="cell" data-execution_count="11">
+<div id="0c48ac8b" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href aria-label="1"></a><span class="co"># Quarterly revenue analysis — code and result live together in one cell</span></span>
 <span id="cb18-2"><a href aria-label="2"></a>revenue <span class="op">=</span> {<span class="st">&quot;Q1&quot;</span>: <span class="dv">125_000</span>, <span class="st">&quot;Q2&quot;</span>: <span class="dv">98_000</span>, <span class="st">&quot;Q3&quot;</span>: <span class="dv">142_000</span>, <span class="st">&quot;Q4&quot;</span>: <span class="dv">110_000</span>}</span>
 <span id="cb18-3"><a href aria-label="3"></a></span>
@@ -2206,8 +2083,8 @@ Best quarter:   Q3 ($142,000)</code></pre>
 <p>In the companion notebook, find the “Try It” cell for this section. Write code that:</p>
 <ol type="1">
 <li>Assigns your name to a variable</li>
-<li>Assigns any number to a second variable</li>
-<li>Prints both using an f-string</li>
+<li>Assign your age to a second variable</li>
+<li>Using an f-string and print statement - <em>“My name is _____ and I am __ years old.”</em></li>
 </ol>
 </div>
 </div>
@@ -2230,7 +2107,7 @@ Best quarter:   Q3 ($142,000)</code></pre>
 </div>
 </div>
 </div>
-<div id="ac4e10a4" class="cell" data-execution_count="12">
+<div id="57a8c343" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href aria-label="1"></a>subscriptions <span class="op">=</span> {<span class="st">&quot;Basic&quot;</span>: <span class="dv">820</span>, <span class="st">&quot;Premium&quot;</span>: <span class="dv">310</span>, <span class="st">&quot;Enterprise&quot;</span>: <span class="dv">120</span>}</span>
 <span id="cb20-2"><a href aria-label="2"></a>total <span class="op">=</span> <span class="bu">sum</span>(subscriptions.values())</span>
 <span id="cb20-3"><a href aria-label="3"></a></span>
@@ -2307,146 +2184,11 @@ Enterprise  :  120 customers (10%)  ███</code></pre>
 <section id="exercise-what-makes-these-notebooks-work" class="slide level2 smaller">
 <h2>📋 Exercise: What Makes These Notebooks Work?</h2>
 <p><strong>Both examples:</strong> <a href="https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_notebook.ipynb">Project notebook</a> · <a href="https://github.com/bradleyboehmke/uc-bana-7025/blob/main/notebooks/examples/example_homework_notebook.ipynb">Homework notebook</a></p>
-<div class="columns">
-<div class="column" style="width:70%;">
-<p><strong>With your neighbor (5 min) — skim both and discuss:</strong></p>
+<p><strong>Skim both:</strong></p>
 <ol type="1">
 <li><p><strong>What works?</strong> Do they feel well organized? Are they easy to follow? What stands out as particularly clear or helpful?</p></li>
 <li><p><strong>What’s missing?</strong> What would you <strong>add or change</strong> to make either one clearer?</p></li>
 </ol>
-</div><div class="column" style="width:30%;">
-<center>
-<div id="notebookReview">
-
-</div>
-<script>// Credit: Mateusz Rybczonec
-
-// dash array value is the circumference of the circle radius (here 45)
-const FULL_DASH_ARRAY = 2 * Math.PI * 45;
-// the second limits for color change
-const THRESHOLDS = [10, 5];
-
-// Funktion zur Initialisierung des Timers in einem Container
-function initializeTimer(containerId, timeLimit, startOn) {
-
-  let active = true;
-  let timePassed = 0;
-  let timeLeft = timeLimit;
-
-  // Dynamisches Erstellen des Timer-HTML-Inhalts für jeden Container
-  document.getElementById(containerId).innerHTML = `
-    <div class="base-timer">
-      <svg id="${containerId}-timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle id="${containerId}-circle" class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-          <path
-            id="${containerId}-path-remaining"
-            stroke-dasharray="${FULL_DASH_ARRAY}"
-            class="base-timer__path-remaining"
-            d="M 50 50 m 0 -45 a 45 45 0 0 1 0 90 a 45 45 0 0 1 0 -90">
-          </path>
-          <text id="${containerId}-label" x="50%" y ="50%" dominant-baseline="middle" text-anchor="middle">
-            ${formatTime(timeLeft)}
-          </text>
-        </g>
-      </svg>
-    </div>
-    `;
-
-  document.getElementById(`${containerId}-timer-svg`).addEventListener("click", (event) => {
-    toggleTimer();
-  });
-
-  // Set the timer to inactive and then change to type slide
-  if ( startOn === "interaction" ) {
-    toggleTimer();
-    startOn = "slide";
-  }
-
-  // Startet den Timer für einen bestimmten Container
-  (function startTimer() {
-    // only advance time when focus is required and slide is in focus
-    if (active && (startOn === 'presentation' || (startOn === 'slide' && !isHidden()))) {
-
-      timePassed += 1;
-      timeLeft = timeLimit - timePassed;
-
-      document.getElementById(`${containerId}-label`).innerHTML = formatTime(
-        timeLeft
-      );
-
-      setCircleDasharray();
-      setRemainingPathColor(timeLeft);
-
-    }
-    if (timeLeft > 0) {
-      setTimeout(startTimer, 1000);
-    }
-  }());
-
-  function isHidden() {
-    let timecont = document.getElementById(containerId);
-    let ancestor = timecont.parentNode;
-
-    // look if the section element, the 'slide', is visible
-    while (ancestor.tagName !== "SECTION") {
-      ancestor = ancestor.parentNode;
-    }
-    return ancestor.hidden;
-  }
-
-  function toggleTimer() {
-    if (active) {
-      document.getElementById(`${containerId}-circle`).style.fill = '#fcb';
-    } else {
-      document.getElementById(`${containerId}-circle`).style.fill = '';
-    }
-    active = !active;
-  }
-
-  // Funktion zur Formatierung der verbleibenden Zeit
-  function formatTime(time) {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
-
-    return `${minutes}:${seconds}`;
-  }
-
-  // Funktion zur Festlegung der Farbe des verbleibenden
-  // Pfades basierend auf der verbleibenden Zeit
-  function setRemainingPathColor(timeLeft) {
-    const pathId = `${containerId}-path-remaining`;
-
-    for ( let i = 0; i < THRESHOLDS.length; i+=1 ) {
-      if (timeLeft < THRESHOLDS[i]) {
-        document.getElementById(pathId).classList.remove(`lvl${i-1}`);
-        document.getElementById(pathId).classList.add(`lvl${i}`);
-      }
-    }
-  }
-
-  // Funktion zur Festlegung der Strichlänge des verbleibenden
-  // Pfades basierend auf dem Anteil der verstrichenen Zeit
-  function setCircleDasharray() {
-    let circle_proportions = timeLeft / timeLimit * FULL_DASH_ARRAY + " ";
-    circle_proportions += (1 - timeLeft / timeLimit) * FULL_DASH_ARRAY;
-
-    document
-      .getElementById(`${containerId}-path-remaining`)
-      .setAttribute("stroke-dasharray", circle_proportions);
-  }
-}
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initializeTimer("notebookReview", 300, "slide");
-    });
-</script>
-</center>
-</div></div>
 </section>
 <section id="what-makes-a-notebook-work" class="slide level2 smaller scrollable">
 <h2>✅ What Makes a Notebook Work</h2>
@@ -2483,7 +2225,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 <div class="callout-content">
 <p><em>“Structure your notebook like a story — introduce the goal, describe your approach, show the results, and summarize your findings.”</em></p>
-<p><strong>The test:</strong> could a stakeholder, a reviewer, and future-you each get what they need — without you in the room to explain it?</p>
+<p><strong>The test:</strong> could a stakeholder, a technical reviewer, and future-you each get what they need — without you in the room to explain it?</p>
 </div>
 </div>
 </div>
@@ -2493,7 +2235,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <p><strong>🚨 The #1 Problem: Execution order ≠ cell order — output can lie</strong></p>
 <p>The number in brackets <code>[N]</code> shows <em>when</em> each cell last ran, not its position:</p>
 <p><strong>🔴 Out-of-order (untrustworthy)</strong></p>
-<div id="04663ff4" class="cell" data-execution_count="13">
+<div id="018e2771" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href aria-label="1"></a><span class="bu">print</span>(<span class="ss">f&quot;Hello </span><span class="sc">{</span>my_name<span class="sc">}</span><span class="ss">!&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -2507,17 +2249,17 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><br></p>
-<div id="98af61ac" class="cell" data-execution_count="14">
+<div id="7858cb3f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href aria-label="1"></a>my_name <span class="op">=</span> <span class="st">&quot;Brad&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p><br></p>
 <p><strong>✅ After “Restart &amp; Run All”</strong></p>
-<div id="9c864c53" class="cell" data-execution_count="15">
+<div id="0596d2da" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href aria-label="1"></a>my_name <span class="op">=</span> <span class="st">&quot;Brad&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div id="f36b3995" class="cell" data-execution_count="16">
+<div id="06b43fe5" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href aria-label="1"></a><span class="bu">print</span>(<span class="ss">f&quot;Hello </span><span class="sc">{</span>my_name<span class="sc">}</span><span class="ss">!&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Brad!</code></pre>
@@ -2732,7 +2474,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h2>🔧 Working with Lists</h2>
 <p><strong>A few basic things you can do — the readings and lab will go deeper:</strong></p>
 <p><strong>Get an item by position:</strong></p>
-<div id="89d1dc06" class="cell" data-execution_count="17">
+<div id="a8db1380" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href aria-label="1"></a>daily_sales <span class="op">=</span> [<span class="dv">1842</span>, <span class="dv">2105</span>, <span class="dv">1956</span>, <span class="dv">2341</span>, <span class="dv">890</span>]</span>
 <span id="cb29-2"><a href aria-label="2"></a>daily_sales[<span class="dv">1</span>]   <span class="co"># index starts at 0, so [1] = second item</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -2740,7 +2482,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><strong>Append a new item to the end:</strong></p>
-<div id="5c662804" class="cell" data-execution_count="18">
+<div id="1413ebf7" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href aria-label="1"></a>daily_sales <span class="op">=</span> [<span class="dv">1842</span>, <span class="dv">2105</span>, <span class="dv">1956</span>, <span class="dv">2341</span>, <span class="dv">890</span>]</span>
 <span id="cb31-2"><a href aria-label="2"></a>daily_sales.append(<span class="dv">3102</span>)</span>
 <span id="cb31-3"><a href aria-label="3"></a>daily_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2749,7 +2491,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><strong>Change an existing item:</strong></p>
-<div id="1c5a4341" class="cell" data-execution_count="19">
+<div id="05188163" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href aria-label="1"></a>daily_sales <span class="op">=</span> [<span class="dv">1842</span>, <span class="dv">2105</span>, <span class="dv">1956</span>, <span class="dv">2341</span>, <span class="dv">890</span>]</span>
 <span id="cb33-2"><a href aria-label="2"></a>daily_sales[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">2200</span>   <span class="co"># correct a data entry error</span></span>
 <span id="cb33-3"><a href aria-label="3"></a>daily_sales</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2814,7 +2556,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h2>🔧 Working with Tuples</h2>
 <p><strong>Tuples support reading but not writing:</strong></p>
 <p><strong>Get items by position:</strong></p>
-<div id="5ae41862" class="cell" data-execution_count="20">
+<div id="901a1b14" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href aria-label="1"></a>store_location <span class="op">=</span> (<span class="fl">39.1031</span>, <span class="op">-</span><span class="fl">84.5120</span>)</span>
 <span id="cb37-2"><a href aria-label="2"></a>lat, lon <span class="op">=</span> store_location  <span class="co"># tuple unpacking 🤯</span></span>
 <span id="cb37-3"><a href aria-label="3"></a><span class="bu">print</span>(lat)   </span>
@@ -2825,7 +2567,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><strong>Try to change a value — tuples won’t allow it:</strong></p>
-<div id="a116d7ae" class="cell" data-execution_count="21">
+<div id="6034c645" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href aria-label="1"></a>store_location <span class="op">=</span> (<span class="fl">39.1031</span>, <span class="op">-</span><span class="fl">84.5120</span>)</span>
 <span id="cb39-2"><a href aria-label="2"></a>store_location[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">40.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
@@ -2910,7 +2652,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h2>🔧 Working with Sets</h2>
 <p><strong>Sets don’t support indexing — but they excel at membership testing and deduplication:</strong></p>
 <p><strong>Check if an item exists:</strong></p>
-<div id="1bbf82b0" class="cell" data-execution_count="22">
+<div id="0c4f0547" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href aria-label="1"></a>subscribers <span class="op">=</span> {<span class="st">&quot;john@email.com&quot;</span>, <span class="st">&quot;sarah@email.com&quot;</span>, <span class="st">&quot;mike@email.com&quot;</span>}</span>
 <span id="cb42-2"><a href aria-label="2"></a><span class="bu">print</span>(<span class="st">&quot;sarah@email.com&quot;</span> <span class="kw">in</span> subscribers)</span>
 <span id="cb42-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="st">&quot;alex@email.com&quot;</span> <span class="kw">in</span> subscribers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2920,7 +2662,7 @@ False</code></pre>
 </div>
 </div>
 <p><strong>Add a new item:</strong></p>
-<div id="9cd57a6c" class="cell" data-execution_count="23">
+<div id="8d9b44d8" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href aria-label="1"></a>subscribers <span class="op">=</span> {<span class="st">&quot;john@email.com&quot;</span>, <span class="st">&quot;sarah@email.com&quot;</span>, <span class="st">&quot;mike@email.com&quot;</span>}</span>
 <span id="cb44-2"><a href aria-label="2"></a>subscribers.add(<span class="st">&quot;alex@email.com&quot;</span>)</span>
 <span id="cb44-3"><a href aria-label="3"></a>subscribers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2985,7 +2727,7 @@ False</code></pre>
 <h2>🔧 Working with Dictionaries</h2>
 <p><strong>Dictionaries let you look up, add, and update by key:</strong></p>
 <p><strong>Get a value by key:</strong></p>
-<div id="3e30b377" class="cell" data-execution_count="24">
+<div id="8788f736" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href aria-label="1"></a>prices <span class="op">=</span> {<span class="st">&quot;organic milk&quot;</span>: <span class="fl">4.99</span>, <span class="st">&quot;whole grain bread&quot;</span>: <span class="fl">3.29</span>}</span>
 <span id="cb48-2"><a href aria-label="2"></a>prices[<span class="st">&quot;organic milk&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
@@ -2993,7 +2735,7 @@ False</code></pre>
 </div>
 </div>
 <p><strong>Add a new key-value pair:</strong></p>
-<div id="cf05f5a9" class="cell" data-execution_count="25">
+<div id="18c99dba" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href aria-label="1"></a>prices <span class="op">=</span> {<span class="st">&quot;organic milk&quot;</span>: <span class="fl">4.99</span>, <span class="st">&quot;whole grain bread&quot;</span>: <span class="fl">3.29</span>}</span>
 <span id="cb50-2"><a href aria-label="2"></a>prices[<span class="st">&quot;eggs&quot;</span>] <span class="op">=</span> <span class="fl">2.89</span></span>
 <span id="cb50-3"><a href aria-label="3"></a>prices</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3002,7 +2744,7 @@ False</code></pre>
 </div>
 </div>
 <p><strong>Update an existing value:</strong></p>
-<div id="8d2d9a24" class="cell" data-execution_count="26">
+<div id="deced016" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href aria-label="1"></a>prices <span class="op">=</span> {<span class="st">&quot;organic milk&quot;</span>: <span class="fl">4.99</span>, <span class="st">&quot;whole grain bread&quot;</span>: <span class="fl">3.29</span>}</span>
 <span id="cb52-2"><a href aria-label="2"></a>prices[<span class="st">&quot;organic milk&quot;</span>] <span class="op">=</span> <span class="fl">5.49</span></span>
 <span id="cb52-3"><a href aria-label="3"></a>prices[<span class="st">&quot;organic milk&quot;</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3284,7 +3026,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="build-from-scratch-or-reuse" class="slide level2 smaller">
 <h2>🤔 Build from Scratch or Reuse?</h2>
 <p>If you needed to calculate the <strong>correlation between two variables (x and y)</strong></p>
-<div id="aa9cf907" class="cell" data-execution_count="27">
+<div id="4efbee8f" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href aria-label="1"></a>x <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">13</span>]</span>
 <span id="cb55-2"><a href aria-label="2"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">13</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -3292,7 +3034,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>🛠️ Option 1: Build It Yourself</strong></p>
-<div id="0a86702f" class="cell" data-execution_count="28">
+<div id="67c11d75" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href aria-label="1"></a>mean_x <span class="op">=</span> <span class="bu">sum</span>(x) <span class="op">/</span> <span class="bu">len</span>(x)</span>
 <span id="cb56-2"><a href aria-label="2"></a>mean_y <span class="op">=</span> <span class="bu">sum</span>(y) <span class="op">/</span> <span class="bu">len</span>(y)</span>
 <span id="cb56-3"><a href aria-label="3"></a></span>
@@ -3310,7 +3052,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>🤖 Option 2: Use a Library</strong></p>
-<div id="18cfdad9" class="cell" data-execution_count="29">
+<div id="3366aaa9" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb58-2"><a href aria-label="2"></a></span>
 <span id="cb58-3"><a href aria-label="3"></a>correlation <span class="op">=</span> np.corrcoef(x, y)[<span class="dv">0</span>, <span class="dv">1</span>]</span>
@@ -3358,11 +3100,11 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <div class="columns">
 <div class="column">
 <p><strong>Standard Library</strong></p>
-<div id="69ecbaa8" class="cell" data-execution_count="30">
+<div id="1c2eca80" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60" data-code-line-numbers="1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb60-2"><a href aria-label="2"></a>random.randint(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>7</code></pre>
+<pre><code>5</code></pre>
 </div>
 </div>
 </div><div class="column">
@@ -3371,7 +3113,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <span id="cb62-2"><a href aria-label="2"></a>pip install numpy   <span class="co"># command line</span></span>
 <span id="cb62-3"><a href aria-label="3"></a><span class="op">!</span>pip install numpy  <span class="co"># jupyter notebook</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><br></p>
-<div id="4a82fd0b" class="cell" data-execution_count="31">
+<div id="67f9051c" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63" data-code-line-numbers="1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href aria-label="1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb63-2"><a href aria-label="2"></a>np.mean([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
@@ -3424,7 +3166,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <h2>✏️ Your Turn: Use a Standard Library</h2>
 <p><strong>Nothing to install</strong> — <code>random</code> ships with Python.</p>
 <p><strong>Scenario:</strong> simulate 10 daily sales figures between $3,000 and $8,500.</p>
-<div id="6149658d" class="cell" data-execution_count="32">
+<div id="fce4608f" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb65-2"><a href aria-label="2"></a></span>
 <span id="cb65-3"><a href aria-label="3"></a>random.seed(<span class="dv">13</span>)      <span class="co"># so everyone gets the same &quot;random&quot; numbers</span></span>
@@ -3457,7 +3199,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="your-turn-now-bring-in-numpy" class="slide level2 smaller scrollable">
 <h2>✏️ Your Turn: Now Bring in numpy</h2>
 <p><strong>Two stores this time</strong> — and a question <code>random</code> alone can’t answer.</p>
-<div id="5029c49b" class="cell" data-execution_count="33">
+<div id="aa48d307" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href aria-label="1"></a><span class="im">import</span> random</span>
 <span id="cb67-2"><a href aria-label="2"></a></span>
 <span id="cb67-3"><a href aria-label="3"></a>random.seed(<span class="dv">13</span>)</span>
@@ -3500,7 +3242,7 @@ Store B: [4066, 3580, 7352, 4752, 5413, 3245, 6535, 4034, 7984, 3118]</code></pr
 <span id="cb69-2"><a href aria-label="2"></a><span class="op">!</span>pip install completejourney<span class="op">-</span>py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>Then load the data:</p>
-<div id="1cda0b05" class="cell" data-execution_count="34">
+<div id="c4fc5bed" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href aria-label="1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
 <span id="cb70-2"><a href aria-label="2"></a></span>
 <span id="cb70-3"><a href aria-label="3"></a>cj <span class="op">=</span> get_data()          <span class="co"># returns a dictionary of DataFrames</span></span>
@@ -3509,7 +3251,7 @@ Store B: [4066, 3580, 7352, 4752, 5413, 3245, 6535, 4034, 7984, 3118]</code></pr
 <pre><code>[&#39;campaign_descriptions&#39;, &#39;campaigns&#39;, &#39;coupon_redemptions&#39;, &#39;coupons&#39;, &#39;demographics&#39;, &#39;products&#39;, &#39;promotions&#39;, &#39;transactions&#39;]</code></pre>
 </div>
 </div>
-<div id="12552dc2" class="cell" data-execution_count="35">
+<div id="5cb1b335" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href aria-label="1"></a>transactions <span class="op">=</span> cj[<span class="st">&quot;transactions&quot;</span>]</span>
 <span id="cb72-2"><a href aria-label="2"></a></span>
 <span id="cb72-3"><a href aria-label="3"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>transactions<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">:,}</span><span class="ss"> rows × </span><span class="sc">{</span>transactions<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns&quot;</span>)</span>
