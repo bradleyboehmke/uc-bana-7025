@@ -1764,7 +1764,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <p><strong>Scenario:</strong> Alert when inventory is low</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="aa115007" class="cell" data-execution_count="1">
+<div id="3b0d1171" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href aria-label="1"></a><span class="co"># Low inventory</span></span>
 <span id="cb1-2"><a href aria-label="2"></a>stock_level <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href aria-label="3"></a></span>
@@ -1778,7 +1778,7 @@ Current stock: 5 units</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="2d7bd5b7" class="cell" data-execution_count="2">
+<div id="1b8f7626" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href aria-label="1"></a><span class="co"># Sufficient inventory</span></span>
 <span id="cb3-2"><a href aria-label="2"></a>stock_level <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb3-3"><a href aria-label="3"></a></span>
@@ -1811,7 +1811,7 @@ Current stock: 5 units</code></pre>
 <p><strong>Scenario:</strong> Two possible outcomes based on a condition</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="f3b5e3a2" class="cell" data-execution_count="3">
+<div id="b0e87702" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href aria-label="1"></a><span class="co"># VIP customer</span></span>
 <span id="cb5-2"><a href aria-label="2"></a>base_price <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb5-3"><a href aria-label="3"></a>is_vip <span class="op">=</span> <span class="va">True</span></span>
@@ -1830,7 +1830,7 @@ Price: $80.0</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="ce09deca" class="cell" data-execution_count="4">
+<div id="d3c8923b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href aria-label="1"></a><span class="co"># Regular customer</span></span>
 <span id="cb7-2"><a href aria-label="2"></a>base_price <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb7-3"><a href aria-label="3"></a>is_vip <span class="op">=</span> <span class="va">False</span></span>
@@ -1869,7 +1869,7 @@ Price: $95.0</code></pre>
 <p><strong>Scenario:</strong> Multiple conditions to check in order</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="47b7dfe8" class="cell" data-execution_count="5">
+<div id="890d8101" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href aria-label="1"></a><span class="co"># High-value customer</span></span>
 <span id="cb9-2"><a href aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb9-3"><a href aria-label="3"></a></span>
@@ -1892,7 +1892,7 @@ Price: $95.0</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="c30ce253" class="cell" data-execution_count="6">
+<div id="075fcb07" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href aria-label="1"></a><span class="co"># Medium-value customer</span></span>
 <span id="cb11-2"><a href aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">7500</span></span>
 <span id="cb11-3"><a href aria-label="3"></a></span>
@@ -1947,7 +1947,7 @@ Price: $95.0</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>✅ Correct Order (Most to Least Specific)</strong></p>
-<div id="c082102c" class="cell" data-execution_count="7">
+<div id="dc58aa88" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href aria-label="1"></a><span class="co"># Check from high to low</span></span>
 <span id="cb13-2"><a href aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb13-3"><a href aria-label="3"></a></span>
@@ -1967,7 +1967,7 @@ Price: $95.0</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>❌ Wrong Order (Least to Most Specific)</strong></p>
-<div id="1b3b0521" class="cell" data-execution_count="8">
+<div id="efbd1389" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href aria-label="1"></a><span class="co"># Check from low to high - WRONG!</span></span>
 <span id="cb15-2"><a href aria-label="2"></a>annual_spend <span class="op">=</span> <span class="dv">12500</span></span>
 <span id="cb15-3"><a href aria-label="3"></a></span>
@@ -2154,7 +2154,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="solution-vip-discount-logic" class="slide level2 smaller">
 <h2>Solution: VIP Discount Logic</h2>
-<div id="8ebf83c1" class="cell" data-execution_count="9">
+<div id="b8b8fa90" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href aria-label="1"></a><span class="co"># Solution</span></span>
 <span id="cb18-2"><a href aria-label="2"></a>customer_type <span class="op">=</span> <span class="st">&#39;VIP&#39;</span></span>
 <span id="cb18-3"><a href aria-label="3"></a></span>
@@ -2230,7 +2230,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="solution-grocery-loyalty-classifier" class="slide level2 smaller">
 <h2>Solution: Grocery Loyalty Classifier</h2>
-<div id="20c4dda4" class="cell" data-execution_count="10">
+<div id="c7e8c8bd" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href aria-label="1"></a>monthly_spend <span class="op">=</span> <span class="dv">650</span></span>
 <span id="cb20-2"><a href aria-label="2"></a></span>
 <span id="cb20-3"><a href aria-label="3"></a><span class="cf">if</span> monthly_spend <span class="op">&gt;=</span> <span class="dv">500</span>:</span>
@@ -2263,7 +2263,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="illustration-np.where-for-ifelse" class="slide level2 smaller">
 <h2>Illustration: <code>np.where()</code> for if/else</h2>
-<div id="26caaba6" class="cell" data-execution_count="11">
+<div id="3e6c6fbd" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-3"><a href aria-label="3"></a></span>
@@ -2379,7 +2379,7 @@ text-align: right;
 </section>
 <section id="solution-flag-transactions-with-np.where" class="slide level2 smaller">
 <h2>Solution: Flag Transactions with <code>np.where()</code></h2>
-<div id="dba708b6" class="cell" data-execution_count="12">
+<div id="5ffc91a5" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href aria-label="1"></a><span class="im">from</span> completejourney_py <span class="im">import</span> get_data</span>
 <span id="cb24-2"><a href aria-label="2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-3"><a href aria-label="3"></a></span>
@@ -2395,7 +2395,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="d386eac0" class="cell" data-execution_count="13">
+<div id="f6816fab" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href aria-label="1"></a>df[<span class="st">&#39;disc_flag&#39;</span>] <span class="op">=</span> np.where(df[<span class="st">&#39;retail_disc&#39;</span>] <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">&#39;discounted&#39;</span>, <span class="st">&#39;full price&#39;</span>)</span>
 <span id="cb26-2"><a href aria-label="2"></a>df[<span class="st">&#39;disc_flag&#39;</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -2437,7 +2437,7 @@ Name: count, dtype: int64</code></pre>
 <section id="illustration-1-simple-list-iteration" class="slide level2 smaller">
 <h2>Illustration 1: Simple List Iteration</h2>
 <p><strong>Scenario:</strong> Calculate 10% commission on each sale</p>
-<div id="d8f917c2" class="cell" data-execution_count="14">
+<div id="e3e5630d" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href aria-label="1"></a><span class="co"># Sales amounts from five transactions</span></span>
 <span id="cb28-2"><a href aria-label="2"></a>sales_amounts <span class="op">=</span> [<span class="dv">45000</span>, <span class="dv">52000</span>, <span class="dv">38000</span>, <span class="dv">41000</span>, <span class="dv">67000</span>]</span>
 <span id="cb28-3"><a href aria-label="3"></a></span>
@@ -2456,7 +2456,7 @@ Sales: $67,000 → Commission: $6,700</code></pre>
 <p><strong>Pattern:</strong> Iterate through each item, perform calculation, use result</p>
 <div class="fragment">
 <p>Sometimes we iterate and just store the results:</p>
-<div id="04f36da8" class="cell" data-execution_count="15">
+<div id="c8d9ee71" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href aria-label="1"></a>commissions <span class="op">=</span> []</span>
 <span id="cb30-2"><a href aria-label="2"></a></span>
 <span id="cb30-3"><a href aria-label="3"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_amounts:</span>
@@ -2473,7 +2473,7 @@ Sales: $67,000 → Commission: $6,700</code></pre>
 <section id="illustration-2-dictionary-iteration" class="slide level2 smaller">
 <h2>Illustration 2: Dictionary Iteration</h2>
 <p><strong>Scenario:</strong> Extract store names and sales from dictionary</p>
-<div id="959e7a0b" class="cell" data-execution_count="16">
+<div id="4a4aba0f" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href aria-label="1"></a><span class="co"># Store performance data</span></span>
 <span id="cb32-2"><a href aria-label="2"></a>store_data <span class="op">=</span> {</span>
 <span id="cb32-3"><a href aria-label="3"></a>    <span class="st">&#39;Downtown&#39;</span>: <span class="dv">125000</span>,</span>
@@ -2501,7 +2501,7 @@ Airport : 8700.0</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Traditional for loop:</strong></p>
-<div id="1642675a" class="cell" data-execution_count="17">
+<div id="c339bebd" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href aria-label="1"></a><span class="co"># Original prices</span></span>
 <span id="cb34-2"><a href aria-label="2"></a>prices <span class="op">=</span> [<span class="fl">29.99</span>, <span class="fl">49.99</span>, <span class="fl">19.99</span>, <span class="fl">89.99</span>]</span>
 <span id="cb34-3"><a href aria-label="3"></a></span>
@@ -2518,7 +2518,7 @@ Airport : 8700.0</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>List comprehension:</strong></p>
-<div id="99e96166" class="cell" data-execution_count="18">
+<div id="ae0f6aee" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href aria-label="1"></a><span class="co"># Original prices</span></span>
 <span id="cb36-2"><a href aria-label="2"></a>prices <span class="op">=</span> [<span class="fl">29.99</span>, <span class="fl">49.99</span>, <span class="fl">19.99</span>, <span class="fl">89.99</span>]</span>
 <span id="cb36-3"><a href aria-label="3"></a></span>
@@ -2572,7 +2572,7 @@ Airport : 8700.0</code></pre>
 </section>
 <section id="solution-loyalty-classifier-now-with-a-loop" class="slide level2 smaller">
 <h2>Solution: Loyalty Classifier — Now With a Loop</h2>
-<div id="036217ad" class="cell" data-execution_count="19">
+<div id="8ff3d588" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href aria-label="1"></a>households <span class="op">=</span> [<span class="dv">650</span>, <span class="dv">275</span>, <span class="dv">75</span>, <span class="dv">30</span>, <span class="dv">520</span>, <span class="dv">190</span>]</span>
 <span id="cb39-2"><a href aria-label="2"></a></span>
 <span id="cb39-3"><a href aria-label="3"></a><span class="cf">for</span> spend <span class="kw">in</span> households:</span>
@@ -2769,7 +2769,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="solution-temperature-converter" class="slide level2 smaller">
 <h2>Solution: Temperature Converter</h2>
 <p><strong>Part 1: Using a for loop</strong></p>
-<div id="ec35af07" class="cell" data-execution_count="20">
+<div id="c2eb84fd" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href aria-label="1"></a><span class="co"># Given data</span></span>
 <span id="cb42-2"><a href aria-label="2"></a>celsius_temps <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">19</span>, <span class="dv">25</span>, <span class="dv">23</span>, <span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">20</span>, <span class="dv">22</span>]</span>
 <span id="cb42-3"><a href aria-label="3"></a></span>
@@ -2785,7 +2785,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <p><strong>Part 2: Using list comprehension</strong></p>
-<div id="c0e98739" class="cell" data-execution_count="21">
+<div id="a52ddd15" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href aria-label="1"></a><span class="co"># Convert using list comprehension</span></span>
 <span id="cb44-2"><a href aria-label="2"></a>fahrenheit_temps <span class="op">=</span> [(celsius <span class="op">*</span> <span class="dv">9</span><span class="op">/</span><span class="dv">5</span>) <span class="op">+</span> <span class="dv">32</span> <span class="cf">for</span> celsius <span class="kw">in</span> celsius_temps]</span>
 <span id="cb44-3"><a href aria-label="3"></a></span>
@@ -2832,7 +2832,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="anatomy-of-a-good-function" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 1: Basic function - inputs and output</strong></p>
-<div id="fed12956" class="cell" data-execution_count="22">
+<div id="719d1288" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue, cost):</span>
 <span id="cb47-2"><a href aria-label="2"></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> revenue</span>
 <span id="cb47-3"><a href aria-label="3"></a>    <span class="cf">return</span> margin</span>
@@ -2847,7 +2847,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="anatomy-of-a-good-function-1" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 2: Add documentation (docstring)</strong></p>
-<div id="3a177c82" class="cell" data-execution_count="23">
+<div id="1ded34ac" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue, cost):</span>
 <span id="cb49-2"><a href aria-label="2"></a>    <span class="co">&quot;&quot;&quot;</span></span>
 <span id="cb49-3"><a href aria-label="3"></a><span class="co">    Calculate profit margin as a percentage.</span></span>
@@ -2885,7 +2885,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="anatomy-of-a-good-function-2" class="slide level2 smaller">
 <h2>Anatomy of a Good Function</h2>
 <p><strong>Level 3: Add type hints (optional but helpful)</strong></p>
-<div id="3a2e2bd1" class="cell" data-execution_count="24">
+<div id="feb7666a" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb51-2"><a href aria-label="2"></a>    <span class="co">&quot;&quot;&quot;</span></span>
 <span id="cb51-3"><a href aria-label="3"></a><span class="co">    Calculate profit margin as a percentage.</span></span>
@@ -2938,7 +2938,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Without validation:</strong></p>
-<div id="070f0d4a" class="cell" data-execution_count="25">
+<div id="8fad9e31" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb53-2"><a href aria-label="2"></a>    <span class="co">&quot;&quot;&quot;Calculate profit margin.&quot;&quot;&quot;</span></span>
 <span id="cb53-3"><a href aria-label="3"></a>    margin <span class="op">=</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> revenue <span class="op">*</span> <span class="dv">100</span></span>
@@ -2953,7 +2953,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>With validation:</strong></p>
-<div id="a6208270" class="cell" data-execution_count="26">
+<div id="85692730" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_profit_margin(revenue: <span class="bu">float</span>, cost: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb55-2"><a href aria-label="2"></a>    <span class="co">&quot;&quot;&quot;Calculate profit margin with validation.&quot;&quot;&quot;</span></span>
 <span id="cb55-3"><a href aria-label="3"></a></span>
@@ -2999,7 +2999,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="illustration-roi-function" class="slide level2 smaller scrollable">
 <h2>Illustration: ROI Function</h2>
-<div id="89edbdd7" class="cell" data-execution_count="27">
+<div id="4ba1096e" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href aria-label="1"></a><span class="kw">def</span> calculate_roi(revenue, cost):</span>
 <span id="cb56-2"><a href aria-label="2"></a>    <span class="co">&quot;&quot;&quot;Calculate return on investment as a percentage.&quot;&quot;&quot;</span></span>
 <span id="cb56-3"><a href aria-label="3"></a>    <span class="cf">return</span> (revenue <span class="op">-</span> cost) <span class="op">/</span> cost <span class="op">*</span> <span class="dv">100</span></span>
@@ -3020,7 +3020,7 @@ Campaign C ROI: 33.3%</code></pre>
 </div>
 <div class="fragment">
 <p>Or even more likely…</p>
-<div id="920e6da5" class="cell" data-execution_count="28">
+<div id="b188b82a" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href aria-label="1"></a><span class="co"># Campaign performance data</span></span>
 <span id="cb58-2"><a href aria-label="2"></a>campaigns <span class="op">=</span> {</span>
 <span id="cb58-3"><a href aria-label="3"></a>    <span class="st">&#39;Email&#39;</span>: {<span class="st">&#39;revenue&#39;</span>: <span class="dv">15000</span>, <span class="st">&#39;cost&#39;</span>: <span class="dv">10000</span>},</span>
@@ -3209,7 +3209,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </section>
 <section id="solution-customer-lifetime-value" class="slide level2 smaller">
 <h2>Solution: Customer Lifetime Value</h2>
-<div id="8e4a59a6" class="cell" data-execution_count="29">
+<div id="5c4f97e5" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href aria-label="1"></a><span class="co"># Solution</span></span>
 <span id="cb60-2"><a href aria-label="2"></a><span class="kw">def</span> customer_lifetime_value(avg_order_value, purchase_frequency, gross_margin, customer_lifespan):</span>
 <span id="cb60-3"><a href aria-label="3"></a>    <span class="co">&quot;&quot;&quot;Calculate Customer Lifetime Value (CLV).&quot;&quot;&quot;</span></span>
@@ -3230,7 +3230,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 </div>
 </div>
 <div class="fragment">
-<div id="f54583cd" class="cell" data-execution_count="30">
+<div id="0869e09b" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href aria-label="1"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">200</span>, <span class="dv">6</span>, <span class="fl">0.30</span>, <span class="dv">5</span>))</span>
 <span id="cb62-2"><a href aria-label="2"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">100</span>, <span class="dv">3</span>, <span class="fl">0.20</span>, <span class="dv">2</span>))</span>
 <span id="cb62-3"><a href aria-label="3"></a><span class="bu">print</span>(customer_lifetime_value(<span class="dv">75</span>, <span class="dv">12</span>, <span class="fl">0.15</span>, <span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3245,7 +3245,7 @@ function initializeTimer(containerId, timeLimit, startOn) {
 <section id="functions-dataframes-scaling-analysis" class="slide level2 smaller scrollable">
 <h2>Functions + DataFrames: Scaling Analysis</h2>
 <p><strong>Scenario:</strong> Apply custom function to each row of a DataFrame</p>
-<div id="bb0c8e48" class="cell" data-execution_count="31">
+<div id="6fd2745e" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64" data-code-line-numbers="12-21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href aria-label="1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb64-2"><a href aria-label="2"></a></span>
 <span id="cb64-3"><a href aria-label="3"></a><span class="co"># Customer portfolio data</span></span>
